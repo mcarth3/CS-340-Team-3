@@ -1,9 +1,11 @@
+package poller;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class ServerPoller {
 	@SuppressWarnings("unused")
-	private static ServerProxy mockServer;
+//	private static ServerProxy mockServer;
 	private static final int pollInterval = 1000;
 	private static ServerPoller singleton = null;
 	private ServerPollerTask pollingTask;
@@ -17,6 +19,7 @@ public class ServerPoller {
 	 * @return a singleton to the ServerPoller, containing a singleton to the ServerProxy
 	 */
 	public static ServerPoller getSingleton() throws InvalidServerProxyException {
+		return singleton;
 	}
 	
 	/**a
@@ -27,8 +30,8 @@ public class ServerPoller {
 	 * @pre none
 	 * @post new instance of Server
 	 */
-	private ServerPoller(ServerProxy newServerProxy) throws InvalidServerProxyException {
-	}
+	//private ServerPoller(ServerProxy newServerProxy) throws InvalidServerProxyException {
+	//}
 	
 	/**
 	 * tells ServerProxy to update the model. also resets the polling interval
@@ -38,9 +41,9 @@ public class ServerPoller {
 	 * @throws PollException any problem that occurs while polling
 	 * @return  CatanModel, the new Catan Model to replace the client model
 	 */
-	CatanModel poll() throws PollException {
-		return null;
-	}
+	//CatanModel poll() throws PollException {
+	//	return null;
+	//}
 
 	
 	private class ServerPollerTask extends TimerTask {	

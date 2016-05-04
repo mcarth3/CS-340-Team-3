@@ -1,3 +1,4 @@
+package poller;
 public class InvalidServerProxyException extends Exception {
 	
 	/**

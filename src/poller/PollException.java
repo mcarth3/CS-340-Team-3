@@ -1,3 +1,4 @@
+package poller;
 //thrown when polling fails
 public class PollException extends Exception {
 	/**

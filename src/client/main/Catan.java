@@ -6,6 +6,8 @@ import client.catan.*;
 import client.login.*;
 import client.join.*;
 import client.misc.*;
+import poller.InvalidServerProxyException;
+import poller.ServerPoller;
 import client.base.*;
 
 /**
