@@ -6,44 +6,42 @@ import java.util.TimerTask;
 public class ServerPoller {
 	@SuppressWarnings("unused")
 //	private static ServerProxy mockServer;
-	private static final int pollInterval = 1000;
-	private static ServerPoller singleton = null;
+	private static final int PollingInterval = 1000;
 	private ServerPollerTask pollingTask;
 	private Timer timer;
+	private static ServerPoller singleton = null;
 	
 	/**
-	 * makes sure the ServerPoller follows the singleton pattern
+	 * creates a new ServerPoller which uses the given serverproxy
+	 * @param PollingInterval: the polling interval
+	 * @param ThisServerProxy: the ServerProxy to be polled
 	 * @pre none
-	 * @post single static instance of the ServerProxy
+	 * @post poller is set up to poll ThisServerProxy on the polling interval
 	 * @throws InvalidServerProxyException 
-	 * @return a singleton to the ServerPoller, containing a singleton to the ServerProxy
 	 */
-	public static ServerPoller getSingleton() throws InvalidServerProxyException {
-		return singleton;
-	}
-	
-	/**a
-	 * Create a new ServerPoller. 
-	 * @param newServerProxy: the ServerProxy that is going to be polled
-	 * @param pollInterval: the polling interval
-	 * @throws InvalidServerProxyException 
-	 * @pre none
-	 * @post new instance of Server
-	 */
-	//private ServerPoller(ServerProxy newServerProxy) throws InvalidServerProxyException {
+	//private ServerPoller(ServerProxy newServerProxy) throws InvalidProxyException {
 	//}
 	
 	/**
-	 * tells ServerProxy to update the model. also resets the polling interval
-	 * the ServerProxy calls the client's [getModel] method
-	 * @pre the Catan server is running and the serverproxy is not null 
-	 * @post polling interval resets
-	 * @throws PollException any problem that occurs while polling
-	 * @return  CatanModel, the new Catan Model to replace the client model
+	 * requests an up-to-date model from the server, also resets the polling interval
+	 * @pre the Catan server is running and serverproxy is not null 
+	 * @post polling interval resets and gives controller a updated model
+	 * @throws PollException if polling fails for any reason
 	 */
 	//CatanModel poll() throws PollException {
 	//	return null;
 	//}
+
+	/**
+	 * makes sure the ServerPoller follows the singleton pattern
+	 * @pre none
+	 * @post returns single static instance of the ServerPoller
+	 * @throws InvalidServerProxyException 
+	 */
+	public static ServerPoller getSingleton() throws InvalidProxyException {
+		return singleton;
+	}
+	
 
 	
 	private class ServerPollerTask extends TimerTask {	
