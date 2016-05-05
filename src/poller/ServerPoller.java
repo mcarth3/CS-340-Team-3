@@ -10,6 +10,7 @@ public class ServerPoller {
 	private ServerPollerTask pollingTask;
 	private Timer timer;
 	private static ServerPoller singleton = null;
+	private int modelversion;
 	
 	/**
 	 * creates a new ServerPoller which uses the given serverproxy
@@ -24,6 +25,7 @@ public class ServerPoller {
 	
 	/**
 	 * requests an up-to-date model from the server, also resets the polling interval
+	 * sends the model number in the request using the api '/game/model?version=N' (which returns an updated model if there is one, and the current model if there is no version number given)
 	 * @pre the Catan server is running and serverproxy is not null 
 	 * @post polling interval resets and gives controller a updated model
 	 * @throws PollException if polling fails for any reason
