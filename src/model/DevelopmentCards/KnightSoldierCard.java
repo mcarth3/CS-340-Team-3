@@ -1,4 +1,6 @@
-package DevelopmentCards;
+
+
+package model.DevelopmentCards;
 
 /**
  * This is essentially an empty class that the Controller will check for to see if the player owns one.

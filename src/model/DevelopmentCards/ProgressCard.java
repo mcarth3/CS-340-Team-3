@@ -1,4 +1,4 @@
-package DevelopmentCards;
+package model.DevelopmentCards;
 
 /**
  * Cards including type roadBuilding, yearOfPlenty, and monopoly

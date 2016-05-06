@@ -2,6 +2,9 @@
  * A class holding a resource card only of type ore, lumber, brick, grain, or wool
  * Created by Jesse on 5/2/2016.
  */
+
+package model;
+
 public class ResourceCard {
 
     private String type;
