@@ -6,7 +6,7 @@ import client.catan.*;
 import client.login.*;
 import client.join.*;
 import client.misc.*;
-import poller.InvalidServerProxyException;
+import poller.InvalidClientCommunicatorException;
 import poller.ServerPoller;
 import client.base.*;
 
@@ -104,7 +104,7 @@ public class Catan extends JFrame
 				
 				try {
 					ServerPoller.getSingleton();
-				} catch (InvalidServerProxyException e) {
+				} catch (InvalidClientCommunicatorException e) {
 					e.printStackTrace();
 				}
 			}
