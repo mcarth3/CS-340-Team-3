@@ -2,6 +2,9 @@ package poller;
 
 import java.util.Timer;
 import java.util.TimerTask;
+import model.Game;
+
+import proxy.ClientCommunicator;
 
 public class ServerPoller {
 	@SuppressWarnings("unused")
@@ -13,14 +16,14 @@ public class ServerPoller {
 	private int modelversion;
 	
 	/**
-	 * creates a new ServerPoller which uses the given serverproxy
-	 * @param ThisServerProxy: the ServerProxy to be polled
+	 * creates a new ServerPoller which uses the given ClientCommunicator
+	 * @param clientcommunicator: the ClientCommunicator to be polled
 	 * @pre none
-	 * @post poller is set up to poll ThisServerProxy and the polling interval
-	 * @throws InvalidServerProxyException 
+	 * @post poller is set up to poll the ClientCommunicator with the polling interval
+	 * @throws InvalidClientCommunicatorException 
 	 */
-	//private ServerPoller(ServerProxy newServerProxy) throws InvalidProxyException {
-	//}
+	private ServerPoller(ClientCommunicator clientcommunicator) throws InvalidClientCommunicatorException {
+	}
 	
 	/**
 	 * requests an up-to-date model from the server, also resets the polling interval
@@ -31,16 +34,17 @@ public class ServerPoller {
 	 * @post polling interval resets and gives returns an updated model, the model number gets updated to the recieved model
 	 * @throws PollException if polling fails for any reason
 	 */
-	//CatanModel poll() throws PollException {
-	//	return null;
-	//}
+	private Game poll() throws PollException {
+		return null;
+	}
 
 	/**
 	 * makes sure the ServerPoller follows the singleton pattern
 	 * @pre none
 	 * @post returns single static instance of the ServerPoller
+	 * @throws InvalidClientCommunicatorException 
 	 */
-	public static ServerPoller getSingleton() {
+	public static ServerPoller getSingleton() throws InvalidClientCommunicatorException {
 		return singleton;
 	}
 	
