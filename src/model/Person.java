@@ -1,6 +1,9 @@
-import DevelopmentCards.KnightSoldierCard;
-import DevelopmentCards.ProgressCard;
-import DevelopmentCards.VictoryPointCard;
+package model;
+
+
+import model.DevelopmentCards.KnightSoldierCard;
+import model.DevelopmentCards.ProgressCard;
+import model.DevelopmentCards.VictoryPointCard;
 
 import java.util.ArrayList;
 

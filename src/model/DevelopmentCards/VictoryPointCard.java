@@ -1,4 +1,4 @@
-package DevelopmentCards;
+package model.DevelopmentCards;
 
 /**
  * Victory Cards consisting of victoryPoint, longestRoad, largestArmy, AND the value associated with these card types.
