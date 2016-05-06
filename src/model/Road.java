@@ -10,10 +10,33 @@ public class Road {
  
   
 
-  public Road(EdgeLocation edgeLocation, int id)
-  {
-	 
-  }
+	  int owner;
+	  EdgeLocation location;
+	  
+
+	  public Road(EdgeLocation edgeLocation, int id)
+	  {
+		  
+	  }
+	  public int getOwner()
+	  {
+		  return owner;
+	  }
+
+	  public void setOwner(int owner)
+	  {
+		  this.owner = owner;
+	  }
+
+	  public EdgeLocation getLocation()
+	  {
+		  return location;
+	  }
+
+	  public void setLocation(EdgeLocation location) 
+	  {
+		  this.location = location;
+	  }
 
 
 }

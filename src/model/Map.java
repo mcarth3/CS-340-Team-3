@@ -3,6 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
+
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
@@ -14,8 +15,22 @@ import shared.locations.*;
  */
 public class Map
 {
+	TreeMap<HexLocation,Hex> hexes;
+	ArrayList<Port> ports;
+	ArrayList<Road> roads;
+	ArrayList<VertexObject> buildings;// that replace settlements and cities.
+	int radius = -1;
+	Robber robber;
 	
-	
+	public Map()
+	{
+		hexes = new TreeMap<HexLocation,Hex>();
+		ports = new ArrayList<Port>();
+		roads = new ArrayList<Road>();
+		robber = new Robber();
+		buildings = new ArrayList<VertexObject>();
+		
+	}
 
 	public void clearHexes(){
 		
@@ -37,12 +52,11 @@ public class Map
 	 */
 	public boolean canAddHex()
 	{
-		
-return true;
+		return true;
+
 	}
 
-
-	public void addHexDesert(int x, int y) 
+	public void addHexDesert(int x, int y) throws FailureToAddException//may not be used
 	{
 		
 	}
@@ -55,10 +69,10 @@ return true;
 	 * @param resource - type of resource obtained from hex
 	 * @param number   - index of owner
 	 */
-	public void addHex(int x, int y, String resource, int number) 
+	public void addHex(int x, int y, String resource, int number) throws FailureToAddException//may not be used
 	{
 
-		
+	
 	}
 
 	/**
@@ -66,7 +80,7 @@ return true;
 	 */
 	public boolean canAddPort(Port port)
 	{
-	  return true;
+		return true;
 	}
 
 	/**
@@ -78,7 +92,7 @@ return true;
 	 * @param ed - direction from hex the port is located
 	 * @param ratio     - the ratio of resources tradeable (i.e 1:2, 1:4)
 	 */
-	public void addPort(int x, int y, String resource, EdgeDirection ed, int ratio) 
+	public void addPort(int x, int y, String resource, EdgeDirection ed, int ratio) throws FailureToAddException
 	{
 		
 	}
@@ -86,10 +100,10 @@ return true;
 	/**
 	 * checks to see if road can be added
 	 */
-	public boolean canAddRoad(Road road)
 	
+	public boolean canAddRoad(EdgeLocation edgeLocation)
 	{
-	  return true;
+		return true;
 	}
 
 	/**
@@ -101,15 +115,18 @@ return true;
 	 * @param      - index of owner
 	 */
 	
-	public void addRoad(int x, int y, EdgeDirection direction, int pid) 
+	public void addRoad(int x, int y, EdgeDirection direction, int pid) throws FailureToAddException
 	{
-	
+		
 	}
 
-
+	/**
+	 * checks to see if settlement can be added
+	 */
+	
 	public boolean canAddSettlement(VertexLocation settlementLocation)
 	{
-	  return true;
+		return false;
 	}
 
 	/**
@@ -120,7 +137,8 @@ return true;
 	 * @param direction - direction from hex that settlement is located
 	 * @param      - index of owner
 	 */
-	public void addSettlement(int x, int y, VertexDirection direction, int pid) 
+	
+	public void addSettlement(int x, int y, VertexDirection direction, int pid) throws FailureToAddException
 	{
 		
 	}
@@ -128,10 +146,10 @@ return true;
 	/**
 	 * checks to see if City can be added
 	 */
-	
+
 	public boolean canAddCity(VertexLocation vertexLocation)
 	{
-	return true;
+		return true;
 	}
 
 	/**
@@ -143,7 +161,7 @@ return true;
 	 * @param      - index of owner
 	 */
 	
-	public void addCity(int x, int y, VertexDirection direction, int pid) 
+	public void addCity(int x, int y, VertexDirection direction, int pid) throws FailureToAddException
 	{
 		
 	}
@@ -156,7 +174,11 @@ return true;
 	{
 		return true;
 	}
-	
+	public ArrayList<Port> checkForPorts(ArrayList<VertexObject> builds)
+	{
+		return ports;	
+		
+	}
 	/**
 	 * moves robber to a new hex location
 	 *
@@ -166,9 +188,66 @@ return true;
 	
 	public void relocateRober(HexLocation targetHex)
 	{
-		
+	
+	}
+	//getters and setters
+	public TreeMap<HexLocation, Hex> getHexes() {
+		return hexes;
 	}
 
+	public void setHexes(TreeMap<HexLocation, Hex> hexes) {
+		this.hexes = hexes;
+	}
+
+	public ArrayList<Port> getPorts() {
+		return ports;
+	}
+
+	/**
+	 * Returns all of the ports that belong to a player
+	 * @param playerID
+	 * @return
+	 */
+	public List<Port> getPlayerPorts(int playerID)
+	{
+		return ports;
+		
+	}
+	public void setPorts(ArrayList<Port> ports) {
+		this.ports = ports;
+	}
+
+	public ArrayList<Road> getRoads() {
+		return roads;
+	}
+
+	public void setRoads(ArrayList<Road> roads) {
+		this.roads = roads;
+	}
+
+	public int getRadius() {
+		return radius;
+	}
+
+	public ArrayList<VertexObject> getBuildings() {
+		return buildings;
+	}
+
+	public void setBuildings(ArrayList<VertexObject> buildings) {
+		this.buildings = buildings;
+	}
+
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+
+	public Robber getRobber() {
+		return robber;
+	}
+
+	public void setRobber(Robber robber) {
+		this.robber = robber;
+	}
 
 
 }

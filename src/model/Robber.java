@@ -5,7 +5,7 @@ import shared.locations.HexLocation;
  * @author Jesse
  */
 public class Robber {
-    HexLocation hl;
+    HexLocation h;
 
     public Robber() {
     }
@@ -17,7 +17,15 @@ public class Robber {
      * @return true/false
      */
     public Boolean isLocated(HexLocation h) {
-       return true;
+        return false;
+    }
+
+    public HexLocation getHl() {
+        return h;
+    }
+
+    public void setHl(HexLocation hl) {
+        this.h = h;
     }
 
   

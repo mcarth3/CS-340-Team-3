@@ -26,7 +26,7 @@ public class Hex {
     
   }
 
-  public Hex(String resc, int num, HexLocation HL)
+  public Hex(String res, int num, HexLocation HL)
   {
     
   }

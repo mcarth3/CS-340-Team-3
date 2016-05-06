@@ -16,12 +16,6 @@ public class Settlement
 	
 	}
 	
-	
-
-
-
-	
- 	
 	public void placeSettlement()
 	{
 		
