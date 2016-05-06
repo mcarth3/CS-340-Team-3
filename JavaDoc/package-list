@@ -18,7 +18,10 @@ client.roll
 client.turntracker
 client.utils
 model
+model.DevelopmentCards
 poller
+poller.modeljsonparser
+proxy
 shared.definitions
 shared.locations
 tests
