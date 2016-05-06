@@ -15,7 +15,7 @@ import shared.locations.*;
  */
 public class Map
 {
-	TreeMap<HexLocation,Hex> hexes;
+	ArrayList<Hex>hexes;
 	ArrayList<Port> ports;
 	ArrayList<Road> roads;
 	ArrayList<VertexObject> buildings;// that replace settlements and cities.
@@ -24,7 +24,7 @@ public class Map
 	
 	public Map()
 	{
-		hexes = new TreeMap<HexLocation,Hex>();
+		hexes = new ArrayList<Hex>();
 		ports = new ArrayList<Port>();
 		roads = new ArrayList<Road>();
 		robber = new Robber();
@@ -191,11 +191,11 @@ public class Map
 	
 	}
 	//getters and setters
-	public TreeMap<HexLocation, Hex> getHexes() {
+	public ArrayList<Hex> getHexes() {
 		return hexes;
 	}
 
-	public void setHexes(TreeMap<HexLocation, Hex> hexes) {
+	public void setHexes(ArrayList<Hex> hexes) {
 		this.hexes = hexes;
 	}
 

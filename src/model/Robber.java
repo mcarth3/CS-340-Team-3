@@ -20,11 +20,11 @@ public class Robber {
         return false;
     }
 
-    public HexLocation getHl() {
+    public HexLocation getH() {
         return h;
     }
 
-    public void setHl(HexLocation hl) {
+    public void setH(HexLocation h) {
         this.h = h;
     }
 

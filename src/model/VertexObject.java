@@ -12,7 +12,7 @@ public abstract class VertexObject{
    *@param VertexObject - an object to compareTo
    *@return if the location is being used already
    */
-   boolean compareTo(VertexObject vo)
+   boolean compareTo(VertexObject v)
    {
 	   return false;
    }
