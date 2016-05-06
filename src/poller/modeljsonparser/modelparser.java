@@ -5,7 +5,7 @@ import com.google.gson.JsonElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 
-public class modelparser {
+public class ModelParser {
 	public static String NULL = "null";
 	public static String QUOTE = "\"";
 	public static String COMMA = ",";
