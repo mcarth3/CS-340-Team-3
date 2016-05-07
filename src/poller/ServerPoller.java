@@ -2,6 +2,8 @@ package poller;
 
 import java.util.Timer;
 import java.util.TimerTask;
+
+
 import model.Game;
 
 import proxy.ClientCommunicator;
@@ -45,7 +47,13 @@ public class ServerPoller {
 	 * @throws InvalidClientCommunicatorException 
 	 */
 	public static ServerPoller getSingleton() throws InvalidClientCommunicatorException {
-		return singleton;
+		if(singleton != null) {
+			return singleton;
+		}else{
+	//		singleton = new ServerPoller(ServerProxy.getSingleton());
+			return singleton;
+		}
+		
 	}
 	
 
