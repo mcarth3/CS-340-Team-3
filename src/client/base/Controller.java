@@ -1,5 +1,7 @@
 package client.base;
 
+import model.*;
+
 /**
  * Base class for controllers
  */
@@ -24,5 +26,8 @@ public abstract class Controller implements IController
 		return this.view;
 	}
 	
+	public void UpdateModel(Game currentmodel){
+		
+	}
 }
 

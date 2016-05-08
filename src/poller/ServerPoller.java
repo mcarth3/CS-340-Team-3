@@ -2,12 +2,12 @@ package poller;
 
 import java.util.Timer;
 import java.util.TimerTask;
-
-
+import client.base.Controller;
 import model.Game;
-
+import poller.modeljsonparser.ModelParser;
 import proxy.ClientCommunicator;
 import proxy.MockProxy;
+
 
 public class ServerPoller {
 	@SuppressWarnings("unused")
@@ -17,6 +17,7 @@ public class ServerPoller {
 	private Timer timer;
 	private static ServerPoller singleton = null;
 	private int modelversion;
+	private Controller controller;
 	
 	/**
 	 * creates a new ServerPoller which uses the given MockProxy
@@ -26,6 +27,11 @@ public class ServerPoller {
 	 * @throws InvalidMockProxyException 
 	 */
 	private ServerPoller(MockProxy NewMockProxy) throws InvalidMockProxyException {
+	//	clientFacade = ClientFacade.getSingleton();
+		pollingTask = new ServerPollerTask();
+		mockServer = NewMockProxy;
+		timer = new Timer();
+		timer.schedule(pollingTask, 0, PollingInterval);
 	}
 	
 	/**
@@ -38,7 +44,14 @@ public class ServerPoller {
 	 * @throws PollException if polling fails for any reason
 	 */
 	private Game poll() throws PollException {
-		return null;
+		Game model = null;
+		try {
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new PollException("Could not communicate with server");
+		}
+		return model;
 	}
 
 	/**
@@ -55,6 +68,15 @@ public class ServerPoller {
 		
 	}
 	
+	
+	public Controller getcontroller(){
+		return controller;
+	}
+	
+	public void setcontroller(Controller newcontroller){
+		controller = newcontroller;
+	}
+	
 
 	
 	private class ServerPollerTask extends TimerTask {	
@@ -65,7 +87,14 @@ public class ServerPoller {
 		 */
 		@Override
 		public void run() {
+			try {
+				Game model = poll();
+				if(model != null) {
+					controller.UpdateModel(model);	
+				}
+			} catch (PollException e) {
+				e.printStackTrace();
+			}
 		}
-
 	}
 }

@@ -1,6 +1,5 @@
 package proxy;
 
-import poller.InvalidClientCommunicatorException;
 
 public class ClientCommunicator {
 
