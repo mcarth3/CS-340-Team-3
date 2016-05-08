@@ -114,7 +114,7 @@ public class Map
 	 * @param x         - horizontal location of hex
 	 * @param y         - diagonal location of hex
 	 * @param direction - direction from hex that road is located
-	 * @param      - index of owner
+	 * @param pid     - index of owner
 	 */
 	
 	public void addRoad(int x, int y, EdgeDirection direction, int pid) throws FailureToAddException
@@ -137,7 +137,7 @@ public class Map
 	 * @param x         - horizontal location of hex
 	 * @param y         - diagonal location of hex
 	 * @param direction - direction from hex that settlement is located
-	 * @param      - index of owner
+	 * @param pid     - index of owner
 	 */
 	
 	public void addSettlement(int x, int y, VertexDirection direction, int pid) throws FailureToAddException
@@ -160,7 +160,7 @@ public class Map
 	 * @param x         - horizontal location of hex
 	 * @param y         - diagonal location of hex
 	 * @param direction - direction from hex that city is located
-	 * @param      - index of owner
+	 * @param pid    - index of owner
 	 */
 	
 	public void addCity(int x, int y, VertexDirection direction, int pid) throws FailureToAddException
@@ -184,8 +184,7 @@ public class Map
 	/**
 	 * moves robber to a new hex location
 	 *
-	 * @param  - horizontal location of hex robber is to be moved to
-	 * @param  - diagonal location of hex robber is to be moved to
+	 * @param targetHex - location of hex robber is to be moved to
 	 */
 	
 	public void relocateRober(HexLocation targetHex)

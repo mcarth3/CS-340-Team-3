@@ -16,7 +16,7 @@ public interface IServer {
 	/**
 	 * /user/login
 	 * description: logs the caller in to the server, and sets their catan.user HTTP cookie. 
-	 * @param
+	 * @param username -name of the user
 	 * @pre username is not null, password is not null
 	 * @post
 	 * If username and password are valid:
@@ -36,7 +36,8 @@ public interface IServer {
 	 * description: This method does two things:
 	 * Creates a new user account
 	 * Logs the caller in to the server as the new user, and sets their catan.user HTTP cookie. (See the doc â€œHow the Catan Server Uses HTTP Cookiesâ€�)
-	 * @param
+	 * @param username - player's username to register
+	 * @param password - player's password
 	 * @pre username is not null, password is not null, the specified username is not already in use
 	 * @post 
 	 * If there is no existing user with the specified username:
@@ -54,7 +55,6 @@ public interface IServer {
 	/**
 	 * /games/list
 	 * description: returns information about all of the current games on the server
-	 * @param
 	 * @pre none
 	 * @post
 	 * If the operation succeeds, 
@@ -428,34 +428,34 @@ public interface IServer {
 	 * The road location is open
 	 * The road location is connected to another road owned by the player
 	 * The road location is not on water
-	 * You have the required resources (1 wood, 1 brickÍ¾ 1 road)
+	 * You have the required resources (1 wood, 1 brick, 1 road)
 	 * Setup round: Must be placed by settlement owned by the player with no adjacent
 	 * road
 	 * @post
-	 * You lost the resources required to build a road (1 wood, 1 brickÍ¾ 1 road)
+	 * You lost the resources required to build a road (1 wood, 1 brick, 1 road)
 	 * The road is on the map at the specified location
-	 * If applicable, â€œlongest roadâ€� has been awarded to the player with the longest road
+	 * If applicable, longest road has been awarded to the player with the longest road
 	 * 
 	 * public void buildRoad(free, roadLocation){}
 	 */
 	public void buildRoad(Boolean free, EdgeLocation roadLocation); 
 
 	/**
-	 * â€˜Playingâ€™ Commands
+	 * Playing Commands
 	 * Properties:
 	 * free: boolean [whether or not you get this piece for free (i.e. in setup)]
 	 * vertexLocation: VertexLocation [the location of the settlement]
 	 * @pre
 	 * It is your turn
-	 * The client modelâ€™s status is 'Playing'
+	 * The client model's status is 'Playing'
 	 * The settlement location is open
 	 * The settlement location is not on water
 	 * The settlement location is connected to one of your roads except during setup
-	 * You have the required resources (1 wood, 1 brick, 1 wheat, 1 sheepÍ¾ 1 settlement)
+	 * You have the required resources (1 wood, 1 brick, 1 wheat, 1 sheep, 1 settlement)
 	 * The settlement cannot be placed adjacent to another settlement
 	 * @post
 	 * You lost the resources required to build a settlement (1 wood, 1 brick, 1 wheat, 1
-	 * sheepÍ¾ 1 settlement)
+	 * sheep, 1 settlement)
 	The settlement is on the map at the specified location
 	
 	public void buildSettlement(free, vertexLocation){}
@@ -463,16 +463,16 @@ public interface IServer {
 	public void buildSettlement(Boolean free, VertexLocation vertexLocation);
 
 	/**
-	 * â€˜Playingâ€™ Commands
+	 * Playing Commands
 	 * Properties: 
 	 * vertexLocation: VertexLocation [the location of the city]
 	 * @pre
 	 * It is your turn
-	 * The client modelâ€™s status is 'Playing'
+	 * The client model's status is 'Playing'
 	 * The city location is where you currently have a settlement
-	 * You have the required resources (2 wheat, 3 oreÍ¾ 1 city)
+	 * You have the required resources (2 wheat, 3 ore, 1 city)
 	 * @post
-	 * You lost the resources required to build a city (2 wheat, 3 oreÍ¾ 1 city)
+	 * You lost the resources required to build a city (2 wheat, 3 ore, 1 city)
 	 * The city is on the map at the specified location
 	 * You got a settlement back
 	 * 

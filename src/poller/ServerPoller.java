@@ -34,13 +34,10 @@ public class ServerPoller {
 	}
 	
 	/**
-	 * requests an up-to-date model from the server, also resets the polling interval
-	 * sends the model number in the request using the api '/game/model?version=N' (which returns an updated model if there is one, and the current model if there is no version number given)
-	 * ModelParser takes the returned JSON and makes a model from it.
-	 * the model number gets updated as well
+	 * requests an up-to-date model from the server, also resets the polling interval, sends the model number in the request using the api '/game/model?version=N' (which returns an updated model if there is one, and the current model if there is no version number given), ModelParser takes the returned JSON and makes a model from it. the model number gets updated as well
 	 * @pre the Catan server is running and serverproxy is not null 
 	 * @post polling interval resets and gives returns an updated model, the model number gets updated to the recieved model
-	 * @throws PollException if polling fails for any reason
+	 * @throws PollException - if polling fails for any reason
 	 */
 	private Game poll() throws PollException {
 		Game model = null;

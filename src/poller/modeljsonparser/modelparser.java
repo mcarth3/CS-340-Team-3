@@ -17,7 +17,7 @@ public class ModelParser {
 	private static JsonParser parser = new JsonParser();
 	/**
 	 * constructs a catan model from the given JSON (creates json elements from json using jsonparser and calls parse from obj)
-	 * @param jsonString: the JSON to be parsed
+	 * @param jsonstring: the JSON to be parsed
 	 * @param Tclass: generic class
 	 * @pre given json is formatted correctly
 	 * @post returns a model filled with elements from given json

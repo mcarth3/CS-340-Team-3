@@ -18,7 +18,6 @@ client.roll
 client.turntracker
 client.utils
 model
-model.DevelopmentCards
 poller
 poller.modeljsonparser
 proxy
