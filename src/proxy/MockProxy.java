@@ -3,7 +3,6 @@ package proxy;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
-
 import model.Game;
 import model.Person;
 import shared.locations.EdgeLocation;
@@ -12,6 +11,8 @@ import shared.locations.VertexLocation;
 
 public class MockProxy implements IServer{
 
+	private static MockProxy singleton = null;
+	
 	@Override
 	public void userLogin(String username, String password) {
 		// TODO Auto-generated method stub
@@ -197,7 +198,20 @@ public class MockProxy implements IServer{
 		// TODO Auto-generated method stub
 		
 	}
-
+	/**
+	 * The RealServerProxy follows the singleton pattern.
+	 * @pre none
+	 * @post a single static instance of the MockServerProxy.
+	 * @return a singleton to the MockServerProxy
+	 */
+	
+	
+	public static MockProxy getSingleton() {
+		if(singleton == null) {
+			singleton = new MockProxy();
+		}
+		return singleton;
+	}
 	
 
 }

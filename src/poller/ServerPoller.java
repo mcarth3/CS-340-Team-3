@@ -7,10 +7,11 @@ import java.util.TimerTask;
 import model.Game;
 
 import proxy.ClientCommunicator;
+import proxy.MockProxy;
 
 public class ServerPoller {
 	@SuppressWarnings("unused")
-//	private static ServerProxy mockServer;
+	private static MockProxy mockServer;
 	private static final int PollingInterval = 1000;
 	private ServerPollerTask pollingTask;
 	private Timer timer;
@@ -18,13 +19,13 @@ public class ServerPoller {
 	private int modelversion;
 	
 	/**
-	 * creates a new ServerPoller which uses the given ClientCommunicator
-	 * @param clientcommunicator: the ClientCommunicator to be polled
+	 * creates a new ServerPoller which uses the given MockProxy
+	 * @param NewMockproxy: the MockProxy to be polled
 	 * @pre none
-	 * @post poller is set up to poll the ClientCommunicator with the polling interval
-	 * @throws InvalidClientCommunicatorException 
+	 * @post poller is set up to poll the MockProxy with the polling interval
+	 * @throws InvalidMockProxyException 
 	 */
-	private ServerPoller(ClientCommunicator clientcommunicator) throws InvalidClientCommunicatorException {
+	private ServerPoller(MockProxy NewMockProxy) throws InvalidMockProxyException {
 	}
 	
 	/**
@@ -44,15 +45,13 @@ public class ServerPoller {
 	 * makes sure the ServerPoller follows the singleton pattern
 	 * @pre none
 	 * @post returns single static instance of the ServerPoller
-	 * @throws InvalidClientCommunicatorException 
+	 * @throws InvalidMockProxyException 
 	 */
-	public static ServerPoller getSingleton() throws InvalidClientCommunicatorException {
-		if(singleton != null) {
-			return singleton;
-		}else{
-	//		singleton = new ServerPoller(ServerProxy.getSingleton());
-			return singleton;
+	public static ServerPoller getSingleton() throws InvalidMockProxyException {
+		if(singleton == null) {
+			singleton = new ServerPoller(MockProxy.getSingleton());
 		}
+		return singleton;
 		
 	}
 	

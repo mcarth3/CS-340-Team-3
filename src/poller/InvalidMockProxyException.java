@@ -1,5 +1,5 @@
 package poller;
-public class InvalidClientCommunicatorException extends Exception {
+public class InvalidMockProxyException extends Exception {
 	
 	/**
 	 * constructor for the InvalidProxyException.
@@ -7,7 +7,7 @@ public class InvalidClientCommunicatorException extends Exception {
 	 * @pre message is not null
 	 * @post a new InvalidProxyException is made with message describing the details of the exception
 	 */
-	public InvalidClientCommunicatorException(String message) {
+	public InvalidMockProxyException(String message) {
 		super(message);
 	}
 }
