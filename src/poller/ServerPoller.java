@@ -5,7 +5,6 @@ import java.util.TimerTask;
 import client.base.Controller;
 import model.Game;
 import poller.modeljsonparser.ModelParser;
-import proxy.ClientCommunicator;
 import proxy.MockProxy;
 
 
