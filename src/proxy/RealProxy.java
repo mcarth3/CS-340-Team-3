@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.annotation.Resource;
 
 import model.Game;
-import model.Person;
+import model.Player;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
@@ -37,7 +37,7 @@ public class RealProxy implements IServer{
 	}
 
 	@Override
-	public void gameJoin(Person user, Integer gameID, String color) {
+	public void gameJoin(Player user, Integer gameID, String color) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -55,25 +55,25 @@ public class RealProxy implements IServer{
 	}
 
 	@Override
-	public void gameModel(Person user, Integer versionNumber) {
+	public void gameModel(Player user, Integer versionNumber) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void gameReset(Person user, Game game) {
+	public void gameReset(Player user, Game game) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void gameCommandsGet(Person user, Game game) {
+	public void gameCommandsGet(Player user, Game game) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void gameCommandsPost(Person user, Game game) {
+	public void gameCommandsPost(Player user, Game game) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -85,7 +85,7 @@ public class RealProxy implements IServer{
 	}
 
 	@Override
-	public void gameAddAI(Person user, Game game, String AIType) {
+	public void gameAddAI(Player user, Game game, String AIType) {
 		// TODO Auto-generated method stub
 		
 	}

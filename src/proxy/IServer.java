@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javax.annotation.Resource;
 
 import model.Game;
-import model.Person;
+import model.Player;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
@@ -20,12 +20,12 @@ public interface IServer {
 	 * @pre username is not null, password is not null
 	 * @post
 	 * If username and password are valid:
-	 * 1. The server return an HTTP 200 with “Success” in the body
-	 * 2. The HTTP response headers set the catan.user cookie to contain the identity of the logged-in player. The cookie uses “Path=/”, and its value contains a url-encoded JSON object of the following form {“name”:STRING, “password”:STRING, “playerID”:INTEGER }. For example, {“name”:”Rick”, “password”:”secret”, “playerID”:14}
+	 * 1. The server return an HTTP 200 with â€œSuccessâ€� in the body
+	 * 2. The HTTP response headers set the catan.user cookie to contain the identity of the logged-in player. The cookie uses â€œPath=/â€�, and its value contains a url-encoded JSON object of the following form {â€œnameâ€�:STRING, â€œpasswordâ€�:STRING, â€œplayerIDâ€�:INTEGER }. For example, {â€œnameâ€�:â€�Rickâ€�, â€œpasswordâ€�:â€�secretâ€�, â€œplayerIDâ€�:14}
 	 * 
-	 * If the passed­ in (username, password) pair is not valid, or the operation fails for any other reason:
+	 * If the passedÂ­ in (username, password) pair is not valid, or the operation fails for any other reason:
 	 * 1. The server returns an HTTP 400 error response, and the body contains an error message.
-	 * Notes: The passed­in username and password may correspond to the credentials of any registered user. The server starts with four users: Sam, Brooke, Pete and Mark. Their passwords are sam, brooke, pete and mark respectively. Any additional registered users should also work with this call
+	 * Notes: The passedÂ­in username and password may correspond to the credentials of any registered user. The server starts with four users: Sam, Brooke, Pete and Mark. Their passwords are sam, brooke, pete and mark respectively. Any additional registered users should also work with this call
 	 *
 	 * public void userLogin(username, password){}
 	 */
@@ -35,14 +35,14 @@ public interface IServer {
 	 * /user/register
 	 * description: This method does two things:
 	 * Creates a new user account
-	 * Logs the caller in to the server as the new user, and sets their catan.user HTTP cookie. (See the doc “How the Catan Server Uses HTTP Cookies”)
+	 * Logs the caller in to the server as the new user, and sets their catan.user HTTP cookie. (See the doc â€œHow the Catan Server Uses HTTP Cookiesâ€�)
 	 * @param
 	 * @pre username is not null, password is not null, the specified username is not already in use
 	 * @post 
 	 * If there is no existing user with the specified username:
 	 * 1. A new user account has been created with the specified username and password.
-	 * 2. The server returns an HTTP 200 success response with “Success” in the body.
-	 * 3. The HTTP response headers set the catan.user cookie to contain the identity of the logged­in player. The cookie uses ”Path=/”, and its value contains a url­encoded JSON object of the following form: { “name”: STRING, “password”: STRING, “playerID”: INTEGER }. For example, { “name”: “Rick”, “password”: “secret”, “playerID”: 14 }.
+	 * 2. The server returns an HTTP 200 success response with â€œSuccessâ€� in the body.
+	 * 3. The HTTP response headers set the catan.user cookie to contain the identity of the loggedÂ­in player. The cookie uses â€�Path=/â€�, and its value contains a urlÂ­encoded JSON object of the following form: { â€œnameâ€�: STRING, â€œpasswordâ€�: STRING, â€œplayerIDâ€�: INTEGER }. For example, { â€œnameâ€�: â€œRickâ€�, â€œpasswordâ€�: â€œsecretâ€�, â€œplayerIDâ€�: 14 }.
 	 * If there is already an existing user with the specified name, or the operation fails for any other reason:
 	 * 1. The server returns an HTTP 400 error response, and the body contains an error message.
 	 * Notes: You should be able to register any username via this call, unless that username is already registered with another user. There is no method for changing passwords.
@@ -59,7 +59,7 @@ public interface IServer {
 	 * @post
 	 * If the operation succeeds, 
 	 * 1. The server returns an HTTP 200 success response. 
-	 * 2. The body contains a JSON array containing a list of objects that contain information about the server’s games
+	 * 2. The body contains a JSON array containing a list of objects that contain information about the serverâ€™s games
 	 * 
 	 * If the operation fails, 
 	 * 1. The server returns an HTTP 400 error response, and the body contains an error message.
@@ -68,7 +68,7 @@ public interface IServer {
 	 * The output is a JSON array of game objects. Each game object contains the title and ID of a game, and an array of four player objects containing information about players who have
 	 * joined the game. Each player object contains the color, name and ID of a player who has
 	 * joined the game. Players who have not yet joined the game are represented as empty JSON
-	 * objects. The id’s are integers, and colors are one of the following values: red, green,
+	 * objects. The idâ€™s are integers, and colors are one of the following values: red, green,
 	 * blue, yellow, puce, brown, white, purple, orange.
 	 * [
 	 * 	{
@@ -123,7 +123,7 @@ public interface IServer {
 	/**
 	 * /games/join
 	 * Description: Adds the player to the specified game and sets their catan.game cookie. (See the document
-	 * titled “How the Catan Server Uses HTTP Cookies” for more details on cookies.)
+	 * titled â€œHow the Catan Server Uses HTTP Cookiesâ€� for more details on cookies.)
 	 * @pre
 	 * 1. The user has previously logged in to the server (i.e., they have a valid catan.user HTTP cookie).
 	 * 2. The player may join the game because
@@ -134,10 +134,10 @@ public interface IServer {
 	 * orange)
 	 * @post
 	 * If the operation succeeds,
-	 * 1. The server returns an HTTP 200 success response with “Success” in the body.
+	 * 1. The server returns an HTTP 200 success response with â€œSuccessâ€� in the body.
 	 * 2. The player is in the game with the specified color (i.e. calls to /games/list method will
 	 * show the player in the game with the chosen color).
-	 * 3. The server response includes the “Set­cookie” response header setting the catan.game
+	 * 3. The server response includes the â€œSetÂ­cookieâ€� response header setting the catan.game
 	 * HTTP cookie
 	 * 
 	 * If the operation fails,
@@ -146,7 +146,7 @@ public interface IServer {
 	 * 
 	 * public void gameJoin(catan.user, gameID, color){}
 	 */
-	public void gameJoin(Person user, Integer gameID, String color);
+	public void gameJoin(Player user, Integer gameID, String color);
 	
 	/**
 	 * /games/save
@@ -156,9 +156,9 @@ public interface IServer {
 	 * 2. The specified file name is valid (i.e., not null or empty)
 	 * @post
 	 * If the operation succeeds,
-	 * 1. The server returns an HTTP 200 success response with “Success” in the body.
+	 * 1. The server returns an HTTP 200 success response with â€œSuccessâ€� in the body.
 	 * 2. The current state of the specified game (including its ID) has been saved to the
-	 * specified file name in the server’s saves/ directory
+	 * specified file name in the serverâ€™s saves/ directory
 	 * 
 	 * If the operation fails,
 	 * 1. The server returns an HTTP 400 error response, and the body contains an error
@@ -172,11 +172,11 @@ public interface IServer {
 	 * /games/load
 	 * Description: This method is for testing and debugging purposes. When a bug is found, you can use the /games/save method to save the state of the game to a file, and attach the file to a bug report. A developer can later restore the state of the game when the bug occurred by loading the previously saved file using the /games/load method. Game files are saved to and loaded from the server's saves/ directory.
 	 * @pre 
-	 * 1. A previously saved game file with the specified name exists in the server’s saves/
+	 * 1. A previously saved game file with the specified name exists in the serverâ€™s saves/
 	 * directory.
 	 * @post
 	 * If the operation succeeds,
-	 * 1. The server returns an HTTP 200 success response with “Success” in the body.
+	 * 1. The server returns an HTTP 200 success response with â€œSuccessâ€� in the body.
 	 * 2. The game in the specified file has been loaded into the server and its state restored
 	 * (including its ID).
 	 * 
@@ -191,13 +191,13 @@ public interface IServer {
 	/**
 	 * /game/model?version=N
 	 * Description: Returns the current state of the game in JSON format.
-	 * In addition to the current game state, the returned JSON also includes a “version” number for the client model. The next time /game/model is called, the version number from the
+	 * In addition to the current game state, the returned JSON also includes a â€œversionâ€� number for the client model. The next time /game/model is called, the version number from the
 	 * previously retrieved model may optionally be included as a query parameter in the request
-	 * (/game/model?version=N). The server will only return the full JSON game state if its version number is not equal to N. If it is equal to N, the server returns “true” to indicate that the caller already has the latest game state. This is merely an optimization. If the version number is not included in the request URL, the server will return the full game state.
+	 * (/game/model?version=N). The server will only return the full JSON game state if its version number is not equal to N. If it is equal to N, the server returns â€œtrueâ€� to indicate that the caller already has the latest game state. This is merely an optimization. If the version number is not included in the request URL, the server will return the full game state.
 	 * @pre
 	 * 1. The caller has previously logged in to the server and joined a game (i.e., they have
 	 * valid catan.user and catan.game HTTP cookies).
-	 * 2. If specified, the version number is included as the “version” query parameter in the
+	 * 2. If specified, the version number is included as the â€œversionâ€� query parameter in the
 	 * request URL, and its value is a valid integer.
 	 * @post
 	 * If the operation succeeds,
@@ -205,34 +205,34 @@ public interface IServer {
 	 * 2. The response body contains JSON data
 	 * 	a. The full client model JSON is returned if the caller does not provide a version
 	 * number, or the provide version number does not match the version on the server
-	 * 	b. “true” (true in double quotes) is returned if the caller provided a version number,
+	 * 	b. â€œtrueâ€� (true in double quotes) is returned if the caller provided a version number,
 	 * and the version number matched the version number on the server
 	 * 
 	 * If the operation fails,
 	 * 1. The server returns an HTTP 400 error response, and the body contains an error
 	 * message.
-	 * The format of the returned JSON can be found on the server’s Swagger page, or in the document titled “Client Model JSON Documentation”.
+	 * The format of the returned JSON can be found on the serverâ€™s Swagger page, or in the document titled â€œClient Model JSON Documentationâ€�.
 	 * 
 	 * public void gameModel(catan.user, versionNumber){}
 	 */
-	public void gameModel(Person user, Integer versionNumber); 
+	public void gameModel(Player user, Integer versionNumber); 
 	
 	/**
 	 * /game/reset
 	 * void gameReset(catan.user){} ?
 	 * Description: Clears out the command history of the current game.
 	 * For the default games created by the server, this method reverts the game to the state
-	 * immediately after the initial placement round. For user­created games, this method reverts
+	 * immediately after the initial placement round. For userÂ­created games, this method reverts
 	 * the game to the very beginning (i.e., before the initial placement round). This method returns the client model JSON for the game after it has been reset. You must login and join a game before calling this method.
 	 * @pre
 	 * 1. The caller has previously logged in to the server and joined a game (i.e., they have
 	 * valid catan.user and catan.game HTTP cookies).
 	 * @post
 	 * If the operation succeeds,
-	 * 1. The game’s command history has been cleared out
-	 * 2. The game’s players have NOT been cleared out
+	 * 1. The gameâ€™s command history has been cleared out
+	 * 2. The gameâ€™s players have NOT been cleared out
 	 * 3. The server returns an HTTP 200 success response.
-	 * 4. The body contains the game’s updated client model JSON
+	 * 4. The body contains the gameâ€™s updated client model JSON
 	 * 
 	 * If the operation fails,
 	 * 1. The server returns an HTTP 400 error response, and the body contains an error
@@ -242,19 +242,19 @@ public interface IServer {
 	 * 
 	 * public void gameReset(catan.user, catan.game){}
 	 */
-	public void gameReset(Person user, Game game); 
+	public void gameReset(Player user, Game game); 
 	
 	/**
 	 * /game/commands [GET]
 	 * Description: Returns a list of commands that have been executed in the current game.
 	 * This method can be used for testing and debugging. The command list returned by this
-	 * method can be passed to the /game/command (POST) method to re­execute the commands
-	 * in the game. This would typically be done after calling /game/reset to clear out the game’s command history. 
+	 * method can be passed to the /game/command (POST) method to reÂ­execute the commands
+	 * in the game. This would typically be done after calling /game/reset to clear out the gameâ€™s command history. 
 	 * This is one way to capture the state of a game and restore it later. 
 	 * (See the /games/save and /games/load methods which provide another way to save and restore the state of a game.)
 	 * 
 	 * For the default games created by the server, this method returns a list of all commands that have been 
-	 * executed after the initial placement round. For user­created games, this method returns a list of all commands 
+	 * executed after the initial placement round. For userÂ­created games, this method returns a list of all commands 
 	 * that have been executed since the very beginning of the game (i.e., before the initial placement round).
 	 * 
 	 * You must login and join a game before calling this method.
@@ -275,7 +275,7 @@ public interface IServer {
 	 * 
 	 * public void gameCommandsGet(catan.user, catan.game){}
 	 */
-	public void gameCommandsGet(Person user, Game game);
+	public void gameCommandsGet(Player user, Game game);
 	
 	/**
 	 * /game/commands [POST]
@@ -292,9 +292,9 @@ public interface IServer {
 	 * valid catan.user and catan.game HTTP cookies).
 	 * @post
 	 * If the operation succeeds,
-	 * 1. The passed­in command list has been applied to the game.
+	 * 1. The passedÂ­in command list has been applied to the game.
 	 * 2. The server returns an HTTP 200 success response.
-	 * 3. The body contains the game’s updated client model JSON
+	 * 3. The body contains the gameâ€™s updated client model JSON
 	 * 
 	 * If the operation fails,
 	 * 1. The server returns an HTTP 400 error response, and the body contains an error
@@ -302,7 +302,7 @@ public interface IServer {
 	 * 
 	 * public void gameCommandsPost(catan.user, catan.game){}
 	 */
-	public void gameCommandsPost(Person user, Game game); 
+	public void gameCommandsPost(Player user, Game game); 
 	
 	/**
 	 * /game/listAI
@@ -325,12 +325,12 @@ public interface IServer {
 	 * @pre
 	 * 1. The caller has previously logged in to the server and joined a game (i.e., they have
 	 * valid catan.user and catan.game HTTP cookies).
-	 * 2. There is space in the game for another player (i.e., the game is not “full”).
-	 * 3. The specified “AIType” is valid (i.e., one of the values returned by the /game/listAI
+	 * 2. There is space in the game for another player (i.e., the game is not â€œfullâ€�).
+	 * 3. The specified â€œAITypeâ€� is valid (i.e., one of the values returned by the /game/listAI
 	 * method).
 	 * @post
 	 * If the operation succeeds,
-	 * 1. The server returns an HTTP 200 success response with “Success” in the body.
+	 * 1. The server returns an HTTP 200 success response with â€œSuccessâ€� in the body.
 	 * 2. A new AI player of the specified type has been added to the current game. The server
 	 * selected a name and color for the player.
 	 * 
@@ -340,17 +340,17 @@ public interface IServer {
 	 * 
 	 * public void gameAddAI(catan.user, catan.game, AIType){}
 	 */
-	public void gameAddAI(Person user, Game game, String AIType); 
+	public void gameAddAI(Player user, Game game, String AIType); 
 	
 	/**
 	 * /util/changeLogLevel
-	 * Description: Sets the server’s logging level.
+	 * Description: Sets the serverâ€™s logging level.
 	 * @pre
 	 * 1.The caller specifies a valid logging level. Valid values include: SEVERE, WARNING,
 	 * INFO, CONFIG, FINE, FINER, FINEST
 	 * @post
 	 * If the operation succeeds,
-	 * 1. The server returns an HTTP 200 success response with “Success” in the body.
+	 * 1. The server returns an HTTP 200 success response with â€œSuccessâ€� in the body.
 	 * 2. The Server is using the specified logging level
 	 * 
 	 * If the operation fails,
@@ -405,57 +405,57 @@ public interface IServer {
 	
 	/**
 	 * ?
-	 * ‘Rolling’ Commands
-	 * Properties: number: integer in the range 2­12 [the number you rolled]
+	 * â€˜Rollingâ€™ Commands
+	 * Properties: number: integer in the range 2Â­12 [the number you rolled]
 	 * @pre
 	 * It is your turn
-	 * The client model’s status is ‘Rolling’
+	 * The client modelâ€™s status is â€˜Rollingâ€™
 	 * @post
-	 * The client model’s status is now in ‘Discarding’ or ‘Robbing’ or ‘Playing’
+	 * The client modelâ€™s status is now in â€˜Discardingâ€™ or â€˜Robbingâ€™ or â€˜Playingâ€™
 	 * 
 	 * public void rollNumber(number){}
 	 */
 	public void rollNumber(Integer number); 
 
 	/**
-	 * ‘Playing’ Commands
+	 * â€˜Playingâ€™ Commands
 	 * Properties:
 	 * free: boolean [whether or not you get this piece for free (i.e., in setup)]
-	 * roadLocation: EdgeLocation [the new road’s location]
+	 * roadLocation: EdgeLocation [the new roadâ€™s location]
 	 * @pre
 	 * It is your turn
-	 * The client model’s status is 'Playing'
+	 * The client modelâ€™s status is 'Playing'
 	 * The road location is open
 	 * The road location is connected to another road owned by the player
 	 * The road location is not on water
-	 * You have the required resources (1 wood, 1 brick; 1 road)
+	 * You have the required resources (1 wood, 1 brickÍ¾ 1 road)
 	 * Setup round: Must be placed by settlement owned by the player with no adjacent
 	 * road
 	 * @post
-	 * You lost the resources required to build a road (1 wood, 1 brick; 1 road)
+	 * You lost the resources required to build a road (1 wood, 1 brickÍ¾ 1 road)
 	 * The road is on the map at the specified location
-	 * If applicable, “longest road” has been awarded to the player with the longest road
+	 * If applicable, â€œlongest roadâ€� has been awarded to the player with the longest road
 	 * 
 	 * public void buildRoad(free, roadLocation){}
 	 */
 	public void buildRoad(Boolean free, EdgeLocation roadLocation); 
 
 	/**
-	 * ‘Playing’ Commands
+	 * â€˜Playingâ€™ Commands
 	 * Properties:
 	 * free: boolean [whether or not you get this piece for free (i.e. in setup)]
 	 * vertexLocation: VertexLocation [the location of the settlement]
 	 * @pre
 	 * It is your turn
-	 * The client model’s status is 'Playing'
+	 * The client modelâ€™s status is 'Playing'
 	 * The settlement location is open
 	 * The settlement location is not on water
 	 * The settlement location is connected to one of your roads except during setup
-	 * You have the required resources (1 wood, 1 brick, 1 wheat, 1 sheep; 1 settlement)
+	 * You have the required resources (1 wood, 1 brick, 1 wheat, 1 sheepÍ¾ 1 settlement)
 	 * The settlement cannot be placed adjacent to another settlement
 	 * @post
 	 * You lost the resources required to build a settlement (1 wood, 1 brick, 1 wheat, 1
-	 * sheep; 1 settlement)
+	 * sheepÍ¾ 1 settlement)
 	The settlement is on the map at the specified location
 	
 	public void buildSettlement(free, vertexLocation){}
@@ -463,16 +463,16 @@ public interface IServer {
 	public void buildSettlement(Boolean free, VertexLocation vertexLocation);
 
 	/**
-	 * ‘Playing’ Commands
+	 * â€˜Playingâ€™ Commands
 	 * Properties: 
 	 * vertexLocation: VertexLocation [the location of the city]
 	 * @pre
 	 * It is your turn
-	 * The client model’s status is 'Playing'
+	 * The client modelâ€™s status is 'Playing'
 	 * The city location is where you currently have a settlement
-	 * You have the required resources (2 wheat, 3 ore; 1 city)
+	 * You have the required resources (2 wheat, 3 oreÍ¾ 1 city)
 	 * @post
-	 * You lost the resources required to build a city (2 wheat, 3 ore; 1 city)
+	 * You lost the resources required to build a city (2 wheat, 3 oreÍ¾ 1 city)
 	 * The city is on the map at the specified location
 	 * You got a settlement back
 	 * 
@@ -481,13 +481,13 @@ public interface IServer {
 	public void buildCity(VertexLocation vertexLocation);
 
 	/**
-	 * ‘Playing’ Commands
+	 * â€˜Playingâ€™ Commands
 	 * Properties:
 	 * of er: ResourceHand [negative numbers mean you get those cards]
 	 * receiver: playerIndex [the recipient of the trade offer]
 	 * @pre
 	 * It is your turn
-	 * The client model’s status is 'Playing'
+	 * The client modelâ€™s status is 'Playing'
 	 * You have the resources you are offering
 	 * @post
 	 * The trade is offered to the other player (stored in the server model)
@@ -497,14 +497,14 @@ public interface IServer {
 	public void offerTrade(ArrayList of_er, Integer playerIndex);
 
 	/**
-	 * ‘Playing’ Commands
+	 * â€˜Playingâ€™ Commands
 	 * Properties:
 	 * ratio: integer [2,3, or 4]
 	 * inputResource: Resource [what you are giving]
 	 * outputResource: Resource [what you are getting]
 	 * @pre
 	 * It is your turn
-	 * The client model’s status is 'Playing'
+	 * The client modelâ€™s status is 'Playing'
 	 * You have the resources you are giving
 	 * For ratios less than 4, you have the correct port for the trade
 	 * @post
@@ -516,16 +516,16 @@ public interface IServer {
 	public void maritimeTrade(Integer ratio, Resource inputResource, Resource outputResource);
 
 	/**
-	 * ‘Playing’ Commands
+	 * â€˜Playingâ€™ Commands
 	 * Properties:
 	 * location: HexLocation [the new robber location]
-	 * victimIndex: playerIndex, or ­1 if you are not robbing anyone [the player you are
+	 * victimIndex: playerIndex, or Â­1 if you are not robbing anyone [the player you are
 	 * robbing]
 	 * @pre
 	 * It is your turn
-	 * The client model’s status is 'Playing'
+	 * The client modelâ€™s status is 'Playing'
 	 * The robber is not being kept in the same location
-	 * If a player is being robbed (i.e., victimIndex != ­1), the player being robbed has resource cards
+	 * If a player is being robbed (i.e., victimIndex != Â­1), the player being robbed has resource cards
 	 * @post
 	 * The robber is in the new location
 	 * The player being robbed (if any) gave you one of his resource cards (randomly
@@ -536,32 +536,32 @@ public interface IServer {
 	public void robPlayer(HexLocation location, Integer playerIndex);
 
 	/**
-	 * ‘Playing’ Commands
+	 * â€˜Playingâ€™ Commands
 	 * Properties: None (except the universal properties)
 	 * @pre
 	 * It is your turn
-	 * The client model’s status is 'Playing'
+	 * The client modelâ€™s status is 'Playing'
 	 * @post
 	 * The cards in your new dev card hand have been transferred to your old dev card
 	 * hand
-	 * It is the next player’s turn
+	 * It is the next playerâ€™s turn
 	 * 
 	 * public void finishTurn(){}
 	 */
 	public void finishTurn(); 
 
 	/**
-	 * ‘Playing’ Commands
+	 * â€˜Playingâ€™ Commands
 	 * Properties: None (except the universal properties)
 	 * @pre
 	 * It is your turn
-	 * The client model’s status is 'Playing'
+	 * The client modelâ€™s status is 'Playing'
 	 * You have the required resources (1 ore, 1 wheat, 1 sheep)
 	 * There are dev cards left in the deck
 	 * @post
 	 * You have a new card
 	 * If it is a monument card, it has been added to your old devcard hand
-	 * If it is a non­monument card, it has been added to your new devcard hand
+	 * If it is a nonÂ­monument card, it has been added to your new devcard hand
 	 * (unplayable this turn)
 	 * 
 	 * public void buyDevCard(){}
@@ -572,21 +572,21 @@ public interface IServer {
 	 * Dev Card Commands
 	 * Properties:
 	 * location: HexLocation [the new robber location]
-	 * victimIndex: playerIndex, or ­1 if you are not robbing anyone [the player you are
+	 * victimIndex: playerIndex, or Â­1 if you are not robbing anyone [the player you are
 	 * robbing]
 	 * @pre
 	 * It is your turn
 	 * The client model status is 'Playing'
 	 * You have the specific card you want to play in your old dev card hand
-	 * You have not yet played a non­monument dev card this turn
+	 * You have not yet played a nonÂ­monument dev card this turn
 	 * The robber is not being kept in the same location
-	 * If a player is being robbed (i.e., victimIndex != ­1), the player being robbed has
+	 * If a player is being robbed (i.e., victimIndex != Â­1), the player being robbed has
 	 * resource cards
 	 * @post
 	 * The robber is in the new location
 	 * The player being robbed (if any) gave you one of his resource cards (randomly
 	 * selected)
-	 * If applicable, “largest army” has been awarded to the player who has played the
+	 * If applicable, â€œlargest armyâ€� has been awarded to the player who has played the
 	 * most soldier cards
 	 * You are not allowed to play other development cards during this turn (except for
 	 * monument cards, which may still be played)
@@ -604,7 +604,7 @@ public interface IServer {
 	 * It is your turn
 	 * The client model status is 'Playing'
 	 * You have the specific card you want to play in your old dev card hand
-	 * You have not yet played a non­monument dev card this turn
+	 * You have not yet played a nonÂ­monument dev card this turn
 	 * The two specified resources are in the bank
 	 * @post
 	 * You gained the two specified resources
@@ -622,7 +622,7 @@ public interface IServer {
 	 * It is your turn
 	 * The client model status is 'Playing'
 	 * You have the specific card you want to play in your old dev card hand
-	 * You have not yet played a non­monument dev card this turn
+	 * You have not yet played a nonÂ­monument dev card this turn
 	 * The first road location (spot1) is connected to one of your roads.
 	 * The second road location (spot2) is connected to one of your roads or to the first
 	 * road location (spot1)
@@ -631,7 +631,7 @@ public interface IServer {
 	 * @post
 	 * You have two fewer unused roads
 	 * Two new roads appear on the map at the specified locations
-	 * If applicable, “longest road” has been awarded to the player with the longest road
+	 * If applicable, â€œlongest roadâ€� has been awarded to the player with the longest road
 	 * 
 	 * public void Road_Building(spot1, spot2){}
 	 */
@@ -645,7 +645,7 @@ public interface IServer {
 	 * It is your turn
 	 * The client model status is 'Playing'
 	 * You have the specific card you want to play in your old dev card hand
-	 * You have not yet played a non­monument dev card this turn
+	 * You have not yet played a nonÂ­monument dev card this turn
 	 * @post
 	 * All of the other players have given you all of their resource cards of the specified
 	 * type
@@ -661,7 +661,7 @@ public interface IServer {
 	 * It is your turn
 	 * The client model status is 'Playing'
 	 * You have the specific card you want to play in your old dev card hand
-	 * You have not yet played a non­monument dev card this turn
+	 * You have not yet played a nonÂ­monument dev card this turn
 	 * You have enough monument cards to win the game (i.e., reach 10 victory points)
 	 * @post
 	 * You gained a victory point
