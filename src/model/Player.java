@@ -1,26 +1,31 @@
 package model;
 
 
-import model.DevelopmentCards.KnightSoldierCard;
-import model.DevelopmentCards.ProgressCard;
-import model.DevelopmentCards.VictoryPointCard;
 
 import java.util.ArrayList;
 
 /**
+ * The class in the model containing all the necessary info of a Player (e.g. username, resource cards, buildings)
  * Created by Jesse on 5/2/2016.
  */
-public class Person {
+public class Player {
 
+
+    private String username;
+    private String password;
 
     private ArrayList<ResourceCard> resourceCards;
-    private ArrayList<ProgressCard> progressCards;
-    private ArrayList<VictoryPointCard> victoryPointCards;
-    private ArrayList<KnightSoldierCard> knightSoldierCards;
+    private ArrayList<DevelopmentCard> developmentCards;
+    private ArrayList<SpecialCard> specialCards;
+    private ArrayList<Settlement> settlementArrayList;
+    private ArrayList<Road> roadArrayList;
+    private ArrayList<City> cityArrayList;
     //private ArrayList<Buildings> personBuildings;
 
 
     /**
+     * PRE: should either be called by the Game or the turnTracker so that a player can take their turn
+     * POST: will essentially call to the Controller using this person so that the player can make the turn.
      * takeTurn() should be called by the Game once another turn has finished.
      * This will allow the next designated player to pick their moves.
      */
@@ -178,27 +183,59 @@ public class Person {
         this.resourceCards = resourceCards;
     }
 
-    public ArrayList<ProgressCard> getProgressCards() {
-        return progressCards;
+    public String getUsername() {
+        return username;
     }
 
-    public void setProgressCards(ArrayList<ProgressCard> progressCards) {
-        this.progressCards = progressCards;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public ArrayList<VictoryPointCard> getVictoryPointCards() {
-        return victoryPointCards;
+    public String getPassword() {
+        return password;
     }
 
-    public void setVictoryPointCards(ArrayList<VictoryPointCard> victoryPointCards) {
-        this.victoryPointCards = victoryPointCards;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public ArrayList<KnightSoldierCard> getKnightSoldierCards() {
-        return knightSoldierCards;
+    public ArrayList<DevelopmentCard> getDevelopmentCards() {
+        return developmentCards;
     }
 
-    public void setKnightSoldierCards(ArrayList<KnightSoldierCard> knightSoldierCards) {
-        this.knightSoldierCards = knightSoldierCards;
+    public void setDevelopmentCards(ArrayList<DevelopmentCard> developmentCards) {
+        this.developmentCards = developmentCards;
+    }
+
+    public ArrayList<SpecialCard> getSpecialCards() {
+        return specialCards;
+    }
+
+    public void setSpecialCards(ArrayList<SpecialCard> specialCards) {
+        this.specialCards = specialCards;
+    }
+
+    public ArrayList<Settlement> getSettlementArrayList() {
+        return settlementArrayList;
+    }
+
+    public void setSettlementArrayList(ArrayList<Settlement> settlementArrayList) {
+        this.settlementArrayList = settlementArrayList;
+    }
+
+    public ArrayList<Road> getRoadArrayList() {
+        return roadArrayList;
+    }
+
+    public void setRoadArrayList(ArrayList<Road> roadArrayList) {
+        this.roadArrayList = roadArrayList;
+    }
+
+    public ArrayList<City> getCityArrayList() {
+        return cityArrayList;
+    }
+
+    public void setCityArrayList(ArrayList<City> cityArrayList) {
+        this.cityArrayList = cityArrayList;
     }
 }

@@ -10,7 +10,7 @@ public class Game {
 
 
 //    private ArrayList<Dice> twoDice;
-    private ArrayList<Person> people;
+    private ArrayList<Player> people;
 //    private Robber robber;
 //    private ArrayList<Hex> board;
 
@@ -41,7 +41,8 @@ public class Game {
      * this is called at the very start of the game to initialize the singleton and
      * create all the classes needed to function.
      *
-     * PRE: Game just started (or created)
+     * PRE: Game just started (or created). This could be called by the constructor since there may be so much
+     * to
      * POST: Game has all necessary classes created to function (2-4 players, all necessary dice and hexes are created, etc)
      */
     public void initialize()

@@ -1,21 +1,22 @@
-package model.DevelopmentCards;
+package model;
 
 /**
- * Cards including type roadBuilding, yearOfPlenty, and monopoly
+ * Special Cards consisting of longestRoad OR largestArmy
  * Created by Jesse on 5/2/2016.
  */
-public class ProgressCard {
+public class SpecialCard {
 
     private String type;
-
     /**
-     * Pre: Call to create a ProgressCard with a type (only roadBuilding, yearOfPlenty, and monopoly)
+     * Pre: Call to create a specialCard with a type (only longestRoad, largestArmy)
      * Post: If a valid type is entered, the object is created. If
      * the type is invalid, an error is thrown
      * @param initializeType
      */
-    ProgressCard(String initializeType)
+    SpecialCard(String initializeType)
     {
         type = initializeType;
+
     }
+
 }
