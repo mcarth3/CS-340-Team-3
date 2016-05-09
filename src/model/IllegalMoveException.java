@@ -1,5 +1,7 @@
 package model;
-
+/**
+ * @author Jesse McArthur
+ */
 public class IllegalMoveException extends Exception 
 {
     String message;

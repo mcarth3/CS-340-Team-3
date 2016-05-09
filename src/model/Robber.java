@@ -2,7 +2,7 @@ package model;
 
 import shared.locations.HexLocation;
 /**Robber is a game piece contained in the game. Affects players on each turn. 
- * @author Jesse
+ * @author Jesse McArthur
  */
 public class Robber {
     HexLocation h;

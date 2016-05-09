@@ -2,7 +2,9 @@ package model;
 
 import shared.locations.EdgeLocation;
 import shared.locations.VertexLocation;
-
+/**
+ * @author Jesse McArthur
+ */
 public abstract class VertexObject{
   int owner;
   VertexLocation vertexLocation;

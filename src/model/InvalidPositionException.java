@@ -1,5 +1,7 @@
 package model;
-
+/**
+ * @author Jesse McArthur
+ */
 public class InvalidPositionException extends Exception 
 {
     String message;

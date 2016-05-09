@@ -5,7 +5,7 @@ import shared.locations.VertexLocation;
 /**
  * Another piece owned by the player. Interacts with the player and the board. Must be purchased to be placed on the board.
  * <br><b>Domain:</b> 0-5 number of settlements 
- * @author Jesse
+ * @author Jesse McArthur
  */
 public class Settlement extends VertexObject 
 {

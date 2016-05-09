@@ -1,6 +1,8 @@
 package model;
 
-
+/**
+ * @author Jesse McArthur
+ */
 public class FailureToAddException extends Exception {
 
     String message;
