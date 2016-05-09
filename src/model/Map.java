@@ -44,6 +44,8 @@ public class Map
 
 	/**
 	 * initialize a new map when game is created
+	 * @pre Game map empty	
+	 * @post Game map filled ready for play
 	 */
 	public void initialize() {}
 
@@ -66,6 +68,8 @@ public class Map
 	/**
 	 * adds a hex to the maps list of hexes
 	 *
+	 * @pre HExes aren't generated	
+	 * @post generate hexes
 	 * @param x        - horizontal location of hex
 	 * @param y        - diagonal location of hex
 	 * @param resource - type of resource obtained from hex
@@ -79,6 +83,8 @@ public class Map
 
 	/**
 	 * checks to see if port can be added
+	 * @pre No ports added
+	 * @post ports where necessary
 	 */
 	public boolean canAddPort(Port port)
 	{
@@ -87,7 +93,8 @@ public class Map
 
 	/**
 	 * adds a port to the maps list of ports
-	 *
+	 * @pre No ports added	
+	 * @post ports where necessary
 	 * @param x         - horizontal location of hex related to port
 	 * @param y         - diagonal location of hex related to port
 	 * @param resource  - type of resource obtained from hex
@@ -110,7 +117,8 @@ public class Map
 
 	/**
 	 * adds a road to the maps list of roads
-	 *
+	 * @pre Roads not added	
+	 * @post allows user to add road if available space
 	 * @param x         - horizontal location of hex
 	 * @param y         - diagonal location of hex
 	 * @param direction - direction from hex that road is located
@@ -123,6 +131,8 @@ public class Map
 	}
 
 	/**
+	 * @pre No settlement added	
+	 * @post adds settlement if available
 	 * checks to see if settlement can be added
 	 */
 	
@@ -133,7 +143,8 @@ public class Map
 
 	/**
 	 * adds a settlement to the maps list of settlements
-	 *
+	 * @pre No settlement added	 
+	 * @post adds settlement if available
 	 * @param x         - horizontal location of hex
 	 * @param y         - diagonal location of hex
 	 * @param direction - direction from hex that settlement is located
@@ -146,6 +157,8 @@ public class Map
 	}
 
 	/**
+	 * @pre No city added	
+	 * @post Adds city if available
 	 * checks to see if City can be added
 	 */
 
@@ -156,7 +169,8 @@ public class Map
 
 	/**
 	 * adds a city to the maps list of cities
-	 *
+	 * @pre No city added	
+	 * @post Adds city if available
 	 * @param x         - horizontal location of hex
 	 * @param y         - diagonal location of hex
 	 * @param direction - direction from hex that city is located
@@ -169,6 +183,8 @@ public class Map
 	}
 
 	/**
+	 * @pre No city added 	
+	 * @post adds city if available
 	 * checks to see if robber can be relocated
 	 */
 
@@ -183,7 +199,8 @@ public class Map
 	}
 	/**
 	 * moves robber to a new hex location
-	 *
+	 * @pre no robber added	
+	 * @post adds robber of available
 	 * @param targetHex - location of hex robber is to be moved to
 	 */
 	
@@ -206,6 +223,8 @@ public class Map
 
 	/**
 	 * Returns all of the ports that belong to a player
+	 * @pre  Players ports blank	
+	 * @post retuns their ports
 	 * @param playerID
 	 * @return
 	 */

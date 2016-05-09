@@ -24,8 +24,8 @@ public class Player {
 
 
     /**
-     * PRE: should either be called by the Game or the turnTracker so that a player can take their turn
-     * POST: will essentially call to the Controller using this person so that the player can make the turn.
+     * @pre should either be called by the Game or the turnTracker so that a player can take their turn
+     * @post will essentially call to the Controller using this person so that the player can make the turn.
      * takeTurn() should be called by the Game once another turn has finished.
      * This will allow the next designated player to pick their moves.
      */
@@ -35,8 +35,8 @@ public class Player {
     }
 
     /**
-     * PRE: called on by the functions getting a resource number (e.g. woolNumber())
-     * POST: returns the number of cards of that type in the Person's resourceCards arrayList
+     * @pre called on by the functions getting a resource number (e.g. woolNumber())
+     * @post returns the number of cards of that type in the Person's resourceCards arrayList
      * * @param type
      * @return
      */
@@ -46,8 +46,8 @@ public class Player {
     }
 
     /**
-     * PRE: can be called by any class once this object has been initialized
-     * POST: returns number of Person's wool cards using getResourceNumber()
+     * @pre can be called by any class once this object has been initialized
+     * @post returns number of Person's wool cards using getResourceNumber()
      * @return
      */
     public int woolNumber()
@@ -56,8 +56,8 @@ public class Player {
     }
 
     /**
-     * PRE: can be called by any class once this object has been initialized
-     * POST: returns number of Person's ore cards using getResourceNumber()
+     * @pre can be called by any class once this object has been initialized
+     * @post returns number of Person's ore cards using getResourceNumber()
      * @return
      */
     public int oreNumber()
@@ -66,8 +66,8 @@ public class Player {
     }
 
     /**
-     * PRE: can be called by any class once this object has been initialized
-     * POST: returns number of Person's lumber cards using getResourceNumber()
+     * @pre can be called by any class once this object has been initialized
+     * @post returns number of Person's lumber cards using getResourceNumber()
      * @return
      */
     public int lumberNumber()
@@ -76,8 +76,8 @@ public class Player {
     }
 
     /**
-     * PRE: can be called by any class once this object has been initialized
-     * POST: returns number of Person's grain cards using getResourceNumber()
+     * @pre can be called by any class once this object has been initialized
+     * @post returns number of Person's grain cards using getResourceNumber()
      * @return
      */
     public int grainNumber()
@@ -86,8 +86,8 @@ public class Player {
     }
 
     /**
-     * PRE: can be called by any class once this object has been initialized
-     * POST: returns number of Person's brick cards using getResourceNumber()
+     * @pre can be called by any class once this object has been initialized
+     * @post returns number of Person's brick cards using getResourceNumber()
      * @return
      */
     public int brickNumber()
@@ -96,8 +96,8 @@ public class Player {
     }
 
     /**
-     * PRE: can be called by any class once this object has been initialized
-     * POST: returns number of Person's victoryPointCards that are type
+     * @pre can be called by any class once this object has been initialized
+     * @post returns number of Person's victoryPointCards that are type
      * "victoryPoint"
      * @return
      */
@@ -107,8 +107,8 @@ public class Player {
     }
 
     /**
-     * PRE: can be called by any class once this object has been initialized
-     * POST: returns whether or not the Person owns a getLongestRoad VictoryPointCard
+     * @pre can be called by any class once this object has been initialized
+     * @post returns whether or not the Person owns a getLongestRoad VictoryPointCard
      * @return
      */
     public boolean hasLongestRoad()
@@ -117,8 +117,8 @@ public class Player {
     }
 
     /**
-     * PRE: can be called by any class once this object has been initialized
-     * POST: returns whether or not the Person owns a getLargestArmy VictoryPointCard
+     * @pre can be called by any class once this object has been initialized
+     * @post returns whether or not the Person owns a getLargestArmy VictoryPointCard
      * @return
      */
     public boolean hasLargestArmy()
@@ -127,8 +127,8 @@ public class Player {
     }
 
     /**
-     * PRE: can be called by any class once this object has been initialized
-     * POST: returns whether or not the Person owns a getRoadBuilding ProgressCard
+     * @pre can be called by any class once this object has been initialized
+     * @post returns whether or not the Person owns a getRoadBuilding ProgressCard
      * @return
      */
     public boolean hasRoadBuilding()
@@ -137,8 +137,8 @@ public class Player {
     }
 
     /**
-     * PRE: can be called by any class once this object has been initialized
-     * POST: returns whether or not the Person owns a getYearOfPlenty ProgressCard
+     * @pre can be called by any class once this object has been initialized
+     * @post returns whether or not the Person owns a getYearOfPlenty ProgressCard
      * @return
      */
     public boolean hasYearOfPlenty()
@@ -147,8 +147,8 @@ public class Player {
     }
 
     /**
-     * PRE: can be called by any class once this object has been initialized
-     * POST: returns whether or not the Person owns a getMonopoly ProgressCard
+     * @pre can be called by any class once this object has been initialized
+     * @post returns whether or not the Person owns a getMonopoly ProgressCard
      * @return
      */
     public boolean hasMonopoly()

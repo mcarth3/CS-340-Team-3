@@ -13,6 +13,8 @@ public class Robber {
     
 
     /**
+     * @pre Look for robber
+     * @post robber found
      * @param h - HexLocation - find if robber is in a certain hex
      * @return true/false
      */

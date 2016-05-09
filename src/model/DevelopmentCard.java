@@ -9,9 +9,9 @@ public class DevelopmentCard {
     private String type;
 
     /**
-     * Pre: Call to create a ProgressCard with a type
+     * @pre Call to create a ProgressCard with a type
      * (only roadBuilding, yearOfPlenty, monopoly, victoryPoint, or Knight)
-     * Post: If a valid type is entered, the object is created. If
+     * @post If a valid type is entered, the object is created. If
      * the type is invalid, an error is thrown
      * @param initializeType
      */

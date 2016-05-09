@@ -10,8 +10,8 @@ public class ResourceCard {
     private String type;
 
     /**
-     * Pre: Call to create a Resource Card with a type (e.g. ore, lumber, brick, grain, or wool.)
-     * Post: If a valid type is entered, the ResourceCard is created. If
+     * @pre Call to create a Resource Card with a type (e.g. ore, lumber, brick, grain, or wool.)
+     * @post If a valid type is entered, the ResourceCard is created. If
      * the type is invalid, an error is thrown
      * @param initializeType
      */

@@ -9,7 +9,11 @@ import shared.locations.HexLocation;
  *	
  */
 public class Hex {
- 
+	/**
+	* @pre Starts with ablank board
+	* @post fills the board
+	
+	 */
 
   public Hex()//desert tile
   {
