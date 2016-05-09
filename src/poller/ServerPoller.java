@@ -16,7 +16,7 @@ public class ServerPoller {
 	private Timer timer;
 	private static ServerPoller singleton = null;
 	private int modelversion;
-	private Controller controller;
+	private static Controller controller;
 	
 	/**
 	 * creates a new ServerPoller which uses the given MockProxy
