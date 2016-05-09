@@ -149,15 +149,7 @@ return true;
      * verify that the bank does have dev cards to give
      */
     public boolean canBuyDevCard(ResourceList playerResources) {
-        int sheep = playerResources.getSheep();
-        int wheat = playerResources.getWheat();
-        int ore = playerResources.getOre();
-        if (sheep < 1 || wheat < 1 || ore < 1) {
-            return false;
-        }
-        if (dcl.getSize() < 1) {
-            return false;
-        }
+   
         return true;
     }
 
@@ -165,16 +157,7 @@ return true;
      * purchase of a devcard
      */
     public String BuyDevCard(ResourceList playerResources) throws InsufficientResourcesException {
-        //if player doesnt have 1 sheep 1 wheat 1 ore throw exception
-        int sheep = playerResources.getSheep();
-        int wheat = playerResources.getWheat();
-        int ore = playerResources.getOre();
-        if (sheep < 1 || wheat < 1 || ore < 1) {
-            throw new InsufficientResourcesException();
-        }
-        if (dcl.getSize() < 1) {
-            throw new InsufficientResourcesException();
-        }
+   
         return dcl.buyDevCard();
     }
 
