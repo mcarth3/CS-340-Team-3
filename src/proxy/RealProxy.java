@@ -1,8 +1,11 @@
 package proxy;
 
+import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.util.ArrayList;
 
 import javax.annotation.Resource;
+
 
 import model.Game;
 import model.Player;
@@ -13,16 +16,30 @@ import shared.locations.VertexLocation;
 public class RealProxy implements IServer{
 
 	@Override
-	public void userLogin(String username, String password) {
+	public String userLogin(String username, String password) {
 		// TODO Auto-generated method stub
+		// create userLoginInput(username, password)
 		
+		return "Success"; 
 	}
 
 	@Override
-	public void userRegister(String username, String password) {
+	public String userRegister(String username, String password) {
 		// TODO Auto-generated method stub
 		
+		return "Success"; 
 	}
+//	public void handle(HttpExchange exchange) throws IOException {
+//		DownloadBatch_Params params = new DownloadBatch_Params();
+//		DownloadBatch_Result dbr = new DownloadBatch_Result();
+//		
+//		params = (DownloadBatch_Params)xmlStream.fromXML(exchange.getRequestBody());
+//		dbr = ServerFacade.DownloadBatch(params);
+//		
+//		exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
+//		xmlStream.toXML(dbr, exchange.getResponseBody()); 
+//		exchange.close();
+//	}
 
 	@Override
 	public void gamesList() {
@@ -31,13 +48,13 @@ public class RealProxy implements IServer{
 	}
 
 	@Override
-	public void gamesCreate(String name, ArrayList randomTiles, ArrayList randomNumbers, ArrayList randomPorts) {
+	public void gamesCreate(String name, boolean randomTiles, boolean randomNumbers, boolean randomPorts) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void gameJoin(Player user, Integer gameID, String color) {
+	public void gameJoin(Integer gameID, String color) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -55,7 +72,7 @@ public class RealProxy implements IServer{
 	}
 
 	@Override
-	public void gameModel(Player user, Integer versionNumber) {
+	public void gameModel(Integer versionNumber) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -85,7 +102,7 @@ public class RealProxy implements IServer{
 	}
 
 	@Override
-	public void gameAddAI(Player user, Game game, String AIType) {
+	public void gameAddAI(String AIType) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -97,103 +114,103 @@ public class RealProxy implements IServer{
 	}
 
 	@Override
-	public void sendChat(String content) {
+	public void sendChat(Integer playerIndex, String content) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void acceptTrade(Boolean willAccept) {
+	public void acceptTrade(Integer playerIndex, Boolean willAccept) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void discardCards(ArrayList discardedCards) {
+	public void discardCards(Integer playerIndex, ArrayList discardedCards) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void rollNumber(Integer number) {
+	public void rollNumber(Integer playerIndex, Integer number) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void buildRoad(Boolean free, EdgeLocation roadLocation) {
+	public void buildRoad(Integer playerIndex, EdgeLocation roadLocation, Boolean free) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void buildSettlement(Boolean free, VertexLocation vertexLocation) {
+	public void buildSettlement(Integer playerIndex, VertexLocation vertexLocation, Boolean free) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void buildCity(VertexLocation vertexLocation) {
+	public void buildCity(Integer playerIndex, VertexLocation vertexLocation) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void offerTrade(ArrayList of_er, Integer playerIndex) {
+	public void offerTrade(Integer playerIndex, ArrayList offer, Integer receiver) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void maritimeTrade(Integer ratio, Resource inputResource, Resource outputResource) {
+	public void maritimeTrade(Integer playerIndex, Integer ratio, String inputResource, String outputResource) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void robPlayer(HexLocation location, Integer playerIndex) {
+	public void robPlayer(Integer playerIndex, Integer victimIndex, HexLocation location) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void finishTurn() {
+	public void finishTurn(Integer playerIndex) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void buyDevCard() {
+	public void buyDevCard(Integer playerIndex) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void Soldier(HexLocation location, Integer playerIndex) {
+	public void Soldier(Integer playerIndex, Integer victimIndex, HexLocation location) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void Year_of_Plenty(Resource resource1, Resource resource2) {
+	public void Year_of_Plenty(Integer playerIndex, Resource resource1, Resource resource2) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void Road_Building(EdgeLocation spot1, EdgeLocation spot2) {
+	public void Road_Building(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void Monopoly(Resource resource) {
+	public void Monopoly(String resource, Integer playerIndex) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void Monument() {
+	public void Monument(Integer playerIndex) {
 		// TODO Auto-generated method stub
 		
 	}

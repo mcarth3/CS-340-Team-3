@@ -13,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
-public class modelparser {
+public class ModelParser {
 	private static JsonParser parser = new JsonParser();
 	/**
 	 * constructs a catan model from the given JSON (creates json elements from json using jsonparser and calls parse from obj)

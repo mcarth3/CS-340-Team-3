@@ -13,15 +13,14 @@ import org.junit.Test;
 
 import poller.InvalidMockProxyException;
 import poller.ServerPoller;
+import proxy.MockProxy;
+import proxy.RealProxy;
 
 public class ServerTests {
 	public static void main(String[] args) {
-		System.out.println("inside the main tester");
-		
 		String[] testClasses = new String[] {
 				"tests.ServerTests"
 		};
-
 		org.junit.runner.JUnitCore.main(testClasses);
 	}
 	
@@ -41,9 +40,26 @@ public class ServerTests {
 	public void teardown() {
 	}
 	
+	RealProxy rp = new RealProxy();
+	MockProxy mp = new MockProxy();
+	// ======== REAL PROXY TESTS =========
 	@Test
-	public void test1() {
+	public void userLoginTest() {
 		assertFalse(false);
+		rp.userRegister("SAM", "sam");
+		rp.userLogin("SAM", "sam");
+	}
+	
+	// ======== MOCK PROXY TESTS =========
+	@Test
+	public void userLoginTestMock() {
+		assertFalse(false);
+		mp.userRegister("SAM", "sam");
+		mp.userLogin("SAM", "sam");
+	}
+	@Test
+	public void userRegisterTest() {
+		mp.userRegister("SAM", "sam");
 	}
 	@Test
 	public void test2() {

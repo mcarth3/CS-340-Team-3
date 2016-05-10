@@ -8,9 +8,12 @@ import java.util.ArrayList;
  */
 public class Game {
 
-
+	//need from server
+	public String title; 
+	public Integer id; 
+	public ArrayList<Player> players;
+	
 //    private ArrayList<Dice> twoDice;
-    private ArrayList<Player> people;
 //    private Robber robber;
 //    private ArrayList<Hex> board;
 
@@ -20,7 +23,12 @@ public class Game {
     }
 
 
-    /**
+    public Game() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	/**
      * This will be called after a player completes their turn. The main data will then
      * be changed on the server so it is equal to the player's turn
      * @pre: A player's turn has completed, or the Game has initialized and is ready for the first turn.

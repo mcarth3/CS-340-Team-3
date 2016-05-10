@@ -13,6 +13,11 @@ public class Player {
 
     private String username;
     private String password;
+    
+    //need from server 
+    public String color;
+    public String name;
+    public Integer id;
 
     private ArrayList<ResourceCard> resourceCards;
     private ArrayList<DevelopmentCard> developmentCards;
@@ -23,6 +28,12 @@ public class Player {
     //private ArrayList<Buildings> personBuildings;
 
 
+    public Player(){}
+    public Player(String c, String n, Integer i){
+    	color = c; 
+    	name = n;
+    	id = i; 
+    }
     /**
      * @pre: should either be called by the Game or the turnTracker so that a player can take their turn
      * @post: will essentially call to the Controller using this person so that the player can make the turn.

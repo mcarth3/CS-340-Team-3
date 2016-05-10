@@ -29,7 +29,7 @@ public interface IServer {
 	 *
 	 * public void userLogin(username, password){}
 	 */
-	public void userLogin(String username, String password); 
+	public String userLogin(String username, String password); 
 	
 	/**
 	 * /user/register
@@ -50,7 +50,7 @@ public interface IServer {
 	 * 
 	 * public void userRegister(username, password){}
 	 */
-	public void userRegister(String username, String password);
+	public String userRegister(String username, String password);
 
 	/**
 	 * /games/list
@@ -118,7 +118,7 @@ public interface IServer {
 	 * 
 	 * public void gamesCreate(name, randomTiles, randomNumbers, randomPorts);
 	 */ 
-	public void gamesCreate(String name, ArrayList randomTiles, ArrayList randomNumbers, ArrayList randomPorts);
+	public void gamesCreate(String name, boolean randomTiles, boolean randomNumbers, boolean randomPorts);
 	
 	/**
 	 * /games/join
@@ -146,7 +146,7 @@ public interface IServer {
 	 * 
 	 * public void gameJoin(catan.user, gameID, color){}
 	 */
-	public void gameJoin(Player user, Integer gameID, String color);
+	public void gameJoin(Integer gameID, String color);
 	
 	/**
 	 * /games/save
@@ -215,7 +215,7 @@ public interface IServer {
 	 * 
 	 * public void gameModel(catan.user, versionNumber){}
 	 */
-	public void gameModel(Player user, Integer versionNumber); 
+	public void gameModel(Integer versionNumber); 
 	
 	/**
 	 * /game/reset
@@ -340,7 +340,7 @@ public interface IServer {
 	 * 
 	 * public void gameAddAI(catan.user, catan.game, AIType){}
 	 */
-	public void gameAddAI(Player user, Game game, String AIType); 
+	public void gameAddAI(String AIType); 
 	
 	/**
 	 * /util/changeLogLevel
@@ -357,9 +357,9 @@ public interface IServer {
 	 * 1. The server returns an HTTP 400 error response, and the body contains an error
 	 * message.
 	 * 
-	 * public void utilChangeLogLevel(loggingLevel){}
+	 * public void utilChangeLogLevel(logLevel){}
 	 */
-	public void utilChangeLogLevel(String loggingLevel);
+	public void utilChangeLogLevel(String logLevel);
 	
 
 	// MOVE API 
@@ -370,9 +370,10 @@ public interface IServer {
 	 * @pre None (this command may be executed at any time by any player)
 	 * @post The chat contains your message at the end
 	 * 
+	 * "type": "sendChat"
 	 * public void sendChat(content){}
 	 */
-	public void sendChat(String content); 
+	public void sendChat(Integer playerIndex, String content); 
 
 	/**
 	 * Miscellaneous Commands
@@ -384,9 +385,10 @@ public interface IServer {
 	 * If you declined no resources are exchanged
 	 * The trade offer is removed
 	 * 
+	 * "type": "acceptTrade"
 	 * public void acceptTrade(willAccept){}
 	 */
-	public void acceptTrade(Boolean willAccept); 
+	public void acceptTrade(Integer playerIndex, Boolean willAccept); 
 
 	/**
 	 * Miscellaneous Commands
@@ -399,9 +401,20 @@ public interface IServer {
 	 * You gave up the specified resources
 	 * If you're the last one to discard, the client model status changes to 'Robbing'
 	 * 
+	 * {
+	 *   "type": "discardCards",
+	 *   "playerIndex": "integer",
+	 *   "discardedCards": {
+	 *     "brick": "integer",
+	 *     "ore": "integer",
+	 *     "sheep": "integer",
+	 *     "wheat": "integer",
+	 *     "wood": "integer"
+	 *   }
+	 * }
 	 * public void discardCards(discardedCards){}
 	 */
-	public void discardCards(ArrayList discardedCards); 
+	public void discardCards(Integer playerIndex, ArrayList discardedCards); 
 	
 	/**
 	 * ?
@@ -413,9 +426,10 @@ public interface IServer {
 	 * @post
 	 * The client modelâ€™s status is now in â€˜Discardingâ€™ or â€˜Robbingâ€™ or â€˜Playingâ€™
 	 * 
+	 * "type": "rollNumber
 	 * public void rollNumber(number){}
 	 */
-	public void rollNumber(Integer number); 
+	public void rollNumber(Integer playerIndex, Integer number); 
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -436,9 +450,19 @@ public interface IServer {
 	 * The road is on the map at the specified location
 	 * If applicable, longest road has been awarded to the player with the longest road
 	 * 
+	 * {
+	 *   "type": "buildRoad",
+	 *   "playerIndex": "integer",
+	 *   "roadLocation": {
+	 *     "x": "integer",
+	 *     "y": "integer",
+	 *     "direction": "string"
+	 *   },
+	 *   "free": "Boolean"
+	 * }
 	 * public void buildRoad(free, roadLocation){}
 	 */
-	public void buildRoad(Boolean free, EdgeLocation roadLocation); 
+	public void buildRoad(Integer playerIndex, EdgeLocation roadLocation, Boolean free); 
 
 	/**
 	 * Playing Commands
@@ -456,11 +480,20 @@ public interface IServer {
 	 * @post
 	 * You lost the resources required to build a settlement (1 wood, 1 brick, 1 wheat, 1
 	 * sheep, 1 settlement)
-	The settlement is on the map at the specified location
-	
-	public void buildSettlement(free, vertexLocation){}
+	 * 	The settlement is on the map at the specified location
+	 * 	
+	 * 	"type": "buildSettlement",
+	 *   "playerIndex": "integer",
+	 *   "vertexLocation": {
+	 *     "x": "integer",
+	 *     "y": "integer",
+	 *     "direction": "string"
+	 *   },
+	 *   "free": "Boolean"
+	 * }
+	 * 	public void buildSettlement(free, vertexLocation){}
 	*/
-	public void buildSettlement(Boolean free, VertexLocation vertexLocation);
+	public void buildSettlement(Integer playerIndex, VertexLocation vertexLocation, Boolean free);
 
 	/**
 	 * Playing Commands
@@ -476,9 +509,18 @@ public interface IServer {
 	 * The city is on the map at the specified location
 	 * You got a settlement back
 	 * 
+	 * {
+	 *   "type": "buildCity",
+	 *   "playerIndex": "integer",
+	 *   "vertexLocation": {
+	 *     "x": "integer",
+	 *     "y": "integer",
+	 *     "direction": "string"
+	 *   }
+	 * }
 	 * public void buildCity(vertexLocation){}
 	 */
-	public void buildCity(VertexLocation vertexLocation);
+	public void buildCity(Integer playerIndex, VertexLocation vertexLocation);
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -492,9 +534,21 @@ public interface IServer {
 	 * @post
 	 * The trade is offered to the other player (stored in the server model)
 	 * 
+	 * {
+	 *   "type": "offerTrade",
+	 *   "playerIndex": "integer",
+	 *   "offer": {
+	 *     "brick": "integer",
+	 *     "ore": "integer",
+	 *     "sheep": "integer",
+	 *     "wheat": "integer",
+	 *     "wood": "integer"
+	 *   },
+	 *   "receiver": "integer"
+	 * }
 	 * public void offerTrade(of_er, receiver){}
 	 */
-	public void offerTrade(ArrayList of_er, Integer playerIndex);
+	public void offerTrade(Integer playerIndex, ArrayList offer, Integer receiver);
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -511,9 +565,10 @@ public interface IServer {
 	 * The trade has been executed (the offered resources are in the bank, and the
 	 * requested resource has been received)
 	 * 
+	 * "type": "maritimeTrade",
 	 * public void maritimeTrade(ratio, inputResource, outputResource){}
 	 */
-	public void maritimeTrade(Integer ratio, Resource inputResource, Resource outputResource);
+	public void maritimeTrade(Integer playerIndex, Integer ratio, String inputResource, String outputResource);
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -531,9 +586,14 @@ public interface IServer {
 	 * The player being robbed (if any) gave you one of his resource cards (randomly
 	 * selected)
 	 * 
+	 * "type": "robPlayer",
+	 * "location": {
+	 * "x": "string",
+	 * "y": "string" 
+	 * }
 	 * public void robPlayer(location, victimIndex){}
 	 */
-	public void robPlayer(HexLocation location, Integer playerIndex);
+	public void robPlayer(Integer playerIndex, Integer victimIndex, HexLocation location);
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -546,9 +606,10 @@ public interface IServer {
 	 * hand
 	 * It is the next playerâ€™s turn
 	 * 
+	 * "type": "finishTurn"
 	 * public void finishTurn(){}
 	 */
-	public void finishTurn(); 
+	public void finishTurn(Integer playerIndex); 
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -564,9 +625,10 @@ public interface IServer {
 	 * If it is a nonÂ­monument card, it has been added to your new devcard hand
 	 * (unplayable this turn)
 	 * 
+	 * "type": "buyDevCard"
 	 * public void buyDevCard(){}
 	 */
-	public void buyDevCard();
+	public void buyDevCard(Integer playerIndex);
 
 	/**
 	 * Dev Card Commands
@@ -591,9 +653,14 @@ public interface IServer {
 	 * You are not allowed to play other development cards during this turn (except for
 	 * monument cards, which may still be played)
 	 * 
+	 * "type": "Soldier"
+	 * "location":{
+	 * "x": string,
+	 * "y": string
+	 * }
 	 * public void Soldier(location, victimIndex){}
 	 */
-	public void Soldier(HexLocation location, Integer playerIndex);
+	public void Soldier(Integer playerIndex, Integer victimIndex, HexLocation location);
 
 	/**
 	 * Dev Card Commands
@@ -609,9 +676,10 @@ public interface IServer {
 	 * @post
 	 * You gained the two specified resources
 	 * 
+	 * "type": "Year_of_Plenty"
 	 * public void Year_of_Plenty(resource1, resource2){}
 	 */
-	public void Year_of_Plenty(Resource resource1, Resource resource2);
+	public void Year_of_Plenty(Integer playerIndex, Resource resource1, Resource resource2);
 
 	/**
 	 * Dev Card Commands
@@ -633,9 +701,15 @@ public interface IServer {
 	 * Two new roads appear on the map at the specified locations
 	 * If applicable, â€œlongest roadâ€� has been awarded to the player with the longest road
 	 * 
+	 * "type": "Road_Building"
+	 * "spot1": {
+     * "x": "integer",
+     * "y": "integer",
+     * "direction": "string"
+  	 * }
 	 * public void Road_Building(spot1, spot2){}
 	 */
-	public void Road_Building(EdgeLocation spot1, EdgeLocation spot2); 
+	public void Road_Building(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2); 
 
 	/**
 	 * Dev Card Commands
@@ -650,9 +724,10 @@ public interface IServer {
 	 * All of the other players have given you all of their resource cards of the specified
 	 * type
 	 * 
+	 * "type": "Monopoly"
 	 * public void Monopoly(resource){}
 	 */
-	public void Monopoly(Resource resource); 
+	public void Monopoly(String resource, Integer playerIndex); 
 
 	/**
 	 * Dev Card Commands
@@ -667,10 +742,13 @@ public interface IServer {
 	 * You gained a victory point
 	 * 
 	 * public void Monument(){}
+	 * 
+	 * {
+  	 * "type": "Monument",
+  	 * "playerIndex": "4"
+	 * }
 	 */
-	public void Monument(); 
-
-
+	public void Monument(Integer playerIndex);
 
  
 }
