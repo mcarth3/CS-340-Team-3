@@ -2,6 +2,9 @@ package model;
 
 
 
+import shared.definitions.DevCardType;
+import shared.definitions.ResourceType;
+
 import java.util.ArrayList;
 
 /**
@@ -51,12 +54,12 @@ public class Player {
      * * @param type
      * @return
      */
-    private int getResourceNumber(String type)
+    public int returnResourceNumber(ResourceType searchType)
     {
         int counter =0;
         for(int i=0; i < resourceCards.size(); i++)
         {
-            if(resourceCards.get(i).getType().equals(type))
+            if(resourceCards.get(i).getType().equals(searchType))
             {
                 counter++;
             }
@@ -65,56 +68,6 @@ public class Player {
         return counter;
     }
 
-    /**
-     * @pre: can be called by any class once this object has been initialized
-     * @post: returns number of Person's wool cards using getResourceNumber()
-     * @return
-     */
-    public int woolNumber()
-    {
-
-        return getResourceNumber("wool");
-    }
-
-    /**
-     * @pre: can be called by any class once this object has been initialized
-     * @post: returns number of Person's ore cards using getResourceNumber()
-     * @return
-     */
-    public int oreNumber()
-    {
-        return getResourceNumber("ore");
-    }
-
-    /**
-     * @pre: can be called by any class once this object has been initialized
-     * @post: returns number of Person's lumber cards using getResourceNumber()
-     * @return
-     */
-    public int lumberNumber()
-    {
-        return getResourceNumber("lumber");
-    }
-
-    /**
-     * @pre: can be called by any class once this object has been initialized
-     * @post: returns number of Person's grain cards using getResourceNumber()
-     * @return
-     */
-    public int grainNumber()
-    {
-        return getResourceNumber("grainNumber");
-    }
-
-    /**
-     * @pre: can be called by any class once this object has been initialized
-     * @post: returns number of Person's brick cards using getResourceNumber()
-     * @return
-     */
-    public int brickNumber()
-    {
-        return getResourceNumber("brick");
-    }
 
 
     /**
@@ -162,18 +115,20 @@ public class Player {
 
 
 
+
+
     /**
      * @pre: called on by the functions checking for a person's development card (e.g. monopoly, yearOfPlenty, victoryPoint, or roadBuilding())
-     * @post: returns the number of cards of that type in the Person's resourceCards arrayList
+     * @post: returns the number of cards of that type in the Person's developmentCards arrayList
      * * @param type
      * @return
      */
-    private int countDevelopmentCard(String type)
+    public int returnDevCardValue(DevCardType searchType)
     {
         int counter =0;
         for(int i=0; i < developmentCards.size(); i++)
         {
-            if(developmentCards.get(i).getType().equals(type))
+            if(developmentCards.get(i).getType().equals(searchType))
             {
                 counter++;
             }
@@ -183,98 +138,11 @@ public class Player {
     }
 
 
-    /**
-     * @pre: can be called by any class once this object has been initialized
-     * @post: returns whether or not the Person owns a getRoadBuilding ProgressCard
-     * @return
-     */
-    public boolean hasRoadBuilding()
-    {
-        if(countDevelopmentCard("roadBuilding") > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    /**
-     * @pre: can be called by any class once this object has been initialized
-     * @post: returns whether or not the Person owns a getYearOfPlenty ProgressCard
-     * @return
-     */
-    public boolean hasYearOfPlenty()
-    {
-        if(countDevelopmentCard("yearOfPlenty") > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    /**
-     * @pre: can be called by any class once this object has been initialized
-     * @post: returns whether or not the Person owns a getMonopoly ProgressCard
-     * @return
-     */
-    public boolean hasMonopoly()
-    {
-        if(countDevelopmentCard("monopoly") > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-    /**
-     * @pre: can be called by any class once this object has been initialized
-     * @post: returns whether or not the Person owns a Knight ProgressCard
-     * @return
-     */
-    public boolean hasKnight()
-    {
-        if(countDevelopmentCard("knight") > 0)
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-
-
-    /**
-     * @pre: can be called by any class once this object has been initialized
-     * @post: returns number of Person's victoryPointCards that are type
-     * "victoryPoint"
-     * @return
-     */
-    public int victoryPointNumber()
-    {
-        return countDevelopmentCard("victoryPoint");
-    }
 
 
 
 
 
-/*    /**
-    * getGameData() MIGHT be used by a Game to have a person update their data (e.g.,
-     * so they can see what's going on.
-     */
-    /*public void getGameData()
-    {
-
-    }*/
 
 
     //**********************Setters/Getters:

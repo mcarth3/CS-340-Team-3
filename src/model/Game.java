@@ -9,11 +9,12 @@ import java.util.ArrayList;
 public class Game {
 
 	//need from server
-	public String title; 
-	public Integer id; 
+	public String title;
+	public Integer id;
 	public ArrayList<Player> players;
-	
+
 //    private ArrayList<Dice> twoDice;
+    private Map theGameMap;
 //    private Robber robber;
 //    private ArrayList<Hex> board;
 
@@ -22,6 +23,33 @@ public class Game {
 
     }
 
+    /**
+     * @pre: acquire the username/password of player wanted to add to game
+     * @post: Game now has a new player with said username and password inside its arrayList of players
+     * @param username
+     * @param password
+     */
+    public void addPlayer(String username, String password)
+    {
+        Player newPlayer = new Player();
+        newPlayer.setUsername(username);
+        newPlayer.setPassword(password);
+        players.add(newPlayer);
+
+    }
+
+
+    public Player findPlayer(String username) throws ObjectNotFoundException {
+        for(int i=0; i < players.size(); i++)
+        {
+            if(username.equals(players.get(i).getUsername()))
+            {
+                return players.get(i);
+            }
+        }
+        throw new ObjectNotFoundException("failed to find player of username " + username + "!");
+
+    }
 
     public Game() {
 		// TODO Auto-generated constructor stub

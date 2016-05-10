@@ -5,9 +5,11 @@
 
 package model;
 
+import shared.definitions.ResourceType;
+
 public class ResourceCard {
 
-    private String type;
+    private ResourceType type;
 
     /**
      * @pre: Call to create a Resource Card with a type (e.g. ONLY ore, lumber, brick, grain, or wool.)
@@ -15,24 +17,24 @@ public class ResourceCard {
      * the type is invalid, an error is thrown
      * @param initializeType
      */
-    ResourceCard(String initializeType) throws FailureToAddException {
+    ResourceCard(ResourceType initializeType) throws FailureToAddException {
         type = initializeType;
-        if(!type.equals("ore") && !type.equals("lumber") && !type.equals("brick")
+        /*if(!type.equals("ore") && !type.equals("lumber") && !type.equals("brick")
                 && !type.equals("wool") && !type.equals("grain") )
         {
             throw new FailureToAddException("failed to add correct type of ResourceCard");
-        }
+        }*/
     }
 
 
-    /**********************************************S
+    /**********************************************
      * Setters & Getters:
      */
-    public String getType() {
+    public ResourceType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ResourceType type) {
         this.type = type;
     }
 }
