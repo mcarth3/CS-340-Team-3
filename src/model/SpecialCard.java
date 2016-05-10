@@ -8,16 +8,28 @@ public class SpecialCard {
 
     private String type;
     /**
-     * @pre Call to create a specialCard with a type (only longestRoad, largestArmy)
-     * @post If a valid type is entered, the object is created. If
+     * @pre: Call to create a specialCard with a type (ONLY longestRoad or largestArmy)
+     * @post: If a valid type is entered, the object is created. If
      * the type is invalid, an error is thrown
      * @param initializeType
      */
-    SpecialCard(String initializeType)
-    {
+    SpecialCard(String initializeType) throws FailureToAddException {
         type = initializeType;
-        //rand
-
+        if(!type.equals("longestRoad") && !type.equals("largestArmy"))
+        {
+            throw new FailureToAddException("failed to add correct type of SpecialCard");
+        }
     }
 
+
+    /**
+     * GETTERS & SETTERS
+     */
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 }

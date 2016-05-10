@@ -24,8 +24,8 @@ public class Player {
 
 
     /**
-     * @pre should either be called by the Game or the turnTracker so that a player can take their turn
-     * @post will essentially call to the Controller using this person so that the player can make the turn.
+     * @pre: should either be called by the Game or the turnTracker so that a player can take their turn
+     * @post: will essentially call to the Controller using this person so that the player can make the turn.
      * takeTurn() should be called by the Game once another turn has finished.
      * This will allow the next designated player to pick their moves.
      */
@@ -35,128 +35,222 @@ public class Player {
     }
 
     /**
-     * @pre called on by the functions getting a resource number (e.g. woolNumber())
-     * @post returns the number of cards of that type in the Person's resourceCards arrayList
+     * @pre: called on by the functions getting a resource number (e.g. woolNumber())
+     * @post: returns the number of cards of that type in the Person's resourceCards arrayList
      * * @param type
      * @return
      */
     private int getResourceNumber(String type)
     {
-        return 0;
+        int counter =0;
+        for(int i=0; i < resourceCards.size(); i++)
+        {
+            if(resourceCards.get(i).getType().equals(type))
+            {
+                counter++;
+            }
+        }
+
+        return counter;
     }
 
     /**
-     * @pre can be called by any class once this object has been initialized
-     * @post returns number of Person's wool cards using getResourceNumber()
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns number of Person's wool cards using getResourceNumber()
      * @return
      */
     public int woolNumber()
     {
-        return 0;
+
+        return getResourceNumber("wool");
     }
 
     /**
-     * @pre can be called by any class once this object has been initialized
-     * @post returns number of Person's ore cards using getResourceNumber()
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns number of Person's ore cards using getResourceNumber()
      * @return
      */
     public int oreNumber()
     {
-        return 0;
+        return getResourceNumber("ore");
     }
 
     /**
-     * @pre can be called by any class once this object has been initialized
-     * @post returns number of Person's lumber cards using getResourceNumber()
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns number of Person's lumber cards using getResourceNumber()
      * @return
      */
     public int lumberNumber()
     {
-        return 0;
+        return getResourceNumber("lumber");
     }
 
     /**
-     * @pre can be called by any class once this object has been initialized
-     * @post returns number of Person's grain cards using getResourceNumber()
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns number of Person's grain cards using getResourceNumber()
      * @return
      */
     public int grainNumber()
     {
-        return 0;
+        return getResourceNumber("grainNumber");
     }
 
     /**
-     * @pre can be called by any class once this object has been initialized
-     * @post returns number of Person's brick cards using getResourceNumber()
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns number of Person's brick cards using getResourceNumber()
      * @return
      */
     public int brickNumber()
     {
-        return 0;
+        return getResourceNumber("brick");
+    }
+
+
+    /**
+     * @pre: Player and specialCards must have been initialized, can only be called by
+     * HasLongestRoad() and hasLargestArmy()
+     * @post: returned whether or not the player has one of the 2 cards
+     * @return
+     */
+    private boolean searchSpecialCards(String type)
+    {
+        boolean isContained = false;
+        for(int i=0; i < specialCards.size(); i++)
+        {
+            if(specialCards.get(i).getType().equals(type))
+            {
+                isContained = true;
+            }
+        }
+
+        return isContained;
+
+    }
+
+
+
+    /**
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns whether or not the Person owns a getLongestRoad VictoryPointCard
+     * @return
+     */
+    public boolean hasLongestRoad()
+    {
+        return searchSpecialCards("longestRoad");
     }
 
     /**
-     * @pre can be called by any class once this object has been initialized
-     * @post returns number of Person's victoryPointCards that are type
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns whether or not the Person owns a getLargestArmy VictoryPointCard
+     * @return
+     */
+    public boolean hasLargestArmy()
+    {
+        return searchSpecialCards("largestArmy");
+    }
+
+
+
+    /**
+     * @pre: called on by the functions checking for a person's development card (e.g. monopoly, yearOfPlenty, victoryPoint, or roadBuilding())
+     * @post: returns the number of cards of that type in the Person's resourceCards arrayList
+     * * @param type
+     * @return
+     */
+    private int countDevelopmentCard(String type)
+    {
+        int counter =0;
+        for(int i=0; i < developmentCards.size(); i++)
+        {
+            if(developmentCards.get(i).getType().equals(type))
+            {
+                counter++;
+            }
+        }
+
+        return counter;
+    }
+
+
+    /**
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns whether or not the Person owns a getRoadBuilding ProgressCard
+     * @return
+     */
+    public boolean hasRoadBuilding()
+    {
+        if(countDevelopmentCard("roadBuilding") > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns whether or not the Person owns a getYearOfPlenty ProgressCard
+     * @return
+     */
+    public boolean hasYearOfPlenty()
+    {
+        if(countDevelopmentCard("yearOfPlenty") > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns whether or not the Person owns a getMonopoly ProgressCard
+     * @return
+     */
+    public boolean hasMonopoly()
+    {
+        if(countDevelopmentCard("monopoly") > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /**
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns whether or not the Person owns a Knight ProgressCard
+     * @return
+     */
+    public boolean hasKnight()
+    {
+        if(countDevelopmentCard("knight") > 0)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+    /**
+     * @pre: can be called by any class once this object has been initialized
+     * @post: returns number of Person's victoryPointCards that are type
      * "victoryPoint"
      * @return
      */
     public int victoryPointNumber()
     {
-        return 0;
+        return countDevelopmentCard("victoryPoint");
     }
-
-    /**
-     * @pre can be called by any class once this object has been initialized
-     * @post returns whether or not the Person owns a getLongestRoad VictoryPointCard
-     * @return
-     */
-    public boolean hasLongestRoad()
-    {
-        return false;
-    }
-
-    /**
-     * @pre can be called by any class once this object has been initialized
-     * @post returns whether or not the Person owns a getLargestArmy VictoryPointCard
-     * @return
-     */
-    public boolean hasLargestArmy()
-    {
-        return false;
-    }
-
-    /**
-     * @pre can be called by any class once this object has been initialized
-     * @post returns whether or not the Person owns a getRoadBuilding ProgressCard
-     * @return
-     */
-    public boolean hasRoadBuilding()
-    {
-        return false;
-    }
-
-    /**
-     * @pre can be called by any class once this object has been initialized
-     * @post returns whether or not the Person owns a getYearOfPlenty ProgressCard
-     * @return
-     */
-    public boolean hasYearOfPlenty()
-    {
-        return false;
-    }
-
-    /**
-     * @pre can be called by any class once this object has been initialized
-     * @post returns whether or not the Person owns a getMonopoly ProgressCard
-     * @return
-     */
-    public boolean hasMonopoly()
-    {
-        return false;
-    }
-
-
 
 
 
