@@ -16,6 +16,7 @@ public class SpecialCard {
     SpecialCard(String initializeType)
     {
         type = initializeType;
+        //rand
 
     }
 
