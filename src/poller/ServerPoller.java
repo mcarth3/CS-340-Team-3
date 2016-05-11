@@ -35,6 +35,7 @@ public class ServerPoller {
 		modelversion=0;
 	}
 	
+	
 	/**
 	 * requests an up-to-date model from the server, also resets the polling interval, sends the model number in the request using the api '/game/model?version=N' (which returns an updated model if there is one, and the current model if there is no version number given), ModelParser takes the returned JSON and makes a model from it. the model number gets updated as well
 	 * @pre the Catan server is running and serverproxy is not null 

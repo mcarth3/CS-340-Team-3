@@ -28,7 +28,9 @@ import shared.locations.VertexLocation;
 public class ServerTests {
 	public static void main(String[] args) {
 		String[] testClasses = new String[] {
-				"tests.ServerTests"
+			//	"tests.ServerTests"
+				"tests.ModelJSONInitializationTest"
+				//"tests.ServerPollerTest"
 		};
 		org.junit.runner.JUnitCore.main(testClasses);
 	}

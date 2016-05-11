@@ -4,17 +4,21 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 import poller.InvalidMockProxyException;
 import poller.ServerPoller;
+import proxy.MockProxy;
 
-public class serverpollertest {
+public class ServerPollerTest {
 	@Test
 	public void test() {
 		try {
 			System.out.println("Running ServerPoller Test:");
-			ServerPoller s = ServerPoller.getSingleton();	
+			MockProxy NewMockProxy= MockProxy.getSingleton();
+			ServerPoller s = ServerPoller.getSingleton();
 			if (s == null) {
 				throw new Exception();
 			}
-			Thread.sleep(2500);		// polls 10 times
+			s.setmodelversion(1);
+			Thread.sleep(2500);		// polls 10 times, technically returning the JSON each time
+			
 		} catch (InvalidMockProxyException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {

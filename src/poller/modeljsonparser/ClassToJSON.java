@@ -15,9 +15,9 @@ public class ClassToJSON {
 	public static String COLON = ":";
 	public static String NULL = "null";
 	public static String EMPTY_BRACE = OPEN_BRACE + CLOSED_BRACE;
-	
-	
-	
+
+
+
 	/**
 	 * contructs a JSON string containing all of the given class's variables and objects
 	 * @param classtoconvert: the class desired to be converted into JSON
@@ -31,8 +31,9 @@ public class ClassToJSON {
 		boolean first = true;
 
 		for (Field field : fields) {
-			Object val = getFieldValue(field, classtoconvert);
 
+			Object val = getFieldValue(field, classtoconvert);
+			System.out.println(val);
 			if (val == null || field.getModifiers() != Modifier.PRIVATE) {
 				continue;
 			}
@@ -62,7 +63,7 @@ public class ClassToJSON {
 				sb.append(CLOSED_BRACKET);
 			} else if (val.getClass().isEnum()) {
 				sb.append(QUOTE).append(val.toString())
-						.append(QUOTE);
+				.append(QUOTE);
 			} else {
 				sb.append(val.toString());
 			}
@@ -70,8 +71,8 @@ public class ClassToJSON {
 
 		return sb.append(CLOSED_BRACE).toString();
 	}
-	
-	
+
+
 	public static Object getFieldValue(Field field, Object context) {
 		field.setAccessible(true);
 		Object result = null;
@@ -81,18 +82,18 @@ public class ClassToJSON {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
-			
+
 		}
 		field.setAccessible(false);
 		return result;
 	}
-	
+
 	protected static Object getFieldValue(String fieldName, Object context) {
 		return getFieldValue(getFieldByName(fieldName, context), context);
 	}
-	
-	
-	
+
+
+
 	private static Field getFieldByName(String fieldName, Object context) {
 		Field field = null;
 		try {
