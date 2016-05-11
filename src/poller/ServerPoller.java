@@ -32,6 +32,7 @@ public class ServerPoller {
 		mockServer = NewMockProxy;
 		timer = new Timer();
 		timer.schedule(pollingTask, 0, PollingInterval);
+		modelversion=0;
 	}
 	
 	/**
@@ -41,6 +42,9 @@ public class ServerPoller {
 	 * @throws PollException - if polling fails for any reason
 	 */
 	private Game poll() throws PollException {
+		if (modelversion != 0){
+			
+		}
 		Game model = null;
 		String modeljson="";
 		try {
@@ -86,10 +90,13 @@ public class ServerPoller {
 	public void setcontroller(Controller newcontroller){
 		controller = newcontroller;
 	}
+	public void setmodelversion(int newmodelversion){
+		modelversion = newmodelversion;
+	}
 	
 
 	
-	private class ServerPollerTask extends TimerTask {	
+	private class ServerPollerTask extends TimerTask {
 		/**
 		 * Calls the ServerPoller.poll() when timer has expired.
 		 * @pre none
@@ -107,4 +114,5 @@ public class ServerPoller {
 			}
 		}
 	}
+
 }

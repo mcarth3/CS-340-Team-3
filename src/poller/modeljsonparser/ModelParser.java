@@ -1,5 +1,4 @@
 package poller.modeljsonparser;
-
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonArray;
@@ -35,6 +34,14 @@ public class ModelParser {
 	 * @post returns a model filled with elements from given json
 	 */
 	private static <T> T parseFromObj(JsonElement element, Class<T> Tclass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		if (element.isJsonPrimitive()) { //debugging for classes using ints isn't going too well, so I cast to Integer
+			JsonPrimitive primitive = element.getAsJsonPrimitive();
+			if (primitive.isNumber()) {
+				Tclass  = (Class<T>) Integer.class;
+			}
+		}
+		
+		
 		if (!element.isJsonNull()) {
 			if (element.isJsonArray()) {
 				JsonArray JArray = element.getAsJsonArray();
@@ -75,6 +82,14 @@ public class ModelParser {
 				
 			} else {
 				JsonPrimitive primitive = element.getAsJsonPrimitive();
+				//System.out.println(jsonPrimitive.getAsInt());
+				//try {
+				//	constructor = classOfT.getConstructor();
+				//} catch (NoSuchMethodException e) {
+				//	e.printStackTrace();
+				//} catch (SecurityException e) {
+				//	e.printStackTrace();
+				//}
 				if (primitive.isNumber()) {
 					int value = primitive.getAsInt();
 					return constructor.newInstance(value);
@@ -108,6 +123,7 @@ public class ModelParser {
 			if (value == null) {
 				params.add(null);
 			} else {
+//				System.out.println(value);
 				try {
 					params.add(parseFromObj(value, field.getType()));
 				} catch (InstantiationException e) {
@@ -122,9 +138,14 @@ public class ModelParser {
 			}
 		}
 		
+		//if (constructor==null){
+		//	System.out.println("null");
+		//}
+		
 		if (constructor.getParameterTypes().length != params.toArray().length) {
 			return null;
 		}
+		//if (params.size()>0){	System.out.println(params.toArray());}
 		try {
 			return constructor.newInstance(params.toArray());
 		} catch (InstantiationException e) {
@@ -142,3 +163,4 @@ public class ModelParser {
 	
 
 }
+
