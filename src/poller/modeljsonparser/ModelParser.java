@@ -1,5 +1,4 @@
 package poller.modeljsonparser;
-
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonArray;
@@ -19,7 +18,7 @@ public class ModelParser {
 	 * constructs a catan model from the given JSON (creates json elements from json using jsonparser and calls parse from obj)
 	 * @param jsonstring: the JSON to be parsed
 	 * @param Tclass: generic class
-	 * @pre given json is formatted correctly
+	 * @pre given json is formatted correctly, contains Integers in place of ints
 	 * @post returns a model filled with elements from given json
 	 */
 	public static <T> T parse(String jsonstring, Class<T> Tclass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
@@ -75,6 +74,14 @@ public class ModelParser {
 				
 			} else {
 				JsonPrimitive primitive = element.getAsJsonPrimitive();
+				//System.out.println(jsonPrimitive.getAsInt());
+				//try {
+				//	constructor = classOfT.getConstructor();
+				//} catch (NoSuchMethodException e) {
+				//	e.printStackTrace();
+				//} catch (SecurityException e) {
+				//	e.printStackTrace();
+				//}
 				if (primitive.isNumber()) {
 					int value = primitive.getAsInt();
 					return constructor.newInstance(value);
@@ -108,6 +115,7 @@ public class ModelParser {
 			if (value == null) {
 				params.add(null);
 			} else {
+//				System.out.println(value);
 				try {
 					params.add(parseFromObj(value, field.getType()));
 				} catch (InstantiationException e) {
@@ -122,9 +130,14 @@ public class ModelParser {
 			}
 		}
 		
+		//if (constructor==null){
+		//	System.out.println("null");
+		//}
+		
 		if (constructor.getParameterTypes().length != params.toArray().length) {
 			return null;
 		}
+		//if (params.size()>0){	System.out.println(params.toArray());}
 		try {
 			return constructor.newInstance(params.toArray());
 		} catch (InstantiationException e) {
@@ -142,3 +155,4 @@ public class ModelParser {
 	
 
 }
+

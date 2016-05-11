@@ -16,6 +16,14 @@ public class ClassToJSON {
 	public static String NULL = "null";
 	public static String EMPTY_BRACE = OPEN_BRACE + CLOSED_BRACE;
 	
+	
+	
+	/**
+	 * contructs a JSON string containing all of the given class's variables and objects
+	 * @param classtoconvert: the class desired to be converted into JSON
+	 * @pre the class builds propery and contains Integers in place of ints
+	 * @post returns a string filled with elements from given class in the form of JSON given to us
+	 */
 	public static String converttojsonstring(Object classtoconvert) {
 		Field[] fields = classtoconvert.getClass().getDeclaredFields();
 		StringBuilder sb = new StringBuilder().append(OPEN_BRACE);
