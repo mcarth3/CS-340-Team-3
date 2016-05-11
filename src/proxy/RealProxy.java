@@ -1,10 +1,15 @@
 package proxy;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
-
 import javax.annotation.Resource;
+import com.google.gson.JsonObject;
 
 
 import model.Game;
@@ -14,36 +19,32 @@ import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
 
 public class RealProxy implements IServer{
-
+	
+	private ClientCommunicator cc = new ClientCommunicator(); 
+	
 	@Override
 	public String userLogin(String username, String password) {
-		// TODO Auto-generated method stub
-		// create userLoginInput(username, password)
-		
-		return "Success"; 
+		JsonObject obj = new JsonObject();
+        obj.addProperty("username", username);
+        obj.addProperty("password", password);
+		return cc.send(obj, "/user/login"); 
 	}
 
 	@Override
 	public String userRegister(String username, String password) {
 		// TODO Auto-generated method stub
-		
-		return "Success"; 
+		JsonObject obj = new JsonObject();
+        obj.addProperty("username", username);
+        obj.addProperty("password", password);
+		return cc.send(obj, "/user/register"); 
 	}
-//	public void handle(HttpExchange exchange) throws IOException {
-//		DownloadBatch_Params params = new DownloadBatch_Params();
-//		DownloadBatch_Result dbr = new DownloadBatch_Result();
-//		
-//		params = (DownloadBatch_Params)xmlStream.fromXML(exchange.getRequestBody());
-//		dbr = ServerFacade.DownloadBatch(params);
-//		
-//		exchange.sendResponseHeaders(HttpURLConnection.HTTP_OK, 0);
-//		xmlStream.toXML(dbr, exchange.getResponseBody()); 
-//		exchange.close();
-//	}
 
 	@Override
 	public void gamesList() {
 		// TODO Auto-generated method stub
+		System.out.println("gamesList()");
+		JsonObject obj = new JsonObject();
+		System.out.println(cc.send(obj, "/games/list")); 
 		
 	}
 
@@ -115,8 +116,16 @@ public class RealProxy implements IServer{
 
 	@Override
 	public void sendChat(Integer playerIndex, String content) {
-		// TODO Auto-generated method stub
+		JsonObject obj = new JsonObject();
+        obj.addProperty("username", "SAM");
+        obj.addProperty("password", "sam");
+		cc.send(obj, "/user/register"); 
 		
+		JsonObject obj2 = new JsonObject();
+        obj2.addProperty("type", "sendChat");
+        obj2.addProperty("playerIndex", "0");
+        obj2.addProperty("content", "This is the new message.");
+		cc.send(obj2, "/moves/sendChat");
 	}
 
 	@Override
