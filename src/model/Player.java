@@ -4,6 +4,7 @@ package model;
 
 import shared.definitions.DevCardType;
 import shared.definitions.ResourceType;
+import shared.locations.VertexLocation;
 
 import java.util.ArrayList;
 
@@ -21,6 +22,13 @@ public class Player {
     public String color;
     public String name;
     public Integer id;
+
+    public boolean discarded;
+    public int cities;
+    public int playerIndex;
+    public int playerID;
+
+
 
     private ArrayList<ResourceCard> resourceCards;
     private ArrayList<DevelopmentCard> developmentCards;
@@ -47,6 +55,20 @@ public class Player {
     {
 
     }
+
+
+    public boolean findSettlement(VertexLocation theLocation) throws ObjectNotFoundException {
+        for(int i=0; i < settlementArrayList.size(); i++)
+        {
+            if(settlementArrayList.get(i).getVertextLocation() == theLocation)
+            {
+                return true;
+            }
+        }
+        return false;
+        //throw new ObjectNotFoundException("failed to find settlement of location !");
+    }
+
 
     /**
      * @pre: called on by the functions getting a resource number (e.g. woolNumber())
