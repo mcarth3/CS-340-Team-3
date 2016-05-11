@@ -13,9 +13,9 @@ import shared.locations.VertexLocation;
 public class Facade {
     private Game theGame;
 
-    public Facade()
+    public Facade(Game newGame)
     {
-
+        theGame = newGame;
     }
 
 
@@ -29,7 +29,7 @@ public class Facade {
         if(newPlayer.returnResourceNumber(ResourceType.WHEAT) >= 1 && newPlayer.returnResourceNumber(ResourceType.WOOD) >= 1 &&
         newPlayer.returnResourceNumber(ResourceType.BRICK) >= 1 && newPlayer.returnResourceNumber(ResourceType.SHEEP) >= 1 )
         {
-            if(theGame.getTheGameMap().canAddSettlement(location)) //TODO: need to fill out canAddSettlement() in Map class.
+            if(theGame.getTheGameMap().canAddSettlement(location))
             {
                 return true;
             }

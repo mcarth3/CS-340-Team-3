@@ -1,4 +1,7 @@
-package model
+package tests
+
+import model.Facade
+import model.Game
 
 /**
  * This class will test the Can-Do methods in the Facade.
@@ -6,6 +9,10 @@ package model
  */
 class FacadeCanDoMethodsTest extends GroovyTestCase {
     void testCanPlayerBuySettlement() {
+        Game theNewGame = new Game();
+        Facade newFacade = new Facade(theNewGame);
+
+
 
     }
 
