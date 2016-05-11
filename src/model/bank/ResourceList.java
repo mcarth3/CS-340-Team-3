@@ -2,6 +2,7 @@ package model.bank;
 /**
  * @author Jesse McArthur
  */
+
 import javax.annotation.Resource;
 
 public class ResourceList {
@@ -20,9 +21,34 @@ public class ResourceList {
         numOfWood = 0;
     }
 
+    public ResourceList(int given) {
+        if(given > 20 || given < 0){
+            given = 19;
+        }
+        numOfBrick = given;
+        numOfOre = given;
+        numOfSheep = given;
+        numOfWheat = given;
+        numOfWood = given;
+    }
 
-
-
+    public ResourceList(int br, int or, int sh, int wh, int wo) {
+        numOfBrick = br;
+        numOfOre = or;
+        numOfSheep = sh;
+        numOfWheat = wh;
+        numOfWood = wo;
+    }
+    //copy constructor
+    public ResourceList(ResourceList resourcesToCopy)
+    {
+        numOfBrick = resourcesToCopy.getBrick();
+        numOfOre = resourcesToCopy.getOre();
+        numOfSheep = resourcesToCopy.getSheep();
+        numOfWheat = resourcesToCopy.getWheat();
+        numOfWood = resourcesToCopy.getWood();
+    }
+    //overload the constructor so that RL can be used for trades, bank, map, players etc.
 
     public int getBrick() {
         return numOfBrick;
@@ -64,5 +90,14 @@ public class ResourceList {
         numOfWood = wood;
     }
 
-   
+    public ResourceList merge(ResourceList first, ResourceList second) {
+        int newbrick = first.getBrick() + second.getBrick();
+        int newore = first.getOre() + second.getOre();
+        int newsheep = first.getSheep() + second.getSheep();
+        int newwheat = first.getWheat() + second.getWheat();
+        int newwood = first.getWood() + second.getWood();
+
+        ResourceList result = new ResourceList(newbrick, newore, newsheep, newwheat, newwood);
+        return result;
+    }
 }

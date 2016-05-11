@@ -14,7 +14,8 @@ public class Settlement extends VertexObject
 	
 	public Settlement(VertexLocation vertexLocation, int player)
 	{
-		
+		owner = player;
+		this.vertextLocation =vertexLocation;
 	}
 	
 	public int getOwner() {
@@ -44,3 +45,4 @@ public class Settlement extends VertexObject
 	}
 	
 }
+

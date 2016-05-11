@@ -9,7 +9,7 @@ import shared.locations.VertexLocation;
  * <br><b>Domain:</b> The owner index must be between 0 and 4
  * @author Jesse McArthur
  */
-public class City 
+public class City extends VertexObject
 {
 	int owner;
 	VertexLocation location;
@@ -36,6 +36,10 @@ public class City
 	}
 	public boolean canPlaceAtLocation(VertexLocation location)
 	{
+		if(location == null)
+		{
+			return false;
+		}
 		return true;
 	}
 	public void placeCity()
