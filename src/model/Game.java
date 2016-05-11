@@ -104,5 +104,19 @@ public class Game {
     }
 
 
+    /*********************************************
+     * GETTERS AND SETTERS:
+     **/
 
+
+
+
+
+    public Map getTheGameMap() {
+        return theGameMap;
+    }
+
+    public void setTheGameMap(Map theGameMap) {
+        this.theGameMap = theGameMap;
+    }
 }
