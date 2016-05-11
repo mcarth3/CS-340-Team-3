@@ -11,6 +11,10 @@ import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
 import shared.locations.*;
 
+/**
+ * @author Jesse McArthur
+ */
+
 public class Map
 {
 	TreeMap<HexLocation,Hex> hexes;
@@ -99,7 +103,8 @@ public class Map
 
 	/**
 	 * adds a port to the maps list of ports
-	 *
+	 * @pre No port is there
+	 * @post port is initialized
 	 * @param x         - horizontal location of hex related to port
 	 * @param y         - diagonal location of hex related to port
 	 * @param resource  - type of resource obtained from hex
