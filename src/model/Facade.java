@@ -2,6 +2,7 @@ package model;
 
 import shared.definitions.DevCardType;
 import shared.definitions.ResourceType;
+import shared.locations.VertexLocation;
 
 /**
  * A Facade for the Controller to interact with the Game Model. This will also contain several different can-Do's for the
@@ -16,27 +17,42 @@ public class Facade {
 
     }
 
-    public void canPlayerBuySettlement(String username)
+    public boolean canPlayerBuySettlement(String username, VertexLocation location) throws ObjectNotFoundException {
+
+
+        return false;
+    }
+
+    public boolean canPlayerBuyCity(String username, VertexLocation location) throws ObjectNotFoundException {
+        Player newPlayer = theGame.findPlayer(username);
+        if(newPlayer.returnResourceNumber(ResourceType.ORE) >= 3 && newPlayer.returnResourceNumber(ResourceType.WHEAT) >= 2)
+        {
+            if(newPlayer.findSettlement(location) == true)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public void canPlayerBuyRoad(int playerIndex)
     {
 
     }
 
-    public void canPlayerBuyCity(String username)
+    public void canPlayerAcceptTrade(int playerIndex, ResourceType type, int resourceNumber)
     {
 
     }
 
-    public void canPlayerBuyRoad(String username)
-    {
-
-    }
-
-    public void canPlayerAcceptTrade(String username, ResourceType type, int resourceNumber)
-    {
-
-    }
-
-    public void canPlayerPlayDevCard(String username, DevCardType type)
+    public void canPlayerPlayDevCard(int playerIndex, DevCardType type)
     {
 
     }
