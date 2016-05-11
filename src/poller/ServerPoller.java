@@ -1,5 +1,6 @@
 package poller;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Timer;
 import java.util.TimerTask;
 import client.base.Controller;
@@ -41,11 +42,24 @@ public class ServerPoller {
 	 */
 	private Game poll() throws PollException {
 		Game model = null;
+		String modeljson="";
 		try {
-
+			modeljson = mockServer.gameModel(modelversion);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new PollException("Could not communicate with server");
+		}
+		
+		try {
+			model = ModelParser.parse(modeljson, Game.class);
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
 		}
 		return model;
 	}

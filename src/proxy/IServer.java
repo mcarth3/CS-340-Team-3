@@ -191,9 +191,9 @@ public interface IServer {
 	/**
 	 * /game/model?version=N
 	 * Description: Returns the current state of the game in JSON format.
-	 * In addition to the current game state, the returned JSON also includes a â€œversionâ€� number for the client model. The next time /game/model is called, the version number from the
+	 * In addition to the current game state, the returned JSON also includes a version number for the client model. The next time /game/model is called, the version number from the
 	 * previously retrieved model may optionally be included as a query parameter in the request
-	 * (/game/model?version=N). The server will only return the full JSON game state if its version number is not equal to N. If it is equal to N, the server returns â€œtrueâ€� to indicate that the caller already has the latest game state. This is merely an optimization. If the version number is not included in the request URL, the server will return the full game state.
+	 * (/game/model?version=N). The server will only return the full JSON game state if its version number is not equal to N. If it is equal to N, the server returns true to indicate that the caller already has the latest game state. This is merely an optimization. If the version number is not included in the request URL, the server will return the full game state.
 	 * @pre
 	 * 1. The caller has previously logged in to the server and joined a game (i.e., they have
 	 * valid catan.user and catan.game HTTP cookies).
@@ -215,7 +215,7 @@ public interface IServer {
 	 * 
 	 * public void gameModel(catan.user, versionNumber){}
 	 */
-	public void gameModel(Integer versionNumber); 
+	public String gameModel(Integer versionNumber); 
 	
 	/**
 	 * /game/reset

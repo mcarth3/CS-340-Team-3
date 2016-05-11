@@ -1,7 +1,14 @@
 package proxy;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import javax.annotation.Resource;
+
 import model.*;
 import proxy.objects.*;
 import shared.locations.*; 
@@ -135,151 +142,30 @@ public class MockProxy implements IServer{
 	}
 
 	@Override
-	public void gameModel(Integer versionNumber) {
-		// TODO Auto-generated method stub
-		
-		
-//		{
-//			  "bank": {
-//			    "brick": "integer",
-//			    "ore": "integer",
-//			    "sheep": "integer",
-//			    "wheat": "integer",
-//			    "wood": "integer"
-//			  },
-//			  "chat": {
-//			    "lines": [
-//			      {
-//			        "message": "string",
-//			        "source": "string"
-//			      }
-//			    ]
-//			  },
-//			  "log": {
-//			    "lines": [
-//			      {
-//			        "message": "string",
-//			        "source": "string"
-//			      }
-//			    ]
-//			  },
-//			  "map": {
-//			    "hexes": [
-//			      {
-//			        "location": {
-//			          "x": "integer",
-//			          "y": "integer"
-//			        },
-//			        "resource": "string",
-//			        "number": "integer"
-//			      }
-//			    ],
-//			    "ports": [
-//			      {
-//			        "resource": "string",
-//			        "location": {
-//			          "x": "integer",
-//			          "y": "integer"
-//			        },
-//			        "direction": "string",
-//			        "ratio": "integer"
-//			      }
-//			    ],
-//			    "roads": [
-//			      {
-//			        "owner": "index",
-//			        "location": {
-//			          "x": "integer",
-//			          "y": "integer",
-//			          "direction": "string"
-//			        }
-//			      }
-//			    ],
-//			    "settlements": [
-//			      {
-//			        "owner": "index",
-//			        "location": {
-//			          "x": "integer",
-//			          "y": "integer",
-//			          "direction": "string"
-//			        }
-//			      }
-//			    ],
-//			    "cities": [
-//			      {
-//			        "owner": "index",
-//			        "location": {
-//			          "x": "integer",
-//			          "y": "integer",
-//			          "direction": "string"
-//			        }
-//			      }
-//			    ],
-//			    "radius": "integer",
-//			    "robber": {
-//			      "x": "integer",
-//			      "y": "integer"
-//			    }
-//			  },
-//			  "players": [
-//			    {
-//			      "cities": "index",
-//			      "color": "string",
-//			      "discarded": "boolean",
-//			      "monuments": "index",
-//			      "name": "string",
-//			      "newDevCards": {
-//			        "monopoly": "index",
-//			        "monument": "index",
-//			        "roadBuilding": "index",
-//			        "soldier": "index",
-//			        "yearOfPlenty": "index"
-//			      },
-//			      "oldDevCards": {
-//			        "monopoly": "index",
-//			        "monument": "index",
-//			        "roadBuilding": "index",
-//			        "soldier": "index",
-//			        "yearOfPlenty": "index"
-//			      },
-//			      "playerIndex": "index",
-//			      "playedDevCard": "boolean",
-//			      "playerID": "integer",
-//			      "resources": {
-//			        "brick": "integer",
-//			        "ore": "integer",
-//			        "sheep": "integer",
-//			        "wheat": "integer",
-//			        "wood": "integer"
-//			      },
-//			      "roads": "index",
-//			      "settlements": "integer",
-//			      "soldiers": "integer",
-//			      "victoryPoints": "integer"
-//			    }
-//			  ],
-//			  "tradeOffer": {
-//			    "sender": "integer",
-//			    "receiver": "integer",
-//			    "offer": {
-//			      "brick": "integer",
-//			      "ore": "integer",
-//			      "sheep": "integer",
-//			      "wheat": "integer",
-//			      "wood": "integer"
-//			    }
-//			  },
-//			  "turnTracker": {
-//			    "currentTurn": "index",
-//			    "status": "string",
-//			    "longestRoad": "index",
-//			    "largestArmy": "index"
-//			  },
-//			  "version": "index",
-//			  "winner": "index"
-//			}
-		
+	public String gameModel(Integer versionNumber) {
+		String modeljsondata;
+		try {
+			modeljsondata = readFile("testmodel.json");
+		} catch (IOException e) {
+			modeljsondata = "";
+			e.printStackTrace();
+		}
+		return modeljsondata;
+	
 	}
+	
+	private String readFile(String fileName) throws IOException {
+		String data;
+		File file = new File(fileName);
+		FileReader fileReader = new FileReader(file);
+		BufferedReader bufferedReader = new BufferedReader(fileReader);
+		Scanner scanner = new Scanner(bufferedReader);
+		data = scanner.useDelimiter("\\Z").next();
+		scanner.close();
+		return data;
+	}
+	
+	
 
 	@Override
 	public void gameReset(Player user, Game game) {

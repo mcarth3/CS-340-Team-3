@@ -72,7 +72,8 @@ public class RealProxy implements IServer{
 	}
 
 	@Override
-	public void gameModel(Integer versionNumber) {
+	public String gameModel(Integer versionNumber) {
+		return null;
 		// TODO Auto-generated method stub
 		
 	}
