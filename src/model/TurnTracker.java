@@ -7,7 +7,7 @@ public class TurnTracker {
     String status;
     int longestRoad = -1;
     int largestArmy = -1;
-    //must be at least 3 to claim largest army, 
+    //must be at least 3 to claim largest army, therefore if player army >  currLA they earn largest army and currLA = player army size
 
     public TurnTracker() {
         currPlayer = 0;

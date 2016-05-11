@@ -6,37 +6,37 @@ import shared.locations.VertexLocation;
  * @author Jesse McArthur
  */
 public abstract class VertexObject{
-  int owner;
-  VertexLocation vertexLocation;
+	  int owner;
+	  VertexLocation vertexLocation;
 
 
-/**
-   *@param VertexObject - an object to compareTo
-   *@return if the location is being used already
-   */
-   boolean compareTo(VertexObject v)
-   {
-	   return false;
-   }
+	/**
+	   *@param VertexObject - an object to compareTo
+	   *@return if the location is being used already
+	   */
+	   boolean compareTo(VertexObject vo)
+	   {
+		   return false;
+	   }
 
-   public int getOwner() 
-   {
-	   return owner;
-   }
+	   public int getOwner() 
+	   {
+		   return owner;
+	   }
 
-   public void setOwner(int owner) 
-   {
-	   this.owner = owner;
-   }
+	   public void setOwner(int owner) 
+	   {
+		   this.owner = owner;
+	   }
 
-   public VertexLocation getLocation() 
-   {
-	   return vertexLocation;
-   }
+	   public VertexLocation getLocation() 
+	   {
+		   return vertexLocation;
+	   }
 
-   public void setLocation(VertexLocation location) 
-   {
-	   this.vertexLocation = location;
-   }
-   
-}
+	   public void setLocation(VertexLocation location) 
+	   {
+		   this.vertexLocation = location;
+	   }
+	   
+	}

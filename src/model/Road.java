@@ -7,16 +7,13 @@ import shared.locations.EdgeLocation;
  * @author Jesse McArthur
  */
 public class Road {
- 
-  
-
 	  int owner;
 	  EdgeLocation location;
 	  
-
 	  public Road(EdgeLocation edgeLocation, int id)
 	  {
-		  
+		  location = edgeLocation;
+		  owner = id;
 	  }
 	  public int getOwner()
 	  {
@@ -38,5 +35,4 @@ public class Road {
 		  this.location = location;
 	  }
 
-
-}
+	}

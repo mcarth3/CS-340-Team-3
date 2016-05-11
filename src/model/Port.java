@@ -9,8 +9,6 @@ import shared.locations.VertexDirection;
  */
 public class Port {
 
-   
-
     HexLocation location;
     String resource;
     EdgeDirection direction;
@@ -18,12 +16,15 @@ public class Port {
     int owner = -1;
 
     public Port(int x, int y, EdgeDirection dir, int rat) {
-      
+        location = new HexLocation(x, y);
+        resource = PortType.THREE.toString();
+        direction = dir;
+        ratio = rat;
     }
 
-    public Port(int x, int y, String res, EdgeDirection dir, int rat) {
+    public Port(int x, int y, String resrc, EdgeDirection dir, int rat) {
         location = new HexLocation(x, y);
-        resource = res;
+        resource = resrc;
         direction = dir;
         ratio = rat;
     }
@@ -67,5 +68,4 @@ public class Port {
     public void setOwner(int playerID) {
         this.owner = playerID;
     }
-
 }

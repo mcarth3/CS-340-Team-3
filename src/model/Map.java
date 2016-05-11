@@ -1,50 +1,45 @@
 package model;
 
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
 
+import model.bank.ResourceList;
+import proxy.RealProxy;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
 import shared.locations.*;
-/**
- * The map class represents the game board and everything on it. This includes hexes,
- * ports, roads, settlements, cities, the radius of the board, and the robber.
- * @author Jesse McArthur
- */
+
 public class Map
 {
-	ArrayList<Hex>hexes;
+	TreeMap<HexLocation,Hex> hexes;
 	ArrayList<Port> ports;
 	ArrayList<Road> roads;
-	ArrayList<VertexObject> buildings;// that replace settlements and cities.
+	ArrayList<VertexObject> buildings;
+	ArrayList<ResourceList> resources;
 	int radius = -1;
 	Robber robber;
-	
 	public Map()
 	{
-		hexes = new ArrayList<Hex>();
+		hexes = new TreeMap<HexLocation,Hex>();
 		ports = new ArrayList<Port>();
 		roads = new ArrayList<Road>();
 		robber = new Robber();
 		buildings = new ArrayList<VertexObject>();
-		
+		resources = new ArrayList<ResourceList>();
 	}
 
 	public void clearHexes(){
-		
+		hexes.clear();
 	}
 	public void clearBuildings(){
-		
+		buildings.clear();
 	}
 
 
 	/**
 	 * initialize a new map when game is created
-	 * @pre Game map empty	
-	 * @post Game map filled ready for play
 	 */
 	public void initialize() {}
 
@@ -55,20 +50,24 @@ public class Map
 	 */
 	public boolean canAddHex()
 	{
+		if (hexes.size() > 32)
+		{
+			return false;
+		}
 		return true;
 
-	}
+	}//may not be used
+
 
 	public void addHexDesert(int x, int y) throws FailureToAddException//may not be used
 	{
-		
+		Hex hex = new Hex(x,y);
+		hexes.put(hex.getLocation(), hex);
 	}
 
 	/**
 	 * adds a hex to the maps list of hexes
 	 *
-	 * @pre HExes aren't generated	
-	 * @post generate hexes
 	 * @param x        - horizontal location of hex
 	 * @param y        - diagonal location of hex
 	 * @param resource - type of resource obtained from hex
@@ -77,23 +76,30 @@ public class Map
 	public void addHex(int x, int y, String resource, int number) throws FailureToAddException//may not be used
 	{
 
-	
+		String numberString = new String(Integer.toString(number));
+		Hex hex = new Hex(x,y,resource,number);
+		hexes.put(hex.getLocation(), hex);
 	}
 
 	/**
 	 * checks to see if port can be added
-	 * @pre No ports added
-	 * @post ports where necessary
 	 */
 	public boolean canAddPort(Port port)
 	{
+		if(port == null)
+		{
+			return false;
+		}
+		if(ports.contains(port))
+		{
+			return false;
+		}
 		return true;
 	}
 
 	/**
 	 * adds a port to the maps list of ports
-	 * @pre No ports added	
-	 * @post ports where necessary
+	 *
 	 * @param x         - horizontal location of hex related to port
 	 * @param y         - diagonal location of hex related to port
 	 * @param resource  - type of resource obtained from hex
@@ -102,117 +108,158 @@ public class Map
 	 */
 	public void addPort(int x, int y, String resource, EdgeDirection ed, int ratio) throws FailureToAddException
 	{
-		
+		Port port = new Port(x,y,resource, ed, ratio);
+		ports.add(port);
 	}
 
 	/**
 	 * checks to see if road can be added
 	 */
-	
 	public boolean canAddRoad(EdgeLocation edgeLocation)
 	{
+		if (edgeLocation == null)
+		{
+			return false;
+		}
+		if (roads.contains(edgeLocation))
+		{
+			return false;
+		}
 		return true;
 	}
 
 	/**
 	 * adds a road to the maps list of roads
-	 * @pre Roads not added	
-	 * @post allows user to add road if available space
+	 *
 	 * @param x         - horizontal location of hex
 	 * @param y         - diagonal location of hex
 	 * @param direction - direction from hex that road is located
-	 * @param pid     - index of owner
+	 * @param      - index of owner
 	 */
-	
 	public void addRoad(int x, int y, EdgeDirection direction, int pid) throws FailureToAddException
 	{
-		
+		HexLocation hexLocation = new HexLocation(x,y);
+		EdgeLocation edgeLocation = new EdgeLocation(hexLocation,direction);
+		Road road = new Road(edgeLocation,pid);
+		roads.add(road);
 	}
 
 	/**
-	 * @pre No settlement added	
-	 * @post adds settlement if available
 	 * checks to see if settlement can be added
 	 */
-	
 	public boolean canAddSettlement(VertexLocation settlementLocation)
 	{
-		return false;
+		if (settlementLocation == null)
+		{
+			return false;
+		}
+		for (VertexObject VObjIter: buildings)
+		{
+			if (VObjIter.getLocation() == settlementLocation)
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 
 	/**
 	 * adds a settlement to the maps list of settlements
-	 * @pre No settlement added	 
-	 * @post adds settlement if available
+	 *
 	 * @param x         - horizontal location of hex
 	 * @param y         - diagonal location of hex
 	 * @param direction - direction from hex that settlement is located
-	 * @param pid     - index of owner
+	 * @param      - index of owner
 	 */
-	
 	public void addSettlement(int x, int y, VertexDirection direction, int pid) throws FailureToAddException
 	{
-		
+		HexLocation hex = new HexLocation(x,y);
+		VertexLocation location =  new VertexLocation(hex, direction);
+		Settlement settlement = new Settlement(location, pid);
+		buildings.add(settlement);
 	}
 
 	/**
-	 * @pre No city added	
-	 * @post Adds city if available
 	 * checks to see if City can be added
 	 */
-
 	public boolean canAddCity(VertexLocation vertexLocation)
 	{
+		if (vertexLocation == null)
+		{
+			return false;
+		}
+		for (VertexObject VObjIter: buildings)
+		{
+			if (VObjIter.getLocation() == vertexLocation && !(VObjIter instanceof Settlement))
+			{
+				return false;
+			}
+		}
 		return true;
 	}
 
 	/**
 	 * adds a city to the maps list of cities
-	 * @pre No city added	
-	 * @post Adds city if available
+	 *
 	 * @param x         - horizontal location of hex
 	 * @param y         - diagonal location of hex
 	 * @param direction - direction from hex that city is located
-	 * @param pid    - index of owner
+	 * @param      - index of owner
 	 */
-	
 	public void addCity(int x, int y, VertexDirection direction, int pid) throws FailureToAddException
 	{
-		
+		HexLocation hex = new HexLocation(x,y);
+		VertexLocation location =  new VertexLocation(hex, direction);
+		City city = new City(location, pid);
+		buildings.add(city);
 	}
 
 	/**
-	 * @pre No city added 	
-	 * @post adds city if available
 	 * checks to see if robber can be relocated
 	 */
-
+	
 	public boolean canRelocateRobber(HexLocation targetHex)
 	{
+		
+		if (hexes.get(targetHex).resource == "Ocean" || hexes.get(targetHex).resource == "Sea")
+		{
+			return false;
+		}
 		return true;
 	}
 	public ArrayList<Port> checkForPorts(ArrayList<VertexObject> builds)
-	{
-		return ports;	
-		
+	{	
+		ArrayList<Port> playerPorts = new ArrayList<Port>();
+		for(int i=0; i<ports.size(); i++)
+		{
+			for(int j=0; j<builds.size(); j++)
+			{
+				if(ports.get(i).getLocation().equals(builds.get(j).getLocation().getHexLoc()) && ports.get(i).getDirection().equals(builds.get(j).getLocation().getDir()))
+				{
+					playerPorts.add(ports.get(i));
+				}
+			}
+		}
+		return playerPorts;
 	}
 	/**
 	 * moves robber to a new hex location
-	 * @pre no robber added	
-	 * @post adds robber of available
-	 * @param targetHex - location of hex robber is to be moved to
+	 *
+	 * @param  - horizontal location of hex robber is to be moved to
+	 * @param  - diagonal location of hex robber is to be moved to
 	 */
-	
+
 	public void relocateRober(HexLocation targetHex)
 	{
-	
+		
+		robber.setHl(targetHex);
 	}
 	//getters and setters
-	public ArrayList<Hex> getHexes() {
+	public TreeMap<HexLocation, Hex> getHexes() {
 		return hexes;
 	}
 
-	public void setHexes(ArrayList<Hex> hexes) {
+	public void setHexes(TreeMap<HexLocation, Hex> hexes) {
 		this.hexes = hexes;
 	}
 
@@ -222,15 +269,20 @@ public class Map
 
 	/**
 	 * Returns all of the ports that belong to a player
-	 * @pre  Players ports blank	
-	 * @post retuns their ports
 	 * @param playerID
 	 * @return
 	 */
 	public List<Port> getPlayerPorts(int playerID)
 	{
-		return ports;
-		
+		List<Port> playerPorts = new ArrayList<Port>();
+		for(Port port: ports)
+		{
+			if(port.getOwner() == playerID)
+			{
+				playerPorts.add(port);
+			}
+		}
+		return playerPorts;
 	}
 	public void setPorts(ArrayList<Port> ports) {
 		this.ports = ports;
@@ -244,6 +296,8 @@ public class Map
 		this.roads = roads;
 	}
 
+
+
 	public int getRadius() {
 		return radius;
 	}
@@ -254,6 +308,14 @@ public class Map
 
 	public void setBuildings(ArrayList<VertexObject> buildings) {
 		this.buildings = buildings;
+	}
+
+	public ArrayList<ResourceList> getResources() {
+		return resources;
+	}
+
+	public void setResources(ArrayList<ResourceList> resources) {
+		this.resources = resources;
 	}
 
 	public void setRadius(int radius) {
@@ -267,6 +329,4 @@ public class Map
 	public void setRobber(Robber robber) {
 		this.robber = robber;
 	}
-
-
 }
