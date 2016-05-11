@@ -74,7 +74,8 @@ public class RealProxy implements IServer{
 
 	@Override
 	public String gameModel(Integer versionNumber) {
-		return null;
+		JsonObject obj = new JsonObject();
+		return cc.send(obj, "/game/model?version="+versionNumber); 
 		// TODO Auto-generated method stub
 		
 	}

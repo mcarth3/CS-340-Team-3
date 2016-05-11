@@ -12,6 +12,7 @@ public class Game {
 	public String title;
 	public Integer id;
 	public ArrayList<Player> players;
+	public int modelversion;
 
 //    private ArrayList<Dice> twoDice;
     private Map theGameMap;
