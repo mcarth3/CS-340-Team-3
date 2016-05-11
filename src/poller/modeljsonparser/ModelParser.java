@@ -18,7 +18,7 @@ public class ModelParser {
 	 * constructs a catan model from the given JSON (creates json elements from json using jsonparser and calls parse from obj)
 	 * @param jsonstring: the JSON to be parsed
 	 * @param Tclass: generic class
-	 * @pre given json is formatted correctly, contains Integers in place of ints
+	 * @pre given json is formatted correctly
 	 * @post returns a model filled with elements from given json
 	 */
 	public static <T> T parse(String jsonstring, Class<T> Tclass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
@@ -34,6 +34,14 @@ public class ModelParser {
 	 * @post returns a model filled with elements from given json
 	 */
 	private static <T> T parseFromObj(JsonElement element, Class<T> Tclass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+		if (element.isJsonPrimitive()) { //debugging for classes using ints isn't going too well, so I cast to Integer
+			JsonPrimitive primitive = element.getAsJsonPrimitive();
+			if (primitive.isNumber()) {
+				Tclass  = (Class<T>) Integer.class;
+			}
+		}
+		
+		
 		if (!element.isJsonNull()) {
 			if (element.isJsonArray()) {
 				JsonArray JArray = element.getAsJsonArray();
