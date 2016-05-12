@@ -12,7 +12,9 @@ import model.bank.ResourceList;
 import poller.modeljsonparser.AbstractModelPartition;
 import proxy.*;
 import shared.locations.*;
-
+/**
+ * Created by Jesse R.
+ */
 public class Facade extends AbstractModelPartition {
     Game theGame;
     IServer proxy;
