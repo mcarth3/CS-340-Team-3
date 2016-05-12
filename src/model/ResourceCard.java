@@ -17,7 +17,7 @@ public class ResourceCard {
      * the type is invalid, an error is thrown
      * @param initializeType
      */
-    ResourceCard(ResourceType initializeType) throws FailureToAddException {
+    public ResourceCard(ResourceType initializeType) throws FailureToAddException {
         type = initializeType;
         /*if(!type.equals("ore") && !type.equals("lumber") && !type.equals("brick")
                 && !type.equals("wool") && !type.equals("grain") )
