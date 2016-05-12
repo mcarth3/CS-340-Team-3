@@ -6,15 +6,12 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import java.util.ArrayList;
-
 import javax.annotation.Resource;
-
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
 import model.Game;
 import model.Player;
 import poller.InvalidMockProxyException;
@@ -26,14 +23,6 @@ import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
 
 public class ServerTests {
-	public static void main(String[] args) {
-		String[] testClasses = new String[] {
-			//	"tests.ServerTests"
-				"tests.ModelJSONInitializationTest"
-				//"tests.ServerPollerTest"
-		};
-		org.junit.runner.JUnitCore.main(testClasses);
-	}
 	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -63,16 +52,18 @@ public class ServerTests {
 	}
 	@Test
 	public void userRegisterTest() {
-		rp.userRegister("SAM", "sam");
+		//rp.userRegister("SAM", "sam");
 	}
 	@Test
 	public void gamesListTest(){
-		rp.gamesList();
+		//rp.gamesList();
 	}
 	@Test
 	public void gamesCreateTest(){}
 	@Test
-	public void gameJoinTest(){}
+	public void gameJoinTest(){
+		rp.gameJoin(5, "red");
+	}
 	@Test
 	public void gamesSaveTest(){}
 	@Test
@@ -95,7 +86,7 @@ public class ServerTests {
 	// MOVE API 
 	@Test
 	public void sendChatTest(){
-		rp.sendChat(0, "new message here");
+		//rp.sendChat(0, "new message here");
 	}
 	@Test
 	public void acceptTradeTest(){}
@@ -135,8 +126,8 @@ public class ServerTests {
 	@Test
 	public void userLoginTestMock() {
 		assertFalse(false);
-		mp.userRegister("SAM", "sam");
-		mp.userLogin("SAM", "sam");
+		//mp.userRegister("SAM", "sam");
+		//mp.userLogin("SAM", "sam");
 	}
 	@Test
 	public void userRegisterTestMock() {

@@ -22,8 +22,29 @@ public class RealProxy implements IServer{
 	
 	private ClientCommunicator cc = new ClientCommunicator(); 
 	
+//	user login
+//	rollnumber
+//	send chat
+//	rob player
+//	finish turn
+//	buy dev card
+//	year of plenty
+//	roadbuilder
+//	solider
+//	monopoly
+//	monument
+//	build road
+//	build settlement
+//	build city
+//	offer trade
+//	accept trade
+//	marintime trade
+//	discard cards 
+	
+	
 	@Override
 	public String userLogin(String username, String password) {
+		//// Implement this one 
 		JsonObject obj = new JsonObject();
         obj.addProperty("username", username);
         obj.addProperty("password", password);
@@ -51,13 +72,21 @@ public class RealProxy implements IServer{
 	@Override
 	public void gamesCreate(String name, boolean randomTiles, boolean randomNumbers, boolean randomPorts) {
 		// TODO Auto-generated method stub
-		
+		JsonObject obj = new JsonObject();
+        obj.addProperty("randomTiles", true);
+        obj.addProperty("randomNumbers", true);
+        obj.addProperty("randomPorts", true);
+        obj.addProperty("name", "Test Game");
+		cc.send(obj, "/game/create");
 	}
 
 	@Override
 	public void gameJoin(Integer gameID, String color) {
 		// TODO Auto-generated method stub
-		
+		JsonObject obj = new JsonObject();
+        obj.addProperty("color", color );
+        obj.addProperty("id", gameID);
+		cc.send(obj, "/game/join"); 
 	}
 
 	@Override
@@ -118,6 +147,7 @@ public class RealProxy implements IServer{
 
 	@Override
 	public void sendChat(Integer playerIndex, String content) {
+		//// Implement this one
 		JsonObject obj = new JsonObject();
         obj.addProperty("username", "SAM");
         obj.addProperty("password", "sam");
@@ -133,96 +163,112 @@ public class RealProxy implements IServer{
 	@Override
 	public void acceptTrade(Integer playerIndex, Boolean willAccept) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void discardCards(Integer playerIndex, ArrayList discardedCards) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void rollNumber(Integer playerIndex, Integer number) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void buildRoad(Integer playerIndex, EdgeLocation roadLocation, Boolean free) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void buildSettlement(Integer playerIndex, VertexLocation vertexLocation, Boolean free) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void buildCity(Integer playerIndex, VertexLocation vertexLocation) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void offerTrade(Integer playerIndex, ArrayList offer, Integer receiver) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void maritimeTrade(Integer playerIndex, Integer ratio, String inputResource, String outputResource) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void robPlayer(Integer playerIndex, Integer victimIndex, HexLocation location) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void finishTurn(Integer playerIndex) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void buyDevCard(Integer playerIndex) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void Soldier(Integer playerIndex, Integer victimIndex, HexLocation location) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void Year_of_Plenty(Integer playerIndex, Resource resource1, Resource resource2) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void Road_Building(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void Monopoly(String resource, Integer playerIndex) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 
 	@Override
 	public void Monument(Integer playerIndex) {
 		// TODO Auto-generated method stub
+		//// Implement this one
 		
 	}
 	

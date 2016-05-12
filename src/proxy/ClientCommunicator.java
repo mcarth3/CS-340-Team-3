@@ -32,22 +32,34 @@ public class ClientCommunicator {
 	        //c.setRequestProperty("Content-length", "0");
 	        //c.setUseCaches(false);
 	        //c.setAllowUserInteraction(false);
+	        //    set the cookie setRequestProperty("Cookie", cookie); 
 	        //c.connect();
+	        
+	        // get game cookie in game join?
+	        
 	        c.setDoOutput(true);
 	        c.setDoInput(true);
 	        c.setRequestProperty("Content-Type", "application/json");
 	        c.setRequestProperty("Accept", "application/json");
 	        
-	        JsonObject obj = new JsonObject();
-	        obj.addProperty("username", "SAM");
-	        obj.addProperty("password", "sam");
-
-	        //System.out.println(obj);
+	      
 	        System.out.println(json);
-	        
 	        OutputStreamWriter wr = new OutputStreamWriter(c.getOutputStream());
 	        wr.write(json.toString());
 	        wr.flush();
+	        
+//	        String headerName = c.getHeaderFieldKey(0);
+//	        String headerValue = c.getHeaderField(0);
+	        System.out.println(c.getHeaderFields());
+	        String cookie = c.getHeaderField("Set-Cookie");
+//	        System.out.println("headerName:");
+//	        System.out.println(headerName);
+//	        System.out.println("headerValue:");
+//	        System.out.println(headerValue);
+//	        System.out.println("Set-Cookie");
+	        System.out.println(cookie);
+	        
+	        
 	        
 	        int status = c.getResponseCode();
 	        //System.out.println("STATUS: "+ status); 
@@ -70,6 +82,10 @@ public class ClientCommunicator {
 	                }
 	                br.close();
 	                //System.out.println(sb.toString()); 
+	                if(cookie != null)
+	                {
+	                	sb.append(cookie); 
+	                }
 	                return sb.toString();
 	        }
 

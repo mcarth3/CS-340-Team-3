@@ -9,10 +9,15 @@
     <property name="options.arg" value="ug"/>
      
     <!-- Input folders -->
+	<property name="junit.dir" value="JUnit 4"/>
     <property name="java.dir" value="java"/>
+	<property name="java.test" value="src/tests"/>
     <property name="java.src.dir" value="src"/>
 	<property name="java.tests.dir" value="src/tests"/>
     <property name="java.lib.dir" value="lib"/>
+	
+	<property name="java.build" location="${java.dir}/build"/>
+	<property name="java.build.test" location="${java.build}/test"/>
 	
 	<!-- Input folders -->
 	<!--   <property name="java.dir" value="java"/>
@@ -48,7 +53,7 @@
 		</path>
 	<path id="java.test.classpath">
 				<fileset dir="src/tests">
-					<include name="**/*.jar" />
+					<include name="RunAllTests.java" />
 				</fileset>
 			</path>
 	<path id="lib-classpath">
@@ -83,15 +88,21 @@
 		</java>
 	</target>
 	
-	<target name="test" description="run automated server tests">
-	   		<echo>Running the tests in the project</echo>
-				<java classname="tests.ServerTests" fork="true" dir="${java.src.dir}">
-					<assertions>
-						<enable/>
-					</assertions>
-				</java>
+	<target name="test" depends="compile" description="Runs our JUnit tests with an Ant hack">
+		<java classname="tests.RunAllTests" fork="yes" dir="${java.dir}">
+			<classpath>
+				<path refid="java.lib.classpath"/>
+			</classpath>
+			<classpath>
+				<pathelement location="${java.build}"/>
+				<pathelement location="${java.build.test}"/>
+			</classpath>
+			<assertions>
+				<enable/>
+			</assertions>
+		</java>
 	</target>
-    
+
     <target name="make-java-doc" description="Generate the Java docs">
         <echo> Making Java documentation </echo>
         <delete dir="${javadoc.dir}"/>
@@ -148,6 +159,12 @@
 		</javac>
 	</target>
 	
+	<target name="compile-test" depends="compile" description="compile the test code " >
+			<javac srcdir="${java.test}" destdir="${java.build}" debug="true" includeantruntime="true">
+				<classpath refid="java.test.classpath" />
+			</javac>
+		</target>
+	
 	<target name="package" depends="compile" description="package the jar file" >
 		<mkdir dir="${java.dist}/lib"/>
 		<copy todir="${java.dist}/lib">
@@ -200,4 +217,5 @@
     </target>
   
 </project>
+
 

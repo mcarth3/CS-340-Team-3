@@ -6,7 +6,7 @@ import poller.InvalidMockProxyException;
 import poller.ServerPoller;
 import proxy.MockProxy;
 
-public class ServerPollerTest {
+public class serverpollertest {
 	@Test
 	public void test() {
 		try {
