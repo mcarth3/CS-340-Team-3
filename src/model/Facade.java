@@ -31,7 +31,11 @@ public class Facade {
     	theGame = newGame;
 
     }
-    /**
+    public Facade() {
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
      * function to check if a known player can buy a settlement and put it in a known location
      * @pre: give username of Player in the Game and VertexLocation of the location where you want to check if a settlement can be built there
      * @post: function checks both person's resources and map's settlements and returns whether or not this particular player can build a settlement at the given location
