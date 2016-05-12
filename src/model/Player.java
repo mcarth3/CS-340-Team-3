@@ -8,6 +8,10 @@ import shared.locations.VertexLocation;
 
 import java.util.ArrayList;
 
+import model.Port;
+import model.bank.DevCardList;
+import model.bank.ResourceList;
+
 /**
  * The class in the model containing all the necessary info of a Player (e.g. username, resource cards, buildings)
  * Created by Jesse on 5/2/2016.
@@ -19,6 +23,7 @@ public class Player {
     private String password;
     
     //need from server 
+    int settlements;//how many settlements the player has left to play
     public String color;
     public String name;
     public Integer id;
@@ -27,7 +32,14 @@ public class Player {
     public int cities;
     public int playerIndex;
     public int playerID;
-
+    //cards, resources, etc
+    int monuments;
+    int soldiers;
+    DevCardList newDevCards;
+    DevCardList oldDevCards;
+    boolean playedDevCard;
+    ResourceList resources;
+    int victoryPoints;
 
 
     private ArrayList<ResourceCard> resourceCards;
@@ -37,6 +49,10 @@ public class Player {
     private ArrayList<Road> roadArrayList;
     private ArrayList<City> cityArrayList;
     //private ArrayList<Buildings> personBuildings;
+    
+    final int MAX_CITIES = 4;
+    final int MAX_SETTLEMENTS = 5;
+    final int MAX_ROADS = 15;
 
 
     public Player(){}
@@ -135,8 +151,16 @@ public class Player {
         return searchSpecialCards("largestArmy");
     }
 
+    private boolean checkSufficientResources(ResourceList resourcesRequirements) {
+        if (resources.getBrick() >= resourcesRequirements.getBrick() && resources.getWood() >= resourcesRequirements.getWood()
+                && resources.getOre() >= resourcesRequirements.getOre() && resources.getSheep() >= resourcesRequirements.getSheep()
+                && resources.getWheat() >= resourcesRequirements.getWheat()) {
+            return true;
+        }
+        return false;
+    }
 
-
+ 
 
 
     /**
@@ -160,12 +184,168 @@ public class Player {
     }
 
 
+    public boolean canBuildRoad() {
+        if (resources.getBrick() > 0 && resources.getWood() > 0) {
+            return true;
+        }
+        return false;
+    }
+    public boolean canBuildSettlement() {
+        if (settlements > 0 && resources.getBrick() > 0 && resources.getWood() > 0 && resources.getSheep() > 0 && resources.getWheat() > 0) {
+            return true;
+        }
+        return false;
+    }
+    /**
+     * Checks to see if building a city is a legal move for the player
+     *
+     * @return boolean whether or not the player can build a city
+     */
+    public boolean canBuildCity() {
+        if (resources.getOre() > 2 && resources.getWheat() > 1 && settlements < MAX_SETTLEMENTS && cities > 0) {
+            return true;
+        }
+        return false;
+    }
 
+    /**
+     * Checks to see if trading resource cards with another player is a legal move for the player
+     *
+     * @return boolean whether or not the player can trade with another player
+     */
+    public boolean canOfferTrade() {
+        if ((resources.getBrick() + resources.getWood() + resources.getOre() + resources.getSheep() + resources.getWheat()) > 0) {
+            return true;
+        }
+        return false;
+    }
+    /**
+     * Checks to see accepting a trade request is a legal move for the player
+     *
+     * @return boolean whether or not the player can accept a trade offer from another player
+     */
+    public boolean canAcceptTrade(ResourceList resourcesRequirements) {
+        return checkSufficientResources(resourcesRequirements);
+    }
+    
+    /**
+     * uses Monopoly
+     *
+     * @return boolean whether or not the player played a monopoly
+     */
+    public void playMonopoly() {
+        oldDevCards.setMonopoly(oldDevCards.getMonopoly() - 1);
+    }
+    /**
+     * Checks to see if Montoply is a legal move for the player
+     *
+     * @return boolean whether or not the player can monopoly
+     */
+    public boolean canMonopoly() {
+        if (oldDevCards.getMonopoly() > 0) {
+            return true;
+        }
+        return false;
+    }
+    /**
+     * Checks to see if buying a Developement Card is a legal move for the player
+     *
+     * @return boolean whether or not the player can buy a Developement card
+     */
+    public boolean canBuyDevcard() {
+        if (resources.getOre() < 1 || resources.getWheat() < 1 || resources.getSheep() < 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
+    public boolean canDiscardCards(ResourceList resourcesRequirements) {
+        return checkSufficientResources(resourcesRequirements);
+    }
+    /**
+     * Checks if the player has the resources available to initiate an offer
+     * with the bank for a maritime trade
+     * @param ports the ports that the player owns
+     * @return boolean whether or not the player can trade with the bank
+     */
+    public boolean canMaritimeTrade(ArrayList<Port> ports)
+    {   //4 is the default that can be initiated at any time.
+        int ratio = 4;
 
+        //check if ports offer a lower ratio
+        for(Port port: ports)
+        {
+            if(port.getRatio() < ratio)
+            {
+                ratio = port.getRatio();
+            }
+        }
 
+        boolean canTrade = false;
+        if(resources.getBrick() >= ratio)
+        {
+            canTrade = true;
+        }
+        else if(resources.getSheep() >= ratio)
+        {
+            canTrade = true;
+        }
+        else if (resources.getOre() >= ratio)
+        {
+            canTrade = true;
+        }
+        else if(resources.getWheat() >= ratio)
+        {
+            canTrade = true;
+        }
+        else if(resources.getWood() >= ratio)
+        {
+            canTrade = true;
+        }
+        return canTrade;
+    }
+    public void depleteResource(ResourceType resource) {
+        //switch statement to set the resource that matches the resource type to 0
+        switch (resource) {
+            case WOOD:
+                resources.setWood(0);
+                break;
+            case BRICK:
+                resources.setBrick(0);
+                break;
+            case SHEEP:
+                resources.setSheep(0);
+                break;
+            case WHEAT:
+                resources.setWheat(0);
+                break;
+            case ORE:
+                resources.setOre(0);
+                break;
+        }
+    }
+    public void addResource(ResourceType resource, int numberOfResource) {
+        //switch statement for each resource type adding them to the resource list
+        switch (resource) {
+            case WOOD:
+                resources.setWood(resources.getWood() + numberOfResource);
+                break;
+            case BRICK:
+                resources.setBrick(resources.getBrick() + numberOfResource);
+                break;
+            case SHEEP:
+                resources.setSheep(resources.getSheep() + numberOfResource);
+                break;
+            case WHEAT:
+                resources.setWheat(resources.getWheat() + numberOfResource);
+                break;
+            case ORE:
+                resources.setOre(resources.getOre() + numberOfResource);
+                break;
+        }
 
-
+    }
 
     //**********************Setters/Getters:
 
@@ -233,4 +413,70 @@ public class Player {
     public void setCityArrayList(ArrayList<City> cityArrayList) {
         this.cityArrayList = cityArrayList;
     }
+    public ResourceList getResources() {
+        return resources;
+    }
+
+    public void setResources(ResourceList resources) {
+        this.resources = resources;
+    }
+    /**
+     * If the player has more then 7 cards when the robber is moved half the cards must be discarded
+     *
+     * @return boolean whether or not it is true
+     */
+    public boolean canRobberDiscard() {
+        if ((resources.getBrick() + resources.getWood() + resources.getOre() + resources.getSheep() + resources.getWheat()) > 7) {
+            return true;
+        }
+        return false;
+    }
+    public boolean canRob() {
+        return false;
+    }
+    /**
+     * Checks to see if placing a Soldier card is a legal move for the player
+     *
+     * @return boolean whether or not the player can place the Soldier card
+     */
+    public boolean canPlaceSoldier() {
+        if (oldDevCards.getSoldier() > 0) {
+            return true;
+        }
+        return false;
+    }
+    /**
+     * Checks to see if placing a Year Of Plenty card is a legal move for the player
+     *
+     * @return boolean whether or not the player can play the Year of Plenty card
+     */
+    public boolean canYearOfPlenty() {
+        if (oldDevCards.getYearOfPlenty() > 0) {
+            return true;
+        }
+        return false;
+    }
+    /**
+     * Checks to see if building a road in a specific place is a legal move for the player
+     *
+     * @return boolean whether or not the player can road building
+     */
+    public boolean canPlayRoadBuilding() {
+        if (oldDevCards.getRoadBuilding() > 0) {
+            return true;
+        }
+        return false;
+    }
+    /**
+     * Checks to see if placing a Monument Card(?) is a legal move for the player
+     *
+     * @return boolean whether or not the player can place a monument
+     */
+    public boolean canPlaceMonument() {
+        if (victoryPoints >= 10) {
+            return true;
+        }
+        return false;
+    }
+
 }
