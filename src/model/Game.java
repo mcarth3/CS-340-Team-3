@@ -215,8 +215,6 @@ public class Game extends AbstractModelPartition {
 
 
 
-
-
     /**
      * Checks to see if placing a city is a legal move for the player
      *
