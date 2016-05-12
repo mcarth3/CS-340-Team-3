@@ -42,6 +42,14 @@ public class RealProxy implements IServer{
 //	discard cards 
 	
 	
+	public RealProxy(Game game) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public RealProxy() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String userLogin(String username, String password) {
 		//// Implement this one 

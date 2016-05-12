@@ -59,7 +59,7 @@ public class Game {
     public void addPlayer(String username, String password)
     {
         Player newPlayer = new Player();
-        newPlayer.setUsername(username);
+        newPlayer.setName(username);
         newPlayer.setPassword(password);
         players.add(newPlayer);
 
@@ -69,7 +69,7 @@ public class Game {
     public Player findPlayer(String username) throws ObjectNotFoundException {
         for(int i=0; i < players.size(); i++)
         {
-            if(username.equals(players.get(i).getUsername()))
+            if(username.equals(players.get(i).getName()))
             {
                 return players.get(i);
             }
@@ -82,6 +82,10 @@ public class Game {
 		// TODO Auto-generated constructor stub
 	}
 
+
+	public Game(Map m, Bank b, ArrayList<Player> ps, TurnTracker tt, TradeOffer tradeOffer) {
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
      * This will be called after a player completes their turn. The main data will then
@@ -325,6 +329,20 @@ public class Game {
         if (pid != turnTracker.getCurrentPlayer())
             return false;
         return players.get(pid).canPlaceMonument();
+    }
+    public TurnTracker getTt() {
+        return turnTracker;
+    }
+
+    public void setTt(TurnTracker tt) {
+        this.turnTracker = tt;
+    }
+    public ArrayList<Player> getPlayers() {
+        return players;
+    }
+
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
     }
     
 
