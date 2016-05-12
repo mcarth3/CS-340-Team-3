@@ -9,7 +9,9 @@ import shared.definitions.DevCardType;
 import shared.definitions.ResourceType;
 import shared.locations.VertexLocation;
 import model.bank.InsufficientResourcesException;
-
+/**
+ * @author Jesse R
+ */
 public class Player extends AbstractModelPartition {
 
     private String username;

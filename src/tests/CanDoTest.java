@@ -11,7 +11,9 @@ import model.*;
 import proxy.*;
 import shared.definitions.ResourceType;
 import shared.locations.*;
-
+/**
+ * @author Jesse McArthur
+ */
 public class CanDoTest
 {
     Facade f;

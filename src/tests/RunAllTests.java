@@ -15,9 +15,9 @@ public class RunAllTests {
 	public static void main(String[] args) {
 		String[] testClasses = new String[] {
 				//"tests.ServerTests",
-				"tests.ModelJSONInitializationTest",
+				//"tests.ModelJSONInitializationTest",
 				//"tests.ServerPollerTest",
-				//"tests.CanDoTest"
+				"tests.CanDoTest"
 		};
 		org.junit.runner.JUnitCore.main(testClasses);
 	}
