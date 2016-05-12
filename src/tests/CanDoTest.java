@@ -108,15 +108,15 @@ public class CanDoTest
     public void testCanBuildSettlement()
     {
         initializeFull();
-        TurnTracker tt = f.gettheGameMap().getTt();
+        TurnTracker tt = f.gettheGame().getTt();
         tt.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(tt);
+        f.gettheGame().setTt(tt);
 
         assert(f.canBuildSettlement(1));
         assert(!f.canBuildSettlement(0));
 
         tt.setCurrentPlayer(0);
-        f.gettheGameMap().setTt(tt);
+        f.gettheGame().setTt(tt);
         assert(!f.canBuildSettlement(0));
 
         System.out.println("Can Build Settlement - can Do, Not turn, Insufficent Materials");
@@ -126,15 +126,15 @@ public class CanDoTest
     public void testCanBuildRoad()
     {
         initializeFull();
-        TurnTracker tt = f.gettheGameMap().getTt();
+        TurnTracker tt = f.gettheGame().getTt();
         tt.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(tt);
+        f.gettheGame().setTt(tt);
 
         assert(f.canBuildRoad(1));
         assert(!f.canBuildRoad(0));
 
         tt.setCurrentPlayer(0);
-        f.gettheGameMap().setTt(tt);
+        f.gettheGame().setTt(tt);
         assert(!f.canBuildRoad(0));
 
         System.out.println("Can Build Road - can Do, Not turn, Insufficent Materials");
@@ -145,15 +145,15 @@ public class CanDoTest
     public void testCanBuildCity()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGameMap().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTt();
         turnTracker.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().setTt(turnTracker);
 
         assert(f.canBuildCity(1));
         assert(!f.canBuildCity(0));
 
         turnTracker.setCurrentPlayer(0);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().setTt(turnTracker);
         assert(!f.canBuildCity(0));
 
         System.out.println("Can Build City - can Do, Not turn, Insufficient Materials");
@@ -165,17 +165,17 @@ public class CanDoTest
     public void testCanDiscardCards()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGameMap().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTt();
         ResourceList resourceList = new ResourceList(1,5,2,6,4);
         turnTracker.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().setTt(turnTracker);
         assert(f.canDiscardCards(1,resourceList));
         assert(!f.canDiscardCards(0,resourceList));
 
         turnTracker.setCurrentPlayer(0);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().setTt(turnTracker);
         ResourceList emptyList = new ResourceList(0,0,0,0,0);
-        f.gettheGameMap().getPlayers().get(0).setResources(emptyList);
+        f.gettheGame().getPlayers().get(0).setResources(emptyList);
         assert(!f.canDiscardCards(0,resourceList));
 
     }
@@ -185,9 +185,9 @@ public class CanDoTest
     public void testCanRollNumber()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGameMap().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTt();
         turnTracker.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().setTt(turnTracker);
 
         assert (f.canRoll(1));
         assert (!f.canRoll(0));
@@ -221,9 +221,9 @@ public class CanDoTest
         assert(!f.canFinishTurn(3));
         
         initializeFull();
-        TurnTracker turnTracker = f.gettheGameMap().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTt();
         turnTracker.updateStatus("finish");
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().setTt(turnTracker);
         //changes player 3's status to finish and allows it to return true
         assert(f.canFinishTurn(3));
     }
@@ -231,17 +231,17 @@ public class CanDoTest
     public void canBuyDevCard()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGameMap().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTt();
         ResourceList resourceList = new ResourceList(1,5,2,6,4);
         turnTracker.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().setTt(turnTracker);
         assert(f.canBuyDevcard(1));
         assert(!f.canBuyDevcard(0));
 
         turnTracker.setCurrentPlayer(0);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().setTt(turnTracker);
         ResourceList emptyList = new ResourceList(0,0,0,0,0);
-        f.gettheGameMap().getPlayers().get(0).setResources(emptyList);
+        f.gettheGame().getPlayers().get(0).setResources(emptyList);
         assert(!f.canBuyDevcard(0));
 
         System.out.println("Can buy DevCard - can Do, Not turn, Insufficient Materials");
@@ -250,16 +250,16 @@ public class CanDoTest
     public void canUseYearOfPlenty()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGameMap().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTt();
         turnTracker.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(turnTracker);
-        f.gettheGameMap().getPlayers().get(1).getOldDevCards().setYearOfPlenty(5);
+        f.gettheGame().setTt(turnTracker);
+        f.gettheGame().getPlayers().get(1).getOldDevCards().setYearOfPlenty(5);
         assert(f.canYearOfPlenty(1));
         assert(!f.canYearOfPlenty(0));
 
-        f.gettheGameMap().getPlayers().get(0).getOldDevCards().setYearOfPlenty(0);
+        f.gettheGame().getPlayers().get(0).getOldDevCards().setYearOfPlenty(0);
         turnTracker.setCurrentPlayer(0);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().setTt(turnTracker);
         assert(!f.canYearOfPlenty(0));
 
         System.out.println("Can use YearOfPlenty - can Do, Not turn, Insufficient Materials");
@@ -268,16 +268,16 @@ public class CanDoTest
     public void canUseRoadBuilding()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGameMap().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTt();
         turnTracker.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(turnTracker);
-        f.gettheGameMap().getPlayers().get(1).getOldDevCards().setRoadBuilding(5);
+        f.gettheGame().setTt(turnTracker);
+        f.gettheGame().getPlayers().get(1).getOldDevCards().setRoadBuilding(5);
         assert(f.canRoadBuilding(1));
         assert(!f.canRoadBuilding(0));
 
         turnTracker.setCurrentPlayer(0);
-        f.gettheGameMap().getPlayers().get(0).getOldDevCards().setRoadBuilding(0);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().getPlayers().get(0).getOldDevCards().setRoadBuilding(0);
+        f.gettheGame().setTt(turnTracker);
         assert(!f.canRoadBuilding(0));
 
         System.out.println("Can use RoadBuilding card - can Do, Not turn, Insufficient Materials");
@@ -286,16 +286,16 @@ public class CanDoTest
     public void canUseSoldier()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGameMap().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTt();
         turnTracker.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(turnTracker);
-        f.gettheGameMap().getPlayers().get(1).getOldDevCards().setSoldier(5);
+        f.gettheGame().setTt(turnTracker);
+        f.gettheGame().getPlayers().get(1).getOldDevCards().setSoldier(5);
         assert(f.canPlaySoldier(1));
         assert(!f.canPlaySoldier(0));
 
         turnTracker.setCurrentPlayer(0);
-        f.gettheGameMap().getPlayers().get(0).getOldDevCards().setSoldier(0);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().getPlayers().get(0).getOldDevCards().setSoldier(0);
+        f.gettheGame().setTt(turnTracker);
         assert(!f.canPlaySoldier(0));
 
         System.out.println("Can use Soldier card - can Do, Not turn, Insufficient Materials");
@@ -304,16 +304,16 @@ public class CanDoTest
     public void canUseMonopoly()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGameMap().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTt();
         turnTracker.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(turnTracker);
-        f.gettheGameMap().getPlayers().get(1).getOldDevCards().setMonopoly(5);
+        f.gettheGame().setTt(turnTracker);
+        f.gettheGame().getPlayers().get(1).getOldDevCards().setMonopoly(5);
         assert(f.canMonopoly(1));
         assert(!f.canMonopoly(0));
 
         turnTracker.setCurrentPlayer(0);
-        f.gettheGameMap().getPlayers().get(0).getOldDevCards().setMonopoly(0);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().getPlayers().get(0).getOldDevCards().setMonopoly(0);
+        f.gettheGame().setTt(turnTracker);
         assert(!f.canMonopoly(0));
 
         System.out.println("Can use Montopoly card - can Do, Not turn, Insufficient Materials");
@@ -322,16 +322,16 @@ public class CanDoTest
     public void canUseMonument()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGameMap().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTt();
         turnTracker.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(turnTracker);
-        f.gettheGameMap().getPlayers().get(1).getOldDevCards().setMonument(5);
+        f.gettheGame().setTt(turnTracker);
+        f.gettheGame().getPlayers().get(1).getOldDevCards().setMonument(5);
         assert(f.canUseMonument(1));
         assert(!f.canUseMonument(0));
 
         turnTracker.setCurrentPlayer(0);
-        f.gettheGameMap().getPlayers().get(0).getOldDevCards().setMonument(0);
-        f.gettheGameMap().setTt(turnTracker);
+        f.gettheGame().getPlayers().get(0).getOldDevCards().setMonument(0);
+        f.gettheGame().setTt(turnTracker);
         assert(!f.canUseMonument(0));
 
         System.out.println("Can use Soldier card - can Do, Not turn, Insufficient Materials");
@@ -340,9 +340,9 @@ public class CanDoTest
     public void canMoveRobber()
     {
         initializeFull();
-        TurnTracker tt = f.gettheGameMap().getTt();
+        TurnTracker tt = f.gettheGame().getTt();
         tt.setCurrentPlayer(1);
-        f.gettheGameMap().setTt(tt);
+        f.gettheGame().setTt(tt);
         
         assert(!f.canMoveRobber(new HexLocation(-1,-1)));
         assert(!f.canMoveRobber(new HexLocation(3,4)));
