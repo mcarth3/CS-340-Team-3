@@ -1,12 +1,13 @@
 package model;
 
+import poller.modeljsonparser.AbstractModelPartition;
 import shared.definitions.DevCardType;
 
 /**
  * Cards including type roadBuilding, yearOfPlenty, and monopoly, victoryPoint, or Knight
  * Created by Jesse on 5/2/2016.
  */
-public class DevelopmentCard {
+public class DevelopmentCard extends AbstractModelPartition {
 
     private DevCardType type;
 

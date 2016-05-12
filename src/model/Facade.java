@@ -9,10 +9,11 @@ import javax.annotation.Resource;
 
 import model.*;
 import model.bank.ResourceList;
+import poller.modeljsonparser.AbstractModelPartition;
 import proxy.*;
 import shared.locations.*;
 
-public class Facade {
+public class Facade extends AbstractModelPartition {
     Game theGame;
     IServer proxy;
     ArrayList<ResourceList>discardedcards;

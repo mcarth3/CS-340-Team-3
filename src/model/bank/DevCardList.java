@@ -4,11 +4,13 @@ package model.bank;
 import java.util.ArrayList;
 import java.util.Random;
 
+import poller.modeljsonparser.AbstractModelPartition;
+
 /**
  * @author Jesse McArthur
  */
 
-public class DevCardList {
+public class DevCardList extends AbstractModelPartition {
 
     private int monopoly;
     private int monument;

@@ -1,8 +1,11 @@
 package model.bank;
+
+import poller.modeljsonparser.AbstractModelPartition;
+
 /**
  * @author Jesse McArthur
  */
-public class Bank {
+public class Bank extends AbstractModelPartition {
     ResourceList resources;
     DevCardList dcl;
 

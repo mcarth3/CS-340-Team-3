@@ -1,12 +1,13 @@
 package model;
 
 import model.bank.ResourceList;
+import poller.modeljsonparser.AbstractModelPartition;
 
 /**
  * @author Jesse McArthur
  */
 
-public class TradeOffer {
+public class TradeOffer extends AbstractModelPartition {
 	  
 	  //The index of the person offering the trade
 	  int sender;

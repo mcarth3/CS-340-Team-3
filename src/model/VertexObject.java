@@ -1,5 +1,6 @@
 package model;
 
+import poller.modeljsonparser.AbstractModelPartition;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexDirection;
@@ -7,7 +8,7 @@ import shared.locations.VertexLocation;
 /**
  * @author Jesse McArthur
  */
-public abstract class VertexObject{
+public abstract class VertexObject extends AbstractModelPartition {
 	  int owner;
 	  VertexLocation vertexLocation;
 

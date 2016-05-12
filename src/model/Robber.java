@@ -1,10 +1,11 @@
 package model;
 
+import poller.modeljsonparser.AbstractModelPartition;
 import shared.locations.HexLocation;
 /**Robber is a game piece contained in the game. Affects players on each turn. 
  * @author Jesse McArthur
  */
-public class Robber {
+public class Robber extends AbstractModelPartition {
     HexLocation hl;
 
     public Robber() {

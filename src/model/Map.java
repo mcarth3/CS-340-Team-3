@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.TreeMap;
 
 import model.bank.ResourceList;
+import poller.modeljsonparser.AbstractModelPartition;
 import proxy.RealProxy;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
@@ -15,8 +16,7 @@ import shared.locations.*;
  * @author Jesse McArthur
  */
 
-public class Map
-{
+public class Map extends AbstractModelPartition {
 	TreeMap<HexLocation,Hex> hexes;
 	ArrayList<Port> ports;
 	ArrayList<Road> roads;

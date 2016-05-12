@@ -1,10 +1,12 @@
 package model;
 import java.util.Random;
+
+import poller.modeljsonparser.AbstractModelPartition;
 /**
  * @author Jesse McArthur
  */
 
-public class Dice {
+public class Dice extends AbstractModelPartition {
   
   int diceRoll;//2-12
   

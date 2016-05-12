@@ -1,9 +1,11 @@
 package model.clientModel;
 
+import poller.modeljsonparser.AbstractModelPartition;
+
 /**
  * Created by Jesse on 5/11/2016.
  */
-public class MessageLine {
+public class MessageLine extends AbstractModelPartition {
     private String message;
     private String source;
 

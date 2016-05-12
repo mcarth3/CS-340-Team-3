@@ -35,8 +35,8 @@ public class ClassToJSON {
 		for (Field field : fields) {
 
 			Object val = getFieldValue(field, classtoconvert);
-			System.out.println(val);
-			if (val == null || field.getModifiers() != Modifier.PRIVATE) {
+			System.out.println(field.getName() + val);
+			if (val == null) {
 				continue;
 			}
 

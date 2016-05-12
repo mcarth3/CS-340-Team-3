@@ -1,5 +1,6 @@
 package model;
 
+import poller.modeljsonparser.AbstractModelPartition;
 import shared.definitions.PortType;
 import shared.locations.EdgeDirection;
 import shared.locations.HexLocation;
@@ -7,7 +8,7 @@ import shared.locations.VertexDirection;
 /**Represents a Port on the port, which contains a specific ratio on a specified location on the board. 
  * @author Jesse McArthur
  */
-public class Port {
+public class Port extends AbstractModelPartition {
 
     HexLocation location;
     String resource;

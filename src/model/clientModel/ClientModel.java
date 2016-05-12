@@ -5,13 +5,14 @@ import model.Player;
 import model.TradeOffer;
 import model.TurnTracker;
 import model.bank.ResourceList;
+import poller.modeljsonparser.AbstractModelPartition;
 
 import java.util.ArrayList;
 
 /**
  * Created by Jesse on 5/11/2016.
  */
-public class ClientModel {
+public class ClientModel extends AbstractModelPartition {
 
     private ResourceList bank;
     private MessageList chat;

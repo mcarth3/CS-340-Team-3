@@ -18,7 +18,7 @@ public class ModelJSONInitializationTest {
 	public void test() {
 
 		try {
-			Game testgame = new Game();
+			Game testgame = new Game(1);
 			System.out.println("Testing Model Creation From JSON");
 			//converting the model into JSON
 			System.out.println(ClassToJSON.converttojsonstring(testgame));

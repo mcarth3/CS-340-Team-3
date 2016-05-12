@@ -2,6 +2,7 @@ package model;
 import java.util.ArrayList;
 import model.bank.DevCardList;
 import model.bank.ResourceList;
+import poller.modeljsonparser.AbstractModelPartition;
 import model.Port;
 import model.TradeOffer;
 import shared.definitions.DevCardType;
@@ -9,7 +10,7 @@ import shared.definitions.ResourceType;
 import shared.locations.VertexLocation;
 import model.bank.InsufficientResourcesException;
 
-public class Player {
+public class Player extends AbstractModelPartition {
 
     private String username;
     private String password;

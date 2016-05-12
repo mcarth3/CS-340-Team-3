@@ -14,11 +14,10 @@ public class RunAllTests {
 
 	public static void main(String[] args) {
 		String[] testClasses = new String[] {
-				"tests.ServerTests",
+				//"tests.ServerTests",
 				"tests.ModelJSONInitializationTest",
-				"tests.ServerPollerTest",
-				"tests.CanDoTest",
-				"ModelJSONInitializationTest"
+				//"tests.ServerPollerTest",
+				//"tests.CanDoTest"
 		};
 		org.junit.runner.JUnitCore.main(testClasses);
 	}

@@ -1,8 +1,11 @@
 package model;
+
+import poller.modeljsonparser.AbstractModelPartition;
+
 /**
  * @author Jesse McArthur
  */
-public class TurnTracker {
+public class TurnTracker extends AbstractModelPartition {
     int currPlayer;
     String status;
     int longestRoad = -1;

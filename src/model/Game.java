@@ -9,6 +9,7 @@ import model.TradeOffer;
 import model.Map;
 import model.Player;
 import model.bank.ResourceList;
+import poller.modeljsonparser.AbstractModelPartition;
 import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
@@ -19,7 +20,7 @@ import model.bank.Bank;
 /**
  * Created by Jesse on 5/2/2016.
  */
-public class Game {
+public class Game extends AbstractModelPartition {
 
 	//need from server
 	private TradeOffer tradeO;

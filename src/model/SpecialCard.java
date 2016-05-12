@@ -1,10 +1,12 @@
 package model;
 
+import poller.modeljsonparser.AbstractModelPartition;
+
 /**
  * Special Cards consisting of longestRoad OR largestArmy
  * Created by Jesse on 5/2/2016.
  */
-public class SpecialCard {
+public class SpecialCard extends AbstractModelPartition {
 
     private String type;
     /**

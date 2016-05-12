@@ -1,5 +1,6 @@
 package model;
 
+import poller.modeljsonparser.AbstractModelPartition;
 import shared.definitions.HexType;
 import shared.locations.HexLocation;
 /**
@@ -8,7 +9,7 @@ import shared.locations.HexLocation;
  * @author Jesse McArthur
  *	
  */
-public class Hex {
+public class Hex extends AbstractModelPartition {
   String resource;
   int chit;
   HexLocation hl;

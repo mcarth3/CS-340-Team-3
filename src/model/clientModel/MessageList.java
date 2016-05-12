@@ -2,10 +2,12 @@ package model.clientModel;
 
 import java.util.ArrayList;
 
+import poller.modeljsonparser.AbstractModelPartition;
+
 /**
  * Created by Jesse on 5/11/2016.
  */
-public class MessageList {
+public class MessageList extends AbstractModelPartition {
     private ArrayList<MessageLine> lines;
    
     public void MessageList(){

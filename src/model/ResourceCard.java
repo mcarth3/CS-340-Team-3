@@ -5,9 +5,10 @@
 
 package model;
 
+import poller.modeljsonparser.AbstractModelPartition;
 import shared.definitions.ResourceType;
 
-public class ResourceCard {
+public class ResourceCard extends AbstractModelPartition {
 
     private ResourceType type;
 

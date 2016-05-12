@@ -5,7 +5,9 @@ package model.bank;
 
 import javax.annotation.Resource;
 
-public class ResourceList {
+import poller.modeljsonparser.AbstractModelPartition;
+
+public class ResourceList extends AbstractModelPartition {
 
     int numOfBrick;
     int numOfOre;
