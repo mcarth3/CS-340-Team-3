@@ -4,6 +4,10 @@ package tests;
  */
 import static org.junit.Assert.fail;
 
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.lang.reflect.InvocationTargetException;
+
 import org.junit.Test;
 
 import model.Game;
@@ -17,18 +21,38 @@ public class ModelJSONInitializationTest {
 	@Test
 	public void test() {
 
+		Game testgame = new Game(1);
+		PrintWriter out = null;
 		try {
-			Game testgame = new Game(1);
-			System.out.println("Testing Model Creation From JSON");
-			//converting the model into JSON
-			System.out.println(ClassToJSON.converttojsonstring(testgame));
-			//using mock proxy to retrieve model
-			//MockProxy NewMockProxy= MockProxy.getSingleton();
-			//String stringtoconvert = NewMockProxy.gameModel(1);
-			//testgame = ModelParser.parse(stringtoconvert, Game.class);
-
-		} catch (Exception e) {
-			fail("ServerPoller getSingleton was null");
+			out = new PrintWriter("testmodel.json");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
 		}
+		System.out.println("Testing Model Creation From JSON");
+		System.out.println("converting the model into JSON");
+		out.println(ClassToJSON.converttojsonstring(testgame));
+		out.close();
+		
+		System.out.println("the model's title is '" + testgame.title + "'");
+		
+		System.out.println("using mock proxy to retrieve model");
+		MockProxy NewMockProxy= MockProxy.getSingleton();
+		String stringtoconvert = NewMockProxy.gameModel(1);
+		
+		System.out.println("converting from JSON to the model");
+		try {
+			testgame = ModelParser.parse(stringtoconvert, Game.class);
+		} catch (InstantiationException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println("the model's title is '" + testgame.title + "'");
+
 	}
 }

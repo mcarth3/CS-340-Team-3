@@ -39,7 +39,7 @@ public class Game extends AbstractModelPartition {
     public Game(int numberOfPlayers)
     {
     	tradeO = new TradeOffer();
-    	title = "default game";
+    	title = "defaultgame";
     	id = 0;
     	players = new ArrayList<Player>(numberOfPlayers);
     	modelversion = 0;

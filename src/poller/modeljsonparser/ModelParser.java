@@ -26,6 +26,7 @@ public class ModelParser {
 	 */
 	public static <T> T parse(String jsonstring, Class<T> Tclass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		JsonElement element = parser.parse(jsonstring);
+		System.out.println("parsing");
 		return parseFromObj(element, Tclass);
 	}
 
@@ -37,6 +38,8 @@ public class ModelParser {
 	 * @post returns a model filled with elements from given json
 	 */
 	private static <T> T parseFromObj(JsonElement element, Class<T> Tclass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+	
+		
 		if (element.isJsonPrimitive()) { //debugging for classes using ints isn't going too well, so I cast to Integer
 			JsonPrimitive primitive = element.getAsJsonPrimitive();
 			if (primitive.isNumber()) {

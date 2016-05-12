@@ -14,10 +14,10 @@ public class RunAllTests {
 
 	public static void main(String[] args) {
 		String[] testClasses = new String[] {
-				//"tests.ServerTests",
-				"tests.ModelJSONInitializationTest",
-				//"tests.ServerPollerTest",
-				//"tests.CanDoTest"
+				"tests.ServerTests",
+				"tests.ModelJSONInitializationTest", //if it wasn't for a GSON MalformedJsonException, the program could convert classes into json and back
+				"tests.ServerPollerTest",
+				"tests.CanDoTest"
 		};
 		org.junit.runner.JUnitCore.main(testClasses);
 	}

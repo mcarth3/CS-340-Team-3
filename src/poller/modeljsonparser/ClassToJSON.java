@@ -35,7 +35,7 @@ public class ClassToJSON {
 		for (Field field : fields) {
 
 			Object val = getFieldValue(field, classtoconvert);
-			System.out.println(field.getName() + val);
+			//System.out.println(field.getName() + val);
 			if (val == null) {
 				continue;
 			}
@@ -66,9 +66,13 @@ public class ClassToJSON {
 			} else if (val.getClass().isEnum()) {
 				sb.append(QUOTE).append(val.toString())
 				.append(QUOTE);
-			} else {
+			} else if (val.getClass().isPrimitive()) {
+				sb.append(QUOTE).append(val.toString())
+				.append(QUOTE);
+			}else{
 				sb.append(val.toString());
 			}
+			//sb.append('\n');
 		}
 
 		return sb.append(CLOSED_BRACE).toString();
