@@ -8,6 +8,7 @@ public class Robber {
     HexLocation hl;
 
     public Robber() {
+    	hl = new HexLocation(0, 0);
     }
 
     

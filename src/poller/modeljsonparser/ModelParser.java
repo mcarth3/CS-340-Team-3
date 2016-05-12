@@ -1,4 +1,7 @@
 package poller.modeljsonparser;
+/**
+ * @author Mike Towne
+ */
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 import com.google.gson.JsonArray;

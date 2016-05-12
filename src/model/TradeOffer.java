@@ -21,6 +21,8 @@ public class TradeOffer {
 	  
 	    public TradeOffer()
 	  {
+	    sender = 0;
+	    reciever = 0;
 	    offer = null;
 	  }
 	  

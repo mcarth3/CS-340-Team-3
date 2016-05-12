@@ -1,5 +1,7 @@
 package poller;
-
+/**
+ * @author Mike Towne
+ */
 import java.lang.reflect.InvocationTargetException;
 import java.util.Timer;
 import java.util.TimerTask;

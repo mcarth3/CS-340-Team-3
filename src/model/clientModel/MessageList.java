@@ -7,7 +7,10 @@ import java.util.ArrayList;
  */
 public class MessageList {
     private ArrayList<MessageLine> lines;
-
+   
+    public void MessageList(){
+    	lines = new ArrayList<MessageLine>();
+    }
 
     /**
      * GETTERS & SETTERS

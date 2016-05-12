@@ -7,6 +7,10 @@ public class MessageLine {
     private String message;
     private String source;
 
+    public void MessageLine(){
+    	message ="default message string";
+    	source ="default source string";
+    }
     /**
     GETTERS & SETTERS:
      */

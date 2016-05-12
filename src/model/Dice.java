@@ -7,6 +7,13 @@ import java.util.Random;
 public class Dice {
   
   int diceRoll;//2-12
+  
+  
+  
+  public void Dice(){
+	  diceRoll = 1;
+  }
+  
   /**
    * @pre 	Starts with a blank die
    * @post chooses a random number

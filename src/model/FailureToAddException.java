@@ -6,6 +6,11 @@ package model;
 public class FailureToAddException extends Exception {
 
     String message;
+    public void FailureToAddException(){
+    	message = "message";
+    }
+    
+    
     public FailureToAddException(String msg)
     {
         message = msg;

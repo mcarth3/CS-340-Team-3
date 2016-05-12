@@ -1,5 +1,7 @@
 package poller.modeljsonparser;
-
+/**
+ * @author Mike Towne
+ */
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;

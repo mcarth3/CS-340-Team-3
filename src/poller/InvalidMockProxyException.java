@@ -1,4 +1,7 @@
 package poller;
+/**
+ * @author Mike Towne
+ */
 public class InvalidMockProxyException extends Exception {
 	
 	/**

@@ -1,4 +1,7 @@
 package poller;
+/**
+ * @author Mike Towne
+ */
 //thrown when polling fails
 public class PollException extends Exception {
 	/**

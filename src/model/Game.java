@@ -37,6 +37,16 @@ public class Game {
     private Map map;
     public Game(int numberOfPlayers)
     {
+    	tradeO = new TradeOffer();
+    	title = "default game";
+    	id = 0;
+    	players = new ArrayList<Player>(numberOfPlayers);
+    	modelversion = 0;
+    	dice= new Dice();
+        theGameMap = new Map();
+        turnTracker = new TurnTracker();
+        map = new Map();
+    	
 
     }
 

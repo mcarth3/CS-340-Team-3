@@ -22,6 +22,18 @@ public class ClientModel {
     private TurnTracker turnTracker;
     private int version;
     private int winner;
+    
+    public void ClientModel(){
+        bank = new ResourceList();
+        chat = new MessageList();
+        log = new MessageList();
+        map = new Map();
+        players = new ArrayList<Player>();
+        tradeOffer = new TradeOffer();
+        turnTracker = new TurnTracker();
+        version = 0;
+        winner = 0;
+    }
 
     /**
      * GETTERS & SETTERS

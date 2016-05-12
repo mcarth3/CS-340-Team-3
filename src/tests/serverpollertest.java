@@ -1,5 +1,7 @@
 package tests;
-
+/**
+ * @author Mike Towne
+ */
 import static org.junit.Assert.*;
 import org.junit.Test;
 import poller.InvalidMockProxyException;

@@ -68,6 +68,32 @@ public class Player {
     	color = c; 
     	name = n;
     	id = i; 
+    	
+    	
+        username= "defaultplayer";
+        password = "default password";
+        id = 0;
+        cities =0;
+        color = "red";
+        discarded = true;
+        monuments = 0;
+        name = "defaultname";
+        newDevCards = new DevCardList();
+        oldDevCards = new DevCardList();
+        playerIndex=0;
+        playedDevCard=true;
+        playerID=0;
+        resources = new ResourceList();
+        roads=0;
+        settlements=0;
+        soldiers=0;
+        victoryPoints=0;
+        resourceCards = new ArrayList<ResourceCard>();
+        developmentCards = new ArrayList<DevelopmentCard>();
+        specialCards = new  ArrayList<SpecialCard>();
+        settlementArrayList = new ArrayList<Settlement>();
+        roadArrayList = new ArrayList<Road>();
+        cityArrayList = new  ArrayList<City>();
     }
     /**
      * @pre: should either be called by the Game or the turnTracker so that a player can take their turn
