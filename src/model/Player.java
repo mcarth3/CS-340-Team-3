@@ -2,6 +2,8 @@ package model;
 
 
 
+import model.bank.DevCardList;
+import model.bank.ResourceList;
 import shared.definitions.DevCardType;
 import shared.definitions.ResourceType;
 import shared.locations.VertexLocation;
@@ -23,23 +25,29 @@ public class Player {
     private String password;
     
     //need from server 
-    int settlements;//how many settlements the player has left to play
-    public String color;
-    public String name;
+
     public Integer id;
 
-    public boolean discarded;
+   /** These are for the clientModel!*/
+
     public int cities;
-    public int playerIndex;
-    public int playerID;
-    //cards, resources, etc
-    int monuments;
-    int soldiers;
-    DevCardList newDevCards;
-    DevCardList oldDevCards;
-    boolean playedDevCard;
-    ResourceList resources;
-    int victoryPoints;
+    private String color;
+    private boolean discarded;
+    private int monuments;
+    private String name;
+    private DevCardList newDevCards;
+    private DevCardList oldDevCards;
+    private int playerIndex;
+    private boolean playedDevCard;
+    private int playerID;
+    private ResourceList resources;
+    private int roads;
+    private int settlements;
+    private int soldiers;
+    private int victoryPoints;
+
+
+
 
 
     private ArrayList<ResourceCard> resourceCards;
@@ -49,7 +57,7 @@ public class Player {
     private ArrayList<Road> roadArrayList;
     private ArrayList<City> cityArrayList;
     //private ArrayList<Buildings> personBuildings;
-    
+
     final int MAX_CITIES = 4;
     final int MAX_SETTLEMENTS = 5;
     final int MAX_ROADS = 15;
@@ -160,7 +168,7 @@ public class Player {
         return false;
     }
 
- 
+
 
 
     /**
@@ -227,7 +235,7 @@ public class Player {
     public boolean canAcceptTrade(ResourceList resourcesRequirements) {
         return checkSufficientResources(resourcesRequirements);
     }
-    
+
     /**
      * uses Monopoly
      *
