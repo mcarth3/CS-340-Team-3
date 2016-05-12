@@ -129,7 +129,7 @@ public class Facade extends AbstractModelPartition {
         return false;
     }
     
-    public Game gettheGameMap() {return theGame;}
+    public Game gettheGame() {return theGame;}
     public void Reinitialize(Game g) {
         theGame = g;
     }
