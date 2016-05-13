@@ -1,32 +1,24 @@
 package tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
+import static org.junit.Assert.*;
 import java.util.ArrayList;
 import javax.annotation.Resource;
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
+import com.google.gson.JsonObject;
 import model.Game;
 import model.Player;
 import poller.InvalidMockProxyException;
 import poller.ServerPoller;
 import proxy.MockProxy;
 import proxy.RealProxy;
-import shared.locations.EdgeDirection;
-import shared.locations.EdgeLocation;
-import shared.locations.HexLocation;
-import shared.locations.VertexLocation;
+import shared.locations.*;
+import states.*;
+
 
 public class ServerTests {
 	
 	RealProxy rp = new RealProxy();
-	MockProxy mp = new MockProxy();
+	MockProxy mp = new MockProxy(); 
 
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
@@ -52,6 +44,18 @@ public class ServerTests {
 	public void teardown() {
 	}
 	
+	
+//	STATE EXAMPLE
+//		State se = State.getInstance();
+//		se.setCurrentState(StateEnum.PLAY);
+//		System.out.println(se.getCurrentState());
+//		se.setCurrentState(StateEnum.LOGIN);
+	
+	
+	@Test
+	public void testEnum(){
+		
+	}
 	
 	// ======== REAL PROXY TESTS =========
 	// NON-MOVE API
@@ -200,7 +204,6 @@ public class ServerTests {
 		// not done yet
 		String result = rp.Road_Building(0, null, null); 		
 		assertTrue(result!=null);
-
 	}
 	@Test 
 	public void MonopolyTest(){
@@ -217,81 +220,6 @@ public class ServerTests {
 		String result = rp.Monument(0);			
 		assertTrue(result!=null);
 	}
-	
-	// ======== MOCK PROXY TESTS =========
-	// NON-MOVE API
-	@Test
-	public void userLoginTestMock() {
-		assertFalse(false);
-		//mp.userRegister("SAM", "sam");
-		//mp.userLogin("SAM", "sam");
-	}
-	@Test
-	public void userRegisterTestMock() {
-		//mp.userRegister("SAM", "sam");
-	}
-	@Test
-	public void gamesListTestMock(){
-		//rp.gamesList();
-	}
-	@Test
-	public void gamesCreateTestMock(){}
-	@Test
-	public void gameJoinTestMock(){}
-	@Test
-	public void gamesSaveTestMock(){}
-	@Test
-	public void gamesLoadTestMock(){}
-	@Test
-	public void gameModelTestMock(){}
-	@Test
-	public void gameResetTestMock(){}
-	@Test
-	public void gameCommandsGetTestMock(){}
-	@Test
-	public void gameCommandsPostTestMock(){}
-	@Test
-	public void gameListAITestMock(){}
-	@Test
-	public void gameAddAITestMock(){}
-	@Test
-	public void utilChangeLogLevelTestMock(){}
-
-	// MOVE API 
-	@Test
-	public void sendChatTestMock(){}
-	@Test
-	public void acceptTradeTestMock(){}
-	@Test 
-	public void discardCardsTestMock(){}
-	@Test 
-	public void rollNumberTestMock(){}
-	@Test 
-	public void buildRoadTestMock(){}
-	@Test 
-	public void buildSettlementTestMock(){}
-	@Test
-	public void buildCityTestMock(){}
-	@Test
-	public void offerTradeTestMock(){}
-	@Test
-	public void maritimeTradeTestMock(){}
-	@Test
-	public void robPlayerTestMock(){}
-	@Test
-	public void finishTurnTestMock(){}
-	@Test 
-	public void buyDevCardTestMock(){}
-	@Test
-	public void SoldierTestMock(){}
-	@Test
-	public void Year_of_PlentyTestMock(){}
-	@Test
-	public void Road_BuildingTestMock(){}
-	@Test 
-	public void MonopolyTestMock(){}
-	@Test 
-	public void MonumentTestMock(){}
 
 	//	assertTrue(true);
 	//	assertFalse(false);

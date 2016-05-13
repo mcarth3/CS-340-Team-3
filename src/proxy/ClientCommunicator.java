@@ -31,15 +31,9 @@ public class ClientCommunicator {
 	        URL u = new URL(URL_PREFIX + command);
 	        c = (HttpURLConnection) u.openConnection();
 	        c.setRequestMethod("POST");
-	        //c.setRequestProperty("Content-length", "0");
-	        //c.setUseCaches(false);
-	        //c.setAllowUserInteraction(false);
 	        if(u_cookie != null){
-	        	//System.out.println("setting cookie"); 
-	        	//System.out.println("catan.user="+u_cookie);
 	        	if(g_cookie !=null)
 	        	{
-	        		//System.out.println("setting combined cookie");
 	        		c.setRequestProperty("Cookie", "catan.user="+u_cookie+"; catan.game="+g_cookie);
 	        	}
 	        	else
@@ -47,53 +41,22 @@ public class ClientCommunicator {
 	        		c.setRequestProperty("Cookie", "catan.user="+u_cookie);
 	        	}
 	        }
-//	        if(command == "/games/join"){
-//	        	System.out.println(cookie); 
-//	        	c.setRequestProperty("Cookie", "catan.user=%7B%22authentication%22%3A%222680927%22%2C%22name%22%3A%22SAM%22%2C%22password%22%3A%22sam%22%2C%22playerID%22%3A12%7D");
-//	        }
-	        
-	        //    set the cookie setRequestProperty("Cookie", cookie); 
-	        //c.connect();
-	        
-	        // get game cookie in game join?
 	        
 	        c.setDoOutput(true);
 	        c.setDoInput(true);
 	        c.setRequestProperty("Content-Type", "application/json");
 	        c.setRequestProperty("Accept", "application/json");
-	        
 	        c.connect();
 	      
-	        //System.out.println(json);
-//	        OutputStreamWriter wr = new OutputStreamWriter(c.getOutputStream());
-//	        wr.write(json.toString());
-//	        wr.flush();
-//	        
 	        String get = json.toString();
 	        
 	        OutputStream requestBody = c.getOutputStream();
 	        requestBody.write(get.getBytes());
 	        requestBody.close();
 	        
-	        
-	        
-	        
-//	        String headerName = c.getHeaderFieldKey(0);
-//	        String headerValue = c.getHeaderField(0);
-	        //System.out.println(c.getHeaderFields());
 	        String new_cookie = c.getHeaderField("Set-Cookie");
-//	        System.out.println("headerName:");
-//	        System.out.println(headerName);
-//	        System.out.println("headerValue:");
-//	        System.out.println(headerValue);
-//	        System.out.println("Set-Cookie");
-	        //System.out.println(new_cookie);
-	        
-	        
-	        
 	        int status = c.getResponseCode();
-	        //System.out.println("STATUS: "+ status); 
-	        
+	         	        
 	        switch (status) {
 	            case 201:
 	            case 200:
