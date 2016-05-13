@@ -1,9 +1,9 @@
 package controllers;
 
-public class Points {
+public class PointsController {
 	
 	//Nate
-	public Points(){
+	public PointsController(){
 		
 	}
 	

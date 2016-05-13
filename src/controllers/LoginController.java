@@ -1,9 +1,9 @@
 package controllers;
 
-public class Login {
+public class LoginController {
 
 	// Nate
-	public Login() {
+	public LoginController() {
     }
 
 	/**

@@ -1,9 +1,9 @@
 package controllers;
 
-public class JoinGame {
+public class JoinGameController {
 
 	// Nate
-	public JoinGame(){
+	public JoinGameController(){
 		
 	}
 	/**
