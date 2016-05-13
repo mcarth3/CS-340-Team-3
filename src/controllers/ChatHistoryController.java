@@ -3,10 +3,10 @@ package controllers;
 import states.StateEnum;
 import states.State;
 
-public class ChatHistory {
+public class ChatHistoryController {
 	
 	//Nate
-	public ChatHistory(){
+	public ChatHistoryController(){
 		  
 	}
 	
