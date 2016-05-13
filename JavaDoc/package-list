@@ -17,11 +17,15 @@ client.resources
 client.roll
 client.turntracker
 client.utils
+controllers
 model
 model.bank
+model.clientModel
 poller
 poller.modeljsonparser
 proxy
+proxy.objects
 shared.definitions
 shared.locations
+states
 tests
