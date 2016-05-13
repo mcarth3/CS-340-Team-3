@@ -60,5 +60,10 @@ public class GameManager {
 	 */
 	public void updatestate(State currentstate){
 	}
+	/**
+	 * registers observers
+	 */
+	public void register(){
+	}
 
 }
