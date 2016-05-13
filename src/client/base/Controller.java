@@ -1,5 +1,7 @@
 package client.base;
 
+import java.util.Observable;
+
 import model.*;
 
 /**
@@ -27,6 +29,11 @@ public abstract class Controller implements IController
 	}
 	
 	public void UpdateModel(Game currentmodel){
+		
+	}
+
+	public void update(Observable arg0, Object arg1) {
+		// TODO Auto-generated method stub
 		
 	}
 }
