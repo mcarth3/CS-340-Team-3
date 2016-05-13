@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -21,6 +22,9 @@ import shared.locations.VertexLocation;
 public class RealProxy implements IServer{
 	
 	private ClientCommunicator cc = new ClientCommunicator(); 
+	public String UserCookie = null;
+	public String GameCookie = null;
+	// %7B%22authentication%22%3A%222680927%22%2C%22name%22%3A%22SAM%22%2C%22password%22%3A%22sam%22%2C%22playerID%22%3A12%7D
 	
 //	user login
 //	rollnumber
@@ -56,7 +60,29 @@ public class RealProxy implements IServer{
 		JsonObject obj = new JsonObject();
         obj.addProperty("username", username);
         obj.addProperty("password", password);
-		return cc.send(obj, "/user/login"); 
+                
+		String cook = cc.send(obj, "/user/login", UserCookie, GameCookie);
+		 
+		if(cook != null ){
+			//System.out.println(cook);
+			String answer = cook.substring(0, 7);  
+			cook = cook.replaceAll("Successcatan.user=", ""); 
+			cook = cook.replaceAll(";Path=/;", "");
+			//System.out.println(cook); 
+			UserCookie = cook; 
+			String result = null;
+			try {
+				result = java.net.URLDecoder.decode(cook, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//System.out.println(result);
+			return answer;
+		}else{
+			return null;
+		}
+		  
 	}
 
 	@Override
@@ -65,219 +91,380 @@ public class RealProxy implements IServer{
 		JsonObject obj = new JsonObject();
         obj.addProperty("username", username);
         obj.addProperty("password", password);
-		return cc.send(obj, "/user/register"); 
+		return cc.send(obj, "/user/register", UserCookie, GameCookie); 
 	}
 
 	@Override
-	public void gamesList() {
+	public String gamesList() {
 		// TODO Auto-generated method stub
-		System.out.println("gamesList()");
+		//System.out.println("gamesList()");
 		JsonObject obj = new JsonObject();
-		System.out.println(cc.send(obj, "/games/list")); 
-		
+		String result = cc.send(obj, "/games/list", UserCookie, GameCookie); 
+		if(result != null){
+			return "Success";
+		}else{
+			return null; 
+		}
 	}
 
 	@Override
-	public void gamesCreate(String name, boolean randomTiles, boolean randomNumbers, boolean randomPorts) {
+	public String gamesCreate(String name, boolean randomTiles, boolean randomNumbers, boolean randomPorts) {
 		// TODO Auto-generated method stub
 		JsonObject obj = new JsonObject();
-        obj.addProperty("randomTiles", true);
-        obj.addProperty("randomNumbers", true);
-        obj.addProperty("randomPorts", true);
-        obj.addProperty("name", "Test Game");
-		cc.send(obj, "/game/create");
+        obj.addProperty("randomTiles", randomTiles);
+        obj.addProperty("randomNumbers", randomNumbers);
+        obj.addProperty("randomPorts", randomPorts);
+        obj.addProperty("name", name);
+         
+		String result = cc.send(obj, "/games/create", UserCookie, GameCookie);
+		if(result != null){
+			return "Success";
+		}else{
+			return null; 
+		}	
 	}
 
 	@Override
-	public void gameJoin(Integer gameID, String color) {
-		// TODO Auto-generated method stub
+	public String gameJoin(Integer gameID, String color) {
 		JsonObject obj = new JsonObject();
+		obj.addProperty("id", gameID);
         obj.addProperty("color", color );
-        obj.addProperty("id", gameID);
-		cc.send(obj, "/game/join"); 
+        
+        String cook = cc.send(obj, "/games/join", UserCookie, GameCookie); 
+		 
+		if(cook != null ){
+			//System.out.println(cook);
+			String answer = cook.substring(0, 7);  
+			cook = cook.replaceAll("Successcatan.game=", ""); 
+			cook = cook.replaceAll(";Path=/;", "");
+			//System.out.println(cook); 
+			//UserCookie = cook;
+			GameCookie = cook;
+			 
+			String result = null;
+			try {
+				result = java.net.URLDecoder.decode(cook, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			//System.out.println(result);
+			return answer;
+		}else{
+			return null;
+		}
 	}
 
 	@Override
-	public void gamesSave(Integer gameID, String fileName) {
+	public String gamesSave(Integer gameID, String fileName) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void gamesLoad(String fileName) {
+	public String gamesLoad(String fileName) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
 	public String gameModel(Integer versionNumber) {
 		JsonObject obj = new JsonObject();
-		return cc.send(obj, "/game/model?version="+versionNumber); 
-		// TODO Auto-generated method stub
-		
+		return cc.send(obj, "/game/model?version="+versionNumber, UserCookie, GameCookie); 
 	}
 
 	@Override
-	public void gameReset(Player user, Game game) {
+	public String gameReset(Player user, Game game) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void gameCommandsGet(Player user, Game game) {
+	public String gameCommandsGet(Player user, Game game) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void gameCommandsPost(Player user, Game game) {
+	public String gameCommandsPost(Player user, Game game) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void gameListAI() {
+	public String gameListAI() {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void gameAddAI(String AIType) {
+	public String gameAddAI(String AIType) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void utilChangeLogLevel(String loggingLevel) {
+	public String utilChangeLogLevel(String loggingLevel) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void sendChat(Integer playerIndex, String content) {
+	public String sendChat(Integer playerIndex, String content) {
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("username", "SAM");
-        obj.addProperty("password", "sam");
-		cc.send(obj, "/user/register"); 
-		
-		JsonObject obj2 = new JsonObject();
-        obj2.addProperty("type", "sendChat");
-        obj2.addProperty("playerIndex", "0");
-        obj2.addProperty("content", "This is the new message.");
-		cc.send(obj2, "/moves/sendChat");
+        obj.addProperty("type", "sendChat");
+        obj.addProperty("playerIndex", playerIndex);
+        obj.addProperty("content", content);
+		String result = cc.send(obj, "/moves/sendChat", UserCookie, GameCookie);
+		//System.out.println(result); 
+		return result;
 	}
 
 	@Override
-	public void acceptTrade(Integer playerIndex, Boolean willAccept) {
+	public String acceptTrade(Integer playerIndex, Boolean willAccept) {
 		// TODO Auto-generated method stub
 		//// Implement this one
-		
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "acceptTrade");
+        obj.addProperty("playerIndex", playerIndex);
+        obj.addProperty("willAccept", willAccept);
+		String result = cc.send(obj, "/moves/acceptTrade", UserCookie, GameCookie);
+		//System.out.println(result); 
+		return result;
 	}
 
 	@Override
-	public void discardCards(Integer playerIndex, ArrayList discardedCards) {
+	public String discardCards(Integer playerIndex, ArrayList discardedCards) {
 		// TODO Auto-generated method stub
 		//// Implement this one
-		
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "discardCards");
+        obj.addProperty("playerIndex", playerIndex);
+        JsonObject obj2 = new JsonObject();
+        obj2.addProperty("brick", "0");
+        obj2.addProperty("ore", "1");
+        obj2.addProperty("sheep", "1");
+        obj2.addProperty("wheat", "3");
+        obj2.addProperty("wood", "0");
+        obj.add("discardedCards", obj2);
+        
+		String result = cc.send(obj, "/moves/discardCards", UserCookie, GameCookie);
+		//System.out.println(result); 
+		return result;
 	}
 
 	@Override
-	public void rollNumber(Integer playerIndex, Integer number) {
+	public String rollNumber(Integer playerIndex, Integer number) {
 		// TODO Auto-generated method stub
 		//// Implement this one
-		
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "rollNumber");
+        obj.addProperty("playerIndex", playerIndex);
+        obj.addProperty("number", number);
+		String result = cc.send(obj, "/moves/rollNumber", UserCookie, GameCookie);
+		//System.out.println(result); 
+		return result;
 	}
 
 	@Override
-	public void buildRoad(Integer playerIndex, EdgeLocation roadLocation, Boolean free) {
+	public String buildRoad(Integer playerIndex, EdgeLocation roadLocation, Boolean free) {
 		// TODO Auto-generated method stub
-		//// Implement this one
-		
+		//// Implement this one		
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "buildRoad");
+        obj.addProperty("playerIndex", playerIndex);
+        //obj.addProperty("roadLocation", "NW"); // MAKE SURE THESE ARE RIGHT
+        JsonObject obj2 = new JsonObject();
+        obj2.addProperty("x", "-1");
+        obj2.addProperty("y", "-1");
+        obj2.addProperty("location", "NW");
+        obj.add("roadLocation", obj2);
+        obj.addProperty("free", free);
+		String result = cc.send(obj, "/moves/buildRoad", UserCookie, GameCookie);
+		//System.out.println(result); 
+		return result;
 	}
 
 	@Override
-	public void buildSettlement(Integer playerIndex, VertexLocation vertexLocation, Boolean free) {
+	public String buildSettlement(Integer playerIndex, VertexLocation vertexLocation, Boolean free) {
 		// TODO Auto-generated method stub
 		//// Implement this one
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "buildSettlement");
+        obj.addProperty("playerIndex", playerIndex);
+        obj.addProperty("vertexLocation", vertexLocation.toString()); // MAKE SURE THESE ARE RIGHT
+        obj.addProperty("free", free);
+		String result = cc.send(obj, "/moves/buildSettlement", UserCookie, GameCookie);
 		
+		return result;
 	}
 
 	@Override
-	public void buildCity(Integer playerIndex, VertexLocation vertexLocation) {
+	public String buildCity(Integer playerIndex, VertexLocation vertexLocation) {
 		// TODO Auto-generated method stub
 		//// Implement this one
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "buildCity");
+        obj.addProperty("playerIndex", playerIndex);
+        obj.addProperty("vertexLocation", vertexLocation.toString()); // MAKE SURE THESE ARE RIGHT
+		String result = cc.send(obj, "/moves/buildCity", UserCookie, GameCookie);
 		
+		return result;
 	}
 
 	@Override
-	public void offerTrade(Integer playerIndex, ArrayList offer, Integer receiver) {
+	public String offerTrade(Integer playerIndex, ArrayList offer, Integer receiver) {
 		// TODO Auto-generated method stub
 		//// Implement this one
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "offerTrade");
+        obj.addProperty("playerIndex", playerIndex);
+        JsonObject obj2 = new JsonObject();
+        obj2.addProperty("brick", "1");
+        obj2.addProperty("ore", "0");
+        obj2.addProperty("sheep", "0");
+        obj2.addProperty("wheat", "0");
+        obj2.addProperty("wood", "0");
+        obj.add("offer", obj2);
+        obj.addProperty("receiver", receiver);
+        String result = cc.send(obj, "/moves/offerTrade", UserCookie, GameCookie);
 		
+		return result;
 	}
 
 	@Override
-	public void maritimeTrade(Integer playerIndex, Integer ratio, String inputResource, String outputResource) {
+	public String maritimeTrade(Integer playerIndex, Integer ratio, String inputResource, String outputResource) {
 		// TODO Auto-generated method stub
 		//// Implement this one
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "maritimeTrade");
+        obj.addProperty("playerIndex", playerIndex);
+        obj.addProperty("ratio", ratio);
+        obj.addProperty("inputResource", inputResource);
+        obj.addProperty("outputResource", outputResource);
+		String result = cc.send(obj, "/moves/maritimeTrade", UserCookie, GameCookie);
 		
+		return result;
 	}
 
 	@Override
-	public void robPlayer(Integer playerIndex, Integer victimIndex, HexLocation location) {
+	public String robPlayer(Integer playerIndex, Integer victimIndex, HexLocation location) {
 		// TODO Auto-generated method stub
 		//// Implement this one
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "robPlayer");
+        obj.addProperty("playerIndex", playerIndex);
+        obj.addProperty("victimIndex", victimIndex);
+        JsonObject obj2 = new JsonObject();
+        obj2.addProperty("x", "-2");
+        obj2.addProperty("y", "1");
+        obj.add("location", obj2); 
+		String result = cc.send(obj, "/moves/robPlayer", UserCookie, GameCookie);
 		
+		return result;
 	}
 
 	@Override
-	public void finishTurn(Integer playerIndex) {
+	public String finishTurn(Integer playerIndex) {
 		// TODO Auto-generated method stub
 		//// Implement this one
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "finishTurn");
+        obj.addProperty("playerIndex", playerIndex); 
+		String result = cc.send(obj, "/moves/finishTurn", UserCookie, GameCookie);
 		
+		return result;
 	}
 
 	@Override
-	public void buyDevCard(Integer playerIndex) {
+	public String buyDevCard(Integer playerIndex) {
 		// TODO Auto-generated method stub
 		//// Implement this one
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "buyDevCard");
+        obj.addProperty("playerIndex", playerIndex); 
+		String result = cc.send(obj, "/moves/buyDevCard", UserCookie, GameCookie);
 		
+		return result;
 	}
 
 	@Override
-	public void Soldier(Integer playerIndex, Integer victimIndex, HexLocation location) {
+	public String Soldier(Integer playerIndex, Integer victimIndex, HexLocation location) {
 		// TODO Auto-generated method stub
 		//// Implement this one
-		
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "Soldier");
+        obj.addProperty("playerIndex", playerIndex);
+        obj.addProperty("victimIndex", victimIndex);
+        JsonObject obj2 = new JsonObject();
+        obj2.addProperty("x", "-2");
+        obj2.addProperty("y", "0");
+        obj.add("location",obj2); 
+		String result = cc.send(obj, "/moves/Soldier", UserCookie, GameCookie);
+		//System.out.println(result);
+		return result;
 	}
 
 	@Override
-	public void Year_of_Plenty(Integer playerIndex, Resource resource1, Resource resource2) {
+	public String Year_of_Plenty(Integer playerIndex, Resource resource1, Resource resource2) {
 		// TODO Auto-generated method stub
 		//// Implement this one
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "Year_of_Plenty");
+        obj.addProperty("playerIndex", playerIndex);
+        obj.addProperty("resource1", resource1.toString()); // MAKE SURE THESE ARE RIGHT 
+        obj.addProperty("resource2", resource2.toString()); // MAKE SURE THESE ARE RIGHT 
+		String result = cc.send(obj, "/moves/Year_of_Plenty", UserCookie, GameCookie);
 		
+		return result;
 	}
 
 	@Override
-	public void Road_Building(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
+	public String Road_Building(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
 		// TODO Auto-generated method stub
 		//// Implement this one
-		
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "Road_Building");
+        obj.addProperty("playerIndex", playerIndex);
+        JsonObject obj2 = new JsonObject();
+        obj2.addProperty("x", -1);
+        obj2.addProperty("y", -1);
+        obj2.addProperty("direction", "NW");
+        JsonObject obj3 = new JsonObject();
+        obj3.addProperty("x", -1);
+        obj3.addProperty("y", -1);
+        obj3.addProperty("direction", "NW");
+        obj.add("spot1", obj2);
+        obj.add("spot2", obj3);
+		String result = cc.send(obj, "/moves/Road_Building", UserCookie, GameCookie);
+		//System.out.println(result); 
+		return result;
 	}
 
 	@Override
-	public void Monopoly(String resource, Integer playerIndex) {
+	public String Monopoly(String resource, Integer playerIndex) {
 		// TODO Auto-generated method stub
 		//// Implement this one
-		
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "Monopoly");
+        obj.addProperty("resource", resource);
+        obj.addProperty("playerIndex", playerIndex);
+		String result = cc.send(obj, "/moves/Monopoly", UserCookie, GameCookie);
+		//System.out.println(result); 
+		return result;
 	}
 
 	@Override
-	public void Monument(Integer playerIndex) {
+	public String Monument(Integer playerIndex) {
 		// TODO Auto-generated method stub
 		//// Implement this one
-		
+		JsonObject obj = new JsonObject();
+        obj.addProperty("type", "Monument");
+        obj.addProperty("playerIndex", playerIndex);
+		String result = cc.send(obj, "/moves/Monument", UserCookie, GameCookie);
+		//System.out.println(result);
+		return result;
 	}
 	
 

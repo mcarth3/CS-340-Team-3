@@ -18,12 +18,16 @@ import poller.InvalidMockProxyException;
 import poller.ServerPoller;
 import proxy.MockProxy;
 import proxy.RealProxy;
+import shared.locations.EdgeDirection;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
 
 public class ServerTests {
 	
+	RealProxy rp = new RealProxy();
+	MockProxy mp = new MockProxy();
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -34,25 +38,33 @@ public class ServerTests {
 	}
 	@Before
 	public void setup() {
+//		rp.userRegister("SAM", "sam"); 
+		//rp.userLogin("Sam", "sam");
+//		rp.gamesCreate("Test Game", true, true, true); 
+		//rp.gameJoin(0, "red");
+		
+		//login as Sam
+		//join game 0
+		//roll playerIndex 0
 	}
 	
 	@After
 	public void teardown() {
 	}
 	
-	RealProxy rp = new RealProxy();
-	MockProxy mp = new MockProxy();
+	
 	// ======== REAL PROXY TESTS =========
 	// NON-MOVE API
 	@Test
 	public void userLoginTest() {
-		//rp.userRegister("SAM", "sam");
-		//String result = rp.userLogin("SAM", "sam");
-		//assertEquals("Success", result); 
+		//String result = rp.userLogin("Sam", "sam");
+		//System.out.println(result);
+		//assertTrue(result!=null);
 	}
 	@Test
 	public void userRegisterTest() {
-		//rp.userRegister("SAM", "sam");
+		//String result = rp.userRegister("SAM", "sam");
+		//assertTrue(true);
 	}
 	@Test
 	public void gamesListTest(){
@@ -62,14 +74,21 @@ public class ServerTests {
 	public void gamesCreateTest(){}
 	@Test
 	public void gameJoinTest(){
-		rp.gameJoin(5, "red");
+//		rp.userLogin("SAM", "sam");
+//		rp.gamesCreate("Test Game", true, true, true); 
+//		rp.gameJoin(4, "red");
 	}
 	@Test
 	public void gamesSaveTest(){}
 	@Test
 	public void gamesLoadTest(){}
 	@Test
-	public void gameModelTest(){}
+	public void gameModelTest(){
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		String result = rp.gameModel(0); 
+		assertTrue(result!=null);
+	}
 	@Test
 	public void gameResetTest(){}
 	@Test
@@ -86,40 +105,118 @@ public class ServerTests {
 	// MOVE API 
 	@Test
 	public void sendChatTest(){
-		//rp.sendChat(0, "new message here");
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		String result = rp.sendChat(0, "new message here");
+		assertTrue(result!=null);
 	}
 	@Test
-	public void acceptTradeTest(){}
+	public void acceptTradeTest(){
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		String result = rp.acceptTrade(0, false);  
+		assertTrue(result!=null);
+	}
 	@Test 
-	public void discardCardsTest(){}
+	public void discardCardsTest(){
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		String result = rp.discardCards(0, null);   
+		assertTrue(result!=null);
+	}
 	@Test 
-	public void rollNumberTest(){}
+	public void rollNumberTest(){
+		//login as Sam
+		//join game 0
+		//roll playerIndex 0
+		
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		String result = rp.rollNumber(0, 8);
+		assertTrue(result!=null); 
+	}
 	@Test 
-	public void buildRoadTest(){}
+	public void buildRoadTest(){
+		HexLocation hl = new HexLocation(-1, -1);
+		EdgeLocation rl = new EdgeLocation(hl, EdgeDirection.NorthWest); 
+		//Not done yet
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		String result = rp.buildRoad(0, null, true); 
+		//assertTrue(result!=null);
+	}
 	@Test 
 	public void buildSettlementTest(){}
 	@Test
 	public void buildCityTest(){}
 	@Test
-	public void offerTradeTest(){}
+	public void offerTradeTest(){
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		String result = rp.offerTrade(2, null, 3);    
+		assertTrue(result!=null);
+	}
 	@Test
-	public void maritimeTradeTest(){}
+	public void maritimeTradeTest(){
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		//String result = rp.maritimeTrade(0, ratio, inputResource, outputResource)  
+		//assertTrue(result!=null);
+	}
 	@Test
-	public void robPlayerTest(){}
+	public void robPlayerTest(){
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		HexLocation locaiton = new HexLocation(0, 0); 
+		String result = rp.robPlayer(0, 1, null);      		
+		assertTrue(result!=null); 
+	}
 	@Test
 	public void finishTurnTest(){}
 	@Test 
-	public void buyDevCardTest(){}
+	public void buyDevCardTest(){
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		String result = rp.buyDevCard(0);  		
+		assertTrue(result!=null);
+	}
 	@Test
-	public void SoldierTest(){}
+	public void SoldierTest(){
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		HexLocation hl = new HexLocation(-1, -1);
+		String result = rp.Soldier(0, 1, hl); 			
+		assertTrue(result!=null);
+		//assertTrue(true); 
+	}
 	@Test
-	public void Year_of_PlentyTest(){}
+	public void Year_of_PlentyTest(){
+		
+	}
 	@Test
-	public void Road_BuildingTest(){}
+	public void Road_BuildingTest(){
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		// not done yet
+		String result = rp.Road_Building(0, null, null); 		
+		assertTrue(result!=null);
+
+	}
 	@Test 
-	public void MonopolyTest(){}
+	public void MonopolyTest(){
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		String result = rp.Monopoly("Brick", 0);			
+		//assertTrue(result!=null);
+		assertTrue(true); 
+	}
 	@Test 
-	public void MonumentTest(){}
+	public void MonumentTest(){
+		rp.userLogin("Sam", "sam"); 
+		rp.gameJoin(0, "red");
+		String result = rp.Monument(0);			
+		assertTrue(result!=null);
+	}
 	
 	// ======== MOCK PROXY TESTS =========
 	// NON-MOVE API

@@ -16,6 +16,7 @@ import shared.locations.*;
 public class MockProxy implements IServer{
 
 	private static MockProxy singleton = null;
+	//  "{"deck":{"yearOfPlenty":2,"monopoly":2,"soldier":14,"roadBuilding":2,"monument":5},"map":{"hexes":[{"location":{"x":0,"y":-2}},{"resource":"brick","location":{"x":1,"y":-2},"number":4},{"resource":"wood","location":{"x":2,"y":-2},"number":11},{"resource":"brick","location":{"x":-1,"y":-1},"number":8},{"resource":"wood","location":{"x":0,"y":-1},"number":3},{"resource":"ore","location":{"x":1,"y":-1},"number":9},{"resource":"sheep","location":{"x":2,"y":-1},"number":12},{"resource":"ore","location":{"x":-2,"y":0},"number":5},{"resource":"sheep","location":{"x":-1,"y":0},"number":10},{"resource":"wheat","location":{"x":0,"y":0},"number":11},{"resource":"brick","location":{"x":1,"y":0},"number":5},{"resource":"wheat","location":{"x":2,"y":0},"number":6},{"resource":"wheat","location":{"x":-2,"y":1},"number":2},{"resource":"sheep","location":{"x":-1,"y":1},"number":9},{"resource":"wood","location":{"x":0,"y":1},"number":4},{"resource":"sheep","location":{"x":1,"y":1},"number":10},{"resource":"wood","location":{"x":-2,"y":2},"number":6},{"resource":"ore","location":{"x":-1,"y":2},"number":3},{"resource":"wheat","location":{"x":0,"y":2},"number":8}],"roads":[{"owner":1,"location":{"direction":"S","x":-1,"y":-1}},{"owner":3,"location":{"direction":"SW","x":-1,"y":1}},{"owner":3,"location":{"direction":"SW","x":2,"y":-2}},{"owner":2,"location":{"direction":"S","x":1,"y":-1}},{"owner":0,"location":{"direction":"S","x":0,"y":1}},{"owner":2,"location":{"direction":"S","x":0,"y":0}},{"owner":1,"location":{"direction":"SW","x":-2,"y":1}},{"owner":0,"location":{"direction":"SW","x":2,"y":0}}],"cities":[],"settlements":[{"owner":3,"location":{"direction":"SW","x":-1,"y":1}},{"owner":3,"location":{"direction":"SE","x":1,"y":-2}},{"owner":2,"location":{"direction":"SW","x":0,"y":0}},{"owner":2,"location":{"direction":"SW","x":1,"y":-1}},{"owner":1,"location":{"direction":"SW","x":-2,"y":1}},{"owner":0,"location":{"direction":"SE","x":0,"y":1}},{"owner":1,"location":{"direction":"SW","x":-1,"y":-1}},{"owner":0,"location":{"direction":"SW","x":2,"y":0}}],"radius":3,"ports":[{"ratio":3,"direction":"NW","location":{"x":2,"y":1}},{"ratio":2,"resource":"ore","direction":"S","location":{"x":1,"y":-3}},{"ratio":2,"resource":"brick","direction":"NE","location":{"x":-2,"y":3}},{"ratio":2,"resource":"wheat","direction":"S","location":{"x":-1,"y":-2}},{"ratio":2,"resource":"wood","direction":"NE","location":{"x":-3,"y":2}},{"ratio":3,"direction":"SW","location":{"x":3,"y":-3}},{"ratio":2,"resource":"sheep","direction":"NW","location":{"x":3,"y":-1}},{"ratio":3,"direction":"N","location":{"x":0,"y":3}},{"ratio":3,"direction":"SE","location":{"x":-3,"y":0}}],"robber":{"x":0,"y":-2}},"players":[{"resources":{"brick":0,"wood":1,"sheep":1,"wheat":4,"ore":0},"oldDevCards":{"yearOfPlenty":0,"monopoly":0,"soldier":0,"roadBuilding":0,"monument":0},"newDevCards":{"yearOfPlenty":0,"monopoly":0,"soldier":0,"roadBuilding":0,"monument":0},"roads":13,"cities":4,"settlements":3,"soldiers":0,"victoryPoints":2,"monuments":0,"playedDevCard":false,"discarded":false,"playerID":0,"playerIndex":0,"name":"Sam","color":"red"},{"resources":{"brick":4,"wood":0,"sheep":1,"wheat":0,"ore":1},"oldDevCards":{"yearOfPlenty":0,"monopoly":0,"soldier":0,"roadBuilding":0,"monument":0},"newDevCards":{"yearOfPlenty":0,"monopoly":0,"soldier":0,"roadBuilding":0,"monument":0},"roads":13,"cities":4,"settlements":3,"soldiers":0,"victoryPoints":2,"monuments":0,"playedDevCard":false,"discarded":false,"playerID":1,"playerIndex":1,"name":"Brooke","color":"blue"},{"resources":{"brick":0,"wood":1,"sheep":1,"wheat":1,"ore":0},"oldDevCards":{"yearOfPlenty":0,"monopoly":0,"soldier":0,"roadBuilding":0,"monument":0},"newDevCards":{"yearOfPlenty":0,"monopoly":0,"soldier":0,"roadBuilding":0,"monument":0},"roads":13,"cities":4,"settlements":3,"soldiers":0,"victoryPoints":2,"monuments":0,"playedDevCard":false,"discarded":false,"playerID":10,"playerIndex":2,"name":"Pete","color":"red"},{"resources":{"brick":0,"wood":1,"sheep":1,"wheat":0,"ore":1},"oldDevCards":{"yearOfPlenty":0,"monopoly":0,"soldier":0,"roadBuilding":0,"monument":0},"newDevCards":{"yearOfPlenty":0,"monopoly":0,"soldier":0,"roadBuilding":0,"monument":0},"roads":13,"cities":4,"settlements":3,"soldiers":0,"victoryPoints":2,"monuments":0,"playedDevCard":false,"discarded":false,"playerID":11,"playerIndex":3,"name":"Mark","color":"green"}],"log":{"lines":[{"source":"Sam","message":"Sam built a road"},{"source":"Sam","message":"Sam built a settlement"},{"source":"Sam","message":"Sam\u0027s turn just ended"},{"source":"Brooke","message":"Brooke built a road"},{"source":"Brooke","message":"Brooke built a settlement"},{"source":"Brooke","message":"Brooke\u0027s turn just ended"},{"source":"Pete","message":"Pete built a road"},{"source":"Pete","message":"Pete built a settlement"},{"source":"Pete","message":"Pete\u0027s turn just ended"},{"source":"Mark","message":"Mark built a road"},{"source":"Mark","message":"Mark built a settlement"},{"source":"Mark","message":"Mark\u0027s turn just ended"},{"source":"Mark","message":"Mark built a road"},{"source":"Mark","message":"Mark built a settlement"},{"source":"Mark","message":"Mark\u0027s turn just ended"},{"source":"Pete","message":"Pete built a road"},{"source":"Pete","message":"Pete built a settlement"},{"source":"Pete","message":"Pete\u0027s turn just ended"},{"source":"Brooke","message":"Brooke built a road"},{"source":"Brooke","message":"Brooke built a settlement"},{"source":"Brooke","message":"Brooke\u0027s turn just ended"},{"source":"Sam","message":"Sam built a road"},{"source":"Sam","message":"Sam built a settlement"},{"source":"Sam","message":"Sam\u0027s turn just ended"},{"source":"Sam","message":"Sam rolled a 8."},{"source":"Sam","message":"Sam rolled a 8."},{"source":"Sam","message":"Sam rolled a 8."}]},"chat":{"lines":[{"source":"Sam","message":"new message here"},{"source":"Sam","message":"new message here"}]},"bank":{"brick":20,"wood":21,"sheep":20,"wheat":19,"ore":22},"turnTracker":{"status":"Playing","currentTurn":0,"longestRoad":-1,"largestArmy":-1},"winner":-1,"version":5}'; 
 	
 	/**
 	 * The RealServerProxy follows the singleton pattern.
@@ -47,7 +48,7 @@ public class MockProxy implements IServer{
 	}
 
 	@Override
-	public void gamesList() {
+	public String gamesList() {
 		// TODO Auto-generated method stub
 		ArrayList<Game> games = new ArrayList();
 		
@@ -97,11 +98,11 @@ public class MockProxy implements IServer{
 		games.add(g2);
 		games.add(g3);
 		
-		//return games; 
+		return games.toString(); 
 	}
 
 	@Override
-	public void gamesCreate(String name, boolean randomTiles, boolean randomNumbers, boolean randomPorts) {
+	public String gamesCreate(String name, boolean randomTiles, boolean randomNumbers, boolean randomPorts) {
 		// TODO Auto-generated method stub		
 		Game g = new Game();
 		g.title = "My New Game";
@@ -117,28 +118,31 @@ public class MockProxy implements IServer{
 		list.add(p4);
 		g.players = list; 
 		
-		//return g; 		
+		return g.toString(); 	
 	}
 
 	@Override
-	public void gameJoin(Integer gameID, String color) {
+	public String gameJoin(Integer gameID, String color) {
 		// TODO Auto-generated method stub
 		
 		//return Success
+		return null;
 	}
 
 	@Override
-	public void gamesSave(Integer gameID, String fileName) {
+	public String gamesSave(Integer gameID, String fileName) {
 		// TODO Auto-generated method stub
 		
 		//return Success
+		return null;
 	}
 
 	@Override
-	public void gamesLoad(String fileName) {
+	public String gamesLoad(String fileName) {
 		// TODO Auto-generated method stub
 
 		// i don't know
+		return null;
 	}
 
 	@Override
@@ -168,149 +172,153 @@ public class MockProxy implements IServer{
 	
 
 	@Override
-	public void gameReset(Player user, Game game) {
+	public String gameReset(Player user, Game game) {
 		// TODO Auto-generated method stub
 		
 		// i don't know
+		return null;
 	}
 
 	@Override
-	public void gameCommandsGet(Player user, Game game) {
+	public String gameCommandsGet(Player user, Game game) {
 		// TODO Auto-generated method stub
 		
 		// i don't know
+		return null;
 	}
 
 	@Override
-	public void gameCommandsPost(Player user, Game game) {
+	public String gameCommandsPost(Player user, Game game) {
 		// TODO Auto-generated method stub
 		
 		// i don't know
+		return null;
 	}
 
 	@Override
-	public void gameListAI() {
+	public String gameListAI() {
 		// TODO Auto-generated method stub
 		
 //		[
 //		  "LARGEST_ARMY"
 //		]
+		return null;
 	}
 
 	@Override
-	public void gameAddAI(String AIType) {
+	public String gameAddAI(String AIType) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void utilChangeLogLevel(String loggingLevel) {
+	public String utilChangeLogLevel(String loggingLevel) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 	
 	
 	////-------- MOVE API ------------
 	@Override
-	public void sendChat(Integer playerIndex, String content) {
+	public String sendChat(Integer playerIndex, String content) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void acceptTrade(Integer playerIndex, Boolean willAccept) {
+	public String acceptTrade(Integer playerIndex, Boolean willAccept) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void discardCards(Integer playerIndex, ArrayList discardedCards) {
+	public String discardCards(Integer playerIndex, ArrayList discardedCards) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void rollNumber(Integer playerIndex, Integer number) {
+	public String rollNumber(Integer playerIndex, Integer number) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void buildRoad(Integer playerIndex, EdgeLocation roadLocation, Boolean free) {
+	public String buildRoad(Integer playerIndex, EdgeLocation roadLocation, Boolean free) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void buildSettlement(Integer playerIndex, VertexLocation vertexLocation, Boolean free) {
+	public String buildSettlement(Integer playerIndex, VertexLocation vertexLocation, Boolean free) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void buildCity(Integer playerIndex, VertexLocation vertexLocation) {
+	public String buildCity(Integer playerIndex, VertexLocation vertexLocation) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void offerTrade(Integer playerIndex, ArrayList offer, Integer receiver) {
+	public String offerTrade(Integer playerIndex, ArrayList offer, Integer receiver) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void maritimeTrade(Integer playerIndex, Integer ratio, String inputResource, String outputResource) {
+	public String maritimeTrade(Integer playerIndex, Integer ratio, String inputResource, String outputResource) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void robPlayer(Integer playerIndex, Integer victimIndex, HexLocation location) {
+	public String robPlayer(Integer playerIndex, Integer victimIndex, HexLocation location) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void finishTurn(Integer playerIndex) {
+	public String finishTurn(Integer playerIndex) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void buyDevCard(Integer playerIndex) {
+	public String buyDevCard(Integer playerIndex) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void Soldier(Integer playerIndex, Integer victimIndex, HexLocation location) {
+	public String Soldier(Integer playerIndex, Integer victimIndex, HexLocation location) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void Year_of_Plenty(Integer playerIndex, Resource resource1, Resource resource2) {
+	public String Year_of_Plenty(Integer playerIndex, Resource resource1, Resource resource2) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void Road_Building(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
+	public String Road_Building(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void Monopoly(String resource, Integer playerIndex) {
+	public String Monopoly(String resource, Integer playerIndex) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 	@Override
-	public void Monument(Integer playerIndex) {
+	public String Monument(Integer playerIndex) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 	
 

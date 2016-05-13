@@ -86,7 +86,7 @@ public interface IServer {
 	 * 	...
 	 * ]
 	 */
-	public void gamesList(); 
+	public String gamesList(); 
 	
 	/**
 	 * /games/create
@@ -118,7 +118,7 @@ public interface IServer {
 	 * 
 	 * public void gamesCreate(name, randomTiles, randomNumbers, randomPorts);
 	 */ 
-	public void gamesCreate(String name, boolean randomTiles, boolean randomNumbers, boolean randomPorts);
+	public String gamesCreate(String name, boolean randomTiles, boolean randomNumbers, boolean randomPorts);
 	
 	/**
 	 * /games/join
@@ -146,7 +146,7 @@ public interface IServer {
 	 * 
 	 * public void gameJoin(catan.user, gameID, color){}
 	 */
-	public void gameJoin(Integer gameID, String color);
+	public String gameJoin(Integer gameID, String color);
 	
 	/**
 	 * /games/save
@@ -166,7 +166,7 @@ public interface IServer {
 	 * 
 	 * public void gamesSave(gameID, fileName){}
 	 */
-	public void gamesSave(Integer gameID, String fileName); 
+	public String gamesSave(Integer gameID, String fileName); 
 	
 	/**
 	 * /games/load
@@ -186,7 +186,7 @@ public interface IServer {
 	 *
 	 *public void gamesLoad(fileName);
 	 */
-	public void gamesLoad(String fileName);
+	public String gamesLoad(String fileName);
 	
 	/**
 	 * /game/model?version=N
@@ -242,7 +242,7 @@ public interface IServer {
 	 * 
 	 * public void gameReset(catan.user, catan.game){}
 	 */
-	public void gameReset(Player user, Game game); 
+	public String gameReset(Player user, Game game); 
 	
 	/**
 	 * /game/commands [GET]
@@ -275,7 +275,7 @@ public interface IServer {
 	 * 
 	 * public void gameCommandsGet(catan.user, catan.game){}
 	 */
-	public void gameCommandsGet(Player user, Game game);
+	public String gameCommandsGet(Player user, Game game);
 	
 	/**
 	 * /game/commands [POST]
@@ -302,7 +302,7 @@ public interface IServer {
 	 * 
 	 * public void gameCommandsPost(catan.user, catan.game){}
 	 */
-	public void gameCommandsPost(Player user, Game game); 
+	public String gameCommandsPost(Player user, Game game); 
 	
 	/**
 	 * /game/listAI
@@ -317,7 +317,7 @@ public interface IServer {
 	 * 
 	 * public void gameListAI(){}
 	 */
-	public void gameListAI(); 
+	public String gameListAI(); 
 	
 	/**
 	 * /game/addAI
@@ -340,7 +340,7 @@ public interface IServer {
 	 * 
 	 * public void gameAddAI(catan.user, catan.game, AIType){}
 	 */
-	public void gameAddAI(String AIType); 
+	public String gameAddAI(String AIType); 
 	
 	/**
 	 * /util/changeLogLevel
@@ -359,7 +359,7 @@ public interface IServer {
 	 * 
 	 * public void utilChangeLogLevel(logLevel){}
 	 */
-	public void utilChangeLogLevel(String logLevel);
+	public String utilChangeLogLevel(String logLevel);
 	
 
 	// MOVE API 
@@ -373,7 +373,7 @@ public interface IServer {
 	 * "type": "sendChat"
 	 * public void sendChat(content){}
 	 */
-	public void sendChat(Integer playerIndex, String content); 
+	public String sendChat(Integer playerIndex, String content); 
 
 	/**
 	 * Miscellaneous Commands
@@ -388,7 +388,7 @@ public interface IServer {
 	 * "type": "acceptTrade"
 	 * public void acceptTrade(willAccept){}
 	 */
-	public void acceptTrade(Integer playerIndex, Boolean willAccept); 
+	public String acceptTrade(Integer playerIndex, Boolean willAccept); 
 
 	/**
 	 * Miscellaneous Commands
@@ -414,7 +414,7 @@ public interface IServer {
 	 * }
 	 * public void discardCards(discardedCards){}
 	 */
-	public void discardCards(Integer playerIndex, ArrayList discardedCards); 
+	public String discardCards(Integer playerIndex, ArrayList discardedCards); 
 	
 	/**
 	 * ?
@@ -429,7 +429,7 @@ public interface IServer {
 	 * "type": "rollNumber
 	 * public void rollNumber(number){}
 	 */
-	public void rollNumber(Integer playerIndex, Integer number); 
+	public String rollNumber(Integer playerIndex, Integer number); 
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -462,7 +462,7 @@ public interface IServer {
 	 * }
 	 * public void buildRoad(free, roadLocation){}
 	 */
-	public void buildRoad(Integer playerIndex, EdgeLocation roadLocation, Boolean free); 
+	public String buildRoad(Integer playerIndex, EdgeLocation roadLocation, Boolean free); 
 
 	/**
 	 * Playing Commands
@@ -493,7 +493,7 @@ public interface IServer {
 	 * }
 	 * 	public void buildSettlement(free, vertexLocation){}
 	*/
-	public void buildSettlement(Integer playerIndex, VertexLocation vertexLocation, Boolean free);
+	public String buildSettlement(Integer playerIndex, VertexLocation vertexLocation, Boolean free);
 
 	/**
 	 * Playing Commands
@@ -520,7 +520,7 @@ public interface IServer {
 	 * }
 	 * public void buildCity(vertexLocation){}
 	 */
-	public void buildCity(Integer playerIndex, VertexLocation vertexLocation);
+	public String buildCity(Integer playerIndex, VertexLocation vertexLocation);
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -548,7 +548,7 @@ public interface IServer {
 	 * }
 	 * public void offerTrade(of_er, receiver){}
 	 */
-	public void offerTrade(Integer playerIndex, ArrayList offer, Integer receiver);
+	public String offerTrade(Integer playerIndex, ArrayList offer, Integer receiver);
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -568,7 +568,7 @@ public interface IServer {
 	 * "type": "maritimeTrade",
 	 * public void maritimeTrade(ratio, inputResource, outputResource){}
 	 */
-	public void maritimeTrade(Integer playerIndex, Integer ratio, String inputResource, String outputResource);
+	public String maritimeTrade(Integer playerIndex, Integer ratio, String inputResource, String outputResource);
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -593,7 +593,7 @@ public interface IServer {
 	 * }
 	 * public void robPlayer(location, victimIndex){}
 	 */
-	public void robPlayer(Integer playerIndex, Integer victimIndex, HexLocation location);
+	public String robPlayer(Integer playerIndex, Integer victimIndex, HexLocation location);
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -609,7 +609,7 @@ public interface IServer {
 	 * "type": "finishTurn"
 	 * public void finishTurn(){}
 	 */
-	public void finishTurn(Integer playerIndex); 
+	public String finishTurn(Integer playerIndex); 
 
 	/**
 	 * â€˜Playingâ€™ Commands
@@ -628,7 +628,7 @@ public interface IServer {
 	 * "type": "buyDevCard"
 	 * public void buyDevCard(){}
 	 */
-	public void buyDevCard(Integer playerIndex);
+	public String buyDevCard(Integer playerIndex);
 
 	/**
 	 * Dev Card Commands
@@ -660,7 +660,7 @@ public interface IServer {
 	 * }
 	 * public void Soldier(location, victimIndex){}
 	 */
-	public void Soldier(Integer playerIndex, Integer victimIndex, HexLocation location);
+	public String Soldier(Integer playerIndex, Integer victimIndex, HexLocation location);
 
 	/**
 	 * Dev Card Commands
@@ -679,7 +679,7 @@ public interface IServer {
 	 * "type": "Year_of_Plenty"
 	 * public void Year_of_Plenty(resource1, resource2){}
 	 */
-	public void Year_of_Plenty(Integer playerIndex, Resource resource1, Resource resource2);
+	public String Year_of_Plenty(Integer playerIndex, Resource resource1, Resource resource2);
 
 	/**
 	 * Dev Card Commands
@@ -709,7 +709,7 @@ public interface IServer {
   	 * }
 	 * public void Road_Building(spot1, spot2){}
 	 */
-	public void Road_Building(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2); 
+	public String Road_Building(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2); 
 
 	/**
 	 * Dev Card Commands
@@ -727,7 +727,7 @@ public interface IServer {
 	 * "type": "Monopoly"
 	 * public void Monopoly(resource){}
 	 */
-	public void Monopoly(String resource, Integer playerIndex); 
+	public String Monopoly(String resource, Integer playerIndex); 
 
 	/**
 	 * Dev Card Commands
@@ -748,7 +748,7 @@ public interface IServer {
   	 * "playerIndex": "4"
 	 * }
 	 */
-	public void Monument(Integer playerIndex);
+	public String Monument(Integer playerIndex);
 
  
 }

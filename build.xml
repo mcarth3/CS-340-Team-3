@@ -88,7 +88,7 @@
 		</java>
 	</target>
 	
-	<target name="test" depends="compile" description="Runs our JUnit tests with an Ant hack">
+	<target name="test" depends="compile" description="Runs the JUnit tests">
 		<java classname="tests.RunAllTests" fork="yes" dir="${java.dir}">
 			<classpath>
 				<path refid="java.lib.classpath"/>
