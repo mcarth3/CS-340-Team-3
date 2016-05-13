@@ -5,199 +5,13 @@
     <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="Slightly modified game variables and added to my own Facade canDo Tests.">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/ComponentView.class" afterPath="$PROJECT_DIR$/bin/client/base/ComponentView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/Controller.class" afterPath="$PROJECT_DIR$/bin/client/base/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IAction.class" afterPath="$PROJECT_DIR$/bin/client/base/IAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IController.class" afterPath="$PROJECT_DIR$/bin/client/base/IController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IOverlayView.class" afterPath="$PROJECT_DIR$/bin/client/base/IOverlayView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IView.class" afterPath="$PROJECT_DIR$/bin/client/base/IView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView$1.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView$2.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView$OverlayInfo.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView$OverlayInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/PanelView.class" afterPath="$PROJECT_DIR$/bin/client/base/PanelView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/CatanPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/catan/CatanPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/CatanPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/CatanPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/GameStatePanel$1.class" afterPath="$PROJECT_DIR$/bin/client/catan/GameStatePanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/GameStatePanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/GameStatePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/LeftPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/LeftPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/MidPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/MidPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$2.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$3.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$4.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$5.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/TitlePanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/TitlePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/TradePanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/TradePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/ChatController.class" afterPath="$PROJECT_DIR$/bin/client/communication/ChatController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/ChatView$EventListener.class" afterPath="$PROJECT_DIR$/bin/client/communication/ChatView$EventListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/ChatView.class" afterPath="$PROJECT_DIR$/bin/client/communication/ChatView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/GameHistoryController.class" afterPath="$PROJECT_DIR$/bin/client/communication/GameHistoryController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/GameHistoryView$1.class" afterPath="$PROJECT_DIR$/bin/client/communication/GameHistoryView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/GameHistoryView.class" afterPath="$PROJECT_DIR$/bin/client/communication/GameHistoryView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IChatController.class" afterPath="$PROJECT_DIR$/bin/client/communication/IChatController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IChatView.class" afterPath="$PROJECT_DIR$/bin/client/communication/IChatView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IGameHistoryController.class" afterPath="$PROJECT_DIR$/bin/client/communication/IGameHistoryController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IGameHistoryView.class" afterPath="$PROJECT_DIR$/bin/client/communication/IGameHistoryView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/LogComponent.class" afterPath="$PROJECT_DIR$/bin/client/communication/LogComponent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/LogEntry.class" afterPath="$PROJECT_DIR$/bin/client/communication/LogEntry.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/PlaceholderTextField.class" afterPath="$PROJECT_DIR$/bin/client/communication/PlaceholderTextField.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/custom/cwt/RoundedButton.class" afterPath="$PROJECT_DIR$/bin/client/custom/cwt/RoundedButton.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/data/GameInfo.class" afterPath="$PROJECT_DIR$/bin/client/data/GameInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/data/PlayerInfo.class" afterPath="$PROJECT_DIR$/bin/client/data/PlayerInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/data/RobPlayerInfo.class" afterPath="$PROJECT_DIR$/bin/client/data/RobPlayerInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanelListener.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanelListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevCardController.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevCardController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$2.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IButtonGroup.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IButtonGroup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IBuyDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IBuyDevCardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IDevCardController.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IDevCardController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IPlayDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IPlayDevCardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$2.class" afterPath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ResourceCardChooser.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ResourceCardChooser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardController.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView$1.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource$1.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/IDiscardController.class" afterPath="$PROJECT_DIR$/bin/client/discard/IDiscardController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/IDiscardView.class" afterPath="$PROJECT_DIR$/bin/client/discard/IDiscardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay$1.class" afterPath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeController.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$1.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$2.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$3.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$4.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$5.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$6.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$7.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$8.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$9.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView$1.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IAcceptTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IAcceptTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeController.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeView.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IJoinGameController.class" afterPath="$PROJECT_DIR$/bin/client/join/IJoinGameController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IJoinGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/IJoinGameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/INewGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/INewGameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingController.class" afterPath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingView.class" afterPath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/ISelectColorView.class" afterPath="$PROJECT_DIR$/bin/client/join/ISelectColorView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/JoinGameController.class" afterPath="$PROJECT_DIR$/bin/client/join/JoinGameController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/JoinGameView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/JoinGameView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/JoinGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/JoinGameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/NewGameView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/NewGameView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/NewGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/NewGameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/PlayerWaitingController.class" afterPath="$PROJECT_DIR$/bin/client/join/PlayerWaitingController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView.class" afterPath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/SelectColorView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/SelectColorView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/SelectColorView.class" afterPath="$PROJECT_DIR$/bin/client/join/SelectColorView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/ILoginController.class" afterPath="$PROJECT_DIR$/bin/client/login/ILoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/ILoginView.class" afterPath="$PROJECT_DIR$/bin/client/login/ILoginView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginController.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$1.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$2.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$3.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$4.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$TextFieldValidator.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$TextFieldValidator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/main/Catan.class" afterPath="$PROJECT_DIR$/bin/client/main/Catan.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/IMapController.class" afterPath="$PROJECT_DIR$/bin/client/map/IMapController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/IMapView.class" afterPath="$PROJECT_DIR$/bin/client/map/IMapView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/IRobView.class" afterPath="$PROJECT_DIR$/bin/client/map/IRobView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapComponent$1.class" afterPath="$PROJECT_DIR$/bin/client/map/MapComponent$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapComponent$2.class" afterPath="$PROJECT_DIR$/bin/client/map/MapComponent$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapComponent.class" afterPath="$PROJECT_DIR$/bin/client/map/MapComponent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapController.class" afterPath="$PROJECT_DIR$/bin/client/map/MapController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapView$1.class" afterPath="$PROJECT_DIR$/bin/client/map/MapView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapView$MapOverlay$1.class" afterPath="$PROJECT_DIR$/bin/client/map/MapView$MapOverlay$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapView$MapOverlay.class" afterPath="$PROJECT_DIR$/bin/client/map/MapView$MapOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapView.class" afterPath="$PROJECT_DIR$/bin/client/map/MapView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/RobView$1.class" afterPath="$PROJECT_DIR$/bin/client/map/RobView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/RobView.class" afterPath="$PROJECT_DIR$/bin/client/map/RobView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeController.class" afterPath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeView.class" afterPath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeController.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$1.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$2.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$3.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView$1.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/IMessageView.class" afterPath="$PROJECT_DIR$/bin/client/misc/IMessageView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/IWaitView.class" afterPath="$PROJECT_DIR$/bin/client/misc/IWaitView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/MessageView$1.class" afterPath="$PROJECT_DIR$/bin/client/misc/MessageView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/MessageView.class" afterPath="$PROJECT_DIR$/bin/client/misc/MessageView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/WaitView.class" afterPath="$PROJECT_DIR$/bin/client/misc/WaitView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/GameFinishedView$1.class" afterPath="$PROJECT_DIR$/bin/client/points/GameFinishedView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/GameFinishedView.class" afterPath="$PROJECT_DIR$/bin/client/points/GameFinishedView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/IGameFinishedView.class" afterPath="$PROJECT_DIR$/bin/client/points/IGameFinishedView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/IPointsController.class" afterPath="$PROJECT_DIR$/bin/client/points/IPointsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/IPointsView.class" afterPath="$PROJECT_DIR$/bin/client/points/IPointsView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/PointsController.class" afterPath="$PROJECT_DIR$/bin/client/points/PointsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/PointsView.class" afterPath="$PROJECT_DIR$/bin/client/points/PointsView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/IResourceBarController.class" afterPath="$PROJECT_DIR$/bin/client/resources/IResourceBarController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/IResourceBarView.class" afterPath="$PROJECT_DIR$/bin/client/resources/IResourceBarView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarController.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarElement.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarElement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$1.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$2.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$3.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$ResourceElement.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$ResourceElement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/IRollController.class" afterPath="$PROJECT_DIR$/bin/client/roll/IRollController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/IRollResultView.class" afterPath="$PROJECT_DIR$/bin/client/roll/IRollResultView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/IRollView.class" afterPath="$PROJECT_DIR$/bin/client/roll/IRollView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollController.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollResultView$1.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollResultView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollResultView.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollResultView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollView$1.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollView.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerController.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerView.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerController.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView$1.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/utils/FontUtils.class" afterPath="$PROJECT_DIR$/bin/client/utils/FontUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/utils/ImageUtils.class" afterPath="$PROJECT_DIR$/bin/client/utils/ImageUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/poller/PollException.class" afterPath="$PROJECT_DIR$/bin/poller/PollException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/poller/ServerPoller$ServerPollerTask.class" afterPath="$PROJECT_DIR$/bin/poller/ServerPoller$ServerPollerTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/poller/ServerPoller.class" afterPath="$PROJECT_DIR$/bin/poller/ServerPoller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/CatanColor.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/CatanColor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/DevCardType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/DevCardType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/HexType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/HexType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/PieceType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/PieceType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/PortType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/PortType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/ResourceType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/ResourceType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/EdgeDirection.class" afterPath="$PROJECT_DIR$/bin/shared/locations/EdgeDirection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/EdgeLocation.class" afterPath="$PROJECT_DIR$/bin/shared/locations/EdgeLocation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/HexLocation.class" afterPath="$PROJECT_DIR$/bin/shared/locations/HexLocation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/VertexDirection.class" afterPath="$PROJECT_DIR$/bin/shared/locations/VertexDirection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/VertexLocation.class" afterPath="$PROJECT_DIR$/bin/shared/locations/VertexLocation.class" />
+    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="modified Controllers for Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade to have blank functions that help describe what I think they should be doing">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Catan.iml" afterPath="$PROJECT_DIR$/Catan.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Game.java" afterPath="$PROJECT_DIR$/src/model/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/Facade_CAN_DO_methodTests.java" afterPath="$PROJECT_DIR$/src/tests/Facade_CAN_DO_methodTests.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/BankController.java" afterPath="$PROJECT_DIR$/src/controllers/BankController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/DomesticTradeController.java" afterPath="$PROJECT_DIR$/src/controllers/DomesticTradeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/MaritimeTradeController.java" afterPath="$PROJECT_DIR$/src/controllers/MaritimeTradeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/ResourceBar_DevCardController.java" afterPath="$PROJECT_DIR$/src/controllers/ResourceBar_DevCardController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/RollController.java" afterPath="$PROJECT_DIR$/src/controllers/RollController.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -219,52 +33,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TurnTracker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/TurnTracker.java">
+      <file leaf-file-name="RollController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/controllers/RollController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="5" column="19" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.47004607">
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ClientCommunicator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proxy/ClientCommunicator.java">
+      <file leaf-file-name="ResourceBar_DevCardController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/ResourceBar_DevCardController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="86" selection-start-line="20" selection-start-column="86" selection-end-line="20" selection-end-column="86" />
-              <folding />
+              <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Game.java">
+      <file leaf-file-name="DomesticTradeController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/controllers/DomesticTradeController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="61" column="7" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MockProxy.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/proxy/MockProxy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="3.2903225">
-              <caret line="113" column="21" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RealProxy.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proxy/RealProxy.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="37" column="14" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
-              <folding />
+              <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+              <folding>
+                <element signature="e#284#285#0" expanded="true" />
+                <element signature="e#312#313#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -315,6 +114,11 @@
         <option value="$PROJECT_DIR$/src/tests/Facade_CAN_DO_methodTests.java" />
         <option value="$PROJECT_DIR$/src/model/clientModel/ClientModel.java" />
         <option value="$PROJECT_DIR$/src/model/clientModel/MessageLine.java" />
+        <option value="$PROJECT_DIR$/src/controllers/BankController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/ResourceBar_DevCardController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/MaritimeTradeController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/DomesticTradeController.java" />
+        <option value="$PROJECT_DIR$/src/controllers/RollController.java" />
       </list>
     </option>
   </component>
@@ -381,24 +185,6 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tests" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Catan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS-340-Team-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -414,69 +200,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="proxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Catan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS-340-Team-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="proxy" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="objects" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Catan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS-340-Team-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Catan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="CS-340-Team-3" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="clientModel" />
+              <option name="myItemId" value="controllers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -506,124 +230,6 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Jesse\IdeaProjects\GIT_GUI\src\model" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Facade.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Game.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Player.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/poller/modeljsonparser/ClassToJSON.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/poller/modeljsonparser/ModelParser.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tests/CanDoTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tests/ModelJSONInitializationTest.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tests/RunAllTests.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/testmodel.json</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="JUnit.PlayerTest">
     <configuration default="false" name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -976,7 +582,19 @@
       <option name="project" value="LOCAL" />
       <updated>1463020148165</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Slightly modified game variables and added to my own Facade canDo Tests.">
+      <created>1463032050131</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1463032050131</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added Controller Package with Controllers for Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade.">
+      <created>1463096562568</created>
+      <option name="number" value="00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1463096562568</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1022,7 +640,6 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0488959" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33438486" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17203514" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1030,13 +647,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21135646" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33438486" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32492113" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21135646" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1063,7 +681,9 @@
     <MESSAGE value="Added several classes for ClientModel and modified Player to fit ClientModel." />
     <MESSAGE value="Changed Player and Facade tests to Java classes (not groovy)" />
     <MESSAGE value="Slightly modified game variables and added to my own Facade canDo Tests." />
-    <option name="LAST_COMMIT_MESSAGE" value="Slightly modified game variables and added to my own Facade canDo Tests." />
+    <MESSAGE value="Added Controller Package with Controllers for Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade." />
+    <MESSAGE value="modified Controllers for Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade to have blank functions that help describe what I think they should be doing" />
+    <option name="LAST_COMMIT_MESSAGE" value="modified Controllers for Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade to have blank functions that help describe what I think they should be doing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1076,53 +696,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Port.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="58" column="13" selection-start-line="58" selection-start-column="13" selection-end-line="58" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Road.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="32" column="13" selection-start-line="32" selection-start-column="13" selection-end-line="32" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Settlement.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Hex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/definitions/ResourceType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/ObjectNotFoundException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12477064">
@@ -1142,9 +715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2781186">
           <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1159,7 +729,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.787321">
           <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1183,7 +752,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33144477">
           <caret line="799" column="0" selection-start-line="799" selection-start-column="0" selection-end-line="799" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1191,7 +759,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.529595">
           <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1221,7 +788,7 @@
         <state vertical-scroll-proportion="0.53177965">
           <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1238,15 +805,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.54025424">
           <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/bank/Bank.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="5.3855934">
-          <caret line="156" column="28" selection-start-line="156" selection-start-column="28" selection-end-line="156" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1319,17 +877,7 @@
         <state vertical-scroll-proportion="0.23652174">
           <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Facade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="486" column="0" selection-start-line="486" selection-start-column="0" selection-end-line="486" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1395,7 +943,7 @@
         <state vertical-scroll-proportion="0.1426087">
           <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="n#!!doc" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1490,8 +1038,81 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/proxy/MockProxy.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.2903225">
-          <caret line="113" column="21" selection-start-line="113" selection-start-column="21" selection-end-line="113" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="109" column="33" selection-start-line="109" selection-start-column="33" selection-end-line="109" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proxy/IServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.31106">
+          <caret line="465" column="0" selection-start-line="465" selection-start-column="0" selection-end-line="465" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Facade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6691358">
+          <caret line="176" column="24" selection-start-line="176" selection-start-column="24" selection-end-line="176" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/bank/Bank.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.0576037">
+          <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/MaritimeTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/BankController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.31336406">
+          <caret line="8" column="29" selection-start-line="8" selection-start-column="29" selection-end-line="8" selection-end-column="29" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/DomesticTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="38" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+          <folding>
+            <element signature="e#284#285#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/ResourceBar_DevCardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="9" column="44" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/RollController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.47004607">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
