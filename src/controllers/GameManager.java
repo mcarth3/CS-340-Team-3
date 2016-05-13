@@ -3,6 +3,7 @@ package controllers;
 import java.util.ArrayList;
 
 import model.Game;
+import states.State;
 
 
 public class GameManager {
@@ -32,10 +33,10 @@ public class GameManager {
 
 	}
 	/**
-	 * replaces the current model from the poller
+	 * replaces the current model from the poller, and updates all observers that theres a new model
 	 * @param game- the new model to replace the old model
 	 * @pre game is not null, and is formatted correctly
-	 * @post the current model is replaced with the new one
+	 * @post the current model is replaced with the new one and updates all observers that theres a new model
 	 */
 	public Game updateGame(Game game) {
 		return game;
@@ -52,6 +53,12 @@ public class GameManager {
 	}
 
 	private void addTestGames() {
+	}
+	
+	/**
+	 * updates the game state to all the observers
+	 */
+	public void updatestate(State currentstate){
 	}
 
 }
