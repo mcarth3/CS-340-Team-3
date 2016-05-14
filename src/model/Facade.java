@@ -301,7 +301,7 @@ public class Facade extends AbstractModelPartition {
      *
      * @return boolean whether or not the player played the year of plenty card
      */
-    public void playYearOfPlenty(int pid, Resource r1, Resource r2) {
+    public void playYearOfPlenty(int pid, ResourceType r1, ResourceType r2) {
         if (theGame != null)
             if (theGame.canYearOfPlenty(pid))
                 proxy.Year_of_Plenty(pid, r1, r2);
