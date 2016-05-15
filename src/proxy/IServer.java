@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import model.Game;
 import model.Player;
+import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
@@ -679,7 +680,7 @@ public interface IServer {
 	 * "type": "Year_of_Plenty"
 	 * public void Year_of_Plenty(resource1, resource2){}
 	 */
-	public String Year_of_Plenty(Integer playerIndex, Resource resource1, Resource resource2);
+	public String Year_of_Plenty(Integer playerIndex, ResourceType resource1, ResourceType resource2);
 
 	/**
 	 * Dev Card Commands
