@@ -14,9 +14,15 @@ public class TurnTracker extends AbstractModelPartition {
 
     public TurnTracker() {
         currPlayer = 0;
-        status = "";
+        status = "default";
     }
 
+    public TurnTracker(int currentP, String stat,int newlongestroad, int newlargestarmy) {
+        currPlayer = currentP;
+        status = stat;
+        longestRoad = newlongestroad;
+        largestArmy = newlargestarmy;
+    }
     public TurnTracker(int currentP, String stat) {
         currPlayer = currentP;
         status = stat;

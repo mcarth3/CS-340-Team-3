@@ -24,7 +24,19 @@ public class ClientModel extends AbstractModelPartition {
     private int version;
     private int winner;
     
-    public void ClientModel(){
+    public ClientModel(ResourceList newbank, MessageList newchat, MessageList newlog, Map newmap, ArrayList<Player> newplayers, TradeOffer newtradeOffer, TurnTracker newturnTracker, int newversion, int newwinner){
+        bank = newbank;
+        chat = newchat;
+        log = newlog;
+        map = newmap;
+        players = newplayers;
+        tradeOffer = newtradeOffer;
+        turnTracker = newturnTracker;
+        version = newversion;
+        winner = newwinner;
+    }
+    
+    public ClientModel(){
         bank = new ResourceList();
         chat = new MessageList();
         log = new MessageList();

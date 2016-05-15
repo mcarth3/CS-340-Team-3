@@ -10,8 +10,11 @@ import poller.modeljsonparser.AbstractModelPartition;
 public class MessageList extends AbstractModelPartition {
     private ArrayList<MessageLine> lines;
    
-    public void MessageList(){
+    public MessageList(){
     	lines = new ArrayList<MessageLine>();
+    }
+    public MessageList(ArrayList<MessageLine> newlines){
+    	lines = newlines;
     }
 
     /**

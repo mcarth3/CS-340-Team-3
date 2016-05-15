@@ -12,8 +12,11 @@ public class Dice extends AbstractModelPartition {
   
   
   
-  public void Dice(){
+  public Dice(){
 	  diceRoll = 1;
+  }
+  public Dice(int newdiceRoll){
+	  diceRoll = newdiceRoll;
   }
   
   /**

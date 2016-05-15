@@ -26,7 +26,7 @@ public class ModelParser {
 	 */
 	public static <T> T parse(String jsonstring, Class<T> Tclass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		JsonElement element = parser.parse(jsonstring);
-		System.out.println("parsing");
+		//System.out.println("parsing");
 		return parseFromObj(element, Tclass);
 	}
 
@@ -39,134 +39,131 @@ public class ModelParser {
 	 */
 	private static <T> T parseFromObj(JsonElement element, Class<T> Tclass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 	
-		
+		System.out.println("element "+element.toString());
+		System.out.println(Tclass.toString());
+
 		if (element.isJsonPrimitive()) { //debugging for classes using ints isn't going too well, so I cast to Integer
+			System.out.println("if element.isJsonPrimitive()");
 			JsonPrimitive primitive = element.getAsJsonPrimitive();
 			if (primitive.isNumber()) {
+				System.out.println("if primitive.isNumber()");
 				Tclass  = (Class<T>) Integer.class;
 			}
 		}
 		
 		
-		if (!element.isJsonNull()) {
-			if (element.isJsonArray()) {
-				JsonArray JArray = element.getAsJsonArray();
-				Object[] ObjectArray = (Object[]) Array.newInstance(Tclass.getComponentType(), JArray.size());
-				for (int i = 0; i < JArray.size(); i++) {
-					ObjectArray[i] = parseFromObj(JArray.get(i), Tclass.getComponentType());
+		if (element.isJsonNull()) {//if elemnt is not null
+			System.out.println("if element.isJsonNull()");
+			return null;
+		}
+		
+		if (element.isJsonArray()) {//if element is json array
+			System.out.println("if element.isJsonArray()");
+			JsonArray JArray = element.getAsJsonArray();
+			Object[] ObjectArray = (Object[]) Array.newInstance(Tclass.getComponentType(), JArray.size());
+			for (int i = 0; i < JArray.size(); i++) {
+				System.out.println("for (int i = 0; i < JArray.size(); i++) {");
+				ObjectArray[i] = parseFromObj(JArray.get(i), Tclass.getComponentType());//parse all array objects
+			}
+			return (T) ObjectArray;
+		}
+		
+		
+		if (Tclass.isArray()) {//if class is array
+			System.out.println("if (Tclass.isArray()) {");
+			return (T) (Object[]) Array.newInstance(Tclass.getComponentType(), 0);
+		}
+		
+		if (Tclass.getDeclaredConstructors().length == 0) {//if class has no declared ConstructorArray, assume class is boolean
+			System.out.println("if Tclass.getDeclaredConstructors().length == 0");
+			return (T) new Boolean(element.getAsBoolean());
+		}
+
+		if (Tclass.isEnum()) {//if class is enum
+			System.out.println("if Tclass.isEnum()");
+			for (T enumValue : Tclass.getEnumConstants()) {
+				System.out.println("for (T enumValue : Tclass.getEnumConstants()) {");
+				if (enumValue.toString().equalsIgnoreCase((element.getAsString()))) {
+					System.out.println("if enumValue.toString().equalsIgnoreCase((element.getAsString()))");
+					return enumValue;
 				}
-				return (T) ObjectArray;
+			}
+		}
+		
+		Constructor<T> constructor = null;//get all constructor objects
+		Constructor<?>[] ConstructorArray = Tclass.getDeclaredConstructors();
+		for (Constructor<?> c : ConstructorArray) {
+			System.out.println("for (Constructor<?> c : ConstructorArray) {");
+			if (c.getParameterTypes().length > 0) {
+				System.out.println("if c.getParameterTypes().length > 0");
+				System.out.println("constructor elements " + c.toString());
+				constructor = (Constructor<T>) c;
+				break;
+			}
+		}
+		
+
+		
+		if (element.isJsonObject()) {
+			System.out.println("if element.isJsonObject()");
+			JsonObject jsonObject = element.getAsJsonObject();
+			if (jsonObject.entrySet().size() == 0){
+				System.out.println("jsonObject.entrySet().size() == 0");
+				return null;
 			}
 			
-			if (Tclass.isArray()) {
-				return (T) (Object[]) Array.newInstance(Tclass.getComponentType(), 0);
-			}
-			
-			if (Tclass.getDeclaredConstructors().length == 0) {
-				return (T) new Boolean(element.getAsBoolean());
-			}
-			
-			if (Tclass.isEnum()) {
-				for (T enumVAL : Tclass.getEnumConstants()) {
-					if (enumVAL.toString().equalsIgnoreCase((element.getAsString()))) {
-						return enumVAL;
-					}
-				}
-			}
-			
-			Constructor<T> constructor = null;
-			Constructor<?>[] ConstructorArray = Tclass.getDeclaredConstructors();
-			for (Constructor<?> c : ConstructorArray) {
-				if (c.getParameterTypes().length > 0) {
-					constructor = (Constructor<T>) c;
-					break;
-				}
-			}
-			
-			if (element.isJsonObject()) {
-				return parseJobject(element,Tclass,constructor);
-				
-			} else {
-				JsonPrimitive primitive = element.getAsJsonPrimitive();
-				//System.out.println(jsonPrimitive.getAsInt());
-				//try {
-				//	constructor = classOfT.getConstructor();
-				//} catch (NoSuchMethodException e) {
-				//	e.printStackTrace();
-				//} catch (SecurityException e) {
-				//	e.printStackTrace();
-				//}
-				if (primitive.isNumber()) {
-					int value = primitive.getAsInt();
-					return constructor.newInstance(value);
-				} else if (primitive.isBoolean()) {
-					boolean value = primitive.getAsBoolean();
-					return constructor.newInstance(value);
+			Field[] fields = Tclass.getDeclaredFields();
+			ArrayList<Object> params = new ArrayList<Object>();
+			for (Field field : fields) {
+				System.out.println("field: " + field.toString());				
+				JsonElement value = jsonObject.get(field.getName());
+				if (value == null) {
+					System.out.println("Field = null");
+					params.add(null);
 				} else {
-					String value = primitive.getAsString();
-					return constructor.newInstance(value);
+					params.add(parseFromObj(value, field.getType()));
 				}
-			}
-		}
-		return null;
-
-	}
-
-
-	private static <T> T parseJobject(JsonElement element, Class<T> Tclass, Constructor<T> constructor) {
-		JsonObject jsonobject = element.getAsJsonObject();
-		if (jsonobject.entrySet().size() == 0){
-			return null;
-		}
-		Field[] fieldarray = Tclass.getDeclaredFields();
-		ArrayList<Object> params = new ArrayList<Object>();
-		for (Field field : fieldarray) {
-			if (field.getModifiers() != Modifier.PRIVATE){
-				continue;
 			}
 			
-			JsonElement value = jsonobject.get(field.getName());
-			if (value == null) {
-				params.add(null);
+			if (constructor == null){
+				System.out.println("if (constructor == null){");
+				System.out.println("YOU NEED A CONSTRUCTOR THAT SETS ALL VARIABLES WITH MATCHING ARGS");
+			}
+			
+			if (constructor.getParameterTypes().length != params.toArray().length) {
+				System.out.println("if (constructor.getParameterTypes().length != params.toArray().length) {");
+				return null;
+			}
+			
+			return constructor.newInstance(params.toArray());
+		}else {
+			System.out.println("not (element.isJsonObject()) {");
+			
+			JsonPrimitive jsonPrimitive = element.getAsJsonPrimitive();
+			if (jsonPrimitive.isNumber()) {
+				System.out.println("if (jsonPrimitive.isNumber()) {");
+				int value = jsonPrimitive.getAsInt();
+				return constructor.newInstance(value);
+			} else if (jsonPrimitive.isBoolean()) {
+				System.out.println("} else if (jsonPrimitive.isBoolean()) {");
+				boolean value = jsonPrimitive.getAsBoolean();
+				return constructor.newInstance(value);
 			} else {
-//				System.out.println(value);
-				try {
-					params.add(parseFromObj(value, field.getType()));
-				} catch (InstantiationException e) {
-					e.printStackTrace();
-				} catch (IllegalAccessException e) {
-					e.printStackTrace();
-				} catch (IllegalArgumentException e) {
-					e.printStackTrace();
-				} catch (InvocationTargetException e) {
-					e.printStackTrace();
-				}
+				System.out.println("else");
+				String value = jsonPrimitive.getAsString();
+				System.out.println(constructor.getName());
+				System.out.println(value);
+				return constructor.newInstance(value);
 			}
 		}
-		
-		//if (constructor==null){
-		//	System.out.println("null");
-		//}
-		
-		if (constructor.getParameterTypes().length != params.toArray().length) {
-			return null;
-		}
-		//if (params.size()>0){	System.out.println(params.toArray());}
-		try {
-			return constructor.newInstance(params.toArray());
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
-		return null;
 	}
 	
-	
-
 }
 
+	
+	
+
+
+		
+		
+	 

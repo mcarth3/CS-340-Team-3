@@ -17,9 +17,13 @@ public abstract class VertexObject extends AbstractModelPartition {
 	   *@param VertexObject - an object to compareTo
 	   *@return if the location is being used already
 	   */
-	   public void VertexObject(){
+	   public VertexObject(){
 		   owner = 0;
 		   vertexLocation = new VertexLocation(new HexLocation(0, 0), VertexDirection.West);
+	   }
+	   public VertexObject(int newowner, VertexLocation newvertexlocation){
+		   owner = newowner;
+		   vertexLocation = newvertexlocation;
 	   }
 	   
 	   boolean compareTo(VertexObject vo)

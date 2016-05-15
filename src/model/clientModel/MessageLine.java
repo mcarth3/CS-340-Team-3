@@ -9,9 +9,13 @@ public class MessageLine extends AbstractModelPartition {
     private String message;
     private String source;
 
-    public void MessageLine(){
+    public MessageLine(){
     	message ="default message string";
     	source ="default source string";
+    }
+    public MessageLine(String newmessage, String newsource){
+    	message = newmessage;
+    	source = newsource;
     }
     /**
     GETTERS & SETTERS:

@@ -20,13 +20,20 @@ public class TradeOffer extends AbstractModelPartition {
 	  //Resource List of whats being recieved (positive)
 	  ResourceList recievedList = new ResourceList(0);
 	  
-	    public TradeOffer()
+	  public TradeOffer()
 	  {
 	    sender = 0;
 	    reciever = 0;
 	    offer = null;
 	  }
-	  
+	  public TradeOffer(int newsender, int newreciever,ResourceList newoffer, ResourceList newsentlist, ResourceList newrecievedlist)
+	  {
+		  sender = newsender;
+		  reciever = newreciever;
+		  offer = newoffer;
+		  sentList = newsentlist;
+		  recievedList = newrecievedlist;
+	  }
 	  public TradeOffer(ResourceList offr)
 	  {
 	    offer = offr;

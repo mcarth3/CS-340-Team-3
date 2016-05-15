@@ -85,7 +85,39 @@ public class Player extends AbstractModelPartition {
         this.setVictoryPoints(newVictoryPointAmount);
     }
 
-
+    public Player(String newColor, String newName, String newPassword, int newBiggestRoadLength, int ID, int newCityAmount, int newRoadAmount, int newSettlementAmount, int newMonumentAmount,
+            int newSoldierAmount, DevCardList newNewDevCardList, DevCardList newOldDevCardList, boolean newPlayedDevCard, ResourceList newResourcesAmounts, boolean newDiscarded, int newVictoryPointAmount,
+            String newusername, Integer newid, int newplayerIndex, ArrayList<ResourceCard> newresourceCards, ArrayList<DevelopmentCard> newdevelopmentCards, ArrayList<SpecialCard> newspecialCards, ArrayList<Settlement> newsettlementArrayList, ArrayList<Road> newroadArrayList, ArrayList<City> newcityArrayList) {
+  this.setColor(newColor);
+  this.setName(newName);
+  this.setPassword(newPassword);
+  this.setBiggestRoadLength(newBiggestRoadLength);
+  this.setPlayerID(ID);
+  this.setCities(newCityAmount);
+  this.setRoads(newRoadAmount);
+  this.setSettlements(newSettlementAmount);
+  this.setMonuments(newMonumentAmount);
+  this.setSoldiers(newSoldierAmount);
+  this.setNewDevCards(newNewDevCardList);
+  this.setOldDevCards(newOldDevCardList);
+  this.setPlayedDevCard(newPlayedDevCard);
+  this.setResources(newResourcesAmounts);
+  this.setDiscarded(newDiscarded);
+  this.setVictoryPoints(newVictoryPointAmount);
+  
+  username = newusername;
+  id = newid;
+  playerIndex = newplayerIndex;
+  resourceCards = newresourceCards;
+  developmentCards = newdevelopmentCards;
+  specialCards = newspecialCards;
+  settlementArrayList = newsettlementArrayList;
+  roadArrayList = newroadArrayList;
+  cityArrayList = newcityArrayList;
+  
+  
+  
+}
 
     public Player() {
 		// TODO Auto-generated constructor stub

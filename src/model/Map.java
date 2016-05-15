@@ -22,7 +22,7 @@ public class Map extends AbstractModelPartition {
 	ArrayList<Road> roads;
 	ArrayList<VertexObject> buildings;
 	ArrayList<ResourceList> resources;
-	int radius = -1;
+	int radius;
 	Robber robber;
 	public Map()
 	{
@@ -32,8 +32,19 @@ public class Map extends AbstractModelPartition {
 		robber = new Robber();
 		buildings = new ArrayList<VertexObject>();
 		resources = new ArrayList<ResourceList>();
+		radius = -1;
 	}
 
+	public Map(TreeMap<HexLocation,Hex> newhexes,ArrayList<Port> newports,ArrayList<Road> newroads,Robber newrobber, ArrayList<VertexObject> newbuildings,ArrayList<ResourceList> newresources, int newradius)
+	{
+		hexes = newhexes;
+		ports = newports;
+		roads = newroads;
+		robber = newrobber;
+		buildings = newbuildings;
+		resources = newresources;
+		radius = newradius;
+	}
 	public void clearHexes(){
 		hexes.clear();
 	}

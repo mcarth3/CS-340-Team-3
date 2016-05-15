@@ -25,8 +25,17 @@ public class Facade extends AbstractModelPartition {
         proxy = p;
     }
 
+    public Facade(RealProxy p,Game newgame) {
+        theGame = newgame;
+        proxy = p;
+    }
+    
     public Facade(MockProxy p) {
         theGame = null;
+        proxy = p;
+    }
+    public Facade(MockProxy p,Game newgame) {
+        theGame = newgame;
         proxy = p;
     }
 

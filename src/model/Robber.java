@@ -11,7 +11,9 @@ public class Robber extends AbstractModelPartition {
     public Robber() {
     	hl = new HexLocation(0, 0);
     }
-
+    public Robber(HexLocation newh1) {
+    	hl = newh1;
+    }
     
 
     /**

@@ -50,6 +50,20 @@ public class Game extends AbstractModelPartition {
     	
 
     }
+    
+    public Game(TradeOffer newtradeO, String newtitle, Integer newid, ArrayList<Player> newplayers, int newmodelversion, Dice newdice, Map newtheGameMap, TurnTracker newturnTracker, Map newmap) {
+    	tradeO = newtradeO;
+    	title = newtitle;
+    	id = newid;
+    	players = newplayers;
+    	modelversion = newmodelversion;
+    	dice= newdice;
+        theGameMap = newtheGameMap;
+        turnTracker = newturnTracker;
+        map = newmap;
+    	
+
+    }
 
     /**
      * @pre: acquire the username/password of player wanted to add to game

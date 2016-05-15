@@ -6,6 +6,10 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
+import shared.locations.EdgeLocation;
+import shared.locations.HexLocation;
+import shared.locations.VertexLocation;
+
 
 public class ClassToJSON {
 	public static String OPEN_BRACKET = "[";
@@ -29,7 +33,7 @@ public class ClassToJSON {
 	public static String converttojsonstring(Object classtoconvert) {
 		Field[] fields = classtoconvert.getClass().getDeclaredFields();
 		StringBuilder sb = new StringBuilder().append(OPEN_BRACE);
-
+		sb.append('\n');
 		boolean first = true;
 
 		for (Field field : fields) {
@@ -44,16 +48,18 @@ public class ClassToJSON {
 				first = false;
 			} else {
 				sb.append(COMMA);
+				sb.append('\n');
 			}
 
 			sb.append(QUOTE).append(field.getName()).append(QUOTE).append(COLON);
 
 			if (val.getClass().isArray()) {
 				sb.append(OPEN_BRACKET);
-
+				sb.append('\n');
 				for (int i = 0; i < Array.getLength(val); i++) {
 					if (i > 0) {
 						sb.append(COMMA);
+						sb.append('\n');
 					}
 					if (val == null || Array.get(val, i) == null) {
 						sb.append(NULL);
@@ -61,7 +67,7 @@ public class ClassToJSON {
 						sb.append(Array.get(val, i).toString());
 					}
 				}
-
+				sb.append('\n');
 				sb.append(CLOSED_BRACKET);
 			} else if (val.getClass().isEnum()) {
 				sb.append(QUOTE).append(val.toString())
@@ -69,12 +75,21 @@ public class ClassToJSON {
 			} else if (val.getClass().isPrimitive()) {
 				sb.append(QUOTE).append(val.toString())
 				.append(QUOTE);
-			}else{
+			}else  if (val.getClass().equals(String.class) ) {
+				sb.append(QUOTE).append(val.toString())
+				.append(QUOTE);
+			}else  if (val.getClass().equals(EdgeLocation.class) ) {
+				sb.append(ClassToJSON.converttojsonstring(val));
+			}else  if (val.getClass().equals(HexLocation.class) ) {
+				sb.append(ClassToJSON.converttojsonstring(val));
+			}else  if (val.getClass().equals(VertexLocation.class) ) {
+				sb.append(ClassToJSON.converttojsonstring(val));
+			}else{	
 				sb.append(val.toString());
 			}
 			//sb.append('\n');
 		}
-
+		sb.append('\n');
 		return sb.append(CLOSED_BRACE).toString();
 	}
 
