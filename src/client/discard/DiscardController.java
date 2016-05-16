@@ -1,6 +1,9 @@
 package client.discard;
 
 import shared.definitions.*;
+
+import java.util.Observable;
+
 import client.base.*;
 import client.misc.*;
 
@@ -50,7 +53,8 @@ public class DiscardController extends Controller implements IDiscardController 
 		getDiscardView().closeModal();
 	}
 
-	public void update(){
+	@Override
+	public void update() {
 	}
 }
 

@@ -1,19 +1,23 @@
 package client.base;
 
 import java.util.Observable;
+import java.util.Observer;
 
+import controllers.GameManager;
 import model.*;
 
 /**
  * Base class for controllers
  */
-public abstract class Controller implements IController
+public abstract class Controller implements IController, Observer
 {
 	
 	private IView view;
+	private GameManager manager = GameManager.getSingleton();
 	
 	protected Controller(IView view)
 	{
+		manager.addObserver(this);
 		setView(view);
 	}
 	
@@ -33,8 +37,9 @@ public abstract class Controller implements IController
 	}
 
 	public void update(Observable arg0, Object arg1) {
-		// TODO Auto-generated method stub
-		
+		update();
+	}
+	public void update() {
 	}
 }
 

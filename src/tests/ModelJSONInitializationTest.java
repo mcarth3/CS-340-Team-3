@@ -54,7 +54,7 @@ public class ModelJSONInitializationTest {
 			e.printStackTrace();
 		}
 
-		System.out.println("the model's title is '" + testgame.title + "'");
+		//System.out.println("the model's title is '" + testgame.title + "'");
 		System.out.println("---------------------------------------------");
 		System.out.println(ClassToJSON.converttojsonstring(testgame));
 

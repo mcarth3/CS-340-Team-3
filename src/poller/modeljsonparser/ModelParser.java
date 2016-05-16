@@ -4,6 +4,15 @@ package poller.modeljsonparser;
  */
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
+
+import model.Hex;
+import model.Port;
+import model.Road;
+import model.Robber;
+import model.VertexObject;
+import model.bank.ResourceList;
+import shared.locations.HexLocation;
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -14,6 +23,7 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 public class ModelParser {
 	private static JsonParser parser = new JsonParser();
@@ -138,19 +148,24 @@ public class ModelParser {
 				System.out.println("if (constructor.getParameterTypes().length != params.toArray().length) {");
 				return null;
 			}
-			System.out.println(constructor.getName());
-			System.out.println(element);
-			//JsonPrimitive jsonPrimitive = element.getAsJsonPrimitive();
-			//boolean value = jsonPrimitive.getAsBoolean();
-			//return constructor.newInstance(value);
+			System.out.println("constructor-"+constructor.getName());
+			System.out.println("elements-"+element);
+			System.out.println("params-"+params);
 			
-			
-			if(false){
-				
+			if (constructor.getName().equals("model.Map")){
+				TreeMap<HexLocation,Hex> hexes = new TreeMap<HexLocation,Hex>();
+				ArrayList<Port> ports = new ArrayList<Port>();
+				ArrayList<Road> roads = new ArrayList<Road>();
+				Robber robber = new Robber();
+				ArrayList<VertexObject> buildings = new ArrayList<VertexObject>();
+				ArrayList<ResourceList> resources = new ArrayList<ResourceList>();
+				int radius = -1;
+				return constructor.newInstance(hexes, ports , roads, buildings, resources, radius, robber);
 			}
 			
-			System.out.println(params);
 			return constructor.newInstance( params.toArray());
+			
+
 		}else {
 			System.out.println("not (element.isJsonObject()) {");
 			

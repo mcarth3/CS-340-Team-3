@@ -99,7 +99,10 @@ public class DiscardController extends Controller implements IDiscardController 
 	 * @pre none
 	 * @post view is updated
 	 */
-	private void updateView() {
-	}
+	
+
+	
+
+
 }
 
