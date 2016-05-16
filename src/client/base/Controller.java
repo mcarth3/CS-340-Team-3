@@ -32,9 +32,7 @@ public abstract class Controller implements IController, Observer
 		return this.view;
 	}
 	
-	public void UpdateModel(Game currentmodel){
-		
-	}
+	
 
 	public void update(Observable arg0, Object arg1) {
 		update();

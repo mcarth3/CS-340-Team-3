@@ -5,6 +5,8 @@ package poller;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Timer;
 import java.util.TimerTask;
+
+import client.GameManager.GameManager;
 import client.base.Controller;
 import model.Game;
 import poller.modeljsonparser.ModelParser;
@@ -19,7 +21,7 @@ public class ServerPoller {
 	private Timer timer;
 	private static ServerPoller singleton = null;
 	private int modelversion;
-	private static Controller controller;
+	private static GameManager manager;
 	
 	/**
 	 * creates a new ServerPoller which uses the given MockProxy
@@ -86,12 +88,9 @@ public class ServerPoller {
 	}
 	
 	
-	public Controller getcontroller(){
-		return controller;
-	}
 	
-	public void setcontroller(Controller newcontroller){
-		controller = newcontroller;
+	public void setGameManager(GameManager newmanager){
+		manager = newmanager;
 	}
 	public void setmodelversion(int newmodelversion){
 		modelversion = newmodelversion;
@@ -110,7 +109,7 @@ public class ServerPoller {
 			try {
 				Game model = poll();
 				if(model != null) {
-					controller.UpdateModel(model);	
+					manager.update(model);	
 				}
 			} catch (PollException e) {
 				e.printStackTrace();

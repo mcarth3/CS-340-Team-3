@@ -46,6 +46,10 @@ public class Facade extends AbstractModelPartition {
     public Facade() {
 		// TODO Auto-generated constructor stub
 	}
+    
+    public void SetGame(Game newGame){
+    	theGame = newGame;
+    }
 
 	/**
      * function to check if a known player can buy a settlement and put it in a known location
@@ -140,7 +144,9 @@ public class Facade extends AbstractModelPartition {
         return false;
     }
     
-    public Game gettheGame() {return theGame;}
+    public Game gettheGame() {
+    	return theGame;
+    }
     public void Reinitialize(Game g) {
         theGame = g;
     }

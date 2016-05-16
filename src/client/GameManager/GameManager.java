@@ -3,6 +3,7 @@ package client.GameManager;
 import java.util.ArrayList;
 import java.util.Observable;
 
+import model.Facade;
 import model.Game;
 import model.Player;
 import states.State;
@@ -12,12 +13,17 @@ public class GameManager extends Observable {
 	
 	//private ArrayList<Game> games;
 	private int id;
-	Game currentgame;
 	private static GameManager singleton = null;
 	private Player player;
+	private Facade modelfacade;
 
 	public GameManager() {
-		currentgame = new Game();
+	}
+	
+	
+	
+	public void setfacade(Facade newmodelfacade) {
+		modelfacade= newmodelfacade;
 	}
 	/**
 	 * gets game by id
@@ -27,7 +33,6 @@ public class GameManager extends Observable {
 	 */
 	public Game getGameById(Integer id) {
 		return null;
-
 	}
 	/**
 	 * gets every game
@@ -79,14 +84,14 @@ public class GameManager extends Observable {
 	 * @param model the CatanModel
 	 */
 	public void update(Game model){
-		this.currentgame = model;
-		updateLocalPlayer();
-		setChanged();
-		notifyObservers();
+		//modelfacade.SetGame(model);
+		//updateLocalPlayer();
+		//setChanged();
+		//notifyObservers();
 	}
 
 	private void updateLocalPlayer() {
-		ArrayList<Player> players = this.currentgame.getPlayers();
+		ArrayList<Player> players = modelfacade.gettheGame().getPlayers();
 		for(int i = 0; i < players.size(); i++) {
 			if(players.get(i) == null) continue;
 			if(players.get(i).getPlayerID() == this.getthisplayer().getPlayerID()) {
