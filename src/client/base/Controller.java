@@ -3,7 +3,7 @@ package client.base;
 import java.util.Observable;
 import java.util.Observer;
 
-import controllers.GameManager;
+import client.GameManager.GameManager;
 import model.*;
 
 /**
