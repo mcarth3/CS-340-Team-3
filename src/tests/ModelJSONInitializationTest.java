@@ -18,7 +18,7 @@ import poller.modeljsonparser.ModelParser;
 import proxy.MockProxy;
 
 public class ModelJSONInitializationTest {
-	@Test
+	
 	public void test() {
 
 		Game testgame= null;// = new Game(1);
@@ -42,6 +42,7 @@ public class ModelJSONInitializationTest {
 		String stringtoconvert = NewMockProxy.gameModel(1);
 		
 		System.out.println("converting from JSON to the model");
+		System.out.println("---------------------------------------------");
 		try {
 			testgame = ModelParser.parse(stringtoconvert, Game.class);
 		} catch (InstantiationException e) {

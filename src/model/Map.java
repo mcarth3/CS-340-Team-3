@@ -35,25 +35,37 @@ public class Map extends AbstractModelPartition {
 		radius = -1;
 	}
 	
-//	public Map(int newint)
-//	{
-//		hexes = new TreeMap<HexLocation,Hex>();
-//		ports = new ArrayList<Port>();
-//		roads = new ArrayList<Road>();
-//		robber = new Robber();
-//		buildings = new ArrayList<VertexObject>();
-//		resources = new ArrayList<ResourceList>();
-//		radius = -1;
-//	}
+
 
 	public Map(TreeMap<HexLocation,Hex> newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<VertexObject> newbuildings,ArrayList<ResourceList> newresources, int newradius,Robber newrobber)
-	{
-		hexes = newhexes;
-		ports = newports;
-		roads = newroads;
+	{//to prevent problems, we intitialize array lists if they come back null
+		if (newhexes !=null){
+			hexes = newhexes;
+		}else{
+			hexes = new TreeMap<HexLocation,Hex>();
+		}
+		if (newports !=null){
+			ports = newports;
+		}else{
+			ports = new ArrayList<Port>();
+		}
+		if (newroads !=null){
+			roads = newroads;
+		}else{
+			roads = new ArrayList<Road>();
+		}
+		if (newbuildings !=null){
+			buildings = newbuildings;
+		}else{
+			buildings = new ArrayList<VertexObject>();
+		}
+		
+		if (newresources !=null){
+			resources = newresources;
+		}else{
+			resources = new ArrayList<ResourceList>();
+		}
 		robber = newrobber;
-		buildings = newbuildings;
-		resources = newresources;
 		radius = newradius;
 	}
 	public void clearHexes(){

@@ -2,6 +2,7 @@ package model;
 
 
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 import model.Port;
 import model.Dice;
@@ -55,7 +56,11 @@ public class Game extends AbstractModelPartition {
     	tradeO = newtradeO;
     	title = newtitle;
     	id = newid;
-    	players = newplayers;
+    	if (newplayers !=null){
+    		players = newplayers;
+		}else{
+			players = new ArrayList<Player>(0);
+		}
     	modelversion = newmodelversion;
     	dice= newdice;
         theGameMap = newtheGameMap;

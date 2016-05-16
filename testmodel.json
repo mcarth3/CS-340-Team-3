@@ -2,6 +2,13 @@
 "tradeO":{
 "sender":0,
 "reciever":0,
+"offer":{
+"numOfBrick":0,
+"numOfOre":0,
+"numOfSheep":0,
+"numOfWheat":0,
+"numOfWood":0
+},
 "sentList":{
 "numOfBrick":0,
 "numOfOre":0,
