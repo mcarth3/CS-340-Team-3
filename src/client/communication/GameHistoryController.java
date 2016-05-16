@@ -44,5 +44,7 @@ public class GameHistoryController extends Controller implements IGameHistoryCon
 		//</temp>
 	}
 	
+	public void update(){
+	}
 }
 

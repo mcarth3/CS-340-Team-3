@@ -60,10 +60,14 @@ public class ModelParser {
 		if (element.isJsonArray()) {//if element is json array
 			System.out.println("if element.isJsonArray()");
 			JsonArray JArray = element.getAsJsonArray();
-			Object[] ObjectArray = (Object[]) Array.newInstance(Tclass.getComponentType(), JArray.size());
-			for (int i = 0; i < JArray.size(); i++) {
-				System.out.println("for (int i = 0; i < JArray.size(); i++) {");
-				ObjectArray[i] = parseFromObj(JArray.get(i), Tclass.getComponentType());//parse all array objects
+			System.out.println("");
+			Object[] ObjectArray = new Object[0];
+			if(JArray.size() !=0){
+				ObjectArray = (Object[]) Array.newInstance(Tclass.getComponentType(), JArray.size());
+				for (int i = 0; i < JArray.size(); i++) {
+					System.out.println("for (int i = 0; i < JArray.size(); i++) {");
+					ObjectArray[i] = parseFromObj(JArray.get(i), Tclass.getComponentType());//parse all array objects
+				}
 			}
 			return (T) ObjectArray;
 		}
@@ -134,8 +138,19 @@ public class ModelParser {
 				System.out.println("if (constructor.getParameterTypes().length != params.toArray().length) {");
 				return null;
 			}
+			System.out.println(constructor.getName());
+			System.out.println(element);
+			//JsonPrimitive jsonPrimitive = element.getAsJsonPrimitive();
+			//boolean value = jsonPrimitive.getAsBoolean();
+			//return constructor.newInstance(value);
 			
-			return constructor.newInstance(params.toArray());
+			
+			if(false){
+				
+			}
+			
+			System.out.println(params);
+			return constructor.newInstance( params.toArray());
 		}else {
 			System.out.println("not (element.isJsonObject()) {");
 			
@@ -153,8 +168,8 @@ public class ModelParser {
 				String value = jsonPrimitive.getAsString();
 				System.out.println(constructor.getName());
 				System.out.println(value);
-				return constructor.newInstance(value);
-			}
+				//System.out.println(String.class.getDeclaredConstructors());
+				return (T) value;			}
 		}
 	}
 	

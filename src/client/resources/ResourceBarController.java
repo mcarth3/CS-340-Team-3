@@ -68,6 +68,8 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 			action.execute();
 		}
 	}
+	public void update(){
+	}
 
 }
 

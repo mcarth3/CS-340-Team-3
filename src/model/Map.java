@@ -35,7 +35,7 @@ public class Map extends AbstractModelPartition {
 		radius = -1;
 	}
 
-	public Map(TreeMap<HexLocation,Hex> newhexes,ArrayList<Port> newports,ArrayList<Road> newroads,Robber newrobber, ArrayList<VertexObject> newbuildings,ArrayList<ResourceList> newresources, int newradius)
+	public Map(TreeMap<HexLocation,Hex> newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<VertexObject> newbuildings,ArrayList<ResourceList> newresources, int newradius,Robber newrobber)
 	{
 		hexes = newhexes;
 		ports = newports;

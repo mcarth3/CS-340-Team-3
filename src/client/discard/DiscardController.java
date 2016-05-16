@@ -25,6 +25,7 @@ public class DiscardController extends Controller implements IDiscardController 
 		this.waitView = waitView;
 	}
 
+
 	public IDiscardView getDiscardView() {
 		return (IDiscardView)super.getView();
 	}
@@ -49,5 +50,7 @@ public class DiscardController extends Controller implements IDiscardController 
 		getDiscardView().closeModal();
 	}
 
+	public void update(){
+	}
 }
 

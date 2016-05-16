@@ -66,4 +66,6 @@ public class GameManager {
 	public void register(){
 	}
 
+	public void update(){
+	}
 }

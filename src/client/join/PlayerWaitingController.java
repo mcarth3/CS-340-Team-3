@@ -31,6 +31,8 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 		// TEMPORARY
 		getView().closeModal();
 	}
+	public void update(){
+	}
 
 }
 

@@ -115,6 +115,9 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 
 		getAcceptOverlay().closeModal();
 	}
+	
+	public void update(){
+	}
 
 }
 

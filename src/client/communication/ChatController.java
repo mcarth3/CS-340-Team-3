@@ -22,6 +22,7 @@ public class ChatController extends Controller implements IChatController {
 	public void sendMessage(String message) {
 		
 	}
-
+	public void update(){
+	}
 }
 

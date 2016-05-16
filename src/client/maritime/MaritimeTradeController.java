@@ -68,6 +68,8 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	public void unsetGiveValue() {
 
 	}
+	public void update(){
+	}
 
 }
 

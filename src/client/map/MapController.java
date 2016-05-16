@@ -165,6 +165,8 @@ public class MapController extends Controller implements IMapController {
 	public void robPlayer(RobPlayerInfo victim) {	
 		
 	}
+	public void update(){
+	}
 	
 }
 

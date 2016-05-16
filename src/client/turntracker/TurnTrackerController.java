@@ -32,6 +32,8 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 		getView().setLocalPlayerColor(CatanColor.RED);
 		//</temp>
 	}
+	public void update(){
+	}
 
 }
 

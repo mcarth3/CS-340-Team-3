@@ -39,6 +39,8 @@ public class RollController extends Controller implements IRollController {
 
 		getResultView().showModal();
 	}
+	public void update(){
+	}
 
 }
 
