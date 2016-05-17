@@ -5,13 +5,14 @@
     <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="added pre and post to controllers of Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade">
+    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="Made Facade a singleton to be accessed by controllers. Edited RollController">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/BankController.java" afterPath="$PROJECT_DIR$/src/controllers/BankController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/DomesticTradeController.java" afterPath="$PROJECT_DIR$/src/controllers/DomesticTradeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/MaritimeTradeController.java" afterPath="$PROJECT_DIR$/src/controllers/MaritimeTradeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/ResourceBar_DevCardController.java" afterPath="$PROJECT_DIR$/src/controllers/ResourceBar_DevCardController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/controllers/RollController.java" afterPath="$PROJECT_DIR$/src/controllers/RollController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/devcards/DevCardController.java" afterPath="$PROJECT_DIR$/src/client/devcards/DevCardController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" afterPath="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" afterPath="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/resources/ResourceBarController.java" afterPath="$PROJECT_DIR$/src/client/resources/ResourceBarController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/roll/RollController.java" afterPath="$PROJECT_DIR$/src/client/roll/RollController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Facade.java" afterPath="$PROJECT_DIR$/src/model/Facade.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,59 +34,86 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="BankController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/BankController.java">
+      <file leaf-file-name="RollController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/roll/RollController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
+            <state vertical-scroll-proportion="-13.148149">
+              <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#681#682#0" expanded="true" />
+                <element signature="e#715#716#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DomesticTradeController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/DomesticTradeController.java">
+      <file leaf-file-name="State.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/states/State.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="15" selection-end-column="7" />
+              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StateEnum.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/states/StateEnum.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Facade.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/model/Facade.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.33333334">
+              <caret line="575" column="7" selection-start-line="575" selection-start-column="7" selection-end-line="575" selection-end-column="7" />
+              <folding>
+                <element signature="e#1458#1459#0" expanded="true" />
+                <element signature="e#1488#1489#0" expanded="true" />
+                <element signature="e#1522#1523#0" expanded="true" />
+                <element signature="e#1563#1564#0" expanded="true" />
+                <element signature="e#5748#5749#0" expanded="true" />
+                <element signature="e#5775#5776#0" expanded="true" />
+                <element signature="e#5814#5815#0" expanded="true" />
+                <element signature="e#5841#5842#0" expanded="true" />
+                <element signature="e#14533#14534#0" expanded="true" />
+                <element signature="e#14570#14571#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RollResultView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/roll/RollResultView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RollView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/roll/RollView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="MaritimeTradeController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/MaritimeTradeController.java">
+        <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="52" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ResourceBar_DevCardController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/controllers/ResourceBar_DevCardController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#880#881#0" expanded="true" />
-                <element signature="e#904#905#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RollController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/controllers/RollController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.82258064">
-              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+              <caret line="67" column="34" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -125,7 +153,6 @@
         <option value="$PROJECT_DIR$/src/model/DevelopmentCard.java" />
         <option value="$PROJECT_DIR$/src/model/ObjectNotFoundException.java" />
         <option value="$PROJECT_DIR$/src/model/FacadeCanDoMethodsTest.groovy" />
-        <option value="$PROJECT_DIR$/src/model/Facade.java" />
         <option value="$PROJECT_DIR$/src/tests/PlayerTest.groovy" />
         <option value="$PROJECT_DIR$/src/model/clientModel/MessageList.java" />
         <option value="$PROJECT_DIR$/src/model/Player.java" />
@@ -142,6 +169,12 @@
         <option value="$PROJECT_DIR$/src/controllers/RollController.java" />
         <option value="$PROJECT_DIR$/src/controllers/BankController.java" />
         <option value="$PROJECT_DIR$/src/controllers/ResourceBar_DevCardController.java" />
+        <option value="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" />
+        <option value="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
+        <option value="$PROJECT_DIR$/src/client/resources/ResourceBarController.java" />
+        <option value="$PROJECT_DIR$/src/client/devcards/DevCardController.java" />
+        <option value="$PROJECT_DIR$/src/client/roll/RollController.java" />
+        <option value="$PROJECT_DIR$/src/model/Facade.java" />
       </list>
     </option>
   </component>
@@ -177,6 +210,8 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -223,14 +258,30 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="controllers" />
+              <option name="myItemId" value="states" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Catan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CS-340-Team-3" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -268,640 +319,20 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/allclasses-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/allclasses-noframe.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/ComponentView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/Controller.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/IAction.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/IController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/IOverlayView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/IView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/OverlayView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/PanelView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/class-use/ComponentView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/class-use/Controller.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/class-use/IAction.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/class-use/IController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/class-use/IOverlayView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/class-use/IView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/class-use/OverlayView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/class-use/PanelView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/base/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/CatanPanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/GameStatePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/LeftPanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/MidPanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/RightPanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/TitlePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/TradePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/class-use/CatanPanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/class-use/GameStatePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/class-use/LeftPanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/class-use/MidPanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/class-use/RightPanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/class-use/TitlePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/class-use/TradePanel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/catan/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/ChatController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/ChatView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/GameHistoryController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/GameHistoryView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/IChatController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/IChatView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/IGameHistoryController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/IGameHistoryView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/LogComponent.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/LogEntry.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/PlaceholderTextField.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/class-use/ChatController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/class-use/ChatView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/class-use/GameHistoryController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/class-use/GameHistoryView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/class-use/IChatController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/class-use/IChatView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/class-use/IGameHistoryController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/class-use/IGameHistoryView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/class-use/LogComponent.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/class-use/LogEntry.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/class-use/PlaceholderTextField.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/communication/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/custom/cwt/RoundedButton.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/custom/cwt/class-use/RoundedButton.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/custom/cwt/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/custom/cwt/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/custom/cwt/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/custom/cwt/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/data/GameInfo.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/data/PlayerInfo.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/data/RobPlayerInfo.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/data/class-use/GameInfo.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/data/class-use/PlayerInfo.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/data/class-use/RobPlayerInfo.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/data/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/data/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/data/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/data/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/BuyDevCardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/DevCardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/IBuyDevCardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/IDevCardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/IPlayDevCardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/PlayDevCardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/class-use/BuyDevCardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/class-use/DevCardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/class-use/IBuyDevCardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/class-use/IDevCardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/class-use/IPlayDevCardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/class-use/PlayDevCardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/devcards/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/DiscardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/DiscardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/IDiscardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/IDiscardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/class-use/DiscardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/class-use/DiscardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/class-use/IDiscardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/class-use/IDiscardView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/discard/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/AcceptTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/DomesticTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/DomesticTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/DomesticTradeView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/IAcceptTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/IDomesticTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/IDomesticTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/IDomesticTradeView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/class-use/AcceptTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/class-use/DomesticTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/class-use/DomesticTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/class-use/DomesticTradeView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/class-use/IAcceptTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/class-use/IDomesticTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/class-use/IDomesticTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/class-use/IDomesticTradeView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/domestic/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/IJoinGameController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/IJoinGameView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/INewGameView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/IPlayerWaitingController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/IPlayerWaitingView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/ISelectColorView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/JoinGameController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/JoinGameView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/NewGameView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/PlayerWaitingController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/PlayerWaitingView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/SelectColorView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/IJoinGameController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/IJoinGameView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/INewGameView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/IPlayerWaitingController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/IPlayerWaitingView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/ISelectColorView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/JoinGameController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/JoinGameView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/NewGameView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/PlayerWaitingController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/PlayerWaitingView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/class-use/SelectColorView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/join/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/ILoginController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/ILoginView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/LoginController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/LoginView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/class-use/ILoginController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/class-use/ILoginView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/class-use/LoginController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/class-use/LoginView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/login/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/main/Catan.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/main/class-use/Catan.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/main/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/main/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/main/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/main/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/IMapController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/IMapView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/IRobView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/MapComponent.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/MapController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/MapView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/RobView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/class-use/IMapController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/class-use/IMapView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/class-use/IRobView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/class-use/MapComponent.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/class-use/MapController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/class-use/MapView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/class-use/RobView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/map/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/IMaritimeTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/IMaritimeTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/IMaritimeTradeView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/MaritimeTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/MaritimeTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/MaritimeTradeView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/class-use/IMaritimeTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/class-use/IMaritimeTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/class-use/IMaritimeTradeView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/class-use/MaritimeTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/class-use/MaritimeTradeOverlay.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/class-use/MaritimeTradeView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/maritime/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/IMessageView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/IWaitView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/MessageView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/WaitView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/class-use/IMessageView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/class-use/IWaitView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/class-use/MessageView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/class-use/WaitView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/misc/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/GameFinishedView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/IGameFinishedView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/IPointsController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/IPointsView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/PointsController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/PointsView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/class-use/GameFinishedView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/class-use/IGameFinishedView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/class-use/IPointsController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/class-use/IPointsView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/class-use/PointsController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/class-use/PointsView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/points/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/IResourceBarController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/IResourceBarView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/ResourceBarController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/ResourceBarElement.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/ResourceBarView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/class-use/IResourceBarController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/class-use/IResourceBarView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/class-use/ResourceBarController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/class-use/ResourceBarElement.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/class-use/ResourceBarView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/resources/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/IRollController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/IRollResultView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/IRollView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/RollController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/RollResultView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/RollView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/class-use/IRollController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/class-use/IRollResultView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/class-use/IRollView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/class-use/RollController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/class-use/RollResultView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/class-use/RollView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/roll/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/ITurnTrackerController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/ITurnTrackerView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/TurnTrackerController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/TurnTrackerView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/class-use/ITurnTrackerController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/class-use/ITurnTrackerView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/class-use/TurnTrackerController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/class-use/TurnTrackerView.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/turntracker/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/utils/FontUtils.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/utils/ImageUtils.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/utils/class-use/FontUtils.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/utils/class-use/ImageUtils.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/utils/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/utils/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/utils/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/client/utils/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/constant-values.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/deprecated-list.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/help-doc.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-1.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-10.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-11.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-12.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-13.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-14.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-15.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-16.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-17.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-18.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-19.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-2.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-20.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-21.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-22.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-23.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-3.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-4.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-5.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-6.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-7.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-8.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index-files/index-9.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/index.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/City.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/DevelopmentCard.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/Dice.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/FailureToAddException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/Game.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/Hex.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/IllegalMoveException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/InvalidPositionException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/Map.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/Player.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/Port.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/ResourceCard.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/Road.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/Robber.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/Settlement.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/SpecialCard.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/TradeOffer.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/TurnTracker.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/VertexObject.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/Bank.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/DevCardList.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/InsufficientResourcesException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/ResourceList.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/class-use/Bank.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/class-use/DevCardList.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/class-use/InsufficientResourcesException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/class-use/ResourceList.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/bank/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/City.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/DevelopmentCard.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/Dice.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/FailureToAddException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/Game.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/Hex.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/IllegalMoveException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/InvalidPositionException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/Map.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/Player.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/Port.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/ResourceCard.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/Road.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/Robber.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/Settlement.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/SpecialCard.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/TradeOffer.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/TurnTracker.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/VertexObject.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/overview-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/overview-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/overview-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/package-list</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/InvalidMockProxyException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/PollException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/ServerPoller.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/class-use/InvalidMockProxyException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/class-use/PollException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/class-use/ServerPoller.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/modeljsonparser/ModelParser.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/modeljsonparser/class-use/ModelParser.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/modeljsonparser/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/modeljsonparser/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/modeljsonparser/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/modeljsonparser/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/ClientCommunicator.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/IServer.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/MockProxy.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/RealProxy.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/class-use/ClientCommunicator.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/class-use/IServer.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/class-use/MockProxy.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/class-use/RealProxy.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/serialized-form.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/CatanColor.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/DevCardType.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/HexType.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/PieceType.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/PortType.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/ResourceType.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/class-use/CatanColor.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/class-use/DevCardType.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/class-use/HexType.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/class-use/PieceType.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/class-use/PortType.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/class-use/ResourceType.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/definitions/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/EdgeDirection.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/EdgeLocation.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/HexLocation.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/VertexDirection.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/VertexLocation.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/class-use/EdgeDirection.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/class-use/EdgeLocation.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/class-use/HexLocation.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/class-use/VertexDirection.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/class-use/VertexLocation.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/shared/locations/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/class-use/serverpollertest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/serverpollertest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/base/ComponentView.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/base/Controller.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/base/IAction.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/base/IController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/base/IOverlayView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/base/IView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/base/OverlayView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/base/OverlayView$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/base/OverlayView$OverlayInfo.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/base/OverlayView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/base/PanelView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/CatanPanel$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/CatanPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/GameStatePanel$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/GameStatePanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/LeftPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/MidPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/RightPanel$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/RightPanel$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/RightPanel$3.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/RightPanel$4.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/RightPanel$5.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/RightPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/TitlePanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/TradePanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/ChatController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/ChatView$EventListener.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/ChatView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/GameHistoryController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/GameHistoryView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/GameHistoryView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/IChatController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/IChatView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/IGameHistoryController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/IGameHistoryView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/LogComponent.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/LogEntry.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/PlaceholderTextField.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/custom/cwt/RoundedButton.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/data/GameInfo.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/data/PlayerInfo.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/data/RobPlayerInfo.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanelListener.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/BuyDevCardView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/BuyDevCardView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/DevCardController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/IButtonGroup.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/IBuyDevCardView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/IDevCardController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/IPlayDevCardView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/PlayDevCardView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/ResourceCardChooser.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/discard/DiscardController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/discard/DiscardView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/discard/DiscardView$Resource$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/discard/DiscardView$Resource.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/discard/DiscardView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/discard/IDiscardController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/discard/IDiscardView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$3.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$4.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$5.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$6.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$7.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$8.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$9.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/IAcceptTradeOverlay.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/IDomesticTradeController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/IDomesticTradeOverlay.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/IDomesticTradeView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/IJoinGameController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/IJoinGameView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/INewGameView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/IPlayerWaitingController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/IPlayerWaitingView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/ISelectColorView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/JoinGameController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/JoinGameView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/JoinGameView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/NewGameView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/NewGameView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/PlayerWaitingController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/PlayerWaitingView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/PlayerWaitingView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/SelectColorView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/SelectColorView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/ILoginController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/ILoginView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$3.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$4.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$TextFieldValidator.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/main/Catan.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/IMapController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/IMapView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/IRobView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapComponent$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapComponent$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapComponent.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapView$MapOverlay$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapView$MapOverlay.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/RobView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/RobView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeOverlay.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$3.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/misc/IMessageView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/misc/IWaitView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/misc/MessageView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/misc/MessageView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/misc/WaitView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/points/GameFinishedView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/points/GameFinishedView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/points/IGameFinishedView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/points/IPointsController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/points/IPointsView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/points/PointsController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/points/PointsView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/resources/IResourceBarController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/resources/IResourceBarView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/resources/ResourceBarController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/resources/ResourceBarElement.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/resources/ResourceBarView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/resources/ResourceBarView$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/resources/ResourceBarView$3.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/resources/ResourceBarView$ResourceElement.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/resources/ResourceBarView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/IRollController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/IRollResultView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/IRollView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/RollController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/RollResultView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/RollResultView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/RollView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/RollView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/turntracker/TurnTrackerController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/utils/FontUtils.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/utils/ImageUtils.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/poller/PollException.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/poller/ServerPoller$ServerPollerTask.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/poller/ServerPoller.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/definitions/CatanColor.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/definitions/DevCardType.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/definitions/HexType.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/definitions/PieceType.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/definitions/PortType.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/definitions/ResourceType.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/locations/EdgeDirection.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/locations/EdgeLocation.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/locations/HexLocation.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/locations/VertexDirection.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/locations/VertexLocation.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/build.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/tests/serverpollertest.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/GameManager/GameManager.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/base/Controller.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/proxy/ClientCommunicator.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/proxy/IServer.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/proxy/MockProxy.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/proxy/RealProxy.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/main/Catan.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Facade.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Game.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/poller/ServerPoller.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/poller/modeljsonparser/ModelParser.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tests/ModelJSONInitializationTest.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tests/RunAllTests.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tests/ServerTests.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tests/ServerPollerTest.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/testmodel.json</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
@@ -910,112 +341,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/BankController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/ChatHistory.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/DiscardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/DomesticTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/GameManager.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/JoinGame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/Login.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/MapComponent.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/MapController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/MapResourceBarController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/MaritimeTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/Observable.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/Points.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/ResourceBar_DevCardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/RobberController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/RollController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/TurnTrackerController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/BankController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/ChatHistory.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/DiscardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/DomesticTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/GameManager.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/JoinGame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/Login.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/MapComponent.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/MapController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/MapResourceBarController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/MaritimeTradeController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/Observable.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/Points.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/ResourceBar_DevCardController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/RobberController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/RollController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/class-use/TurnTrackerController.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/controllers/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/Facade.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/FailedCreateGameException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/IllegalBuildException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/InsufficientResourcesException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/InvalidUserException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/ObjectNotFoundException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/Facade.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/FailedCreateGameException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/IllegalBuildException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/InsufficientResourcesException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/InvalidUserException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/class-use/ObjectNotFoundException.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/clientModel/ClientModel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/clientModel/MessageLine.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/clientModel/MessageList.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/clientModel/class-use/ClientModel.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/clientModel/class-use/MessageLine.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/clientModel/class-use/MessageList.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/clientModel/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/clientModel/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/clientModel/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/model/clientModel/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/modeljsonparser/AbstractModelPartition.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/modeljsonparser/ClassToJSON.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/modeljsonparser/class-use/AbstractModelPartition.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/poller/modeljsonparser/class-use/ClassToJSON.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/objects/class-use/userLoginInput.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/objects/class-use/userLoginOutput.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/objects/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/objects/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/objects/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/objects/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/objects/userLoginInput.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/proxy/objects/userLoginOutput.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/states/State.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/states/StateEnum.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/states/class-use/State.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/states/class-use/StateEnum.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/states/package-frame.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/states/package-summary.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/states/package-tree.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/states/package-use.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/CanDoTest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/Facade_CAN_DO_methodTests.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/ModelJSONInitializationTest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/PlayerTest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/RunAllTests.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/ServerTests.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/class-use/CanDoTest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/class-use/Facade_CAN_DO_methodTests.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/class-use/ModelJSONInitializationTest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/class-use/PlayerTest.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/class-use/RunAllTests.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/JavaDoc/tests/class-use/ServerTests.html</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/ChatHistory.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/DiscardController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/GameManager.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/JoinGame.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/Login.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/MapComponent.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/MapController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/MapResourceBarController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/Observable.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/Points.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/RobberController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/controllers/TurnTrackerController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/states/State.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/states/StateEnum.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -1473,7 +798,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463116597003</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="added pre and post to controllers of Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade">
+      <created>1463152524115</created>
+      <option name="number" value="00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1463152524115</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1499,7 +830,7 @@
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
   </component>
-  <component name="TodoView" selected-index="4">
+  <component name="TodoView">
     <todo-panel id="selected-file">
       <is-autoscroll-to-source value="true" />
     </todo-panel>
@@ -1510,31 +841,55 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329653" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27129337" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24549918" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.45335516" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0488959" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33438486" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21767594" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17203514" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32492113" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33438486" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21135646" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+    <layout-to-restore>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24549918" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27129337" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21767594" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33438486" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32492113" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21135646" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -1563,7 +918,8 @@
     <MESSAGE value="Added Controller Package with Controllers for Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade." />
     <MESSAGE value="modified Controllers for Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade to have blank functions that help describe what I think they should be doing" />
     <MESSAGE value="added pre and post to controllers of Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade" />
-    <option name="LAST_COMMIT_MESSAGE" value="added pre and post to controllers of Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade" />
+    <MESSAGE value="Made Facade a singleton to be accessed by controllers. Edited RollController" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made Facade a singleton to be accessed by controllers. Edited RollController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1576,255 +932,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/shared/definitions/DevCardType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="1" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/poller/modeljsonparser/ModelParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2781186">
-          <caret line="83" column="18" selection-start-line="83" selection-start-column="18" selection-end-line="83" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/login/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2781186">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/poller/modeljsonparser/ClassToJSON.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.787321">
-          <caret line="9" column="46" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/ModelJSONInitializationTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22988506">
-          <caret line="7" column="37" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/ServerTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.03908046">
-          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.7.0_79/src.zip!/java/lang/ClassLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33144477">
-          <caret line="799" column="0" selection-start-line="799" selection-start-column="0" selection-end-line="799" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.529595">
-          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/PlayerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35279188">
-          <caret line="33" column="0" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#414#428#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/ServerPollerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4314721">
-          <caret line="10" column="24" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/Facade_CAN_DO_methodTests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53177965">
-          <caret line="24" column="0" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tests/CanDoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.09322034">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/shared/locations/VertexLocation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.54025424">
-          <caret line="15" column="5" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/bank/DevCardList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.31355932">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/bank/InsufficientResourcesException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1440678">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/bank/ResourceList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.25211865">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/clientModel/ClientModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="30" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/clientModel/MessageLine.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/clientModel/MessageList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1773913">
-          <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/City.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1773913">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/DevelopmentCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65565217">
-          <caret line="27" column="0" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Dice.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23652174">
-          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/FailedCreateGameException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.14782609">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/FailureToAddException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08869565">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Hex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.44347826">
-          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/IllegalBuildException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.20695652">
-          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/IllegalMoveException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3252174">
-          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Port.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.08869565">
-          <caret line="7" column="25" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/ResourceCard.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.1426087">
-          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Road.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.6504348">
           <caret line="32" column="0" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1832,7 +943,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1773913">
           <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1840,7 +950,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.29565218">
           <caret line="10" column="1" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1856,7 +965,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.08869565">
           <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1864,7 +972,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4678261">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1896,15 +1003,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="86" selection-start-line="20" selection-start-column="86" selection-end-line="20" selection-end-column="86" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="61" column="7" selection-start-line="61" selection-start-column="7" selection-end-line="61" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1916,83 +1014,332 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/proxy/IServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.31106">
-          <caret line="465" column="0" selection-start-line="465" selection-start-column="0" selection-end-line="465" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Facade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6691358">
-          <caret line="176" column="24" selection-start-line="176" selection-start-column="24" selection-end-line="176" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/bank/Bank.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.0576037">
           <caret line="141" column="0" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/Login.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.21573605">
-          <caret line="5" column="20" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/BankController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/DomesticTradeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="15" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/MaritimeTradeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="52" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/ResourceBar_DevCardController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.70068026">
           <caret line="30" column="17" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#880#881#0" expanded="true" />
-            <element signature="e#904#905#0" expanded="true" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/MaritimeTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61678004">
+          <caret line="16" column="52" selection-start-line="16" selection-start-column="52" selection-end-line="16" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/DomesticTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4240363">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="15" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/BankController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5782313">
+          <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/RollController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.82258064">
-          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.61678004">
+          <caret line="16" column="45" selection-start-line="16" selection-start-column="45" selection-end-line="16" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/map/IMapController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.0022676">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/map/MapView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-1.5238096">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/map/RobView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2494331">
+          <caret line="24" column="37" selection-start-line="24" selection-start-column="37" selection-end-line="24" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/base/PanelView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5340314">
+          <caret line="12" column="4" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="4" />
+          <folding>
+            <element signature="e#249#250#0" expanded="false" />
+            <element signature="e#273#274#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/login/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2434555">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/IDomesticTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="49" column="45" selection-start-line="49" selection-start-column="45" selection-end-line="49" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.578534">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/IAcceptTradeOverlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="6" column="51" selection-start-line="6" selection-start-column="51" selection-end-line="6" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/AcceptTradeOverlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="52" selection-start-line="33" selection-start-column="52" selection-end-line="33" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/IDomesticTradeOverlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3926097">
+          <caret line="33" column="34" selection-start-line="33" selection-start-column="9" selection-end-line="33" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeOverlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="63" column="44" selection-start-line="63" selection-start-column="44" selection-end-line="63" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/roll/IRollController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Catan.iml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.19554031">
+          <caret line="12" column="17" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/roll/IRollView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/base/IOverlayView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Dice.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.8846154">
+          <caret line="78" column="23" selection-start-line="78" selection-start-column="23" selection-end-line="78" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/maritime/IMaritimeTradeView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23327616">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/maritime/IMaritimeTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="51" selection-start-line="12" selection-start-column="51" selection-end-line="12" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeOverlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="121" column="34" selection-start-line="121" selection-start-column="34" selection-end-line="121" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/roll/IRollResultView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="183" column="15" selection-start-line="183" selection-start-column="15" selection-end-line="183" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/roll/RollResultView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/roll/RollView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="8" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="67" column="34" selection-start-line="67" selection-start-column="34" selection-end-line="67" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/resources/ResourceBarController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/devcards/DevCardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9177778">
+          <caret line="100" column="0" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23777778">
+          <caret line="113" column="0" selection-start-line="113" selection-start-column="0" selection-end-line="113" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/proxy/IServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.69555557">
+          <caret line="433" column="0" selection-start-line="433" selection-start-column="0" selection-end-line="433" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/states/State.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/states/StateEnum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/roll/RollController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.148149">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#681#682#0" expanded="true" />
+            <element signature="e#715#716#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Facade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="575" column="7" selection-start-line="575" selection-start-column="7" selection-end-line="575" selection-end-column="7" />
+          <folding>
+            <element signature="e#1458#1459#0" expanded="true" />
+            <element signature="e#1488#1489#0" expanded="true" />
+            <element signature="e#1522#1523#0" expanded="true" />
+            <element signature="e#1563#1564#0" expanded="true" />
+            <element signature="e#5748#5749#0" expanded="true" />
+            <element signature="e#5775#5776#0" expanded="true" />
+            <element signature="e#5814#5815#0" expanded="true" />
+            <element signature="e#5841#5842#0" expanded="true" />
+            <element signature="e#14533#14534#0" expanded="true" />
+            <element signature="e#14570#14571#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
