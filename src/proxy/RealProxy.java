@@ -22,7 +22,7 @@ import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
 
 public class RealProxy implements IServer{
-	
+	private static RealProxy singleton = null;
 	private ClientCommunicator cc = new ClientCommunicator(); 
 	public String UserCookie = null;
 	public String GameCookie = null;
@@ -522,6 +522,12 @@ public class RealProxy implements IServer{
 		//System.out.println(result);
 		return result;
 	}
-	
+
+	public static RealProxy getSingleton() {
+		if(singleton == null) {
+			singleton = new RealProxy();
+		}
+		return singleton;
+	}
 
 }

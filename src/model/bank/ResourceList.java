@@ -42,14 +42,14 @@ public class ResourceList extends AbstractModelPartition {
         numOfWood = wo;
     }
     //copy constructor
-    //public ResourceList(ResourceList resourcesToCopy)
-    //{
-     //   numOfBrick = resourcesToCopy.getBrick();
-     //   numOfOre = resourcesToCopy.getOre();
-     //   numOfSheep = resourcesToCopy.getSheep();
-    //    numOfWheat = resourcesToCopy.getWheat();
-    //   numOfWood = resourcesToCopy.getWood();
-    //}
+    public ResourceList(ResourceList resourcesToCopy)
+    {
+       numOfBrick = resourcesToCopy.getBrick();
+       numOfOre = resourcesToCopy.getOre();
+       numOfSheep = resourcesToCopy.getSheep();
+       numOfWheat = resourcesToCopy.getWheat();
+      numOfWood = resourcesToCopy.getWood();
+    }
     //overload the constructor so that RL can be used for trades, bank, map, players etc.
 
     public int getBrick() {

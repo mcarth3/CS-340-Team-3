@@ -11,7 +11,6 @@ import shared.locations.VertexLocation;
  */
 public class City extends VertexObject
 {
-	int owner;
 	VertexLocation location;
 	public City(VertexLocation vertexLocation, int player)
 	{

@@ -16,7 +16,7 @@ import shared.locations.*;
  * @author Jesse McArthur
  */
 
-public class Map extends AbstractModelPartition {
+public class map extends AbstractModelPartition {
 	TreeMap<HexLocation,Hex> hexes;
 	ArrayList<Port> ports;
 	ArrayList<Road> roads;
@@ -24,7 +24,7 @@ public class Map extends AbstractModelPartition {
 	ArrayList<ResourceList> resources;
 	int radius;
 	Robber robber;
-	public Map()
+	public map()
 	{
 		hexes = new TreeMap<HexLocation,Hex>();
 		ports = new ArrayList<Port>();
@@ -37,7 +37,7 @@ public class Map extends AbstractModelPartition {
 	
 
 
-	public Map(TreeMap<HexLocation,Hex> newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<VertexObject> newbuildings,ArrayList<ResourceList> newresources, int newradius,Robber newrobber)
+	public map(TreeMap<HexLocation,Hex> newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<VertexObject> newbuildings,ArrayList<ResourceList> newresources, int newradius,Robber newrobber)
 	{//to prevent problems, we intitialize array lists if they come back null
 		if (newhexes !=null){
 			hexes = newhexes;
@@ -214,7 +214,7 @@ public class Map extends AbstractModelPartition {
 	{
 		HexLocation hex = new HexLocation(x,y);
 		VertexLocation location =  new VertexLocation(hex, direction);
-		Settlement settlement = new Settlement(location, pid);
+		Settlement settlement = new Settlement(location,pid);
 		buildings.add(settlement);
 	}
 
@@ -229,7 +229,7 @@ public class Map extends AbstractModelPartition {
 		}
 		for (VertexObject VObjIter: buildings)
 		{
-			if (VObjIter.getLocation() == vertexLocation && !(VObjIter instanceof Settlement))
+			if (VObjIter.getLocation() == vertexLocation && !(VObjIter instanceof VertexObject))
 			{
 				return false;
 			}

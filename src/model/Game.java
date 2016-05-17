@@ -7,9 +7,10 @@ import java.util.TreeMap;
 import model.Port;
 import model.Dice;
 import model.TradeOffer;
-import model.Map;
+import model.map;
 import model.Player;
 import model.bank.ResourceList;
+import model.clientModel.MessageList;
 import poller.modeljsonparser.AbstractModelPartition;
 import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
@@ -17,55 +18,68 @@ import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
 import model.TurnTracker;
 import model.bank.Bank;
+import model.bank.DevCardList;
 
 /**
  * Created by Jesse on 5/2/2016.
  */
 public class Game extends AbstractModelPartition {
 
-	//need from server
-	private TradeOffer tradeO;
-	public String title;
-	public Integer id;
-	public ArrayList<Player> players;
-	public int modelversion;
-	private Dice dice;
 
+
+
+	//need from server
+	private DevCardList deck;
+    private map theGameMap;
+	public ArrayList<Player> players;
+	private MessageList log;
+	private MessageList chat;
+	private ResourceList bank;
+    private TurnTracker turnTracker;
+	private int winner;
+	public int version;
+	
+	
+//removed
+	//private TradeOffer tradeO;
+	//public String title;
+	//public Integer id;
+	//private Dice dice;
+
+
+	//unused
 //    private ArrayList<Dice> twoDice;
-    private Map theGameMap;
 //    private Robber robber;
 //    private ArrayList<Hex> board;
-    private TurnTracker turnTracker;
-    private Map map;
+
+
     public Game(int numberOfPlayers)
     {
-    	tradeO = new TradeOffer();
-    	title = "defaultgame";
-    	id = 0;
+    	deck= new DevCardList();
     	players = new ArrayList<Player>(numberOfPlayers);
-    	modelversion = 0;
-    	dice= new Dice();
-        theGameMap = new Map();
+    	log=new MessageList();
+		chat=new MessageList();
+		bank=new ResourceList();
+    	version = 0;
         turnTracker = new TurnTracker();
-        map = new Map();
-    	
-
+        theGameMap = new map();
+        winner = 0;
     }
     
-    public Game(TradeOffer newtradeO, String newtitle, Integer newid, ArrayList<Player> newplayers, int newmodelversion, Dice newdice, Map newtheGameMap, TurnTracker newturnTracker, Map newmap) {
-    	tradeO = newtradeO;
-    	title = newtitle;
-    	id = newid;
+    public Game(DevCardList newdeck,ArrayList<Player> newplayers,MessageList newlog,MessageList newchat,ResourceList newbank, map newtheGameMap, TurnTracker newturnTracker,int newwinner,int newmodelversion) {
+    	deck =newdeck;
     	if (newplayers !=null){
     		players = newplayers;
 		}else{
 			players = new ArrayList<Player>(0);
 		}
-    	modelversion = newmodelversion;
-    	dice= newdice;
+		log=newlog;
+		chat=newchat;
+		bank=newbank;
+    	version = newmodelversion;
         theGameMap = newtheGameMap;
         turnTracker = newturnTracker;
-        map = newmap;
+    	winner = newwinner;
     	
 
     }
@@ -103,7 +117,7 @@ public class Game extends AbstractModelPartition {
 	}
 
 
-	public Game(Map m, Bank b, ArrayList<Player> ps, TurnTracker tt, TradeOffer tradeOffer) {
+	public Game(map m, Bank b, ArrayList<Player> ps, TurnTracker tt, TradeOffer tradeOffer) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -153,13 +167,13 @@ public class Game extends AbstractModelPartition {
         return players.get(pid).canBuildSettlement();
     }
     public boolean canPlaceSettlement(VertexLocation vl) {
-        return map.canAddSettlement(vl);
+        return theGameMap.canAddSettlement(vl);
     }
-    public Map getTheGameMap() {
+    public map getTheGameMap() {
         return theGameMap;
     }
 
-    public void setTheGameMap(Map theGameMap) {
+    public void setTheGameMap(map theGameMap) {
         this.theGameMap = theGameMap;
     }
     public boolean canPlaceRoad(EdgeLocation edge) {
@@ -181,14 +195,7 @@ public class Game extends AbstractModelPartition {
     public boolean canFinishTurn(int pid) {
         return (turnTracker.getStatus().equals("SecondRound") && turnTracker.getCurrentPlayer() == pid);
     }
-    /**
-     * rolls the dice for a number 1-12
-     *
-     * @return boolean whether or not the player rolled the dice
-     */
-    public int roll(int pid) {
-        return dice.rollDice();
-    }
+
     /**
      * Checks to see if the player can roll the dice
      *
@@ -214,7 +221,7 @@ public class Game extends AbstractModelPartition {
         if (!turnTracker.getStatus().equals("Robbing") && pid != turnTracker.getCurrentPlayer())
             throw new IllegalMoveException("not the trading phase, or not the player's turn");
 
-        ArrayList<Port> ports = (ArrayList) map.getPlayerPorts(pid);
+        ArrayList<Port> ports = (ArrayList) theGameMap.getPlayerPorts(pid);
         return players.get(pid).canMaritimeTrade(ports);
     }
     /**
@@ -240,7 +247,7 @@ public class Game extends AbstractModelPartition {
      * @return boolean whether or not the player can place a city
      */
     public boolean canPlaceCity(VertexLocation vl) {
-        return map.canAddCity(vl);
+        return theGameMap.canAddCity(vl);
     }
     /**
      * Checks to see if building a city is a legal move for the player
@@ -257,9 +264,9 @@ public class Game extends AbstractModelPartition {
      *
      * @return boolean whether or not the player can accept a trade offer from another player
      */
-    public boolean canAcceptTrade(int pid) {
-        return players.get(pid).canAcceptTrade(tradeO.getSentList());
-    }
+   // public boolean canAcceptTrade(int pid) {
+//        return players.get(pid).canAcceptTrade(tradeO.getSentList());
+   // }
     /**
      * Set up the TradeOffer
      */
@@ -270,7 +277,7 @@ public class Game extends AbstractModelPartition {
         if (pid == rid)
             throw new IllegalMoveException("No trading yourself!");
 
-        tradeO = new TradeOffer(pid, rid, rl);
+      //  tradeO = new TradeOffer(pid, rid, rl);
         return players.get(pid).canOfferTrade();
 
 
@@ -286,7 +293,7 @@ public class Game extends AbstractModelPartition {
      * @return boolean whether or not the player can move the robber
      */
     public boolean canMoveRobber(HexLocation hl) {
-        return map.canRelocateRobber(hl);
+        return theGameMap.canRelocateRobber(hl);
     }
     /**
      * Robs a player of one resource card
@@ -364,7 +371,11 @@ public class Game extends AbstractModelPartition {
     }
     
     public int getversion(){
-    	return modelversion; 
+    	return version; 
+    }
+    
+    public map getMap(){
+    	return theGameMap;
     }
     
 

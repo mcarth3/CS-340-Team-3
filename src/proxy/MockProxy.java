@@ -55,8 +55,6 @@ public class MockProxy implements IServer{
 		ArrayList<Game> games = new ArrayList();
 		
 		Game g1 = new Game(); 
-		g1.title = "Default Game"; 
-		g1.id = 0;
 		ArrayList<Player> list1 = new ArrayList();
 		Player p1a = new Player("orange", "Sam", 0);
 		Player p1b = new Player("blue", "Brooke", 1);
@@ -69,8 +67,6 @@ public class MockProxy implements IServer{
 		g1.players = list1; 
 		
 		Game g2 = new Game();
-		g2.title = "AI Game";
-		g2.id = 1; 
 		ArrayList<Player> list2 = new ArrayList();
 		Player p2a = new Player("orange", "Pete", 10);
 		Player p2b = new Player("puce", "Miguel", -2);
@@ -83,8 +79,6 @@ public class MockProxy implements IServer{
 		g2.players = list2; 
 		
 		Game g3 = new Game();
-		g3.title = "Empty Game";
-		g3.id = 2; 
 		ArrayList<Player> list3 = new ArrayList();
 		Player p3a = new Player("orange", "Sam", 0);
 		Player p3b = new Player("blue", "Brooke", 1);
@@ -108,8 +102,6 @@ public class MockProxy implements IServer{
 	public String gamesCreate(String name, boolean randomTiles, boolean randomNumbers, boolean randomPorts) {
 		// TODO Auto-generated method stub		
 		Game g = new Game();
-		g.title = "My New Game";
-		g.id = 3;
 		ArrayList<Player> list = new ArrayList();
 		Player p1 = new Player();
 		Player p2 = new Player();

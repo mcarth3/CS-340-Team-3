@@ -5,6 +5,7 @@ package poller.modeljsonparser;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonPrimitive;
 
+import model.Game;
 import model.Hex;
 import model.Port;
 import model.Road;
@@ -13,6 +14,7 @@ import model.VertexObject;
 import model.bank.ResourceList;
 import shared.locations.HexLocation;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -47,8 +49,8 @@ public class ModelParser {
 	 * @post returns a model filled with elements from given json
 	 */
 	private static <T> T parseFromObj(JsonElement element, Class<T> Tclass) throws InstantiationException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
-		//System.out.println("current: "+Tclass.toString());	
-
+		System.out.println("current: "+Tclass.toString());	
+//		System.out.println("element: "+element.get);	
 
 		if (element.isJsonPrimitive()) { //debugging for classes using ints isn't going too well, so I cast to Integer
 			JsonPrimitive primitive = element.getAsJsonPrimitive();
@@ -59,7 +61,7 @@ public class ModelParser {
 		
 		
 		if (element.isJsonNull()) {//if elemnt is not null
-		//	System.out.println("return null 2");
+			System.out.println("return null 2");
 			return null;
 		}
 		
@@ -72,7 +74,7 @@ public class ModelParser {
 					ObjectArray[i] = parseFromObj(JArray.get(i), Tclass.getComponentType());//parse all array objects
 				}
 			}
-			//System.out.println("return array");
+			System.out.println("return array");
 			if(ObjectArray.toString().substring(0, 20).equals("[Ljava.lang.Object;@")){
 				return null;
 			}
@@ -81,19 +83,19 @@ public class ModelParser {
 		
 		
 		if (Tclass.isArray()) {//if class is array
-			//System.out.println("return array2");
+			System.out.println("return array2");
 			return (T) (Object[]) Array.newInstance(Tclass.getComponentType(), 0);
 		}
 		
 		if (Tclass.getDeclaredConstructors().length == 0) {//if class has no declared ConstructorArray, assume class is boolean
-			//System.out.println("return bool?");
+			System.out.println("return bool?");
 			return (T) new Boolean(element.getAsBoolean());
 		}
 
 		if (Tclass.isEnum()) {//if class is enum
 			for (T enumValue : Tclass.getEnumConstants()) {
 				if (enumValue.toString().equalsIgnoreCase((element.getAsString()))) {
-				//	System.out.println("return enum");
+					System.out.println("return enum");
 					return enumValue;
 				}
 			}
@@ -101,7 +103,7 @@ public class ModelParser {
 		if (element.isJsonObject()) {
 			JsonObject jsonObject = element.getAsJsonObject();
 			if (jsonObject.entrySet().size() == 0){
-				//System.out.println("returning null 1");
+				System.out.println("returning null 1");
 				return null;
 			}
 			
@@ -109,37 +111,40 @@ public class ModelParser {
 			ArrayList<Object> params = new ArrayList<Object>();
 			for (Field field : fields) {	
 				JsonElement value = jsonObject.get(field.getName());
-				if (value == null) {
-				} else {
+				
+				System.out.println("field.getName()" + jsonObject.get(field.getName()).toString());
+				if (value != null) {
 					if (!field.getName().equals("$assertionsDisabled")){
 						params.add(parseFromObj(value, field.getType()));
+					//	jsonObject.get(field.getName()).
 					}
 				}
 			}
-			
+//			System.out.println("name " +Tclass.getName());
 			Constructor<T> constructor = null;
 			Constructor<?>[] ConstructorArray = Tclass.getDeclaredConstructors();
 			for (Constructor<?> c : ConstructorArray) {
 				//System.out.println( "param length "+params.toArray().length);
 				//System.out.println("contructor params "+c.getParameterTypes().length);
 				if (c.getParameterTypes().length == params.toArray().length) {//compares the constructor with the same number of parameters as those required, still not perfect
-					//System.out.println("constructor elements " + c.toString());//good enough for this project, but should compare the constructor arguments to the parameters
+					System.out.println("constructor elements " + c.toString());//good enough for this project, but should compare the constructor arguments to the parameters
 					constructor = (Constructor<T>) c;
 					break;
 				}
 			}
 			
 			if (constructor == null){
-				//System.out.println("constructor == null");//YOU NEED A CONSTRUCTOR THAT SETS ALL VARIABLES WITH MATCHING ARGS
+				System.out.println("constructor == null");//YOU NEED A CONSTRUCTOR THAT SETS ALL VARIABLES WITH MATCHING ARGS
 			}
 			
-			//System.out.println("returning "+constructor.getName() +" with appropriate constructor");
-			//System.out.println(params);
-			return constructor.newInstance( params.toArray());
+			System.out.println("returning "+constructor.getName() +" with appropriate constructor");
+			System.out.println(params);
+	
+			return constructor.newInstance(params.toArray());
 			
 
 		}else {			
-			Constructor<T> constructor = null;
+			Constructor<T> constructor = null; 	 	
 			Constructor<?>[] ConstructorArray = Tclass.getDeclaredConstructors();
 			for (Constructor<?> c : ConstructorArray) {
 				if (c.getParameterTypes().length == 1) {
@@ -162,21 +167,44 @@ public class ModelParser {
 			
 			JsonPrimitive jsonPrimitive = element.getAsJsonPrimitive();
 			if (jsonPrimitive.isNumber()) {
-				//System.out.println("returning int");
+				System.out.println("returning int");
 				int value = jsonPrimitive.getAsInt();
 				return constructor.newInstance(value);
 			} else if (jsonPrimitive.isBoolean()) {
-				//System.out.println("returning bool");
+				System.out.println("returning bool");
 				boolean value = jsonPrimitive.getAsBoolean();
 				return constructor.newInstance(value);
 			} else {
 				String value = jsonPrimitive.getAsString();
-				//System.out.println("returning string" + value);
+				System.out.println("returning string" + value);
 				return constructor.newInstance(value);
 			}
 		}
 	}
+
 	
+	
+	
+	
+	
+	public static Game parse2(String jsonstring) {
+		Gson gson = new Gson();
+		Game game = gson.fromJson(jsonstring, Game.class);
+//		for (Road road : game.getMap().getRoads()) {
+//			road.getLocation().convertFromPrimitives();
+//		}
+//		for (VertexObject settlement : game.getMap().getSettlements()) {
+//			settlement.getLocation().convertFromPrimitives();
+//		}
+//		for (VertexObject city : game.getMap().getCities()) {
+//			city.getLocation().convertFromPrimitives();
+//		}
+//		for (Port port : game.getMap().getPorts()) {
+//			port.convertFromPrimitives();
+//		}
+		return game;
+	}
+
 }
 
 	

@@ -11,11 +11,12 @@ import client.base.Controller;
 import model.Game;
 import poller.modeljsonparser.ModelParser;
 import proxy.MockProxy;
+import proxy.RealProxy;
 
 
 public class ServerPoller {
 	@SuppressWarnings("unused")
-	private static MockProxy mockServer;
+	private static RealProxy thisserver;
 	private static final int PollingInterval = 1000;
 	private ServerPollerTask pollingTask;
 	private Timer timer;
@@ -30,9 +31,9 @@ public class ServerPoller {
 	 * @post poller is set up to poll the MockProxy with the polling interval
 	 * @throws InvalidMockProxyException 
 	 */
-	private ServerPoller(MockProxy NewMockProxy) throws InvalidMockProxyException {
+	private ServerPoller(RealProxy NewProxy) throws InvalidMockProxyException {
 		pollingTask = new ServerPollerTask();
-		mockServer = NewMockProxy;
+		thisserver = NewProxy;
 		timer = new Timer();
 		timer.schedule(pollingTask, 0, PollingInterval);
 		modelversion=0;
@@ -54,23 +55,15 @@ public class ServerPoller {
 		Game model = null;
 		String modeljson="";
 		try {
-			modeljson = mockServer.gameModel(modelversion);
+			modeljson = thisserver.gameModel(modelversion);
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new PollException("Could not communicate with server");
 		}
 		
-		try {
-			model = ModelParser.parse(modeljson, Game.class);
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		}
+		
+		model = ModelParser.parse2(modeljson);
+		
 		return model;
 	}
 
@@ -82,11 +75,11 @@ public class ServerPoller {
 	 */
 	public static ServerPoller getSingleton() throws InvalidMockProxyException {
 		if(singleton == null) {
-			singleton = new ServerPoller(MockProxy.getSingleton());
+			singleton = new ServerPoller(RealProxy.getSingleton());
 		}
 		return singleton;
-		
 	}
+	
 	
 	
 	

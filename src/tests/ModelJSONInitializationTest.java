@@ -33,7 +33,6 @@ public class ModelJSONInitializationTest {
 		//out.println(ClassToJSON.converttojsonstring(testgame));
 		//out.close();
 		
-		System.out.println("the model's title is '" + testgame.title + "'");
 		System.out.println(ClassToJSON.converttojsonstring(testgame));
 		System.out.println("---------------------------------------------");
 
@@ -44,18 +43,11 @@ public class ModelJSONInitializationTest {
 		System.out.println("converting from JSON to the model");
 		System.out.println("---------------------------------------------");
 		try {
-			testgame = ModelParser.parse(stringtoconvert, Game.class);
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
+			testgame = ModelParser.parse2(stringtoconvert);
 		} catch (IllegalArgumentException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
 			e.printStackTrace();
 		}
 
-		System.out.println("the model's title is '" + testgame.title + "'");
 		System.out.println("---------------------------------------------");
 		System.out.println(ClassToJSON.converttojsonstring(testgame));
 
