@@ -65,10 +65,20 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	public void startTrade() {
 
 		getTradeOverlay().showModal();
+
 	}
 
 	@Override
 	public void decreaseResourceAmount(ResourceType resource) {
+
+		//if(current player has resources)
+		//set ResourceAmountChangeEnabled
+
+		//ADDED BELOW:\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
+		//boolean canDecrease = false, canIncrease = false;
+
+		//tradeOverlay.setResourceAmountChangeEnabled(resource, canIncrease, canDecrease);
+		//ADDED ABOVE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 	}
 
@@ -118,6 +128,8 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	
 	public void update(){
 	}
+
+
 
 }
 

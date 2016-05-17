@@ -2,6 +2,8 @@ package client.login;
 
 import client.base.*;
 import client.misc.*;
+import states.State;
+import states.StateEnum;
 
 import java.net.*;
 import java.io.*;
@@ -16,9 +18,21 @@ import com.google.gson.reflect.TypeToken;
  */
 public class LoginController extends Controller implements ILoginController {
 
+	//Singleton
+	public static LoginController SINGLETON = null;
+		
+	//Domain Implementation THESE 4 ARE FROM THE EXAMPLE
+	private String input;
+	private int inputIndex;
+	private boolean negative;
+	private int result;
+	
+	private State state; 
+
 	private IMessageView messageView;
 	private IAction loginAction;
 	
+	//Constructors	
 	/**
 	 * LoginController constructor
 	 * 
@@ -30,6 +44,10 @@ public class LoginController extends Controller implements ILoginController {
 		super(view);
 		
 		this.messageView = messageView;
+		
+		state = State.LOGIN;
+		
+		SINGLETON = new LoginController(view, messageView);	  
 	}
 	
 	public ILoginView getLoginView() {

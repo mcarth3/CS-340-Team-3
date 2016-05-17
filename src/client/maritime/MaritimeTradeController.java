@@ -71,5 +71,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	public void update(){
 	}
 
+
+
 }
 

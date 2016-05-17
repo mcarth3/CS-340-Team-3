@@ -22,7 +22,23 @@ public class Facade extends AbstractModelPartition {
     Game theGame;
     IServer proxy;
     ArrayList<ResourceList>discardedcards;
+
+    //*************************************ADDED BELOW FOR SINGLETON
     private static Facade singleton = null;
+
+    private static Facade theFacade;
+    public static Facade getFacade()
+    {
+        if(theFacade == null)
+        {
+            theFacade = new Facade();
+        }
+        return theFacade;
+    }
+    //**************************************ADDED ABOVE FOR SINGLETON
+
+
+
 
     public Facade(RealProxy p) {
         theGame = null;

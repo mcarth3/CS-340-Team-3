@@ -1,6 +1,8 @@
 package client.roll;
 
 import client.base.*;
+import states.State;
+import states.StateEnum;
 
 
 /**
@@ -37,9 +39,37 @@ public class RollController extends Controller implements IRollController {
 	@Override
 	public void rollDice() {
 
+
+		//if(it's the Right State)
+		/*
+		{
+
+		//TIER: getRollView.isModalShowing()
+		//if(State.rolling
+		//getRollwView.SetMessage
+
+			resultView.setRollValue(Facade.RollDice());
+			//tell gameManager to update()
+			//timer on dice
+		}
+
+
+		 */
+		StateEnum theState = State.getCurrentState();
+		if(theState == StateEnum.PLAY)
+		{
+
+		}
+
+
 		getResultView().showModal();
+
+
 	}
+
+
 	public void update(){
+		//timer, check if rolling
 	}
 
 }
