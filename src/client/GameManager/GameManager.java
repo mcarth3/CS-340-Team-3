@@ -18,6 +18,7 @@ public class GameManager extends Observable {
 	private Facade modelfacade;
 
 	public GameManager() {
+		modelfacade = Facade.getSingleton();
 	}
 	
 	
@@ -84,10 +85,10 @@ public class GameManager extends Observable {
 	 * @param model the CatanModel
 	 */
 	public void update(Game model){
-		//modelfacade.SetGame(model);
-		//updateLocalPlayer();
-		//setChanged();
-		//notifyObservers();
+		modelfacade.SetGame(model);
+		updateLocalPlayer();
+		setChanged();
+		notifyObservers();
 	}
 
 	private void updateLocalPlayer() {
@@ -112,4 +113,9 @@ public class GameManager extends Observable {
 	public Player getthisplayer() {
 		return player;
 	}
+	
+	
+    public int getversion(){
+    	return modelfacade.getversion(); 
+    }
 }

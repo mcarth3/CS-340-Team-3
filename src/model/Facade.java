@@ -7,8 +7,11 @@ import java.util.ArrayList;
 
 import javax.annotation.Resource;
 
+import client.GameManager.GameManager;
 import model.*;
 import model.bank.ResourceList;
+import poller.InvalidMockProxyException;
+import poller.ServerPoller;
 import poller.modeljsonparser.AbstractModelPartition;
 import proxy.*;
 import shared.locations.*;
@@ -19,6 +22,7 @@ public class Facade extends AbstractModelPartition {
     Game theGame;
     IServer proxy;
     ArrayList<ResourceList>discardedcards;
+    private static Facade singleton = null;
 
     public Facade(RealProxy p) {
         theGame = null;
@@ -49,6 +53,10 @@ public class Facade extends AbstractModelPartition {
     
     public void SetGame(Game newGame){
     	theGame = newGame;
+    }
+    
+    public int getversion(){
+    	return theGame.modelversion; 
     }
 
 	/**
@@ -557,7 +565,13 @@ public class Facade extends AbstractModelPartition {
                 proxy.acceptTrade(pid, acceptance);
         }
     }
-
+	public static Facade getSingleton()  {
+		if(singleton == null) {
+			singleton = new Facade();
+		}
+		return singleton;	
+	}
+	
   
 
 

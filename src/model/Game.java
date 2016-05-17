@@ -363,5 +363,9 @@ public class Game extends AbstractModelPartition {
         this.players = players;
     }
     
+    public int getversion(){
+    	return modelversion; 
+    }
+    
 
 }

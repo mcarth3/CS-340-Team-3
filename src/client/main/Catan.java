@@ -98,7 +98,6 @@ public class Catan extends JFrame
 					}
 				});
 				loginView.setController(loginController);
-				loginView.setController(loginController);
 				
 				loginController.start();
 				
@@ -107,6 +106,7 @@ public class Catan extends JFrame
 				} catch (InvalidMockProxyException e) {
 					e.printStackTrace();
 				}
+				
 			}
 		});
 	}

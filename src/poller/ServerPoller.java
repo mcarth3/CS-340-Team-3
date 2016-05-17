@@ -31,12 +31,13 @@ public class ServerPoller {
 	 * @throws InvalidMockProxyException 
 	 */
 	private ServerPoller(MockProxy NewMockProxy) throws InvalidMockProxyException {
-	//	clientFacade = ClientFacade.getSingleton();
 		pollingTask = new ServerPollerTask();
 		mockServer = NewMockProxy;
 		timer = new Timer();
 		timer.schedule(pollingTask, 0, PollingInterval);
 		modelversion=0;
+		
+		manager = GameManager.getSingleton();
 	}
 	
 	
@@ -109,7 +110,10 @@ public class ServerPoller {
 			try {
 				Game model = poll();
 				if(model != null) {
-					manager.update(model);	
+					if (model.getversion()!= modelversion){
+						manager.update(model);	
+						modelversion =model.getversion();
+					}
 				}
 			} catch (PollException e) {
 				e.printStackTrace();
