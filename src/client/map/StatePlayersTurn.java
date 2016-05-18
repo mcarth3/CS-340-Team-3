@@ -66,7 +66,7 @@ public class StatePlayersTurn extends StateAbstract {
         try {
 			Facade.getInstance().placeSettlement(Facade.getInstance().getCurrentPlayer().getPlayerIndex(), vertLoc.getNormalizedLocation(), false);
 		} catch (IllegalBuildException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
         Facade.getInstance().getGame();

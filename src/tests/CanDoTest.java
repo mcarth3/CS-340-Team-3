@@ -34,28 +34,28 @@ public class CanDoTest
         TurnTracker tt = new TurnTracker(3, "roll");
         tt.setLongestRoad(1);
 
-        Player p1 = new Player(CatanColor.RED,"JesseM", 0);
+        Player p1 = new Player(CatanColor.RED,"Sam", 0);
         p1.setCities(3);
         p1.setSettlements(3);
         p1.setRoads(9);
         p1.setNewDevCards(new DevCardList(0, 0, 0 , 2, 0));
         p1.setResources(new ResourceList(0, 3, 0, 2, 0));
 
-        Player p2 = new Player(CatanColor.GREEN,"Jesse", 1);
+        Player p2 = new Player(CatanColor.GREEN,"Brooke", 1);
         p2.setCities(3);
         p2.setSettlements(3);
         p2.setRoads(13);
         p2.setOldDevCards(new DevCardList(1, 0, 0, 1, 0));
         p2.setResources(new ResourceList(1, 1, 1, 1, 1));
 
-        Player p3 = new Player(CatanColor.BLUE,"Mike", 2);
+        Player p3 = new Player(CatanColor.BLUE,"Pete", 2);
         p3.setCities(4);
         p3.setSettlements(3);
         p3.setRoads(10);
         p3.setNewDevCards(new DevCardList(0, 1, 0, 0, 1));
         p3.setResources(new ResourceList(0, 1, 1, 1 , 0));
 
-        Player p4 = new Player(CatanColor.WHITE,"Nathan", 3);
+        Player p4 = new Player(CatanColor.WHITE,"Mark", 3);
         p4.setCities(4);
         p4.setSettlements(2);
         p4.setRoads(12);
@@ -73,7 +73,6 @@ public class CanDoTest
         hexes.put(new HexLocation(-1,-1), new Hex());
         hexes.put(new HexLocation(3,4), new Hex("BRICK", 9));
         hexes.put(new HexLocation(4,2), new Hex("ORE", 4));
-     //   m.setHexes(hexes);
         Robber r = new Robber();
         r.setHl(new HexLocation(3,4));
         m.setRobber(r);
@@ -88,7 +87,6 @@ public class CanDoTest
         bldgs.add(new Settlement(new VertexLocation(new HexLocation(4, 3), VertexDirection.East), 3));
         bldgs.add(new Settlement(new VertexLocation(new HexLocation(4, 3), VertexDirection.West), 3));
         bldgs.add(new Settlement(new VertexLocation(new HexLocation(5, 1), VertexDirection.West), 3));
-      //  m.setBuildings(bldgs);
 
         ArrayList<Port> ports = new ArrayList<Port>();
         Port p = new Port(5, 1, EdgeDirection.NW, 3);
@@ -266,78 +264,7 @@ public class CanDoTest
 
         System.out.println("Can use YearOfPlenty - can Do, Not turn, Insufficient Materials");
     }
-    @Test
-    public void canUseRoadBuilding()
-    {
-        initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
-        turnTracker.setCurrentPlayer(1);
-        f.gettheGame().setTt(turnTracker);
-        f.gettheGame().getPlayers().get(1).getOldDevCards().setRoadBuilding(5);
-        assert(f.canRoadBuilding(1));
-        assert(!f.canRoadBuilding(0));
 
-        turnTracker.setCurrentPlayer(0);
-        f.gettheGame().getPlayers().get(0).getOldDevCards().setRoadBuilding(0);
-        f.gettheGame().setTt(turnTracker);
-        assert(!f.canRoadBuilding(0));
-
-        System.out.println("Can use RoadBuilding card - can Do, Not turn, Insufficient Materials");
-    }
-    @Test
-    public void canUseSoldier()
-    {
-        initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
-        turnTracker.setCurrentPlayer(1);
-        f.gettheGame().setTt(turnTracker);
-        f.gettheGame().getPlayers().get(1).getOldDevCards().setSoldier(5);
-        assert(f.canPlaySoldier(1));
-        assert(!f.canPlaySoldier(0));
-
-        turnTracker.setCurrentPlayer(0);
-        f.gettheGame().getPlayers().get(0).getOldDevCards().setSoldier(0);
-        f.gettheGame().setTt(turnTracker);
-        assert(!f.canPlaySoldier(0));
-
-        System.out.println("Can use Soldier card - can Do, Not turn, Insufficient Materials");
-    }
-    @Test
-    public void canUseMonopoly()
-    {
-        initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
-        turnTracker.setCurrentPlayer(1);
-        f.gettheGame().setTt(turnTracker);
-        f.gettheGame().getPlayers().get(1).getOldDevCards().setMonopoly(5);
-        assert(f.canMonopoly(1));
-        assert(!f.canMonopoly(0));
-
-        turnTracker.setCurrentPlayer(0);
-        f.gettheGame().getPlayers().get(0).getOldDevCards().setMonopoly(0);
-        f.gettheGame().setTt(turnTracker);
-        assert(!f.canMonopoly(0));
-
-        System.out.println("Can use Montopoly card - can Do, Not turn, Insufficient Materials");
-    }
-    @Test
-    public void canUseMonument()
-    {
-        initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
-        turnTracker.setCurrentPlayer(1);
-        f.gettheGame().setTt(turnTracker);
-        f.gettheGame().getPlayers().get(1).getOldDevCards().setMonument(5);
-        assert(f.canUseMonument(1));
-        assert(!f.canUseMonument(0));
-
-        turnTracker.setCurrentPlayer(0);
-        f.gettheGame().getPlayers().get(0).getOldDevCards().setMonument(0);
-        f.gettheGame().setTt(turnTracker);
-        assert(!f.canUseMonument(0));
-
-        System.out.println("Can use Soldier card - can Do, Not turn, Insufficient Materials");
-    }
     @Test
     public void canMoveRobber()
     {

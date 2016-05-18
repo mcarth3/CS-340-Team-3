@@ -88,6 +88,8 @@ public class Player extends AbstractModelPartition {
 		// TODO Auto-generated constructor stub
 	}
 
+	
+
 	private boolean checkSufficientResources(ResourceList resourcesRequirements) {
         if (resources.getBrick() >= resourcesRequirements.getBrick() && resources.getWood() >= resourcesRequirements.getWood()
                 && resources.getOre() >= resourcesRequirements.getOre() && resources.getSheep() >= resourcesRequirements.getSheep()

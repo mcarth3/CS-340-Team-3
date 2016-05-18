@@ -1,6 +1,5 @@
 package client.map;
 
-import client.data.PlayerInfo;
 import client.data.RobPlayerInfo;
 import model.*;
 import shared.definitions.CatanColor;

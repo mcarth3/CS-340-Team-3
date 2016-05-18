@@ -78,7 +78,7 @@ public class StateDefault extends StateAbstract
     public void playRoadBuildingCard() {
 
     }
-    //nothing here . . . :)
+    
     @Override
     public String getName() { return "Default"; }
 }
