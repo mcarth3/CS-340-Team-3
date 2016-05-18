@@ -460,7 +460,10 @@ public class Player extends AbstractModelPartition {
         return false;
     }
 
-    public ResourceType[] resourcesOverOne()
+    /**
+    returns a ResourceType[] of what Resources this player possesses that are over 0.
+     */
+    public ResourceType[] resourcesOverZero()
     {
         ArrayList<ResourceType> resourceList = new ArrayList<ResourceType>();
         if(resources.getBrick() > 0)
@@ -493,6 +496,39 @@ public class Player extends AbstractModelPartition {
 
     }
 
+
+    /**
+     returns a ResourceType[] of what Resources this player possesses that are over 0.
+     */
+    public ResourceType[] resourcesOverThree()
+    {
+        ArrayList<ResourceType> resourceList = new ArrayList<ResourceType>();
+        if(resources.getBrick() > 3)
+        {
+            resourceList.add(ResourceType.BRICK);
+        }
+        if(resources.getWood() > 3)
+        {
+            resourceList.add(ResourceType.WOOD);
+        }
+        if(resources.getOre() > 3)
+        {
+            resourceList.add(ResourceType.ORE);
+        }
+        if(resources.getSheep() > 3)
+        {
+            resourceList.add(ResourceType.SHEEP);
+        }
+        if(resources.getWheat() > 3)
+        {
+            resourceList.add(ResourceType.WHEAT);
+        }
+
+        ResourceType[] simpleArray = new ResourceType[ resourceList.size() ];
+        resourceList.toArray( simpleArray );
+        return simpleArray;
+
+    }
 
 
     /**
