@@ -28,26 +28,6 @@ public class RealProxy implements IServer{
 	public String GameCookie = null;
 	// %7B%22authentication%22%3A%222680927%22%2C%22name%22%3A%22SAM%22%2C%22password%22%3A%22sam%22%2C%22playerID%22%3A12%7D
 	
-//	user login
-//	rollnumber
-//	send chat
-//	rob player
-//	finish turn
-//	buy dev card
-//	year of plenty
-//	roadbuilder
-//	solider
-//	monopoly
-//	monument
-//	build road
-//	build settlement
-//	build city
-//	offer trade
-//	accept trade
-//	marintime trade
-//	discard cards 
-	
-	
 	public RealProxy(Game game) {
 		// TODO Auto-generated constructor stub
 	}
@@ -70,14 +50,14 @@ public class RealProxy implements IServer{
 			cook = cook.replaceAll(";Path=/;", "");
 			UserCookie = cook; 
 			String result = null;
-//			try {
-//				result = java.net.URLDecoder.decode(cook, "UTF-8");
-//			} catch (UnsupportedEncodingException e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-			//System.out.println(result);
-			return answer;
+			try {
+				result = java.net.URLDecoder.decode(cook, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(result);
+			return result;
 		}else{
 			return null;
 		}

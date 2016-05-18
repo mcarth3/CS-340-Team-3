@@ -47,7 +47,7 @@ public class LoginController extends Controller implements ILoginController {
 		
 		this.messageView = messageView;
 		
-		state = State.LOGIN;
+//		state = State.LOGIN;
 		 
 		
 		//SINGLETON = new LoginController(view, messageView);	  
@@ -91,6 +91,10 @@ public class LoginController extends Controller implements ILoginController {
 
 	@Override
 	public void signIn() {
+		System.out.println("state in login is:");
+		System.out.println(State.getCurrentState());
+		State state = State.getInstance(); 
+		//System.out.println(state); 
 		
 		// TODO: log in user
 		String username = this.getLoginView().getLoginUsername();
@@ -105,6 +109,7 @@ public class LoginController extends Controller implements ILoginController {
 		
 		if(result != null){
 			// If log in succeeded
+			state.setCurrentState(StateEnum.JOIN);
 			getLoginView().closeModal();
 			loginAction.execute();
 		}else{

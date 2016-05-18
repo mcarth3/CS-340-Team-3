@@ -7,6 +7,7 @@ import javax.swing.*;
 
 import client.base.*;
 import client.data.*;
+import proxy.RealProxy;
 
 /**
  * Implementation for the join game view, which lets the user select a game to
@@ -41,7 +42,33 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 
 	public JoinGameView()
 	{
-		this.initialize();
+		//this.initialize();
+		RealProxy rp = new RealProxy();
+		String result = rp.gamesList();
+		System.out.println(result); 
+		
+		// ASK MIKE HOW TO MAKE THIS INTO AN OBJECT
+		
+		GameInfo g1 = new GameInfo();
+		g1.setId(0);
+		g1.setTitle("Default Game");
+		
+		GameInfo g2 = new GameInfo();
+		g2.setId(1);
+		g2.setTitle("AI Game");
+		
+		GameInfo g3 = new GameInfo();
+		g3.setId(2);
+		g3.setTitle("Empty Game");
+		
+		GameInfo[] gameList = new GameInfo[]{g1,g2,g3};
+		
+		games = gameList; 
+		setGames(gameList, null);
+		
+		
+		
+		
 	}
 
 	private void initialize()
@@ -88,6 +115,7 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 		gamePanel.add(name);
 		gamePanel.add(currentPlayer);
 		gamePanel.add(join);
+		 
 
 		// This is the looped layout
 		if (games != null && games.length > 0)
@@ -162,6 +190,8 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 	@Override
 	public void setGames(GameInfo[] games, PlayerInfo localPlayer)
 	{
+		//System.out.println("Set Games got called"); 
+		
 		this.games = games;
 		this.localPlayer = localPlayer;
 		this.removeAll();
