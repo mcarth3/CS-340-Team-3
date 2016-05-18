@@ -21,6 +21,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	private ResourceType[] getResources;
 	private ResourceType[] giveResources;
 	private ResourceType theGiving;
+	private ResourceType theGetting;
 	
 	public MaritimeTradeController(IMaritimeTradeView tradeView, IMaritimeTradeOverlay tradeOverlay) {
 		
@@ -57,6 +58,11 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	@Override
 	public void makeTrade() {
 
+		int givingAmount = 0;//TODO: Once again, how do I see the number demanded?
+		for(int i =0; i < givingAmount; i++) {
+			thePlayer.depleteResource(theGiving);//TODO: these have to be depleted in the server, too
+		}
+		thePlayer.addResource(theGetting, 0); //TODO: Once again, how do I see the number demanded?
 		getTradeOverlay().closeModal();
 	}
 
@@ -71,13 +77,13 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		getTradeOverlay().selectGiveOption(resource, 0); //TODO: again, how do I know the # resources they want?
 		getTradeOverlay().setTradeEnabled(true);
 		getTradeOverlay().setStateMessage("Now trade it!");
-		theGiving = resource;
+		theGetting = resource;
 	}
 
 	@Override
 	public void setGiveResource(ResourceType resource) {
 		getTradeOverlay().selectGiveOption(resource, 0); //TODO: HOW do I discover how many resources they want?
-
+		theGiving = resource;
 		getTradeOverlay().showGetOptions(getResources);
 		getTradeOverlay().setStateMessage("Choose what to get!");
 	}
