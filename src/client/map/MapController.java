@@ -35,7 +35,6 @@ public class MapController extends Controller implements IMapController {
         mapView = view;
         setRobView(robView);
         state = new StateDefault(view, robView);
-        Facade.getInstance().addObserver(this);
         soldier = false;
     }
 
@@ -125,7 +124,7 @@ public class MapController extends Controller implements IMapController {
             return true;
         }
            
-//if it is in default stage go ahead and change it
+
         if (state.getName().equalsIgnoreCase("default")) {
             if (s.equalsIgnoreCase("FirstRound") || s.equalsIgnoreCase("SecondRound"))
                 state = new StateSetup(getView(), robView);
@@ -137,11 +136,11 @@ public class MapController extends Controller implements IMapController {
                 state = new StatePlayersTurn(getView(), robView);
             else
                 state = new StateDefault(getView(), robView);
-            //still need to reset the map
+            
             return true;
         }
 
-        //if the state is going to be the same don't worry about updating it
+        
         if (((s.equalsIgnoreCase("FirstRound") || s.equalsIgnoreCase("SecondRound") && state.getName().equalsIgnoreCase("Setup"))
                 || s.equalsIgnoreCase(state.getName())))
         {
@@ -151,7 +150,7 @@ public class MapController extends Controller implements IMapController {
         }
 
 
-        //otherwise the state is changing
+        
         if (s.equalsIgnoreCase("RoadBuilding"))
             state = new StateRoadBuilding(getView(), robView);
         else if (s.equalsIgnoreCase("Robbing"))
@@ -165,11 +164,6 @@ public class MapController extends Controller implements IMapController {
 
     public void update(Observable observable, Object args) {
         
-
-        
-
- 
-      
     }
 
 
@@ -191,7 +185,7 @@ public class MapController extends Controller implements IMapController {
 
     public void placeRoad(EdgeLocation edgeLoc) {
         state.placeRoad(edgeLoc);
-//        getView().placeRoad(edgeLoc, CatanColor.ORANGE);
+
     }
 
     public void placeSettlement(VertexLocation vertLoc) {
@@ -200,14 +194,14 @@ public class MapController extends Controller implements IMapController {
 
     public void placeCity(VertexLocation vertLoc) {
         state.placeCity(vertLoc);
-//        getView().placeCity(vertLoc, CatanColor.ORANGE);
+;
     }
 
     public void placeRobber(HexLocation hexLoc) {
         mapView.placeRobber(hexLoc);
         state.placeRobber(hexLoc);
         getView().placeRobber(hexLoc);
-//        getRobView().showModal();
+
     }
 
     public void startMove(PieceType pieceType, boolean isFree, boolean allowDisconnected) {
@@ -222,7 +216,6 @@ public class MapController extends Controller implements IMapController {
     {
         state = new StateRobbing(getView(), robView);
         soldier = true;
-//        state.playSoldierCard();
     }
 
     public void playRoadBuildingCard()
@@ -232,7 +225,6 @@ public class MapController extends Controller implements IMapController {
     }
 
     public void robPlayer(RobPlayerInfo victim) {
-//        soldier = false;
         if(soldier){
             soldier = false;
             state.playSoldierCard(victim);
