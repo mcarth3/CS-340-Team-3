@@ -9,87 +9,90 @@ import poller.modeljsonparser.AbstractModelPartition;
 
 public class ResourceList extends AbstractModelPartition {
 
-    int numOfBrick;
-    int numOfOre;
-    int numOfSheep;
-    int numOfWheat;
-    int numOfWood;
+    int brick;
+    int wood;
+    int sheep;
+    int wheat;
+    int ore;
+
+
+
 
     public ResourceList() {
-        numOfBrick = 0;
-        numOfOre = 0;
-        numOfSheep = 0;
-        numOfWheat = 0;
-        numOfWood = 0;
+        brick = 0;
+        ore = 0;
+        sheep = 0;
+        wheat = 0;
+        wood = 0;
     }
 
     public ResourceList(int given) {
         if(given > 20 || given < 0){
             given = 19;
         }
-        numOfBrick = given;
-        numOfOre = given;
-        numOfSheep = given;
-        numOfWheat = given;
-        numOfWood = given;
+        brick = given;
+        ore = given;
+        sheep = given;
+        wheat = given;
+        wood = given;
     }
 
     public ResourceList(int br, int or, int sh, int wh, int wo) {
-        numOfBrick = br;
-        numOfOre = or;
-        numOfSheep = sh;
-        numOfWheat = wh;
-        numOfWood = wo;
+        brick = br;
+        ore = or;
+        sheep = sh;
+        wheat = wh;
+        wood = wo;
     }
     //copy constructor
     public ResourceList(ResourceList resourcesToCopy)
     {
-       numOfBrick = resourcesToCopy.getBrick();
-       numOfOre = resourcesToCopy.getOre();
-       numOfSheep = resourcesToCopy.getSheep();
-       numOfWheat = resourcesToCopy.getWheat();
-      numOfWood = resourcesToCopy.getWood();
+       brick = resourcesToCopy.getBrick();
+       ore = resourcesToCopy.getOre();
+       sheep = resourcesToCopy.getSheep();
+       wheat = resourcesToCopy.getWheat();
+      wood = resourcesToCopy.getWood();
     }
     //overload the constructor so that RL can be used for trades, bank, map, players etc.
 
     public int getBrick() {
-        return numOfBrick;
+        return brick;
     }
 
     public int getOre() {
-        return numOfOre;
+        return ore;
     }
 
     public int getSheep() {
-        return numOfSheep;
+        return sheep;
     }
 
     public int getWheat() {
-        return numOfWheat;
+        return wheat;
     }
 
     public int getWood() {
-        return numOfWood;
+        return wood;
     }
 
     public void setBrick(int brick) {
-        numOfBrick = brick;
+        brick = brick;
     }
 
     public void setOre(int ore) {
-        numOfOre = ore;
+        ore = ore;
     }
 
     public void setSheep(int sheep) {
-        numOfSheep = sheep;
+        sheep = sheep;
     }
 
     public void setWheat(int wheat) {
-        numOfWheat = wheat;
+        wheat = wheat;
     }
 
     public void setWood(int wood) {
-        numOfWood = wood;
+        wood = wood;
     }
 
     public ResourceList merge(ResourceList first, ResourceList second) {
