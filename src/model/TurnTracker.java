@@ -6,25 +6,25 @@ import poller.modeljsonparser.AbstractModelPartition;
  * @author Jesse McArthur
  */
 public class TurnTracker extends AbstractModelPartition {
-    int currPlayer;
     String status;
+	int currentTurn;
     int longestRoad = -1;
     int largestArmy = -1;
     //must be at least 3 to claim largest army, therefore if player army >  currLA they earn largest army and currLA = player army size
 
     public TurnTracker() {
-        currPlayer = 0;
+    	currentTurn = 0;
         status = "default";
     }
 
     public TurnTracker(int currentP, String stat,int newlongestroad, int newlargestarmy) {
-        currPlayer = currentP;
+    	currentTurn = currentP;
         status = stat;
         longestRoad = newlongestroad;
         largestArmy = newlargestarmy;
     }
     public TurnTracker(int currentP, String stat) {
-        currPlayer = currentP;
+    	currentTurn = currentP;
         status = stat;
     }
 
@@ -32,14 +32,14 @@ public class TurnTracker extends AbstractModelPartition {
      * Gets the id of the current player
      */
     public int getCurrentPlayer() {
-        return currPlayer;
+        return currentTurn;
     }
 
     /**
      * Sets the id of the current player
      */
     public void setCurrentPlayer(int pid) {
-        currPlayer = pid;
+    	currentTurn = pid;
     }
 
     /**

@@ -17,7 +17,6 @@ import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
 import model.TurnTracker;
-import model.bank.Bank;
 import model.bank.DevCardList;
 
 /**
@@ -94,7 +93,7 @@ public class Game extends AbstractModelPartition {
     {
         Player newPlayer = new Player();
         newPlayer.setName(username);
-        newPlayer.setPassword(password);
+//      newPlayer.setPassword(password);
         players.add(newPlayer);
 
     }
@@ -117,7 +116,7 @@ public class Game extends AbstractModelPartition {
 	}
 
 
-	public Game(map m, Bank b, ArrayList<Player> ps, TurnTracker tt, TradeOffer tradeOffer) {
+	public Game(map m, ResourceList b, ArrayList<Player> ps, TurnTracker tt, TradeOffer tradeOffer) {
 		// TODO Auto-generated constructor stub
 	}
 

@@ -3,7 +3,6 @@ package tests;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
-import model.bank.Bank;
 import model.bank.DevCardList;
 import model.bank.ResourceList;
 import org.junit.Test;
@@ -30,7 +29,7 @@ public class CanDoTest
     public void initializeFull()
     {
         f = new Facade();
-        Bank b = new Bank(new ResourceList(13, 16, 12, 16, 18), new DevCardList(1, 4, 1, 10, 1));
+        ResourceList b = new ResourceList(13, 16, 12, 16, 18);
         TurnTracker tt = new TurnTracker(3, "roll");
         tt.setLongestRoad(1);
 
@@ -88,7 +87,7 @@ public class CanDoTest
         bldgs.add(new Settlement(new VertexLocation(new HexLocation(4, 3), VertexDirection.East), 3));
         bldgs.add(new Settlement(new VertexLocation(new HexLocation(4, 3), VertexDirection.West), 3));
         bldgs.add(new Settlement(new VertexLocation(new HexLocation(5, 1), VertexDirection.West), 3));
-        m.setBuildings(bldgs);
+      //  m.setBuildings(bldgs);
 
         ArrayList<Port> ports = new ArrayList<Port>();
         Port p = new Port(5, 1, EdgeDirection.NorthWest, 3);

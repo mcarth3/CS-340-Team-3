@@ -14,41 +14,38 @@ import model.bank.InsufficientResourcesException;
  */
 public class Player extends AbstractModelPartition {
 
-    private String username;
-    private String password;
+	
+
     
-    //need from server 
-
-    public Integer id;
-
-   /** These are for the clientModel!*/
-    //player qualities
-    String color;
-    String name;
-    int biggestRoadLength;
-    int playerID;
-    int playerIndex;
-
-    //placeable items
+    ResourceList resources;
+    DevCardList newDevCards;
+    DevCardList oldDevCards;
     int cities;//how many cities the player has left to play
     int roads;//how many roads the player has left to play
     int settlements;//how many settlements the player has left to play
-    //cards, resources, etc
-    int monuments;
     int soldiers;
-    DevCardList newDevCards;
-    DevCardList oldDevCards;
-    boolean playedDevCard;
-    ResourceList resources;
-    boolean discarded;
     int victoryPoints;
-    
-    private ArrayList<ResourceCard> resourceCards;
-    private ArrayList<DevelopmentCard> developmentCards;
-    private ArrayList<SpecialCard> specialCards;
-    private ArrayList<Settlement> settlementArrayList;
-    private ArrayList<Road> roadArrayList;
-    private ArrayList<City> cityArrayList;
+    int monuments;
+    boolean playedDevCard;
+    boolean discarded;
+    int playerID;
+    int playerIndex;
+    String color;
+    String name;
+		
+	
+	
+	//removed
+    //private String username;
+    //private String password;
+   //public Integer id;
+//    int biggestRoadLength;
+//    private ArrayList<ResourceCard> resourceCards;
+ //   private ArrayList<DevelopmentCard> developmentCards;
+  //  private ArrayList<SpecialCard> specialCards;
+   // private ArrayList<Settlement> settlementArrayList;
+   // private ArrayList<Road> roadArrayList;
+   // private ArrayList<City> cityArrayList;
     //these are the maximum values a player can have in a game and also the starting amount
     final int MAX_CITIES = 4;
     final int MAX_SETTLEMENTS = 5;
@@ -65,12 +62,12 @@ public class Player extends AbstractModelPartition {
         this.color = color;
     }
 
-    public Player(String newColor, String newName, String newPassword, int newBiggestRoadLength, int ID, int newCityAmount, int newRoadAmount, int newSettlementAmount, int newMonumentAmount,
-                  int newSoldierAmount, DevCardList newNewDevCardList, DevCardList newOldDevCardList, boolean newPlayedDevCard, ResourceList newResourcesAmounts, boolean newDiscarded, int newVictoryPointAmount) {
+    public Player(String newColor, String newName, int ID, int newCityAmount, int newRoadAmount, int newSettlementAmount, int newMonumentAmount,
+                  int newSoldierAmount, DevCardList newNewDevCardList, DevCardList newOldDevCardList, boolean newPlayedDevCard, ResourceList newResourcesAmounts, boolean newDiscarded, int newVictoryPointAmount, int newplayerIndex) {
         this.setColor(newColor);
         this.setName(newName);
-        this.setPassword(newPassword);
-        this.setBiggestRoadLength(newBiggestRoadLength);
+  //      this.setPassword(newPassword);
+   //     this.setBiggestRoadLength(newBiggestRoadLength);
         this.setPlayerID(ID);
         this.setCities(newCityAmount);
         this.setRoads(newRoadAmount);
@@ -83,41 +80,8 @@ public class Player extends AbstractModelPartition {
         this.setResources(newResourcesAmounts);
         this.setDiscarded(newDiscarded);
         this.setVictoryPoints(newVictoryPointAmount);
+        playerIndex = newplayerIndex;
     }
-
-    public Player(String newColor, String newName, String newPassword, int newBiggestRoadLength, int ID, int newCityAmount, int newRoadAmount, int newSettlementAmount, int newMonumentAmount,
-            int newSoldierAmount, DevCardList newNewDevCardList, DevCardList newOldDevCardList, boolean newPlayedDevCard, ResourceList newResourcesAmounts, boolean newDiscarded, int newVictoryPointAmount,
-            String newusername, Integer newid, int newplayerIndex, ArrayList<ResourceCard> newresourceCards, ArrayList<DevelopmentCard> newdevelopmentCards, ArrayList<SpecialCard> newspecialCards, ArrayList<Settlement> newsettlementArrayList, ArrayList<Road> newroadArrayList, ArrayList<City> newcityArrayList) {
-  this.setColor(newColor);
-  this.setName(newName);
-  this.setPassword(newPassword);
-  this.setBiggestRoadLength(newBiggestRoadLength);
-  this.setPlayerID(ID);
-  this.setCities(newCityAmount);
-  this.setRoads(newRoadAmount);
-  this.setSettlements(newSettlementAmount);
-  this.setMonuments(newMonumentAmount);
-  this.setSoldiers(newSoldierAmount);
-  this.setNewDevCards(newNewDevCardList);
-  this.setOldDevCards(newOldDevCardList);
-  this.setPlayedDevCard(newPlayedDevCard);
-  this.setResources(newResourcesAmounts);
-  this.setDiscarded(newDiscarded);
-  this.setVictoryPoints(newVictoryPointAmount);
-  
-  username = newusername;
-  id = newid;
-  playerIndex = newplayerIndex;
-  resourceCards = newresourceCards;
-  developmentCards = newdevelopmentCards;
-  specialCards = newspecialCards;
-  settlementArrayList = newsettlementArrayList;
-  roadArrayList = newroadArrayList;
-  cityArrayList = newcityArrayList;
-  
-  
-  
-}
 
     public Player() {
 		// TODO Auto-generated constructor stub
@@ -150,19 +114,19 @@ public class Player extends AbstractModelPartition {
      * * @param type
      * @return
      */
-    public int returnDevCardValue(DevCardType searchType)
-    {
-        int counter =0;
-        for(int i=0; i < developmentCards.size(); i++)
-        {
-            if(developmentCards.get(i).getType().equals(searchType))
-            {
-                counter++;
-            }
-        }
+  //  public int returnDevCardValue(DevCardType searchType)
+  //  {
+   //     int counter =0;
+   //     for(int i=0; i < developmentCards.size(); i++)
+   //     {
+   //         if(developmentCards.get(i).getType().equals(searchType))
+   //         {
+   //             counter++;
+   //         }
+   //     }
 
-        return counter;
-    }
+  //      return counter;
+//    }
 
     public void addResource(ResourceType resource, int numberOfResource) {
         //switch statement for each resource type adding them to the resource list
@@ -226,16 +190,17 @@ public class Player extends AbstractModelPartition {
      */
     public int returnResourceNumber(ResourceType searchType)
     {
-        int counter =0;
-        for(int i=0; i < resourceCards.size(); i++)
-        {
-            if(resourceCards.get(i).getType().equals(searchType))
-            {
-                counter++;
-            }
-        }
-
-        return counter;
+    	if (searchType == ResourceType.WOOD){
+    		return resources.getWood();
+    	}else if (searchType == ResourceType.BRICK){
+    		return resources.getBrick();
+    	}else if (searchType == ResourceType.SHEEP){
+    		return resources.getSheep();
+    	}else if (searchType == ResourceType.WHEAT){
+    		return resources.getWheat();
+    	}else {
+    		return resources.getOre();
+    	}
     }
 
     /**
@@ -285,17 +250,17 @@ public class Player extends AbstractModelPartition {
     public void playMonopoly() {
         oldDevCards.setMonopoly(oldDevCards.getMonopoly() - 1);
     }
-    public boolean findSettlement(VertexLocation theLocation) throws ObjectNotFoundException {
-        for(int i=0; i < settlementArrayList.size(); i++)
-        {
-            if(settlementArrayList.get(i).getVertextLocation() == theLocation)
-            {
-                return true;
-            }
-        }
-        return false;
+   // public boolean findSettlement(VertexLocation theLocation) throws ObjectNotFoundException {
+       // for(int i=0; i < settlementArrayList.size(); i++)
+       // {
+       //     if(settlementArrayList.get(i).getVertextLocation() == theLocation)
+      //      {
+     //           return true;
+    //        }
+   //     }
+  //      return false;
         //throw new ObjectNotFoundException("failed to find settlement of location !");
-    }
+ //   }
 
     /**
      * plays the road build card
@@ -624,21 +589,21 @@ public class Player extends AbstractModelPartition {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
-    }
+  //  public String getPassword() {
+  //      return password;
+  //  }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+ //   public void setPassword(String password) {
+ //       this.password = password;
+  //  }
 
-    public int getBiggestRoadLength() {
-        return biggestRoadLength;
-    }
+ //   public int getBiggestRoadLength() {
+ //       return biggestRoadLength;
+ //   }
 
-    public void setBiggestRoadLength(int biggestRoadLength) {
-        this.biggestRoadLength = biggestRoadLength;
-    }
+  //  public void setBiggestRoadLength(int biggestRoadLength) {
+ //       this.biggestRoadLength = biggestRoadLength;
+//    }
 
     public int getPlayerID() {
         return playerID;
@@ -731,13 +696,6 @@ public class Player extends AbstractModelPartition {
     public int getNumBuildings()
     {
         return settlements+cities;
-    }
-    public ArrayList<ResourceCard> getResourceCards() {
-        return resourceCards;
-    }
-
-    public void setResourceCards(ArrayList<ResourceCard> resourceCards) {
-        this.resourceCards = resourceCards;
     }
 }
 

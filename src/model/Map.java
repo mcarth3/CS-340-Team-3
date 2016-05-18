@@ -18,11 +18,13 @@ import shared.locations.*;
 
 public class map extends AbstractModelPartition {
 	TreeMap<HexLocation,Hex> hexes;
-	ArrayList<Port> ports;
 	ArrayList<Road> roads;
-	ArrayList<VertexObject> buildings;
-	ArrayList<ResourceList> resources;
+	ArrayList<City> cities;
+	ArrayList<Settlement> settlements;
+	//	ArrayList<VertexObject> buildings;
+//	ArrayList<ResourceList> resources;
 	int radius;
+	ArrayList<Port> ports;
 	Robber robber;
 	public map()
 	{
@@ -30,14 +32,14 @@ public class map extends AbstractModelPartition {
 		ports = new ArrayList<Port>();
 		roads = new ArrayList<Road>();
 		robber = new Robber();
-		buildings = new ArrayList<VertexObject>();
-		resources = new ArrayList<ResourceList>();
+		cities = new ArrayList<City>();
+		settlements = new ArrayList<Settlement>();
 		radius = -1;
 	}
 	
 
 
-	public map(TreeMap<HexLocation,Hex> newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<VertexObject> newbuildings,ArrayList<ResourceList> newresources, int newradius,Robber newrobber)
+	public map(TreeMap<HexLocation,Hex> newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<City> newcities,ArrayList<Settlement> newsettlements, int newradius,Robber newrobber)
 	{//to prevent problems, we intitialize array lists if they come back null
 		if (newhexes !=null){
 			hexes = newhexes;
@@ -54,16 +56,16 @@ public class map extends AbstractModelPartition {
 		}else{
 			roads = new ArrayList<Road>();
 		}
-		if (newbuildings !=null){
-			buildings = newbuildings;
+		if (newcities !=null){
+			cities = newcities;
 		}else{
-			buildings = new ArrayList<VertexObject>();
+			cities = new ArrayList<City>();
 		}
 		
-		if (newresources !=null){
-			resources = newresources;
+		if (newsettlements !=null){
+			settlements = newsettlements;
 		}else{
-			resources = new ArrayList<ResourceList>();
+			settlements = new ArrayList<Settlement>();
 		}
 		robber = newrobber;
 		radius = newradius;
@@ -72,7 +74,8 @@ public class map extends AbstractModelPartition {
 		hexes.clear();
 	}
 	public void clearBuildings(){
-		buildings.clear();
+		cities.clear();
+		settlements.clear();
 	}
 
 
@@ -192,13 +195,29 @@ public class map extends AbstractModelPartition {
 		{
 			return false;
 		}
-		for (VertexObject VObjIter: buildings)
+		
+		for (VertexObject VObjIter: cities)
 		{
 			if (VObjIter.getLocation() == settlementLocation)
 			{
 				return false;
 			}
 		}
+		for (VertexObject VObjIter: settlements)
+		{
+			if (VObjIter.getLocation() == settlementLocation)
+			{
+				return false;
+			}
+		}
+		
+	//	for (VertexObject VObjIter: buildings)
+	//	{
+	//		if (VObjIter.getLocation() == settlementLocation)
+	//		{
+	//			return false;
+	//		}
+	//	}
 		return true;
 	}
 
@@ -215,7 +234,7 @@ public class map extends AbstractModelPartition {
 		HexLocation hex = new HexLocation(x,y);
 		VertexLocation location =  new VertexLocation(hex, direction);
 		Settlement settlement = new Settlement(location,pid);
-		buildings.add(settlement);
+		settlements.add(settlement);
 	}
 
 	/**
@@ -227,9 +246,16 @@ public class map extends AbstractModelPartition {
 		{
 			return false;
 		}
-		for (VertexObject VObjIter: buildings)
+		for (VertexObject VObjIter: cities)
 		{
-			if (VObjIter.getLocation() == vertexLocation && !(VObjIter instanceof VertexObject))
+			if (VObjIter.getLocation() == vertexLocation)
+			{
+				return false;
+			}
+		}
+		for (VertexObject VObjIter: settlements)
+		{
+			if (VObjIter.getLocation() == vertexLocation)
 			{
 				return false;
 			}
@@ -250,7 +276,7 @@ public class map extends AbstractModelPartition {
 		HexLocation hex = new HexLocation(x,y);
 		VertexLocation location =  new VertexLocation(hex, direction);
 		City city = new City(location, pid);
-		buildings.add(city);
+		cities.add(city);
 	}
 
 	/**
@@ -341,21 +367,27 @@ public class map extends AbstractModelPartition {
 		return radius;
 	}
 
-	public ArrayList<VertexObject> getBuildings() {
-		return buildings;
+	public ArrayList<City> getCities() {
+		return cities;
+	}
+	public ArrayList<Settlement> getSettlements() {
+		return settlements;
 	}
 
-	public void setBuildings(ArrayList<VertexObject> buildings) {
-		this.buildings = buildings;
+	public void setCities(ArrayList<City> cities) {
+		this.cities = cities;
+	}
+	public void setSettlements(ArrayList<Settlement> settlements) {
+		this.settlements = settlements;
 	}
 
-	public ArrayList<ResourceList> getResources() {
-		return resources;
-	}
+	//public ArrayList<ResourceList> getResources() {
+	//	return resources;
+	//}
 
-	public void setResources(ArrayList<ResourceList> resources) {
-		this.resources = resources;
-	}
+	//public void setResources(ArrayList<ResourceList> resources) {
+	//	this.resources = resources;
+	//}
 
 	public void setRadius(int radius) {
 		this.radius = radius;

@@ -30,7 +30,7 @@ public class PlayerTest {
         newCards.add(grainCard);
 
         Player newPlayer = new Player();
-        newPlayer.setResourceCards(newCards);
+
 
         int woodCount = newPlayer.returnResourceNumber(ResourceType.WOOD);
         assertEquals(woodCount, 2);

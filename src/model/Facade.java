@@ -445,10 +445,10 @@ public class Facade extends AbstractModelPartition {
     public void roll(int pid) {
         if (theGame != null) {
             if (canRoll(pid)) {
-           //     int number = theGame.roll(pid);
-             //   if (number != -1)
-              //      proxy.rollNumber(number, 7);
-           //     else
+                int number = theGame.roll(pid);
+                if (number != -1)
+                    proxy.rollNumber(number, 7);
+               else
                     System.out.println("not a rolling phase");
             }
         }
