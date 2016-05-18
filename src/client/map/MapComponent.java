@@ -91,12 +91,12 @@ public class MapComponent extends JComponent
 		List<Point2D> ROAD_120 = rotateShape(ROAD_0, -(2 * Math.PI / 3));
 		
 		ROADS = new HashMap<EdgeDirection, List<Point2D>>();
-		ROADS.put(EdgeDirection.NorthWest, ROAD_60);
-		ROADS.put(EdgeDirection.North, ROAD_0);
-		ROADS.put(EdgeDirection.NorthEast, ROAD_120);
-		ROADS.put(EdgeDirection.SouthEast, ROAD_60);
-		ROADS.put(EdgeDirection.South, ROAD_0);
-		ROADS.put(EdgeDirection.SouthWest, ROAD_120);
+		ROADS.put(EdgeDirection.NW, ROAD_60);
+		ROADS.put(EdgeDirection.N, ROAD_0);
+		ROADS.put(EdgeDirection.NE, ROAD_120);
+		ROADS.put(EdgeDirection.SE, ROAD_60);
+		ROADS.put(EdgeDirection.S, ROAD_0);
+		ROADS.put(EdgeDirection.SW, ROAD_120);
 		
 		SETTLEMENT = new ArrayList<Point2D>();
 		SETTLEMENT.add(new Point2D.Double(SETTLEMENT_WIDTH / 2,
@@ -147,37 +147,37 @@ public class MapComponent extends JComponent
 											 HEX_IMAGE_HEIGHT / 2));
 		
 		EDGE_POINTS = new HashMap<EdgeDirection, Point2D>();
-		EDGE_POINTS.put(EdgeDirection.NorthWest,
+		EDGE_POINTS.put(EdgeDirection.NW,
 						average(VERTEX_POINTS.get(VertexDirection.West),
 								VERTEX_POINTS.get(VertexDirection.NorthWest)));
-		EDGE_POINTS.put(EdgeDirection.North,
+		EDGE_POINTS.put(EdgeDirection.N,
 						average(VERTEX_POINTS.get(VertexDirection.NorthWest),
 								VERTEX_POINTS.get(VertexDirection.NorthEast)));
-		EDGE_POINTS.put(EdgeDirection.NorthEast,
+		EDGE_POINTS.put(EdgeDirection.NE,
 						average(VERTEX_POINTS.get(VertexDirection.NorthEast),
 								VERTEX_POINTS.get(VertexDirection.East)));
-		EDGE_POINTS.put(EdgeDirection.SouthEast,
+		EDGE_POINTS.put(EdgeDirection.SE,
 						average(VERTEX_POINTS.get(VertexDirection.East),
 								VERTEX_POINTS.get(VertexDirection.SouthEast)));
-		EDGE_POINTS.put(EdgeDirection.South,
+		EDGE_POINTS.put(EdgeDirection.S,
 						average(VERTEX_POINTS.get(VertexDirection.SouthEast),
 								VERTEX_POINTS.get(VertexDirection.SouthWest)));
-		EDGE_POINTS.put(EdgeDirection.SouthWest,
+		EDGE_POINTS.put(EdgeDirection.SW,
 						average(VERTEX_POINTS.get(VertexDirection.SouthWest),
 								VERTEX_POINTS.get(VertexDirection.West)));
 		
 		PORT_ROTATIONS = new HashMap<EdgeDirection, java.lang.Double>();
-		PORT_ROTATIONS.put(EdgeDirection.NorthWest,
+		PORT_ROTATIONS.put(EdgeDirection.NW,
 						   new java.lang.Double(Math.toRadians(120)));
-		PORT_ROTATIONS.put(EdgeDirection.North,
+		PORT_ROTATIONS.put(EdgeDirection.N,
 						   new java.lang.Double(Math.toRadians(180)));
-		PORT_ROTATIONS.put(EdgeDirection.NorthEast,
+		PORT_ROTATIONS.put(EdgeDirection.NE,
 						   new java.lang.Double(Math.toRadians(240)));
-		PORT_ROTATIONS.put(EdgeDirection.SouthEast,
+		PORT_ROTATIONS.put(EdgeDirection.SE,
 						   new java.lang.Double(Math.toRadians(300)));
-		PORT_ROTATIONS.put(EdgeDirection.South,
+		PORT_ROTATIONS.put(EdgeDirection.S,
 						   new java.lang.Double(Math.toRadians(0)));
-		PORT_ROTATIONS.put(EdgeDirection.SouthWest,
+		PORT_ROTATIONS.put(EdgeDirection.SW,
 						   new java.lang.Double(Math.toRadians(60)));
 	}
 	

@@ -3,8 +3,7 @@ package shared.locations;
 /**
  * Represents the location of a hex on a hex map
  */
-public class HexLocation
-{
+public class HexLocation implements Comparable {
 	
 	private int x;
 	private int y;
@@ -67,28 +66,53 @@ public class HexLocation
 			return false;
 		return true;
 	}
+
+	
+	
+	@Override
+	public int compareTo(Object arg0) {
+		HexLocation comparehex = (HexLocation)arg0;
+		if (comparehex.getY()<y){
+			return -1;
+		}else if (comparehex.getY()>y){
+			return 1;
+		}else{
+			if (comparehex.getX()<x){
+				return -1;
+			}else if (comparehex.getX()>x){
+				return 1;
+			}else{
+				return 0;
+			}
+		}
+	}
 	
 	public HexLocation getNeighborLoc(EdgeDirection dir)
 	{
 		switch (dir)
 		{
-			case NorthWest:
+			case NW:
 				return new HexLocation(x - 1, y);
-			case North:
+			case N:
 				return new HexLocation(x, y - 1);
-			case NorthEast:
+			case NE:
 				return new HexLocation(x + 1, y - 1);
-			case SouthWest:
+			case SW:
 				return new HexLocation(x - 1, y + 1);
-			case South:
+			case S:
 				return new HexLocation(x, y + 1);
-			case SouthEast:
+			case SE:
 				return new HexLocation(x + 1, y);
 			default:
 				assert false;
 				return null;
 		}
 	}
+
+
+	
+	
+	
 	
 }
 

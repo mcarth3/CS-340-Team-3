@@ -72,7 +72,7 @@ public class CanDoTest
         hexes.put(new HexLocation(-1,-1), new Hex());
         hexes.put(new HexLocation(3,4), new Hex("BRICK", 9));
         hexes.put(new HexLocation(4,2), new Hex("ORE", 4));
-        m.setHexes(hexes);
+     //   m.setHexes(hexes);
         Robber r = new Robber();
         r.setHl(new HexLocation(3,4));
         m.setRobber(r);
@@ -90,13 +90,13 @@ public class CanDoTest
       //  m.setBuildings(bldgs);
 
         ArrayList<Port> ports = new ArrayList<Port>();
-        Port p = new Port(5, 1, EdgeDirection.NorthWest, 3);
+        Port p = new Port(5, 1, EdgeDirection.NW, 3);
         p.setOwner(3);
         ports.add(p);
-        p = (new Port(1, 2, "Wood", EdgeDirection.SouthEast, 2));
+        p = (new Port(1, 2, "Wood", EdgeDirection.SE, 2));
         p.setOwner(0);
         ports.add(p);
-        p = (new Port(3, 4, "Wheat", EdgeDirection.NorthWest, 2));
+        p = (new Port(3, 4, "Wheat", EdgeDirection.NW, 2));
         p.setOwner(1);
         ports.add(p);
         m.setPorts(ports);

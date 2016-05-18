@@ -153,7 +153,7 @@ public class ServerTests {
 	@Test 
 	public void buildRoadTest(){
 		HexLocation hl = new HexLocation(-1, -1);
-		EdgeLocation rl = new EdgeLocation(hl, EdgeDirection.NorthWest); 
+		EdgeLocation rl = new EdgeLocation(hl, EdgeDirection.NW); 
 		rp.userLogin("Sam", "sam"); 
 		rp.gameJoin(0, "red");
 		String result = rp.buildRoad(0, rl, true);  
@@ -245,10 +245,10 @@ public class ServerTests {
 		rp.userLogin("Sam", "sam"); 
 		rp.gameJoin(0, "red");
 		HexLocation hl = new HexLocation(-1, -1);
-		EdgeDirection ed = EdgeDirection.NorthWest; 
+		EdgeDirection ed = EdgeDirection.NW; 
 		EdgeLocation e1 = new EdgeLocation(hl, ed);
 		HexLocation hl2 = new HexLocation(-1, -1);
-		EdgeDirection ed2 = EdgeDirection.NorthWest;
+		EdgeDirection ed2 = EdgeDirection.NW;
 		EdgeLocation e2 = new EdgeLocation(hl2, ed2);
 		
 		String result = rp.Road_Building(0, e1, e2); 		

@@ -5,18 +5,20 @@ package shared.locations;
  */
 public class EdgeLocation
 {
+
+	private EdgeDirection direction;
+	private int x;
+	private int y;
 	
-	private HexLocation hexLoc;
-	private EdgeDirection dir;
-	
-	public EdgeLocation(HexLocation hexLoc, EdgeDirection dir)
+	public EdgeLocation(HexLocation hexLoc, EdgeDirection direction)
 	{
 		setHexLoc(hexLoc);
-		setDir(dir);
+		setDir(direction);
 	}
 	
 	public HexLocation getHexLoc()
 	{
+		HexLocation hexLoc = new HexLocation(x,y);
 		return hexLoc;
 	}
 	
@@ -26,31 +28,34 @@ public class EdgeLocation
 		{
 			throw new IllegalArgumentException("hexLoc cannot be null");
 		}
-		this.hexLoc = hexLoc;
+		this.x = hexLoc.getX();
+		this.y = hexLoc.getY();
 	}
 	
 	public EdgeDirection getDir()
 	{
-		return dir;
+		return direction;
 	}
 	
-	private void setDir(EdgeDirection dir)
+	private void setDir(EdgeDirection direction)
 	{
-		this.dir = dir;
+		this.direction = direction;
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "EdgeLocation [hexLoc=" + hexLoc + ", dir=" + dir + "]";
+		HexLocation hexLoc = new HexLocation(x,y);
+		return "EdgeLocation [hexLoc=" + hexLoc + ", direction=" + direction + "]";
 	}
 	
 	@Override
 	public int hashCode()
 	{
+		HexLocation hexLoc = new HexLocation(x,y);
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dir == null) ? 0 : dir.hashCode());
+		result = prime * result + ((direction == null) ? 0 : direction.hashCode());
 		result = prime * result + ((hexLoc == null) ? 0 : hexLoc.hashCode());
 		return result;
 	}
@@ -58,6 +63,7 @@ public class EdgeLocation
 	@Override
 	public boolean equals(Object obj)
 	{
+		HexLocation hexLoc = new HexLocation(x,y);
 		if(this == obj)
 			return true;
 		if(obj == null)
@@ -65,14 +71,15 @@ public class EdgeLocation
 		if(getClass() != obj.getClass())
 			return false;
 		EdgeLocation other = (EdgeLocation)obj;
-		if(dir != other.dir)
+		if(direction != other.direction)
 			return false;
+		HexLocation hexLoc2 = new HexLocation(other.x,other.x);
 		if(hexLoc == null)
 		{
-			if(other.hexLoc != null)
+			if(hexLoc2 != null)
 				return false;
 		}
-		else if(!hexLoc.equals(other.hexLoc))
+		else if(!hexLoc.equals(hexLoc2))
 			return false;
 		return true;
 	}
@@ -87,20 +94,20 @@ public class EdgeLocation
 	 */
 	public EdgeLocation getNormalizedLocation()
 	{
-		
+		HexLocation hexLoc = new HexLocation(x,y);
 		// Return an EdgeLocation that has direction NW, N, or NE
 		
-		switch (dir)
+		switch (direction)
 		{
-			case NorthWest:
-			case North:
-			case NorthEast:
+			case NW:
+			case N:
+			case NE:
 				return this;
-			case SouthWest:
-			case South:
-			case SouthEast:
-				return new EdgeLocation(hexLoc.getNeighborLoc(dir),
-										dir.getOppositeDirection());
+			case SW:
+			case S:
+			case SE:
+				return new EdgeLocation(hexLoc.getNeighborLoc(direction),
+										direction.getOppositeDirection());
 			default:
 				assert false;
 				return null;

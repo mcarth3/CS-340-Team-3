@@ -10,6 +10,7 @@ import proxy.RealProxy;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
+
 import shared.locations.*;
 
 /**
@@ -17,7 +18,7 @@ import shared.locations.*;
  */
 
 public class Map extends AbstractModelPartition {
-	TreeMap<HexLocation,Hex> hexes;
+	Hex[] hexes;
 
 	ArrayList<Road> roads;
 	//ArrayList<VertexObject> buildings;
@@ -29,7 +30,7 @@ public class Map extends AbstractModelPartition {
 	Robber robber;
 	public Map()
 	{
-		hexes = new TreeMap<HexLocation,Hex>();
+		hexes = new Hex[19];
 		ports = new ArrayList<Port>();
 		roads = new ArrayList<Road>();
 		robber = new Robber();
@@ -40,12 +41,12 @@ public class Map extends AbstractModelPartition {
 	
 
 
-	public Map(TreeMap<HexLocation,Hex> newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<City> newcities,ArrayList<Settlement> newsettlements, int newradius,Robber newrobber)
+	public Map(Hex[] newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<City> newcities,ArrayList<Settlement> newsettlements, int newradius,Robber newrobber)
 	{//to prevent problems, we intitialize array lists if they come back null
 		if (newhexes !=null){
 			hexes = newhexes;
 		}else{
-			hexes = new TreeMap<HexLocation,Hex>();
+			hexes = new Hex[19];
 		}
 		if (newports !=null){
 			ports = newports;
@@ -71,9 +72,9 @@ public class Map extends AbstractModelPartition {
 		robber = newrobber;
 		radius = newradius;
 	}
-	public void clearHexes(){
-		hexes.clear();
-	}
+//	public void clearHexes(){
+//		hexes.clear();
+//	}
 	public void clearcities(){
 		cities.clear();
 	}
@@ -92,21 +93,21 @@ public class Map extends AbstractModelPartition {
 	/**
 	 * checks to see if hex can be added
 	 */
-	public boolean canAddHex()
-	{
-		if (hexes.size() > 32)
-		{
-			return false;
-		}
-		return true;
+//	public boolean canAddHex()
+//	{
+//		if (hexes.size() > 32)
+//		{
+//			return false;
+//		}
+//		return true;
 
-	}//may not be used
+//	}//may not be used
 
 
 	public void addHexDesert(int x, int y) throws FailureToAddException//may not be used
 	{
 		Hex hex = new Hex(x,y);
-		hexes.put(hex.getLocation(), hex);
+		//hexes.put(hex.getLocation(), hex);
 	}
 
 	/**
@@ -122,7 +123,7 @@ public class Map extends AbstractModelPartition {
 
 		String numberString = new String(Integer.toString(number));
 		Hex hex = new Hex(x,y,resource,number);
-		hexes.put(hex.getLocation(), hex);
+	//	hexes.put(hex.getLocation(), hex);
 	}
 
 	/**
@@ -290,10 +291,10 @@ public class Map extends AbstractModelPartition {
 	public boolean canRelocateRobber(HexLocation targetHex)
 	{
 		
-		if (hexes.get(targetHex).resource == "Ocean" || hexes.get(targetHex).resource == "Sea")
-		{
-			return false;
-		}
+	//	if (hexes.get(targetHex).resource == "Ocean" || hexes.get(targetHex).resource == "Sea")
+	//	{
+	//		return false;
+	//	}
 		return true;
 	}
 	public ArrayList<Port> checkForPorts(ArrayList<VertexObject> builds)
@@ -324,11 +325,11 @@ public class Map extends AbstractModelPartition {
 		robber.setHl(targetHex);
 	}
 	//getters and setters
-	public TreeMap<HexLocation, Hex> getHexes() {
+	public Hex[] getHexes() {
 		return hexes;
 	}
 
-	public void setHexes(TreeMap<HexLocation, Hex> hexes) {
+	public void setHexes(Hex[] hexes) {
 		this.hexes = hexes;
 	}
 

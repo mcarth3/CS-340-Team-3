@@ -10,9 +10,10 @@ import shared.locations.HexLocation;
  *	
  */
 public class Hex extends AbstractModelPartition {
-  String resource;
-  int number;
-  HexLocation location;
+	  HexLocation location;
+	  int number;
+	  String resource;
+	  
 
   public Hex()//desert tile
   {

@@ -54,11 +54,11 @@ public class MapController extends Controller implements IMapController {
 				HexType hexType = HexType.values()[r];
 				HexLocation hexLoc = new HexLocation(x, y);
 				getView().addHex(hexLoc, hexType);
-				getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.NorthWest),
+				getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.NW),
 						CatanColor.RED);
-				getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.SouthWest),
+				getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.SW),
 						CatanColor.BLUE);
-				getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.South),
+				getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.S),
 						CatanColor.ORANGE);
 				getView().placeSettlement(new VertexLocation(hexLoc,  VertexDirection.NorthWest), CatanColor.GREEN);
 				getView().placeCity(new VertexLocation(hexLoc,  VertexDirection.NorthEast), CatanColor.PURPLE);
@@ -71,11 +71,11 @@ public class MapController extends Controller implements IMapController {
 					HexType hexType = HexType.values()[r];
 					HexLocation hexLoc = new HexLocation(-x, y);
 					getView().addHex(hexLoc, hexType);
-					getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.NorthWest),
+					getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.NW),
 							CatanColor.RED);
-					getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.SouthWest),
+					getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.SW),
 							CatanColor.BLUE);
-					getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.South),
+					getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.S),
 							CatanColor.ORANGE);
 					getView().placeSettlement(new VertexLocation(hexLoc,  VertexDirection.NorthWest), CatanColor.GREEN);
 					getView().placeCity(new VertexLocation(hexLoc,  VertexDirection.NorthEast), CatanColor.PURPLE);
@@ -84,12 +84,12 @@ public class MapController extends Controller implements IMapController {
 		}
 		
 		PortType portType = PortType.BRICK;
-		getView().addPort(new EdgeLocation(new HexLocation(0, 3), EdgeDirection.North), portType);
-		getView().addPort(new EdgeLocation(new HexLocation(0, -3), EdgeDirection.South), portType);
-		getView().addPort(new EdgeLocation(new HexLocation(-3, 3), EdgeDirection.NorthEast), portType);
-		getView().addPort(new EdgeLocation(new HexLocation(-3, 0), EdgeDirection.SouthEast), portType);
-		getView().addPort(new EdgeLocation(new HexLocation(3, -3), EdgeDirection.SouthWest), portType);
-		getView().addPort(new EdgeLocation(new HexLocation(3, 0), EdgeDirection.NorthWest), portType);
+		getView().addPort(new EdgeLocation(new HexLocation(0, 3), EdgeDirection.N), portType);
+		getView().addPort(new EdgeLocation(new HexLocation(0, -3), EdgeDirection.S), portType);
+		getView().addPort(new EdgeLocation(new HexLocation(-3, 3), EdgeDirection.NE), portType);
+		getView().addPort(new EdgeLocation(new HexLocation(-3, 0), EdgeDirection.SE), portType);
+		getView().addPort(new EdgeLocation(new HexLocation(3, -3), EdgeDirection.SW), portType);
+		getView().addPort(new EdgeLocation(new HexLocation(3, 0), EdgeDirection.NW), portType);
 		
 		getView().placeRobber(new HexLocation(0, 0));
 		
