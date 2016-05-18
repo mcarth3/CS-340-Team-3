@@ -14,6 +14,11 @@ public class ModelParser {
 		Game game = gson.fromJson(jsonstring, Game.class);
 		return game;
 	}
+	public static PlayerLoginInfo parse3(String jsonstring) {
+		PlayerLoginInfo gson = new Gson();
+		PlayerLoginInfo login = gson.fromJson(jsonstring, Game.class);
+		return login;
+	}
 
 }
 
