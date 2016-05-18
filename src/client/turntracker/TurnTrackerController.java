@@ -70,7 +70,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 //				getView().updatePlayer(playerIndex, currentplayer.getVictoryPoints(), highLight, largestArmy, longestRoad);	
 //			}
 //		}
-//
+
 	}
 	public void update(){
 		initFromModel();
