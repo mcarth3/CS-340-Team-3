@@ -14,6 +14,7 @@ import com.google.gson.JsonObject;
 import model.*;
 import poller.modeljsonparser.ModelParser;
 import proxy.objects.*;
+import shared.definitions.CatanColor;
 import shared.definitions.ResourceType;
 import shared.locations.*; 
 
@@ -56,10 +57,10 @@ public class MockProxy implements IServer{
 		
 		Game g1 = new Game(); 
 		ArrayList<Player> list1 = new ArrayList();
-		Player p1a = new Player("orange", "Sam", 0);
-		Player p1b = new Player("blue", "Brooke", 1);
-		Player p1c = new Player("red", "Pete", 10);
-		Player p1d = new Player("green", "Mark", 11);
+		Player p1a = new Player(CatanColor.ORANGE, "Sam", 0);
+		Player p1b = new Player(CatanColor.BLUE, "Brooke", 1);
+		Player p1c = new Player(CatanColor.RED, "Pete", 10);
+		Player p1d = new Player(CatanColor.GREEN, "Mark", 11);
 		list1.add(p1a);
 		list1.add(p1b);
 		list1.add(p1c);
@@ -68,10 +69,10 @@ public class MockProxy implements IServer{
 		
 		Game g2 = new Game();
 		ArrayList<Player> list2 = new ArrayList();
-		Player p2a = new Player("orange", "Pete", 10);
-		Player p2b = new Player("puce", "Miguel", -2);
-		Player p2c = new Player("green", "Scott", -3);
-		Player p2d = new Player("purple", "Hannah", -4);
+		Player p2a = new Player(CatanColor.ORANGE, "Pete", 10);
+		Player p2b = new Player(CatanColor.PUCE, "Miguel", -2);
+		Player p2c = new Player(CatanColor.GREEN, "Scott", -3);
+		Player p2d = new Player(CatanColor.PURPLE, "Hannah", -4);
 		list2.add(p2a);
 		list2.add(p2b);
 		list2.add(p2c);
@@ -80,10 +81,10 @@ public class MockProxy implements IServer{
 		
 		Game g3 = new Game();
 		ArrayList<Player> list3 = new ArrayList();
-		Player p3a = new Player("orange", "Sam", 0);
-		Player p3b = new Player("blue", "Brooke", 1);
-		Player p3c = new Player("red", "Pete", 10);
-		Player p3d = new Player("green", "Mark", 11);
+		Player p3a = new Player(CatanColor.ORANGE, "Sam", 0);
+		Player p3b = new Player(CatanColor.BLUE, "Brooke", 1);
+		Player p3c = new Player(CatanColor.RED, "Pete", 10);
+		Player p3d = new Player(CatanColor.GREEN, "Mark", 11);
 		list3.add(p3a);
 		list3.add(p3b);
 		list3.add(p3c);

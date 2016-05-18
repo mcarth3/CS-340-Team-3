@@ -20,7 +20,9 @@ public class GameManager extends Observable {
 	public GameManager() {
 		modelfacade = Facade.getSingleton();
 	}
-	
+	public Game getModel(){
+		return modelfacade.gettheGame();
+	}
 	
 	
 	public void setfacade(Facade newmodelfacade) {

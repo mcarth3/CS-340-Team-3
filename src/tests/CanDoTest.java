@@ -8,6 +8,7 @@ import model.bank.ResourceList;
 import org.junit.Test;
 import model.*;
 import proxy.*;
+import shared.definitions.CatanColor;
 import shared.definitions.ResourceType;
 import shared.locations.*;
 /**
@@ -33,28 +34,28 @@ public class CanDoTest
         TurnTracker tt = new TurnTracker(3, "roll");
         tt.setLongestRoad(1);
 
-        Player p1 = new Player("Red","JesseM", 0);
+        Player p1 = new Player(CatanColor.RED,"JesseM", 0);
         p1.setCities(3);
         p1.setSettlements(3);
         p1.setRoads(9);
         p1.setNewDevCards(new DevCardList(0, 0, 0 , 2, 0));
         p1.setResources(new ResourceList(0, 3, 0, 2, 0));
 
-        Player p2 = new Player("Green","Jesse", 1);
+        Player p2 = new Player(CatanColor.GREEN,"Jesse", 1);
         p2.setCities(3);
         p2.setSettlements(3);
         p2.setRoads(13);
         p2.setOldDevCards(new DevCardList(1, 0, 0, 1, 0));
         p2.setResources(new ResourceList(1, 1, 1, 1, 1));
 
-        Player p3 = new Player("Blue","Mike", 2);
+        Player p3 = new Player(CatanColor.BLUE,"Mike", 2);
         p3.setCities(4);
         p3.setSettlements(3);
         p3.setRoads(10);
         p3.setNewDevCards(new DevCardList(0, 1, 0, 0, 1));
         p3.setResources(new ResourceList(0, 1, 1, 1 , 0));
 
-        Player p4 = new Player("White","Nathan", 3);
+        Player p4 = new Player(CatanColor.WHITE,"Nathan", 3);
         p4.setCities(4);
         p4.setSettlements(2);
         p4.setRoads(12);
