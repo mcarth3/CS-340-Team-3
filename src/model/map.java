@@ -104,11 +104,11 @@ public class Map extends AbstractModelPartition {
 //	}//may not be used
 
 
-	public void addHexDesert(int x, int y) throws FailureToAddException//may not be used
-	{
-		Hex hex = new Hex(x,y);
+	//public void addHexDesert(int x, int y) throws FailureToAddException//may not be used
+	//{
+	//	Hex hex = new Hex(x,y);
 		//hexes.put(hex.getLocation(), hex);
-	}
+	//}
 
 	/**
 	 * adds a hex to the maps list of hexes
@@ -118,13 +118,13 @@ public class Map extends AbstractModelPartition {
 	 * @param resource - type of resource obtained from hex
 	 * @param number   - index of owner
 	 */
-	public void addHex(int x, int y, String resource, int number) throws FailureToAddException//may not be used
-	{
+//	public void addHex(int x, int y, String resource, int number) throws FailureToAddException//may not be used
+//	{
 
-		String numberString = new String(Integer.toString(number));
-		Hex hex = new Hex(x,y,resource,number);
+//		String numberString = new String(Integer.toString(number));
+//		Hex hex = new Hex(x,y,resource,number);
 	//	hexes.put(hex.getLocation(), hex);
-	}
+//	}
 
 	/**
 	 * checks to see if port can be added
@@ -258,13 +258,8 @@ public class Map extends AbstractModelPartition {
 				return false;
 			}
 		}
-		//for (VertexObject VObjIter: buildings)
-		//{
-		//	if (VObjIter.getLocation() == vertexLocation && !(VObjIter instanceof VertexObject))
-		//	{
-	//			return false;
-	//		}
-	//	}
+		//used to loop through buildings and use 	'if (VObjIter.getLocation() == vertexLocation && !(VObjIter instanceof VertexObject))'
+
 		return true;
 	}
 
@@ -288,15 +283,15 @@ public class Map extends AbstractModelPartition {
 	 * checks to see if robber can be relocated
 	 */
 	
-	public boolean canRelocateRobber(HexLocation targetHex)
-	{
+	//public boolean canRelocateRobber(HexLocation targetHex)
+	//{
 		
 	//	if (hexes.get(targetHex).resource == "Ocean" || hexes.get(targetHex).resource == "Sea")
 	//	{
 	//		return false;
 	//	}
-		return true;
-	}
+	//	return true;
+	//}
 	public ArrayList<Port> checkForPorts(ArrayList<VertexObject> builds)
 	{	
 		ArrayList<Port> playerPorts = new ArrayList<Port>();

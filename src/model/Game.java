@@ -27,7 +27,7 @@ public class Game extends AbstractModelPartition {
 
 
 
-	//need from server
+	//needed
 	private DevCardList deck;
     private Map map;
 	public ArrayList<Player> players;
@@ -37,9 +37,10 @@ public class Game extends AbstractModelPartition {
     private TurnTracker turnTracker;
 	private int winner;
 	public int version;
-	private Dice gameDice;
+
 	
 //removed
+	private Dice gameDice;
 	//private TradeOffer tradeO;
 	//public String title;
 	//public Integer id;
@@ -63,6 +64,7 @@ public class Game extends AbstractModelPartition {
         turnTracker = new TurnTracker();
         map = new Map();
         winner = 0;
+        gameDice=new Dice();
     }
     
     public Game(DevCardList newdeck,ArrayList<Player> newplayers,MessageList newlog,MessageList newchat,ResourceList newbank, Map newmap, TurnTracker newturnTracker,int newwinner,int newmodelversion) {
@@ -79,7 +81,7 @@ public class Game extends AbstractModelPartition {
         map = newmap;
         turnTracker = newturnTracker;
     	winner = newwinner;
-    	
+        gameDice=new Dice();
 
     }
 
@@ -275,18 +277,18 @@ public class Game extends AbstractModelPartition {
     /**
      * Set up the TradeOffer
      */
-    public boolean canTradePlayer(int pid, int rid, ResourceList rl) throws IllegalMoveException, InsufficientResourcesException {
-        if (turnTracker.getStatus().equals("FirstRoundound") && pid != turnTracker.getCurrentPlayer())
-            throw new IllegalMoveException("not the trading phase, or not the player's turn");
+  //  public boolean canTradePlayer(int pid, int rid, ResourceList rl) throws IllegalMoveException, InsufficientResourcesException {
+ //       if (turnTracker.getStatus().equals("FirstRoundound") && pid != turnTracker.getCurrentPlayer())
+//            throw new IllegalMoveException("not the trading phase, or not the player's turn");
 
-        if (pid == rid)
-            throw new IllegalMoveException("No trading yourself!");
+      //  if (pid == rid)
+      //      throw new IllegalMoveException("No trading yourself!");
 
       //  tradeO = new TradeOffer(pid, rid, rl);
-        return players.get(pid).canOfferTrade();
+      //  return players.get(pid).canOfferTrade();
 
 
-    }
+    //}
     public boolean canBuyDevcard(int pid) {
         if (turnTracker.getCurrentPlayer() != pid)
             return false;
@@ -297,9 +299,9 @@ public class Game extends AbstractModelPartition {
      *
      * @return boolean whether or not the player can move the robber
      */
-    public boolean canMoveRobber(HexLocation hl) {
-        return map.canRelocateRobber(hl);
-    }
+  //  public boolean canMoveRobber(HexLocation hl) {
+   //     return map.canRelocateRobber(hl);
+    //}
     /**
      * Robs a player of one resource card
      *

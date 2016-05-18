@@ -446,15 +446,14 @@ public class Facade extends AbstractModelPartition {
     public int roll(int pid) {
         if (theGame != null) {
             if (canRoll(pid)) {
-                //     int number = theGame.roll(pid);
                 int number = theGame.rollGameDice();
 
-                //   if (number != -1)
+                if (number != -1){
                 proxy.rollNumber(pid, number);
                 return number;
-                //     else
-                //         System.out.println("not a rolling phase");
-
+                }else{
+                         System.out.println("not a rolling phase");
+                }
             }
             else
             {
@@ -577,7 +576,7 @@ public class Facade extends AbstractModelPartition {
     public boolean canAcceptTrade(int pid, int vid, ResourceList offer) {
         if (theGame == null)
             return false;
-     //   return theGame.canAcceptTrade(pid);
+        return theGame.canAcceptTrade(pid);
         return true;
     }
 
@@ -588,7 +587,7 @@ public class Facade extends AbstractModelPartition {
      */
     public void acceptTrade(int pid, boolean acceptance) {
         if (theGame != null) {
-      //      if (theGame.canAcceptTrade(pid))
+            if (theGame.canAcceptTrade(pid))
                 proxy.acceptTrade(pid, acceptance);
         }
     }
