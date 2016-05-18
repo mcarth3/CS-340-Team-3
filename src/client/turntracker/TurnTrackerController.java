@@ -47,7 +47,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 	private void initFromModel() {
 		getView().setLocalPlayerColor(manager.getthisplayer().getColor());
 		
-		TurnTracker turnTracker = manager.getModel().getTt();
+		TurnTracker turnTracker = manager.getModel().getTurnTracker();
 		ArrayList<Player> players = manager.getModel().getPlayers();
 		for(int i = 0; i < players.size(); i++) {
 			boolean largestArmy = false;
@@ -77,8 +77,8 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 		Game model = manager.getModel();
 		boolean enableButton = false;
 		String message = "Waiting for Other Players";
-		if(model.getTt().getCurrentPlayer() == manager.getthisplayer().getPlayerIndex()) {
-			switch(model.getTt().getStatus()) {
+		if(model.getTurnTracker().getCurrentPlayer() == manager.getthisplayer().getPlayerIndex()) {
+			switch(model.getTurnTracker().getStatus()) {
 			case "Discarding":
 				message = "Discarding";
 				break;
