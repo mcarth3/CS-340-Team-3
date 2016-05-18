@@ -134,6 +134,9 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	public void update(){
 
 
+
+
+
 		if(thePlayer.canOfferBankTrade())
 		{
 			pid = GameManager.getSingleton().getthisplayer().getPlayerID();

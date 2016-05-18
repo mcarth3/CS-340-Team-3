@@ -33,7 +33,7 @@ public class Player extends AbstractModelPartition {
     int playerIndex;
     CatanColor color;
     String name;
-		
+	
 	
 	
 	//removed
@@ -191,7 +191,7 @@ public class Player extends AbstractModelPartition {
      * * @param type
      * @return
      */
-    public int returnResourceNumber(ResourceType searchType)
+   /* public int returnResourceNumber(ResourceType searchType)
     {
     	if (searchType == ResourceType.WOOD){
     		return resources.getWood();
@@ -204,7 +204,7 @@ public class Player extends AbstractModelPartition {
     	}else {
     		return resources.getOre();
     	}
-    }
+    }*/
 
     /**
      * Places a road on the map if it is a legal move.
