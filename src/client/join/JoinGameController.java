@@ -4,6 +4,8 @@ import shared.definitions.CatanColor;
 import client.base.*;
 import client.data.*;
 import client.misc.*;
+import poller.InvalidMockProxyException;
+import poller.ServerPoller;
 
 
 /**
@@ -129,6 +131,13 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	public void joinGame(CatanColor color) {
 		
 		// If join succeeded
+		
+		try {
+			ServerPoller.getSingleton();
+		} catch (InvalidMockProxyException e) {
+			e.printStackTrace();
+		}
+		
 		getSelectColorView().closeModal();
 		getJoinGameView().closeModal();
 		joinAction.execute();

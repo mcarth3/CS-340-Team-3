@@ -103,11 +103,7 @@ public class Catan extends JFrame
 				
 				loginController.start();
 				
-				try {
-					ServerPoller.getSingleton();
-				} catch (InvalidMockProxyException e) {
-					e.printStackTrace();
-				}
+
 				
 			}
 		});
