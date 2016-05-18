@@ -1,7 +1,9 @@
 package client.login;
 
+import client.GameManager.GameManager;
 import client.base.*;
 import client.misc.*;
+import poller.modeljsonparser.ModelParser;
 import proxy.RealProxy;
 import states.State;
 import states.StateEnum;
@@ -105,6 +107,10 @@ public class LoginController extends Controller implements ILoginController {
 		String result = null;
 		if(loginCanDo(username, password)){
 			result = rp.userLogin(username, password);
+			PlayerLoginInfo pl = new PlayerLoginInfo();
+			pl = ModelParser.parse3(result); 
+			GameManager gm = GameManager.getSingleton();
+			gm.setplayerbyid(pl.playerID);
 		}
 		
 		if(result != null){

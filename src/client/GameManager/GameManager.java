@@ -5,6 +5,7 @@ import java.util.Observable;
 
 import model.Facade;
 import model.Game;
+import model.ObjectNotFoundException;
 import model.Player;
 import states.State;
 
@@ -106,9 +107,8 @@ public class GameManager extends Observable {
 		this.player = player2;
 	}
 	
-	private void setplayerbyid(int playerid) {
-		
-	//	this.player = player2;
+	public void setplayerbyid(int playerid) throws ObjectNotFoundException {
+		this.player = modelfacade.getGame().findPlayerbyid(playerid);
 	}
 	public static GameManager getSingleton() {
 		if(singleton == null) {
