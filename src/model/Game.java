@@ -24,7 +24,7 @@ public class Game extends AbstractModelPartition {
 	//needed
 	private CurrentPlayer currentPlayer;
 	private DevCardList deck;
-    private map map;
+    private Map map;
 	public ArrayList<Player> players;
 	private MessageList log;
 	private MessageList chat;
@@ -57,12 +57,12 @@ public class Game extends AbstractModelPartition {
 		bank=new ResourceList();
     	version = 0;
         turnTracker = new TurnTracker();
-        map = new map();
+        map = new Map();
         winner = 0;
         gameDice=new Dice();
     }
     
-    public Game(DevCardList newdeck,ArrayList<Player> newplayers,MessageList newlog,MessageList newchat,ResourceList newbank, map newmap, TurnTracker newturnTracker,int newwinner,int newmodelversion) {
+    public Game(DevCardList newdeck,ArrayList<Player> newplayers,MessageList newlog,MessageList newchat,ResourceList newbank, Map newmap, TurnTracker newturnTracker,int newwinner,int newmodelversion) {
     	deck =newdeck;
     	if (newplayers !=null){
     		players = newplayers;
@@ -113,7 +113,7 @@ public class Game extends AbstractModelPartition {
 	}
 
 
-	public Game(map m, ResourceList b, ArrayList<Player> ps, TurnTracker tt, TradeOffer tradeOffer) {
+	public Game(Map m, ResourceList b, ArrayList<Player> ps, TurnTracker tt, TradeOffer tradeOffer) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -165,11 +165,11 @@ public class Game extends AbstractModelPartition {
     public boolean canPlaceSettlement(VertexLocation vl) {
         return map.canAddSettlement(vl);
     }
-    public map getmap() {
+    public Map getmap() {
         return map;
     }
 
-    public void setmap(map map) {
+    public void setmap(Map map) {
         this.map = map;
     }
     public boolean canPlaceRoad(EdgeLocation edge) {
@@ -378,7 +378,7 @@ public class Game extends AbstractModelPartition {
     	return version; 
     }
     
-    public map getMap(){
+    public Map getMap(){
     	return map;
     }
     public CurrentPlayer getCurrentPlayer()

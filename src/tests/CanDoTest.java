@@ -68,7 +68,7 @@ public class CanDoTest
         ps.add(p3);
         ps.add(p4);
 
-        map m = new map();
+        Map m = new Map();
         TreeMap<HexLocation, Hex> hexes = new TreeMap<HexLocation, Hex>();
         hexes.put(new HexLocation(-1,-1), new Hex());
         hexes.put(new HexLocation(3,4), new Hex("BRICK", 9));

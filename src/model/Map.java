@@ -24,7 +24,7 @@ public class Map extends AbstractModelPartition {
     int radius;
     ArrayList<Port> ports;
     Robber robber;
-    public map()
+    public Map()
     {
         hexes = new Hex[19];
         ports = new ArrayList<Port>();
