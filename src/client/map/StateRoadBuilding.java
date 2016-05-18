@@ -22,7 +22,7 @@ public class StateRoadBuilding extends StateAbstract
     {
         view = v;
         color = Facade.getInstance().getCurrentPlayer().getColor();
-     //   color = facade.getCatanColor();
+     
     }
 
     public int getRoadsLaid()
@@ -100,7 +100,6 @@ public class StateRoadBuilding extends StateAbstract
 
     @Override
     public String getName() { return "RoadBuilding"; }
-//    public void cancelMove() {}
 
     public boolean finished()
     {
@@ -111,7 +110,7 @@ public class StateRoadBuilding extends StateAbstract
 
 	@Override
 	public void robPlayer(RobPlayerInfo victim) {
-		// TODO Auto-generated method stub
+		
 		
 	}
 }

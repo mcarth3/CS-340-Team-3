@@ -33,9 +33,6 @@ public class StateRobbing extends StateAbstract
         robView = rv;
         v.startDrop(PieceType.ROBBER, CatanColor.BLUE, false);
     }
-
-    //if soldier is played can the cancelMove possibly be called, because during a roll 7 it can
-//    public void cancelMove(){}
     @Override
     public void robPlayer(RobPlayerInfo victim)
     {
@@ -84,20 +81,7 @@ public class StateRobbing extends StateAbstract
         return Facade.getInstance().canMoveRobber(hexLoc);
     }
 
-    @Override
-    public void placeRoad(EdgeLocation edgeLoc) {
 
-    }
-
-    @Override
-    public void placeSettlement(VertexLocation vertLoc) {
-
-    }
-
-    @Override
-    public void placeCity(VertexLocation vertLoc) {
-
-    }
 
     @Override
     public void placeRobber(HexLocation hexLoc)
@@ -136,15 +120,6 @@ public class StateRobbing extends StateAbstract
         robView.showModal();
     }
 
-    @Override
-    public void startMove(PieceType pieceType, boolean isFree, boolean allowDisconnected) {
-
-    }
-
-    @Override
-    public void cancelMove() {
-
-    }
 
     @Override
     public String getName()   {        return "Robbing";    }
@@ -152,6 +127,36 @@ public class StateRobbing extends StateAbstract
     public HexLocation getCurrentHL() {
         return hl;
     }
+
+	@Override
+	public void placeRoad(EdgeLocation edgeLoc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void placeSettlement(VertexLocation vertLoc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void placeCity(VertexLocation vertLoc) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void startMove(PieceType pieceType, boolean isFree, boolean allowDisconnected) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void cancelMove() {
+		// TODO Auto-generated method stub
+		
+	}
 
 
 }

@@ -28,6 +28,8 @@ public class Facade extends AbstractModelPartition {
     private ArrayList<Observer> observers = new ArrayList<Observer>();
     TurnTracker Turn;
     private boolean closeMap = false;
+    boolean ready = false;
+    
     //*************************************ADDED BELOW FOR SINGLETON
     private static Facade singleton = null;
 
@@ -667,5 +669,20 @@ public void retrievegame() {
 			
 			
 		}
+
+
+
+
+public boolean isReady() {
+   
+	return ready;
+}
+
+
+
+
+public void setCurPlayerIndex() {
+    getCurrentPlayer().setPlayerIndex(theGame.getPlayerIndex(getCurrentPlayer().getPlayerId()));
+}
 
 }

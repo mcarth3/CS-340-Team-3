@@ -31,7 +31,7 @@ public class StateSetup extends StateAbstract
         int pid = facade.getPlayerIndex();
         int roads = facade.getGame().getPlayers().get(pid).getRoads();
         int settlements = facade.getGame().getPlayers().get(pid).getSettlements();
-      //  cancelMove();
+     
         startMove(PieceType.ROAD, true, true);
     }
     @Override
@@ -85,7 +85,7 @@ public class StateSetup extends StateAbstract
 
     @Override
     public void cancelMove() {
-     //   view.closeModal();
+     
     }
 
     @Override
