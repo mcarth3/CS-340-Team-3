@@ -6,8 +6,9 @@ package shared.locations;
 public class VertexLocation
 {
 	
-	private HexLocation hexLoc;
-	private VertexDirection dir;
+	private VertexDirection direction;
+	private int x;
+	private int y;
 	
 	public VertexLocation(HexLocation hexLoc, VertexDirection dir)
 	{
@@ -17,6 +18,7 @@ public class VertexLocation
 	
 	public HexLocation getHexLoc()
 	{
+		HexLocation hexLoc = new HexLocation(x,y);
 		return hexLoc;
 	}
 	
@@ -26,31 +28,34 @@ public class VertexLocation
 		{
 			throw new IllegalArgumentException("hexLoc cannot be null");
 		}
-		this.hexLoc = hexLoc;
+		this.x = hexLoc.getX();
+		this.y = hexLoc.getY();
 	}
 	
 	public VertexDirection getDir()
 	{
-		return dir;
+		return direction;
 	}
 	
 	private void setDir(VertexDirection direction)
 	{
-		this.dir = direction;
+		this.direction = direction;
 	}
 	
 	@Override
 	public String toString()
 	{
-		return "VertexLocation [hexLoc=" + hexLoc + ", dir=" + dir + "]";
+		HexLocation hexLoc = new HexLocation(x,y);
+		return "VertexLocation [hexLoc=" + hexLoc + ", dir=" + direction + "]";
 	}
 	
 	@Override
 	public int hashCode()
 	{
+		HexLocation hexLoc = new HexLocation(x,y);
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((dir == null) ? 0 : dir.hashCode());
+		result = prime * result + ((direction == null) ? 0 : direction.hashCode());
 		result = prime * result + ((hexLoc == null) ? 0 : hexLoc.hashCode());
 		return result;
 	}
@@ -58,6 +63,7 @@ public class VertexLocation
 	@Override
 	public boolean equals(Object obj)
 	{
+		HexLocation hexLoc = new HexLocation(x,y);
 		if(this == obj)
 			return true;
 		if(obj == null)
@@ -65,14 +71,15 @@ public class VertexLocation
 		if(getClass() != obj.getClass())
 			return false;
 		VertexLocation other = (VertexLocation)obj;
-		if(dir != other.dir)
+		if(direction != other.direction)
 			return false;
+		HexLocation hexLoc2 = new HexLocation(other.x,other.x);
 		if(hexLoc == null)
 		{
-			if(other.hexLoc != null)
+			if(hexLoc2 != null)
 				return false;
 		}
-		else if(!hexLoc.equals(other.hexLoc))
+		else if(!hexLoc.equals(hexLoc2))
 			return false;
 		return true;
 	}
@@ -89,8 +96,8 @@ public class VertexLocation
 	{
 		
 		// Return location that has direction NW or NE
-		
-		switch (dir)
+		HexLocation hexLoc = new HexLocation(x,y);
+		switch (direction)
 		{
 			case NorthWest:
 			case NorthEast:

@@ -6,13 +6,16 @@ import shared.locations.HexLocation;
  * @author Jesse McArthur
  */
 public class Robber extends AbstractModelPartition {
-    HexLocation hl;
+    int x;
+    int y;
 
     public Robber() {
-    	hl = new HexLocation(0, 0);
+    	x = 0;
+    	y = 0;
     }
     public Robber(HexLocation newh1) {
-    	hl = newh1;
+    	x = newh1.getX();
+    	y = newh1.getX();
     }
     
 
@@ -25,11 +28,13 @@ public class Robber extends AbstractModelPartition {
     }
 
     public HexLocation getHl() {
+    	HexLocation hl = new HexLocation(x,y);
         return hl;
     }
 
     public void setHl(HexLocation hl) {
-        this.hl = hl;
+    	x = hl.getX();
+    	y = hl.getX();
     }
 
 }
