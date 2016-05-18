@@ -2,15 +2,8 @@ package model;
 
 
 import java.util.ArrayList;
-import java.util.TreeMap;
 
 
-import model.Port;
-import model.Dice;
-import model.TradeOffer;
-import model.Map;
-import model.Player;
-import model.CurrentPlayer;
 import model.bank.ResourceList;
 import model.clientModel.MessageList;
 import poller.modeljsonparser.AbstractModelPartition;
@@ -18,7 +11,6 @@ import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
-import model.TurnTracker;
 import model.bank.DevCardList;
 
 /**

@@ -17,7 +17,7 @@ public class ClientModel extends AbstractModelPartition {
     private ResourceList bank;
     private MessageList chat;
     private MessageList log;
-    private Map Map;
+    private Map map;
     private ArrayList<Player> players;
     private TradeOffer tradeOffer;
     private TurnTracker turnTracker;
@@ -28,7 +28,7 @@ public class ClientModel extends AbstractModelPartition {
         bank = newbank;
         chat = newchat;
         log = newlog;
-        Map = newmap;
+        map = newmap;
         players = newplayers;
         tradeOffer = newtradeOffer;
         turnTracker = newturnTracker;
@@ -40,7 +40,7 @@ public class ClientModel extends AbstractModelPartition {
         bank = new ResourceList();
         chat = new MessageList();
         log = new MessageList();
-        Map = new Map();
+        map = new Map();
         players = new ArrayList<Player>();
         tradeOffer = new TradeOffer();
         turnTracker = new TurnTracker();
@@ -77,11 +77,11 @@ public class ClientModel extends AbstractModelPartition {
     }
 
     public Map getMap() {
-        return Map;
+        return map;
     }
 
     public void setMap(Map Map) {
-        this.Map = Map;
+        this.map = Map;
     }
 
     public ArrayList<Player> getPlayers() {
