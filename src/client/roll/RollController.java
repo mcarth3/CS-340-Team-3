@@ -55,11 +55,11 @@ public class RollController extends Controller implements IRollController {
 
 
 		 */
-		StateEnum theState = State.getCurrentState();
-		if(theState == StateEnum.PLAY)
-		{
+		//StateEnum theState = State.getCurrentState();
+		//if(theState == StateEnum.PLAY)
+		//{
 
-		}
+		//}
 
 
 		getResultView().showModal();
