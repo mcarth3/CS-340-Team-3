@@ -5,13 +5,8 @@
     <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="Edited dice to return int all the way back to controllers when rolled. Added some rough code for the RollController that I'll need to add to the State.">
+    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/login/LoginController.java" afterPath="$PROJECT_DIR$/src/client/login/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/roll/RollController.java" afterPath="$PROJECT_DIR$/src/client/roll/RollController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Dice.java" afterPath="$PROJECT_DIR$/src/model/Dice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Facade.java" afterPath="$PROJECT_DIR$/src/model/Facade.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Game.java" afterPath="$PROJECT_DIR$/src/model/Game.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,7 +85,7 @@
       <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/login/LoginController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.2277777">
+            <state vertical-scroll-proportion="0.4911111">
               <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
               <folding />
             </state>
@@ -407,27 +402,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/ChatController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/ChatView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$2.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$3.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$4.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel$1.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView$TextFieldValidator.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/main/Catan.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/RollController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/communication/ChatController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/communication/ChatView.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/login/LoginController.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/login/LoginView.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/main/Catan.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/roll/RollController.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -435,7 +411,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/map.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -905,7 +880,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463445598856</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Edited dice to return int all the way back to controllers when rolled. Added some rough code for the RollController that I'll need to add to the State.">
+      <created>1463535538174</created>
+      <option name="number" value="00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1463535538174</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -946,11 +927,11 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24549918" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.65957445" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25859246" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21767594" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21767594" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1465,7 +1446,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/login/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.2277777">
+        <state vertical-scroll-proportion="0.4911111">
           <caret line="24" column="56" selection-start-line="24" selection-start-column="56" selection-end-line="24" selection-end-column="56" />
           <folding />
         </state>
