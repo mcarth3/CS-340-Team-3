@@ -20,6 +20,5 @@ public class PanelView extends JPanel implements IView
 	{
 		this.controller = controller;
 	}
-	
 }
 
