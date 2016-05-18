@@ -5,10 +5,191 @@
     <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="added function to Player for checking their resources over 3. Also worked on MaritimeTradeController so it should work on bank trades (NOT ports).">
+    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="Took away invalid Player functions and PlayerTest, and modified Facade and MaritimeTradeController.">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/ComponentView.class" afterPath="$PROJECT_DIR$/bin/client/base/ComponentView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/Controller.class" afterPath="$PROJECT_DIR$/bin/client/base/Controller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IAction.class" afterPath="$PROJECT_DIR$/bin/client/base/IAction.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IController.class" afterPath="$PROJECT_DIR$/bin/client/base/IController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IOverlayView.class" afterPath="$PROJECT_DIR$/bin/client/base/IOverlayView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IView.class" afterPath="$PROJECT_DIR$/bin/client/base/IView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView$1.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView$2.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView$OverlayInfo.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView$OverlayInfo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/PanelView.class" afterPath="$PROJECT_DIR$/bin/client/base/PanelView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/CatanPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/catan/CatanPanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/CatanPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/CatanPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/GameStatePanel$1.class" afterPath="$PROJECT_DIR$/bin/client/catan/GameStatePanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/GameStatePanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/GameStatePanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/LeftPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/LeftPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/MidPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/MidPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$2.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$3.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$4.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$5.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/TitlePanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/TitlePanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/TradePanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/TradePanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/ChatController.class" afterPath="$PROJECT_DIR$/bin/client/communication/ChatController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/ChatView$EventListener.class" afterPath="$PROJECT_DIR$/bin/client/communication/ChatView$EventListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/ChatView.class" afterPath="$PROJECT_DIR$/bin/client/communication/ChatView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/GameHistoryController.class" afterPath="$PROJECT_DIR$/bin/client/communication/GameHistoryController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/GameHistoryView$1.class" afterPath="$PROJECT_DIR$/bin/client/communication/GameHistoryView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/GameHistoryView.class" afterPath="$PROJECT_DIR$/bin/client/communication/GameHistoryView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IChatController.class" afterPath="$PROJECT_DIR$/bin/client/communication/IChatController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IChatView.class" afterPath="$PROJECT_DIR$/bin/client/communication/IChatView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IGameHistoryController.class" afterPath="$PROJECT_DIR$/bin/client/communication/IGameHistoryController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IGameHistoryView.class" afterPath="$PROJECT_DIR$/bin/client/communication/IGameHistoryView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/LogComponent.class" afterPath="$PROJECT_DIR$/bin/client/communication/LogComponent.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/LogEntry.class" afterPath="$PROJECT_DIR$/bin/client/communication/LogEntry.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/PlaceholderTextField.class" afterPath="$PROJECT_DIR$/bin/client/communication/PlaceholderTextField.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/custom/cwt/RoundedButton.class" afterPath="$PROJECT_DIR$/bin/client/custom/cwt/RoundedButton.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/data/GameInfo.class" afterPath="$PROJECT_DIR$/bin/client/data/GameInfo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/data/PlayerInfo.class" afterPath="$PROJECT_DIR$/bin/client/data/PlayerInfo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/data/RobPlayerInfo.class" afterPath="$PROJECT_DIR$/bin/client/data/RobPlayerInfo.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanelListener.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanelListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevCardController.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevCardController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$2.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IButtonGroup.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IButtonGroup.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IBuyDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IBuyDevCardView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IDevCardController.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IDevCardController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IPlayDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IPlayDevCardView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$2.class" afterPath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ResourceCardChooser.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ResourceCardChooser.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardController.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView$1.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource$1.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/IDiscardController.class" afterPath="$PROJECT_DIR$/bin/client/discard/IDiscardController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/IDiscardView.class" afterPath="$PROJECT_DIR$/bin/client/discard/IDiscardView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay$1.class" afterPath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeController.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$1.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$2.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$3.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$4.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$5.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$5.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$6.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$6.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$7.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$7.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$8.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$8.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$9.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$9.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView$1.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IAcceptTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IAcceptTradeOverlay.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeController.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeOverlay.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeView.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IJoinGameController.class" afterPath="$PROJECT_DIR$/bin/client/join/IJoinGameController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IJoinGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/IJoinGameView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/INewGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/INewGameView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingController.class" afterPath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingView.class" afterPath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/ISelectColorView.class" afterPath="$PROJECT_DIR$/bin/client/join/ISelectColorView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/JoinGameView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/JoinGameView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/JoinGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/JoinGameView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/NewGameView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/NewGameView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/NewGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/NewGameView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/PlayerWaitingController.class" afterPath="$PROJECT_DIR$/bin/client/join/PlayerWaitingController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView.class" afterPath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/SelectColorView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/SelectColorView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/SelectColorView.class" afterPath="$PROJECT_DIR$/bin/client/join/SelectColorView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/ILoginController.class" afterPath="$PROJECT_DIR$/bin/client/login/ILoginController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/ILoginView.class" afterPath="$PROJECT_DIR$/bin/client/login/ILoginView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginController.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$1.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$2.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$3.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$4.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$4.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$TextFieldValidator.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$TextFieldValidator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/IMapController.class" afterPath="$PROJECT_DIR$/bin/client/map/IMapController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/IRobView.class" afterPath="$PROJECT_DIR$/bin/client/map/IRobView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapComponent$1.class" afterPath="$PROJECT_DIR$/bin/client/map/MapComponent$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapComponent$2.class" afterPath="$PROJECT_DIR$/bin/client/map/MapComponent$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapComponent.class" afterPath="$PROJECT_DIR$/bin/client/map/MapComponent.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/RobView$1.class" afterPath="$PROJECT_DIR$/bin/client/map/RobView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/RobView.class" afterPath="$PROJECT_DIR$/bin/client/map/RobView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeController.class" afterPath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeOverlay.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeView.class" afterPath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$1.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$2.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$3.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView$1.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/IMessageView.class" afterPath="$PROJECT_DIR$/bin/client/misc/IMessageView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/IWaitView.class" afterPath="$PROJECT_DIR$/bin/client/misc/IWaitView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/MessageView$1.class" afterPath="$PROJECT_DIR$/bin/client/misc/MessageView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/MessageView.class" afterPath="$PROJECT_DIR$/bin/client/misc/MessageView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/WaitView.class" afterPath="$PROJECT_DIR$/bin/client/misc/WaitView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/GameFinishedView$1.class" afterPath="$PROJECT_DIR$/bin/client/points/GameFinishedView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/GameFinishedView.class" afterPath="$PROJECT_DIR$/bin/client/points/GameFinishedView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/IGameFinishedView.class" afterPath="$PROJECT_DIR$/bin/client/points/IGameFinishedView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/IPointsController.class" afterPath="$PROJECT_DIR$/bin/client/points/IPointsController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/IPointsView.class" afterPath="$PROJECT_DIR$/bin/client/points/IPointsView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/PointsController.class" afterPath="$PROJECT_DIR$/bin/client/points/PointsController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/PointsView.class" afterPath="$PROJECT_DIR$/bin/client/points/PointsView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/IResourceBarController.class" afterPath="$PROJECT_DIR$/bin/client/resources/IResourceBarController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/IResourceBarView.class" afterPath="$PROJECT_DIR$/bin/client/resources/IResourceBarView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarElement.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarElement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$1.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$2.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$3.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$ResourceElement.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$ResourceElement.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/IRollController.class" afterPath="$PROJECT_DIR$/bin/client/roll/IRollController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/IRollResultView.class" afterPath="$PROJECT_DIR$/bin/client/roll/IRollResultView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/IRollView.class" afterPath="$PROJECT_DIR$/bin/client/roll/IRollView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollController.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollResultView$1.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollResultView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollResultView.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollResultView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollView$1.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollView.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerController.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerView.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerController.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView$1.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/utils/FontUtils.class" afterPath="$PROJECT_DIR$/bin/client/utils/FontUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/utils/ImageUtils.class" afterPath="$PROJECT_DIR$/bin/client/utils/ImageUtils.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/poller/PollException.class" afterPath="$PROJECT_DIR$/bin/poller/PollException.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/poller/ServerPoller$ServerPollerTask.class" afterPath="$PROJECT_DIR$/bin/poller/ServerPoller$ServerPollerTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/poller/ServerPoller.class" afterPath="$PROJECT_DIR$/bin/poller/ServerPoller.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/CatanColor.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/CatanColor.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/DevCardType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/DevCardType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/HexType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/HexType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/PieceType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/PieceType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/PortType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/PortType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/ResourceType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/ResourceType.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/EdgeDirection.class" afterPath="$PROJECT_DIR$/bin/shared/locations/EdgeDirection.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/EdgeLocation.class" afterPath="$PROJECT_DIR$/bin/shared/locations/EdgeLocation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/HexLocation.class" afterPath="$PROJECT_DIR$/bin/shared/locations/HexLocation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/VertexDirection.class" afterPath="$PROJECT_DIR$/bin/shared/locations/VertexDirection.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/VertexLocation.class" afterPath="$PROJECT_DIR$/bin/shared/locations/VertexLocation.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/tests/serverpollertest.class" afterPath="$PROJECT_DIR$/bin/tests/serverpollertest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" afterPath="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Facade.java" afterPath="$PROJECT_DIR$/src/model/Facade.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Player.java" afterPath="$PROJECT_DIR$/src/model/Player.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tests/PlayerTest.java" afterPath="$PROJECT_DIR$/src/tests/PlayerTest.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,13 +211,38 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/login/LoginController.java">
+      <file leaf-file-name="Facade.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/model/Facade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
+            <state vertical-scroll-proportion="-2.3448277">
+              <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="false" />
+                <element signature="e#1701#1702#0" expanded="true" />
+                <element signature="e#1731#1732#0" expanded="true" />
+                <element signature="e#1765#1766#0" expanded="true" />
+                <element signature="e#1801#1802#0" expanded="true" />
+                <element signature="e#6014#6015#0" expanded="true" />
+                <element signature="e#6041#6042#0" expanded="true" />
+                <element signature="e#6080#6081#0" expanded="true" />
+                <element signature="e#6107#6108#0" expanded="true" />
+                <element signature="e#15119#15120#0" expanded="true" />
+                <element signature="e#15156#15157#0" expanded="true" />
+                <element signature="e#18937#18938#0" expanded="true" />
+                <element signature="e#18971#18972#0" expanded="true" />
+                <element signature="e#19037#19038#0" expanded="true" />
+                <element signature="e#19071#19072#0" expanded="true" />
+                <element signature="e#19103#19104#0" expanded="true" />
+                <element signature="e#19147#19148#0" expanded="true" />
+                <element signature="e#19188#19189#0" expanded="true" />
+                <element signature="e#19256#19257#0" expanded="true" />
+                <element signature="e#19286#19287#0" expanded="true" />
+                <element signature="e#19318#19319#0" expanded="true" />
+                <element signature="e#19769#19770#0" expanded="true" />
+                <element signature="e#19820#19821#0" expanded="true" />
+                <element signature="e#20020#20021#0" expanded="true" />
+                <element signature="e#20053#20054#0" expanded="true" />
+                <element signature="e#20103#20104#0" expanded="true" />
+                <element signature="e#20145#20146#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -45,126 +251,18 @@
       <file leaf-file-name="MaritimeTradeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="10.321428">
-              <caret line="78" column="13" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RollController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/client/roll/RollController.java">
+      <file leaf-file-name="ComponentView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/base/ComponentView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.721393">
-              <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Player.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.6551723">
-              <caret line="500" column="45" selection-start-line="500" selection-start-column="45" selection-end-line="500" selection-end-column="45" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#14446#14460#0" expanded="true" />
-                <element signature="e#15373#15387#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="169" column="5" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
-              <folding>
-                <element signature="e#5053#5054#0" expanded="true" />
-                <element signature="e#5083#5084#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Map.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Map.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ClientModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/clientModel/ClientModel.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
-              <folding>
-                <element signature="e#1490#1491#0" expanded="false" />
-                <element signature="e#1517#1518#0" expanded="false" />
-                <element signature="e#1563#1564#0" expanded="false" />
-                <element signature="e#1595#1596#0" expanded="false" />
-                <element signature="e#1631#1632#0" expanded="false" />
-                <element signature="e#1658#1659#0" expanded="false" />
-                <element signature="e#1703#1704#0" expanded="false" />
-                <element signature="e#1735#1736#0" expanded="false" />
-                <element signature="e#1770#1771#0" expanded="false" />
-                <element signature="e#1796#1797#0" expanded="false" />
-                <element signature="e#1839#1840#0" expanded="false" />
-                <element signature="e#1869#1870#0" expanded="false" />
-                <element signature="e#1896#1897#0" expanded="false" />
-                <element signature="e#1922#1923#0" expanded="false" />
-                <element signature="e#1957#1958#0" expanded="false" />
-                <element signature="e#1987#1988#0" expanded="false" />
-                <element signature="e#2032#2033#0" expanded="false" />
-                <element signature="e#2062#2063#0" expanded="false" />
-                <element signature="e#2119#2120#0" expanded="false" />
-                <element signature="e#2157#2158#0" expanded="false" />
-                <element signature="e#2198#2199#0" expanded="false" />
-                <element signature="e#2231#2232#0" expanded="false" />
-                <element signature="e#2287#2288#0" expanded="false" />
-                <element signature="e#2331#2332#0" expanded="false" />
-                <element signature="e#2374#2375#0" expanded="false" />
-                <element signature="e#2408#2409#0" expanded="false" />
-                <element signature="e#2467#2468#0" expanded="false" />
-                <element signature="e#2513#2514#0" expanded="false" />
-                <element signature="e#2544#2545#0" expanded="false" />
-                <element signature="e#2574#2575#0" expanded="false" />
-                <element signature="e#2617#2618#0" expanded="false" />
-                <element signature="e#2655#2656#0" expanded="false" />
-                <element signature="e#2685#2686#0" expanded="false" />
-                <element signature="e#2714#2715#0" expanded="false" />
-                <element signature="e#2755#2756#0" expanded="false" />
-                <element signature="e#2791#2792#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Facade.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/model/Facade.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.862069">
-              <caret line="432" column="26" selection-start-line="432" selection-start-column="26" selection-end-line="432" selection-end-column="26" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="IServer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/proxy/IServer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="571" column="82" selection-start-line="571" selection-start-column="82" selection-end-line="571" selection-end-column="82" />
+            <state vertical-scroll-proportion="0.36756757">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -209,7 +307,6 @@
         <option value="$PROJECT_DIR$/src/model/ResourceCard.java" />
         <option value="$PROJECT_DIR$/src/tests/serverpollertest.java" />
         <option value="$PROJECT_DIR$/src/tests/ServerPollerTest.java" />
-        <option value="$PROJECT_DIR$/src/tests/PlayerTest.java" />
         <option value="$PROJECT_DIR$/src/tests/Facade_CAN_DO_methodTests.java" />
         <option value="$PROJECT_DIR$/src/model/clientModel/MessageLine.java" />
         <option value="$PROJECT_DIR$/src/controllers/DomesticTradeController.java" />
@@ -228,8 +325,9 @@
         <option value="$PROJECT_DIR$/src/model/clientModel/ClientModel.java" />
         <option value="$PROJECT_DIR$/src/client/roll/RollController.java" />
         <option value="$PROJECT_DIR$/src/model/Player.java" />
-        <option value="$PROJECT_DIR$/src/model/Facade.java" />
+        <option value="$PROJECT_DIR$/src/tests/PlayerTest.java" />
         <option value="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" />
+        <option value="$PROJECT_DIR$/src/model/Facade.java" />
       </list>
     </option>
   </component>
@@ -273,6 +371,92 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Catan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Final340Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Catan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Final340Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Catan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Final340Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Catan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Final340Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="maritime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Catan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Final340Project" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="base" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -314,12 +498,32 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/turntracker/TurnTrackerController.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/JoinGameController.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/main/Catan.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/IMapView.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapView$1.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapView$MapOverlay$1.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapView$MapOverlay.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapView.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeController.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/resources/ResourceBarController.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/GameManager/GameManager.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/login/LoginController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/turntracker/TurnTrackerController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/poller/modeljsonparser/ModelParser.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/join/JoinGameController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/main/Catan.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/IMapView.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/MapController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/MapView.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/StateAbstract.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/StatePlayersTurn.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/StateRoadBuilding.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/StateRobbing.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/StateSetup.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/resources/ResourceBarController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Facade.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Game.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Map.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Player.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/testmodel.json</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -327,7 +531,6 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="CREATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/login/PlayerLoginInfo.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Deleted" />
@@ -821,7 +1024,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463553108340</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added function to Player for checking their resources over 3. Also worked on MaritimeTradeController so it should work on bank trades (NOT ports).">
+      <created>1463594716246</created>
+      <option name="number" value="00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1463594716246</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -846,6 +1055,9 @@
     <history-entry file="PlayerTest - 2016.05.11 at 22h 05m 56s.xml">
       <configuration name="PlayerTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="PlayerTest - 2016.05.18 at 12h 19m 39s.xml">
+      <configuration name="PlayerTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TodoView" selected-index="4">
     <todo-panel id="selected-file">
@@ -862,11 +1074,12 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24549918" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.62520456" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34860885" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21276596" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33387887" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -874,29 +1087,28 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21135646" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33438486" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32492113" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21135646" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24549918" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30605564" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34860885" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21276596" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21276596" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33438486" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -943,7 +1155,8 @@
     <MESSAGE value="changed Map to map, and took out RollController() errors" />
     <MESSAGE value="changed Map to map, and took out RollController() errors. changed ClientModel to have Map object called &quot;map&quot;" />
     <MESSAGE value="added function to Player for checking their resources over 3. Also worked on MaritimeTradeController so it should work on bank trades (NOT ports)." />
-    <option name="LAST_COMMIT_MESSAGE" value="added function to Player for checking their resources over 3. Also worked on MaritimeTradeController so it should work on bank trades (NOT ports)." />
+    <MESSAGE value="Took away invalid Player functions and PlayerTest, and modified Facade and MaritimeTradeController." />
+    <option name="LAST_COMMIT_MESSAGE" value="Took away invalid Player functions and PlayerTest, and modified Facade and MaritimeTradeController." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -956,68 +1169,14 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/model/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#5053#5054#0" expanded="true" />
-            <element signature="e#5083#5084#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/clientModel/ClientModel.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
           <folding>
-            <element signature="e#1490#1491#0" expanded="false" />
-            <element signature="e#1517#1518#0" expanded="false" />
-            <element signature="e#1563#1564#0" expanded="false" />
-            <element signature="e#1595#1596#0" expanded="false" />
-            <element signature="e#1631#1632#0" expanded="false" />
-            <element signature="e#1658#1659#0" expanded="false" />
-            <element signature="e#1703#1704#0" expanded="false" />
-            <element signature="e#1735#1736#0" expanded="false" />
-            <element signature="e#1770#1771#0" expanded="false" />
-            <element signature="e#1796#1797#0" expanded="false" />
-            <element signature="e#1839#1840#0" expanded="false" />
-            <element signature="e#1869#1870#0" expanded="false" />
-            <element signature="e#1896#1897#0" expanded="false" />
-            <element signature="e#1922#1923#0" expanded="false" />
-            <element signature="e#1957#1958#0" expanded="false" />
-            <element signature="e#1987#1988#0" expanded="false" />
-            <element signature="e#2032#2033#0" expanded="false" />
-            <element signature="e#2062#2063#0" expanded="false" />
-            <element signature="e#2119#2120#0" expanded="false" />
-            <element signature="e#2157#2158#0" expanded="false" />
-            <element signature="e#2198#2199#0" expanded="false" />
-            <element signature="e#2231#2232#0" expanded="false" />
-            <element signature="e#2287#2288#0" expanded="false" />
-            <element signature="e#2331#2332#0" expanded="false" />
-            <element signature="e#2374#2375#0" expanded="false" />
-            <element signature="e#2408#2409#0" expanded="false" />
-            <element signature="e#2467#2468#0" expanded="false" />
-            <element signature="e#2513#2514#0" expanded="false" />
-            <element signature="e#2544#2545#0" expanded="false" />
-            <element signature="e#2574#2575#0" expanded="false" />
-            <element signature="e#2617#2618#0" expanded="false" />
-            <element signature="e#2655#2656#0" expanded="false" />
-            <element signature="e#2685#2686#0" expanded="false" />
-            <element signature="e#2714#2715#0" expanded="false" />
-            <element signature="e#2755#2756#0" expanded="false" />
-            <element signature="e#2791#2792#0" expanded="false" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1839#1840#0" expanded="true" />
+            <element signature="e#1869#1870#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1026,7 +1185,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="427" column="6" selection-start-line="427" selection-start-column="6" selection-end-line="427" selection-end-column="6" />
-          <folding />
+          <folding>
+            <element signature="e#1701#1702#0" expanded="true" />
+            <element signature="e#1731#1732#0" expanded="true" />
+            <element signature="e#1765#1766#0" expanded="true" />
+            <element signature="e#1801#1802#0" expanded="true" />
+            <element signature="e#6014#6015#0" expanded="true" />
+            <element signature="e#6041#6042#0" expanded="true" />
+            <element signature="e#6080#6081#0" expanded="true" />
+            <element signature="e#6107#6108#0" expanded="true" />
+            <element signature="e#15119#15120#0" expanded="true" />
+            <element signature="e#15156#15157#0" expanded="true" />
+            <element signature="e#18937#18938#0" expanded="true" />
+            <element signature="e#18971#18972#0" expanded="true" />
+            <element signature="e#19037#19038#0" expanded="true" />
+            <element signature="e#19071#19072#0" expanded="true" />
+            <element signature="e#19103#19104#0" expanded="true" />
+            <element signature="e#19147#19148#0" expanded="true" />
+            <element signature="e#19188#19189#0" expanded="true" />
+            <element signature="e#19256#19257#0" expanded="true" />
+            <element signature="e#19286#19287#0" expanded="true" />
+            <element signature="e#19318#19319#0" expanded="true" />
+            <element signature="e#19769#19770#0" expanded="true" />
+            <element signature="e#19820#19821#0" expanded="true" />
+            <element signature="e#20020#20021#0" expanded="true" />
+            <element signature="e#20053#20054#0" expanded="true" />
+            <element signature="e#20103#20104#0" expanded="true" />
+            <element signature="e#20145#20146#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1165,13 +1351,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/controllers/DomesticTradeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/controllers/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30222222">
@@ -1204,6 +1383,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.2004717">
           <caret line="82" column="54" selection-start-line="82" selection-start-column="54" selection-end-line="82" selection-end-column="54" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1253,16 +1433,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/login/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="98" column="0" selection-start-line="98" selection-start-column="0" selection-end-line="98" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/maritime/IMaritimeTradeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.075555556">
@@ -1296,6 +1466,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="27" column="7" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1310,91 +1481,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.148148">
           <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/clientModel/ClientModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
-          <folding>
-            <element signature="e#1490#1491#0" expanded="false" />
-            <element signature="e#1517#1518#0" expanded="false" />
-            <element signature="e#1563#1564#0" expanded="false" />
-            <element signature="e#1595#1596#0" expanded="false" />
-            <element signature="e#1631#1632#0" expanded="false" />
-            <element signature="e#1658#1659#0" expanded="false" />
-            <element signature="e#1703#1704#0" expanded="false" />
-            <element signature="e#1735#1736#0" expanded="false" />
-            <element signature="e#1770#1771#0" expanded="false" />
-            <element signature="e#1796#1797#0" expanded="false" />
-            <element signature="e#1839#1840#0" expanded="false" />
-            <element signature="e#1869#1870#0" expanded="false" />
-            <element signature="e#1896#1897#0" expanded="false" />
-            <element signature="e#1922#1923#0" expanded="false" />
-            <element signature="e#1957#1958#0" expanded="false" />
-            <element signature="e#1987#1988#0" expanded="false" />
-            <element signature="e#2032#2033#0" expanded="false" />
-            <element signature="e#2062#2063#0" expanded="false" />
-            <element signature="e#2119#2120#0" expanded="false" />
-            <element signature="e#2157#2158#0" expanded="false" />
-            <element signature="e#2198#2199#0" expanded="false" />
-            <element signature="e#2231#2232#0" expanded="false" />
-            <element signature="e#2287#2288#0" expanded="false" />
-            <element signature="e#2331#2332#0" expanded="false" />
-            <element signature="e#2374#2375#0" expanded="false" />
-            <element signature="e#2408#2409#0" expanded="false" />
-            <element signature="e#2467#2468#0" expanded="false" />
-            <element signature="e#2513#2514#0" expanded="false" />
-            <element signature="e#2544#2545#0" expanded="false" />
-            <element signature="e#2574#2575#0" expanded="false" />
-            <element signature="e#2617#2618#0" expanded="false" />
-            <element signature="e#2655#2656#0" expanded="false" />
-            <element signature="e#2685#2686#0" expanded="false" />
-            <element signature="e#2714#2715#0" expanded="false" />
-            <element signature="e#2755#2756#0" expanded="false" />
-            <element signature="e#2791#2792#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Map.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="169" column="5" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
-          <folding>
-            <element signature="e#5053#5054#0" expanded="true" />
-            <element signature="e#5083#5084#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.6551723">
-          <caret line="500" column="45" selection-start-line="500" selection-start-column="45" selection-end-line="500" selection-end-column="45" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#14446#14460#0" expanded="true" />
-            <element signature="e#15373#15387#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/model/Facade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.862069">
-          <caret line="432" column="26" selection-start-line="432" selection-start-column="26" selection-end-line="432" selection-end-column="26" />
           <folding />
         </state>
       </provider>
@@ -1407,21 +1493,130 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
+    <entry file="file://$PROJECT_DIR$/src/model/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="10.321428">
-          <caret line="78" column="13" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="186" column="64" selection-start-line="186" selection-start-column="64" selection-end-line="186" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#14449#14463#0" expanded="true" />
+            <element signature="e#15376#15390#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tests/PlayerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.1794195">
+          <caret line="40" column="6" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/roll/RollController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.721393">
-          <caret line="89" column="9" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.41688654">
+          <caret line="123" column="33" selection-start-line="123" selection-start-column="33" selection-end-line="123" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.018469658">
+          <caret line="169" column="5" selection-start-line="169" selection-start-column="5" selection-end-line="169" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Map.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26912928">
+          <caret line="19" column="38" selection-start-line="19" selection-start-column="38" selection-end-line="19" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/clientModel/ClientModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.044854883">
+          <caret line="75" column="22" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1839#1840#0" expanded="true" />
+            <element signature="e#1869#1870#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/login/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24285714">
+          <caret line="76" column="5" selection-start-line="76" selection-start-column="5" selection-end-line="76" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/controllers/DomesticTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.23746702">
+          <caret line="7" column="3" selection-start-line="7" selection-start-column="3" selection-end-line="7" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/model/Facade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.3448277">
+          <caret line="70" column="0" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
+          <folding>
+            <element signature="e#1701#1702#0" expanded="true" />
+            <element signature="e#1731#1732#0" expanded="true" />
+            <element signature="e#1765#1766#0" expanded="true" />
+            <element signature="e#1801#1802#0" expanded="true" />
+            <element signature="e#6014#6015#0" expanded="true" />
+            <element signature="e#6041#6042#0" expanded="true" />
+            <element signature="e#6080#6081#0" expanded="true" />
+            <element signature="e#6107#6108#0" expanded="true" />
+            <element signature="e#15119#15120#0" expanded="true" />
+            <element signature="e#15156#15157#0" expanded="true" />
+            <element signature="e#18937#18938#0" expanded="true" />
+            <element signature="e#18971#18972#0" expanded="true" />
+            <element signature="e#19037#19038#0" expanded="true" />
+            <element signature="e#19071#19072#0" expanded="true" />
+            <element signature="e#19103#19104#0" expanded="true" />
+            <element signature="e#19147#19148#0" expanded="true" />
+            <element signature="e#19188#19189#0" expanded="true" />
+            <element signature="e#19256#19257#0" expanded="true" />
+            <element signature="e#19286#19287#0" expanded="true" />
+            <element signature="e#19318#19319#0" expanded="true" />
+            <element signature="e#19769#19770#0" expanded="true" />
+            <element signature="e#19820#19821#0" expanded="true" />
+            <element signature="e#20020#20021#0" expanded="true" />
+            <element signature="e#20053#20054#0" expanded="true" />
+            <element signature="e#20103#20104#0" expanded="true" />
+            <element signature="e#20145#20146#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="41" selection-start-line="21" selection-start-column="41" selection-end-line="21" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/base/ComponentView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36756757">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>

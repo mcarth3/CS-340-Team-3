@@ -87,7 +87,7 @@ public class Facade extends AbstractModelPartition {
      * @pre: give username of Player in the Game and VertexLocation of the location where you want to check if a settlement can be built there
      * @post: function checks both person's resources and map's settlements and returns whether or not this particular player can build a settlement at the given location
      */
-    public boolean canPlayerBuySettlement(String username, VertexLocation location) throws ObjectNotFoundException {
+    /*public boolean canPlayerBuySettlement(String username, VertexLocation location) throws ObjectNotFoundException {
         Player newPlayer = theGame.findPlayer(username);
         if(newPlayer.returnResourceNumber(ResourceType.WHEAT) >= 1 && newPlayer.returnResourceNumber(ResourceType.WOOD) >= 1 &&
         newPlayer.returnResourceNumber(ResourceType.BRICK) >= 1 && newPlayer.returnResourceNumber(ResourceType.SHEEP) >= 1 )
@@ -99,7 +99,7 @@ public class Facade extends AbstractModelPartition {
         }
 
         return false;
-    }
+    }*/
 
 
 
@@ -130,7 +130,7 @@ public class Facade extends AbstractModelPartition {
      * @pre: give username of Player in the Game and EdgeLocation of the location where you want to check if a road can be built
      * @post: function checks both person's resources and map's edges and returns whether or not this particular player can build a road at the given edge
      */
-    public boolean canPlayerBuyRoad(String username, EdgeLocation edge) throws ObjectNotFoundException {
+    /*public boolean canPlayerBuyRoad(String username, EdgeLocation edge) throws ObjectNotFoundException {
         Player newPlayer = theGame.findPlayer(username);
         if(newPlayer.returnResourceNumber(ResourceType.WOOD) >= 1 && newPlayer.returnResourceNumber(ResourceType.BRICK) >= 1)
         {
@@ -142,7 +142,7 @@ public class Facade extends AbstractModelPartition {
         }
 
         return false;
-    }
+    }*/
 
 
 
@@ -153,13 +153,13 @@ public class Facade extends AbstractModelPartition {
      * @post: function checks person's resources of the given type and if they have enough of them to trade for the
      * specified amount, then returns whether or not they can
      */
-    public boolean canPlayerAcceptTrade(String username, ResourceType typeRequired, int resourceNumber) throws ObjectNotFoundException {
+    /*public boolean canPlayerAcceptTrade(String username, ResourceType typeRequired, int resourceNumber) throws ObjectNotFoundException {
         Player newPlayer = theGame.findPlayer(username);
         if (newPlayer.returnResourceNumber(typeRequired) >= resourceNumber) {
             return true;
         }
         return false;
-    }
+    }*/
 
 
     /**
