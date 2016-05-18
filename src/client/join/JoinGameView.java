@@ -7,7 +7,11 @@ import javax.swing.*;
 
 import client.base.*;
 import client.data.*;
+import client.login.PlayerLoginInfo;
+import model.Game;
+import poller.modeljsonparser.ModelParser;
 import proxy.RealProxy;
+import shared.definitions.CatanColor;
 
 /**
  * Implementation for the join game view, which lets the user select a game to
@@ -39,36 +43,27 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 
 	private GameInfo[] games;
 	private PlayerInfo localPlayer;
+	
+	public Integer gameChosen; 
 
 	public JoinGameView()
 	{
-		//this.initialize();
+		this.initialize();
+	}
+	public void update(){
 		RealProxy rp = new RealProxy();
 		String result = rp.gamesList();
 		System.out.println(result); 
+
+		games = ModelParser.parse4(result); 
+	
+		PlayerInfo pi = new PlayerInfo();
+		//pi.setColor(CatanColor.RED);
+		pi.setName("Sam");
+		pi.setId(0);
 		
-		// ASK MIKE HOW TO MAKE THIS INTO AN OBJECT
-		
-		GameInfo g1 = new GameInfo();
-		g1.setId(0);
-		g1.setTitle("Default Game");
-		
-		GameInfo g2 = new GameInfo();
-		g2.setId(1);
-		g2.setTitle("AI Game");
-		
-		GameInfo g3 = new GameInfo();
-		g3.setId(2);
-		g3.setTitle("Empty Game");
-		
-		GameInfo[] gameList = new GameInfo[]{g1,g2,g3};
-		
-		games = gameList; 
-		setGames(gameList, null);
-		
-		
-		
-		
+		setGames(games, pi);
+
 	}
 
 	private void initialize()
@@ -197,6 +192,9 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 		this.removeAll();
 		this.initialize();
 	}
+	public Integer getGameChosen(){
+		return gameChosen; 
+	}
 	
 	private ActionListener actionListener = new ActionListener()
 	{
@@ -217,6 +215,7 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 				{
 					//System.out.println(e.getActionCommand());
 					int gameId = Integer.parseInt(e.getActionCommand());
+					//gameChosen = gameId; 
 					GameInfo game = null;
 					for (GameInfo g : games)
 					{

@@ -94,16 +94,16 @@ public class LoginController extends Controller implements ILoginController {
 
 	@Override
 	public void signIn() {
-		System.out.println("state in login is:");
-		System.out.println(State.getCurrentState());
-		State state = State.getInstance(); 
+		//System.out.println("state in login is:");
+		//System.out.println(State.getCurrentState());
+		//State state = State.getInstance(); 
 		//System.out.println(state); 
 		
 		// TODO: log in user
 		String username = this.getLoginView().getLoginUsername();
 		String password = this.getLoginView().getLoginPassword();
 		
-		RealProxy rp = new RealProxy();
+		RealProxy rp = RealProxy.getSingleton(); 
 		
 		String result = null;
 		if(loginCanDo(username, password)){

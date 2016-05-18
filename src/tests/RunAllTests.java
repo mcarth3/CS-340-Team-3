@@ -14,8 +14,8 @@ public class RunAllTests {
 
 	public static void main(String[] args) {
 		String[] testClasses = new String[] {
-				//"tests.ServerTests",
-				"tests.ModelJSONInitializationTest",
+				"tests.ServerTests"//,
+				//"tests.ModelJSONInitializationTest",
 				//"tests.ServerPollerTest",
 				//"tests.CanDoTest"
 		};

@@ -22,6 +22,7 @@ import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
 
 public class RealProxy implements IServer{
+	
 	private static RealProxy singleton = null;
 	private ClientCommunicator cc = new ClientCommunicator(); 
 	public String UserCookie = null;
@@ -48,6 +49,7 @@ public class RealProxy implements IServer{
 			String answer = cook.substring(0, 7);  
 			cook = cook.replaceAll("Successcatan.user=", ""); 
 			cook = cook.replaceAll(";Path=/;", "");
+			//System.out.println(cook); 
 			UserCookie = cook; 
 			String result = null;
 			try {
@@ -100,6 +102,9 @@ public class RealProxy implements IServer{
 		JsonObject obj = new JsonObject();
 		obj.addProperty("id", gameID);
         obj.addProperty("color", color );
+        
+        //System.out.println("User Cookie i am sending in:");
+        //System.out.println(UserCookie);
         
         String cook = cc.send(obj, "/games/join", UserCookie, GameCookie); 
 		 

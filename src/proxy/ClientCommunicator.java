@@ -31,15 +31,22 @@ public class ClientCommunicator {
 	        URL u = new URL(URL_PREFIX + command);
 	        c = (HttpURLConnection) u.openConnection();
 	        c.setRequestMethod("POST");
+	        
+	        //System.out.println(command);
+	        
 	        if(u_cookie != null){
 	        	if(g_cookie !=null)
 	        	{
+	        		//System.out.println("catan.game="+g_cookie);
 	        		c.setRequestProperty("Cookie", "catan.user="+u_cookie+"; catan.game="+g_cookie);
 	        	}
 	        	else
 	        	{
+	        		//System.out.println("catan.user="+u_cookie); 
 	        		c.setRequestProperty("Cookie", "catan.user="+u_cookie);
 	        	}
+	        }else{
+	        	//System.out.println("NO COOKIE FOR YOU");
 	        }
 	        
 	        c.setDoOutput(true);

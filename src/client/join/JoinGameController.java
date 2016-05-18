@@ -6,6 +6,9 @@ import client.data.*;
 import client.misc.*;
 import poller.InvalidMockProxyException;
 import poller.ServerPoller;
+import poller.modeljsonparser.ModelParser;
+import proxy.RealProxy;
+
 
 
 /**
@@ -17,6 +20,8 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	private ISelectColorView selectColorView;
 	private IMessageView messageView;
 	private IAction joinAction;
+	
+	public Integer gameChosen;
 	
 	/**
 	 * JoinGameController constructor
@@ -92,6 +97,18 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	@Override
 	public void start() {
 		
+		RealProxy rp = new RealProxy();
+		String result = rp.gamesList();
+		System.out.println(result); 
+
+		GameInfo[] games = ModelParser.parse4(result); 
+	
+		PlayerInfo pi = new PlayerInfo();
+		//pi.setColor(CatanColor.RED);
+		pi.setName("Sam");
+		pi.setId(0);
+
+		getJoinGameView().setGames(games, pi);
 		getJoinGameView().showModal();
 	}
 
@@ -110,14 +127,23 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	@Override
 	public void createNewGame() {
 		
-		System.out.println("NEW GAME BUTTON PUSHED"); 
+		RealProxy rp = RealProxy.getSingleton();
+		String name = getNewGameView().getTitle();
+		Boolean randomTiles = getNewGameView().getRandomlyPlaceHexes();
+		Boolean randomNumbers = getNewGameView().getRandomlyPlaceNumbers();
+		Boolean randomPorts = getNewGameView().getUseRandomPorts();
+		rp.gamesCreate(name, randomTiles, randomNumbers, randomPorts); 
+		
+//		getJoinGameView().update(); 
 		
 		getNewGameView().closeModal();
+		start(); 
 	}
 
 	@Override
 	public void startJoinGame(GameInfo game) {
 
+		gameChosen = game.getId();
 		getSelectColorView().showModal();
 	}
 
@@ -130,7 +156,6 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	@Override
 	public void joinGame(CatanColor color) {
 		
-		// If join succeeded
 		
 		try {
 			ServerPoller.getSingleton();
@@ -138,9 +163,21 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 			e.printStackTrace();
 		}
 		
-		getSelectColorView().closeModal();
-		getJoinGameView().closeModal();
-		joinAction.execute();
+		
+		RealProxy rp = RealProxy.getSingleton();
+		String lower = color.toString().toLowerCase();
+		//System.out.println(gameChosen);
+		//System.out.println(lower); 
+		String result = rp.gameJoin(gameChosen, lower); 
+		
+		if(result != null){
+			// If join succeeded
+			getSelectColorView().closeModal();
+			getJoinGameView().closeModal();
+			joinAction.execute();
+		}else{
+			System.out.println("Couldn't join a game"); 
+		}
 	}
 	public void update(){
 	}
