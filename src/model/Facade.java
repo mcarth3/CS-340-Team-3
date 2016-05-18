@@ -4,10 +4,13 @@ package model;
 import shared.definitions.*;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Observer;
 
 import javax.annotation.Resource;
 
 import client.GameManager.GameManager;
+import client.data.PlayerInfo;
 import model.*;
 import model.bank.ResourceList;
 import poller.InvalidMockProxyException;
@@ -22,7 +25,9 @@ public class Facade extends AbstractModelPartition {
     Game theGame;
     IServer proxy;
     ArrayList<ResourceList>discardedcards;
-
+    private ArrayList<Observer> observers = new ArrayList<Observer>();
+    TurnTracker Turn;
+    private boolean closeMap = false;
     //*************************************ADDED BELOW FOR SINGLETON
     private static Facade singleton = null;
 
@@ -196,10 +201,11 @@ public class Facade extends AbstractModelPartition {
 
     /**
      * Checks to see if placing a road is a legal move for the player
+     * @param b 
      *
      * @return boolean whether or not the player can place a road
      */
-    public boolean canPlaceRoad(EdgeLocation el) {
+    public boolean canPlaceRoad(EdgeLocation el, boolean b) {
         if (theGame == null)
             return false;
         return theGame.canPlaceRoad(el);
@@ -207,10 +213,11 @@ public class Facade extends AbstractModelPartition {
 
     /**
      * Places a Road at a given location on the map
+     * @param b 
      *
      * @return boolean whether or not the player built the road (perhaps placeholder return values for all of the do methods)
      */
-    public void placeRoad(int pid, EdgeLocation el, boolean free) {
+    public void placeRoad(int pid, EdgeLocation el, boolean free, boolean b) {
         if (theGame != null) {
             if (theGame.canBuildRoad(pid) && theGame.canPlaceRoad(el))
                 proxy.buildRoad(pid, el, free);
@@ -577,7 +584,7 @@ public class Facade extends AbstractModelPartition {
         if (theGame == null)
             return false;
         return theGame.canAcceptTrade(pid);
-        return true;
+        
     }
 
     /**
@@ -598,7 +605,67 @@ public class Facade extends AbstractModelPartition {
 		return singleton;	
 	}
 	
-  
+	  public static Facade getInstance() {
+	        return theFacade;
+	    }
+	   //observer methods
+	    public void addObserver(Observer x) {
+	        observers.add(x);
+	    }
+	    public int getPlayerID() {
+	        return proxy.getPlayerId();
+	    }
+	   
 
+	    public int getPlayerIndex() {
+	        return theGame.getCurrentPlayer().getPlayerIndex();
+	    }
+
+	    public Game getGame() {
+	        return theGame;
+	    }
+
+
+
+
+	    public PlayerInfo getCurrentPlayerInfo() {
+	        PlayerInfo curPlayer = new PlayerInfo();
+	        CurrentPlayer myPlayer = getCurrentPlayer();
+	        curPlayer.setId(myPlayer.getPlayerId());
+	        curPlayer.setPlayerIndex(myPlayer.getPlayerIndex());
+	        curPlayer.setName(myPlayer.getUsername());
+	        curPlayer.setColor(myPlayer.getColor());
+	        return curPlayer;
+	    }
+	    public CurrentPlayer getCurrentPlayer() {
+	        return theGame.getCurrentPlayer();
+	    }
+
+
+
+
+	    public List<VertexObject> getVObjectsAroundHexlocation(HexLocation location)
+	    {
+	        return theGame.getVObjectsAroundHexlocation(location);
+
+	    }
+	    public boolean isCloseMap() {
+	        return closeMap;
+	    }
+
+	    public void setCloseMap(boolean closeMap) {
+	        this.closeMap = closeMap;
+	    }
+	    public boolean canPlaceRoadSetup(EdgeLocation el) {
+	        if (theGame == null)
+	            return false;
+	        return theGame.canPlaceRoadSetup(el);
+	    }
+	  
+
+public void retrievegame() {
+			
+			
+		}
 
 }

@@ -3,14 +3,10 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeMap;
-
 import model.bank.ResourceList;
 import poller.modeljsonparser.AbstractModelPartition;
 import proxy.RealProxy;
-import shared.locations.EdgeLocation;
-import shared.locations.HexLocation;
-import shared.locations.VertexLocation;
-
+import shared.definitions.HexType;
 import shared.locations.*;
 
 /**
@@ -21,7 +17,7 @@ public class Map extends AbstractModelPartition {
 	Hex[] hexes;
 
 	ArrayList<Road> roads;
-	//ArrayList<VertexObject> buildings;
+	ArrayList<VertexObject> buildings;
 	//ArrayList<ResourceList> resources;
 	ArrayList<City> cities;
 	ArrayList<Settlement> settlements;
@@ -282,16 +278,44 @@ public class Map extends AbstractModelPartition {
 	/**
 	 * checks to see if robber can be relocated
 	 */
-	
-	//public boolean canRelocateRobber(HexLocation targetHex)
-	//{
-		
-	//	if (hexes.get(targetHex).resource == "Ocean" || hexes.get(targetHex).resource == "Sea")
-	//	{
-	//		return false;
-	//	}
-	//	return true;
-	//}
+	public ArrayList<VertexObject> getVObjectsAroundHexlocation(HexLocation landing)
+	{
+		HexLocation landingSW = new HexLocation(landing.getX() - 1, landing.getY() + 1);
+		HexLocation landingS = new HexLocation(landing.getX(), landing.getY() + 1);
+		HexLocation landingSE = new HexLocation(landing.getX() + 1, landing.getY());
+		ArrayList<VertexObject> returningBuildings = new ArrayList<VertexObject>();
+
+		for(VertexObject vertex : buildings)
+		{
+			HexLocation hl = vertex.getLocation().getNormalizedLocation().getHexLoc();
+			if(hl.compareTo(landing) == 0)
+			{
+				VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
+				if(vd == VertexDirection.East || vd == VertexDirection.NorthEast || vd == VertexDirection.NorthWest || vd == VertexDirection.West)
+					returningBuildings.add(vertex);
+			}
+			else if(hl.compareTo(landingSW) == 0)
+			{
+				VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
+				if(vd == VertexDirection.East || vd == VertexDirection.NorthEast)
+					returningBuildings.add(vertex);
+			}
+			else if(hl.compareTo(landingS) == 0)
+			{
+				VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
+				if(vd == VertexDirection.NorthEast || vd == VertexDirection.NorthWest)
+					returningBuildings.add(vertex);
+			}
+			else if(hl.compareTo(landingSE) == 0)
+			{
+				VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
+				if(vd == VertexDirection.NorthWest || vd == VertexDirection.West)
+					returningBuildings.add(vertex);
+			}
+		}
+		return returningBuildings;
+	}
+
 	public ArrayList<Port> checkForPorts(ArrayList<VertexObject> builds)
 	{	
 		ArrayList<Port> playerPorts = new ArrayList<Port>();
@@ -401,6 +425,207 @@ public class Map extends AbstractModelPartition {
 		this.robber = robber;
 	}
 
+
+	public boolean canPlaceRoadSetup(EdgeLocation el)
+	{
+
+		if (el == null)
+		{
+			return false;
+		}
+		for(int i = 0; i < buildings.size(); i++)
+		{
+			if(placable(el.getNormalizedLocation(), buildings.get(i).getLocation().getNormalizedLocation()))
+				return false;
+		}
+	
+
+
+		roads.add(new Road(el, Facade.getInstance().getCurrentPlayer().getPlayerIndex()));
+		if(extraPlacable(el.getNormalizedLocation()))
+		{
+			roads.remove(roads.size() - 1);
+			return true;
+		}
+
+
+		return false;
+	}
+	public boolean extraPlacable(EdgeLocation el)
+	{
+		if(buildings.size() == 0)
+			return true;
+		System.out.println(el.getDir());
+		VertexLocation vl, vl2, vl3, vl4;
+		switch(el.getDir())
+		{
+			//NW NE N
+			case NW:
+				vl = new VertexLocation(el.getHexLoc(), VertexDirection.West);
+				if(canAddSettlement(vl))
+					return true;
+				vl2 = new VertexLocation(el.getHexLoc(), VertexDirection.NorthWest);
+				if(canAddSettlement(vl2))
+					return true;
+				vl3 = new VertexLocation(new HexLocation(el.getHexLoc().getX() - 1, el.getHexLoc().getY()), VertexDirection.East);
+				if(canAddSettlement(vl3))
+					return true;
+				vl4 = new VertexLocation(new HexLocation(el.getHexLoc().getX()  - 1, el.getHexLoc().getY() + 1), VertexDirection.NorthEast);
+				if(canAddSettlement(vl4))
+					return true;
+				return false;
+			case NE:
+				vl = new VertexLocation(el.getHexLoc(), VertexDirection.East);
+				if(canAddSettlement(vl))
+					return true;
+				vl2 = new VertexLocation(el.getHexLoc(), VertexDirection.NorthEast);
+				if(canAddSettlement(vl2))
+					return true;
+				vl3 = new VertexLocation(new HexLocation(el.getHexLoc().getX()+1, el.getHexLoc().getY() - 1), VertexDirection.West);
+				if(canAddSettlement(vl3))
+					return true;
+				vl4 = new VertexLocation(new HexLocation(el.getHexLoc().getX()+1, el.getHexLoc().getY()), VertexDirection.NorthWest);
+				if(canAddSettlement(vl4))
+					return true;
+				return false;
+			default:
+				vl = new VertexLocation(el.getHexLoc(), VertexDirection.NorthEast);
+				if(canAddSettlement( vl))
+					return true;
+				vl2 = new VertexLocation(el.getHexLoc(), VertexDirection.NorthWest);
+				if(canAddSettlement(vl2))
+					return true;
+				vl3 = new VertexLocation(new HexLocation(el.getHexLoc().getX() - 1, el.getHexLoc().getY()), VertexDirection.East);
+				if(canAddSettlement(vl3))
+					return true;
+				vl4 = new VertexLocation(new HexLocation(el.getHexLoc().getX() + 1, el.getHexLoc().getY() - 1), VertexDirection.West);
+				if(canAddSettlement(vl4))
+					return true;
+				return false;
+		}
+
+	}
+	public boolean oceanPlacable(VertexLocation vl) {
+		int x = vl.getHexLoc().getX();
+		int y = vl.getHexLoc().getY();
+
+		if (x == 3 && vl.getDir() == VertexDirection.NorthWest) {
+			if (y == -3)
+				return false;
+			return true;
+		}
+		else if (x == -3 && vl.getDir() == VertexDirection.NorthEast)
+		{
+			if(y == 0)
+				return false;
+			return true;
+		}
+		else if(y < 1)
+			return false;
+		else if(x == -3)
+			return false;
+		return true;
+
+	}
+	public boolean roadOceanPlayable(EdgeLocation el)
+	{
+		int x = el.getHexLoc().getX();
+		int y = el.getHexLoc().getY();
+
+		//System.out.println(el.getDir() + " " + x + " " + y);
+		if(y <= 0)
+		{
+			if(x == 3 && el.getDir() == EdgeDirection.NW)
+			{
+				if( y != -3)
+					return true;
+				return false;
+			}
+			return false;
+		}
+		if(x == -3 && el.getDir() == EdgeDirection.NE)
+			return true;
+		if(y == 3)
+		{
+			if(el.getDir() == EdgeDirection.NE && x != 0)
+				return true;
+			if((el.getDir() == EdgeDirection.N) && x != -3)
+				return true;
+			if(x == 0 && el.getDir() == EdgeDirection.N)
+				return true;
+
+			return false;
+		}
+		if(x == 1 && y == 2)
+		{
+			if(el.getDir() == EdgeDirection.N || el.getDir() == EdgeDirection.NW)
+				return true;
+			return false;
+		}
+		if(x == 2 && y == 1)
+		{
+			if(el.getDir() == EdgeDirection.N || el.getDir() == EdgeDirection.NW)
+				return true;
+			return false;
+		}
+		return false;
+	}
+	public boolean placable(EdgeLocation roadDir, VertexLocation settlementDir)
+	{
+		roadDir = roadDir.getNormalizedLocation();
+		settlementDir = settlementDir.getNormalizedLocation();
+		VertexDirection sed = settlementDir.getDir();
+		HexLocation roadHex = roadDir.getHexLoc();
+		HexLocation settHex = settlementDir.getHexLoc();
+		HexLocation hl;
+		HexLocation hl2;
+
+
+		switch(roadDir.getDir())
+		{
+			case NW:
+				if (roadHex.compareTo(settHex) == 0 && (sed == VertexDirection.NorthWest || sed == VertexDirection.West))
+					return true;
+				hl = new HexLocation(roadDir.getHexLoc().getX() - 1, roadDir.getHexLoc().getY() + 1);
+				if(sed == VertexDirection.NorthEast && settHex.compareTo(hl) == 0)
+					return true;
+				hl2 = new HexLocation(roadDir.getHexLoc().getX() - 1, roadDir.getHexLoc().getY());
+				if(sed == VertexDirection.East && settHex.compareTo(hl2) == 0)
+					return true;
+				return false;
+			case NE:
+				if (roadHex.compareTo(settHex) == 0 && (sed == VertexDirection.NorthEast || sed == VertexDirection.East))
+					return true;
+				hl = new HexLocation(roadDir.getHexLoc().getX()+1, roadDir.getHexLoc().getY());
+				if(sed == VertexDirection.NorthWest && settHex.compareTo(hl) == 0)
+					return true;
+				hl2 = new HexLocation(roadDir.getHexLoc().getX() + 1, roadDir.getHexLoc().getY() - 1);
+				if(sed == VertexDirection.West && settHex.compareTo(hl2) == 0)
+					return true;
+				return false;
+			case N:
+				if (roadHex.compareTo(settHex) == 0 && (sed == VertexDirection.NorthWest || sed == VertexDirection.NorthEast))
+					return true;
+				hl = new HexLocation(roadDir.getHexLoc().getX() - 1, roadDir.getHexLoc().getY());
+				if(sed == VertexDirection.East && settHex.compareTo(hl) == 0)
+					return true;
+				hl2 = new HexLocation(roadDir.getHexLoc().getX() + 1, roadDir.getHexLoc().getY() - 1);
+				if(sed == VertexDirection.West && settHex.compareTo(hl2) == 0)
+					return true;
+				return false;
+		}
+
+//		System.out.println("Oops " + settlementDir);
+
+		return false;
+	}
+
+
+
+	public boolean canRelocateRobber(HexLocation hl) {
+		
+		return false;
+	}
 
 
 //	public static boolean findSettlement(VertexLocation location) {

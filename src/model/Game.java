@@ -4,11 +4,13 @@ package model;
 import java.util.ArrayList;
 import java.util.TreeMap;
 
+
 import model.Port;
 import model.Dice;
 import model.TradeOffer;
 import model.Map;
 import model.Player;
+import model.CurrentPlayer;
 import model.bank.ResourceList;
 import model.clientModel.MessageList;
 import poller.modeljsonparser.AbstractModelPartition;
@@ -28,6 +30,7 @@ public class Game extends AbstractModelPartition {
 
 
 	//needed
+	private CurrentPlayer currentPlayer;
 	private DevCardList deck;
     private Map map;
 	public ArrayList<Player> players;
@@ -37,11 +40,11 @@ public class Game extends AbstractModelPartition {
     private TurnTracker turnTracker;
 	private int winner;
 	public int version;
-
+	private TradeOffer tradeO;
 	
 //removed
 	private Dice gameDice;
-	//private TradeOffer tradeO;
+	
 	//public String title;
 	//public Integer id;
 	//private Dice dice;
@@ -271,24 +274,24 @@ public class Game extends AbstractModelPartition {
      *
      * @return boolean whether or not the player can accept a trade offer from another player
      */
-   // public boolean canAcceptTrade(int pid) {
-//        return players.get(pid).canAcceptTrade(tradeO.getSentList());
-   // }
+    public boolean canAcceptTrade(int pid) {
+        return players.get(pid).canAcceptTrade(tradeO.getSentList());
+    }
     /**
      * Set up the TradeOffer
      */
-  //  public boolean canTradePlayer(int pid, int rid, ResourceList rl) throws IllegalMoveException, InsufficientResourcesException {
- //       if (turnTracker.getStatus().equals("FirstRoundound") && pid != turnTracker.getCurrentPlayer())
-//            throw new IllegalMoveException("not the trading phase, or not the player's turn");
+    public boolean canTradePlayer(int pid, int rid, ResourceList rl) throws IllegalMoveException, InsufficientResourcesException {
+        if (turnTracker.getStatus().equals("FirstRoundound") && pid != turnTracker.getCurrentPlayer())
+            throw new IllegalMoveException("not the trading phase, or not the player's turn");
 
-      //  if (pid == rid)
-      //      throw new IllegalMoveException("No trading yourself!");
+        if (pid == rid)
+            throw new IllegalMoveException("No trading yourself!");
 
-      //  tradeO = new TradeOffer(pid, rid, rl);
-      //  return players.get(pid).canOfferTrade();
+        tradeO = new TradeOffer(pid, rid, rl);
+        return players.get(pid).canOfferTrade();
 
 
-    //}
+    }
     public boolean canBuyDevcard(int pid) {
         if (turnTracker.getCurrentPlayer() != pid)
             return false;
@@ -345,7 +348,9 @@ public class Game extends AbstractModelPartition {
      *
      * @return boolean whether or not the player can road building
      */
-
+    public boolean canMoveRobber(HexLocation hl) {
+        return map.canRelocateRobber(hl);
+    }
 
 	public boolean canRoadBuilding(int pid) {
 		  if (turnTracker.getCurrentPlayer() != pid)
@@ -362,7 +367,7 @@ public class Game extends AbstractModelPartition {
             return false;
         return players.get(pid).canPlaceMonument();
     }
-    public TurnTracker getTt() {
+    public TurnTracker getTurnTracker() {
         return turnTracker;
     }
 
@@ -384,6 +389,21 @@ public class Game extends AbstractModelPartition {
     public Map getMap(){
     	return map;
     }
+    public CurrentPlayer getCurrentPlayer()
+    {
+        return currentPlayer;
+    }
+    public ArrayList<VertexObject> getVObjectsAroundHexlocation(HexLocation location)
+    {
+
+        return map.getVObjectsAroundHexlocation(location);
+    }
+
+    public boolean canPlaceRoadSetup(EdgeLocation el)
+    {
+        return map.canPlaceRoadSetup(el);
+    }
+
     
 
 }

@@ -510,4 +510,10 @@ public class RealProxy implements IServer{
 		return singleton;
 	}
 
+	@Override
+	public int getPlayerId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

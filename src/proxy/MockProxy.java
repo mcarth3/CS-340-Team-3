@@ -299,6 +299,12 @@ public class MockProxy implements IServer{
 		// TODO Auto-generated method stub
 		return model;
 	}
+
+	@Override
+	public int getPlayerId() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 	
 
 

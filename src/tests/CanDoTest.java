@@ -110,7 +110,7 @@ public class CanDoTest
     public void testCanBuildSettlement()
     {
         initializeFull();
-        TurnTracker tt = f.gettheGame().getTt();
+        TurnTracker tt = f.gettheGame().getTurnTracker();
         tt.setCurrentPlayer(1);
         f.gettheGame().setTt(tt);
 
@@ -128,7 +128,7 @@ public class CanDoTest
     public void testCanBuildRoad()
     {
         initializeFull();
-        TurnTracker tt = f.gettheGame().getTt();
+        TurnTracker tt = f.gettheGame().getTurnTracker();
         tt.setCurrentPlayer(1);
         f.gettheGame().setTt(tt);
 
@@ -147,7 +147,7 @@ public class CanDoTest
     public void testCanBuildCity()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
         turnTracker.setCurrentPlayer(1);
         f.gettheGame().setTt(turnTracker);
 
@@ -167,7 +167,7 @@ public class CanDoTest
     public void testCanDiscardCards()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
         ResourceList resourceList = new ResourceList(1,5,2,6,4);
         turnTracker.setCurrentPlayer(1);
         f.gettheGame().setTt(turnTracker);
@@ -187,7 +187,7 @@ public class CanDoTest
     public void testCanRollNumber()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
         turnTracker.setCurrentPlayer(1);
         f.gettheGame().setTt(turnTracker);
 
@@ -223,7 +223,7 @@ public class CanDoTest
         assert(!f.canFinishTurn(3));
         
         initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
         turnTracker.updateStatus("finish");
         f.gettheGame().setTt(turnTracker);
         //changes player 3's status to finish and allows it to return true
@@ -233,7 +233,7 @@ public class CanDoTest
     public void canBuyDevCard()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
         ResourceList resourceList = new ResourceList(1,5,2,6,4);
         turnTracker.setCurrentPlayer(1);
         f.gettheGame().setTt(turnTracker);
@@ -252,7 +252,7 @@ public class CanDoTest
     public void canUseYearOfPlenty()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
         turnTracker.setCurrentPlayer(1);
         f.gettheGame().setTt(turnTracker);
         f.gettheGame().getPlayers().get(1).getOldDevCards().setYearOfPlenty(5);
@@ -270,7 +270,7 @@ public class CanDoTest
     public void canUseRoadBuilding()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
         turnTracker.setCurrentPlayer(1);
         f.gettheGame().setTt(turnTracker);
         f.gettheGame().getPlayers().get(1).getOldDevCards().setRoadBuilding(5);
@@ -288,7 +288,7 @@ public class CanDoTest
     public void canUseSoldier()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
         turnTracker.setCurrentPlayer(1);
         f.gettheGame().setTt(turnTracker);
         f.gettheGame().getPlayers().get(1).getOldDevCards().setSoldier(5);
@@ -306,7 +306,7 @@ public class CanDoTest
     public void canUseMonopoly()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
         turnTracker.setCurrentPlayer(1);
         f.gettheGame().setTt(turnTracker);
         f.gettheGame().getPlayers().get(1).getOldDevCards().setMonopoly(5);
@@ -324,7 +324,7 @@ public class CanDoTest
     public void canUseMonument()
     {
         initializeFull();
-        TurnTracker turnTracker = f.gettheGame().getTt();
+        TurnTracker turnTracker = f.gettheGame().getTurnTracker();
         turnTracker.setCurrentPlayer(1);
         f.gettheGame().setTt(turnTracker);
         f.gettheGame().getPlayers().get(1).getOldDevCards().setMonument(5);
@@ -342,7 +342,7 @@ public class CanDoTest
     public void canMoveRobber()
     {
         initializeFull();
-        TurnTracker tt = f.gettheGame().getTt();
+        TurnTracker tt = f.gettheGame().getTurnTracker();
         tt.setCurrentPlayer(1);
         f.gettheGame().setTt(tt);
         

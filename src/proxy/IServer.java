@@ -751,5 +751,7 @@ public interface IServer {
 	 */
 	public String Monument(Integer playerIndex);
 
+	public int getPlayerId();
+
  
 }

@@ -1,15 +1,22 @@
 package states;
 
+import client.data.RobPlayerInfo;
 import client.login.LoginController;
+import client.map.IMapView;
+import client.map.IRobView;
 
 
 public class State {
 
 	public static StateEnum currentState = StateEnum.LOGIN; 
-	
+    boolean setRoad = false; 
+    boolean setSettlement = false;
 	private static State instance = null;
 	protected State() {
 		// Exists only to defeat instantiation.
+	}
+	public State(IMapView view, IRobView robView) {
+		// TODO Auto-generated constructor stub
 	}
 	public static State getInstance() {
 		if(instance == null) {
@@ -23,6 +30,11 @@ public class State {
 	public static StateEnum getCurrentState(){
 		return currentState;  
 	}
+	  public boolean finishedSetup()
+	    {
+	        return (setRoad && setSettlement);
+	    }
+	
 }
 
 // OLD DR. WOODFIELD WAY OF DOING IT

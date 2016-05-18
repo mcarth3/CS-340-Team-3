@@ -307,6 +307,18 @@ public class MapView extends PanelView implements IMapView
 			}
 		}
 	}
+
+	@Override
+	public void closeModal() {
+		
+		
+	}
+
+	public char[] getOverlaid() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
 
