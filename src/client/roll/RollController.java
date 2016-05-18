@@ -36,7 +36,7 @@ public class RollController extends Controller implements IRollController {
 	public RollController(IRollView view, IRollResultView resultView) {
 		super(view);
 		//Singleton:
-		state = State.PLAY;
+		//state = State.PLAY;
 
 		SINGLETON = new RollController(view, resultView);
 		//Singleton^^^^^^^^^^
@@ -76,7 +76,7 @@ public class RollController extends Controller implements IRollController {
 
 
 		 */
-		/*StateEnum theState = State.getCurrentState();
+		StateEnum theState = State.getCurrentState();
 		if(theState == StateEnum.PLAY)
 		{
 			Player thePlayer = GameManager.getSingleton().getthisplayer();
@@ -87,7 +87,7 @@ public class RollController extends Controller implements IRollController {
 				resultView.showModal();
 
 			}
-		}*/
+		}
 
 
 		getResultView().showModal();
@@ -109,10 +109,10 @@ private int counter;
 
 	public void update(){
 
-		/*if(State.getCurrentState() == StateEnum.PLAY && getRollView().isModalShowing()) {
+		if(State.getCurrentState() == StateEnum.PLAY && getRollView().isModalShowing()) {
 			setTimer();
 
-		}*/
+		}
 	}
 
 	public void setTimer() {

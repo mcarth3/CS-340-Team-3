@@ -444,6 +444,57 @@ public class Player extends AbstractModelPartition {
     }
 
     /**
+     * Checks to see if Player has 4 of any kind of Resource to trade with bank
+     *
+     * @return boolean whether or not the player can trade with bank
+     */
+    public boolean canOfferBankTrade() {
+        if (resources.getBrick() > 3 ||
+                resources.getWood() > 3 ||
+                resources.getOre() > 3 ||
+                resources.getSheep() > 3 ||
+                resources.getWheat() > 3) {
+            return true;
+        }
+        return false;
+    }
+
+    public ResourceType[] resourcesOverOne()
+    {
+        ArrayList<ResourceType> resourceList = new ArrayList<ResourceType>();
+        if(resources.getBrick() > 0)
+        {
+            resourceList.add(ResourceType.BRICK);
+        }
+        if(resources.getWood() > 0)
+        {
+            resourceList.add(ResourceType.WOOD);
+        }
+        if(resources.getOre() > 0)
+        {
+            resourceList.add(ResourceType.ORE);
+        }
+        if(resources.getSheep() > 0)
+        {
+            resourceList.add(ResourceType.SHEEP);
+        }
+        if(resources.getWheat() > 0)
+        {
+            resourceList.add(ResourceType.WHEAT);
+        }
+
+
+
+
+        ResourceType[] simpleArray = new ResourceType[ resourceList.size() ];
+        resourceList.toArray( simpleArray );
+        return simpleArray;
+
+    }
+
+
+
+    /**
      * Checks if the player has the resources available to initiate an offer
      * with the bank for a maritime trade
      * @param ports the ports that the player owns
