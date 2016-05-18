@@ -38,7 +38,7 @@ public class RollController extends Controller implements IRollController {
 		//Singleton:
 		//state = State.PLAY;
 
-		SINGLETON = new RollController(view, resultView);
+		//SINGLETON = new RollController(view, resultView);
 		//Singleton^^^^^^^^^^
 
 		theFacade = Facade.getFacade();

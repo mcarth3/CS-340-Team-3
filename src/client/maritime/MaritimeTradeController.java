@@ -28,7 +28,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		super(tradeView);
 
 
-		pid = GameManager.getSingleton().getthisplayer().getPlayerID();
+		//pid = GameManager.getSingleton().getthisplayer().getPlayerID();
 
 		setTradeOverlay(tradeOverlay);
 	}
