@@ -3,6 +3,7 @@ package client.login;
 import client.GameManager.GameManager;
 import client.base.*;
 import client.misc.*;
+import model.ObjectNotFoundException;
 import poller.modeljsonparser.ModelParser;
 import proxy.RealProxy;
 import states.State;
@@ -110,7 +111,12 @@ public class LoginController extends Controller implements ILoginController {
 			PlayerLoginInfo pl = new PlayerLoginInfo();
 			pl = ModelParser.parse3(result); 
 			GameManager gm = GameManager.getSingleton();
-			gm.setplayerbyid(pl.playerID);
+			try {
+				gm.setplayerbyid(pl.playerID);
+			} catch (ObjectNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		if(result != null){

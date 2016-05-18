@@ -2,6 +2,7 @@ package poller.modeljsonparser;
 
 import com.google.gson.Gson;
 
+import client.login.PlayerLoginInfo;
 import model.Game;
 
 /**
@@ -15,7 +16,7 @@ public class ModelParser {
 		return game;
 	}
 	public static PlayerLoginInfo parse3(String jsonstring) {
-		PlayerLoginInfo gson = new Gson();
+		Gson gson = new Gson();
 		PlayerLoginInfo login = gson.fromJson(jsonstring, Game.class);
 		return login;
 	}
