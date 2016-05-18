@@ -11,7 +11,6 @@ import shared.locations.VertexLocation;
  */
 public abstract class StateAbstract
 {
-//don't implement . . .
     abstract public boolean canPlaceRoad(EdgeLocation edgeLoc);
     abstract public boolean canPlaceSettlement(VertexLocation vertLoc);
     abstract public boolean canPlaceCity(VertexLocation vertLoc);

@@ -4,12 +4,10 @@ import java.util.*;
 
 import shared.definitions.*;
 import shared.locations.*;
+import client.GameManager.GameManager;
 import client.base.*;
 import client.data.*;
 import model.*;
-import model.Facade;
-import model.Game;
-import model.Player;
 import states.State;
 import states.StateEnum;
 
@@ -103,12 +101,12 @@ public class MapController extends Controller implements IMapController {
             }
             if(Facade.getInstance().isCloseMap())
                 state = new StateDefault(getView(), robView);
-//          
+          
         }
 
         if(Facade.getInstance().getCurrentPlayer().getPlayerIndex() != Facade.getInstance().getGame().getTurnTracker().getCurrentPlayer())
         {
-//            
+            
             state = new StateDefault(getView(), robView);
             return true;
         }
@@ -163,7 +161,20 @@ public class MapController extends Controller implements IMapController {
     }
 
     public void update(Observable observable, Object args) {
+        if (!Facade.getInstance().isReady())
+            return;
+
+        GameManager gm = (GameManager) observable;
         
+
+        String testState = state.getName();
+
+        changeState(gm.getTurnTracker().getStatus());
+        Facade.getInstance().setCurPlayerIndex();
+        Facade facade = Facade.getInstance();
+        Game map = gm.getModel();
+    
+       
     }
 
 

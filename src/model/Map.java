@@ -1,8 +1,12 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 import java.util.TreeMap;
+
+
 import model.bank.ResourceList;
 import poller.modeljsonparser.AbstractModelPartition;
 import proxy.RealProxy;
@@ -15,7 +19,6 @@ import shared.locations.*;
 
 public class Map extends AbstractModelPartition {
     Hex[] hexes;
-
     ArrayList<Road> roads;
     ArrayList<VertexObject> buildings;
     //ArrayList<ResourceList> resources;
@@ -626,6 +629,7 @@ public class Map extends AbstractModelPartition {
 
         return false;
     }
+
 
 
 //	public static boolean findSettlement(VertexLocation location) {

@@ -3,7 +3,6 @@ package client.map;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import client.base.*;
 import client.data.*;
 import shared.definitions.*;
@@ -18,6 +17,7 @@ public class MapView extends PanelView implements IMapView
 	
 	private MapComponent map;
 	private MapOverlay overlay;
+    private boolean Overlaid = false;
 	
 	public MapView()
 	{
@@ -28,6 +28,8 @@ public class MapView extends PanelView implements IMapView
 		
 		this.add(map, BorderLayout.CENTER);
 	}
+	  public boolean getOverlaid() { return Overlaid; }
+	  
 	
 	@Override
 	public IMapController getController()
@@ -308,16 +310,9 @@ public class MapView extends PanelView implements IMapView
 		}
 	}
 
-	@Override
-	public void closeModal() {
-		
-		
-	}
 
-	public char[] getOverlaid() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
+
 
 	
 }

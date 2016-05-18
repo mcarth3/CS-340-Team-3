@@ -57,7 +57,7 @@ public class StatePlayersTurn extends StateAbstract {
         view.placeRoad(edgeLoc, color);
         Facade.getInstance().placeRoad(Facade.getInstance().getCurrentPlayer().getPlayerIndex(), edgeLoc.getNormalizedLocation(), false, true);
         Facade.getInstance().getGame();
-        view.closeModal();
+          ((OverlayView) view).closeModal();
     }
 
     @Override
@@ -70,7 +70,7 @@ public class StatePlayersTurn extends StateAbstract {
 			e.printStackTrace();
 		}
         Facade.getInstance().getGame();
-        view.closeModal();
+        ((OverlayView) view).closeModal();
     }
 
     @Override
@@ -82,7 +82,7 @@ public class StatePlayersTurn extends StateAbstract {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        view.closeModal();
+        ((OverlayView) view).closeModal();
     }
 
     @Override
@@ -120,7 +120,7 @@ public class StatePlayersTurn extends StateAbstract {
 
     @Override
     public void cancelMove() {
-        view.closeModal();
+        ((OverlayView) view).closeModal();
     }
 
     @Override
@@ -133,7 +133,6 @@ public class StatePlayersTurn extends StateAbstract {
         }
 
         int pid = Facade.getInstance().getPlayerIndex();
-//        System.out.println();
         Facade.getInstance().rob(pid, vid, RobberHL);
         robView.closeModal();
     }
@@ -142,7 +141,6 @@ public class StatePlayersTurn extends StateAbstract {
     public void playSoldierCard(RobPlayerInfo victim) {
         int vid = victim.getPlayerIndex();
         int pid = Facade.getInstance().getPlayerIndex();
-//        System.out.println();
         try {
             Facade.getInstance().playSoldier(pid, victim.getPlayerIndex(), RobberHL);
         } catch (IllegalMoveException e) {

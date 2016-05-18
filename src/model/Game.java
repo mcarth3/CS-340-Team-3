@@ -407,6 +407,16 @@ public class Game extends AbstractModelPartition {
         return map.canPlaceRoadSetup(el);
     }
 
+    public int getPlayerIndex(int playerId){
+        for(int i = 0; i < 4; i++){
+            if(players.get(i).getPlayerID() == playerId){
+                return players.get(i).getPlayerIndex();
+            }
+        }
+        return 0;
+    }
+
+
     
 
 }

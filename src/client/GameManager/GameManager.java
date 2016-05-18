@@ -7,6 +7,7 @@ import model.Facade;
 import model.Game;
 import model.ObjectNotFoundException;
 import model.Player;
+import model.TurnTracker;
 import states.State;
 
 
@@ -18,7 +19,7 @@ public class GameManager extends Observable {
 	private Player player;
 	private Facade modelfacade;
 	public int playerIdTemp;
-
+	TurnTracker turnTracker;
 	public GameManager() {
 		modelfacade = Facade.getSingleton();
 	}
@@ -128,5 +129,9 @@ public class GameManager extends Observable {
 	
     public int getversion(){
     	return modelfacade.getversion(); 
+    }
+    public TurnTracker getTurnTracker() {
+        
+		return turnTracker;
     }
 }
