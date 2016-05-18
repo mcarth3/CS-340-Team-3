@@ -96,11 +96,32 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 			return true;
 		}
 	}
-	
+
+
+	public boolean abletobuildcity() {
+		int currentplayer = GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer();
+		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
+		Player playerinventory = GameManager.getSingleton().getModel().getPlayers().get(currentplayer);
+		int thisplayerindex =GameManager.getSingleton().getthisplayer().getPlayerIndex();
+
+		if (playerinventory.getResources().getOre() < 3){
+			return false;
+		}else if (playerinventory.getResources().getWheat() < 2){
+			return false;
+		}else if(!(currentplayer == thisplayerindex) &&!(status.equals("Playing"))&&!((playerinventory.getCities() <= 4))) {
+			return false;
+		}else{
+			return true;
+		}
+	}
+
 	
 	@Override
 	public void buildCity() {
-		executeElementAction(ResourceBarElement.CITY);
+		if(abletobuildcity()) {
+			executeElementAction(ResourceBarElement.CITY);
+		}
+
 	}
 
 	@Override
@@ -152,11 +173,11 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 //		getView().setElementEnabled(ResourceBarElement.BUY_CARD, true);
 //}
 	
-//	if (abletobuildcity()) {
-//		getView().setElementEnabled(ResourceBarElement.CITY, true);
-//	} else {
-//		getView().setElementEnabled(ResourceBarElement.CITY, false);
-//	}
+	if (abletobuildcity()) {
+		getView().setElementEnabled(ResourceBarElement.CITY, true);
+	} else {
+		getView().setElementEnabled(ResourceBarElement.CITY, false);
+	}
 
 	}
 
