@@ -102,11 +102,12 @@ public class GameManager extends Observable {
 			} 
 		}
 	}
-	private void setthisplayer(Player player2) {
+	public void setthisplayer(Player player2) {
 		this.player = player2;
 	}
 	
 	private void setplayerbyid(int playerid) {
+		
 	//	this.player = player2;
 	}
 	public static GameManager getSingleton() {
