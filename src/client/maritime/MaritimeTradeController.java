@@ -22,6 +22,9 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	private ResourceType[] giveResources;
 	private ResourceType theGiving;
 	private ResourceType theGetting;
+	private int amountGiving;
+	private int amountGetting;
+
 	
 	public MaritimeTradeController(IMaritimeTradeView tradeView, IMaritimeTradeOverlay tradeOverlay) {
 		
@@ -58,12 +61,13 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	@Override
 	public void makeTrade() {
 
-		int givingAmount = 0;//TODO: Once again, how do I see the number demanded?
-		for(int i =0; i < givingAmount; i++) {
-			thePlayer.depleteResource(theGiving);//TODO: these have to be depleted in the server, too
+		for(int i =0; i < amountGiving; i++) {
+			thePlayer.depleteResource(theGiving);
 		}
-		thePlayer.addResource(theGetting, 0); //TODO: Once again, how do I see the number demanded?
+		thePlayer.addResource(theGetting, amountGetting);
 		getTradeOverlay().closeModal();
+		theFacade.meritimeTrade(pid, amountGiving, theGiving.toString(), theGetting.toString());		//TODO: this needs to be modified to implement ports' ratios
+
 	}
 
 	@Override
@@ -74,7 +78,8 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 	@Override
 	public void setGetResource(ResourceType resource) {
-		getTradeOverlay().selectGiveOption(resource, 0); //TODO: again, how do I know the # resources they want?
+		amountGetting = 1;						//TODO: this needs to be modified to implement ports' ratios
+		getTradeOverlay().selectGetOption(resource, amountGetting);
 		getTradeOverlay().setTradeEnabled(true);
 		getTradeOverlay().setStateMessage("Now trade it!");
 		theGetting = resource;
@@ -82,8 +87,10 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 	@Override
 	public void setGiveResource(ResourceType resource) {
-		getTradeOverlay().selectGiveOption(resource, 0); //TODO: HOW do I discover how many resources they want?
+		amountGiving = 4;						//TODO: this needs to be modified to implement ports' ratios
+		getTradeOverlay().selectGiveOption(resource, amountGiving);
 		theGiving = resource;
+		getResources = getsWithoutGive();
 		getTradeOverlay().showGetOptions(getResources);
 		getTradeOverlay().setStateMessage("Choose what to get!");
 	}
@@ -102,11 +109,19 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 	public ResourceType[] getsWithoutGive()
 	{
+		ResourceType[] basicResources = new ResourceType[5];
+		basicResources[0] = ResourceType.BRICK;
+		basicResources[1] = ResourceType.WOOD;
+		basicResources[2] = ResourceType.WHEAT;
+		basicResources[3] = ResourceType.ORE;
+		basicResources[4] = ResourceType.SHEEP;
+
+
 		ArrayList<ResourceType> theResourcesList = new ArrayList<>();
-		for(int i = 0; i < getResources.length; i++ )
+		for(int i = 0; i < basicResources.length; i++ )
 		{
-			if(getResources[i] != theGiving) {
-				theResourcesList.add(getResources[i]);
+			if(basicResources[i] != theGiving) {
+				theResourcesList.add(basicResources[i]);
 			}
 		}
 
@@ -117,12 +132,13 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	}
 
 	public void update(){
-		pid = GameManager.getSingleton().getthisplayer().getPlayerID();
-		thePlayer = GameManager.getSingleton().getthisplayer();
-		getResources = thePlayer.resourcesOverOne();
+
 
 		if(thePlayer.canOfferBankTrade())
 		{
+			pid = GameManager.getSingleton().getthisplayer().getPlayerID();
+			thePlayer = GameManager.getSingleton().getthisplayer();
+			getResources = thePlayer.resourcesOverThree();				//TODO: this needs to be changed to implement port ratios.
 			getTradeView().enableMaritimeTrade(true);
 			getTradeOverlay().setCancelEnabled(true);
 			getTradeOverlay().setTradeEnabled(false);
