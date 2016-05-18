@@ -13,7 +13,7 @@ import shared.locations.*;
  * @author Jesse McArthur
  */
 
-public class map extends AbstractModelPartition {
+public class Map extends AbstractModelPartition {
     Hex[] hexes;
 
     ArrayList<Road> roads;
@@ -37,7 +37,7 @@ public class map extends AbstractModelPartition {
 
 
 
-    public map(Hex[] newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<City> newcities,ArrayList<Settlement> newsettlements, int newradius,Robber newrobber)
+    public Map(Hex[] newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<City> newcities,ArrayList<Settlement> newsettlements, int newradius,Robber newrobber)
     {//to prevent problems, we intitialize array lists if they come back null
         if (newhexes !=null){
             hexes = newhexes;
