@@ -32,7 +32,7 @@ public class LoginController extends Controller implements ILoginController {
 
 	private IMessageView messageView;
 	private IAction loginAction;
-	
+
 	//Constructors	
 	/**
 	 * LoginController constructor
