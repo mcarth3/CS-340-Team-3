@@ -33,7 +33,7 @@ public class Player extends AbstractModelPartition {
     int playerIndex;
     CatanColor color;
     String name;
-		
+	
 	
 	
 	//removed
