@@ -1,6 +1,8 @@
 package client.communication;
 
 import client.base.PanelView;
+import shared.definitions.CatanColor;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.List;
@@ -30,7 +32,7 @@ public class ChatView extends PanelView implements IChatView {
         inputPanel = new JPanel();
         sendChatBtn = new JButton("Send");
         chatTextInput = new PlaceholderTextField();
-        chatTextInput.setPlaceholder("Send a COOL message!");
+        chatTextInput.setPlaceholder("Send a message!");
         chatTextInput.setPreferredSize(new Dimension(260, 20));
         
         // Register the listeners
@@ -76,6 +78,10 @@ public class ChatView extends PanelView implements IChatView {
 
     @Override
     public void setEntries(final List<LogEntry> entries) {
+    	LogEntry le = new LogEntry(CatanColor.BLUE, "This is a new message");
+    	System.out.println("setEntries gets called"); 
+    	entries.add(le);
+    	
         chatPanel.setEntries(entries);
     }
     

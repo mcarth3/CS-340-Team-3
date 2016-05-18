@@ -108,6 +108,8 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	@Override
 	public void createNewGame() {
 		
+		System.out.println("NEW GAME BUTTON PUSHED"); 
+		
 		getNewGameView().closeModal();
 	}
 
