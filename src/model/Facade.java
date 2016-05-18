@@ -434,24 +434,34 @@ public class Facade extends AbstractModelPartition {
     public boolean canRoll(int pid) {
         if (theGame == null)
             return false;
-        return theGame.canRoll(pid);
+        //return theGame.canRoll(pid); /**Jesse Robinson commented this until it would be fixed
+        return true;
     }
 
     /**
      * rolls the dice for a number 1-12
-     *
+     *EDITED BY JESSE R. TO RETURN AN INT
      * @return boolean whether or not the player rolled the dice
      */
-    public void roll(int pid) {
+    public int roll(int pid) {
         if (theGame != null) {
             if (canRoll(pid)) {
-                int number = theGame.roll(pid);
-                if (number != -1)
-                    proxy.rollNumber(number, 7);
-               else
-                    System.out.println("not a rolling phase");
+                //     int number = theGame.roll(pid);
+                int number = theGame.rollGameDice();
+
+                //   if (number != -1)
+                proxy.rollNumber(pid, number);
+                return number;
+                //     else
+                //         System.out.println("not a rolling phase");
+
+            }
+            else
+            {
+                return 0;
             }
         }
+        return 0;
     }
 
     public boolean canFinishTurn(int pid) {

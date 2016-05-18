@@ -37,7 +37,7 @@ public class Game extends AbstractModelPartition {
     private TurnTracker turnTracker;
 	private int winner;
 	public int version;
-	
+	private Dice gameDice;
 	
 //removed
 	//private TradeOffer tradeO;
@@ -205,6 +205,12 @@ public class Game extends AbstractModelPartition {
             return true;
         return false;
     }
+
+    public int rollGameDice()
+    {
+        return gameDice.rollDice();
+    }
+
     public boolean canTradeBank(int pid, ResourceList rl) {
 
         return true;

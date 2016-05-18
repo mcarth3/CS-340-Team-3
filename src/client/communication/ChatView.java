@@ -30,7 +30,7 @@ public class ChatView extends PanelView implements IChatView {
         inputPanel = new JPanel();
         sendChatBtn = new JButton("Send");
         chatTextInput = new PlaceholderTextField();
-        chatTextInput.setPlaceholder("Send a message!");
+        chatTextInput.setPlaceholder("Send a COOL message!");
         chatTextInput.setPreferredSize(new Dimension(260, 20));
         
         // Register the listeners

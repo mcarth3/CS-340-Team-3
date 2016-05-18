@@ -1,8 +1,14 @@
 package client.roll;
 
+import client.GameManager.GameManager;
 import client.base.*;
+import model.Facade;
+import model.Player;
 import states.State;
 import states.StateEnum;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 /**
@@ -10,7 +16,16 @@ import states.StateEnum;
  */
 public class RollController extends Controller implements IRollController {
 
+	//Singleton
+	public static RollController SINGLETON = null;
+	private State state;
+
+	private Facade theFacade;
+
+	private String input;
+
 	private IRollResultView resultView;
+	//public static final RollController SINGLETON = new RollController();
 
 	/**
 	 * RollController constructor
@@ -19,9 +34,15 @@ public class RollController extends Controller implements IRollController {
 	 * @param resultView Roll result view
 	 */
 	public RollController(IRollView view, IRollResultView resultView) {
-
 		super(view);
-		
+		//Singleton:
+		state = State.PLAY;
+
+		SINGLETON = new RollController(view, resultView);
+		//Singleton^^^^^^^^^^
+
+		theFacade = Facade.getFacade();
+
 		setResultView(resultView);
 	}
 	
@@ -55,11 +76,18 @@ public class RollController extends Controller implements IRollController {
 
 
 		 */
-		StateEnum theState = State.getCurrentState();
+		/*StateEnum theState = State.getCurrentState();
 		if(theState == StateEnum.PLAY)
 		{
+			Player thePlayer = GameManager.getSingleton().getthisplayer();
+			int pid = thePlayer.getPlayerID();
+			if(theFacade.canRoll(pid)) {
+			int currentRoll = theFacade.roll(pid);
+			resultView.setRollValue(currentRoll);
+				resultView.showModal();
 
-		}
+			}
+		}*/
 
 
 		getResultView().showModal();
@@ -67,10 +95,55 @@ public class RollController extends Controller implements IRollController {
 
 	}
 
+private int counter;
+
+	public int getCounter() {
+		return counter;
+	}
+
+	public void setCounter(int counter) {
+		this.counter = counter;
+	}
+
+	private boolean chose;
 
 	public void update(){
-		//timer, check if rolling
+
+		/*if(State.getCurrentState() == StateEnum.PLAY && getRollView().isModalShowing()) {
+			setTimer();
+
+		}*/
 	}
+
+	public void setTimer() {
+		Timer timer = new Timer();
+		timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+
+				if(counter > 0) {
+					getRollView().setMessage(counter + " seconds...");
+					counter--;
+					if(counter == 0)
+					{
+						rollDice();
+						counter = 3;
+					}
+					else
+					{
+						setTimer();
+					}
+				}
+				else {
+					counter = 3;
+				}
+			}
+		}, 1000);
+
+	}
+
+
+
 
 }
 

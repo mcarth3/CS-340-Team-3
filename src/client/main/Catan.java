@@ -45,6 +45,7 @@ public class Catan extends JFrame
 	
 	public static void main(final String[] args)
 	{
+		
 		try
 		{
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -96,8 +97,9 @@ public class Catan extends JFrame
 					{
 						joinController.start();
 					}
-				});
+				}); 
 				loginView.setController(loginController);
+				
 				
 				loginController.start();
 				

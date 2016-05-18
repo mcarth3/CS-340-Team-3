@@ -23,11 +23,13 @@ public class Dice extends AbstractModelPartition {
    * @pre 	Starts with a blank die
    * @post chooses a random number
    * Returns a random number from 2-12
+   * CHANGES DICEROLL TO RETURNED VALUE
    */
   public int rollDice()
   {
     Random r = new Random();
     int n = r.nextInt(2 - 12) + 3;
+    diceRoll = n;
     return n;
   }
   public boolean canRoll(int playerID)

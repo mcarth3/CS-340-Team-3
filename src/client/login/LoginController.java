@@ -2,6 +2,7 @@ package client.login;
 
 import client.base.*;
 import client.misc.*;
+import proxy.RealProxy;
 import states.State;
 import states.StateEnum;
 
@@ -19,7 +20,7 @@ import com.google.gson.reflect.TypeToken;
 public class LoginController extends Controller implements ILoginController {
 
 	//Singleton
-	public static LoginController SINGLETON = null;
+	public static LoginController SINGLETON = new LoginController(null, null); 
 		
 	//Domain Implementation THESE 4 ARE FROM THE EXAMPLE
 	private String input;
@@ -31,7 +32,7 @@ public class LoginController extends Controller implements ILoginController {
 
 	private IMessageView messageView;
 	private IAction loginAction;
-	
+
 	//Constructors	
 	/**
 	 * LoginController constructor
@@ -41,13 +42,15 @@ public class LoginController extends Controller implements ILoginController {
 	 */
 	public LoginController(ILoginView view, IMessageView messageView) {
 
+		
 		super(view);
 		
 		this.messageView = messageView;
 		
 		state = State.LOGIN;
+		 
 		
-		SINGLETON = new LoginController(view, messageView);	  
+		//SINGLETON = new LoginController(view, messageView);	  
 	}
 	
 	public ILoginView getLoginView() {
@@ -90,21 +93,90 @@ public class LoginController extends Controller implements ILoginController {
 	public void signIn() {
 		
 		// TODO: log in user
+		String username = this.getLoginView().getLoginUsername();
+		String password = this.getLoginView().getLoginPassword();
 		
-
-		// If log in succeeded
-		getLoginView().closeModal();
-		loginAction.execute();
+		RealProxy rp = new RealProxy();
+		
+		String result = null;
+		if(loginCanDo(username, password)){
+			result = rp.userLogin(username, password);
+		}
+		
+		if(result != null){
+			// If log in succeeded
+			getLoginView().closeModal();
+			loginAction.execute();
+		}else{
+			System.out.println("Login didn't work"); 
+		}
+	}
+	public boolean loginCanDo(String username, String password){
+		boolean result = true;
+		// input not null
+		// input not ""
+		// user at least length 3
+		if(username == null || password == null){
+			result = false;
+		}
+		if(username == "" || password == ""){
+			result = false;
+		}
+		if(username.length() < 3 || password.length() < 3)
+		{
+			result = false;
+		}
+		return result; 
 	}
 
 	@Override
 	public void register() {
+
+		// TODO: register new user (which, if successful, also logs them in)		
+		String username = this.getLoginView().getRegisterUsername();
+		String password = this.getLoginView().getRegisterPassword();
+		String passwordRepeat = this.getLoginView().getRegisterPassword();
 		
-		// TODO: register new user (which, if successful, also logs them in)
+		RealProxy rp = new RealProxy();
 		
-		// If register succeeded
-		getLoginView().closeModal();
-		loginAction.execute();
+		String result = null;
+		if(registerCanDo(username, password, passwordRepeat)){
+			result = rp.userRegister(username, password);
+		}
+		if(result != null)
+		{
+			rp.userLogin(username, password);
+			// If register succeeded
+			getLoginView().closeModal();
+			loginAction.execute();
+			
+		}else{
+			System.out.println("Register didn't work"); 
+		}
+		
+	}
+	public boolean registerCanDo(String username, String password, String passwordRepeat){
+		boolean result = true;
+		// input not null
+		// input not ""
+		// input at least length 5	
+		// user at least length 3
+		// pass and passRepeat the same
+		if(username == null || password == null){
+			result = false;
+		}
+		if(username == "" || password == ""){
+			result = false;
+		}
+		if(username.length() < 3 || password.length() < 5)
+		{
+			result = false;
+		}
+		if(password != passwordRepeat){
+			result = false;
+		}
+		
+		return result; 
 	}
 	public void update(){
 	}
