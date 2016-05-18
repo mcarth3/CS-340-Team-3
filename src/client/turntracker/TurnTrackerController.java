@@ -21,7 +21,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 	public TurnTrackerController(ITurnTrackerView view) {
 		super(view);
 		manager = GameManager.getSingleton();
-		initFromModel();
+		//initFromModel();
 	}
 	
 	@Override
@@ -45,31 +45,31 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 	}
 	
 	private void initFromModel() {
-		//getView().setLocalPlayerColor(manager.getthisplayer().getColor());
+		getView().setLocalPlayerColor(manager.getthisplayer().getColor());
 		
-//		TurnTracker turnTracker = manager.getModel().getTurnTracker();
-//		ArrayList<Player> players = manager.getModel().getPlayers();
-//		for(int i = 0; i < players.size(); i++) {
-//			boolean largestArmy = false;
-//			boolean longestRoad = false;
-//			boolean highLight = false;
-//			int playerIndex = -2;
-//			Player currentplayer = players.get(i);
-//			if(currentplayer != null) {
-//				playerIndex = currentplayer.getPlayerIndex();
-//				getView().initializePlayer(playerIndex, currentplayer.getName(), currentplayer.getColor());
-//				if(turnTracker.getCurrentPlayer() == playerIndex) {
-//					highLight = true;
-//				}
-//				if(turnTracker.getLargestArmy() == playerIndex) {
-//					largestArmy = true;
-//				}
-//				if(turnTracker.getLongestRoad() == playerIndex) {
-//					longestRoad = true;
-//				}
-//				getView().updatePlayer(playerIndex, currentplayer.getVictoryPoints(), highLight, largestArmy, longestRoad);	
-//			}
-//		}
+		TurnTracker turnTracker = manager.getModel().getTurnTracker();
+		ArrayList<Player> players = manager.getModel().getPlayers();
+		for(int i = 0; i < players.size(); i++) {
+			boolean largestArmy = false;
+			boolean longestRoad = false;
+			boolean highLight = false;
+			int playerIndex = -2;
+			Player currentplayer = players.get(i);
+			if(currentplayer != null) {
+				playerIndex = currentplayer.getPlayerIndex();
+				getView().initializePlayer(playerIndex, currentplayer.getName(), currentplayer.getColor());
+				if(turnTracker.getCurrentPlayer() == playerIndex) {
+					highLight = true;
+				}
+				if(turnTracker.getLargestArmy() == playerIndex) {
+					largestArmy = true;
+				}
+				if(turnTracker.getLongestRoad() == playerIndex) {
+					longestRoad = true;
+				}
+				getView().updatePlayer(playerIndex, currentplayer.getVictoryPoints(), highLight, largestArmy, longestRoad);	
+			}
+		}
 
 	}
 	public void update(){

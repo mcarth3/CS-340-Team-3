@@ -17,7 +17,7 @@ public class ModelParser {
 	}
 	public static PlayerLoginInfo parse3(String jsonstring) {
 		Gson gson = new Gson();
-		PlayerLoginInfo login = gson.fromJson(jsonstring, Game.class);
+		PlayerLoginInfo login = gson.fromJson(jsonstring, PlayerLoginInfo.class);
 		return login;
 	}
 

@@ -17,6 +17,7 @@ public class GameManager extends Observable {
 	private static GameManager singleton = null;
 	private Player player;
 	private Facade modelfacade;
+	public int playerIdTemp;
 
 	public GameManager() {
 		modelfacade = Facade.getSingleton();
@@ -109,6 +110,9 @@ public class GameManager extends Observable {
 	
 	public void setplayerbyid(int playerid) throws ObjectNotFoundException {
 		this.player = modelfacade.getGame().findPlayerbyid(playerid);
+	}
+	public void setplayerbyidtemp(int playerid){
+		this.playerIdTemp = playerid; 
 	}
 	public static GameManager getSingleton() {
 		if(singleton == null) {

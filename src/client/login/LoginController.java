@@ -111,12 +111,7 @@ public class LoginController extends Controller implements ILoginController {
 			PlayerLoginInfo pl = new PlayerLoginInfo();
 			pl = ModelParser.parse3(result); 
 			GameManager gm = GameManager.getSingleton();
-			try {
-				gm.setplayerbyid(pl.playerID);
-			} catch (ObjectNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			gm.setplayerbyidtemp(pl.playerID);
 		}
 		
 		if(result != null){
