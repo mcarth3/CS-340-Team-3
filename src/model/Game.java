@@ -107,6 +107,17 @@ public class Game extends AbstractModelPartition {
         throw new ObjectNotFoundException("failed to find player of username " + username + "!");
 
     }
+    public Player findPlayerbyid(int id) throws ObjectNotFoundException {
+        for(int i=0; i < players.size(); i++)
+        {
+            if(id==(players.get(i).getPlayerID()))
+            {
+                return players.get(i);
+            }
+        }
+        throw new ObjectNotFoundException("failed to find player of id " + id + "!");
+
+    }
 
     public Game() {
 		// TODO Auto-generated constructor stub
