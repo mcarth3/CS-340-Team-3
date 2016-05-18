@@ -105,7 +105,7 @@ public class Facade extends AbstractModelPartition {
         Player newPlayer = theGame.findPlayer(username);
         if(newPlayer.returnResourceNumber(ResourceType.ORE) >= 3 && newPlayer.returnResourceNumber(ResourceType.WHEAT) >= 2)
         {
-            if(newPlayer.findSettlement(location) == true)
+            if(map.findSettlement(location) == true)
             {
                 return true;
             }
@@ -160,13 +160,13 @@ public class Facade extends AbstractModelPartition {
      * @pre: give username of Player in the Game type of DevelopmentCard to see if the person possesses it
      * @post: function checks Player's Development Cards and returns the truth of whether or not they possess that card
      */
-    public boolean canPlayerPlayDevCard(String username, DevCardType type) throws ObjectNotFoundException {
-        Player newPlayer = theGame.findPlayer(username);
-        if (newPlayer.returnDevCardValue(type) >= 1) {
-            return true;
-        }
-        return false;
-    }
+   // public boolean canPlayerPlayDevCard(String username, DevCardType type) throws ObjectNotFoundException {
+    //    Player newPlayer = theGame.findPlayer(username);
+     //   if (newPlayer.returnDevCardValue(type) >= 1) {
+      //      return true;
+      //  }
+      //  return false;
+    //}
     
     public Game gettheGame() {
     	return theGame;
