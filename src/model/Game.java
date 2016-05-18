@@ -7,7 +7,7 @@ import java.util.TreeMap;
 import model.Port;
 import model.Dice;
 import model.TradeOffer;
-import model.map;
+import model.Map;
 import model.Player;
 import model.bank.ResourceList;
 import model.clientModel.MessageList;
@@ -29,7 +29,7 @@ public class Game extends AbstractModelPartition {
 
 	//need from server
 	private DevCardList deck;
-    private map theGameMap;
+    private Map map;
 	public ArrayList<Player> players;
 	private MessageList log;
 	private MessageList chat;
@@ -61,11 +61,11 @@ public class Game extends AbstractModelPartition {
 		bank=new ResourceList();
     	version = 0;
         turnTracker = new TurnTracker();
-        theGameMap = new map();
+        map = new Map();
         winner = 0;
     }
     
-    public Game(DevCardList newdeck,ArrayList<Player> newplayers,MessageList newlog,MessageList newchat,ResourceList newbank, map newtheGameMap, TurnTracker newturnTracker,int newwinner,int newmodelversion) {
+    public Game(DevCardList newdeck,ArrayList<Player> newplayers,MessageList newlog,MessageList newchat,ResourceList newbank, Map newmap, TurnTracker newturnTracker,int newwinner,int newmodelversion) {
     	deck =newdeck;
     	if (newplayers !=null){
     		players = newplayers;
@@ -76,7 +76,7 @@ public class Game extends AbstractModelPartition {
 		chat=newchat;
 		bank=newbank;
     	version = newmodelversion;
-        theGameMap = newtheGameMap;
+        map = newmap;
         turnTracker = newturnTracker;
     	winner = newwinner;
     	
@@ -116,7 +116,7 @@ public class Game extends AbstractModelPartition {
 	}
 
 
-	public Game(map m, ResourceList b, ArrayList<Player> ps, TurnTracker tt, TradeOffer tradeOffer) {
+	public Game(Map m, ResourceList b, ArrayList<Player> ps, TurnTracker tt, TradeOffer tradeOffer) {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -166,17 +166,17 @@ public class Game extends AbstractModelPartition {
         return players.get(pid).canBuildSettlement();
     }
     public boolean canPlaceSettlement(VertexLocation vl) {
-        return theGameMap.canAddSettlement(vl);
+        return map.canAddSettlement(vl);
     }
-    public map getTheGameMap() {
-        return theGameMap;
+    public Map getmap() {
+        return map;
     }
 
-    public void setTheGameMap(map theGameMap) {
-        this.theGameMap = theGameMap;
+    public void setmap(Map map) {
+        this.map = map;
     }
     public boolean canPlaceRoad(EdgeLocation edge) {
-        return theGameMap.canAddRoad(edge);
+        return map.canAddRoad(edge);
     }
     public boolean canDiscardCards(int pid, ResourceList rl) {
         return players.get(pid).canDiscardCards(rl);
@@ -226,7 +226,7 @@ public class Game extends AbstractModelPartition {
         if (!turnTracker.getStatus().equals("Robbing") && pid != turnTracker.getCurrentPlayer())
             throw new IllegalMoveException("not the trading phase, or not the player's turn");
 
-        ArrayList<Port> ports = (ArrayList) theGameMap.getPlayerPorts(pid);
+        ArrayList<Port> ports = (ArrayList) map.getPlayerPorts(pid);
         return players.get(pid).canMaritimeTrade(ports);
     }
     /**
@@ -252,7 +252,7 @@ public class Game extends AbstractModelPartition {
      * @return boolean whether or not the player can place a city
      */
     public boolean canPlaceCity(VertexLocation vl) {
-        return theGameMap.canAddCity(vl);
+        return map.canAddCity(vl);
     }
     /**
      * Checks to see if building a city is a legal move for the player
@@ -298,7 +298,7 @@ public class Game extends AbstractModelPartition {
      * @return boolean whether or not the player can move the robber
      */
     public boolean canMoveRobber(HexLocation hl) {
-        return theGameMap.canRelocateRobber(hl);
+        return map.canRelocateRobber(hl);
     }
     /**
      * Robs a player of one resource card
@@ -379,8 +379,8 @@ public class Game extends AbstractModelPartition {
     	return version; 
     }
     
-    public map getMap(){
-    	return theGameMap;
+    public Map getMap(){
+    	return map;
     }
     
 

@@ -36,7 +36,7 @@ public class RollController extends Controller implements IRollController {
 	public RollController(IRollView view, IRollResultView resultView) {
 		super(view);
 		//Singleton:
-		state = State.PLAY;
+		//state = State.PLAY;
 
 		SINGLETON = new RollController(view, resultView);
 		//Singleton^^^^^^^^^^

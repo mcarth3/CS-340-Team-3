@@ -11,12 +11,13 @@ import poller.modeljsonparser.AbstractModelPartition;
  */
 
 public class DevCardList extends AbstractModelPartition {
-
-    private int monopoly;
-    private int monument;
-    private int roadBuilding;
-    private int soldier;
     private int yearOfPlenty;
+    private int monopoly;
+    private int soldier;
+    private int roadBuilding;
+    private int monument;
+
+
 
     public DevCardList() {
         monopoly = 0;

@@ -85,7 +85,7 @@ public class Facade extends AbstractModelPartition {
         if(newPlayer.returnResourceNumber(ResourceType.WHEAT) >= 1 && newPlayer.returnResourceNumber(ResourceType.WOOD) >= 1 &&
         newPlayer.returnResourceNumber(ResourceType.BRICK) >= 1 && newPlayer.returnResourceNumber(ResourceType.SHEEP) >= 1 )
         {
-            if(theGame.getTheGameMap().canAddSettlement(location))
+            if(theGame.getmap().canAddSettlement(location))
             {
                 return true;
             }
@@ -101,20 +101,20 @@ public class Facade extends AbstractModelPartition {
      * @pre: give username of Player in the Game and VertexLocation of the location where you want to check if a city can be built there
      * @post: function checks both person's resources and settlements and returns whether or not this particular player can build a settlement at the given location
      */
-    public boolean canPlayerBuyCity(String username, VertexLocation location) throws ObjectNotFoundException {
-        Player newPlayer = theGame.findPlayer(username);
-        if(newPlayer.returnResourceNumber(ResourceType.ORE) >= 3 && newPlayer.returnResourceNumber(ResourceType.WHEAT) >= 2)
-        {
-            if(map.findSettlement(location) == true)
-            {
-                return true;
-            }
+    //public boolean canPlayerBuyCity(String username, VertexLocation location) throws ObjectNotFoundException {
+     //   Player newPlayer = theGame.findPlayer(username);
+      //  if(newPlayer.returnResourceNumber(ResourceType.ORE) >= 3 && newPlayer.returnResourceNumber(ResourceType.WHEAT) >= 2)
+       // {
+        //    if(map.findSettlement(location) == true)
+         //   {
+          //      return true;
+           // }
 
-        }
+        //}
 
-            return false;
+          //  return false;
 
-    }
+    //}
 
 
 
@@ -127,7 +127,7 @@ public class Facade extends AbstractModelPartition {
         Player newPlayer = theGame.findPlayer(username);
         if(newPlayer.returnResourceNumber(ResourceType.WOOD) >= 1 && newPlayer.returnResourceNumber(ResourceType.BRICK) >= 1)
         {
-            if(theGame.getTheGameMap().canAddRoad(edge))
+            if(theGame.getmap().canAddRoad(edge))
             {
                 return true;
             }

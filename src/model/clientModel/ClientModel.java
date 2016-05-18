@@ -1,6 +1,6 @@
 package model.clientModel;
 
-import model.map;
+import model.Map;
 import model.Player;
 import model.TradeOffer;
 import model.TurnTracker;
@@ -17,18 +17,18 @@ public class ClientModel extends AbstractModelPartition {
     private ResourceList bank;
     private MessageList chat;
     private MessageList log;
-    private map map;
+    private Map Map;
     private ArrayList<Player> players;
     private TradeOffer tradeOffer;
     private TurnTracker turnTracker;
     private int version;
     private int winner;
     
-    public ClientModel(ResourceList newbank, MessageList newchat, MessageList newlog, map newmap, ArrayList<Player> newplayers, TradeOffer newtradeOffer, TurnTracker newturnTracker, int newversion, int newwinner){
+    public ClientModel(ResourceList newbank, MessageList newchat, MessageList newlog, Map newmap, ArrayList<Player> newplayers, TradeOffer newtradeOffer, TurnTracker newturnTracker, int newversion, int newwinner){
         bank = newbank;
         chat = newchat;
         log = newlog;
-        map = newmap;
+        Map = newmap;
         players = newplayers;
         tradeOffer = newtradeOffer;
         turnTracker = newturnTracker;
@@ -40,7 +40,7 @@ public class ClientModel extends AbstractModelPartition {
         bank = new ResourceList();
         chat = new MessageList();
         log = new MessageList();
-        map = new map();
+        Map = new Map();
         players = new ArrayList<Player>();
         tradeOffer = new TradeOffer();
         turnTracker = new TurnTracker();
@@ -76,12 +76,12 @@ public class ClientModel extends AbstractModelPartition {
         this.log = log;
     }
 
-    public map getMap() {
-        return map;
+    public Map getMap() {
+        return Map;
     }
 
-    public void setMap(map map) {
-        this.map = map;
+    public void setMap(Map Map) {
+        this.Map = Map;
     }
 
     public ArrayList<Player> getPlayers() {

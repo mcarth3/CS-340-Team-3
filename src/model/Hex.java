@@ -11,38 +11,38 @@ import shared.locations.HexLocation;
  */
 public class Hex extends AbstractModelPartition {
   String resource;
-  int chit;
-  HexLocation hl;
+  int number;
+  HexLocation location;
 
   public Hex()//desert tile
   {
     resource = HexType.DESERT.toString();
-    chit = 0;
+    number = 0;
   }
 
   public Hex(int x, int y)
   {
-    hl = new HexLocation(x, y);
+	  location = new HexLocation(x, y);
   }
 
   public Hex(String resrc, int num)
   {
     resource = resrc.toUpperCase();
-    chit = num;
+    number = num;
   }
 
   public Hex(String resc, int num, HexLocation HL)
   {
     resource = resc;
-    chit = num;
-    HL = hl;
+    number = num;
+    location = HL;
   }
 
   public Hex(int x, int y, String resc, int num)
   {
-    hl = new HexLocation(x, y);
+	location = new HexLocation(x, y);
     resource = resc;
-    chit = num;
+    number = num;
   }
   //Getters and Setters
 
@@ -58,15 +58,15 @@ public class Hex extends AbstractModelPartition {
 
   public int getNumber()
   {
-	  return chit;
+	  return number;
   }
 
   public void setNumber(int chit)
   {
-	  this.chit = chit;
+	  this.number = chit;
   }
 
-  public HexLocation getLocation()  {return hl; }
-  public void setLocation(HexLocation HL)  {hl = HL; }
+  public HexLocation getLocation()  {return location; }
+  public void setLocation(HexLocation HL)  {location = HL; }
 }
 

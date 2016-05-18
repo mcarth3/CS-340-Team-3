@@ -16,17 +16,18 @@ import shared.locations.*;
  * @author Jesse McArthur
  */
 
-public class map extends AbstractModelPartition {
+public class Map extends AbstractModelPartition {
 	TreeMap<HexLocation,Hex> hexes;
-	ArrayList<Port> ports;
+
 	ArrayList<Road> roads;
 	//ArrayList<VertexObject> buildings;
 	//ArrayList<ResourceList> resources;
 	ArrayList<City> cities;
 	ArrayList<Settlement> settlements;
 	int radius;
+	ArrayList<Port> ports;
 	Robber robber;
-	public map()
+	public Map()
 	{
 		hexes = new TreeMap<HexLocation,Hex>();
 		ports = new ArrayList<Port>();
@@ -39,7 +40,7 @@ public class map extends AbstractModelPartition {
 	
 
 
-	public map(TreeMap<HexLocation,Hex> newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<City> newcities,ArrayList<Settlement> newsettlements, int newradius,Robber newrobber)
+	public Map(TreeMap<HexLocation,Hex> newhexes,ArrayList<Port> newports,ArrayList<Road> newroads, ArrayList<City> newcities,ArrayList<Settlement> newsettlements, int newradius,Robber newrobber)
 	{//to prevent problems, we intitialize array lists if they come back null
 		if (newhexes !=null){
 			hexes = newhexes;
