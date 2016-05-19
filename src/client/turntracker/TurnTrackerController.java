@@ -93,22 +93,19 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 		String message = "Waiting for Other Players";
 		if(model.getTurnTracker().getCurrentPlayer() == manager.getthisplayer().getPlayerIndex()) {
 			switch(model.getTurnTracker().getStatus()) {
-			case "Discarding":
-				message = "Discarding";
+			case "LOGIN":
+				message = "LOGIN";
 				break;
-			case "FirstRound":
-				message = "First Round";
+			case "JOIN":
+				message = "First JOIN";
 				break;
-			case "Robbing":
-				message = "Robbing";
+			case "WAIT":
+				message = "WAIT";
 				break;
-			case "Rolling":
-				message = "Rolling";
+			case "SETUP":
+				message = "SETUP";
 				break;
-			case "SecondRound":
-				message = "Second Round";
-				break;
-			case "Playing":
+			case "PLAY":
 				if (model != null){
 					if (model.canFinishTurn(manager.getthisplayer().getPlayerID())){
 						message = "End Turn";
