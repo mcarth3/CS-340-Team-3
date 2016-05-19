@@ -37,16 +37,12 @@ public class ChatController extends Controller implements IChatController {
 //		System.out.println("the current state is:");
 //		System.out.println(State.getCurrentState()); 
 		
-		System.out.println("THIS IS THE NEW MESSAGE SENT");
-		System.out.println(message);
+//		System.out.println("THIS IS THE NEW MESSAGE SENT");
+//		System.out.println(message);
 		GameManager gm = GameManager.getSingleton();
 		//System.out.println(gm.getthisplayer()); 
 		
 		rp.sendChat(gm.playerIdTemp, message); 
-		//LogEntry le = new LogEntry(CatanColor.GREEN, "cool new message");
-		 
-		
-		
 		
 	}
 	public void update(){
@@ -71,11 +67,11 @@ public class ChatController extends Controller implements IChatController {
 		for(Player p : players)
 		{
 			//System.out.println("|"+p.getName()+"|, |"+name+"|"); 
-			if((String)p.getName() == (String)name)
-			{
-				//System.out.println("BUT ALSO here"); 
-				cc = p.getColor();
-			}
+//			if(name.equals(p.getName()))
+//			{
+//				//System.out.println("BUT ALSO here"); 
+//				cc = p.getColor();
+//			}
 		}
 		return cc;
 	}

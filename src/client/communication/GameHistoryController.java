@@ -69,12 +69,16 @@ public class GameHistoryController extends Controller implements IGameHistoryCon
 		ArrayList<Player> players = game.players; 
 		for(Player p : players)
 		{
-			//System.out.println("|"+p.getName()+"|, |"+name+"|"); 
-			if((String)p.getName() == (String)name)
-			{
-				//System.out.println("BUT ALSO here"); 
-				cc = p.getColor();
-			}
+//			if(p != null){
+//				System.out.println(p.getColor());
+////				System.out.println("|"+p.getName()+"|, |"+name+"|");
+//				String temp = p.getName(); 
+//				if(temp.length() == name.length())
+//				{
+//					//System.out.println("BUT ALSO here"); 
+//					cc = p.getColor();
+//				}
+//			}
 		}
 		return cc;
 	}

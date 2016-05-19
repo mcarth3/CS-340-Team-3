@@ -20,20 +20,20 @@ public class Player extends AbstractModelPartition {
 	
 
     
-    ResourceList resources;
-    DevCardList newDevCards;
-    DevCardList oldDevCards;
-    int cities;//how many cities the player has left to play
-    int roads;//how many roads the player has left to play
-    int settlements;//how many settlements the player has left to play
-    int soldiers;
-    int victoryPoints;
-    int monuments;
-    boolean playedDevCard;
-    boolean discarded;
-    int playerID;
-    int playerIndex;
-    CatanColor color;
+	public ResourceList resources;
+    public DevCardList newDevCards;
+    public DevCardList oldDevCards;
+    public int cities;//how many cities the player has left to play
+    public int roads;//how many roads the player has left to play
+    public int settlements;//how many settlements the player has left to play
+    public int soldiers;
+    public int victoryPoints;
+    public int monuments;
+    public boolean playedDevCard;
+    public boolean discarded;
+    public int playerID;
+    public int playerIndex;
+    public CatanColor color;
     public String name;	
 	
 	//removed
@@ -48,9 +48,9 @@ public class Player extends AbstractModelPartition {
    // private ArrayList<Road> roadArrayList;
    // private ArrayList<City> cityArrayList;
     //these are the maximum values a player can have in a game and also the starting amount
-    final int MAX_CITIES = 4;
-    final int MAX_SETTLEMENTS = 5;
-    final int MAX_ROADS = 15;
+    public final int MAX_CITIES = 4;
+    public final int MAX_SETTLEMENTS = 5;
+    public final int MAX_ROADS = 15;
 
 
 
