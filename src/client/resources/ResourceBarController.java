@@ -147,9 +147,10 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 		
 	
 	public void update(){
-//		setResources();
-//		setBuildingPieces();
-//		updateButtons();
+		System.out.println("resourcebarcontroller");
+		setResources();
+		setBuildingPieces();
+		updateButtons();
 	}
 
 	private void updateButtons() {

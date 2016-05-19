@@ -52,12 +52,11 @@ public class DiscardController extends Controller implements IDiscardController 
 		
 		ArrayList<Player> players = GameManager.getSingleton().getModel().getPlayers();
 		Player currentPlayer = players.get(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer());
-		int totalCards = currentPlayer.getResources().getTotal()/2;
+		int halfcards = currentPlayer.getResources().getTotal()/2;
 		
-		if (totalCards > 7) {
-			n = totalCards/2;
+		if (halfcards > 7) {
+			n = halfcards;
 		} else {
-	
 			n = 0;
 		}
 		
@@ -75,35 +74,80 @@ public class DiscardController extends Controller implements IDiscardController 
 
 	@Override
 	public void increaseAmount(ResourceType resource) {
-
+		
+		switch(resource) {
+			case BRICK:
+				discardList.setBrick(discardList.getBrick() + 1);
+			case ORE:
+				discardList.setOre(discardList.getOre() + 1);
+			case SHEEP:
+				discardList.setSheep(discardList.getSheep() + 1);
+			case WOOD:
+				discardList.setWood(discardList.getWood() + 1);
+			case WHEAT:
+				discardList.setWheat(discardList.getWheat() + 1);
+			}
+	
+		updateView();
+			
 	}
 
 	@Override
 	public void decreaseAmount(ResourceType resource) {
+		
+		switch(resource) {
+		case BRICK:
+			discardList.setBrick(discardList.getBrick() - 1);
+		case ORE:
+			discardList.setOre(discardList.getOre() - 1);
+		case SHEEP:
+			discardList.setSheep(discardList.getSheep() - 1);
+		case WOOD:
+			discardList.setWood(discardList.getWood() - 1);
+		case WHEAT:
+			discardList.setWheat(discardList.getWheat() - 1);
+		}
+
+		updateView();
 	}
 
 	@Override
 	public void discard() {
-
+		String message ="";
+		ArrayList<Integer> discardCardarray = new ArrayList<Integer>();
+		discardCardarray.add(discardList.getBrick());
+		discardCardarray.add(discardList.getOre());
+		discardCardarray.add(discardList.getSheep());
+		discardCardarray.add(discardList.getWheat());
+		discardCardarray.add(discardList.getWood());
+		message = RealProxy.getSingleton().discardCards((Integer)GameManager.getSingleton().getthisplayer().getPlayerIndex(), discardCardarray);
+		
+//		"discardedCards"  in this order. THIS MIGHT CHANGE LATER
+//	    "brick": 1,
+//	    "ore": 2,
+//	    "sheep": 0,
+//	    "wheat": 0,
+//	    "wood": 1
 	}
 
 	@Override
 	public void update() {
-	//	String turn = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
-	//	int cards = GameManager.getSingleton().getthisplayer().getResources().getTotal();
+		System.out.println("discarduptdate");
+		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
+		int cards = GameManager.getSingleton().getthisplayer().getResources().getTotal();
 
-//		if(turn == "Discarding" || (turn == "Robbing" && cards > 7)) {
-//			if(maxDiscardNum == 0) {
-//				this.getWaitView().showModal();
-//			} else {
-//				this.getDiscardView().showModal();
-//			}
-//			updateView();
-//		}
+		if(status == "Playing" && cards > 7) {
+			if(maxDiscardNum == 0) {
+				this.getWaitView().showModal();
+			} else {
+				this.getDiscardView().showModal();
+			}
+			updateView();
+		}
 	}
 	
 	
-	private int checkDiscardNum() {
+	private int checkifinbounds() {
 		int n = -1;
 		
 		if (discardList.getTotal() < maxDiscardNum) {
@@ -120,39 +164,27 @@ public class DiscardController extends Controller implements IDiscardController 
 	
 	private void updateView() {
 		ResourceList currentHand = GameManager.getSingleton().getthisplayer().getResources();
-		int currentBricks = currentHand.getBrick();
-		int currentOres = currentHand.getOre();
-		int currentSheeps = currentHand.getSheep();
-		int currentWoods = currentHand.getWood();
-		int currentWheats = currentHand.getWheat();
-		
-		int discardBricks = discardList.getBrick();
-		int discardOres = discardList.getOre();
-		int discardSheeps = discardList.getSheep();
-		int discardWoods = discardList.getWood();
-		int discardWheats = discardList.getWheat();
-		
 		getDiscardView().setStateMessage("Discarding: " + discardList.getTotal() + "/" + maxDiscardNum);
 		
-		getDiscardView().setResourceMaxAmount(ResourceType.BRICK, currentBricks);
-		getDiscardView().setResourceMaxAmount(ResourceType.ORE, currentOres);
-		getDiscardView().setResourceMaxAmount(ResourceType.SHEEP, currentSheeps);
-		getDiscardView().setResourceMaxAmount(ResourceType.WOOD, currentWoods);
-		getDiscardView().setResourceMaxAmount(ResourceType.WHEAT, currentWheats);
+		getDiscardView().setResourceMaxAmount(ResourceType.BRICK, currentHand.getBrick());
+		getDiscardView().setResourceMaxAmount(ResourceType.ORE, currentHand.getOre());
+		getDiscardView().setResourceMaxAmount(ResourceType.SHEEP, currentHand.getSheep());
+		getDiscardView().setResourceMaxAmount(ResourceType.WOOD, currentHand.getWood());
+		getDiscardView().setResourceMaxAmount(ResourceType.WHEAT, currentHand.getWheat());
 		
-		getDiscardView().setResourceDiscardAmount(ResourceType.BRICK, discardBricks);
-		getDiscardView().setResourceDiscardAmount(ResourceType.ORE, discardOres);
-		getDiscardView().setResourceDiscardAmount(ResourceType.SHEEP, discardSheeps);
-		getDiscardView().setResourceDiscardAmount(ResourceType.WOOD, discardWoods);
-		getDiscardView().setResourceDiscardAmount(ResourceType.WHEAT, discardWheats);
+		getDiscardView().setResourceDiscardAmount(ResourceType.BRICK, discardList.getBrick());
+		getDiscardView().setResourceDiscardAmount(ResourceType.ORE, discardList.getOre());
+		getDiscardView().setResourceDiscardAmount(ResourceType.SHEEP, discardList.getSheep());
+		getDiscardView().setResourceDiscardAmount(ResourceType.WOOD, discardList.getWood());
+		getDiscardView().setResourceDiscardAmount(ResourceType.WHEAT, discardList.getWheat());
 		
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.BRICK, (currentBricks > 0 && discardBricks < currentBricks), (discardBricks > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.ORE, (currentOres > 0 && discardOres < currentOres), (discardOres > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.SHEEP, (currentSheeps > 0 && discardSheeps < currentSheeps), (discardSheeps > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WOOD, (currentWoods > 0 && discardWoods < currentWoods), (discardWoods > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WHEAT, (currentWheats > 0 && discardWheats < currentWheats), (discardWheats > 0));
+		getDiscardView().setResourceAmountChangeEnabled(ResourceType.BRICK, (currentHand.getBrick() > 0 && discardList.getBrick() < currentHand.getBrick()), (discardList.getBrick() > 0));
+		getDiscardView().setResourceAmountChangeEnabled(ResourceType.ORE, (currentHand.getOre() > 0 && discardList.getOre() < currentHand.getOre()), (discardList.getOre() > 0));
+		getDiscardView().setResourceAmountChangeEnabled(ResourceType.SHEEP, (currentHand.getSheep() > 0 && discardList.getSheep() < currentHand.getSheep()), (discardList.getSheep() > 0));
+		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WOOD, (currentHand.getWood() > 0 && discardList.getWood() < currentHand.getWood()), (discardList.getWood() > 0));
+		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WHEAT, (currentHand.getWheat() > 0 && discardList.getWheat() < currentHand.getWheat()), (discardList.getWheat() > 0));
 		
-		switch(checkDiscardNum()) {
+		switch(checkifinbounds()) {
 			case -1: getDiscardView().setDiscardButtonEnabled(false);
 			case 0: getDiscardView().setDiscardButtonEnabled(true);
 			case 1: getDiscardView().setDiscardButtonEnabled(false);

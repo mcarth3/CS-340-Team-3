@@ -50,7 +50,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 
 	private void initFromModel() {
 
-		System.out.println(manager.getthisplayer().getColor());
+		//System.out.println(manager.getthisplayer().getColor());
 		//if (getView() != null){
 			getView().setLocalPlayerColor(CatanColor.RED);
 	//	}
@@ -87,25 +87,30 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 
 	}
 	public void update(){
+		System.out.println("updating turn tracker");
+		System.out.println("status "+GameManager.getSingleton().getModel().getTurnTracker().getStatus());
 		initFromModel();
 		Game model = manager.getModel();
 		boolean enableButton = false;
 		String message = "Waiting for Other Players";
 		if(model.getTurnTracker().getCurrentPlayer() == manager.getthisplayer().getPlayerIndex()) {
 			switch(model.getTurnTracker().getStatus()) {
-			case "LOGIN":
-				message = "LOGIN";
+			case "Discarding":
+				message = "Discarding";
 				break;
-			case "JOIN":
-				message = "JOIN";
+			case "First Round":
+				message = "First Round";
 				break;
-			case "WAIT":
-				message = "WAIT";
+			case "Robbing":
+				message = "Robbing";
 				break;
-			case "SETUP":
-				message = "SETUP";
+			case "Rolling":
+				message = "Rolling";
 				break;
-			case "PLAY":
+			case "Second Round":
+				message = "Second Round";
+				break;
+			case "Playing":
 				if (model != null){
 					if (model.canFinishTurn(manager.getthisplayer().getPlayerID())){
 						message = "End Turn";
