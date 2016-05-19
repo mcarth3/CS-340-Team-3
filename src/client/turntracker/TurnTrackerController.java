@@ -52,7 +52,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 
 //		System.out.println(manager.getthisplayer().getColor());
 		
-		//getView().setLocalPlayerColor(manager.getthisplayer().getColor());
+		getView().setLocalPlayerColor(manager.getthisplayer().getColor());
 		GameManager gm = GameManager.getSingleton();
 		
 		getView().setLocalPlayerColor(gm.colorTemp);
@@ -84,41 +84,41 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 //
 	}
 	public void update(){
-		initFromModel();
-		Game model = manager.getModel();
-		boolean enableButton = false;
-		String message = "Waiting for Other Players";
-		if(model.getTurnTracker().getCurrentPlayer() == manager.getthisplayer().getPlayerIndex()) {
-			switch(model.getTurnTracker().getStatus()) {
-			case "Discarding":
-				message = "Discarding";
-				break;
-			case "FirstRound":
-				message = "First Round";
-				break;
-			case "Robbing"://double check if these are the right states
-				message = "Robbing";
-				break;
-			case "Rolling":
-				message = "Rolling";
-				break;
-			case "SecondRound":
-				message = "Second Round";
-				break;
-			case "Playing":
-				if (model != null){
-					if (model.canFinishTurn(manager.getthisplayer().getPlayerID())){
-						message = "End Turn";
-						enableButton = true;
-						break;
-					}
-				}
-			default:
-				message = "Waiting for Other Players";
-				break;
-			}	
-		}
-		this.getView().updateGameState(message, enableButton);
+//		initFromModel();
+//		Game model = manager.getModel();
+//		boolean enableButton = false;
+//		String message = "Waiting for Other Players";
+//		if(model.getTurnTracker().getCurrentPlayer() == manager.getthisplayer().getPlayerIndex()) {
+//			switch(model.getTurnTracker().getStatus()) {
+//			case "Discarding":
+//				message = "Discarding";
+//				break;
+//			case "FirstRound":
+//				message = "First Round";
+//				break;
+//			case "Robbing"://double check if these are the right states
+//				message = "Robbing";
+//				break;
+//			case "Rolling":
+//				message = "Rolling";
+//				break;
+//			case "SecondRound":
+//				message = "Second Round";
+//				break;
+//			case "Playing":
+//				if (model != null){
+//					if (model.canFinishTurn(manager.getthisplayer().getPlayerID())){
+//						message = "End Turn";
+//						enableButton = true;
+//						break;
+//					}
+//				}
+//			default:
+//				message = "Waiting for Other Players";
+//				break;
+//			}	
+//		}
+//		this.getView().updateGameState(message, enableButton);
 	}
 
 }
