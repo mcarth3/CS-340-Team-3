@@ -12,6 +12,9 @@ import states.StateEnum;
 import java.net.*;
 import java.io.*;
 import java.util.*;
+
+import javax.swing.JOptionPane;
+
 import java.lang.reflect.*;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
@@ -113,6 +116,8 @@ public class LoginController extends Controller implements ILoginController {
 			GameManager gm = GameManager.getSingleton();
 			gm.setplayerbyidtemp(pl.playerID);
 			gm.setplayernametemp(pl.name);
+		}else{
+			 JOptionPane.showMessageDialog(null, "Input is invalid");
 		}
 		
 		if(result != null){
@@ -126,9 +131,14 @@ public class LoginController extends Controller implements ILoginController {
 	}
 	public boolean loginCanDo(String username, String password){
 		boolean result = true;
+		// alph numberic
 		// input not null
 		// input not ""
 		// user at least length 3
+		
+		if(!username.matches("[A-Za-z0-9]+") || !password.matches("[A-Za-z0-9]+")){
+			result = false;	
+		} 
 		if(username == null || password == null){
 			result = false;
 		}
@@ -155,6 +165,8 @@ public class LoginController extends Controller implements ILoginController {
 		String result = null;
 		if(registerCanDo(username, password, passwordRepeat)){
 			result = rp.userRegister(username, password);
+		}else{
+			JOptionPane.showMessageDialog(null, "Input is invalid");
 		}
 		if(result != null)
 		{
@@ -170,11 +182,15 @@ public class LoginController extends Controller implements ILoginController {
 	}
 	public boolean registerCanDo(String username, String password, String passwordRepeat){
 		boolean result = true;
+		// alpha numeric
 		// input not null
 		// input not ""
 		// input at least length 5	
 		// user at least length 3
 		// pass and passRepeat the same
+		if(!username.matches("[A-Za-z0-9]+") || !password.matches("[A-Za-z0-9]+") || !passwordRepeat.matches("[A-Za-z0-9]+")){
+			result = false;	
+		}
 		if(username == null || password == null){
 			result = false;
 		}

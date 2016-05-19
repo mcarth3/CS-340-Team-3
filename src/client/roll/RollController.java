@@ -108,10 +108,13 @@ private int counter;
 	private boolean chose;
 
 	public void update(){
-/*
-		if(State.getCurrentState() == StateEnum.PLAY && getRollView().isModalShowing()) {
-			setTimer();
 
+		/*if(GameManager.getSingleton() != null) {
+
+			if (State.getCurrentState() == StateEnum.PLAY && getRollView().isModalShowing()) {
+				setTimer();
+
+			}
 		}*/
 	}
 

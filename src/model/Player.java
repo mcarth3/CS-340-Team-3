@@ -34,7 +34,7 @@ public class Player extends AbstractModelPartition {
     int playerID;
     int playerIndex;
     CatanColor color;
-    String name;	
+    public String name;	
 	
 	//removed
     //private String username;

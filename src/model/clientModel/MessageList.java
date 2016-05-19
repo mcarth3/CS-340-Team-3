@@ -8,7 +8,7 @@ import poller.modeljsonparser.AbstractModelPartition;
  * Created by Jesse on 5/11/2016.
  */
 public class MessageList extends AbstractModelPartition {
-    private ArrayList<MessageLine> lines;
+    public ArrayList<MessageLine> lines;
    
     public MessageList(){
     	lines = new ArrayList<MessageLine>();
