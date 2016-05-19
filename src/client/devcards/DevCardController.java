@@ -71,24 +71,24 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void playMonopolyCard(ResourceType resource) {
-		
+		//TODO: are these the only things?
 	}
 
 	@Override
 	public void playMonumentCard() {
-		
+		//TODO: are these the only things?
 	}
 
 	@Override
 	public void playRoadBuildCard() {
 
-		roadAction.execute();
+		roadAction.execute();		//TODO: what do I add?
 	}
 
 	@Override
 	public void playSoldierCard() {
 		
-		soldierAction.execute();
+		soldierAction.execute();	//TODO: what do I add?
 	}
 
 	@Override
@@ -96,6 +96,7 @@ public class DevCardController extends Controller implements IDevCardController 
 		
 	}
 	public void update(){
+		//TODO: just make it visible if they have it or can buy it?
 	}
 
 

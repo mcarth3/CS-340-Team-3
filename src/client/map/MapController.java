@@ -7,241 +7,208 @@ import shared.locations.*;
 import client.GameManager.GameManager;
 import client.base.*;
 import client.data.*;
-import model.*;
-import states.State;
-import states.StateEnum;
-
+import model.Game;
+import model.Hex;
+import model.Map;
 
 
 /**
  * Implementation for the map controller
- * @author Jesse McArthur
  */
 public class MapController extends Controller implements IMapController {
+	
+	private IRobView robView;
+	
+	public MapController(IMapView view, IRobView robView) {
+		
+		super(view);
+		
+		setRobView(robView);
+		
+		initFromModel();
+	}
+	
+	public IMapView getView() {
+		
+		return (IMapView)super.getView();
+	}
+	
+	private IRobView getRobView() {
+		return robView;
+	}
+	private void setRobView(IRobView robView) {
+		this.robView = robView;
+	}
+	
+	protected void initFromModel() {
+		
+		//<temp>
+		
+//		Random rand = new Random();
+//
+//		for (int x = 0; x <= 3; ++x) {
+//			
+//			int maxY = 3 - x;			
+//			for (int y = -3; y <= maxY; ++y) {				
+//				int r = rand.nextInt(HexType.values().length);
+//				HexType hexType = HexType.values()[r];
+//				HexLocation hexLoc = new HexLocation(x, y);
+//				getView().addHex(hexLoc, hexType);
+//				getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.N),
+//						CatanColor.RED);
+//				getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.SW),
+//						CatanColor.BLUE);
+//				getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.S),
+//						CatanColor.ORANGE);
+//				getView().placeSettlement(new VertexLocation(hexLoc,  VertexDirection.NorthWest), CatanColor.GREEN);
+//				getView().placeCity(new VertexLocation(hexLoc,  VertexDirection.NorthEast), CatanColor.PURPLE);
+//			}
+//			
+//			if (x != 0) {
+//				int minY = x - 3;
+//				for (int y = minY; y <= 3; ++y) {
+//					int r = rand.nextInt(HexType.values().length);
+//					HexType hexType = HexType.values()[r];
+//					HexLocation hexLoc = new HexLocation(-x, y);
+//					getView().addHex(hexLoc, hexType);
+//					getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.N),
+//							CatanColor.RED);
+//					getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.SW),
+//							CatanColor.BLUE);
+//					getView().placeRoad(new EdgeLocation(hexLoc, EdgeDirection.S),
+//							CatanColor.ORANGE);
+//					getView().placeSettlement(new VertexLocation(hexLoc,  VertexDirection.NorthWest), CatanColor.GREEN);
+//					getView().placeCity(new VertexLocation(hexLoc,  VertexDirection.NorthEast), CatanColor.PURPLE);
+//				}
+//			}
+//		}
+//		
+//		PortType portType = PortType.BRICK;
+//		getView().addPort(new EdgeLocation(new HexLocation(0, 3), EdgeDirection.N), portType);
+//		getView().addPort(new EdgeLocation(new HexLocation(0, -3), EdgeDirection.S), portType);
+//		getView().addPort(new EdgeLocation(new HexLocation(-3, 3), EdgeDirection.NE), portType);
+//		getView().addPort(new EdgeLocation(new HexLocation(-3, 0), EdgeDirection.SE), portType);
+//		getView().addPort(new EdgeLocation(new HexLocation(3, -3), EdgeDirection.SW), portType);
+//		getView().addPort(new EdgeLocation(new HexLocation(3, 0), EdgeDirection.N), portType);
+//		
+//		getView().placeRobber(new HexLocation(0, 0));
+//		
+//		getView().addNumber(new HexLocation(-2, 0), 2);
+//		getView().addNumber(new HexLocation(-2, 1), 3);
+//		getView().addNumber(new HexLocation(-2, 2), 4);
+//		getView().addNumber(new HexLocation(-1, 0), 5);
+//		getView().addNumber(new HexLocation(-1, 1), 6);
+//		getView().addNumber(new HexLocation(1, -1), 8);
+//		getView().addNumber(new HexLocation(1, 0), 9);
+//		getView().addNumber(new HexLocation(2, -2), 10);
+//		getView().addNumber(new HexLocation(2, -1), 11);
+//		getView().addNumber(new HexLocation(2, 0), 12);
+		
+		//</temp>
+	}
 
-    private IRobView robView;
-    private StateAbstract state;
-    private IMapView mapView;
-    private int playing; //needed for debugging when playing by yourself
-    private int secondRound = 0;
-    private boolean soldier;
+	public boolean canPlaceRoad(EdgeLocation edgeLoc) {
+		
+		return true;
+	}
 
-    private int roundNum = 0;
+	public boolean canPlaceSettlement(VertexLocation vertLoc) {
+		
+		return true;
+	}
 
-    public MapController(IMapView view, IRobView robView) {
-        super(view);
-        mapView = view;
-        setRobView(robView);
-        state = new StateDefault(view, robView);
-        soldier = false;
+	public boolean canPlaceCity(VertexLocation vertLoc) {
+		
+		return true;
+	}
+
+	public boolean canPlaceRobber(HexLocation hexLoc) {
+		
+		return true;
+	}
+
+	public void placeRoad(EdgeLocation edgeLoc) {
+		
+		getView().placeRoad(edgeLoc, CatanColor.ORANGE);
+	}
+
+	public void placeSettlement(VertexLocation vertLoc) {
+		
+		getView().placeSettlement(vertLoc, CatanColor.ORANGE);
+	}
+
+	public void placeCity(VertexLocation vertLoc) {
+		
+		getView().placeCity(vertLoc, CatanColor.ORANGE);
+	}
+
+	public void placeRobber(HexLocation hexLoc) {
+		
+		getView().placeRobber(hexLoc);
+		
+		getRobView().showModal();
+	}
+	
+	public void startMove(PieceType pieceType, boolean isFree, boolean allowDisconnected) {	
+		
+		getView().startDrop(pieceType, CatanColor.ORANGE, true);
+	}
+	
+	public void cancelMove() {
+		
+	}
+	
+	public void playSoldierCard() {	
+		
+	}
+	
+	public void playRoadBuildingCard() {	
+		
+	}
+	
+	public void robPlayer(RobPlayerInfo victim) {	
+		
+	}
+	public void update() {   
+    	GameManager gm = GameManager.getSingleton();
+
+        Game game = gm.getModel();
+        Map map = game.getmap();
+        Hex[] hexs = map.getHexes();
+        for (Hex h : hexs){
+        	HexType hexType = null; 
+        	hexType = getHexType(h.getResource());
+
+        	//h.getNumber()
+        	HexLocation hexLoc = h.getLocation();
+        	getView().addHex(hexLoc, hexType);	
+        }   
+    }
+    public HexType getHexType(String str){
+    	HexType result = HexType.BRICK;
+    	if(str.equals("brick")){
+    		result = HexType.BRICK;
+    	}
+    	else if(str.equals("DESERT")){
+    		result = HexType.DESERT;
+    	}
+    	else if(str.equals("ore")){
+    		result = HexType.ORE;
+    	}
+    	else if(str.equals("sheep")){
+    		result = HexType.SHEEP;
+    	}
+    	else if(str.equals("water")){
+    		result = HexType.WATER;
+    	}
+    	else if(str.equals("wheat")){
+    		result = HexType.WHEAT;
+    	}
+    	else if(str.equals("wood")){
+    		result = HexType.WOOD;
+    	}
+    	return result; 
     }
 
-    public IMapView getView() {
-
-        return (IMapView) super.getView();
-    }
-
-    private IRobView getRobView() {
-        return robView;
-    }
-    
-    private void setRobView(IRobView robView) {
-        this.robView = robView;
-    }
-
-    public boolean finishedSetup() {
-        StateSetup s = new StateSetup(getView(), robView);
-        if (s.getClass() != state.getClass())
-            return false;
-        return ((StateSetup) state).finishedSetup();
-    }
-
-    private void changeState() {
-
-        Facade facade = Facade.getInstance();
-        String s = facade.getGame().getTurnTracker().getStatus();
-        int pid = facade.getPlayerID();
-         System.out.println(s + " " + pid);
-
-        if (s.equalsIgnoreCase("FirstTurn") || s.equalsIgnoreCase("SecondTurn"))
-        {
-            state = new StateSetup(getView(), robView);
-            if (((StateSetup) state).finishedSetup()) {
-                state = new StateDefault(getView(), robView);
-                facade.FinishTurn(pid);
-            }
-        }
-        if (s.equalsIgnoreCase("Rolling")) {
-            state = new StatePlayersTurn(getView(), robView);
-           
-        }
-        if (s.equalsIgnoreCase("Playing") || s.equalsIgnoreCase("Robbing")) {
-            playing++;
-            if (playing == 3) {
-                playing = 0;
-                state = new StateDefault(getView(), robView);
-
-                facade.FinishTurn(pid);
-            }
-        }
-
-
- 
-    }
-
-    private boolean changeState(String s) {
-      
-
-        if(state.getName().equalsIgnoreCase("setup"))
-        {
-            if(((StateSetup)state).finishedSetup())
-            {
-                state = new StateDefault(getView(), robView);
-                return false;
-            }
-            if(Facade.getInstance().isCloseMap())
-                state = new StateDefault(getView(), robView);
-          
-        }
-
-        if(Facade.getInstance().getCurrentPlayer().getPlayerIndex() != Facade.getInstance().getGame().getTurnTracker().getCurrentPlayer())
-        {
-            
-            state = new StateDefault(getView(), robView);
-            return true;
-        }
-
-        if (s.equalsIgnoreCase("RoadBuilding")){
-            String test = s;
-        }
-
-        if(state.getName().equalsIgnoreCase("RoadBuilding"))
-        {
-            if(((StateRoadBuilding)state).finished())
-                state = new StatePlayersTurn(getView(), robView);
-            return true;
-        }
-           
-
-        if (state.getName().equalsIgnoreCase("default")) {
-            if (s.equalsIgnoreCase("FirstRound") || s.equalsIgnoreCase("SecondRound"))
-                state = new StateSetup(getView(), robView);
-            else if (s.equalsIgnoreCase("RoadBuilding"))
-                state = new StateRoadBuilding(getView(), robView);
-            else if (s.equalsIgnoreCase("Robbing"))
-                state = new StateRobbing(getView(), robView);
-            else if (s.equalsIgnoreCase("playing"))
-                state = new StatePlayersTurn(getView(), robView);
-            else
-                state = new StateDefault(getView(), robView);
-            
-            return true;
-        }
-
-        
-        if (((s.equalsIgnoreCase("FirstRound") || s.equalsIgnoreCase("SecondRound") && state.getName().equalsIgnoreCase("Setup"))
-                || s.equalsIgnoreCase(state.getName())))
-        {
-            System.out.println(((MapView)getView()).getOverlaid());
-
-                return false;
-        }
-
-
-        
-        if (s.equalsIgnoreCase("RoadBuilding"))
-            state = new StateRoadBuilding(getView(), robView);
-        else if (s.equalsIgnoreCase("Robbing"))
-            state = new StateRobbing(getView(), robView);
-        else if (s.equalsIgnoreCase("playing"))
-            state = new StatePlayersTurn(getView(), robView);
-        else
-            state = new StateDefault(getView(), robView);
-        return true;
-    }
-
-    public void update(Observable observable, Object args) {
-        if (!Facade.getInstance().isReady())
-            return;
-
-        GameManager gm = (GameManager) observable;
-        
-
-        String testState = state.getName();
-
-        changeState(gm.getTurnTracker().getStatus());
-        Facade.getInstance().setCurPlayerIndex();
-        Facade facade = Facade.getInstance();
-        Game map = gm.getModel();
-    
-       
-    }
-
-
-    public boolean canPlaceRoad(EdgeLocation edgeLoc) {
-        return state.canPlaceRoad(edgeLoc);
-    }
-
-    public boolean canPlaceSettlement(VertexLocation vertLoc) {
-        return state.canPlaceSettlement(vertLoc);
-    }
-
-    public boolean canPlaceCity(VertexLocation vertLoc) {
-        return state.canPlaceCity(vertLoc);
-}
-
-    public boolean canPlaceRobber(HexLocation hexLoc) {
-        return state.canPlaceRobber(hexLoc);
-    }
-
-    public void placeRoad(EdgeLocation edgeLoc) {
-        state.placeRoad(edgeLoc);
-
-    }
-
-    public void placeSettlement(VertexLocation vertLoc) {
-        state.placeSettlement(vertLoc);
-    }
-
-    public void placeCity(VertexLocation vertLoc) {
-        state.placeCity(vertLoc);
-;
-    }
-
-    public void placeRobber(HexLocation hexLoc) {
-        mapView.placeRobber(hexLoc);
-        state.placeRobber(hexLoc);
-        getView().placeRobber(hexLoc);
-
-    }
-
-    public void startMove(PieceType pieceType, boolean isFree, boolean allowDisconnected) {
-        state.startMove(pieceType, isFree, allowDisconnected);
-    }
-
-    public void cancelMove() {
-        state.cancelMove();
-    }
-
-    public void playSoldierCard()
-    {
-        state = new StateRobbing(getView(), robView);
-        soldier = true;
-    }
-
-    public void playRoadBuildingCard()
-    {
-        state = new StateRoadBuilding(getView(), robView);
-        state.playRoadBuildingCard();
-    }
-
-    public void robPlayer(RobPlayerInfo victim) {
-        if(soldier){
-            soldier = false;
-            state.playSoldierCard(victim);
-        }else{
-            state.robPlayer(victim);
-        }
-
-    }
+	
 }

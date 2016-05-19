@@ -136,9 +136,9 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 
 
-
+theFacade = Facade.getFacade();
 		if(GameManager.getSingleton() != null) {
-			/*thePlayer = GameManager.getSingleton().getthisplayer();
+			thePlayer = GameManager.getSingleton().getthisplayer();
 			if (thePlayer.canOfferBankTrade())        //TODO: this needs to be changed for ports
 			{
 
@@ -152,7 +152,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 				getTradeOverlay().setStateMessage("Choose what to give!");
 			} else {
 				getTradeView().enableMaritimeTrade(false);
-			}*/
+			}
 		}
 
 	}

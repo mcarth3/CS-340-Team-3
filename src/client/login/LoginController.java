@@ -112,8 +112,10 @@ public class LoginController extends Controller implements ILoginController {
 		if(loginCanDo(username, password)){
 			result = rp.userLogin(username, password);
 			PlayerLoginInfo pl = new PlayerLoginInfo();
+			System.out.println(result);
 			pl = ModelParser.parse3(result); 
 			GameManager gm = GameManager.getSingleton();
+			System.out.println(pl.playerID);
 			gm.setplayerbyidtemp(pl.playerID);
 			gm.setplayernametemp(pl.name);
 		}else{

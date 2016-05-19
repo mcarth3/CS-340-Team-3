@@ -168,11 +168,38 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	@Override
 	public void acceptTrade(boolean willAccept) {
 
+		reverseNegativeResources();
+
+		theFacade.tradePlayer(thePlayer.getPlayerID(), listOfResources, desiredTraderID);
 		getAcceptOverlay().closeModal();
+	}
+
+	public void reverseNegativeResources()
+	{
+		if(recieving.contains(ResourceType.BRICK))
+		{
+			listOfResources.setBrick(listOfResources.getBrick() * -1);
+		}
+		if(recieving.contains(ResourceType.WOOD))
+		{
+			listOfResources.setBrick(listOfResources.getWood() * -1);
+		}
+		if(recieving.contains(ResourceType.WHEAT))
+		{
+			listOfResources.setBrick(listOfResources.getWheat() * -1);
+		}
+		if(recieving.contains(ResourceType.ORE))
+		{
+			listOfResources.setBrick(listOfResources.getOre() * -1);
+		}
+		if(recieving.contains(ResourceType.SHEEP))
+		{
+			listOfResources.setBrick(listOfResources.getSheep() * -1);
+		}
 	}
 	
 	public void update(){
-		/*if(GameManager.getSingleton() != null) {
+		if(GameManager.getSingleton() != null && State.getInstance() != null) {
 
 			thePlayer = GameManager.getSingleton().getthisplayer();
 			if (State.getCurrentState() == StateEnum.PLAY && thePlayer.resourcesOverZero().length > 0) {
@@ -185,7 +212,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 				getTradeOverlay().setPlayerSelectionEnabled(false);
 			}
 
-		}*/
+		}
 	}
 
 
