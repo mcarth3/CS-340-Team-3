@@ -5,9 +5,9 @@
     <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="commented out MaritimeTrade update()">
+    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="commented out DomesticTrade update()">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" afterPath="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" afterPath="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -29,10 +29,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MaritimeTradeController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MaritimeTradeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.191601">
+            <state vertical-scroll-proportion="-16.814816">
               <caret line="153" column="11" selection-start-line="153" selection-start-column="11" selection-end-line="153" selection-end-column="11" />
               <folding />
             </state>
@@ -49,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DomesticTradeController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DomesticTradeController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.0740743">
-              <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.96022725">
+              <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
               <folding>
                 <element signature="method#startTrade#0;class#DomesticTradeController#0" expanded="false" />
               </folding>
@@ -159,9 +159,9 @@
         <option value="$PROJECT_DIR$/src/client/resources/ResourceBarController.java" />
         <option value="$PROJECT_DIR$/src/client/domestic/IDomesticTradeController.java" />
         <option value="$PROJECT_DIR$/src/model/Player.java" />
-        <option value="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
         <option value="$PROJECT_DIR$/src/client/roll/RollController.java" />
         <option value="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" />
+        <option value="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
       </list>
     </option>
   </component>
@@ -845,7 +845,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463632236537</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="commented out MaritimeTrade update()">
+      <created>1463632356481</created>
+      <option name="number" value="00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1463632356481</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -889,7 +895,7 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24549918" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28641573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28641573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -947,7 +953,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added Facade (for Controller interaction with model) with multiple Can-Do's. Also added jUnit package so all can create jUnit tests&#10;on classes." />
     <MESSAGE value="Restructured DevelopmentCard, ResourceCard, and Player to use definitions shared with rest of program and modified Game to find Players" />
     <MESSAGE value="Player can find its own settlements and Game can find its players; Facade can tell if a player can build a city given a username and VertexLocation." />
     <MESSAGE value="Added empty Test for Facade and its Can-Do methods, and implemented most of the Can-Do methods in the actual Facade class." />
@@ -972,7 +977,8 @@
     <MESSAGE value="updated DomesticTradeController, might be able to choose some resources. Though not able to trade yet." />
     <MESSAGE value="DomesticTradeC keeps track of resources, RollController update commented out." />
     <MESSAGE value="commented out MaritimeTrade update()" />
-    <option name="LAST_COMMIT_MESSAGE" value="commented out MaritimeTrade update()" />
+    <MESSAGE value="commented out DomesticTrade update()" />
+    <option name="LAST_COMMIT_MESSAGE" value="commented out DomesticTrade update()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1347,16 +1353,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.0740743">
-          <caret line="126" column="0" selection-start-line="126" selection-start-column="0" selection-end-line="126" selection-end-column="0" />
-          <folding>
-            <element signature="method#startTrade#0;class#DomesticTradeController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/model/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1373,9 +1369,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.191601">
+        <state vertical-scroll-proportion="-16.814816">
           <caret line="153" column="11" selection-start-line="153" selection-start-column="11" selection-end-line="153" selection-end-column="11" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.96022725">
+          <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
+          <folding>
+            <element signature="method#startTrade#0;class#DomesticTradeController#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
