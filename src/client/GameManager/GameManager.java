@@ -10,6 +10,7 @@ import model.Player;
 import model.TurnTracker;
 import poller.modeljsonparser.ModelParser;
 import proxy.MockProxy;
+import shared.definitions.CatanColor;
 import states.State;
 
 
@@ -22,6 +23,7 @@ public class GameManager extends Observable {
 	private Facade modelfacade;
 	public int playerIdTemp;
 	public String nameTemp; 
+	public CatanColor colorTemp;
 	
 	TurnTracker turnTracker;
 	public GameManager() {
@@ -123,6 +125,9 @@ public class GameManager extends Observable {
 	}
 	public void setplayernametemp(String name){
 		this.nameTemp = name;
+	}
+	public void setplayercolortemp(CatanColor color){
+		this.colorTemp = color;
 	}
 	public static GameManager getSingleton() {
 		if(singleton == null) {

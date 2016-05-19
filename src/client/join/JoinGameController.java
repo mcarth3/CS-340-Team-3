@@ -157,6 +157,9 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	@Override
 	public void joinGame(CatanColor color) {
 		
+		GameManager gm = GameManager.getSingleton();
+		gm.setplayercolortemp(color); 
+		
 		
 		try {
 			ServerPoller.getSingleton();
