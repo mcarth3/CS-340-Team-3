@@ -89,17 +89,17 @@ public class DiscardController extends Controller implements IDiscardController 
 
 	@Override
 	public void update() {
-		String turn = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
-		int cards = GameManager.getSingleton().getthisplayer().getResources().getTotal();
+	//	String turn = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
+	//	int cards = GameManager.getSingleton().getthisplayer().getResources().getTotal();
 
-		if(turn == "Discarding" || (turn == "Robbing" && cards > 7)) {
-			if(maxDiscardNum == 0) {
-				this.getWaitView().showModal();
-			} else {
-				this.getDiscardView().showModal();
-			}
-			updateView();
-		}
+//		if(turn == "Discarding" || (turn == "Robbing" && cards > 7)) {
+//			if(maxDiscardNum == 0) {
+//				this.getWaitView().showModal();
+//			} else {
+//				this.getDiscardView().showModal();
+//			}
+//			updateView();
+//		}
 	}
 	
 	
