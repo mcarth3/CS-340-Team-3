@@ -6,8 +6,8 @@ import poller.modeljsonparser.AbstractModelPartition;
  * Created by Jesse on 5/11/2016.
  */
 public class MessageLine extends AbstractModelPartition {
-    private String message;
-    private String source;
+    public String message;
+    public String source;
 
     public MessageLine(){
     	message ="default message string";

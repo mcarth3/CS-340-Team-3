@@ -26,8 +26,8 @@ public class Game extends AbstractModelPartition {
 	private DevCardList deck;
     private Map map;
 	public ArrayList<Player> players;
-	private MessageList log;
-	private MessageList chat;
+	public MessageList log;
+	public MessageList chat;
 	private ResourceList bank;
     private TurnTracker turnTracker;
 	private int winner;
