@@ -65,14 +65,12 @@ public class ServerPoller {
 		
 		
 		//System.out.println(polled);
-		if (modeljson.equals("null")){
-			System.out.println("modeljson came back as 'null'");
-		}
-		if (modeljson==null){
-			System.out.println("modeljson is null");
-		}
-		model = ModelParser.parse2(modeljson);
 		
+		if (modeljson==null){
+			System.out.println("modeljson is null-returning no changes");
+		}else {
+			model = ModelParser.parse2(modeljson);
+		}
 		return model;
 	}
 
