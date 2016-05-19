@@ -52,12 +52,12 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 
 		System.out.println(manager.getthisplayer().getColor());
 		//if (getView() != null){
-			getView().setLocalPlayerColor(manager.getthisplayer().getColor());
+			getView().setLocalPlayerColor(CatanColor.RED);
 	//	}
-	//	GameManager gm = GameManager.getSingleton();
+//		GameManager gm = GameManager.getSingleton();
 		
-	//	getView().setLocalPlayerColor(gm.colorTemp);
-		
+//		getView().setLocalPlayerColor(gm.colorTemp);
+//		
 //		TurnTracker turnTracker = manager.getModel().getTurnTracker();
 //		ArrayList<Player> players = manager.getModel().getPlayers();
 //		for(int i = 0; i < players.size(); i++) {
@@ -69,7 +69,9 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 //			if(currentplayer != null) {
 //				playerIndex = currentplayer.getPlayerIndex();
 //				System.out.println(getView().toString());
-//				getView().initializePlayer(playerIndex, currentplayer.getName(), currentplayer.getColor());
+//				if ((currentplayer !=null)){
+//				//	getView().initializePlayer(playerIndex, currentplayer.getName(), currentplayer.getColor());
+//				}
 //				if(turnTracker.getCurrentPlayer() == playerIndex) {
 //					highLight = true;
 //				}
@@ -82,7 +84,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 //				getView().updatePlayer(playerIndex, currentplayer.getVictoryPoints(), highLight, largestArmy, longestRoad);	
 //			}
 //		}
-//
+
 	}
 	public void update(){
 		initFromModel();
