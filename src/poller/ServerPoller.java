@@ -3,6 +3,7 @@ package poller;
  * @author Mike Towne
  */
 import java.lang.reflect.InvocationTargetException;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -22,6 +23,7 @@ public class ServerPoller {
 	private static ServerPoller singleton = null;
 	private int modelversion;
 	private static GameManager manager;
+	boolean didaction;
 	
 	/**
 	 * creates a new ServerPoller which uses the given MockProxy
@@ -34,12 +36,23 @@ public class ServerPoller {
 		pollingTask = new ServerPollerTask();
 		timer = new Timer();
 		timer.schedule(pollingTask, 0, PollingInterval);
-		modelversion=1000;
-		
+		Random rand = new Random();
+		modelversion = 0;
+		didaction = false;
+
 		manager = GameManager.getSingleton();
 	}
 	
 	
+	
+	private void doOnce() {
+		if (!didaction){
+			if(RealProxy.getSingleton().gameModel(modelversion).equals("\"true\"")){
+				modelversion= 1;
+			}
+			didaction = true;
+		}
+	}
 	/**
 	 * requests an up-to-date model from the server, also resets the polling interval, sends the model number in the request using the api '/game/model?version=N' (which returns an updated model if there is one, and the current model if there is no version number given), ModelParser takes the returned JSON and makes a model from it. the model number gets updated as well
 	 * @pre the Catan server is running and serverproxy is not null 
@@ -50,6 +63,7 @@ public class ServerPoller {
 		
 		Game model = null;
 		String modeljson="";
+		doOnce();
 		try {
 			if (modelversion == -1){
 				modeljson = RealProxy.getSingleton().gameModel();
