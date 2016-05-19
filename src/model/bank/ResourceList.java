@@ -118,4 +118,8 @@ public class ResourceList extends AbstractModelPartition {
         return total;
     }
 
+	public int getTotal() {
+		return getBrick()+getOre()+getSheep()+getWheat()+getWood();
+	}
+
 }

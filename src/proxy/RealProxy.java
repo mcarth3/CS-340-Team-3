@@ -107,11 +107,12 @@ public class RealProxy implements IServer{
         //System.out.println(UserCookie);
         
         String cook = cc.send(obj, "/games/join", UserCookie, GameCookie); 
-		 
+        //System.out.println("game cookie being set to "+cook);
 		if(cook != null ){
 			String answer = cook.substring(0, 7);  
 			cook = cook.replaceAll("Successcatan.game=", ""); 
 			cook = cook.replaceAll(";Path=/;", "");
+			
 			GameCookie = cook;
 			 
 //			String result = null;
@@ -147,6 +148,9 @@ public class RealProxy implements IServer{
 	}
 	public String gameModel() {
 		JsonObject obj = new JsonObject();
+	//	System.out.println("obj sent "+obj);
+	//	System.out.println("user cookie " +UserCookie);
+	//	System.out.println("game cookie " +GameCookie);
 		return cc.send(obj, "/game/model?version=", UserCookie, GameCookie); 
 	}
 
