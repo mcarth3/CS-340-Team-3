@@ -58,7 +58,7 @@ public class CatanPanel extends JPanel
 		rollView.setController(rollController);
 		rollResultView.setController(rollController);
 		
-		JButton testButton = new JButton("Test");
+		JButton testButton = new JButton("Test Discard (broken if you dont have > 7 resources)");
 		testButton.addActionListener(new ActionListener() {
 			
 //			 @Override
@@ -114,7 +114,9 @@ public class CatanPanel extends JPanel
 				}
 			}
 		});
+		
 		this.add(testButton, BorderLayout.SOUTH);
+		
 	}
 	
 }
