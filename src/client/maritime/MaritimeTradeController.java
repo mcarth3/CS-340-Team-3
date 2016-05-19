@@ -81,6 +81,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		amountGetting = 1;						//TODO: this needs to be modified to implement ports' ratios
 		getTradeOverlay().selectGetOption(resource, amountGetting);
 		getTradeOverlay().setTradeEnabled(true);
+		getTradeOverlay().setCancelEnabled(true);
 		getTradeOverlay().setStateMessage("Now trade it!");
 		theGetting = resource;
 	}
@@ -137,7 +138,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 
 
-		if(thePlayer.canOfferBankTrade())
+		if(thePlayer.canOfferBankTrade())		//TODO: this needs to be changed for ports
 		{
 			pid = GameManager.getSingleton().getthisplayer().getPlayerID();
 			thePlayer = GameManager.getSingleton().getthisplayer();
