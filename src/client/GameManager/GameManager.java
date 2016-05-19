@@ -144,6 +144,6 @@ public class GameManager extends Observable {
 		return turnTracker;
     }
 	public void createdefaultgame() {
-		modelfacade.SetGame(ModelParser.parse2(MockProxy.getSingleton().gameModel(1)));
+	//	modelfacade.SetGame(ModelParser.parse2(MockProxy.getSingleton().gameModel(1)));
 	}
 }
