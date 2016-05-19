@@ -46,13 +46,13 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 
 	}
 	
-	private void initFromModel() {
+	public void initFromModel() {
 		System.out.println("------start-----");
 		System.out.println(manager);
 		System.out.println("------end-----");
 		
-		//getView().setLocalPlayerColor(manager.getthisplayer().getColor());
-		getView().setLocalPlayerColor(CatanColor.RED);
+		getView().setLocalPlayerColor(manager.getthisplayer().getColor());
+		//getView().setLocalPlayerColor(CatanColor.RED);
 		
 		TurnTracker turnTracker = manager.getModel().getTurnTracker();
 		ArrayList<Player> players = manager.getModel().getPlayers();

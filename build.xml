@@ -4,7 +4,7 @@
 	<!-- ********** -->	
     
 	<!-- Directory paths for the java server, javascript, and dest dir for the student copy -->
-    <property name="port.arg" value="8081"/>
+    <property name="port.arg" value="8044"/>
     <property name="web.arg" value="gameplay"/>
     <property name="options.arg" value="ug"/>
      
