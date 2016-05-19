@@ -50,6 +50,7 @@ public class TurnTracker extends AbstractModelPartition {
      */
     public void updateStatus(String givenStatus) {
         status = givenStatus;
+        System.out.println("Status: " + status);
     }
 
     /**

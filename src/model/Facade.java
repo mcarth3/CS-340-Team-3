@@ -568,7 +568,7 @@ public class Facade extends AbstractModelPartition {
         try {
             if (theGame != null) {
                 if (theGame.canTradePlayer(pid, rid, rl))
-                    proxy.offerTrade(pid, discardedcards,rid);
+                    proxy.offerTrade(pid, resourceListToArrayList(rl),rid);
             }
         } catch (InsufficientResourcesException e) {
             System.out.println("Not enough resources " + e.getMessage());
@@ -576,6 +576,18 @@ public class Facade extends AbstractModelPartition {
             System.out.println("An illegal move" + e.getMessage());
         }
     }
+
+    public ArrayList resourceListToArrayList(ResourceList theList)
+    {
+        ArrayList<Integer> returnList = new ArrayList<>();
+        returnList.add(theList.getBrick());
+        returnList.add(theList.getOre());
+        returnList.add(theList.getSheep());
+        returnList.add(theList.getWheat());
+        returnList.add(theList.getBrick());
+        return returnList;
+    }
+
 
     /**
      * Checks to see accepting a trade request is a legal move for the player

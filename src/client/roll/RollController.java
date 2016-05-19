@@ -4,6 +4,7 @@ import client.GameManager.GameManager;
 import client.base.*;
 import model.Facade;
 import model.Player;
+import model.TurnTracker;
 import states.State;
 import states.StateEnum;
 
@@ -109,13 +110,15 @@ private int counter;
 
 	public void update(){
 
-		/*if(GameManager.getSingleton() != null) {
-
-			if (State.getCurrentState() == StateEnum.PLAY && getRollView().isModalShowing()) {
+		if(GameManager.getSingleton() != null && theFacade.getGame() != null
+				&& theFacade.getGame().getTurnTracker() != null && theFacade.getGame().getTurnTracker().getStatus()!= null) {
+			System.out.println("Status by RollController update(): " + theFacade.getGame().getTurnTracker().getStatus());
+			if (theFacade.getGame().getTurnTracker().getStatus().equals("ROLL")) {
 				setTimer();
+				getRollView().showModal();
 
 			}
-		}*/
+		}
 	}
 
 	public void setTimer() {
