@@ -37,7 +37,10 @@ public class ClientCommunicator {
 	        if(u_cookie != null){
 	        	if(g_cookie !=null)
 	        	{
+	        		//System.out.println(command); 
 	        		//System.out.println("catan.game="+g_cookie);
+	        		//System.out.println("catan.user="+u_cookie);
+	        		
 	        		c.setRequestProperty("Cookie", "catan.user="+u_cookie+"; catan.game="+g_cookie);
 	        	}
 	        	else

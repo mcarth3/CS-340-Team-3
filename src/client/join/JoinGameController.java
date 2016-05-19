@@ -1,6 +1,7 @@
 package client.join;
 
 import shared.definitions.CatanColor;
+import client.GameManager.GameManager;
 import client.base.*;
 import client.data.*;
 import client.misc.*;
@@ -97,17 +98,17 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	@Override
 	public void start() {
 		
-		RealProxy rp = new RealProxy();
+		RealProxy rp = RealProxy.getSingleton();
 		String result = rp.gamesList();
 		System.out.println(result); 
 
 		GameInfo[] games = ModelParser.parse4(result); 
 	
 		PlayerInfo pi = new PlayerInfo();
-		//pi.setColor(CatanColor.RED);
-		pi.setName("Sam");
-		pi.setId(0);
-
+		GameManager gm = GameManager.getSingleton();
+		
+		pi.setName(gm.nameTemp);
+		pi.setId(gm.playerIdTemp);
 		getJoinGameView().setGames(games, pi);
 		getJoinGameView().showModal();
 	}
@@ -166,10 +167,10 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 		
 		RealProxy rp = RealProxy.getSingleton();
 		String lower = color.toString().toLowerCase();
-		//System.out.println(gameChosen);
-		//System.out.println(lower); 
+		System.out.println(gameChosen);
+		System.out.println(lower); 
 		String result = rp.gameJoin(gameChosen, lower); 
-		
+		System.out.println("RESULT JOIN="+result); 
 		if(result != null){
 			// If join succeeded
 			getSelectColorView().closeModal();
