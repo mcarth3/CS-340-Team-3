@@ -16,7 +16,6 @@ import proxy.RealProxy;
 
 public class ServerPoller {
 	@SuppressWarnings("unused")
-	private static RealProxy thisserver;
 	private static final int PollingInterval = 1000;
 	private ServerPollerTask pollingTask;
 	private Timer timer;
@@ -31,9 +30,8 @@ public class ServerPoller {
 	 * @post poller is set up to poll the MockProxy with the polling interval
 	 * @throws InvalidMockProxyException 
 	 */
-	private ServerPoller(RealProxy NewProxy) throws InvalidMockProxyException {
+	private ServerPoller() throws InvalidMockProxyException {
 		pollingTask = new ServerPollerTask();
-		thisserver = RealProxy.getSingleton();
 		timer = new Timer();
 		timer.schedule(pollingTask, 0, PollingInterval);
 		modelversion=0;
@@ -54,9 +52,9 @@ public class ServerPoller {
 		String modeljson="";
 		try {
 			if (modelversion == -1){
-				modeljson = thisserver.gameModel();
+				modeljson = RealProxy.getSingleton().gameModel();
 			}else{
-				modeljson = thisserver.gameModel(modelversion);
+				modeljson = RealProxy.getSingleton().gameModel(modelversion);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -82,7 +80,7 @@ public class ServerPoller {
 	 */
 	public static ServerPoller getSingleton() throws InvalidMockProxyException {
 		if(singleton == null) {
-			singleton = new ServerPoller(RealProxy.getSingleton());
+			singleton = new ServerPoller();
 		}
 		return singleton;
 	}
