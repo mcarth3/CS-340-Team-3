@@ -50,9 +50,10 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 
 	private void initFromModel() {
 
-		//System.out.println(manager.getthisplayer().getColor());
-		
-	//	getView().setLocalPlayerColor(manager.getthisplayer().getColor());
+		System.out.println(manager.getthisplayer().getColor());
+		if (getView() != null){
+			getView().setLocalPlayerColor(manager.getthisplayer().getColor());
+		}
 	//	GameManager gm = GameManager.getSingleton();
 		
 	//	getView().setLocalPlayerColor(gm.colorTemp);
@@ -84,7 +85,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 //
 	}
 	public void update(){
-//		initFromModel();
+		initFromModel();
 //		Game model = manager.getModel();
 //		boolean enableButton = false;
 //		String message = "Waiting for Other Players";
