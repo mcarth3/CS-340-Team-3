@@ -11,7 +11,7 @@ import states.State;
  */
 public class ChatController extends Controller implements IChatController {
 	
-	public RealProxy rp = new RealProxy(); 
+	public RealProxy rp = RealProxy.getSingleton(); 
 
 	public ChatController(IChatView view) {
 		
@@ -35,6 +35,7 @@ public class ChatController extends Controller implements IChatController {
 		//System.out.println(gm.getthisplayer()); 
 				
 		// GET THE PLAYER ID FROM THE THE LOGIN INFO
+		
 		rp.sendChat(0, message); 
 		
 	}
