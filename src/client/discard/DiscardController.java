@@ -146,21 +146,11 @@ public class DiscardController extends Controller implements IDiscardController 
 		getDiscardView().setResourceDiscardAmount(ResourceType.WOOD, discardWoods);
 		getDiscardView().setResourceDiscardAmount(ResourceType.WHEAT, discardWheats);
 		
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.BRICK
-													 , (currentBricks > 0 && discardBricks < currentBricks)
-													 , (discardBricks > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.ORE
-													 , (currentOres > 0 && discardOres < currentOres)
-													 , (discardOres > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.SHEEP
-													 , (currentSheeps > 0 && discardSheeps < currentSheeps)
-													 , (discardSheeps > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WOOD
-													 , (currentWoods > 0 && discardWoods < currentWoods)
-													 , (discardWoods > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WHEAT
-													 , (currentWheats > 0 && discardWheats < currentWheats)
-													 , (discardWheats > 0));
+		getDiscardView().setResourceAmountChangeEnabled(ResourceType.BRICK, (currentBricks > 0 && discardBricks < currentBricks), (discardBricks > 0));
+		getDiscardView().setResourceAmountChangeEnabled(ResourceType.ORE, (currentOres > 0 && discardOres < currentOres), (discardOres > 0));
+		getDiscardView().setResourceAmountChangeEnabled(ResourceType.SHEEP, (currentSheeps > 0 && discardSheeps < currentSheeps), (discardSheeps > 0));
+		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WOOD, (currentWoods > 0 && discardWoods < currentWoods), (discardWoods > 0));
+		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WHEAT, (currentWheats > 0 && discardWheats < currentWheats), (discardWheats > 0));
 		
 		switch(checkDiscardNum()) {
 			case -1: getDiscardView().setDiscardButtonEnabled(false);
