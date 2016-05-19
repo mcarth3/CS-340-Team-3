@@ -110,7 +110,7 @@ private int counter;
 	public void update(){
 
 		if(State.getCurrentState() == StateEnum.PLAY && getRollView().isModalShowing()) {
-			setTimer();
+			//setTimer();
 
 		}
 	}
