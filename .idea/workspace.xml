@@ -5,14 +5,9 @@
     <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="modified updates to Roll, Domestic, and Maritime Controllers. Put in some printlns to track errors">
+    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/devcards/DevCardController.java" afterPath="$PROJECT_DIR$/src/client/devcards/DevCardController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" afterPath="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" afterPath="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/roll/RollController.java" afterPath="$PROJECT_DIR$/src/client/roll/RollController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/Facade.java" afterPath="$PROJECT_DIR$/src/model/Facade.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/model/TurnTracker.java" afterPath="$PROJECT_DIR$/src/model/TurnTracker.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,21 +39,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MaritimeTradeController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MaritimeTradeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22303921">
-              <caret line="139" column="48" selection-start-line="139" selection-start-column="48" selection-end-line="139" selection-end-column="48" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DevCardController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DevCardController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/devcards/DevCardController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.814815">
-              <caret line="98" column="67" selection-start-line="98" selection-start-column="67" selection-end-line="98" selection-end-column="67" />
+            <state vertical-scroll-proportion="-0.7818697">
+              <caret line="73" column="57" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
               <folding />
             </state>
           </provider>
@@ -67,7 +62,7 @@
       <file leaf-file-name="DomesticTradeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="59.88889">
+            <state vertical-scroll-proportion="61.77778">
               <caret line="199" column="4" selection-start-line="199" selection-start-column="4" selection-end-line="199" selection-end-column="4" />
               <folding>
                 <element signature="method#startTrade#0;class#DomesticTradeController#0" expanded="false" />
@@ -161,8 +156,8 @@
         <option value="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
         <option value="$PROJECT_DIR$/src/model/TurnTracker.java" />
         <option value="$PROJECT_DIR$/src/client/roll/RollController.java" />
-        <option value="$PROJECT_DIR$/src/client/devcards/DevCardController.java" />
         <option value="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" />
+        <option value="$PROJECT_DIR$/src/client/devcards/DevCardController.java" />
       </list>
     </option>
   </component>
@@ -329,34 +324,16 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/catan/CatanPanel.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/ChatController.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/GameHistoryController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/discard/DiscardController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/join/PlayerWaitingController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/login/LoginController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/points/PointsController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/points/PointsView.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/resources/ResourceBarController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/RollController.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/data/GameInfo.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/turntracker/TurnTrackerController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/catan/CatanPanel.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/communication/ChatController.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/communication/GameHistoryController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/discard/DiscardController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/join/PlayerWaitingController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/login/LoginController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/data/GameInfo.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/MapController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/points/PointsController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/points/PointsView.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/resources/ResourceBarController.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/turntracker/TurnTrackerController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Game.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Player.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/clientModel/MessageLine.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/clientModel/MessageList.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -917,7 +894,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463674418147</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="modified updates to Roll, Domestic, and Maritime Controllers. Put in some printlns to track errors">
+      <created>1463682514379</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1463682514379</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -957,16 +940,16 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24549918" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.28641573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28641573" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21276596" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33224222" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33224222" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32492113" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1314,22 +1297,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/map/StateAbstract.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/map/StatePlayersTurn.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="112" column="9" selection-start-line="112" selection-start-column="9" selection-end-line="112" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/domestic/AcceptTradeOverlay.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1449,17 +1416,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/devcards/DevCardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.814815">
-          <caret line="98" column="67" selection-start-line="98" selection-start-column="67" selection-end-line="98" selection-end-column="67" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="59.88889">
+        <state vertical-scroll-proportion="61.77778">
           <caret line="199" column="4" selection-start-line="199" selection-start-column="4" selection-end-line="199" selection-end-column="4" />
           <folding>
             <element signature="method#startTrade#0;class#DomesticTradeController#0" expanded="false" />
@@ -1469,8 +1428,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22303921">
-          <caret line="139" column="48" selection-start-line="139" selection-start-column="48" selection-end-line="139" selection-end-column="48" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="82" column="48" selection-start-line="82" selection-start-column="48" selection-end-line="82" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/devcards/DevCardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.7818697">
+          <caret line="73" column="57" selection-start-line="73" selection-start-column="57" selection-end-line="73" selection-end-column="57" />
           <folding />
         </state>
       </provider>

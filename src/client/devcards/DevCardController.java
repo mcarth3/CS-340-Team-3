@@ -1,5 +1,6 @@
 package client.devcards;
 
+import model.Facade;
 import shared.definitions.ResourceType;
 import client.base.*;
 
@@ -71,6 +72,8 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void playMonopolyCard(ResourceType resource) {
+		//Facade theFacade = Facade.getFacade();
+		//theFacade.playMonopoly();
 		//TODO: are these the only things?
 	}
 
