@@ -92,12 +92,12 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 		boolean enableButton = false;
 		String message = "Waiting for Other Players";
 		if(model.getTurnTracker().getCurrentPlayer() == manager.getthisplayer().getPlayerIndex()) {
-			switch(model.getTurnTracker().getStatus()) {
+			switch(model.getTurnTracker().getStatus()) {y
 			case "LOGIN":
 				message = "LOGIN";
 				break;
 			case "JOIN":
-				message = "First JOIN";
+				message = "JOIN";
 				break;
 			case "WAIT":
 				message = "WAIT";
