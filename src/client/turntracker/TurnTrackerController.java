@@ -51,9 +51,9 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 	private void initFromModel() {
 
 		System.out.println(manager.getthisplayer().getColor());
-		if (getView() != null){
+		//if (getView() != null){
 			getView().setLocalPlayerColor(manager.getthisplayer().getColor());
-		}
+	//	}
 	//	GameManager gm = GameManager.getSingleton();
 		
 	//	getView().setLocalPlayerColor(gm.colorTemp);

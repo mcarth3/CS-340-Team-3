@@ -47,10 +47,12 @@ public class ServerPoller {
 	
 	private void doOnce() {
 		if (!didaction){
-			if(RealProxy.getSingleton().gameModel(modelversion).equals("\"true\"")){
-				modelversion= 1;
+			if (RealProxy.getSingleton().gameModel(modelversion)!=null){
+				if(RealProxy.getSingleton().gameModel(modelversion).equals("\"true\"")){
+					modelversion= 1;
+				}
+				didaction = true;
 			}
-			didaction = true;
 		}
 	}
 	/**
@@ -84,7 +86,8 @@ public class ServerPoller {
 			System.out.println("no changes to model number, thus no new model");
 			return GameManager.getSingleton().getModel();
 		}else{
-			//System.out.println("PARSING"+modeljson);
+			
+			System.out.println("NEW MODEL");
 			model = ModelParser.parse2(modeljson);
 		}
 		return model;

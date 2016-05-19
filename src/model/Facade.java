@@ -71,7 +71,7 @@ public class Facade extends AbstractModelPartition {
 
     }
     public Facade() {
-		// TODO Auto-generated constructor stub
+        theGame = null;
 	}
     
     public void SetGame(Game newGame){
