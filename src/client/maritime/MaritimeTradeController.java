@@ -54,7 +54,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 
 
-		getTradeOverlay().showGiveOptions(getResources);
+		getTradeOverlay().showGiveOptions(giveResources);
 		getTradeOverlay().showModal();
 	}
 
@@ -72,6 +72,8 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 	@Override
 	public void cancelTrade() {
+		amountGiving = 0;
+		amountGetting = 0;
 
 		getTradeOverlay().closeModal();
 	}
@@ -145,7 +147,7 @@ theFacade = Facade.getFacade();
 				pid = GameManager.getSingleton().getthisplayer().getPlayerID();
 				//theFacade.getGame().canMaritimeTrade(pid);
 				thePlayer = GameManager.getSingleton().getthisplayer();
-				getResources = thePlayer.resourcesOverThree();                //TODO: this needs to be changed to implement port ratios.
+				giveResources = thePlayer.resourcesOverThree();                //TODO: this needs to be changed to implement port ratios.
 				getTradeView().enableMaritimeTrade(true);
 				getTradeOverlay().setCancelEnabled(true);
 				getTradeOverlay().setTradeEnabled(false);

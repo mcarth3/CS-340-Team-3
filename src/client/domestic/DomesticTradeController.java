@@ -37,6 +37,8 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 
 	private ResourceList listOfResources;
 
+
+
 	/**
 	 * DomesticTradeController constructor
 	 * 
@@ -87,8 +89,19 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	@Override
 	public void startTrade() {
 
+		//**************Reset everything:
 		getTradeOverlay().showModal();
 
+		desiredTraderID = -1;
+
+		sending.clear();
+		recieving.clear();
+
+		amountSending = 0;
+		amountRecieving = 0;
+
+		listOfResources = new ResourceList();
+		//****************Reset everything^^^
 
 		ArrayList<Player> thePlayers = theFacade.getGame().getPlayers();
 		ArrayList<PlayerInfo> playersWithoutCurrent = new ArrayList<>();
@@ -124,7 +137,9 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 
 	@Override
 	public void sendTradeOffer() {
+		reverseNegativeResources();
 
+		theFacade.tradePlayer(thePlayer.getPlayerID(), listOfResources, desiredTraderID);
 		getTradeOverlay().closeModal();
 		getWaitOverlay().showModal();
 	}
@@ -168,9 +183,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	@Override
 	public void acceptTrade(boolean willAccept) {
 
-		reverseNegativeResources();
-
-		theFacade.tradePlayer(thePlayer.getPlayerID(), listOfResources, desiredTraderID);
+		theFacade.acceptTrade(pid, true);
 		getAcceptOverlay().closeModal();
 	}
 
@@ -206,6 +219,9 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 				getTradeView().enableDomesticTrade(true);
 				getTradeOverlay().setStateMessage("Select player!");
 				getTradeOverlay().setPlayerSelectionEnabled(true);
+
+
+
 			} else {
 				getTradeView().enableDomesticTrade(false);
 				getTradeOverlay().setStateMessage("Can't trade now!");

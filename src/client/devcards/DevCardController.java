@@ -13,7 +13,9 @@ public class DevCardController extends Controller implements IDevCardController 
 	private IBuyDevCardView buyCardView;
 	private IAction soldierAction;
 	private IAction roadAction;
-	
+
+	private Facade theFacade;
+
 	/**
 	 * DevCardController constructor
 	 * 
@@ -99,6 +101,12 @@ public class DevCardController extends Controller implements IDevCardController 
 		
 	}
 	public void update(){
+		theFacade = Facade.getFacade();
+		if(theFacade != null)
+		{
+
+		}
+
 		//TODO: just make it visible if they have it or can buy it?
 	}
 
