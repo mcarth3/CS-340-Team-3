@@ -98,8 +98,8 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 			case "Discarding":
 				message = "Discarding";
 				break;
-			case "First Round":
-				message = "First Round";
+			case "FirstRound":
+				message = "FirstRound";
 				break;
 			case "Robbing":
 				message = "Robbing";
@@ -107,7 +107,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 			case "Rolling":
 				message = "Rolling";
 				break;
-			case "Second Round":
+			case "SecondRound":
 				message = "Second Round";
 				break;
 			case "Playing":
