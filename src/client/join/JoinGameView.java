@@ -5,6 +5,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
+import client.GameManager.GameManager;
 import client.base.*;
 import client.data.*;
 import client.login.PlayerLoginInfo;
@@ -58,10 +59,10 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 		games = ModelParser.parse4(result); 
 	
 		PlayerInfo pi = new PlayerInfo();
-		//pi.setColor(CatanColor.RED);
-		pi.setName("Sam");
-		pi.setId(0);
+		GameManager gm = GameManager.getSingleton();
 		
+		pi.setName(gm.nameTemp);
+		pi.setId(gm.playerIdTemp);
 		setGames(games, pi);
 
 	}

@@ -10,6 +10,7 @@ import model.Player;
 import model.TurnTracker;
 import poller.modeljsonparser.ModelParser;
 import proxy.RealProxy;
+import shared.definitions.CatanColor;
 
 
 /**
@@ -20,6 +21,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 
 	public TurnTrackerController(ITurnTrackerView view) {
 		super(view);
+		System.out.println("manager got initiated"); 
 		manager = GameManager.getSingleton();
 		//initFromModel();
 	}
@@ -45,7 +47,12 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 	}
 	
 	private void initFromModel() {
-		getView().setLocalPlayerColor(manager.getthisplayer().getColor());
+		System.out.println("------start-----");
+		System.out.println(manager);
+		System.out.println("------end-----");
+		
+		//getView().setLocalPlayerColor(manager.getthisplayer().getColor());
+		getView().setLocalPlayerColor(CatanColor.RED);
 		
 		TurnTracker turnTracker = manager.getModel().getTurnTracker();
 		ArrayList<Player> players = manager.getModel().getPlayers();

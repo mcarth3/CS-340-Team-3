@@ -19,6 +19,8 @@ public class GameManager extends Observable {
 	private Player player;
 	private Facade modelfacade;
 	public int playerIdTemp;
+	public String nameTemp; 
+	
 	TurnTracker turnTracker;
 	public GameManager() {
 		modelfacade = Facade.getSingleton();
@@ -99,9 +101,10 @@ public class GameManager extends Observable {
 	private void updateLocalPlayer() {
 		ArrayList<Player> players = modelfacade.gettheGame().getPlayers();
 		for(int i = 0; i < players.size(); i++) {
-			if(players.get(i) == null) continue;
-			if(players.get(i).getPlayerID() == this.getthisplayer().getPlayerID()) {
-				this.setthisplayer(players.get(i));
+			if(players.get(i) != null){
+				if(players.get(i).getPlayerID() == playerIdTemp) {
+					this.setthisplayer(players.get(i));
+				}
 			} 
 		}
 	}
@@ -114,6 +117,9 @@ public class GameManager extends Observable {
 	}
 	public void setplayerbyidtemp(int playerid){
 		this.playerIdTemp = playerid; 
+	}
+	public void setplayernametemp(String name){
+		this.nameTemp = name;
 	}
 	public static GameManager getSingleton() {
 		if(singleton == null) {

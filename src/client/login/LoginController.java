@@ -112,6 +112,7 @@ public class LoginController extends Controller implements ILoginController {
 			pl = ModelParser.parse3(result); 
 			GameManager gm = GameManager.getSingleton();
 			gm.setplayerbyidtemp(pl.playerID);
+			gm.setplayernametemp(pl.name);
 		}
 		
 		if(result != null){
