@@ -23,7 +23,8 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 		super(view);
 		System.out.println("manager got initiated"); 
 		manager = GameManager.getSingleton();
-		//initFromModel();
+		manager.createdefaultgame();
+		initFromModel();
 	}
 	
 	@Override

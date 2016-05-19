@@ -8,6 +8,8 @@ import model.Game;
 import model.ObjectNotFoundException;
 import model.Player;
 import model.TurnTracker;
+import poller.modeljsonparser.ModelParser;
+import proxy.MockProxy;
 import states.State;
 
 
@@ -58,6 +60,7 @@ public class GameManager extends Observable {
 	 * @post the current model is replaced with the new one and updates all observers that theres a new model
 	 */
 	public Game updateGame(Game game) {
+		modelfacade.SetGame(game);
 		return game;
 	}
 
@@ -140,4 +143,7 @@ public class GameManager extends Observable {
         
 		return turnTracker;
     }
+	public void createdefaultgame() {
+		modelfacade.SetGame(ModelParser.parse2(MockProxy.getSingleton().gameModel(1)));
+	}
 }
