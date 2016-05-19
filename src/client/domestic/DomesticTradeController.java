@@ -172,22 +172,20 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	}
 	
 	public void update(){
+		/*if(GameManager.getSingleton() != null) {
 
-		/*thePlayer = GameManager.getSingleton().getthisplayer();
-		if(State.getCurrentState() == StateEnum.PLAY && thePlayer.resourcesOverZero().length > 0)
-		{
-			getTradeView().enableDomesticTrade(true);
-			getTradeOverlay().setStateMessage("Select player!");
-			getTradeOverlay().setPlayerSelectionEnabled(true);
-		}
-		else
-		{
-			getTradeView().enableDomesticTrade(false);
-			getTradeOverlay().setStateMessage("Can't trade now!");
-			getTradeOverlay().setPlayerSelectionEnabled(false);
+			thePlayer = GameManager.getSingleton().getthisplayer();
+			if (State.getCurrentState() == StateEnum.PLAY && thePlayer.resourcesOverZero().length > 0) {
+				getTradeView().enableDomesticTrade(true);
+				getTradeOverlay().setStateMessage("Select player!");
+				getTradeOverlay().setPlayerSelectionEnabled(true);
+			} else {
+				getTradeView().enableDomesticTrade(false);
+				getTradeOverlay().setStateMessage("Can't trade now!");
+				getTradeOverlay().setPlayerSelectionEnabled(false);
+			}
+
 		}*/
-
-
 	}
 
 

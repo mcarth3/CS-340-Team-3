@@ -137,22 +137,23 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 
 
-		/*thePlayer = GameManager.getSingleton().getthisplayer();
-		if(thePlayer.canOfferBankTrade())		//TODO: this needs to be changed for ports
-		{
-			pid = GameManager.getSingleton().getthisplayer().getPlayerID();
-			thePlayer = GameManager.getSingleton().getthisplayer();
-			getResources = thePlayer.resourcesOverThree();				//TODO: this needs to be changed to implement port ratios.
-			getTradeView().enableMaritimeTrade(true);
-			getTradeOverlay().setCancelEnabled(true);
-			getTradeOverlay().setTradeEnabled(false);
-			getTradeOverlay().setStateMessage("Choose what to give!");
-		}
-		else
-		{
-			getTradeView().enableMaritimeTrade(false);
-		}*/
+		if(GameManager.getSingleton() != null) {
+			/*thePlayer = GameManager.getSingleton().getthisplayer();
+			if (thePlayer.canOfferBankTrade())        //TODO: this needs to be changed for ports
+			{
 
+				pid = GameManager.getSingleton().getthisplayer().getPlayerID();
+				//theFacade.getGame().canMaritimeTrade(pid);
+				thePlayer = GameManager.getSingleton().getthisplayer();
+				getResources = thePlayer.resourcesOverThree();                //TODO: this needs to be changed to implement port ratios.
+				getTradeView().enableMaritimeTrade(true);
+				getTradeOverlay().setCancelEnabled(true);
+				getTradeOverlay().setTradeEnabled(false);
+				getTradeOverlay().setStateMessage("Choose what to give!");
+			} else {
+				getTradeView().enableMaritimeTrade(false);
+			}*/
+		}
 
 	}
 
