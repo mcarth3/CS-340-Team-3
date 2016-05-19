@@ -34,7 +34,7 @@ public class ServerPoller {
 		pollingTask = new ServerPollerTask();
 		timer = new Timer();
 		timer.schedule(pollingTask, 0, PollingInterval);
-		modelversion=-1;
+		modelversion=0;
 		
 		manager = GameManager.getSingleton();
 	}

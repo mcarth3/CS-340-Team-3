@@ -100,7 +100,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 		
 		RealProxy rp = RealProxy.getSingleton();
 		String result = rp.gamesList();
-		System.out.println(result); 
+		//System.out.println(result); 
 
 		GameInfo[] games = ModelParser.parse4(result); 
 	
@@ -170,7 +170,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 		System.out.println(gameChosen);
 		System.out.println(lower); 
 		String result = rp.gameJoin(gameChosen, lower); 
-		System.out.println("RESULT JOIN="+result); 
+		//System.out.println("RESULT JOIN="+result); 
 		if(result != null){
 			// If join succeeded
 			getSelectColorView().closeModal();
