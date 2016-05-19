@@ -69,7 +69,7 @@ public class ServerPoller {
 		}else if(modeljson.equals("true")){
 			return GameManager.getSingleton().getModel();
 		}else{
-			System.out.println("PARSING"+modeljson);
+		//	System.out.println("PARSING"+modeljson);
 			model = ModelParser.parse2(modeljson);
 		}
 		return model;
