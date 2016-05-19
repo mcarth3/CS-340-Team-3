@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/roll/RollController.java" afterPath="$PROJECT_DIR$/src/client/roll/RollController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/devcards/DevCardController.java" afterPath="$PROJECT_DIR$/src/client/devcards/DevCardController.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,11 +52,41 @@
       <file leaf-file-name="DomesticTradeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-3.3035715">
-              <caret line="186" column="25" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
+            <state vertical-scroll-proportion="3.375">
+              <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
               <folding>
                 <element signature="method#startTrade#0;class#DomesticTradeController#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AcceptTradeOverlay.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/domestic/AcceptTradeOverlay.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="164" column="53" selection-start-line="164" selection-start-column="53" selection-end-line="164" selection-end-column="53" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DomesticTradeView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DevCardController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/devcards/DevCardController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.42146596">
+              <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -89,11 +119,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RollController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RollController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/roll/RollController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7774869">
-              <caret line="114" column="11" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="11" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="110" column="2" selection-start-line="110" selection-start-column="2" selection-end-line="110" selection-end-column="2" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2244#2557#0" expanded="true" />
@@ -149,7 +179,6 @@
         <option value="$PROJECT_DIR$/src/controllers/RollController.java" />
         <option value="$PROJECT_DIR$/src/controllers/BankController.java" />
         <option value="$PROJECT_DIR$/src/controllers/ResourceBar_DevCardController.java" />
-        <option value="$PROJECT_DIR$/src/client/devcards/DevCardController.java" />
         <option value="$PROJECT_DIR$/src/client/login/LoginController.java" />
         <option value="$PROJECT_DIR$/src/model/Dice.java" />
         <option value="$PROJECT_DIR$/src/states/State.java" />
@@ -164,6 +193,7 @@
         <option value="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" />
         <option value="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
         <option value="$PROJECT_DIR$/src/client/roll/RollController.java" />
+        <option value="$PROJECT_DIR$/src/client/devcards/DevCardController.java" />
       </list>
     </option>
   </component>
@@ -267,7 +297,33 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="roll" />
+              <option name="myItemId" value="devcards" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="PlayDevCardView.java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Catan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="NEWEST_Cloned_Repository" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="devcards" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -859,7 +915,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463632432053</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="commented out RollController update()">
+      <created>1463633780722</created>
+      <option name="number" value="00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1463633780722</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -961,7 +1023,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Restructured DevelopmentCard, ResourceCard, and Player to use definitions shared with rest of program and modified Game to find Players" />
     <MESSAGE value="Player can find its own settlements and Game can find its players; Facade can tell if a player can build a city given a username and VertexLocation." />
     <MESSAGE value="Added empty Test for Facade and its Can-Do methods, and implemented most of the Can-Do methods in the actual Facade class." />
     <MESSAGE value="Modified Facade to have more clear comments" />
@@ -986,7 +1047,8 @@
     <MESSAGE value="DomesticTradeC keeps track of resources, RollController update commented out." />
     <MESSAGE value="commented out MaritimeTrade update()" />
     <MESSAGE value="commented out DomesticTrade update()" />
-    <option name="LAST_COMMIT_MESSAGE" value="commented out DomesticTrade update()" />
+    <MESSAGE value="commented out RollController update()" />
+    <option name="LAST_COMMIT_MESSAGE" value="commented out RollController update()" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -999,28 +1061,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/client/base/IOverlayView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/roll/IRollResultView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/states/StateEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.17453799">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/roll/RollView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1221,13 +1261,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/devcards/DevCardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="2.05794">
-          <caret line="82" column="37" selection-start-line="82" selection-start-column="37" selection-end-line="82" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/resources/ResourceBarElement.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1365,16 +1398,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-3.3035715">
-          <caret line="186" column="25" selection-start-line="186" selection-start-column="25" selection-end-line="186" selection-end-column="25" />
-          <folding>
-            <element signature="method#startTrade#0;class#DomesticTradeController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-13.148149">
@@ -1385,13 +1408,55 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/roll/RollController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7774869">
-          <caret line="114" column="11" selection-start-line="114" selection-start-column="11" selection-end-line="114" selection-end-column="11" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="110" column="2" selection-start-line="110" selection-start-column="2" selection-end-line="110" selection-end-column="2" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2244#2557#0" expanded="true" />
             <element signature="e#2556#2557#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeOverlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-14.887435">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/AcceptTradeOverlay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="164" column="53" selection-start-line="164" selection-start-column="53" selection-end-line="164" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.375">
+          <caret line="110" column="0" selection-start-line="110" selection-start-column="0" selection-end-line="110" selection-end-column="0" />
+          <folding>
+            <element signature="method#startTrade#0;class#DomesticTradeController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="21" column="8" selection-start-line="21" selection-start-column="8" selection-end-line="21" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/devcards/DevCardController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42146596">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
