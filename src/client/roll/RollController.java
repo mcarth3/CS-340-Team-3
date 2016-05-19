@@ -62,21 +62,6 @@ public class RollController extends Controller implements IRollController {
 	public void rollDice() {
 
 
-		//if(it's the Right State)
-		/*
-		{
-
-		//TIER: getRollView.isModalShowing()
-		//if(State.rolling
-		//getRollwView.SetMessage
-
-			resultView.setRollValue(Facade.RollDice());
-			//tell gameManager to update()
-			//timer on dice
-		}
-
-
-		 */
 		StateEnum theState = State.getCurrentState();
 		if(theState == StateEnum.PLAY)
 		{
@@ -116,6 +101,7 @@ private int counter;
 			if (theFacade.getGame().getTurnTracker().getStatus().equals("ROLL")) {
 				setTimer();
 				getRollView().showModal();
+				counter = 3;
 
 			}
 		}
@@ -127,25 +113,38 @@ private int counter;
 			@Override
 			public void run() {
 
-				if(counter > 0) {
-					getRollView().setMessage(counter + " seconds...");
-					counter--;
-					if(counter == 0)
-					{
-						rollDice();
-						counter = 3;
-					}
-					else
-					{
-						setTimer();
-					}
-				}
-				else {
-					counter = 3;
-				}
+				getRollView().setMessage("3 seconds...");
+
 			}
 		}, 1000);
 
+
+		timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+
+				getRollView().setMessage("2 seconds...");
+
+			}
+		}, 2000);
+
+		timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+
+				getRollView().setMessage("1 seconds...");
+
+			}
+		}, 3000);
+
+		timer.schedule(new TimerTask() {
+			@Override
+			public void run() {
+
+				rollDice();
+
+			}
+		}, 4000);
 	}
 
 

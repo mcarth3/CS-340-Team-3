@@ -21,12 +21,14 @@ public class TurnTracker extends AbstractModelPartition {
     public TurnTracker(int currentP, String stat,int newlongestroad, int newlargestarmy) {
     	currentTurn = currentP;
         status = stat;
+        System.out.println("TurnTracker Status: " + status);
         longestRoad = newlongestroad;
         largestArmy = newlargestarmy;
     }
     public TurnTracker(int currentP, String stat) {
     	currentTurn = currentP;
         status = stat;
+        System.out.println("TurnTracker Status: " + status);
     }
 
     /**
@@ -50,7 +52,7 @@ public class TurnTracker extends AbstractModelPartition {
      */
     public void updateStatus(String givenStatus) {
         status = givenStatus;
-        System.out.println("Status: " + status);
+        System.out.println("TurnTracker Status: " + status);
     }
 
     /**
