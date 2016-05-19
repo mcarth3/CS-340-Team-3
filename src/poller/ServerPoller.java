@@ -34,7 +34,7 @@ public class ServerPoller {
 		pollingTask = new ServerPollerTask();
 		timer = new Timer();
 		timer.schedule(pollingTask, 0, PollingInterval);
-		modelversion=0;
+		modelversion=1;
 		
 		manager = GameManager.getSingleton();
 	}
@@ -62,11 +62,14 @@ public class ServerPoller {
 		}
 		
 		
-		//System.out.println(polled);
+		//System.out.println(modeljson);
 		
 		if (modeljson==null){
 			System.out.println("modeljson is null-returning no changes");
-		}else {
+		}else if(modeljson.equals("true")){
+			return GameManager.getSingleton().getModel();
+		}else{
+			System.out.println("PARSING"+modeljson);
 			model = ModelParser.parse2(modeljson);
 		}
 		return model;
