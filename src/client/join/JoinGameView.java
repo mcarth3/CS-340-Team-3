@@ -51,22 +51,7 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 	{
 		this.initialize();
 	}
-	public void update(){
-		RealProxy rp = new RealProxy();
-		String result = rp.gamesList();
-		System.out.println(result); 
-
-		games = ModelParser.parse4(result); 
 	
-		PlayerInfo pi = new PlayerInfo();
-		GameManager gm = GameManager.getSingleton();
-		
-		pi.setName(gm.nameTemp);
-		pi.setId(gm.playerIdTemp);
-		setGames(games, pi);
-
-	}
-
 	private void initialize()
 	{
 		this.initializeView();
