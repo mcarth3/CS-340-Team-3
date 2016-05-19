@@ -145,6 +145,10 @@ public class RealProxy implements IServer{
 		JsonObject obj = new JsonObject();
 		return cc.send(obj, "/game/model?version="+versionNumber, UserCookie, GameCookie); 
 	}
+	public String gameModel() {
+		JsonObject obj = new JsonObject();
+		return cc.send(obj, "/game/model?version=", UserCookie, GameCookie); 
+	}
 
 	@Override
 	public String gameReset(Player user, Game game) {

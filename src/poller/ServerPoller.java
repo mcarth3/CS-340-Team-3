@@ -36,7 +36,7 @@ public class ServerPoller {
 		thisserver = NewProxy;
 		timer = new Timer();
 		timer.schedule(pollingTask, 0, PollingInterval);
-		modelversion=0;
+		modelversion=-1;
 		
 		manager = GameManager.getSingleton();
 	}
@@ -49,17 +49,20 @@ public class ServerPoller {
 	 * @throws PollException - if polling fails for any reason
 	 */
 	private Game poll() throws PollException {
-		if (modelversion != 0){
-			
-		}
+		
 		Game model = null;
 		String modeljson="";
 		try {
-			modeljson = thisserver.gameModel(modelversion);
+			if (modelversion == -1){
+				modeljson = thisserver.gameModel();
+			}else{
+				modeljson = thisserver.gameModel(modelversion);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			throw new PollException("Could not communicate with server");
 		}
+		
 		
 		
 		model = ModelParser.parse2(modeljson);
