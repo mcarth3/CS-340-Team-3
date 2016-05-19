@@ -1,8 +1,17 @@
 package client.domestic;
 
+import client.GameManager.GameManager;
+import client.data.PlayerInfo;
+import model.Facade;
+import model.Player;
 import shared.definitions.*;
 import client.base.*;
 import client.misc.*;
+import states.State;
+import states.StateEnum;
+
+import java.util.ArrayList;
+import java.util.Set;
 
 
 /**
@@ -13,6 +22,17 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	private IDomesticTradeOverlay tradeOverlay;
 	private IWaitView waitOverlay;
 	private IAcceptTradeOverlay acceptOverlay;
+
+	private int pid;
+	private Facade theFacade;
+	private Player thePlayer;
+	private PlayerInfo[] theTraders;
+	private int desiredTraderID;
+
+	private Set<ResourceType> sending;
+	private Set<ResourceType> recieving;
+	int amountRecieving;
+	int amountSending;
 
 	/**
 	 * DomesticTradeController constructor
@@ -66,19 +86,30 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 
 		getTradeOverlay().showModal();
 
+
+		ArrayList<Player> thePlayers = theFacade.getGame().getPlayers();
+		ArrayList<PlayerInfo> playersWithoutCurrent = new ArrayList<>();
+		for(int i = 0; i < thePlayers.size(); i++ )
+		{
+			if(thePlayers.get(i).getPlayerID() != pid) {
+				playersWithoutCurrent.add(thePlayers.get(i).toPlayerInfo());
+			}
+		}
+		PlayerInfo[] arrayNoCurrentPlayer = new PlayerInfo[playersWithoutCurrent.size()];
+
+		playersWithoutCurrent.toArray( arrayNoCurrentPlayer );
+		theTraders = arrayNoCurrentPlayer;
+
+
+
+		getTradeOverlay().setPlayers(theTraders);
+
 	}
 
 	@Override
 	public void decreaseResourceAmount(ResourceType resource) {
 
-		//if(current player has resources)
-		//set ResourceAmountChangeEnabled
 
-		//ADDED BELOW:\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/\/
-		//boolean canDecrease = false, canIncrease = false;
-
-		//tradeOverlay.setResourceAmountChangeEnabled(resource, canIncrease, canDecrease);
-		//ADDED ABOVE^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 	}
 
@@ -91,27 +122,34 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	public void sendTradeOffer() {
 
 		getTradeOverlay().closeModal();
-//		getWaitOverlay().showModal();
+		getWaitOverlay().showModal();
 	}
 
 	@Override
 	public void setPlayerToTradeWith(int playerIndex) {
-
+		getTradeOverlay().setStateMessage("Select player!");
+		desiredTraderID = playerIndex;
 	}
 
 	@Override
 	public void setResourceToReceive(ResourceType resource) {
-
+		recieving.add(resource);
+		sending.remove(resource);
+		checkTradeValues();
 	}
 
 	@Override
 	public void setResourceToSend(ResourceType resource) {
-
+		sending.add(resource);
+		recieving.remove(resource);
+		checkTradeValues();
 	}
 
 	@Override
 	public void unsetResource(ResourceType resource) {
-
+		sending.remove(resource);
+		recieving.remove(resource);
+		checkTradeValues();
 	}
 
 	@Override
@@ -127,9 +165,54 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	}
 	
 	public void update(){
+
+		thePlayer = GameManager.getSingleton().getthisplayer();
+		if(State.getCurrentState() == StateEnum.PLAY && thePlayer.resourcesOverZero().length > 0)
+		{
+			getTradeView().enableDomesticTrade(true);
+			getTradeOverlay().setStateMessage("Select player!");
+			getTradeOverlay().setPlayerSelectionEnabled(true);
+		}
+		else
+		{
+			getTradeView().enableDomesticTrade(false);
+			getTradeOverlay().setStateMessage("Can't trade now!");
+			getTradeOverlay().setPlayerSelectionEnabled(false);
+		}
+
+
 	}
 
-
+	/**
+	 * Checks if player has selected another player and resources to both send and recieve.
+	 * Sets state message accordingly.
+	 */
+	public void checkTradeValues()
+	{
+		if(desiredTraderID > -1) {
+			if (recieving.size() > 0) {
+				if(sending.size() > 0)
+				{
+					getTradeOverlay().setTradeEnabled(true);
+				}
+				else
+				{
+					getTradeOverlay().setStateMessage("Choose what to send!");
+					getTradeOverlay().setTradeEnabled(false);
+				}
+			}
+			else
+			{
+				getTradeOverlay().setStateMessage("Choose what to receive!");
+				getTradeOverlay().setTradeEnabled(false);
+			}
+		}
+		else
+		{
+			getTradeOverlay().setStateMessage("Choose player!");
+			getTradeOverlay().setTradeEnabled(false);
+		}
+	}
 
 }
 

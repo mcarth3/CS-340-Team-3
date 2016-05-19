@@ -1,5 +1,7 @@
 package model;
 import java.util.ArrayList;
+
+import client.data.PlayerInfo;
 import model.bank.DevCardList;
 import model.bank.ResourceList;
 import poller.modeljsonparser.AbstractModelPartition;
@@ -639,6 +641,21 @@ public class Player extends AbstractModelPartition {
         }
         return false;
     }
+
+    /**
+     * returns a PlayerInfo object with this player's info
+     * @return
+     */
+    public PlayerInfo toPlayerInfo()
+    {
+        PlayerInfo newInfo = new PlayerInfo();
+        newInfo.setId(playerID);
+        newInfo.setPlayerIndex(playerIndex);
+        newInfo.setName(name);
+        newInfo.setColor(color);
+        return newInfo;
+    }
+
 
     /**
      * Checks to see if the player can be robbed by another player
