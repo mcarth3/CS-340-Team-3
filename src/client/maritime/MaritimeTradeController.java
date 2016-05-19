@@ -137,7 +137,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 
 
-
+		/*thePlayer = GameManager.getSingleton().getthisplayer();
 		if(thePlayer.canOfferBankTrade())		//TODO: this needs to be changed for ports
 		{
 			pid = GameManager.getSingleton().getthisplayer().getPlayerID();
@@ -151,7 +151,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		else
 		{
 			getTradeView().enableMaritimeTrade(false);
-		}
+		}*/
 
 
 	}
