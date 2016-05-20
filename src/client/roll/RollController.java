@@ -6,6 +6,7 @@ import model.Facade;
 import model.Game;
 import model.Player;
 import model.TurnTracker;
+import proxy.RealProxy;
 import states.State;
 import states.StateEnum;
 
@@ -109,7 +110,12 @@ private int counter;
 			System.out.println("Status by RollController update(): " + theGame.getTurnTracker().getStatus());
 			if (theGame.getTurnTracker().getStatus().equals("Rolling")) {
 				System.out.println("Rolling!!");
-				if(GameManager.getSingleton().getthisplayer().getPlayerID() == theGame.getTurnTracker().getCurrentPlayer()) {
+				//if(GameManager.getSingleton().getthisplayer().getPlayerID() == theGame.getTurnTracker().getCurrentPlayer()) {
+				System.out.println(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer());
+				System.out.println(GameManager.getSingleton().getthisplayer().getPlayerIndex());
+
+				if(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
+
 					System.out.println("It's the player!");
 					//UNCOMMENT BELOW:
 					//setTimer();
@@ -119,7 +125,8 @@ private int counter;
 					 * REMOVE BELOW STATEMENT
 					 */
 					int pid = GameManager.getSingleton().getthisplayer().getPlayerID();
-					theFacade.roll(pid);
+					//theFacade.roll(pid);
+					RealProxy.getSingleton().rollNumber(pid, 4);
 				}
 			}
 		}
