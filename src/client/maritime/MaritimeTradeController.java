@@ -138,7 +138,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 
 
-theFacade = Facade.getFacade();
+theFacade = Facade.getSingleton();
 		if(GameManager.getSingleton() != null) {
 			thePlayer = GameManager.getSingleton().getthisplayer();
 			if (thePlayer.canOfferBankTrade())        //TODO: this needs to be changed for ports

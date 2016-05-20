@@ -120,13 +120,15 @@ public class Game extends AbstractModelPartition {
     }
 
     public Game() {
+        gameDice = new Dice();
 		// TODO Auto-generated constructor stub
 	}
 
 
 	public Game(Map m, ResourceList b, ArrayList<Player> ps, TurnTracker tt, TradeOffer tradeOffer) {
 		// TODO Auto-generated constructor stub
-	}
+	    gameDice = new Dice();
+    }
 
 	/**
      * This will be called after a player completes their turn. The main data will then

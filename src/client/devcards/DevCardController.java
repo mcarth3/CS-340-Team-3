@@ -111,7 +111,7 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	}
 	public void update(){
-		theFacade = Facade.getFacade();
+		theFacade = Facade.getSingleton();
 		if(theFacade != null && GameManager.getSingleton() != null)
 		{
 			thePlayer = GameManager.getSingleton().getthisplayer();

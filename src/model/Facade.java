@@ -34,14 +34,14 @@ public class Facade extends AbstractModelPartition {
     private static Facade singleton = null;
 
     private static Facade theFacade;
-    public static Facade getFacade()
+    /*public static Facade getFacade()
     {
         if(theFacade == null)
         {
             theFacade = new Facade();
         }
         return theFacade;
-    }
+    }*/
     //**************************************ADDED ABOVE FOR SINGLETON
 
 
@@ -66,13 +66,13 @@ public class Facade extends AbstractModelPartition {
         proxy = p;
     }
 
-    public Facade(Game newGame) {
+    /*public Facade(Game newGame) {
     	theGame = newGame;
 
     }
     public Facade() {
         theGame = null;
-	}
+	}*/
     
     public void SetGame(Game newGame){
     	theGame = newGame;
@@ -198,7 +198,7 @@ public class Facade extends AbstractModelPartition {
     public boolean canBuildRoad(int playerId,EdgeLocation edge) {
         if (theGame == null)//game isnt null
             return false;
-		if (theGame.getTurnTracker().getStatus() == "FirstRound" || theGame.getTurnTracker().getStatus() == "Second Round") {
+		if (theGame.getTurnTracker().getStatus().equals("FirstRound") || theGame.getTurnTracker().getStatus().equals("Second Round")) {
 			for (int i=0; i < theGame.getMap().getRoads().size(); i++) { 
 				if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().equals(edge.getNormalizedLocation()))  //if space is taken
 					return false;
@@ -644,7 +644,7 @@ public class Facade extends AbstractModelPartition {
     }
 	public static Facade getSingleton()  {
 		if(singleton == null) {
-			singleton = new Facade();
+			singleton = new Facade(RealProxy.getSingleton());
 		}
 		return singleton;	
 	}

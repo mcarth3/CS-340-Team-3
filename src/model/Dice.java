@@ -27,9 +27,15 @@ public class Dice extends AbstractModelPartition {
    */
   public int rollDice()
   {
-    Random r = new Random();
-    int n = r.nextInt(2 - 12) + 3;
-    diceRoll = n;
+
+    Random rand = new Random();
+
+    int  n = rand.nextInt(6) + 1;
+
+
+    int  n2 = rand.nextInt(6) + 1;
+
+    diceRoll = n + n2;
     return n;
   }
   public boolean canRoll(int playerID)

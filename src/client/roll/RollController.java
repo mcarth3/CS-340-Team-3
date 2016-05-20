@@ -3,6 +3,7 @@ package client.roll;
 import client.GameManager.GameManager;
 import client.base.*;
 import model.Facade;
+import model.Game;
 import model.Player;
 import model.TurnTracker;
 import states.State;
@@ -22,7 +23,7 @@ public class RollController extends Controller implements IRollController {
 	private State state;
 
 	private Facade theFacade;
-
+	private Game theGame;
 	private String input;
 
 	private IRollResultView resultView;
@@ -38,11 +39,10 @@ public class RollController extends Controller implements IRollController {
 		super(view);
 		//Singleton:
 		//state = State.PLAY;
-
 		//SINGLETON = new RollController(view, resultView);
 		//Singleton^^^^^^^^^^
 
-		theFacade = Facade.getFacade();
+
 
 		setResultView(resultView);
 	}
@@ -61,18 +61,23 @@ public class RollController extends Controller implements IRollController {
 	@Override
 	public void rollDice() {
 
-
+		System.out.println("in the rollDice function!");
 		StateEnum theState = State.getCurrentState();
-		if(theState == StateEnum.PLAY)
-		{
+		/*if(theState == StateEnum.PLAY)
+		{*/
+			System.out.println("State is play!");
 			Player thePlayer = GameManager.getSingleton().getthisplayer();
 			int pid = thePlayer.getPlayerID();
-			if(theFacade.canRoll(pid)) {
+			if(theGame.canRoll(pid)) {
 			int currentRoll = theFacade.roll(pid);
+				System.out.println("Current roll: " + currentRoll);
 			resultView.setRollValue(currentRoll);
+				setResultView(resultView);
 				resultView.showModal();
+				System.out.println("I set resultView!");
 
-			}
+
+			/*}*/
 		}
 
 
@@ -95,14 +100,27 @@ private int counter;
 
 	public void update(){
 	System.out.println("You're in the RollController update()!!!");
-		if(GameManager.getSingleton() != null && theFacade.getGame() != null
-				&& theFacade.getGame().getTurnTracker() != null && theFacade.getGame().getTurnTracker().getStatus()!= null) {
-			System.out.println("Status by RollController update(): " + theFacade.getGame().getTurnTracker().getStatus());
-			if (theFacade.getGame().getTurnTracker().getStatus().equals("ROLL")) {
-				setTimer();
-				getRollView().showModal();
-				counter = 3;
+		GameManager.getSingleton();
+		theFacade = GameManager.getSingleton().getModelfacade();
+		theGame = GameManager.getSingleton().getModel();
+		//if(theFacade.getGame()/*.getTurnTracker().getStatus()*/!= null) {
+		if(theGame.getTurnTracker()/*.getStatus()*/!= null) {
 
+			System.out.println("Status by RollController update(): " + theGame.getTurnTracker().getStatus());
+			if (theGame.getTurnTracker().getStatus().equals("Rolling")) {
+				System.out.println("Rolling!!");
+				if(GameManager.getSingleton().getthisplayer().getPlayerID() == theGame.getTurnTracker().getCurrentPlayer()) {
+					System.out.println("It's the player!");
+					//UNCOMMENT BELOW:
+					//setTimer();
+					//getRollView().showModal();
+					//counter = 3;
+					/**
+					 * REMOVE BELOW STATEMENT
+					 */
+					int pid = GameManager.getSingleton().getthisplayer().getPlayerID();
+					theFacade.roll(pid);
+				}
 			}
 		}
 	}
@@ -114,7 +132,7 @@ private int counter;
 			public void run() {
 
 				getRollView().setMessage("3 seconds...");
-
+				System.out.println("Rolling in 3...");
 			}
 		}, 1000);
 
@@ -124,7 +142,7 @@ private int counter;
 			public void run() {
 
 				getRollView().setMessage("2 seconds...");
-
+				System.out.println("Rolling in 2...");
 			}
 		}, 2000);
 
@@ -133,14 +151,15 @@ private int counter;
 			public void run() {
 
 				getRollView().setMessage("1 seconds...");
-
+				System.out.println("Rolling in 1...");
 			}
 		}, 3000);
 
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-
+				System.out.println("calling rollDice()!!!!");
+				getRollView().closeModal();
 				rollDice();
 
 			}

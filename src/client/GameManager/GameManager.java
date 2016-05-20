@@ -10,6 +10,7 @@ import model.Player;
 import model.TurnTracker;
 import poller.modeljsonparser.ModelParser;
 import proxy.MockProxy;
+import proxy.RealProxy;
 import shared.definitions.CatanColor;
 import states.State;
 
@@ -139,9 +140,12 @@ public class GameManager extends Observable {
 	public Player getthisplayer() {
 		return player;
 	}
-	
-	
-    public int getversion(){
+
+	public Facade getModelfacade() {
+		return modelfacade;
+	}
+
+	public int getversion(){
     	return modelfacade.getversion(); 
     }
     public TurnTracker getTurnTracker() {
