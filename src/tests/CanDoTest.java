@@ -78,15 +78,15 @@ public class CanDoTest
         m.setRobber(r);
 
         ArrayList<VertexObject> bldgs = new ArrayList<VertexObject>();
-        bldgs.add(new City(new VertexLocation(new HexLocation(1, 2), VertexDirection.NorthWest), 0));
-        bldgs.add(new City(new VertexLocation(new HexLocation(3, 2), VertexDirection.NorthEast), 1));
-        bldgs.add(new Settlement(new VertexLocation(new HexLocation(2, 4), VertexDirection.East), 0));
-        bldgs.add(new Settlement(new VertexLocation(new HexLocation(1, 4), VertexDirection.East), 1));
-        bldgs.add(new Settlement(new VertexLocation(new HexLocation(2, 3), VertexDirection.NorthEast), 2));
-        bldgs.add(new Settlement(new VertexLocation(new HexLocation(2, 3), VertexDirection.NorthWest), 2));
-        bldgs.add(new Settlement(new VertexLocation(new HexLocation(4, 3), VertexDirection.East), 3));
-        bldgs.add(new Settlement(new VertexLocation(new HexLocation(4, 3), VertexDirection.West), 3));
-        bldgs.add(new Settlement(new VertexLocation(new HexLocation(5, 1), VertexDirection.West), 3));
+ //       bldgs.add(new City(new VertexLocation(new HexLocation(1, 2), VertexDirection.NorthWest), 0));
+  ///      bldgs.add(new City(new VertexLocation(new HexLocation(3, 2), VertexDirection.NorthEast), 1));
+    //    bldgs.add(new Settlement(new VertexLocation(new HexLocation(2, 4), VertexDirection.East), 0));
+     //   bldgs.add(new Settlement(new VertexLocation(new HexLocation(1, 4), VertexDirection.East), 1));
+      //  bldgs.add(new Settlement(new VertexLocation(new HexLocation(2, 3), VertexDirection.NorthEast), 2));
+      //  bldgs.add(new Settlement(new VertexLocation(new HexLocation(2, 3), VertexDirection.NorthWest), 2));
+      //  bldgs.add(new Settlement(new VertexLocation(new HexLocation(4, 3), VertexDirection.East), 3));
+      //  bldgs.add(new Settlement(new VertexLocation(new HexLocation(4, 3), VertexDirection.West), 3));
+      //  bldgs.add(new Settlement(new VertexLocation(new HexLocation(5, 1), VertexDirection.West), 3));
 
         ArrayList<Port> ports = new ArrayList<Port>();
         Port p = new Port(5, 1, EdgeDirection.NW, 3);
