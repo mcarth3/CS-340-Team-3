@@ -118,15 +118,15 @@ private int counter;
 
 					System.out.println("It's the player!");
 					//UNCOMMENT BELOW:
-					//setTimer();
-					//getRollView().showModal();
-					//counter = 3;
+					setTimer();
+					getRollView().showModal();
+					counter = 3;
 					/**
 					 * REMOVE BELOW STATEMENT
-					 */
+
 					int pid = GameManager.getSingleton().getthisplayer().getPlayerID();
 					//theFacade.roll(pid);
-					RealProxy.getSingleton().rollNumber(pid, 4);
+					RealProxy.getSingleton().rollNumber(pid, 4);*/
 				}
 			}
 		}
