@@ -7,7 +7,6 @@
   <component name="ChangeListManager">
     <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/roll/RollController.java" afterPath="$PROJECT_DIR$/src/client/roll/RollController.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,8 +89,8 @@
       <file leaf-file-name="RollController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/client/roll/RollController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.030303031">
-              <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.64723927">
+              <caret line="121" column="46" selection-start-line="121" selection-start-column="46" selection-end-line="121" selection-end-column="46" />
               <folding>
                 <element signature="e#1079#1080#0" expanded="true" />
                 <element signature="e#1103#1104#0" expanded="true" />
@@ -411,10 +410,24 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/DevCardController.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/map/MapComponent.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeController.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/RollController.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/locations/EdgeLocation.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/locations/VertexDirection.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/locations/VertexLocation.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/MapComponent.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/MapController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/City.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Hex.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Map.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/Settlement.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/model/VertexObject.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/shared/locations/EdgeLocation.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/shared/locations/VertexDirection.java</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/shared/locations/VertexLocation.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/tests/Facade_CAN_DO_methodTests.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -1035,7 +1048,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463771359324</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="RollController works!">
+      <created>1463773415488</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1463773415488</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1079,11 +1098,11 @@
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24549918" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32242227" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2782324" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1137,7 +1156,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added functions for Person checking on their available resources, modified RollController and MaritimeTradeController for preliminary rolling and bank trading (NOT dock trading yet)." />
     <MESSAGE value="Fine-tuned Maritime controller to change player resources on bank trade. Still have multiple TODOs in maritimeController." />
     <MESSAGE value="changed Map to map, and took out RollController() errors" />
     <MESSAGE value="changed Map to map, and took out RollController() errors. changed ClientModel to have Map object called &quot;map&quot;" />
@@ -1162,7 +1180,8 @@
     <MESSAGE value="debugging RollController (more progress shown in println for update())" />
     <MESSAGE value="overrode the rollController to just call roll() on the proxy and then go to status playing.&#10;Also updated Facade to always have a RealProxy, GameManager returns Facade, Dice have 2 numbers generated and added (not 1) and Game modified to use correct values in roll()." />
     <MESSAGE value="modifying rollController but roll still doesn't work. Most changes in update()" />
-    <option name="LAST_COMMIT_MESSAGE" value="modifying rollController but roll still doesn't work. Most changes in update()" />
+    <MESSAGE value="RollController works!" />
+    <option name="LAST_COMMIT_MESSAGE" value="RollController works!" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1492,7 +1511,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="267" column="9" selection-start-line="267" selection-start-column="8" selection-end-line="267" selection-end-column="8" />
-          <folding />
+          <folding>
+            <element signature="e#769#770#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1600,8 +1621,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/roll/RollController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.030303031">
-          <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.64723927">
+          <caret line="121" column="46" selection-start-line="121" selection-start-column="46" selection-end-line="121" selection-end-column="46" />
           <folding>
             <element signature="e#1079#1080#0" expanded="true" />
             <element signature="e#1103#1104#0" expanded="true" />
