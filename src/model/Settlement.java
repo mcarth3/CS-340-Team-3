@@ -10,6 +10,7 @@ import shared.locations.VertexLocation;
 public class Settlement extends VertexObject 
 {
 	VertexLocation location;
+	//Integer owner; 
 	
 	public Settlement(VertexLocation vertexLocation, int player)
 	{

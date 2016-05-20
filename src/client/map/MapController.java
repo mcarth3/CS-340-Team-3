@@ -12,6 +12,7 @@ import model.Facade;
 import model.Game;
 import model.Hex;
 import model.Map;
+import model.Player;
 import model.Port;
 import model.Road;
 import model.Settlement;
@@ -247,17 +248,27 @@ public class MapController extends Controller implements IMapController {
 
 		getView().placeRobber(map.getRobber().getHl());
         
-        
-        
-        
-        
         //THIS IS JUST TEMPORARY
         if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")){
         	RealProxy.getSingleton().robPlayer(1, 1, new HexLocation(0, 0));
         }
-        //THIS IS JUST TEMPORARY
-        
+        for(int a=0; a<roads.size(); a++){
+        	// get real color
+			getView().placeRoad(roads.get(a).getLocation(), CatanColor.BLUE);
+        }
+        for(int a=0; a<set.size(); a++){
+        	//System.out.println(set.get(a)); 
+        	//HexLocation hl = set.get(a).getLocation().getHexLoc().getX();
+        	////HexLocation hl = new HexLocation(set.get(a).getLocation().getHexLoc().getX(), 1); 
+        	//VertexDirection vd = set.get(a).getLocation().getDir(); 
+        	////VertexDirection vd = VertexDirection.NorthEast; 
+        	////VertexLocation vl = new VertexLocation(hl, vd);
+//        	getView().placeSettlement(vertLoc, color) ;
+        	//getView().placeSettlement(new VertexLocation(set.get(a).getLocation().getHexLoc(),  set.get(a).getLocation().getDir()), CatanColor.RED);
+        	////getView().placeSettlement(vl, CatanColor.RED);
+        }
     }
+	
     public HexType getHexType(String str){
     	HexType result = HexType.BRICK;
     	if(str.equals("brick")){

@@ -11,9 +11,9 @@ import model.Game;
 public class VertexLocation
 {
 	
-	private VertexDirection direction;
-	private int x;
-	private int y;
+	public VertexDirection direction;
+	public int x;
+	public int y;
 	
 	public VertexLocation(HexLocation hexLoc, VertexDirection dir)
 	{
