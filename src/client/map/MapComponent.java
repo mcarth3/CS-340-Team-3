@@ -129,42 +129,42 @@ public class MapComponent extends JComponent
 		CITY.add(cHighPoint);
 		
 		VERTEX_POINTS = new HashMap<VertexDirection, Point2D>();
-		VERTEX_POINTS.put(VertexDirection.West,
+		VERTEX_POINTS.put(VertexDirection.W,
 						  new Point2D.Double(-HEX_IMAGE_WIDTH / 2, 0));
-		VERTEX_POINTS.put(VertexDirection.NorthWest,
+		VERTEX_POINTS.put(VertexDirection.NW,
 						  new Point2D.Double(-HEX_IMAGE_WIDTH / 4,
 											 -HEX_IMAGE_HEIGHT / 2));
-		VERTEX_POINTS.put(VertexDirection.NorthEast,
+		VERTEX_POINTS.put(VertexDirection.NE,
 						  new Point2D.Double(HEX_IMAGE_WIDTH / 4,
 											 -HEX_IMAGE_HEIGHT / 2));
-		VERTEX_POINTS.put(VertexDirection.East,
+		VERTEX_POINTS.put(VertexDirection.E,
 						  new Point2D.Double(HEX_IMAGE_WIDTH / 2, 0));
-		VERTEX_POINTS.put(VertexDirection.SouthEast,
+		VERTEX_POINTS.put(VertexDirection.SE,
 						  new Point2D.Double(HEX_IMAGE_WIDTH / 4,
 											 HEX_IMAGE_HEIGHT / 2));
-		VERTEX_POINTS.put(VertexDirection.SouthWest,
+		VERTEX_POINTS.put(VertexDirection.SW,
 						  new Point2D.Double(-HEX_IMAGE_WIDTH / 4,
 											 HEX_IMAGE_HEIGHT / 2));
 		
 		EDGE_POINTS = new HashMap<EdgeDirection, Point2D>();
 		EDGE_POINTS.put(EdgeDirection.NW,
-						average(VERTEX_POINTS.get(VertexDirection.West),
-								VERTEX_POINTS.get(VertexDirection.NorthWest)));
+						average(VERTEX_POINTS.get(VertexDirection.W),
+								VERTEX_POINTS.get(VertexDirection.NW)));
 		EDGE_POINTS.put(EdgeDirection.N,
-						average(VERTEX_POINTS.get(VertexDirection.NorthWest),
-								VERTEX_POINTS.get(VertexDirection.NorthEast)));
+						average(VERTEX_POINTS.get(VertexDirection.NW),
+								VERTEX_POINTS.get(VertexDirection.NE)));
 		EDGE_POINTS.put(EdgeDirection.NE,
-						average(VERTEX_POINTS.get(VertexDirection.NorthEast),
-								VERTEX_POINTS.get(VertexDirection.East)));
+						average(VERTEX_POINTS.get(VertexDirection.NE),
+								VERTEX_POINTS.get(VertexDirection.E)));
 		EDGE_POINTS.put(EdgeDirection.SE,
-						average(VERTEX_POINTS.get(VertexDirection.East),
-								VERTEX_POINTS.get(VertexDirection.SouthEast)));
+						average(VERTEX_POINTS.get(VertexDirection.E),
+								VERTEX_POINTS.get(VertexDirection.SE)));
 		EDGE_POINTS.put(EdgeDirection.S,
-						average(VERTEX_POINTS.get(VertexDirection.SouthEast),
-								VERTEX_POINTS.get(VertexDirection.SouthWest)));
+						average(VERTEX_POINTS.get(VertexDirection.SE),
+								VERTEX_POINTS.get(VertexDirection.SW)));
 		EDGE_POINTS.put(EdgeDirection.SW,
-						average(VERTEX_POINTS.get(VertexDirection.SouthWest),
-								VERTEX_POINTS.get(VertexDirection.West)));
+						average(VERTEX_POINTS.get(VertexDirection.SW),
+								VERTEX_POINTS.get(VertexDirection.W)));
 		
 		PORT_ROTATIONS = new HashMap<EdgeDirection, java.lang.Double>();
 		PORT_ROTATIONS.put(EdgeDirection.NW,

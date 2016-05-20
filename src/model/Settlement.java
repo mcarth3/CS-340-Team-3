@@ -7,14 +7,14 @@ import shared.locations.VertexLocation;
  * <br><b>Domain:</b> 0-5 number of settlements 
  * @author Jesse McArthur
  */
-public class Settlement extends VertexObject 
+public class Settlement 
 {
 	VertexLocation location;
-	//Integer owner; 
+	Integer owner; 
 	
-	public Settlement(VertexLocation vertexLocation, int player)
+	public Settlement(VertexLocation vertexLocation, Integer player)
 	{
-		owner = player;
+		this.owner = player;
 		this.location =vertexLocation;
 	}
 	

@@ -198,7 +198,10 @@ public class MapController extends Controller implements IMapController {
 
         	//h.getNumber()
         	HexLocation hexLoc = h.getLocation();
-        	getView().addHex(hexLoc, hexType);	
+        	getView().addHex(hexLoc, hexType);
+        	System.out.println(h.getNumber()); 
+        	getView().addNumber(hexLoc, 8);
+        	
         }   
         
     	getView().addHex(new HexLocation(-3, 0), HexType.WATER);
@@ -224,23 +227,17 @@ public class MapController extends Controller implements IMapController {
         	//System.out.println(ports.get(a)); 
         	HexLocation hexLoc = ports.get(a).getLocation(); 
         	getView().addPort(new EdgeLocation(hexLoc, ports.get(a).getDirection()), getPortType(ports.get(a).getResource()));
-    
-
-
         }
         
 		for (int a=0; a<set.size(); a++) {
-			CatanColor color = CatanColor.toColor(players.get(set.get(a).getOwner()).getColor());
-			if (set.get(a).getLocation() == null){
-			System.out.println("SETTLEMENT LOCATION IS NULL");
-			}else{
-				getView().placeSettlement(set.get(a).getLocation(), color);
-			}
+			CatanColor color = players.get(set.get(a).getOwner()).getColor();
+			getView().placeSettlement(set.get(a).getVertextLocation(), color);
+			
 		}
 
 		for (int a=0; a<cities.size(); a++) {
-			CatanColor color = CatanColor.toColor(players.get(cities.get(a).getOwner()).getColor());
-			getView().placeCity(cities.get(a).getLocation(), color);
+			CatanColor color = players.get(cities.get(a).getOwner()).getColor();
+			getView().placeCity(cities.get(a).getVertextLocation(), color);
 		}
 
 		for (int a=0; a<roads.size(); a++) {
@@ -253,21 +250,6 @@ public class MapController extends Controller implements IMapController {
         //THIS IS JUST TEMPORARY
         if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")){
         	RealProxy.getSingleton().robPlayer(1, 1, new HexLocation(0, 0));
-        }
-        for(int a=0; a<roads.size(); a++){
-        	// get real color
-			getView().placeRoad(roads.get(a).getLocation(), CatanColor.BLUE);
-        }
-        for(int a=0; a<set.size(); a++){
-        	//System.out.println(set.get(a)); 
-        	//HexLocation hl = set.get(a).getLocation().getHexLoc().getX();
-        	////HexLocation hl = new HexLocation(set.get(a).getLocation().getHexLoc().getX(), 1); 
-        	//VertexDirection vd = set.get(a).getLocation().getDir(); 
-        	////VertexDirection vd = VertexDirection.NorthEast; 
-        	////VertexLocation vl = new VertexLocation(hl, vd);
-//        	getView().placeSettlement(vertLoc, color) ;
-        	//getView().placeSettlement(new VertexLocation(set.get(a).getLocation().getHexLoc(),  set.get(a).getLocation().getDir()), CatanColor.RED);
-        	////getView().placeSettlement(vl, CatanColor.RED);
         }
     }
 	
@@ -323,6 +305,5 @@ public class MapController extends Controller implements IMapController {
 	    }
     	return result; 
     }
-
 	
 }
