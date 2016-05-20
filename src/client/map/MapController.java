@@ -177,6 +177,8 @@ public class MapController extends Controller implements IMapController {
 		
 	}
 	public void update() {   
+		System.out.print(GameManager.getSingleton().getModel().getPlayers().get(0).getColor());
+		
 		//if we need to get our player's turn - if(model.getTurnTracker().getCurrentPlayer() == manager.getthisplayer().getPlayerIndex()) {
     	GameManager gm = GameManager.getSingleton();
 
@@ -228,7 +230,7 @@ public class MapController extends Controller implements IMapController {
         }
         
 		for (int a=0; a<set.size(); a++) {
-			CatanColor color = players.get(set.get(a).getOwner()).getColor();
+			CatanColor color = CatanColor.toColor(players.get(set.get(a).getOwner()).getColor());
 			if (set.get(a).getLocation() == null){
 			System.out.println("SETTLEMENT LOCATION IS NULL");
 			}else{
@@ -237,12 +239,12 @@ public class MapController extends Controller implements IMapController {
 		}
 
 		for (int a=0; a<cities.size(); a++) {
-			CatanColor color = players.get(cities.get(a).getOwner()).getColor();
+			CatanColor color = CatanColor.toColor(players.get(cities.get(a).getOwner()).getColor());
 			getView().placeCity(cities.get(a).getLocation(), color);
 		}
 
 		for (int a=0; a<roads.size(); a++) {
-			CatanColor color = players.get(roads.get(a).getOwner()).getColor();
+			CatanColor color = CatanColor.toColor(players.get(roads.get(a).getOwner()).getColor());
 			getView().placeRoad(roads.get(a).getLocation(), color);
 		}
 

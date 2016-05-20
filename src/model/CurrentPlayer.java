@@ -8,7 +8,7 @@ import shared.definitions.CatanColor;
 public class CurrentPlayer {
     private String username;
     private String password;
-    private CatanColor color;
+    private String color;
     private int playerId;
     private int playerIndex;
     private int gameId;
@@ -49,11 +49,11 @@ public class CurrentPlayer {
         this.password = password;
     }
 
-    public CatanColor getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(CatanColor color) {
+    public void setColor(String color) {
         this.color = color;
     }
 
