@@ -14,7 +14,7 @@ public class Facade_CAN_DO_methodTests {
     @Test
     void testCanPlayerBuySettlement() {
         Game theNewGame = new Game();
-        Facade newFacade = new Facade(theNewGame);
+        //Facade newFacade = new Facade();
         theNewGame.addPlayer("bob", "123");
         Player thePlayer = theNewGame.getPlayers().get(0);
         HexLocation theLocation;
