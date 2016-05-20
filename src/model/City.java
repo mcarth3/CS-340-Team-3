@@ -9,10 +9,12 @@ import shared.locations.VertexLocation;
  * <br><b>Domain:</b> The owner index must be between 0 and 4
  * @author Jesse McArthur
  */
-public class City extends VertexObject
+public class City
 {
 	VertexLocation location;
-	public City(VertexLocation vertexLocation, int player)
+	Integer owner; 
+	
+	public City(VertexLocation vertexLocation, Integer player)
 	{
 		owner = player;
 		location = vertexLocation;

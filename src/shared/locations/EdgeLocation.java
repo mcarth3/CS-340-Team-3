@@ -20,6 +20,12 @@ public class EdgeLocation
 		setDir(direction);
 	}
 	
+	public Integer getX(){
+		return x;
+	}
+	public Integer getY(){
+		return y; 
+	}
 	public HexLocation getHexLoc()
 	{
 		HexLocation hexLoc = new HexLocation(x,y);
@@ -172,16 +178,16 @@ public class EdgeLocation
 		EdgeLocation normalized = this.getNormalizedLocation();
 		switch (normalized.getDir()) {
 			case NW:
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.West).getNormalizedLocation());
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthWest));
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.W).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NW));
 				break;
 			case N:
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthWest).getNormalizedLocation());
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthEast));
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NW).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NE));
 				break;
 			case NE:
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.East).getNormalizedLocation());
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthEast));
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.E).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NE));
 				break;
 			default:
 		}

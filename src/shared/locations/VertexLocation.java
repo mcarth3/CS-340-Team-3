@@ -12,6 +12,7 @@ public class VertexLocation
 {
 	
 	public VertexDirection direction;
+	//public String direction;
 	public int x;
 	public int y;
 	
@@ -39,7 +40,21 @@ public class VertexLocation
 	
 	public VertexDirection getDir()
 	{
-		return direction;
+//		VertexDirection result = VertexDirection.East;
+//		if(direction.equals("NE")){
+//			result = VertexDirection.NorthEast;
+//		}else if(direction.equals("NW")){
+//			result = VertexDirection.NorthWest;
+//		}else if(direction.equals("E")){
+//			result = VertexDirection.East;
+//		}else if(direction.equals("SE")){
+//			result = VertexDirection.SouthEast;
+//		}else if(direction.equals("SW")){
+//			result = VertexDirection.SouthWest;
+//		}else if(direction.equals("W")){
+//			result = VertexDirection.West;
+//		}
+		return direction; 
 	}
 	
 	private void setDir(VertexDirection direction)
@@ -104,25 +119,25 @@ public class VertexLocation
 		HexLocation hexLoc = new HexLocation(x,y);
 		switch (direction)
 		{
-			case NorthWest:
-			case NorthEast:
+			case NW:
+			case NE:
 				return this;
-			case West:
+			case W:
 				return new VertexLocation(
 										  hexLoc.getNeighborLoc(EdgeDirection.SW),
-										  VertexDirection.NorthEast);
-			case SouthWest:
+										  VertexDirection.NE);
+			case SW:
 				return new VertexLocation(
 										  hexLoc.getNeighborLoc(EdgeDirection.S),
-										  VertexDirection.NorthWest);
-			case SouthEast:
+										  VertexDirection.NW);
+			case SE:
 				return new VertexLocation(
 										  hexLoc.getNeighborLoc(EdgeDirection.S),
-										  VertexDirection.NorthEast);
-			case East:
+										  VertexDirection.NE);
+			case E:
 				return new VertexLocation(
 										  hexLoc.getNeighborLoc(EdgeDirection.SE),
-										  VertexDirection.NorthWest);
+										  VertexDirection.NW);
 			default:
 				assert false;
 				return null;
@@ -133,37 +148,37 @@ public class VertexLocation
 		ArrayList<EdgeLocation> edges = new ArrayList<EdgeLocation>();
 		ArrayList<VertexLocation> vertices = new ArrayList<VertexLocation>();
 		VertexLocation normalized = this.getNormalizedLocation();
-		if (normalized.getDir()== direction.NorthWest) {
+		if (normalized.getDir()== direction.NW) {
 				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NW));
 				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
 				edges.add(new EdgeLocation(new HexLocation (normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
 										   normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
 										   EdgeDirection.NE));
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.West).getNormalizedLocation());
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthEast));
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.W).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NE));
 				vertices.add(new VertexLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
 												normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
-												VertexDirection.NorthEast));
-		}else if (normalized.getDir()== direction.NorthEast) {
+												VertexDirection.NE));
+		}else if (normalized.getDir()== direction.NE) {
 				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NE));
 				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
 				edges.add(new EdgeLocation(new HexLocation (normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
 						   				   normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
 						   				   EdgeDirection.NW));
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.East).getNormalizedLocation());
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthWest));
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.E).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NW));
 				vertices.add(new VertexLocation(new HexLocation (normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
 												normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
-												VertexDirection.NorthWest));
+												VertexDirection.NW));
 		}
 		
 		for (int k = 0; k < theGame.getMap().getsettlements().size(); k++) {
 			for (int l=0; l < vertices.size(); l++) {
-				if (theGame.getMap().getsettlements().get(k).getLocation().getNormalizedLocation().equals(vertices.get(l).getNormalizedLocation())) {
+				if (theGame.getMap().getsettlements().get(k).getVertextLocation().getNormalizedLocation().equals(vertices.get(l).getNormalizedLocation())) {
 					return false;
 				}
 			}
-			if (theGame.getMap().getsettlements().get(k).getLocation().getNormalizedLocation().equals(normalized)) 
+			if (theGame.getMap().getsettlements().get(k).getVertextLocation().getNormalizedLocation().equals(normalized)) 
 				return false;
 		}
 		

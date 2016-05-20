@@ -194,25 +194,27 @@ public class Map extends AbstractModelPartition {
      */
     public boolean canAddSettlement(VertexLocation settlementLocation)
     {
-        if (settlementLocation == null)
-        {
-            return false;
-        }
-
-        for (VertexObject VObjIter: cities)
-        {
-            if (VObjIter.getLocation() == settlementLocation)
-            {
-                return false;
-            }
-        }
-        for (VertexObject VObjIter: settlements)
-        {
-            if (VObjIter.getLocation() == settlementLocation)
-            {
-                return false;
-            }
-        }
+//     	NEEDS TO BE IMPLEMENTED, COMMENTED OUT BECAUSE OF VERTEX LOCATION CHANGE
+    	
+//        if (settlementLocation == null)
+//        {
+//            return false;
+//        }
+//
+//        for (VertexObject VObjIter: cities)
+//        {
+//            if (VObjIter.getLocation() == settlementLocation)
+//            {
+//                return false;
+//            }
+//        }
+//        for (VertexObject VObjIter: settlements)
+//        {
+//            if (VObjIter.getLocation() == settlementLocation)
+//            {
+//                return false;
+//            }
+//        }
 
         return true;
     }
@@ -238,25 +240,27 @@ public class Map extends AbstractModelPartition {
      */
     public boolean canAddCity(VertexLocation vertexLocation)
     {
-        if (vertexLocation == null)
-        {
-            return false;
-        }
-
-        for (VertexObject VObjIter: cities)
-        {
-            if (VObjIter.getLocation() == vertexLocation)
-            {
-                return false;
-            }
-        }
-        for (VertexObject VObjIter: settlements)
-        {
-            if (VObjIter.getLocation() == vertexLocation)
-            {
-                return false;
-            }
-        }
+//     	NEEDS TO BE IMPLEMENTED, COMMENTED OUT BECAUSE OF VERTEX LOCATION CHANGE
+    	
+//        if (vertexLocation == null)
+//        {
+//            return false;
+//        }
+//
+//        for (VertexObject VObjIter: cities)
+//        {
+//            if (VObjIter.getLocation() == vertexLocation)
+//            {
+//                return false;
+//            }
+//        }
+//        for (VertexObject VObjIter: settlements)
+//        {
+//            if (VObjIter.getLocation() == vertexLocation)
+//            {
+//                return false;
+//            }
+//        }
         //used to loop through buildings and use 	'if (VObjIter.getLocation() == vertexLocation && !(VObjIter instanceof VertexObject))'
 
         return true;
@@ -283,55 +287,58 @@ public class Map extends AbstractModelPartition {
      */
     public ArrayList<VertexObject> getVObjectsAroundHexlocation(HexLocation landing)
     {
+    	
+//     	NEEDS TO BE IMPLEMENTED, COMMENTED OUT BECAUSE OF VERTEX LOCATION CHANGE
         HexLocation landingSW = new HexLocation(landing.getX() - 1, landing.getY() + 1);
         HexLocation landingS = new HexLocation(landing.getX(), landing.getY() + 1);
         HexLocation landingSE = new HexLocation(landing.getX() + 1, landing.getY());
         ArrayList<VertexObject> returningBuildings = new ArrayList<VertexObject>();
 
-        for(VertexObject vertex : buildings)
-        {
-            HexLocation hl = vertex.getLocation().getNormalizedLocation().getHexLoc();
-            if(hl.compareTo(landing) == 0)
-            {
-                VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
-                if(vd == VertexDirection.East || vd == VertexDirection.NorthEast || vd == VertexDirection.NorthWest || vd == VertexDirection.West)
-                    returningBuildings.add(vertex);
-            }
-            else if(hl.compareTo(landingSW) == 0)
-            {
-                VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
-                if(vd == VertexDirection.East || vd == VertexDirection.NorthEast)
-                    returningBuildings.add(vertex);
-            }
-            else if(hl.compareTo(landingS) == 0)
-            {
-                VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
-                if(vd == VertexDirection.NorthEast || vd == VertexDirection.NorthWest)
-                    returningBuildings.add(vertex);
-            }
-            else if(hl.compareTo(landingSE) == 0)
-            {
-                VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
-                if(vd == VertexDirection.NorthWest || vd == VertexDirection.West)
-                    returningBuildings.add(vertex);
-            }
-        }
+//        for(VertexObject vertex : buildings)
+//        {
+//            HexLocation hl = vertex.getLocation().getNormalizedLocation().getHexLoc();
+//            if(hl.compareTo(landing) == 0)
+//            {
+//                VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
+//                if(vd == VertexDirection.E || vd == VertexDirection.NE || vd == VertexDirection.NW || vd == VertexDirection.W)
+//                    returningBuildings.add(vertex);
+//            }
+//            else if(hl.compareTo(landingSW) == 0)
+//            {
+//                VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
+//                if(vd == VertexDirection.E || vd == VertexDirection.NE)
+//                    returningBuildings.add(vertex);
+//            }
+//            else if(hl.compareTo(landingS) == 0)
+//            {
+//                VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
+//                if(vd == VertexDirection.NE || vd == VertexDirection.NW)
+//                    returningBuildings.add(vertex);
+//            }
+//            else if(hl.compareTo(landingSE) == 0)
+//            {
+//                VertexDirection vd = vertex.getLocation().getNormalizedLocation().getDir();
+//                if(vd == VertexDirection.NW || vd == VertexDirection.W)
+//                    returningBuildings.add(vertex);
+//            }
+//        }
         return returningBuildings;
     }
 
     public ArrayList<Port> checkForPorts(ArrayList<VertexObject> builds)
     {
+//     	MIGHT NEED TO BE IMPLEMENTED, COMMENTED OUT BECAUSE OF VERTEX LOCATION CHANGE
         ArrayList<Port> playerPorts = new ArrayList<Port>();
-        for(int i=0; i<ports.size(); i++)
-        {
-            for(int j=0; j<builds.size(); j++)
-            {
-                if(ports.get(i).getLocation().equals(builds.get(j).getLocation().getHexLoc()) && ports.get(i).getDirection().equals(builds.get(j).getLocation().getDir()))
-                {
-                    playerPorts.add(ports.get(i));
-                }
-            }
-        }
+//        for(int i=0; i<ports.size(); i++)
+//        {
+//            for(int j=0; j<builds.size(); j++)
+//            {
+//                if(ports.get(i).getLocation().equals(builds.get(j).getLocation().getHexLoc()) && ports.get(i).getDirection().equals(builds.get(j).getLocation().getDir()))
+//                {
+//                    playerPorts.add(ports.get(i));
+//                }
+//            }
+//        }
         return playerPorts;
     }
     /**
@@ -431,25 +438,26 @@ public class Map extends AbstractModelPartition {
 
     public boolean canPlaceRoadSetup(EdgeLocation el)
     {
-
-        if (el == null)
-        {
-            return false;
-        }
-        for(int i = 0; i < buildings.size(); i++)
-        {
-            if(placable(el.getNormalizedLocation(), buildings.get(i).getLocation().getNormalizedLocation()))
-                return false;
-        }
-
-
-
-        roads.add(new Road(el, Facade.getInstance().getCurrentPlayer().getPlayerIndex()));
-        if(extraPlacable(el.getNormalizedLocation()))
-        {
-            roads.remove(roads.size() - 1);
-            return true;
-        }
+// 	NEEDS TO BE IMPLEMENTED, COMMENTED OUT BECAUSE OF VERTEX LOCATION CHANGE
+    	
+//        if (el == null)
+//        {
+//            return false;
+//        }
+//        for(int i = 0; i < buildings.size(); i++)
+//        {
+//            if(placable(el.getNormalizedLocation(), buildings.get(i).getLocation().getNormalizedLocation()))
+//                return false;
+//        }
+//
+//
+//
+//        roads.add(new Road(el, Facade.getInstance().getCurrentPlayer().getPlayerIndex()));
+//        if(extraPlacable(el.getNormalizedLocation()))
+//        {
+//            roads.remove(roads.size() - 1);
+//            return true;
+//        }
 
 
         return false;
@@ -464,44 +472,44 @@ public class Map extends AbstractModelPartition {
         {
             //NW NE N
             case NW:
-                vl = new VertexLocation(el.getHexLoc(), VertexDirection.West);
+                vl = new VertexLocation(el.getHexLoc(), VertexDirection.W);
                 if(canAddSettlement(vl))
                     return true;
-                vl2 = new VertexLocation(el.getHexLoc(), VertexDirection.NorthWest);
+                vl2 = new VertexLocation(el.getHexLoc(), VertexDirection.NW);
                 if(canAddSettlement(vl2))
                     return true;
-                vl3 = new VertexLocation(new HexLocation(el.getHexLoc().getX() - 1, el.getHexLoc().getY()), VertexDirection.East);
+                vl3 = new VertexLocation(new HexLocation(el.getHexLoc().getX() - 1, el.getHexLoc().getY()), VertexDirection.E);
                 if(canAddSettlement(vl3))
                     return true;
-                vl4 = new VertexLocation(new HexLocation(el.getHexLoc().getX()  - 1, el.getHexLoc().getY() + 1), VertexDirection.NorthEast);
+                vl4 = new VertexLocation(new HexLocation(el.getHexLoc().getX()  - 1, el.getHexLoc().getY() + 1), VertexDirection.NE);
                 if(canAddSettlement(vl4))
                     return true;
                 return false;
             case NE:
-                vl = new VertexLocation(el.getHexLoc(), VertexDirection.East);
+                vl = new VertexLocation(el.getHexLoc(), VertexDirection.E);
                 if(canAddSettlement(vl))
                     return true;
-                vl2 = new VertexLocation(el.getHexLoc(), VertexDirection.NorthEast);
+                vl2 = new VertexLocation(el.getHexLoc(), VertexDirection.NE);
                 if(canAddSettlement(vl2))
                     return true;
-                vl3 = new VertexLocation(new HexLocation(el.getHexLoc().getX()+1, el.getHexLoc().getY() - 1), VertexDirection.West);
+                vl3 = new VertexLocation(new HexLocation(el.getHexLoc().getX()+1, el.getHexLoc().getY() - 1), VertexDirection.W);
                 if(canAddSettlement(vl3))
                     return true;
-                vl4 = new VertexLocation(new HexLocation(el.getHexLoc().getX()+1, el.getHexLoc().getY()), VertexDirection.NorthWest);
+                vl4 = new VertexLocation(new HexLocation(el.getHexLoc().getX()+1, el.getHexLoc().getY()), VertexDirection.NW);
                 if(canAddSettlement(vl4))
                     return true;
                 return false;
             default:
-                vl = new VertexLocation(el.getHexLoc(), VertexDirection.NorthEast);
+                vl = new VertexLocation(el.getHexLoc(), VertexDirection.NE);
                 if(canAddSettlement( vl))
                     return true;
-                vl2 = new VertexLocation(el.getHexLoc(), VertexDirection.NorthWest);
+                vl2 = new VertexLocation(el.getHexLoc(), VertexDirection.NW);
                 if(canAddSettlement(vl2))
                     return true;
-                vl3 = new VertexLocation(new HexLocation(el.getHexLoc().getX() - 1, el.getHexLoc().getY()), VertexDirection.East);
+                vl3 = new VertexLocation(new HexLocation(el.getHexLoc().getX() - 1, el.getHexLoc().getY()), VertexDirection.E);
                 if(canAddSettlement(vl3))
                     return true;
-                vl4 = new VertexLocation(new HexLocation(el.getHexLoc().getX() + 1, el.getHexLoc().getY() - 1), VertexDirection.West);
+                vl4 = new VertexLocation(new HexLocation(el.getHexLoc().getX() + 1, el.getHexLoc().getY() - 1), VertexDirection.W);
                 if(canAddSettlement(vl4))
                     return true;
                 return false;
@@ -512,12 +520,12 @@ public class Map extends AbstractModelPartition {
         int x = vl.getHexLoc().getX();
         int y = vl.getHexLoc().getY();
 
-        if (x == 3 && vl.getDir() == VertexDirection.NorthWest) {
+        if (x == 3 && vl.getDir() == VertexDirection.NW) {
             if (y == -3)
                 return false;
             return true;
         }
-        else if (x == -3 && vl.getDir() == VertexDirection.NorthEast)
+        else if (x == -3 && vl.getDir() == VertexDirection.NE)
         {
             if(y == 0)
                 return false;
@@ -587,33 +595,33 @@ public class Map extends AbstractModelPartition {
         switch(roadDir.getDir())
         {
             case NW:
-                if (roadHex.compareTo(settHex) == 0 && (sed == VertexDirection.NorthWest || sed == VertexDirection.West))
+                if (roadHex.compareTo(settHex) == 0 && (sed == VertexDirection.NW || sed == VertexDirection.W))
                     return true;
                 hl = new HexLocation(roadDir.getHexLoc().getX() - 1, roadDir.getHexLoc().getY() + 1);
-                if(sed == VertexDirection.NorthEast && settHex.compareTo(hl) == 0)
+                if(sed == VertexDirection.NE && settHex.compareTo(hl) == 0)
                     return true;
                 hl2 = new HexLocation(roadDir.getHexLoc().getX() - 1, roadDir.getHexLoc().getY());
-                if(sed == VertexDirection.East && settHex.compareTo(hl2) == 0)
+                if(sed == VertexDirection.E && settHex.compareTo(hl2) == 0)
                     return true;
                 return false;
             case NE:
-                if (roadHex.compareTo(settHex) == 0 && (sed == VertexDirection.NorthEast || sed == VertexDirection.East))
+                if (roadHex.compareTo(settHex) == 0 && (sed == VertexDirection.NE || sed == VertexDirection.E))
                     return true;
                 hl = new HexLocation(roadDir.getHexLoc().getX()+1, roadDir.getHexLoc().getY());
-                if(sed == VertexDirection.NorthWest && settHex.compareTo(hl) == 0)
+                if(sed == VertexDirection.NW && settHex.compareTo(hl) == 0)
                     return true;
                 hl2 = new HexLocation(roadDir.getHexLoc().getX() + 1, roadDir.getHexLoc().getY() - 1);
-                if(sed == VertexDirection.West && settHex.compareTo(hl2) == 0)
+                if(sed == VertexDirection.W && settHex.compareTo(hl2) == 0)
                     return true;
                 return false;
             case N:
-                if (roadHex.compareTo(settHex) == 0 && (sed == VertexDirection.NorthWest || sed == VertexDirection.NorthEast))
+                if (roadHex.compareTo(settHex) == 0 && (sed == VertexDirection.NW || sed == VertexDirection.NE))
                     return true;
                 hl = new HexLocation(roadDir.getHexLoc().getX() - 1, roadDir.getHexLoc().getY());
-                if(sed == VertexDirection.East && settHex.compareTo(hl) == 0)
+                if(sed == VertexDirection.E && settHex.compareTo(hl) == 0)
                     return true;
                 hl2 = new HexLocation(roadDir.getHexLoc().getX() + 1, roadDir.getHexLoc().getY() - 1);
-                if(sed == VertexDirection.West && settHex.compareTo(hl2) == 0)
+                if(sed == VertexDirection.W && settHex.compareTo(hl2) == 0)
                     return true;
                 return false;
         }
