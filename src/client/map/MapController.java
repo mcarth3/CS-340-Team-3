@@ -14,6 +14,7 @@ import model.Map;
 import model.Port;
 import model.Road;
 import model.Settlement;
+import proxy.RealProxy;
 
 
 /**
@@ -217,6 +218,12 @@ public class MapController extends Controller implements IMapController {
         	HexLocation hexLoc = ports.get(a).getLocation(); 
         	getView().addPort(new EdgeLocation(hexLoc, ports.get(a).getDirection()), getPortType(ports.get(a).getResource()));
         }
+        //THIS IS JUST TEMPORARY
+        if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")){
+        	RealProxy.getSingleton().robPlayer(1, 1, new HexLocation(0, 0));
+        }
+        //THIS IS JUST TEMPORARY
+        
     }
     public HexType getHexType(String str){
     	HexType result = HexType.BRICK;
