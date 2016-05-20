@@ -7,7 +7,7 @@
   <component name="ChangeListManager">
     <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/devcards/DevCardController.java" afterPath="$PROJECT_DIR$/src/client/devcards/DevCardController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/roll/RollController.java" afterPath="$PROJECT_DIR$/src/client/roll/RollController.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -39,11 +39,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MaritimeTradeController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MaritimeTradeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8958838">
-              <caret line="150" column="43" selection-start-line="150" selection-start-column="43" selection-end-line="150" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RollController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/client/roll/RollController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5883777">
+              <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ChatController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/communication/ChatController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -119,9 +139,9 @@
         <option value="$PROJECT_DIR$/src/model/TurnTracker.java" />
         <option value="$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java" />
         <option value="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
-        <option value="$PROJECT_DIR$/src/client/roll/RollController.java" />
         <option value="$PROJECT_DIR$/src/client/devcards/DevCardController.java" />
         <option value="$PROJECT_DIR$/src/model/Facade.java" />
+        <option value="$PROJECT_DIR$/src/client/roll/RollController.java" />
       </list>
     </option>
   </component>
@@ -232,7 +252,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="maritime" />
+              <option name="myItemId" value="communication" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -277,15 +297,10 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/communication/GameHistoryController.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/devcards/DevCardController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/RollController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/turntracker/TurnTrackerController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/definitions/CatanColor.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/communication/GameHistoryController.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeController.class</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeController.class</PATH>
           <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/MapController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/turntracker/TurnTrackerController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/shared/definitions/CatanColor.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -882,7 +897,13 @@
       <option name="project" value="LOCAL" />
       <updated>1463707545016</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="repaired bugs in DevCardController">
+      <created>1463718222867</created>
+      <option name="number" value="00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1463718222867</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -984,7 +1005,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added pre and post to controllers of Roll, Bank, DomesticTrade, ResourceBar_DevCard, and MaritimeTrade" />
     <MESSAGE value="Made Facade a singleton to be accessed by controllers. Edited RollController" />
     <MESSAGE value="Edited dice to return int all the way back to controllers when rolled. Added some rough code for the RollController that'll need to be added to the State." />
     <MESSAGE value="Edited dice to return int all the way back to controllers when rolled. Added some rough code for the RollController that I'll need to add to the State." />
@@ -1009,7 +1029,8 @@
     <MESSAGE value="Fixed bugs in MaritimeTradeController and DomesticTradeController." />
     <MESSAGE value="adding more functionality to DevCardController" />
     <MESSAGE value="adding more functionality to playingCard functions to DevCardController" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding more functionality to playingCard functions to DevCardController" />
+    <MESSAGE value="repaired bugs in DevCardController" />
+    <option name="LAST_COMMIT_MESSAGE" value="repaired bugs in DevCardController" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1022,13 +1043,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="29" column="5" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bin/client/maritime/MaritimeTradeController.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-3.148148">
@@ -1323,14 +1337,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/roll/RollController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.481482">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/proxy/IServer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46973366">
@@ -1381,8 +1387,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="165" column="8" selection-start-line="165" selection-start-column="8" selection-end-line="165" selection-end-column="8" />
           <folding>
-            <element signature="e#706#707#0" expanded="true" />
-            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#730#731#0" expanded="true" />
+            <element signature="e#751#752#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1440,8 +1446,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8958838">
-          <caret line="150" column="43" selection-start-line="150" selection-start-column="43" selection-end-line="150" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="137" column="0" selection-start-line="137" selection-start-column="0" selection-end-line="137" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/communication/ChatController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="59" column="34" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/roll/RollController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5883777">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding />
         </state>
       </provider>
