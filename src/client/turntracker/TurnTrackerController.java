@@ -94,35 +94,28 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 		boolean enableButton = false;
 		String message = "Waiting for Other Players";
 		if(model.getTurnTracker().getCurrentPlayer() == manager.getthisplayer().getPlayerIndex()) {
-			switch(model.getTurnTracker().getStatus()) {
-			case "Discarding":
+			System.out.println("it's your turn");
+			if(model.getTurnTracker().getStatus().equals("Discarding")){
 				message = "Discarding";
-				break;
-			case "FirstRound":
+			}else if(model.getTurnTracker().getStatus().equals("FirstRound")){
 				message = "First Round";
-				break;
-			case "Robbing":
+			}else if(model.getTurnTracker().getStatus().equals("Robbing")){
 				message = "Robbing";
-				break;
-			case "Rolling":
+			}else if(model.getTurnTracker().getStatus().equals("Rolling")){
 				message = "Rolling";
-				break;
-			case "SecondRound":
+			}else if(model.getTurnTracker().getStatus().equals("SecondRound")){
 				message = "Second Round";
-				break;
-			case "Playing":
+			}else if(model.getTurnTracker().getStatus().equals("Playing")){
+				message = "Playing";
 				if (model != null){
 					if (model.canFinishTurn(manager.getthisplayer().getPlayerID())){
 						message = "End Turn";
 						enableButton = true;
-						break;
 					}
 				}
-			default:
-				message = "Waiting for Other Players";
-				break;
 			}	
 		}else{
+			System.out.println("it's player "+model.getTurnTracker().getCurrentPlayer() + "'s turn");
 		//	RealProxy.getSingleton().finishTurn(model.getTurnTracker().getCurrentPlayer());
 		}
 		this.getView().updateGameState(message, enableButton);
