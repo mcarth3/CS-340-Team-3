@@ -118,6 +118,17 @@ public class Game extends AbstractModelPartition {
         throw new ObjectNotFoundException("failed to find player of id " + id + "!");
 
     }
+    public Player findPlayerbyindex(int index) throws ObjectNotFoundException {
+        for(int i=0; i < players.size(); i++)
+        {
+            if(index==(players.get(i).getPlayerIndex()))
+            {
+                return players.get(i);
+            }
+        }
+        throw new ObjectNotFoundException("failed to find player of index " + index + "!");
+
+    }
 
     public Game() {
         gameDice = new Dice();

@@ -233,7 +233,7 @@ public class MapController extends Controller implements IMapController {
 		for (int a=0; a<set.size(); a++) {
 			CatanColor color = CatanColor.BLUE;
 			try {
-				color = CatanColor.toColor(GameManager.getSingleton().getModel().findPlayerbyid(set.get(a).getOwner()).getColor());
+				color = CatanColor.toColor(GameManager.getSingleton().getModel().findPlayerbyindex(set.get(a).getOwner()).getColor());
 			} catch (ObjectNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -244,7 +244,7 @@ public class MapController extends Controller implements IMapController {
 		for (int a=0; a<cities.size(); a++) {
 			CatanColor color= CatanColor.BLUE;
 			try {
-				color = CatanColor.toColor(GameManager.getSingleton().getModel().findPlayerbyid(cities.get(a).getOwner()).getColor());
+				color = CatanColor.toColor(GameManager.getSingleton().getModel().findPlayerbyindex(cities.get(a).getOwner()).getColor());
 			} catch (ObjectNotFoundException e) {
 				e.printStackTrace();
 			}
