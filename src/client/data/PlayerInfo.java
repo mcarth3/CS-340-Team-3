@@ -20,14 +20,14 @@ public class PlayerInfo
 	private int id;
 	private int playerIndex;
 	private String name;
-	private CatanColor color;
+	private String color;
 	
 	public PlayerInfo()
 	{
 		setId(-1);
 		setPlayerIndex(-1);
 		setName("");
-		setColor(CatanColor.WHITE);
+		setColor("white");
 	}
 	
 	public int getId()
@@ -60,14 +60,14 @@ public class PlayerInfo
 		this.name = name;
 	}
 	
-	public CatanColor getColor()
+	public String getColor()
 	{
 		return color;
 	}
 	
-	public void setColor(CatanColor color)
+	public void setColor(String color2)
 	{
-		this.color = color;
+		this.color = color2;
 	}
 
 	@Override

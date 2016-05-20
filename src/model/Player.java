@@ -33,7 +33,7 @@ public class Player extends AbstractModelPartition {
     public boolean discarded;
     public int playerID;
     public int playerIndex;
-    public CatanColor color;
+    public String color;
     public String name;	
 	
 	//removed
@@ -54,7 +54,7 @@ public class Player extends AbstractModelPartition {
 
 
 
-    public Player(CatanColor color, String playerName, int ID) {
+    public Player(String color, String playerName, int ID) {
         resources = new ResourceList();
         newDevCards = new DevCardList();
         oldDevCards = new DevCardList();
@@ -63,7 +63,7 @@ public class Player extends AbstractModelPartition {
         this.color = color;
     }
 
-    public Player(CatanColor newColor, String newName, int ID, int newCityAmount, int newRoadAmount, int newSettlementAmount, int newMonumentAmount,
+    public Player(String newColor, String newName, int ID, int newCityAmount, int newRoadAmount, int newSettlementAmount, int newMonumentAmount,
                   int newSoldierAmount, DevCardList newNewDevCardList, DevCardList newOldDevCardList, boolean newPlayedDevCard, ResourceList newResourcesAmounts, boolean newDiscarded, int newVictoryPointAmount, int newplayerIndex) {
         this.setColor(newColor);
         this.setName(newName);
@@ -678,11 +678,11 @@ public class Player extends AbstractModelPartition {
         this.roads = roads;
     }
 
-    public CatanColor getColor() {
+    public String getColor() {
         return color;
     }
 
-    public void setColor(CatanColor color) {
+    public void setColor(String color) {
         this.color = color;
     }
 

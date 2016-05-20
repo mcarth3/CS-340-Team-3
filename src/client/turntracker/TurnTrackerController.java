@@ -70,7 +70,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 				playerIndex = currentplayer.getPlayerIndex();
 		//		System.out.println(getView().toString());
 				if ((currentplayer !=null)){
-					getView().initializePlayer(playerIndex, currentplayer.getName(), currentplayer.getColor());
+					getView().initializePlayer(playerIndex, currentplayer.getName(), CatanColor.toColor(currentplayer.getColor()));
 				}
 				if(turnTracker.getCurrentPlayer() == playerIndex) {
 					highLight = true;

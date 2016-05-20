@@ -8,8 +8,7 @@ public enum CatanColor
 	
 	private Color color;
 	
-	static
-	{
+	static{
 		RED.color = new Color(227, 66, 52);
 		ORANGE.color = new Color(255, 165, 0);
 		YELLOW.color = new Color(253, 224, 105);
@@ -26,29 +25,31 @@ public enum CatanColor
 		return color;
 	}
 
-	public String toStirng(CatanColor color){
-		String result = ""; 
-		if(color== CatanColor.RED){
-			result = "red";
-		}else if(color== CatanColor.ORANGE){
-			result = "orange";
-		}else if(color== CatanColor.YELLOW){
-			result = "yellow";
-		}else if(color== CatanColor.BLUE){
-			result = "blue";
-		}else if(color== CatanColor.GREEN){
-			result = "green";
-		}else if(color== CatanColor.PURPLE){
-			result = "purple";
-		}else if(color== CatanColor.PUCE){
-			result = "puce";
-		}else if(color== CatanColor.WHITE){
-			result = "white";
-		}else if(color== CatanColor.BROWN){
-			result = "brown"; 
+	public static CatanColor toColor(String result){
+		CatanColor color = CatanColor.RED; 
+		if(result.equals("red")){
+			color= CatanColor.RED;
+		}else if(result.equals("orange")){
+			color = CatanColor.ORANGE;
+		}else if(result.equals("yellow")){
+			color = CatanColor.YELLOW;
+		}else if(result.equals("blue")){
+			color = CatanColor.BLUE;
+		}else if(result.equals("green")){
+			color = CatanColor.GREEN;
+		}else if(result.equals("purple")){
+			color = CatanColor.PURPLE;
+		}else if(result.equals("puce")){
+			color = CatanColor.PUCE;
+		}else if(result.equals("white")){
+			color = CatanColor.WHITE;
+		}else if(result.equals("brown")){
+			color = CatanColor.BROWN;
 		}
-		return result;
+		return color;
 	}
+	
+	
 
 }
 
