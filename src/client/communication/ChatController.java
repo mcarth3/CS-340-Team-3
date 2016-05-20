@@ -6,6 +6,7 @@ import java.util.List;
 import client.GameManager.GameManager;
 import client.base.*;
 import model.Game;
+import model.ObjectNotFoundException;
 import model.Player;
 import model.clientModel.MessageLine;
 import model.clientModel.MessageList;
@@ -63,17 +64,15 @@ public class ChatController extends Controller implements IChatController {
 		CatanColor cc = CatanColor.WHITE;
 		GameManager gm = GameManager.getSingleton();
 		Game game = gm.getModel();
-		ArrayList<Player> players = game.players; 
-		for(Player p : players)
-		{
-			//System.out.println("|"+p.getName()+"|, |"+name+"|"); 
-//			if(name.equals(p.getName()))
-//			{
-//				//System.out.println("BUT ALSO here"); 
-//				cc = p.getColor();
-//			}
+		try {
+			cc = CatanColor.toColor(game.findPlayer(name).color);
+		} catch (ObjectNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		return cc;
 	}
+	
+	
 }
 

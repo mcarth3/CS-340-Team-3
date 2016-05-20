@@ -231,6 +231,7 @@ public class MapController extends Controller implements IMapController {
         }
         
 		for (int a=0; a<set.size(); a++) {
+
 			CatanColor color = CatanColor.BLUE;
 			try {
 				color = CatanColor.toColor(GameManager.getSingleton().getModel().findPlayerbyindex(set.get(a).getOwner()).getColor());
@@ -242,6 +243,7 @@ public class MapController extends Controller implements IMapController {
 		}
 
 		for (int a=0; a<cities.size(); a++) {
+
 			CatanColor color= CatanColor.BLUE;
 			try {
 				color = CatanColor.toColor(GameManager.getSingleton().getModel().findPlayerbyindex(cities.get(a).getOwner()).getColor());

@@ -78,10 +78,6 @@ public class ChatView extends PanelView implements IChatView {
 
     @Override
     public void setEntries(final List<LogEntry> entries) {
-    	LogEntry le = new LogEntry(CatanColor.BLUE, "This is a new message");
-    	System.out.println("setEntries gets called"); 
-    	entries.add(le);
-    	
         chatPanel.setEntries(entries);
     }
     
