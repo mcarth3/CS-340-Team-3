@@ -99,7 +99,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 				message = "Discarding";
 				break;
 			case "FirstRound":
-				message = "FirstRound";
+				message = "First Round";
 				break;
 			case "Robbing":
 				message = "Robbing";
@@ -122,6 +122,8 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 				message = "Waiting for Other Players";
 				break;
 			}	
+		}else{
+		//	RealProxy.getSingleton().finishTurn(model.getTurnTracker().getCurrentPlayer());
 		}
 		this.getView().updateGameState(message, enableButton);
 	}
