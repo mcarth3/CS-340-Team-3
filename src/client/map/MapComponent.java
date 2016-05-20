@@ -725,7 +725,12 @@ public class MapComponent extends JComponent
 		List<Point2D> settlementShape = translateShape(SETTLEMENT, vertPoint);
 		
 		Polygon poly = toPolygon(settlementShape);
-		Color baseColor = color.getJavaColor();
+		Color baseColor;
+		if (color !=null){
+			baseColor = color.getJavaColor();
+		}else{
+			baseColor = CatanColor.BLUE.getJavaColor();
+		}
 		Color darkColor = baseColor.darker();
 		
 		g2.setColor(baseColor);
@@ -759,7 +764,12 @@ public class MapComponent extends JComponent
 		List<Point2D> cityShape = translateShape(CITY, vertPoint);
 		
 		Polygon poly = toPolygon(cityShape);
-		Color baseColor = color.getJavaColor();
+		Color baseColor;
+		if (color !=null){
+			baseColor = color.getJavaColor();
+		}else{
+			baseColor = CatanColor.BLUE.getJavaColor();
+		}
 		Color darkColor = baseColor.darker();
 		
 		g2.setColor(baseColor);
