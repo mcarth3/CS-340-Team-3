@@ -231,12 +231,12 @@ public class MapController extends Controller implements IMapController {
         
 		for (int a=0; a<set.size(); a++) {
 			CatanColor color = players.get(set.get(a).getOwner()).getColor();
-			getView().placeSettlement(set.get(a).getLocation(), color);
+			//getView().placeSettlement(set.get(a).getLocation(), color);
 		}
 
 		for (int a=0; a<cities.size(); a++) {
 			CatanColor color = players.get(cities.get(a).getOwner()).getColor();
-			getView().placeCity(cities.get(a).getLocation(), color);
+		//	getView().placeCity(cities.get(a).getLocation(), color);
 		}
 
 		for (int a=0; a<roads.size(); a++) {
@@ -244,7 +244,7 @@ public class MapController extends Controller implements IMapController {
 			getView().placeRoad(roads.get(a).getLocation(), color);
 		}
 
-		getView().placeRobber(map.getRobber().getHl());
+	//	getView().placeRobber(map.getRobber().getHl());
         
         
         
