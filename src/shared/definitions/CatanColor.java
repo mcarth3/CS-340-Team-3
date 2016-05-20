@@ -26,7 +26,29 @@ public enum CatanColor
 		return color;
 	}
 
-	
+	public String toStirng(CatanColor color){
+		String result = ""; 
+		if(color== CatanColor.RED){
+			result = "red";
+		}else if(color== CatanColor.ORANGE){
+			result = "orange";
+		}else if(color== CatanColor.YELLOW){
+			result = "yellow";
+		}else if(color== CatanColor.BLUE){
+			result = "blue";
+		}else if(color== CatanColor.GREEN){
+			result = "green";
+		}else if(color== CatanColor.PURPLE){
+			result = "purple";
+		}else if(color== CatanColor.PUCE){
+			result = "puce";
+		}else if(color== CatanColor.WHITE){
+			result = "white";
+		}else if(color== CatanColor.BROWN){
+			result = "brown"; 
+		}
+		return result;
+	}
 
 }
 

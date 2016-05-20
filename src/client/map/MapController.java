@@ -7,9 +7,13 @@ import shared.locations.*;
 import client.GameManager.GameManager;
 import client.base.*;
 import client.data.*;
+import model.City;
 import model.Game;
 import model.Hex;
 import model.Map;
+import model.Port;
+import model.Road;
+import model.Settlement;
 
 
 /**
@@ -175,6 +179,11 @@ public class MapController extends Controller implements IMapController {
         Game game = gm.getModel();
         Map map = game.getmap();
         Hex[] hexs = map.getHexes();
+        ArrayList<Port> ports = map.getPorts();
+        ArrayList<Road> roads = map.getRoads();
+        ArrayList<Settlement> set = map.getsettlements();
+        ArrayList<City> cities = map.getcities();
+        
         for (Hex h : hexs){
         	HexType hexType = null; 
         	hexType = getHexType(h.getResource());
@@ -183,6 +192,31 @@ public class MapController extends Controller implements IMapController {
         	HexLocation hexLoc = h.getLocation();
         	getView().addHex(hexLoc, hexType);	
         }   
+        
+    	getView().addHex(new HexLocation(-3, 0), HexType.WATER);
+    	getView().addHex(new HexLocation(-2, -1), HexType.WATER);
+    	getView().addHex(new HexLocation(-1, -2), HexType.WATER);
+    	getView().addHex(new HexLocation(0, -3), HexType.WATER);
+    	getView().addHex(new HexLocation(1, -3), HexType.WATER);
+    	getView().addHex(new HexLocation(2, -3), HexType.WATER);
+    	getView().addHex(new HexLocation(3, -3), HexType.WATER);
+    	getView().addHex(new HexLocation(3, -2), HexType.WATER);
+    	getView().addHex(new HexLocation(3, -1), HexType.WATER);
+    	getView().addHex(new HexLocation(3, 0), HexType.WATER);
+    	getView().addHex(new HexLocation(2, 1), HexType.WATER);
+    	getView().addHex(new HexLocation(1, 2), HexType.WATER);
+    	getView().addHex(new HexLocation(0, 3), HexType.WATER);
+    	getView().addHex(new HexLocation(-1, 3), HexType.WATER);
+    	getView().addHex(new HexLocation(-2, 3), HexType.WATER);
+    	getView().addHex(new HexLocation(-3, 3), HexType.WATER);
+    	getView().addHex(new HexLocation(-3, 2), HexType.WATER);
+    	getView().addHex(new HexLocation(-3, 1), HexType.WATER);
+        
+        for(int a=0; a<ports.size(); a++){
+        	//System.out.println(ports.get(a)); 
+        	HexLocation hexLoc = ports.get(a).getLocation(); 
+        	getView().addPort(new EdgeLocation(hexLoc, ports.get(a).getDirection()), getPortType(ports.get(a).getResource()));
+        }
     }
     public HexType getHexType(String str){
     	HexType result = HexType.BRICK;
@@ -207,6 +241,33 @@ public class MapController extends Controller implements IMapController {
     	else if(str.equals("wood")){
     		result = HexType.WOOD;
     	}
+    	return result; 
+    }
+    public PortType getPortType(String str){
+    	PortType result = PortType.BRICK;
+	    if(str != null){
+    		if(str.equals("brick")){
+	    		result = PortType.BRICK;
+	    	}
+	    	else if(str.equals("ore")){
+	    		result = PortType.ORE;
+	    	}
+	    	else if(str.equals("sheep")){
+	    		result = PortType.SHEEP;
+	    	}
+	    	else if(str.equals("three")){
+	    		result = PortType.THREE;
+	    	}
+	    	else if(str.equals("wheat")){
+	    		result = PortType.WHEAT;
+	    	}
+	    	else if(str.equals("wood")){
+	    		result = PortType.WOOD;
+	    	}
+    	}
+	    else{
+	    	result = PortType.THREE; 
+	    }
     	return result; 
     }
 

@@ -69,6 +69,7 @@ public class GameHistoryController extends Controller implements IGameHistoryCon
 		ArrayList<Player> players = game.players; 
 		for(Player p : players)
 		{
+			//System.out.println(p.getColor());
 //			if(p != null){
 //				System.out.println(p.getColor());
 ////				System.out.println("|"+p.getName()+"|, |"+name+"|");

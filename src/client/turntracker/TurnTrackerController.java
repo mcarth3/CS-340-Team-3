@@ -52,7 +52,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 
 		//System.out.println(manager.getthisplayer().getColor());
 		//if (getView() != null){
-			getView().setLocalPlayerColor(CatanColor.RED);
+			//getView().setLocalPlayerColor(CatanColor.RED);
 	//	}
 		GameManager gm = GameManager.getSingleton();
 		
