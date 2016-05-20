@@ -136,8 +136,6 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 	public void update(){
 
-
-
 theFacade = Facade.getSingleton();
 		if(GameManager.getSingleton() != null) {
 			thePlayer = GameManager.getSingleton().getthisplayer();

@@ -117,7 +117,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		theTraders = arrayNoCurrentPlayer;
 
 
-
+		getTradeOverlay().setResourceSelectionEnabled(true);
 		getTradeOverlay().setPlayers(theTraders);
 
 	}
@@ -133,6 +133,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	public void increaseResourceAmount(ResourceType resource) {
 		changeValueOfResourceByInt(resource, 1);
 		checkTradeValues();
+		System.out.println("DMT: increase a " + resource);
 	}
 
 	@Override
@@ -164,6 +165,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		recieving.remove(resource);
 		setValueOfResourceZero(resource);
 		checkTradeValues();
+		System.out.println("DMT: set a " + resource);
 	}
 
 	@Override
@@ -212,14 +214,22 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	}
 	
 	public void update(){
+		System.out.println("Domestic Trade update()!");
+
 		if(GameManager.getSingleton() != null && State.getInstance() != null) {
+			System.out.println("DMU: No nulls!");
 
 			thePlayer = GameManager.getSingleton().getthisplayer();
-			if (State.getCurrentState() == StateEnum.PLAY && thePlayer.resourcesOverZero().length > 0) {
-				getTradeView().enableDomesticTrade(true);
-				getTradeOverlay().setStateMessage("Select player!");
-				getTradeOverlay().setPlayerSelectionEnabled(true);
+			//if (State.getCurrentState() == StateEnum.PLAY && thePlayer.resourcesOverZero().length > 0) {
+			if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Playing")) {
+				System.out.println("DMU: It's play time!");
+				if(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
+					System.out.println("DMU: It's the player!");
 
+					getTradeView().enableDomesticTrade(true);
+					getTradeOverlay().setStateMessage("Select player!");
+					getTradeOverlay().setPlayerSelectionEnabled(true);
+				}
 
 
 			} else {

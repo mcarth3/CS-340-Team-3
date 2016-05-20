@@ -62,11 +62,11 @@ public class RollController extends Controller implements IRollController {
 	@Override
 	public void rollDice() {
 
-		System.out.println("in the rollDice function!");
+		//System.out.println("in the rollDice function!");
 		StateEnum theState = State.getCurrentState();
 		/*if(theState == StateEnum.PLAY)
 		{*/
-			System.out.println("State is play!");
+			//System.out.println("State is play!");
 			Player thePlayer = GameManager.getSingleton().getthisplayer();
 			int pid = thePlayer.getPlayerID();
 			if(theGame.canRoll(pid)) {
@@ -75,7 +75,7 @@ public class RollController extends Controller implements IRollController {
 			resultView.setRollValue(currentRoll);
 				setResultView(resultView);
 				resultView.showModal();
-				System.out.println("I set resultView!");
+				//System.out.println("I set resultView!");
 
 
 			/*}*/
@@ -100,7 +100,7 @@ private int counter;
 	private boolean chose;
 
 	public void update(){
-	System.out.println("You're in the RollController update()!!!");
+	//System.out.println("You're in the RollController update()!!!");
 		GameManager.getSingleton();
 		theFacade = GameManager.getSingleton().getModelfacade();
 		theGame = GameManager.getSingleton().getModel();
@@ -109,14 +109,14 @@ private int counter;
 
 			System.out.println("Status by RollController update(): " + theGame.getTurnTracker().getStatus());
 			if (theGame.getTurnTracker().getStatus().equals("Rolling")) {
-				System.out.println("Rolling!!");
+				//System.out.println("Rolling!!");
 				//if(GameManager.getSingleton().getthisplayer().getPlayerID() == theGame.getTurnTracker().getCurrentPlayer()) {
 				System.out.println(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer());
 				System.out.println(GameManager.getSingleton().getthisplayer().getPlayerIndex());
 
 				if(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
 
-					System.out.println("It's the player!");
+					//System.out.println("It's the player!");
 					//UNCOMMENT BELOW:
 					setTimer();
 					getRollView().showModal();
