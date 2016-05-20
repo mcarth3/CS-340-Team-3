@@ -90,18 +90,19 @@ public class DevCardController extends Controller implements IDevCardController 
 	@Override
 	public void playRoadBuildCard() {
 		//theFacade.playRoadBuilding();
-		roadAction.execute();		//TODO: what do I add?
+		roadAction.execute();		//TODO: How do I get the 2 locations?
 	}
 
 	@Override
 	public void playSoldierCard() {
 		//theFacade.playSoldier();
-		soldierAction.execute();	//TODO: what do I add?
+		soldierAction.execute();	//TODO: how do i check the vertex id and edge location?
 	}
 
 	@Override
 	public void playYearOfPlentyCard(ResourceType resource1, ResourceType resource2) {
-		
+		theFacade.playYearOfPlenty(thePlayer.getPlayerID(), resource1, resource2);
+
 	}
 	public void update(){
 		theFacade = Facade.getFacade();
