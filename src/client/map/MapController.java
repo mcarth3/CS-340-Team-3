@@ -12,6 +12,7 @@ import model.Facade;
 import model.Game;
 import model.Hex;
 import model.Map;
+import model.ObjectNotFoundException;
 import model.Player;
 import model.Port;
 import model.Road;
@@ -230,13 +231,23 @@ public class MapController extends Controller implements IMapController {
         }
         
 		for (int a=0; a<set.size(); a++) {
-			CatanColor color = players.get(set.get(a).getOwner()).getColor();
+			CatanColor color = CatanColor.BLUE;
+			try {
+				color = CatanColor.toColor(GameManager.getSingleton().getModel().findPlayerbyid(set.get(a).getOwner()).getColor());
+			} catch (ObjectNotFoundException e) {
+				e.printStackTrace();
+			}
 			getView().placeSettlement(set.get(a).getVertextLocation(), color);
 			
 		}
 
 		for (int a=0; a<cities.size(); a++) {
-			CatanColor color = players.get(cities.get(a).getOwner()).getColor();
+			CatanColor color= CatanColor.BLUE;
+			try {
+				color = CatanColor.toColor(GameManager.getSingleton().getModel().findPlayerbyid(cities.get(a).getOwner()).getColor());
+			} catch (ObjectNotFoundException e) {
+				e.printStackTrace();
+			}
 			getView().placeCity(cities.get(a).getVertextLocation(), color);
 		}
 
