@@ -2,6 +2,7 @@ package client.devcards;
 
 import client.GameManager.GameManager;
 import model.Facade;
+import model.InsufficientResourcesException;
 import model.Player;
 import shared.definitions.ResourceType;
 import client.base.*;
@@ -60,7 +61,11 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void buyCard() {
-		
+		try {
+			theFacade.buyDevCard(thePlayer.getPlayerID());
+		} catch (InsufficientResourcesException e) {
+			e.printStackTrace();
+		}
 		getBuyCardView().closeModal();
 	}
 
@@ -90,13 +95,14 @@ public class DevCardController extends Controller implements IDevCardController 
 	@Override
 	public void playRoadBuildCard() {
 		//theFacade.playRoadBuilding();
-		roadAction.execute();		//TODO: How do I get the 2 locations?
+		roadAction.execute();		//TODO: How do I get the 2 locations? and what is a roadAction?
 	}
 
 	@Override
 	public void playSoldierCard() {
 		//theFacade.playSoldier();
-		soldierAction.execute();	//TODO: how do i check the vertex id and edge location?
+
+		soldierAction.execute();	//TODO: how do i check the vertex id and edge location? and what is a soldierAction?
 	}
 
 	@Override
