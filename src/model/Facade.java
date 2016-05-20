@@ -195,11 +195,41 @@ public class Facade extends AbstractModelPartition {
      *
      * @return boolean whether or not the player can build a road
      */
-    public boolean canBuildRoad(int playerId) {
-        if (theGame == null)
+    public boolean canBuildRoad(int playerId,EdgeLocation edge) {
+        if (theGame == null)//game isnt null
             return false;
+		if (theGame.getTurnTracker().getStatus() == "FirstRound" || theGame.getTurnTracker().getStatus() == "Second Round") {
+			for (int i=0; i < theGame.getMap().getRoads().size(); i++) { 
+				if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().equals(edge.getNormalizedLocation()))  //if space is taken
+					return false;
+			}
+			for (VertexLocation vertex : edge.getVertices()) {
+				if (vertex.isAvailable(theGame, GameManager.getSingleton().getthisplayer().getPlayerIndex())) 
+					return true;
+			}
+			return false;
+		} else { 
+			if(edge != null) {
+				for (int i=0; i < theGame.getMap().getRoads().size(); i++) { 
+					if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().equals(edge.getNormalizedLocation()))  //if space is taken
+						return false;
+				}
+				if (!edge.hadconnectingroad(theGame, GameManager.getSingleton().getthisplayer().getPlayerIndex())) //if you dont have a connecting road
+					return false;	
+			}
+		}
+		
         return theGame.canBuildRoad(playerId);
     }
+	public boolean isHexHasResource(HexLocation hexLoc) {
+		for (Hex hex : theGame.getMap().getHexes()) {
+			HexLocation resourceHexLoc = hex.getLocation();
+			if (hexLoc.equals(resourceHexLoc))
+				return true;
+		}
+		return false;
+	}
+    
 
     /**
      * Checks to see if placing a road is a legal move for the player

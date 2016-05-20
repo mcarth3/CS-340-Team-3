@@ -1,5 +1,10 @@
 package shared.locations;
 
+import java.util.ArrayList;
+
+import model.Game;
+
+
 /**
  * Represents the location of a vertex on a hex map
  */
@@ -122,6 +127,47 @@ public class VertexLocation
 				assert false;
 				return null;
 		}
+	}
+
+	public boolean isAvailable(Game theGame, int playerIndex) {
+		ArrayList<EdgeLocation> edges = new ArrayList<EdgeLocation>();
+		ArrayList<VertexLocation> vertices = new ArrayList<VertexLocation>();
+		VertexLocation normalized = this.getNormalizedLocation();
+		if (normalized.getDir()== direction.NorthWest) {
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NW));
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
+				edges.add(new EdgeLocation(new HexLocation (normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
+										   normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
+										   EdgeDirection.NE));
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.West).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthEast));
+				vertices.add(new VertexLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
+												normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
+												VertexDirection.NorthEast));
+		}else if (normalized.getDir()== direction.NorthEast) {
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NE));
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
+				edges.add(new EdgeLocation(new HexLocation (normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
+						   				   normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
+						   				   EdgeDirection.NW));
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.East).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthWest));
+				vertices.add(new VertexLocation(new HexLocation (normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
+												normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
+												VertexDirection.NorthWest));
+		}
+		
+		for (int k = 0; k < theGame.getMap().getsettlements().size(); k++) {
+			for (int l=0; l < vertices.size(); l++) {
+				if (theGame.getMap().getsettlements().get(k).getLocation().getNormalizedLocation().equals(vertices.get(l).getNormalizedLocation())) {
+					return false;
+				}
+			}
+			if (theGame.getMap().getsettlements().get(k).getLocation().getNormalizedLocation().equals(normalized)) 
+				return false;
+		}
+		
+		return true;
 	}
 }
 

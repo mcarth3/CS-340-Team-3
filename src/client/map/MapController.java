@@ -8,6 +8,7 @@ import client.GameManager.GameManager;
 import client.base.*;
 import client.data.*;
 import model.City;
+import model.Facade;
 import model.Game;
 import model.Hex;
 import model.Map;
@@ -113,8 +114,8 @@ public class MapController extends Controller implements IMapController {
 	}
 
 	public boolean canPlaceRoad(EdgeLocation edgeLoc) {
-		
-		return true;
+		return Facade.getSingleton().canBuildRoad(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(), edgeLoc);
+
 	}
 
 	public boolean canPlaceSettlement(VertexLocation vertLoc) {
@@ -175,6 +176,7 @@ public class MapController extends Controller implements IMapController {
 		
 	}
 	public void update() {   
+		//if we need to get our player's turn - if(model.getTurnTracker().getCurrentPlayer() == manager.getthisplayer().getPlayerIndex()) {
     	GameManager gm = GameManager.getSingleton();
 
         Game game = gm.getModel();
@@ -184,40 +186,70 @@ public class MapController extends Controller implements IMapController {
         ArrayList<Road> roads = map.getRoads();
         ArrayList<Settlement> set = map.getsettlements();
         ArrayList<City> cities = map.getcities();
+        ArrayList<model.Player> players = game.getPlayers();
         
-        for (Hex h : hexs){
-        	HexType hexType = null; 
-        	hexType = getHexType(h.getResource());
+        if (game.getTurnTracker().getStatus().equals("FirstRound")){
+	
+	        for (Hex h : hexs){
+	        	HexType hexType = null; 
+	        	hexType = getHexType(h.getResource());
+	
+	        	//h.getNumber()
+	        	HexLocation hexLoc = h.getLocation();
+	        	getView().addHex(hexLoc, hexType);	
+	        }   
+	        
+	    	getView().addHex(new HexLocation(-3, 0), HexType.WATER);
+	    	getView().addHex(new HexLocation(-2, -1), HexType.WATER);
+	    	getView().addHex(new HexLocation(-1, -2), HexType.WATER);
+	    	getView().addHex(new HexLocation(0, -3), HexType.WATER);
+	    	getView().addHex(new HexLocation(1, -3), HexType.WATER);
+	    	getView().addHex(new HexLocation(2, -3), HexType.WATER);
+	    	getView().addHex(new HexLocation(3, -3), HexType.WATER);
+	    	getView().addHex(new HexLocation(3, -2), HexType.WATER);
+	    	getView().addHex(new HexLocation(3, -1), HexType.WATER);
+	    	getView().addHex(new HexLocation(3, 0), HexType.WATER);
+	    	getView().addHex(new HexLocation(2, 1), HexType.WATER);
+	    	getView().addHex(new HexLocation(1, 2), HexType.WATER);
+	    	getView().addHex(new HexLocation(0, 3), HexType.WATER);
+	    	getView().addHex(new HexLocation(-1, 3), HexType.WATER);
+	    	getView().addHex(new HexLocation(-2, 3), HexType.WATER);
+	    	getView().addHex(new HexLocation(-3, 3), HexType.WATER);
+	    	getView().addHex(new HexLocation(-3, 2), HexType.WATER);
+	    	getView().addHex(new HexLocation(-3, 1), HexType.WATER);
+	        
+	        for(int a=0; a<ports.size(); a++){
+	        	//System.out.println(ports.get(a)); 
+	        	HexLocation hexLoc = ports.get(a).getLocation(); 
+	        	getView().addPort(new EdgeLocation(hexLoc, ports.get(a).getDirection()), getPortType(ports.get(a).getResource()));
+	        }
+	        
+	        
 
-        	//h.getNumber()
-        	HexLocation hexLoc = h.getLocation();
-        	getView().addHex(hexLoc, hexType);	
-        }   
-        
-    	getView().addHex(new HexLocation(-3, 0), HexType.WATER);
-    	getView().addHex(new HexLocation(-2, -1), HexType.WATER);
-    	getView().addHex(new HexLocation(-1, -2), HexType.WATER);
-    	getView().addHex(new HexLocation(0, -3), HexType.WATER);
-    	getView().addHex(new HexLocation(1, -3), HexType.WATER);
-    	getView().addHex(new HexLocation(2, -3), HexType.WATER);
-    	getView().addHex(new HexLocation(3, -3), HexType.WATER);
-    	getView().addHex(new HexLocation(3, -2), HexType.WATER);
-    	getView().addHex(new HexLocation(3, -1), HexType.WATER);
-    	getView().addHex(new HexLocation(3, 0), HexType.WATER);
-    	getView().addHex(new HexLocation(2, 1), HexType.WATER);
-    	getView().addHex(new HexLocation(1, 2), HexType.WATER);
-    	getView().addHex(new HexLocation(0, 3), HexType.WATER);
-    	getView().addHex(new HexLocation(-1, 3), HexType.WATER);
-    	getView().addHex(new HexLocation(-2, 3), HexType.WATER);
-    	getView().addHex(new HexLocation(-3, 3), HexType.WATER);
-    	getView().addHex(new HexLocation(-3, 2), HexType.WATER);
-    	getView().addHex(new HexLocation(-3, 1), HexType.WATER);
-        
-        for(int a=0; a<ports.size(); a++){
-        	//System.out.println(ports.get(a)); 
-        	HexLocation hexLoc = ports.get(a).getLocation(); 
-        	getView().addPort(new EdgeLocation(hexLoc, ports.get(a).getDirection()), getPortType(ports.get(a).getResource()));
+
         }
+        
+		for (int a=0; a<set.size(); a++) {
+			CatanColor color = players.get(set.get(a).getOwner()).getColor();
+			getView().placeSettlement(set.get(a).getLocation(), color);
+		}
+
+		for (int a=0; a<cities.size(); a++) {
+			CatanColor color = players.get(cities.get(a).getOwner()).getColor();
+			getView().placeCity(cities.get(a).getLocation(), color);
+		}
+
+		for (int a=0; a<roads.size(); a++) {
+			CatanColor color = players.get(roads.get(a).getOwner()).getColor();
+			getView().placeRoad(roads.get(a).getLocation(), color);
+		}
+
+		getView().placeRobber(map.getRobber().getHl());
+        
+        
+        
+        
+        
         //THIS IS JUST TEMPORARY
         if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")){
         	RealProxy.getSingleton().robPlayer(1, 1, new HexLocation(0, 0));

@@ -1,5 +1,9 @@
 package shared.locations;
 
+import java.util.ArrayList;
+
+import model.Game;
+
 /**
  * Represents the location of an edge on a hex map
  */
@@ -112,6 +116,76 @@ public class EdgeLocation
 				assert false;
 				return null;
 		}
+	}
+
+	public boolean hadconnectingroad(Game theGame, int playerIndex) {
+		ArrayList<EdgeLocation> edges = new ArrayList<EdgeLocation>();
+		EdgeLocation normalized = this.getNormalizedLocation();
+		switch (normalized.getDir()) {
+			case NW:
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.SW).getNormalizedLocation());
+				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
+										   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
+										   EdgeDirection.NE));
+				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
+						   				   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
+						   				   EdgeDirection.S).getNormalizedLocation());
+				break;
+			case N:
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NW));
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NE));
+				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
+						   				   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
+						   				   EdgeDirection.SW).getNormalizedLocation());
+				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
+						   				   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
+						   				   EdgeDirection.SE).getNormalizedLocation());
+				break;
+			case NE:
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.SE).getNormalizedLocation());
+				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
+						   				   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
+						   				   EdgeDirection.NW));
+				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
+						   				   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
+						   				   EdgeDirection.S).getNormalizedLocation());
+				break;
+			default:
+		}
+		for (int i=0; i < theGame.getMap().getRoads().size(); i++) { 
+			for (int j=0; j < edges.size(); j++) {
+				if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().equals(edges.get(j).getNormalizedLocation())) {
+					if (theGame.getMap().getRoads().get(i).getOwner() == playerIndex) {
+						return true;
+					}
+				}		
+			}
+		}
+		//return new RoadCollection(roads);
+		return false;
+	}
+
+	public  ArrayList<VertexLocation> getVertices() {
+		ArrayList<VertexLocation> vertices = new ArrayList<VertexLocation>();
+		EdgeLocation normalized = this.getNormalizedLocation();
+		switch (normalized.getDir()) {
+			case NW:
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.West).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthWest));
+				break;
+			case N:
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthWest).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthEast));
+				break;
+			case NE:
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.East).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NorthEast));
+				break;
+			default:
+		}
+		return vertices;
 	}
 }
 
