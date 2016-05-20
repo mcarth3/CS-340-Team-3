@@ -686,7 +686,12 @@ public class MapComponent extends JComponent
 												 edgePoint);
 		
 		Polygon poly = toPolygon(roadShape);
-		Color baseColor = color.getJavaColor();
+		Color baseColor;
+		if (color !=null){
+			baseColor = color.getJavaColor();
+		}else{
+			baseColor = CatanColor.BLUE.getJavaColor();
+		}
 		Color darkColor = baseColor.darker();
 		
 		g2.setColor(baseColor);

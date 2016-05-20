@@ -238,7 +238,7 @@ public class MapController extends Controller implements IMapController {
 
 		for (int a=0; a<roads.size(); a++) {
 			CatanColor color = players.get(roads.get(a).getOwner()).getColor();
-		//	getView().placeRoad(roads.get(a).getLocation(), color);
+			getView().placeRoad(roads.get(a).getLocation(), color);
 		}
 
 	//	getView().placeRobber(map.getRobber().getHl());
