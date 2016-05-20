@@ -1,6 +1,8 @@
 package client.devcards;
 
+import client.GameManager.GameManager;
 import model.Facade;
+import model.Player;
 import shared.definitions.ResourceType;
 import client.base.*;
 
@@ -15,6 +17,8 @@ public class DevCardController extends Controller implements IDevCardController 
 	private IAction roadAction;
 
 	private Facade theFacade;
+
+	private Player thePlayer;
 
 	/**
 	 * DevCardController constructor
@@ -62,7 +66,7 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void startPlayCard() {
-		
+
 		getPlayCardView().showModal();
 	}
 
@@ -74,25 +78,24 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void playMonopolyCard(ResourceType resource) {
-		//Facade theFacade = Facade.getFacade();
-		//theFacade.playMonopoly();
-		//TODO: are these the only things?
+		theFacade.playMonopoly(thePlayer.getPlayerID(), resource.name());
+
 	}
 
 	@Override
 	public void playMonumentCard() {
-		//TODO: are these the only things?
+		theFacade.playMonument(thePlayer.getPlayerID());
 	}
 
 	@Override
 	public void playRoadBuildCard() {
-
+		//theFacade.playRoadBuilding();
 		roadAction.execute();		//TODO: what do I add?
 	}
 
 	@Override
 	public void playSoldierCard() {
-		
+		//theFacade.playSoldier();
 		soldierAction.execute();	//TODO: what do I add?
 	}
 
@@ -102,12 +105,15 @@ public class DevCardController extends Controller implements IDevCardController 
 	}
 	public void update(){
 		theFacade = Facade.getFacade();
-		if(theFacade != null)
+		if(theFacade != null && GameManager.getSingleton() != null)
 		{
+			thePlayer = GameManager.getSingleton().getthisplayer();
+			if(theFacade.canBuyDevcard(thePlayer.getPlayerID()))
+			{
 
+			}
 		}
 
-		//TODO: just make it visible if they have it or can buy it?
 	}
 
 
