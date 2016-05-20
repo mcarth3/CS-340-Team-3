@@ -188,43 +188,40 @@ public class MapController extends Controller implements IMapController {
         ArrayList<City> cities = map.getcities();
         ArrayList<model.Player> players = game.getPlayers();
         
-        if (game.getTurnTracker().getStatus().equals("FirstRound")){
-	
-	        for (Hex h : hexs){
-	        	HexType hexType = null; 
-	        	hexType = getHexType(h.getResource());
-	
-	        	//h.getNumber()
-	        	HexLocation hexLoc = h.getLocation();
-	        	getView().addHex(hexLoc, hexType);	
-	        }   
-	        
-	    	getView().addHex(new HexLocation(-3, 0), HexType.WATER);
-	    	getView().addHex(new HexLocation(-2, -1), HexType.WATER);
-	    	getView().addHex(new HexLocation(-1, -2), HexType.WATER);
-	    	getView().addHex(new HexLocation(0, -3), HexType.WATER);
-	    	getView().addHex(new HexLocation(1, -3), HexType.WATER);
-	    	getView().addHex(new HexLocation(2, -3), HexType.WATER);
-	    	getView().addHex(new HexLocation(3, -3), HexType.WATER);
-	    	getView().addHex(new HexLocation(3, -2), HexType.WATER);
-	    	getView().addHex(new HexLocation(3, -1), HexType.WATER);
-	    	getView().addHex(new HexLocation(3, 0), HexType.WATER);
-	    	getView().addHex(new HexLocation(2, 1), HexType.WATER);
-	    	getView().addHex(new HexLocation(1, 2), HexType.WATER);
-	    	getView().addHex(new HexLocation(0, 3), HexType.WATER);
-	    	getView().addHex(new HexLocation(-1, 3), HexType.WATER);
-	    	getView().addHex(new HexLocation(-2, 3), HexType.WATER);
-	    	getView().addHex(new HexLocation(-3, 3), HexType.WATER);
-	    	getView().addHex(new HexLocation(-3, 2), HexType.WATER);
-	    	getView().addHex(new HexLocation(-3, 1), HexType.WATER);
-	        
-	        for(int a=0; a<ports.size(); a++){
-	        	//System.out.println(ports.get(a)); 
-	        	HexLocation hexLoc = ports.get(a).getLocation(); 
-	        	getView().addPort(new EdgeLocation(hexLoc, ports.get(a).getDirection()), getPortType(ports.get(a).getResource()));
-	        }
-	        
-	        
+ 
+        for (Hex h : hexs){
+        	HexType hexType = null; 
+        	hexType = getHexType(h.getResource());
+
+        	//h.getNumber()
+        	HexLocation hexLoc = h.getLocation();
+        	getView().addHex(hexLoc, hexType);	
+        }   
+        
+    	getView().addHex(new HexLocation(-3, 0), HexType.WATER);
+    	getView().addHex(new HexLocation(-2, -1), HexType.WATER);
+    	getView().addHex(new HexLocation(-1, -2), HexType.WATER);
+    	getView().addHex(new HexLocation(0, -3), HexType.WATER);
+    	getView().addHex(new HexLocation(1, -3), HexType.WATER);
+    	getView().addHex(new HexLocation(2, -3), HexType.WATER);
+    	getView().addHex(new HexLocation(3, -3), HexType.WATER);
+    	getView().addHex(new HexLocation(3, -2), HexType.WATER);
+    	getView().addHex(new HexLocation(3, -1), HexType.WATER);
+    	getView().addHex(new HexLocation(3, 0), HexType.WATER);
+    	getView().addHex(new HexLocation(2, 1), HexType.WATER);
+    	getView().addHex(new HexLocation(1, 2), HexType.WATER);
+    	getView().addHex(new HexLocation(0, 3), HexType.WATER);
+    	getView().addHex(new HexLocation(-1, 3), HexType.WATER);
+    	getView().addHex(new HexLocation(-2, 3), HexType.WATER);
+    	getView().addHex(new HexLocation(-3, 3), HexType.WATER);
+    	getView().addHex(new HexLocation(-3, 2), HexType.WATER);
+    	getView().addHex(new HexLocation(-3, 1), HexType.WATER);
+        
+        for(int a=0; a<ports.size(); a++){
+        	//System.out.println(ports.get(a)); 
+        	HexLocation hexLoc = ports.get(a).getLocation(); 
+        	getView().addPort(new EdgeLocation(hexLoc, ports.get(a).getDirection()), getPortType(ports.get(a).getResource()));
+    
 
 
         }
@@ -241,7 +238,7 @@ public class MapController extends Controller implements IMapController {
 
 		for (int a=0; a<roads.size(); a++) {
 			CatanColor color = players.get(roads.get(a).getOwner()).getColor();
-			getView().placeRoad(roads.get(a).getLocation(), color);
+		//	getView().placeRoad(roads.get(a).getLocation(), color);
 		}
 
 	//	getView().placeRobber(map.getRobber().getHl());
