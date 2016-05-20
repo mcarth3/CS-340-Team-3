@@ -94,7 +94,7 @@ private int counter;
 	private boolean chose;
 
 	public void update(){
-
+	System.out.println("You're in the RollController update()!!!");
 		if(GameManager.getSingleton() != null && theFacade.getGame() != null
 				&& theFacade.getGame().getTurnTracker() != null && theFacade.getGame().getTurnTracker().getStatus()!= null) {
 			System.out.println("Status by RollController update(): " + theFacade.getGame().getTurnTracker().getStatus());
