@@ -94,7 +94,7 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void playRoadBuildCard() {
-		//theFacade.playRoadBuilding();
+		//theFacade.playRoadBuilding(); //roadbuilding state,
 		roadAction.execute();		//TODO: How do I get the 2 locations? and what is a roadAction?
 	}
 

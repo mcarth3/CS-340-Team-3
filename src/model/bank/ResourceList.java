@@ -81,23 +81,23 @@ public class ResourceList extends AbstractModelPartition {
     }
 
     public void setBrick(int brick) {
-        brick = brick;
+        this.brick = brick;
     }
 
     public void setOre(int ore) {
-        ore = ore;
+        this.ore = ore;
     }
 
     public void setSheep(int sheep) {
-        sheep = sheep;
+        this.sheep = sheep;
     }
 
     public void setWheat(int wheat) {
-        wheat = wheat;
+        this.wheat = wheat;
     }
 
     public void setWood(int wood) {
-        wood = wood;
+        this.wood = wood;
     }
 
     public ResourceList merge(ResourceList first, ResourceList second) {

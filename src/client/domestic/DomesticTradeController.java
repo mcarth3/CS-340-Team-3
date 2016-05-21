@@ -13,6 +13,7 @@ import states.StateEnum;
 
 import java.util.ArrayList;
 import java.util.Set;
+import java.util.TreeSet;
 
 
 /**
@@ -51,7 +52,9 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 									IWaitView waitOverlay, IAcceptTradeOverlay acceptOverlay) {
 
 		super(tradeView);
-		
+		sending = new TreeSet<>();
+		recieving = new TreeSet<>();
+		theFacade = GameManager.getSingleton().getModelfacade();
 		setTradeOverlay(tradeOverlay);
 		setWaitOverlay(waitOverlay);
 		setAcceptOverlay(acceptOverlay);
@@ -119,20 +122,23 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 
 		getTradeOverlay().setResourceSelectionEnabled(true);
 		getTradeOverlay().setPlayers(theTraders);
-
+		getTradeOverlay().setPlayerSelectionEnabled(true);
+		checkResourceChanges();
 	}
 
 	@Override
 	public void decreaseResourceAmount(ResourceType resource) {
 		changeValueOfResourceByInt(resource, -1);
 		checkTradeValues();
-
+		checkResourceChanges();
 	}
 
 	@Override
 	public void increaseResourceAmount(ResourceType resource) {
 		changeValueOfResourceByInt(resource, 1);
 		checkTradeValues();
+		checkResourceChanges();
+
 		System.out.println("DMT: increase a " + resource);
 	}
 
@@ -157,6 +163,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		sending.remove(resource);
 		setValueOfResourceZero(resource);
 		checkTradeValues();
+		checkResourceChanges();
 	}
 
 	@Override
@@ -164,7 +171,9 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		sending.add(resource);
 		recieving.remove(resource);
 		setValueOfResourceZero(resource);
+		System.out.println("DTC: " + listOfResources.toString());
 		checkTradeValues();
+		checkResourceChanges();
 		System.out.println("DMT: set a " + resource);
 	}
 
@@ -197,19 +206,19 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		}
 		if(recieving.contains(ResourceType.WOOD))
 		{
-			listOfResources.setBrick(listOfResources.getWood() * -1);
+			listOfResources.setWood(listOfResources.getWood() * -1);
 		}
 		if(recieving.contains(ResourceType.WHEAT))
 		{
-			listOfResources.setBrick(listOfResources.getWheat() * -1);
+			listOfResources.setWheat(listOfResources.getWheat() * -1);
 		}
 		if(recieving.contains(ResourceType.ORE))
 		{
-			listOfResources.setBrick(listOfResources.getOre() * -1);
+			listOfResources.setOre(listOfResources.getOre() * -1);
 		}
 		if(recieving.contains(ResourceType.SHEEP))
 		{
-			listOfResources.setBrick(listOfResources.getSheep() * -1);
+			listOfResources.setSheep(listOfResources.getSheep() * -1);
 		}
 	}
 	
@@ -246,47 +255,63 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	{
 		if(type == ResourceType.BRICK)
 		{
+			System.out.println("DTC: Changing brick by " + amount);
+
 			listOfResources.setBrick(listOfResources.getBrick() + amount);
+			System.out.println("DTC: Brick in listOfResources is now " + listOfResources.getBrick());
+
+			getTradeOverlay().setResourceAmount(type, "" + (listOfResources.getBrick()));
 		}
 		if(type == ResourceType.ORE)
 		{
 			listOfResources.setOre(listOfResources.getOre() + amount);
+			getTradeOverlay().setResourceAmount(type, "" + (listOfResources.getOre()));
 		}
 		if(type == ResourceType.WOOD)
 		{
 			listOfResources.setWood(listOfResources.getWood() + amount);
+			getTradeOverlay().setResourceAmount(type, "" + (listOfResources.getWood()));
 		}
 		if(type == ResourceType.WHEAT)
 		{
 			listOfResources.setWheat(listOfResources.getWheat() + amount);
+			getTradeOverlay().setResourceAmount(type, "" + (listOfResources.getWheat()));
 		}
 		if(type == ResourceType.SHEEP)
 		{
 			listOfResources.setSheep(listOfResources.getSheep() + amount);
+			getTradeOverlay().setResourceAmount(type, "" + (listOfResources.getSheep()));
 		}
 	}
 
 	public void setValueOfResourceZero(ResourceType type)
 	{
+		System.out.println("DTC: Setting resources to zero!");
+
 		if(type == ResourceType.BRICK)
 		{
 			listOfResources.setBrick(0);
+			getTradeOverlay().setResourceAmount(type, "" + (listOfResources.getBrick()));
 		}
 		if(type == ResourceType.ORE)
 		{
 			listOfResources.setOre(0);
+			getTradeOverlay().setResourceAmount(type, "" + (listOfResources.getOre()));
 		}
 		if(type == ResourceType.WOOD)
 		{
 			listOfResources.setWood(0);
+			getTradeOverlay().setResourceAmount(type, "" + (listOfResources.getWood()));
 		}
 		if(type == ResourceType.WHEAT)
 		{
 			listOfResources.setWheat(0);
+			getTradeOverlay().setResourceAmount(type, "" + (listOfResources.getWheat()));
 		}
 		if(type == ResourceType.SHEEP)
 		{
 			listOfResources.setSheep(0);
+			getTradeOverlay().setResourceAmount(type, "" + (listOfResources.getSheep()));
 		}
 	}
 
@@ -317,6 +342,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		else
 		{
 			getTradeOverlay().setStateMessage("Choose player!");
+			//getTradeOverlay().
 			getTradeOverlay().setTradeEnabled(false);
 		}
 	}
@@ -374,10 +400,15 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		}
 		else if(recieving.contains(ResourceType.BRICK))
 		{
+			System.out.println("DTC: Brick is in recieving, and checkResources knows it!");
 			increase = true;
+			System.out.println("DTC: listOfResources has " + listOfResources.getBrick() + " brick, and checkResources knows it!");
+
 			if(listOfResources.getBrick() > 0)
 			{
 				decrease = true;
+				System.out.println("DTC: Brick's greater than zero!");
+
 			}
 			else
 			{
