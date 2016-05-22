@@ -106,8 +106,9 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 			}else if(model.getTurnTracker().getStatus().equals("SecondRound")){
 				message = "Second Round";
 			}else if(model.getTurnTracker().getStatus().equals("Playing")){
-				message = "Playing";
+				message = "playing, but Model == null";
 				if (model != null){
+					message = "playing, but cant finish turn";
 					if (model.canFinishTurn(manager.getthisplayer().getPlayerID())){
 						message = "End Turn";
 						enableButton = true;
@@ -119,6 +120,8 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 		//	RealProxy.getSingleton().finishTurn(model.getTurnTracker().getCurrentPlayer());
 		}
 		this.getView().updateGameState(message, enableButton);
+		System.out.println("trade offer = "+ model.getTradeO());
+
 	}
 
 }

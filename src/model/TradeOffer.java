@@ -15,9 +15,9 @@ public class TradeOffer extends AbstractModelPartition {
 	  int reciever;
 	  //Positive numbers are resources being offered. Negative are resources being asked for.
 	  ResourceList offer;
-	  //Resource List of whats being sent (negative)
+	//  Resource List of whats being sent (negative)
 	  ResourceList sentList = new ResourceList(0);
-	  //Resource List of whats being recieved (positive)
+	 // Resource List of whats being recieved (positive)
 	  ResourceList recievedList = new ResourceList(0);
 	  
 	  public TradeOffer()

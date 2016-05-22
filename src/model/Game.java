@@ -32,7 +32,7 @@ public class Game extends AbstractModelPartition {
     private TurnTracker turnTracker;
 	private int winner;
 	public int version;
-	private TradeOffer tradeO;
+	private TradeOffer tradeOffer;
 	
 //removed
 	private Dice gameDice;
@@ -213,7 +213,7 @@ public class Game extends AbstractModelPartition {
         return players.get(pid).canMonopoly();
     }
     public boolean canFinishTurn(int pid) {
-        return (turnTracker.getStatus().equals("SecondRound") && turnTracker.getCurrentPlayer() == pid);
+        return (turnTracker.getStatus().equals("Playing") && turnTracker.getCurrentPlayer() == pid);
     }
 
     /**
@@ -290,9 +290,9 @@ public class Game extends AbstractModelPartition {
      *
      * @return boolean whether or not the player can accept a trade offer from another player
      */
-    public boolean canAcceptTrade(int pid) {
-        return players.get(pid).canAcceptTrade(tradeO.getSentList());
-    }
+   // public boolean canAcceptTrade(int pid) {
+   //     return players.get(pid).canAcceptTrade(tradeO.getSentList());
+   // }
     /**
      * Set up the TradeOffer
      */
@@ -303,7 +303,7 @@ public class Game extends AbstractModelPartition {
         if (pid == rid)
             throw new IllegalMoveException("No trading yourself!");
 
-        tradeO = new TradeOffer(pid, rid, rl);
+        tradeOffer = new TradeOffer(pid, rid, rl);
         return players.get(pid).canOfferTrade();
 
 
@@ -430,10 +430,10 @@ public class Game extends AbstractModelPartition {
     }
 
     public TradeOffer getTradeO() {
-        return tradeO;
+        return tradeOffer;
     }
 
     public void setTradeO(TradeOffer tradeO) {
-        this.tradeO = tradeO;
+        this.tradeOffer = tradeO;
     }
 }
