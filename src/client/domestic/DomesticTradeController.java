@@ -4,6 +4,7 @@ import client.GameManager.GameManager;
 import client.data.PlayerInfo;
 import model.Facade;
 import model.Player;
+import model.TradeOffer;
 import model.bank.ResourceList;
 import shared.definitions.*;
 import client.base.*;
@@ -139,22 +140,23 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		checkTradeValues();
 		checkResourceChanges();
 
-		System.out.println("DMT: increase a " + resource);
+		//System.out.println("DMT: increase a " + resource);
 	}
 
 	@Override
 	public void sendTradeOffer() {
 		reverseNegativeResources();
-
-		theFacade.tradePlayer(thePlayer.getPlayerID(), listOfResources, desiredTraderID);
+		System.out.println("Sending trade now!");
+		theFacade.tradePlayer(thePlayer.getPlayerIndex(), listOfResources, desiredTraderID);
 		getTradeOverlay().closeModal();
 		getWaitOverlay().showModal();
 	}
 
 	@Override
 	public void setPlayerToTradeWith(int playerIndex) {
-		getTradeOverlay().setStateMessage("Select player!");
+		//getTradeOverlay().setStateMessage("Select player!");
 		desiredTraderID = playerIndex;
+		checkTradeValues();
 	}
 
 	@Override
@@ -171,10 +173,10 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		sending.add(resource);
 		recieving.remove(resource);
 		setValueOfResourceZero(resource);
-		System.out.println("DTC: " + listOfResources.toString());
+		//System.out.println("DTC: " + listOfResources.toString());
 		checkTradeValues();
 		checkResourceChanges();
-		System.out.println("DMT: set a " + resource);
+		//System.out.println("DMT: set a " + resource);
 	}
 
 	@Override
@@ -194,10 +196,15 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	@Override
 	public void acceptTrade(boolean willAccept) {
 
-		theFacade.acceptTrade(pid, true);
+
+		theFacade.acceptTrade(pid, willAccept);
 		getAcceptOverlay().closeModal();
 	}
 
+	/**
+	 * sets all the resources designated to be receieved to a negative value. ONLY TO BE CALLED
+	 * when the player has sent a trade request.
+	 */
 	public void reverseNegativeResources()
 	{
 		if(recieving.contains(ResourceType.BRICK))
@@ -221,23 +228,45 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 			listOfResources.setSheep(listOfResources.getSheep() * -1);
 		}
 	}
-	
+
+	/**
+	 * checks to make sure it's the player's turn and if they can trade.
+	 */
 	public void update(){
-		System.out.println("Domestic Trade update()!");
+		//System.out.println("Domestic Trade update()!");
 
 		if(GameManager.getSingleton() != null && State.getInstance() != null) {
-			System.out.println("DMU: No nulls!");
+			//System.out.println("DMU: No nulls!");
 
 			thePlayer = GameManager.getSingleton().getthisplayer();
 			//if (State.getCurrentState() == StateEnum.PLAY && thePlayer.resourcesOverZero().length > 0) {
 			if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Playing")) {
 				System.out.println("DMU: It's play time!");
 				if(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
-					System.out.println("DMU: It's the player!");
-
+					System.out.println("DMU: It's the turn of me, who is " + GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer());
+					System.out.println(", also known as " + thePlayer.getName());
 					getTradeView().enableDomesticTrade(true);
-					getTradeOverlay().setStateMessage("Select player!");
+					//getTradeOverlay().setStateMessage("Select player!");
+					checkTradeValues();
 					getTradeOverlay().setPlayerSelectionEnabled(true);
+				}
+				else if(GameManager.getSingleton().getModel().getTradeO() != null)
+				{
+					System.out.println("TradeO not null!");
+					if(GameManager.getSingleton().getModel().getTradeO().getReciever() == GameManager.getSingleton().getthisplayer().getPlayerIndex())
+					{
+
+						pid = thePlayer.getPlayerID();
+						formatAcceptOverlay();
+						getAcceptOverlay().showModal();
+					}
+
+				}
+				else {
+					System.out.println("It's not my turn and TradeO is null!");
+					getTradeView().enableDomesticTrade(false);
+					getTradeOverlay().setStateMessage("Can't trade now!");
+					getTradeOverlay().setPlayerSelectionEnabled(false);
 				}
 
 
@@ -251,14 +280,44 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	}
 
 
+	/**
+	 * is called if the current player has recieved a trade offer. Sets the Overlay to show the
+	 * resources offered and asked for, and sets the button according to if this player can accept.
+	 */
+	public void formatAcceptOverlay()
+	{
+		TradeOffer theTrade = GameManager.getSingleton().getModel().getTradeO();
+		setAcceptResources(theTrade.getOffer());
+	}
+
+	/**
+	 * sets the AcceptOverlay's resources both offered and asked for. Called by formatAcceptOverlay()
+	 */
+    public void setAcceptResources(ResourceList theDemands)
+	{
+		if(theDemands.getBrick() > 0)
+		{
+			getAcceptOverlay().addGetResource(ResourceType.BRICK, theDemands.getBrick());
+		}
+		else if(theDemands.getBrick() < 0)
+		{
+			getAcceptOverlay().addGiveResource(ResourceType.BRICK, theDemands.getBrick());
+		}
+	}
+
+	/**
+	 * changes the value of a resource in the listOfResources by the specified amount (by adding amount to the int in the listOfResources)
+	 * @param type
+	 * @param amount
+     */
 	public void changeValueOfResourceByInt(ResourceType type, int amount)
 	{
 		if(type == ResourceType.BRICK)
 		{
-			System.out.println("DTC: Changing brick by " + amount);
+			//System.out.println("DTC: Changing brick by " + amount);
 
 			listOfResources.setBrick(listOfResources.getBrick() + amount);
-			System.out.println("DTC: Brick in listOfResources is now " + listOfResources.getBrick());
+			//System.out.println("DTC: Brick in listOfResources is now " + listOfResources.getBrick());
 
 			getTradeOverlay().setResourceAmount(type, "" + (listOfResources.getBrick()));
 		}
@@ -284,9 +343,13 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		}
 	}
 
+	/**
+	 * sets the value of all resources in listOfResources to zero.
+	 * @param type
+     */
 	public void setValueOfResourceZero(ResourceType type)
 	{
-		System.out.println("DTC: Setting resources to zero!");
+		//System.out.println("DTC: Setting resources to zero!");
 
 		if(type == ResourceType.BRICK)
 		{
@@ -322,9 +385,11 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	public void checkTradeValues()
 	{
 		if(desiredTraderID > -1) {
-			if (recieving.size() > 0) {
-				if(sending.size() > 0)
+			if (recieveListTotalOffer() > 0) {
+				if(sendListTotalOffer() > 0)
 				{
+					getTradeOverlay().setStateMessage("TRADE");
+
 					getTradeOverlay().setTradeEnabled(true);
 				}
 				else
@@ -347,7 +412,72 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		}
 	}
 
+	/**
+	 * returns the total amount of resources being offered to send
+	 */
+	public int sendListTotalOffer()
+	{
+		int total = 0;
+		for(ResourceType t: sending)
+		{
+			total += amountInResourceList(t);
+		}
+		return total;
+	}
 
+	/**
+	returns the total amount of resources being asked to recieve
+	 */
+	public int recieveListTotalOffer()
+	{
+		int total = 0;
+		for(ResourceType t: recieving)
+		{
+			total += amountInResourceList(t);
+		}
+		return total;
+	}
+
+
+	/**
+	 * returns the amount of a specified type of resource in the resourceList
+	 * @param type
+     */
+	public int amountInResourceList(ResourceType type)
+	{
+		if(type == ResourceType.BRICK)
+		{
+			return listOfResources.getBrick();
+
+		}
+		if(type == ResourceType.ORE)
+		{
+			return listOfResources.getOre();
+
+		}
+		if(type == ResourceType.WOOD)
+		{
+			return listOfResources.getWood();
+
+		}
+		if(type == ResourceType.WHEAT)
+		{
+			return listOfResources.getWheat();
+
+		}
+		if(type == ResourceType.SHEEP)
+		{
+			return listOfResources.getSheep();
+
+		}
+		System.out.println("ERROR in DomesticTradeController! Invalid type being checked in amountInResourceList()!");
+		return -1;
+	}
+
+	/**
+	 * changes all the increase/decrease buttons on the resources according to how many there are
+	 * and if the player can decrease or increase any. (changes buttons so you can increase or decrease or neither)
+	 */
 	public void checkResourceChanges()
 	{
 		ResourceList theList = thePlayer.getResources();
@@ -400,14 +530,14 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		}
 		else if(recieving.contains(ResourceType.BRICK))
 		{
-			System.out.println("DTC: Brick is in recieving, and checkResources knows it!");
+			//System.out.println("DTC: Brick is in recieving, and checkResources knows it!");
 			increase = true;
-			System.out.println("DTC: listOfResources has " + listOfResources.getBrick() + " brick, and checkResources knows it!");
+			//System.out.println("DTC: listOfResources has " + listOfResources.getBrick() + " brick, and checkResources knows it!");
 
 			if(listOfResources.getBrick() > 0)
 			{
 				decrease = true;
-				System.out.println("DTC: Brick's greater than zero!");
+				//System.out.println("DTC: Brick's greater than zero!");
 
 			}
 			else

@@ -429,7 +429,11 @@ public class Game extends AbstractModelPartition {
         return 0;
     }
 
+    public TradeOffer getTradeO() {
+        return tradeO;
+    }
 
-    
-
+    public void setTradeO(TradeOffer tradeO) {
+        this.tradeO = tradeO;
+    }
 }
