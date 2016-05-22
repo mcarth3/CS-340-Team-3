@@ -12,7 +12,7 @@ public class TradeOffer extends AbstractModelPartition {
 	  //The index of the person offering the trade
 	  int sender;
 	  //The index of the person the trade was offered to.
-	  int reciever;
+	  int receiver;
 	  //Positive numbers are resources being offered. Negative are resources being asked for.
 	  ResourceList offer;
 	//  Resource List of whats being sent (negative)
@@ -23,17 +23,17 @@ public class TradeOffer extends AbstractModelPartition {
 	  public TradeOffer()
 	  {
 	    sender = 0;
-	    reciever = 0;
+	    receiver = 0;
 	    offer = new ResourceList(0);
 	  }
 	  public TradeOffer(int newsender, int newreciever,ResourceList newoffer, ResourceList newsentlist, ResourceList newrecievedlist)
 	  {
 		  sender = newsender;
-		  reciever = newreciever;
+		  receiver = newreciever;
 		  offer = newoffer;
 		  sentList = newsentlist;
 		  recievedList = newrecievedlist;
-		  System.out.println("TradeOffer constructor 1, reciever is " + reciever);
+		  System.out.println("TradeOffer constructor 1, reciever is " + receiver);
 	  }
 	  public TradeOffer(ResourceList offr)
 	  {
@@ -43,9 +43,9 @@ public class TradeOffer extends AbstractModelPartition {
 	  public TradeOffer(int pid, int rid, ResourceList o)
 	  {
 	    sender = pid;
-	    reciever = rid;
+	    receiver = rid;
 	    offer = o;
-		  System.out.println("TradeOffer constructor 2, reciever is " + reciever);
+		  System.out.println("TradeOffer constructor 2, reciever is " + receiver);
 	  }
 	  /*
 	  * Separates the given offer into two resource lists, one that is filled with only the positive number
@@ -76,12 +76,12 @@ public class TradeOffer extends AbstractModelPartition {
 	  }  
 	  public int getReciever()
 	  {
-	    return reciever;
+	    return receiver;
 	  }
 	  public void setReciever(int recieve)
 	  {
-	    reciever = recieve;
-		  System.out.println("TradeOffer setReciever(), reciever is " + reciever);
+	    receiver = recieve;
+		  System.out.println("TradeOffer setReciever(), reciever is " + receiver);
 	  }  
 	  public ResourceList getOffer()
 	  {
