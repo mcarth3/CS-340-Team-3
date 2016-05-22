@@ -290,9 +290,9 @@ public class Game extends AbstractModelPartition {
      *
      * @return boolean whether or not the player can accept a trade offer from another player
      */
-   // public boolean canAcceptTrade(int pid) {
-   //     return players.get(pid).canAcceptTrade(tradeO.getSentList());
-   // }
+    public boolean canAcceptTrade(int pid) {
+        return players.get(pid).canAcceptTrade(tradeOffer.getSentList());
+    }
     /**
      * Set up the TradeOffer
      */
