@@ -94,6 +94,12 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	public void startTrade() {
 
 		//**************Reset everything:
+		//getTradeOverlay().reset();
+		getTradeView().enableDomesticTrade(true);
+
+		checkTradeValues();
+		getTradeOverlay().setPlayerSelectionEnabled(true);
+
 		getTradeOverlay().showModal();
 
 		desiredTraderID = -1;
@@ -111,8 +117,10 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		ArrayList<PlayerInfo> playersWithoutCurrent = new ArrayList<>();
 		for(int i = 0; i < thePlayers.size(); i++ )
 		{
-			if(thePlayers.get(i).getPlayerID() != pid) {
-				playersWithoutCurrent.add(thePlayers.get(i).toPlayerInfo());
+			if(thePlayers.get(i).getPlayerID() != thePlayer.getPlayerID()) {
+				if(!playersWithoutCurrent.contains(thePlayers.get(i).toPlayerInfo())) {
+					playersWithoutCurrent.add(thePlayers.get(i).toPlayerInfo());
+				}
 			}
 		}
 		PlayerInfo[] arrayNoCurrentPlayer = new PlayerInfo[playersWithoutCurrent.size()];
@@ -129,7 +137,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 
 	@Override
 	public void decreaseResourceAmount(ResourceType resource) {
-		changeValueOfResourceByInt(resource, 1);
+		changeValueOfResourceByInt(resource, -1);
 		checkTradeValues();
 		checkResourceChanges();
 	}
@@ -147,7 +155,9 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	public void sendTradeOffer() {
 		reverseNegativeResources();
 		System.out.println("Sending trade now! pid is " + thePlayer.getPlayerIndex() + " and desired rid is " + desiredTraderID);
+		System.out.println("The recommended trade: " + listOfResources.toString());
 		theFacade.tradePlayer(thePlayer.getPlayerIndex(), listOfResources, desiredTraderID);
+		listOfResources = new ResourceList();
 		getTradeOverlay().closeModal();
 		getWaitOverlay().showModal();
 	}
@@ -248,10 +258,15 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 				if(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
 					System.out.println("DMU: It's the turn of me, who is " + GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer());
 					System.out.println(", also known as " + thePlayer.getName());
+					getTradeOverlay().reset();
 					getTradeView().enableDomesticTrade(true);
 					//getTradeOverlay().setStateMessage("Select player!");
 					checkTradeValues();
 					getTradeOverlay().setPlayerSelectionEnabled(true);
+					if(GameManager.getSingleton().getModel().getTradeO() == null && getWaitOverlay().isModalShowing())
+					{
+						getWaitOverlay().closeModal();
+					}
 				}
 				else {
 					System.out.println("It's not my turn!");
@@ -268,7 +283,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 					if(GameManager.getSingleton().getModel().getTradeO().getReciever() == GameManager.getSingleton().getthisplayer().getPlayerIndex())
 					{
 
-						pid = thePlayer.getPlayerID();
+						pid = thePlayer.getPlayerIndex();
 						formatAcceptOverlay();
 						getAcceptOverlay().showModal();
 					}
@@ -296,7 +311,63 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		TradeOffer theTrade = GameManager.getSingleton().getModel().getTradeO();
 		System.out.println("Formatting AcceptOverlay!" + theTrade.getOffer());
 
+		getAcceptOverlay().reset();
+		//getAcceptOverlay().setPlayerName(Facade.getSingleton().getPlayerID());
 		setAcceptResources(theTrade.getOffer());
+		System.out.println("The trade offer while formatting AcceptOverlay!: " + theTrade.getOffer().toString());
+
+
+		getAcceptOverlay().setAcceptEnabled(checkAcceptability(theTrade.getOffer()));
+
+	}
+
+
+	public boolean checkAcceptability(ResourceList theDemands)
+	{
+		boolean enoughResources = true;
+		Player currentPlayer = GameManager.getSingleton().getthisplayer();
+		ResourceList currentResources = currentPlayer.getResources();
+		if(theDemands.getBrick() < 0)
+		{
+			if(currentResources.getBrick() < theDemands.getBrick() * -1)
+			{
+				enoughResources = false;
+			}
+
+		}
+
+		if(theDemands.getWood() < 0)
+		{
+			if (currentResources.getWood() < theDemands.getWood() * -1) {
+				enoughResources = false;
+			}
+		}
+
+		if(theDemands.getSheep() < 0)
+		{
+			if(currentResources.getSheep() < theDemands.getSheep() * -1)
+			{
+				enoughResources = false;
+			}
+		}
+
+		if(theDemands.getOre() < 0)
+		{
+			if(currentResources.getOre() < theDemands.getOre() * -1)
+			{
+				enoughResources = false;
+			}
+		}
+
+		if(theDemands.getWheat() < 0)
+		{
+			if(currentResources.getWheat() < theDemands.getWheat() * -1)
+			{
+				enoughResources = false;
+			}
+		}
+
+		return enoughResources;
 	}
 
 	/**
@@ -304,6 +375,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	 */
     public void setAcceptResources(ResourceList theDemands)
 	{
+		//BRICK
 		if(theDemands.getBrick() > 0)
 		{
 			getAcceptOverlay().addGetResource(ResourceType.BRICK, theDemands.getBrick());
@@ -311,6 +383,46 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		else if(theDemands.getBrick() < 0)
 		{
 			getAcceptOverlay().addGiveResource(ResourceType.BRICK, theDemands.getBrick());
+		}
+
+		//WOOD
+		if(theDemands.getWood() > 0)
+		{
+			getAcceptOverlay().addGetResource(ResourceType.WOOD, theDemands.getWood());
+		}
+		else if(theDemands.getWood() < 0)
+		{
+			getAcceptOverlay().addGiveResource(ResourceType.WOOD, theDemands.getWood());
+		}
+
+		//SHEEP
+		if(theDemands.getSheep() > 0)
+		{
+			getAcceptOverlay().addGetResource(ResourceType.SHEEP, theDemands.getSheep());
+		}
+		else if(theDemands.getSheep() < 0)
+		{
+			getAcceptOverlay().addGiveResource(ResourceType.SHEEP, theDemands.getSheep());
+		}
+
+		//ORE
+		if(theDemands.getOre() > 0)
+		{
+			getAcceptOverlay().addGetResource(ResourceType.ORE, theDemands.getOre());
+		}
+		else if(theDemands.getOre() < 0)
+		{
+			getAcceptOverlay().addGiveResource(ResourceType.ORE, theDemands.getOre());
+		}
+
+		//WHEAT
+		if(theDemands.getWheat() > 0)
+		{
+			getAcceptOverlay().addGetResource(ResourceType.WHEAT, theDemands.getWheat());
+		}
+		else if(theDemands.getWheat() < 0)
+		{
+			getAcceptOverlay().addGiveResource(ResourceType.WHEAT, theDemands.getWheat());
 		}
 	}
 

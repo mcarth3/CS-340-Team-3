@@ -614,7 +614,7 @@ public class Facade extends AbstractModelPartition {
         returnList.add(theList.getOre());
         returnList.add(theList.getSheep());
         returnList.add(theList.getWheat());
-        returnList.add(theList.getBrick());
+        returnList.add(theList.getWood());
         return returnList;
     }
 
