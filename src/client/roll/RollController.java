@@ -70,7 +70,7 @@ public class RollController extends Controller implements IRollController {
 			Player thePlayer = GameManager.getSingleton().getthisplayer();
 			int pid = thePlayer.getPlayerID();
 			if(theGame.canRoll(pid)) {
-			int currentRoll = theFacade.roll(pid);
+			int currentRoll = theFacade.roll(thePlayer.getPlayerIndex());
 				System.out.println("Current roll: " + currentRoll);
 			resultView.setRollValue(currentRoll);
 				setResultView(resultView);

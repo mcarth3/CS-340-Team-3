@@ -129,7 +129,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 
 	@Override
 	public void decreaseResourceAmount(ResourceType resource) {
-		changeValueOfResourceByInt(resource, -1);
+		changeValueOfResourceByInt(resource, 1);
 		checkTradeValues();
 		checkResourceChanges();
 	}
@@ -146,7 +146,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	@Override
 	public void sendTradeOffer() {
 		reverseNegativeResources();
-		System.out.println("Sending trade now!");
+		System.out.println("Sending trade now! pid is " + thePlayer.getPlayerIndex() + " and desired rid is " + desiredTraderID);
 		theFacade.tradePlayer(thePlayer.getPlayerIndex(), listOfResources, desiredTraderID);
 		getTradeOverlay().closeModal();
 		getWaitOverlay().showModal();
@@ -156,6 +156,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	public void setPlayerToTradeWith(int playerIndex) {
 		//getTradeOverlay().setStateMessage("Select player!");
 		desiredTraderID = playerIndex;
+		System.out.println("Desired trader is " + desiredTraderID);
 		checkTradeValues();
 	}
 
@@ -210,10 +211,12 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		if(recieving.contains(ResourceType.BRICK))
 		{
 			listOfResources.setBrick(listOfResources.getBrick() * -1);
+			System.out.println("Brick is negative!");
 		}
 		if(recieving.contains(ResourceType.WOOD))
 		{
 			listOfResources.setWood(listOfResources.getWood() * -1);
+			System.out.println("Wood is negative!");
 		}
 		if(recieving.contains(ResourceType.WHEAT))
 		{
@@ -233,10 +236,10 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	 * checks to make sure it's the player's turn and if they can trade.
 	 */
 	public void update(){
-		//System.out.println("Domestic Trade update()!");
+		System.out.println("Domestic Trade update()!");
 
 		if(GameManager.getSingleton() != null && State.getInstance() != null) {
-			//System.out.println("DMU: No nulls!");
+			System.out.println("DMU: No nulls!");
 
 			thePlayer = GameManager.getSingleton().getthisplayer();
 			//if (State.getCurrentState() == StateEnum.PLAY && thePlayer.resourcesOverZero().length > 0) {
@@ -250,9 +253,18 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 					checkTradeValues();
 					getTradeOverlay().setPlayerSelectionEnabled(true);
 				}
-				else if(GameManager.getSingleton().getModel().getTradeO() != null)
+				else {
+					System.out.println("It's not my turn!");
+					getTradeView().enableDomesticTrade(false);
+					getTradeOverlay().setStateMessage("Can't trade now!");
+					getTradeOverlay().setPlayerSelectionEnabled(false);
+				}
+				if(GameManager.getSingleton().getModel().getTradeO() != null)
 				{
 					System.out.println("TradeO not null!");
+					System.out.println("Reciever: " + GameManager.getSingleton().getModel().getTradeO().getReciever());
+					System.out.println("This player index: " + GameManager.getSingleton().getthisplayer().getPlayerIndex());
+
 					if(GameManager.getSingleton().getModel().getTradeO().getReciever() == GameManager.getSingleton().getthisplayer().getPlayerIndex())
 					{
 
@@ -262,12 +274,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 					}
 
 				}
-				else {
-					System.out.println("It's not my turn and TradeO is null!");
-					getTradeView().enableDomesticTrade(false);
-					getTradeOverlay().setStateMessage("Can't trade now!");
-					getTradeOverlay().setPlayerSelectionEnabled(false);
-				}
+
 
 
 			} else {
@@ -287,6 +294,8 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	public void formatAcceptOverlay()
 	{
 		TradeOffer theTrade = GameManager.getSingleton().getModel().getTradeO();
+		System.out.println("Formatting AcceptOverlay!" + theTrade.getOffer());
+
 		setAcceptResources(theTrade.getOffer());
 	}
 

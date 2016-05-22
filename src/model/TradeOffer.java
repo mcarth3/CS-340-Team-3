@@ -33,6 +33,7 @@ public class TradeOffer extends AbstractModelPartition {
 		  offer = newoffer;
 		  sentList = newsentlist;
 		  recievedList = newrecievedlist;
+		  System.out.println("TradeOffer constructor 1, reciever is " + reciever);
 	  }
 	  public TradeOffer(ResourceList offr)
 	  {
@@ -44,6 +45,7 @@ public class TradeOffer extends AbstractModelPartition {
 	    sender = pid;
 	    reciever = rid;
 	    offer = o;
+		  System.out.println("TradeOffer constructor 2, reciever is " + reciever);
 	  }
 	  /*
 	  * Separates the given offer into two resource lists, one that is filled with only the positive number
@@ -79,6 +81,7 @@ public class TradeOffer extends AbstractModelPartition {
 	  public void setReciever(int recieve)
 	  {
 	    reciever = recieve;
+		  System.out.println("TradeOffer setReciever(), reciever is " + reciever);
 	  }  
 	  public ResourceList getOffer()
 	  {
