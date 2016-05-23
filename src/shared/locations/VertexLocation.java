@@ -241,5 +241,24 @@ public class VertexLocation
 		}
 		return false;
 	}
+
+	public ArrayList<HexLocation> getAdjacentHexes() {
+		ArrayList<HexLocation> hexLocs = new ArrayList<HexLocation>();
+		HexLocation normalized = this.getNormalizedLocation().getHexLoc();
+		hexLocs.add(normalized);
+		switch (this.getNormalizedLocation().getDir()) {
+			case NE:
+				hexLocs.add(new HexLocation(normalized.getX()+1, normalized.getY()-1));
+				hexLocs.add(new HexLocation(normalized.getX(), normalized.getY()-1));
+				break;
+			case NW:
+				hexLocs.add(new HexLocation(normalized.getX()-1,normalized.getY()));
+				hexLocs.add(new HexLocation(normalized.getX(), normalized.getY()-1));
+				break;
+			default:
+		}
+		
+		return hexLocs;
+	}
 }
 

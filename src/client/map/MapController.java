@@ -17,6 +17,7 @@ import model.Player;
 import model.Port;
 import model.Road;
 import model.Settlement;
+import model.VertexObject;
 import proxy.RealProxy;
 
 
@@ -159,9 +160,9 @@ public class MapController extends Controller implements IMapController {
 			return false;
 		if (hexLoc.equals(GameManager.getSingleton().getModel().getMap().getRobber()))
 			return false;
-	//	if (Facade.getSingleton().getWaterHexes().contains(hexLoc)) {
-	//		return false;
-	//	}
+		if (Facade.getSingleton().getWaterHexes().contains(hexLoc)) {
+			return false;
+		}
 		
 		return true;
 		
@@ -197,43 +198,62 @@ public class MapController extends Controller implements IMapController {
 	}
 
 	public void placeRobber(HexLocation hexLoc) {
-		/*
-		Vector<VertexObject> municipalities = new Vector<VertexObject>();
-		Player[] owners = this.getModel().getPlayers();
-		HashSet<RobPlayerInfo> victims = new HashSet<RobPlayerInfo>();
+		
+		Vector<Settlement> settlements = new Vector<Settlement>();
+		Vector<City> cities = new Vector<City>();
+		
+		ArrayList<Player> owners = GameManager.getSingleton().getModel().getPlayers();
+		HashSet<RobPlayerInfo> robbable = new HashSet<RobPlayerInfo>();
 
-		for (VertexObject vo : this.getModel().getMap().getSettlements()) {
-			municipalities.add(vo);
+		for (Settlement vo : GameManager.getSingleton().getModel().getMap().getsettlements()) {
+			settlements.add(vo);
 		}
-		for (VertexObject vo : this.getModel().getMap().getCities()) {
-			municipalities.add(vo);
+		for (City vo : GameManager.getSingleton().getModel().getMap().getcities()) {
+			cities.add(vo);
 		}
 
-		for (VertexObject vertex : municipalities) {
-			ArrayList<HexLocation> hexLocs = vertex.getLocation().getAdjacentHexes();
+		for (Settlement vertex : settlements) {
+			ArrayList<HexLocation> hexLocs = vertex.getVertextLocation().getAdjacentHexes();
 			for (HexLocation hexloc : hexLocs) {
 				if (hexloc.equals(hexLoc)) {
-					if (this.getLocalPlayer().getPlayerIndex().getValue() != vertex.getOwner().getValue()) {
+					if (GameManager.getSingleton().getthisplayer().getPlayerIndex() != vertex.getOwner()) {
 						RobPlayerInfo player = new RobPlayerInfo();
-						player.setId(owners[vertex.getOwner().getValue()].getPlayerId().getValue());
-						player.setName(owners[vertex.getOwner().getValue()].getName().getValue());
-						player.setColor(owners[vertex.getOwner().getValue()].getColor());
-						player.setPlayerIndex(owners[vertex.getOwner().getValue()].getPlayerIndex().getValue());
+						player.setId(owners.get(vertex.getOwner()).getPlayerID());
+						player.setName(owners.get(vertex.getOwner()).getName());
+						player.setColor(owners.get(vertex.getOwner()).getColor());
+						player.setPlayerIndex(owners.get(vertex.getOwner()).getPlayerIndex());
 						player.setNumCards(0);
-						victims.add(player);
+						robbable.add(player);
+					}
+				}
+			}
+		}
+		
+		for (City vertex : cities) {
+			ArrayList<HexLocation> hexLocs = vertex.getVertextLocation().getAdjacentHexes();
+			for (HexLocation hexloc : hexLocs) {
+				if (hexloc.equals(hexLoc)) {
+					if (GameManager.getSingleton().getthisplayer().getPlayerIndex() != vertex.getOwner()) {
+						RobPlayerInfo player = new RobPlayerInfo();
+						player.setId(owners.get(vertex.getOwner()).getPlayerID());
+						player.setName(owners.get(vertex.getOwner()).getName());
+						player.setColor(owners.get(vertex.getOwner()).getColor());
+						player.setPlayerIndex(owners.get(vertex.getOwner()).getPlayerIndex());
+						player.setNumCards(0);
+						robbable.add(player);
 					}
 				}
 			}
 		}
 
-		RobPlayerInfo[] victimsArray = new RobPlayerInfo[victims.size()];
-		victims.toArray(victimsArray);
+		RobPlayerInfo[] robbableArray = new RobPlayerInfo[robbable.size()];
+		robbable.toArray(robbableArray);
 
-		getModel().getMap().setRobber(hexLoc);
+		GameManager.getSingleton().getModel().getMap().relocateRober(hexLoc);
 		getView().placeRobber(hexLoc);
-		getRobView().setPlayers(victimsArray);
+		getRobView().setPlayers(robbableArray);
 		getRobView().showModal();
-		*/
+		
 		
 		
 		

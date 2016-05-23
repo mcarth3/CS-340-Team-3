@@ -760,9 +760,31 @@ public void setCurPlayerIndex() {
     getCurrentPlayer().setPlayerIndex(theGame.getPlayerIndex(getCurrentPlayer().getPlayerId()));
 }
 
-public String getWaterHexes() {
-	// TODO Auto-generated method stub
-	return null;
+public ArrayList<HexLocation> getWaterHexes() {
+
+	ArrayList<HexLocation> waterHexes = new ArrayList<HexLocation>();
+	waterHexes.add(new HexLocation(0,-3));
+	waterHexes.add(new HexLocation(1,-3));
+	waterHexes.add(new HexLocation(2,-3));
+	waterHexes.add(new HexLocation(3,-3));
+	waterHexes.add(new HexLocation(3,-3));
+	waterHexes.add(new HexLocation(3,-2));
+	waterHexes.add(new HexLocation(3,-1));
+	waterHexes.add(new HexLocation(3,0));
+	waterHexes.add(new HexLocation(2,1));
+	waterHexes.add(new HexLocation(1,2));
+	waterHexes.add(new HexLocation(0,3));
+	waterHexes.add(new HexLocation(-1,3));
+	waterHexes.add(new HexLocation(-2,3));
+	waterHexes.add(new HexLocation(-3,3));
+	waterHexes.add(new HexLocation(-3,2));
+	waterHexes.add(new HexLocation(-3,1));
+	waterHexes.add(new HexLocation(-3,0));
+	waterHexes.add(new HexLocation(-2,-1));
+	waterHexes.add(new HexLocation(-1,-2));
+
+	
+	return waterHexes;
 }
 
 }
