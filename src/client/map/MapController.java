@@ -115,6 +115,25 @@ public class MapController extends Controller implements IMapController {
 		//</temp>
 	}
 
+	public void setUp()
+	{
+		setTiles();
+		setHarbors();
+		//road, then settlement. NEXT TURN: road, then settlement
+	}
+
+	public void setTiles()
+	{
+
+	}
+
+	public void setHarbors()
+	{
+
+	}
+
+
+
 	public boolean canPlaceRoad(EdgeLocation edgeLoc) {
 		return Facade.getSingleton().canBuildRoad(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(), edgeLoc);
 

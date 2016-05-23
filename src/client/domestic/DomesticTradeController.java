@@ -93,6 +93,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	@Override
 	public void startTrade() {
 
+		System.out.println("Starting a trade!");
 		//**************Reset everything:
 		//getTradeOverlay().reset();
 		getTradeView().enableDomesticTrade(true);
@@ -123,6 +124,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 				}
 			}
 		}
+		System.out.println("playersWithoutCurrent: " + playersWithoutCurrent.toString());
 		PlayerInfo[] arrayNoCurrentPlayer = new PlayerInfo[playersWithoutCurrent.size()];
 
 		playersWithoutCurrent.toArray( arrayNoCurrentPlayer );
