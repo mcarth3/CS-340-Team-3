@@ -257,6 +257,7 @@ public class RealProxy implements IServer{
 	@Override
 	public String buildRoad(Integer playerIndex, EdgeLocation roadLocation, Boolean free) {
 		// TODO Auto-generated method stub
+		
 		//// Implement this one		
 		JsonObject obj = new JsonObject();
         obj.addProperty("type", "buildRoad");
@@ -264,9 +265,10 @@ public class RealProxy implements IServer{
         JsonObject obj2 = new JsonObject();
         obj2.addProperty("x", roadLocation.getHexLoc().getX());
         obj2.addProperty("y", roadLocation.getHexLoc().getY());
-        obj2.addProperty("direction", getShort(roadLocation.getDir().name()));
+        obj2.addProperty("direction", roadLocation.getDir().name());
         obj.add("roadLocation", obj2);
         obj.addProperty("free", free);
+        System.out.println("sending "+obj);
 		String result = cc.send(obj, "/moves/buildRoad", UserCookie, GameCookie);
 		//System.out.println(result); 
 		return result;
@@ -282,7 +284,7 @@ public class RealProxy implements IServer{
         JsonObject obj2 = new JsonObject();
         obj2.addProperty("x", vertexLocation.getHexLoc().getX());
         obj2.addProperty("y", vertexLocation.getHexLoc().getY());
-        obj2.addProperty("direction", getShort(vertexLocation.getDir().name()));
+        obj2.addProperty("direction", vertexLocation.getDir().name());
         obj.add("vertexLocation", obj2);
         obj.addProperty("free", free);
 		String result = cc.send(obj, "/moves/buildSettlement", UserCookie, GameCookie);
@@ -300,7 +302,7 @@ public class RealProxy implements IServer{
         JsonObject obj2 = new JsonObject();
         obj2.addProperty("x", vertexLocation.getHexLoc().getX());
         obj2.addProperty("y", vertexLocation.getHexLoc().getY());
-        obj2.addProperty("direction", getShort(vertexLocation.getDir().name()));
+        obj2.addProperty("direction", vertexLocation.getDir().name());
         obj.add("vertexLocation", obj2);
 		String result = cc.send(obj, "/moves/buildCity", UserCookie, GameCookie);
 		//System.out.println(result);
@@ -450,46 +452,18 @@ public class RealProxy implements IServer{
         JsonObject obj2 = new JsonObject();
         obj2.addProperty("x", spot1.getHexLoc().getX());
         obj2.addProperty("y", spot1.getHexLoc().getY());
-        obj2.addProperty("direction", getShort(spot1.getDir().name()));
+        obj2.addProperty("direction", spot1.getDir().name());
         JsonObject obj3 = new JsonObject();
         obj3.addProperty("x", spot2.getHexLoc().getX());
         obj3.addProperty("y", spot2.getHexLoc().getY());
-        obj3.addProperty("direction", getShort(spot2.getDir().name()));
+        obj3.addProperty("direction", spot2.getDir().name());
         obj.add("spot1", obj2);
         obj.add("spot2", obj3);
 		String result = cc.send(obj, "/moves/Road_Building", UserCookie, GameCookie);
 		 
 		return result;
 	}
-	public String getShort(String string){
-		String result = ""; 
-		if(string == "North")
-		{
-			result = "N"; 
-		}
-		else if(string == "NorthWest")
-		{
-			result = "NW"; 
-		}
-		else if(string == "NorthEast")
-		{
-			result = "NE"; 
-		}
-		else if(string == "South")
-		{
-			result = "S"; 
-		}
-		else if(string == "SouthWest")
-		{
-			result = "SW"; 
-		}
-		else if(string == "SouthEast")
-		{
-			result = "SE"; 
-		}
-			
-		return result; 
-	}
+	
 
 	@Override
 	public String Monopoly(String resource, Integer playerIndex) {

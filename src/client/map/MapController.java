@@ -284,7 +284,7 @@ public class MapController extends Controller implements IMapController {
         	HexLocation hexLoc = h.getLocation();
         	getView().addHex(hexLoc, hexType);
         	if(h.getNumber() != 0 ){
-        		System.out.print("setting number"+h.getNumber());
+        	//	System.out.print("setting number"+h.getNumber());
         		getView().addNumber(hexLoc, h.getNumber()); 
         	}
         }   
