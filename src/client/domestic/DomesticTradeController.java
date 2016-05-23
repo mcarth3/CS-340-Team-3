@@ -258,7 +258,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 				if(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
 					System.out.println("DMU: It's the turn of me, who is " + GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer());
 					System.out.println(", also known as " + thePlayer.getName());
-					getTradeOverlay().reset();
+					//getTradeOverlay().reset();
 					getTradeView().enableDomesticTrade(true);
 					//getTradeOverlay().setStateMessage("Select player!");
 					checkTradeValues();

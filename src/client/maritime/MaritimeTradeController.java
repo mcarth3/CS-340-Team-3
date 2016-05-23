@@ -61,12 +61,17 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	@Override
 	public void makeTrade() {
 
-		for(int i =0; i < amountGiving; i++) {
+		/*for(int i =0; i < amountGiving; i++) {
 			thePlayer.depleteResource(theGiving);
 		}
-		thePlayer.addResource(theGetting, amountGetting);
+		thePlayer.addResource(theGetting, amountGetting);*/
+		System.out.println("Making Trade!");
 		getTradeOverlay().closeModal();
-		theFacade.meritimeTrade(pid, amountGiving, theGiving.toString(), theGetting.toString());		//TODO: this needs to be modified to implement ports' ratios
+		theFacade.meritimeTrade(pid, amountGiving, theGiving.toString().toLowerCase(), theGetting.toString().toLowerCase());		//TODO: this needs to be modified to implement ports' ratios
+		System.out.println("pid: " + pid);
+		System.out.println("amountGiving: " + amountGiving);
+		System.out.println("The Giving: " + theGiving.toString());
+		System.out.println("The Getting: " + theGetting.toString());
 
 	}
 
@@ -142,7 +147,7 @@ theFacade = Facade.getSingleton();
 			if (thePlayer.canOfferBankTrade())        //TODO: this needs to be changed for ports
 			{
 
-				pid = GameManager.getSingleton().getthisplayer().getPlayerID();
+				pid = GameManager.getSingleton().getthisplayer().getPlayerIndex();
 				//theFacade.getGame().canMaritimeTrade(pid);
 				thePlayer = GameManager.getSingleton().getthisplayer();
 				giveResources = thePlayer.resourcesOverThree();                //TODO: this needs to be changed to implement port ratios.
