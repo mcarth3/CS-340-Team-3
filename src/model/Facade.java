@@ -209,13 +209,22 @@ public class Facade extends AbstractModelPartition {
 			}
 			return false;
 		} else { 
+		//	System.out.println("Playing");
 			if(edge != null) {
+		//		System.out.println("edge!= null");
+		//		System.out.println("edge location " +edge.getNormalizedLocation());
 				for (int i=0; i < theGame.getMap().getRoads().size(); i++) { 
-					if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().equals(edge.getNormalizedLocation()))  //if space is taken
+					//System.out.println("map location " +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
+					if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().toString().equals(edge.getNormalizedLocation().toString())){  //if space is taken
+				//		System.out.println("map road location = " +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
+			//			System.out.println("overlapping");
 						return false;
+					}
 				}
-				if (!edge.hadconnectingroad(theGame, GameManager.getSingleton().getthisplayer().getPlayerIndex())) //if you dont have a connecting road
+				if (!edge.hadconnectingroad(theGame, GameManager.getSingleton().getthisplayer().getPlayerIndex())){ //if you dont have a connecting road
+			//		System.out.println("no connecting road-so false");
 					return false;	
+				}
 			}
 		}
 		
@@ -261,10 +270,20 @@ public class Facade extends AbstractModelPartition {
      *
      * @return boolean whether or not the player can build a settlement
      */
-    public boolean canBuildSettlement(int pid) {
-        if (theGame == null)
-            return false;
-        return theGame.canBuildSettlement(pid);
+    public boolean canBuildSettlement(int playerIndex, VertexLocation location) {
+		if (gettheGame() == null)
+			return false;
+		if (gettheGame().getTurnTracker().getCurrentPlayer() != playerIndex)
+			return false;
+		for (int i=0; i < theGame.getMap().getsettlements().size(); i++) { 
+			if (theGame.getMap().getsettlements().get(i).getVertextLocation().getNormalizedLocation().toString().equals(location.getNormalizedLocation().toString())){  //if space is taken
+				return false;
+			}
+		}
+		if (!location.hadconnectingroad(gettheGame(), playerIndex)){
+			return false;
+		}
+		return true;
     }
 
     /**
@@ -285,7 +304,7 @@ public class Facade extends AbstractModelPartition {
      */
     public void placeSettlement(int pid, VertexLocation vl, boolean free) throws IllegalBuildException {
         if (theGame != null) {
-            if (canPlaceSettlement(vl) && canBuildSettlement(pid))
+            if (canPlaceSettlement(vl) && canBuildSettlement(pid,vl))
 				proxy.buildSettlement(pid, vl, free);
         }
     }
@@ -295,10 +314,24 @@ public class Facade extends AbstractModelPartition {
      *
      * @return boolean whether or not the player can build a city
      */
-    public boolean canBuildCity(int pid) {
-        if (theGame == null)
-            return false;
-        return theGame.canBuildCity(pid);
+    public boolean canBuildCity(int playerIndex, VertexLocation location) {
+		if (gettheGame() == null)
+			return false;
+		if (gettheGame().getTurnTracker().getCurrentPlayer() != playerIndex)
+			return false;
+		boolean matcheslocation = false;
+		for (int i=0; i < theGame.getMap().getsettlements().size(); i++) { 
+			if (theGame.getMap().getsettlements().get(i).getVertextLocation().getNormalizedLocation().toString().equals(location.getNormalizedLocation().toString())){  //if space is taken
+				matcheslocation = true;
+			}
+		}
+		if (matcheslocation == false){
+			return false;
+		}
+		if (!location.hadconnectingroad(gettheGame(), playerIndex)){
+			return false;
+		}
+		return true;
     }
 
     /**
@@ -725,6 +758,11 @@ public boolean isReady() {
 
 public void setCurPlayerIndex() {
     getCurrentPlayer().setPlayerIndex(theGame.getPlayerIndex(getCurrentPlayer().getPlayerId()));
+}
+
+public String getWaterHexes() {
+	// TODO Auto-generated method stub
+	return null;
 }
 
 }
