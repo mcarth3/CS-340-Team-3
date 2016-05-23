@@ -213,15 +213,12 @@ public class MapController extends Controller implements IMapController {
         
  
         for (Hex h : hexs){
-        	HexType hexType = null; 
-        	hexType = getHexType(h.getResource());
-
-        	//h.getNumber()
+        	HexType hexType = getHexType(h.getResource());
         	HexLocation hexLoc = h.getLocation();
         	getView().addHex(hexLoc, hexType);
-        	System.out.println(h.getNumber()); 
-        	getView().addNumber(hexLoc, 8);
-        	
+        	if(h.getNumber() != 0 ){
+        		getView().addNumber(hexLoc, h.getNumber()); 
+        	}
         }   
         
     	getView().addHex(new HexLocation(-3, 0), HexType.WATER);
