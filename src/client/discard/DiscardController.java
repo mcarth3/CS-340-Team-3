@@ -142,7 +142,7 @@ public class DiscardController extends Controller implements IDiscardController 
 		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
 		int cards = GameManager.getSingleton().getthisplayer().getResources().getTotal();
 
-		if(status.equals("Discarding")) {
+		if(status.equals("Discarding") || status.equals("Robbing")) {
 			if(cards > 7){
 				//maxDiscardNum = calculateDiscardNum();
 				System.out.println("able to lose half");
