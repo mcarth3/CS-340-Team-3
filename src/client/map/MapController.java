@@ -27,6 +27,7 @@ import proxy.RealProxy;
 public class MapController extends Controller implements IMapController {
 	
 	private IRobView robView;
+	private HexLocation roblocation;
 	
 	public MapController(IMapView view, IRobView robView) {
 		
@@ -151,16 +152,13 @@ public class MapController extends Controller implements IMapController {
 	}
 
 	public boolean canPlaceRobber(HexLocation hexLoc) {
-		
-		System.out.println("canPlaceRobber");
-		if (GameManager.getSingleton().getModel() == null)
-			return false;
-		if (GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() != GameManager.getSingleton().getthisplayer().getPlayerIndex())
-			return false;
-		if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing"))
-			return false;
-		if (hexLoc.equals(GameManager.getSingleton().getModel().getMap().getRobber()))
-			return false;
+		roblocation = hexLoc;
+	//	System.out.println("canPlaceRobber");
+		if (hexLoc.getX() ==GameManager.getSingleton().getModel().getMap().getRobber().getHl().getX()){
+			if (hexLoc.getY() ==GameManager.getSingleton().getModel().getMap().getRobber().getHl().getY()){
+				return false;
+			}
+		}
 		if (Facade.getSingleton().getWaterHexes().contains(hexLoc)) {
 			return false;
 		}
@@ -201,6 +199,8 @@ public class MapController extends Controller implements IMapController {
 	public void placeRobber(HexLocation hexLoc) {
 		System.out.println("placeRobber");
 		
+
+
 		Vector<Settlement> settlements = new Vector<Settlement>();
 		Vector<City> cities = new Vector<City>();
 		
@@ -258,11 +258,6 @@ public class MapController extends Controller implements IMapController {
 		
 		
 		
-		
-		
-		getView().placeRobber(hexLoc);
-		
-		getRobView().showModal();
 	}
 	
 	public void startMove(PieceType pieceType, boolean isFree, boolean allowDisconnected) {	
@@ -275,7 +270,8 @@ public class MapController extends Controller implements IMapController {
 	}
 	
 	public void playSoldierCard() {	
-		setRobView(robView);
+		//setRobView(robView);
+		startMove(PieceType.ROBBER, true, false);
 	}
 	
 	public void playRoadBuildingCard() {	
@@ -283,7 +279,7 @@ public class MapController extends Controller implements IMapController {
 	}
 	
 	public void robPlayer(RobPlayerInfo victim) {	
-		//send request
+		RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, victim.getPlayerIndex(), roblocation);
 		}
 	public void update() {   
 		System.out.print(GameManager.getSingleton().getModel().getPlayers().get(0).getColor());
@@ -366,9 +362,17 @@ public class MapController extends Controller implements IMapController {
 
 		getView().placeRobber(map.getRobber().getHl());
         
-        //THIS IS JUST TEMPORARY
-        if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")){
-        	RealProxy.getSingleton().robPlayer(1, 1, new HexLocation(0, 0));
+		boolean Robbingbool = false;
+        if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")) && (Robbingbool == false)){
+    		if(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
+    			Robbingbool = true; //do once
+ //   			System.out.println("startmove");
+    			startMove(PieceType.ROBBER, true, false);
+    		}
+        }
+        if (!GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")){
+//        	System.out.println("resetting robbingbool");
+        	Robbingbool = false;	
         }
     }
 	
