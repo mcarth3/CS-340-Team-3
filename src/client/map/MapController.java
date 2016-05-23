@@ -152,6 +152,7 @@ public class MapController extends Controller implements IMapController {
 
 	public boolean canPlaceRobber(HexLocation hexLoc) {
 		
+		System.out.println("canPlaceRobber");
 		if (GameManager.getSingleton().getModel() == null)
 			return false;
 		if (GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() != GameManager.getSingleton().getthisplayer().getPlayerIndex())
@@ -198,6 +199,7 @@ public class MapController extends Controller implements IMapController {
 	}
 
 	public void placeRobber(HexLocation hexLoc) {
+		System.out.println("placeRobber");
 		
 		Vector<Settlement> settlements = new Vector<Settlement>();
 		Vector<City> cities = new Vector<City>();
@@ -365,9 +367,9 @@ public class MapController extends Controller implements IMapController {
 		getView().placeRobber(map.getRobber().getHl());
         
         //THIS IS JUST TEMPORARY
-        if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")){
-        	RealProxy.getSingleton().robPlayer(1, 1, new HexLocation(0, 0));
-        }
+        //if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")){
+        //	RealProxy.getSingleton().robPlayer(1, 1, new HexLocation(0, 0));
+        //}
     }
 	
     public HexType getHexType(String str){

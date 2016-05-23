@@ -26,7 +26,7 @@ public class GameManager extends Observable {
 	public String nameTemp; 
 	public CatanColor colorTemp;
 	
-	TurnTracker turnTracker;
+
 	public GameManager() {
 		modelfacade = Facade.getSingleton();
 	}
@@ -148,10 +148,7 @@ public class GameManager extends Observable {
 	public int getversion(){
     	return modelfacade.getversion(); 
     }
-    public TurnTracker getTurnTracker() {
-        
-		return turnTracker;
-    }
+
 	public void createdefaultgame() {
 	//	modelfacade.SetGame(ModelParser.parse2(MockProxy.getSingleton().gameModel(1)));
 	}

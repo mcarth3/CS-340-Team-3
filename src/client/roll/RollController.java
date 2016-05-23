@@ -100,6 +100,13 @@ private int counter;
 	private boolean chose;
 
 	public void update(){
+		//make this the only uncommented part of the method in order to auto roll
+//		if(GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer()){	
+//			if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Rolling")){
+//				RealProxy.getSingleton().rollNumber(GameManager.getSingleton().getthisplayer().getPlayerIndex(), 5);
+//			}
+//		}
+		
 	//System.out.println("You're in the RollController update()!!!");
 		GameManager.getSingleton();
 		theFacade = GameManager.getSingleton().getModelfacade();

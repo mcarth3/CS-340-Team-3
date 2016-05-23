@@ -213,6 +213,7 @@ public class Game extends AbstractModelPartition {
         return players.get(pid).canMonopoly();
     }
     public boolean canFinishTurn(int pid) {
+    	System.out.println("CAN FINISH TURN");
         return (turnTracker.getStatus().equals("Playing") && turnTracker.getCurrentPlayer() == pid);
     }
 

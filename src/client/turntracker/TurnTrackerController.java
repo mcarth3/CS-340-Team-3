@@ -40,8 +40,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 		if (model != null){
 			if (model.canFinishTurn(manager.getthisplayer().getPlayerID())){
 				String returnJSON = proxy.finishTurn(manager.getthisplayer().getPlayerIndex());
-				model = ModelParser.parse2(returnJSON);
-				manager.updateGame(model);			
+				//System.out.print(returnJSON);
 			}
 		}
 
