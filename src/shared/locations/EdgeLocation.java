@@ -160,16 +160,19 @@ public class EdgeLocation
 				break;
 			default:
 		}
+		//System.out.print("playerindex = "+playerIndex);
 		for (int i=0; i < theGame.getMap().getRoads().size(); i++) { 
 			for (int j=0; j < edges.size(); j++) {
-				if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().equals(edges.get(j).getNormalizedLocation())) {
+				if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().toString().equals(edges.get(j).getNormalizedLocation().toString())) {
 					if (theGame.getMap().getRoads().get(i).getOwner() == playerIndex) {
+				//		System.out.println("return true ");
 						return true;
 					}
 				}		
 			}
 		}
 		//return new RoadCollection(roads);
+		//System.out.println("return false ");
 		return false;
 	}
 

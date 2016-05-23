@@ -184,5 +184,62 @@ public class VertexLocation
 		
 		return true;
 	}
+
+	public boolean hadconnectingroad(Game gettheGame, int playerIndex) {
+		ArrayList<EdgeLocation> edges = new ArrayList<EdgeLocation>();
+		ArrayList<VertexLocation> vertices = new ArrayList<VertexLocation>();
+		VertexLocation normalized = this.getNormalizedLocation();
+		switch (normalized.getDir()) {
+			case NW:
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NW));
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
+				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
+						   normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
+										   EdgeDirection.NE));
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.W).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NE));
+				vertices.add(new VertexLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
+						   normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
+												VertexDirection.NE));
+				break;
+			case NE:
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NE));
+				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
+				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
+						   normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
+						   				   EdgeDirection.NW));
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.E).getNormalizedLocation());
+				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NW));
+				vertices.add(new VertexLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getX(),
+						   normalized.getHexLoc().getNeighborLoc(edges.get(0).getDir()).getY()),
+												VertexDirection.NW));
+				break;
+			default: 
+		}
+		for (int i=0; i < gettheGame.getMap().getRoads().size(); i++) {
+			for (int j=0; j < edges.size(); j++) {
+				if (gettheGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().toString().equals(edges.get(j).getNormalizedLocation().toString())) {
+					if (gettheGame.getMap().getRoads().get(i).getOwner() == playerIndex) {
+						for (int k = 0; k < gettheGame.getMap().getsettlements().size(); k++) {
+							for (int l=0; l < vertices.size(); l++) {
+								if (gettheGame.getMap().getsettlements().get(k).getVertextLocation().getNormalizedLocation().toString().equals(vertices.get(l).getNormalizedLocation().toString())) {
+									return false;
+								}
+							}
+						}
+						for (int k = 0; k < gettheGame.getMap().getcities().size(); k++) {
+							for (int l=0; l < vertices.size(); l++) {
+								if (gettheGame.getMap().getcities().get(k).getVertextLocation().getNormalizedLocation().toString().equals(vertices.get(l).getNormalizedLocation().toString())) {
+									return false;
+								}
+							}
+						}
+						return true;
+					}
+				}		
+			}
+		}
+		return false;
+	}
 }
 
