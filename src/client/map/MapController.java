@@ -140,36 +140,103 @@ public class MapController extends Controller implements IMapController {
 	}
 
 	public boolean canPlaceSettlement(VertexLocation vertLoc) {
-		
-		return true;
+		return Facade.getSingleton().canBuildSettlement(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(),vertLoc);
+
 	}
 
 	public boolean canPlaceCity(VertexLocation vertLoc) {
-		
-		return true;
+		return Facade.getSingleton().canBuildCity(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(),vertLoc);
+
 	}
 
 	public boolean canPlaceRobber(HexLocation hexLoc) {
 		
+		if (GameManager.getSingleton().getModel() == null)
+			return false;
+		if (GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() != GameManager.getSingleton().getthisplayer().getPlayerIndex())
+			return false;
+		if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing"))
+			return false;
+		if (hexLoc.equals(GameManager.getSingleton().getModel().getMap().getRobber()))
+			return false;
+	//	if (Facade.getSingleton().getWaterHexes().contains(hexLoc)) {
+	//		return false;
+	//	}
+		
 		return true;
+		
 	}
+
+
 
 	public void placeRoad(EdgeLocation edgeLoc) {
 		
-		getView().placeRoad(edgeLoc, CatanColor.ORANGE);
+		getView().placeRoad(edgeLoc,CatanColor.toColor(GameManager.getSingleton().getthisplayer().getColor()));
+		if(GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Playing")){
+			System.out.println("placed road");
+			RealProxy.getSingleton().buildRoad(GameManager.getSingleton().getthisplayer().getPlayerIndex(), edgeLoc, false);
+		}else if(GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound") ||GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound") ){
+			RealProxy.getSingleton().buildRoad(GameManager.getSingleton().getthisplayer().getPlayerIndex(), edgeLoc, true);
+		}
 	}
 
 	public void placeSettlement(VertexLocation vertLoc) {
 		
-		getView().placeSettlement(vertLoc, CatanColor.ORANGE);
+		getView().placeSettlement(vertLoc, CatanColor.toColor(GameManager.getSingleton().getthisplayer().getColor()));
+		if(GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Playing")){
+			RealProxy.getSingleton().buildSettlement(GameManager.getSingleton().getthisplayer().getPlayerIndex(), vertLoc, false);
+		}else if(GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound") ||GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound") ){
+			RealProxy.getSingleton().buildSettlement(GameManager.getSingleton().getthisplayer().getPlayerIndex(), vertLoc, true);
+		}
 	}
 
 	public void placeCity(VertexLocation vertLoc) {
 		
-		getView().placeCity(vertLoc, CatanColor.ORANGE);
+		getView().placeCity(vertLoc, CatanColor.toColor(GameManager.getSingleton().getthisplayer().getColor()));
+		RealProxy.getSingleton().buildCity(GameManager.getSingleton().getthisplayer().getPlayerIndex(), vertLoc);
 	}
 
 	public void placeRobber(HexLocation hexLoc) {
+		/*
+		Vector<VertexObject> municipalities = new Vector<VertexObject>();
+		Player[] owners = this.getModel().getPlayers();
+		HashSet<RobPlayerInfo> victims = new HashSet<RobPlayerInfo>();
+
+		for (VertexObject vo : this.getModel().getMap().getSettlements()) {
+			municipalities.add(vo);
+		}
+		for (VertexObject vo : this.getModel().getMap().getCities()) {
+			municipalities.add(vo);
+		}
+
+		for (VertexObject vertex : municipalities) {
+			ArrayList<HexLocation> hexLocs = vertex.getLocation().getAdjacentHexes();
+			for (HexLocation hexloc : hexLocs) {
+				if (hexloc.equals(hexLoc)) {
+					if (this.getLocalPlayer().getPlayerIndex().getValue() != vertex.getOwner().getValue()) {
+						RobPlayerInfo player = new RobPlayerInfo();
+						player.setId(owners[vertex.getOwner().getValue()].getPlayerId().getValue());
+						player.setName(owners[vertex.getOwner().getValue()].getName().getValue());
+						player.setColor(owners[vertex.getOwner().getValue()].getColor());
+						player.setPlayerIndex(owners[vertex.getOwner().getValue()].getPlayerIndex().getValue());
+						player.setNumCards(0);
+						victims.add(player);
+					}
+				}
+			}
+		}
+
+		RobPlayerInfo[] victimsArray = new RobPlayerInfo[victims.size()];
+		victims.toArray(victimsArray);
+
+		getModel().getMap().setRobber(hexLoc);
+		getView().placeRobber(hexLoc);
+		getRobView().setPlayers(victimsArray);
+		getRobView().showModal();
+		*/
+		
+		
+		
 		
 		getView().placeRobber(hexLoc);
 		
@@ -178,7 +245,7 @@ public class MapController extends Controller implements IMapController {
 	
 	public void startMove(PieceType pieceType, boolean isFree, boolean allowDisconnected) {	
 		
-		getView().startDrop(pieceType, CatanColor.ORANGE, true);
+		getView().startDrop(pieceType, CatanColor.toColor(GameManager.getSingleton().getthisplayer().getColor()), true);
 	}
 	
 	public void cancelMove() {
@@ -186,7 +253,7 @@ public class MapController extends Controller implements IMapController {
 	}
 	
 	public void playSoldierCard() {	
-		
+		setRobView(robView);
 	}
 	
 	public void playRoadBuildingCard() {	
@@ -194,8 +261,8 @@ public class MapController extends Controller implements IMapController {
 	}
 	
 	public void robPlayer(RobPlayerInfo victim) {	
-		
-	}
+		//send request
+		}
 	public void update() {   
 		System.out.print(GameManager.getSingleton().getModel().getPlayers().get(0).getColor());
 		
