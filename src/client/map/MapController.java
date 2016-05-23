@@ -364,7 +364,7 @@ public class MapController extends Controller implements IMapController {
 			getView().placeRoad(roads.get(a).getLocation(), color);
 		}
 
-		//getView().placeRobber(map.getRobber().getHl());
+		getView().placeRobber(map.getRobber().getHl());
         
         //THIS IS JUST TEMPORARY
         if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")){
