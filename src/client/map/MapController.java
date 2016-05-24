@@ -17,6 +17,7 @@ import model.Player;
 import model.Port;
 import model.Road;
 import model.Settlement;
+import model.bank.DevCardList;
 import proxy.RealProxy;
 import shared.definitions.CatanColor;
 import shared.definitions.HexType;

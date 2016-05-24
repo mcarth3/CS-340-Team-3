@@ -1,6 +1,9 @@
 package client.points;
 
+import client.GameManager.GameManager;
 import client.base.*;
+import model.Game;
+import model.Player;
 
 
 /**
@@ -22,7 +25,7 @@ public class PointsController extends Controller implements IPointsController {
 		
 		setFinishedView(finishedView);
 		
-		initFromModel();
+		//initFromModel();
 	}
 	
 	public IPointsView getPointsView() {
@@ -39,15 +42,17 @@ public class PointsController extends Controller implements IPointsController {
 
 	private void initFromModel() {
 		//<temp>		
-		System.out.println("init from model for points"); 
-		getPointsView().setPoints(8);
-		
-		
-		
+		Player player = GameManager.getSingleton().getthisplayer();
+		if(player != null){
+			getPointsView().setPoints(player.getVictoryPoints());
+		}else{
+			getPointsView().setPoints(2);
+		}
 		//</temp>
 	}
 	public void update(){
-		getPointsView().setPoints(8);
+		Player player = GameManager.getSingleton().getthisplayer();
+		getPointsView().setPoints(player.getVictoryPoints());		
 	}
 	
 }

@@ -1,9 +1,15 @@
 package client.devcards;
 
+import java.util.ArrayList;
+
 import client.GameManager.GameManager;
+import model.CurrentPlayer;
 import model.Facade;
+import model.Game;
 import model.InsufficientResourcesException;
 import model.Player;
+import model.bank.DevCardList;
+import shared.definitions.DevCardType;
 import shared.definitions.ResourceType;
 import client.base.*;
 
@@ -83,8 +89,7 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void playMonopolyCard(ResourceType resource) {
-		theFacade.playMonopoly(thePlayer.getPlayerID(), resource.name());
-
+		theFacade.playMonopoly(thePlayer.getPlayerID(), resource.name().toLowerCase());
 	}
 
 	@Override
@@ -94,22 +99,19 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void playRoadBuildCard() {
-		//theFacade.playRoadBuilding(); //roadbuilding state,
-		roadAction.execute();		//TODO: How do I get the 2 locations? and what is a roadAction?
+		roadAction.execute();		//TODO: Shouldn't have to do anything here. How do I get the 2 locations? and what is a roadAction?
 	}
 
 	@Override
 	public void playSoldierCard() {
-		//theFacade.playSoldier();
-
-		soldierAction.execute();	//TODO: how do i check the vertex id and edge location? and what is a soldierAction?
+		soldierAction.execute();	//TODO: Shouldn't have to do anything here. how do i check the vertex id and edge location? and what is a soldierAction?
 	}
 
 	@Override
 	public void playYearOfPlentyCard(ResourceType resource1, ResourceType resource2) {
 		theFacade.playYearOfPlenty(thePlayer.getPlayerID(), resource1, resource2);
-
 	}
+	
 	public void update(){
 		theFacade = Facade.getSingleton();
 		if(theFacade != null && GameManager.getSingleton() != null)
@@ -120,7 +122,57 @@ public class DevCardController extends Controller implements IDevCardController 
 
 			}
 		}
-
+		
+		DevCardList dcl = thePlayer.oldDevCards;
+		System.out.println("DEV CARD LIST");
+		System.out.println(dcl.getYearOfPlenty());
+		System.out.println(dcl.getMonopoly());
+		System.out.println(dcl.getSoldier());
+		System.out.println(dcl.getRoadBuilding());
+		System.out.println(dcl.getMonument()); 
+		if(dcl.getYearOfPlenty() > 0 ){
+			getPlayCardView().setCardEnabled(DevCardType.YEAR_OF_PLENTY, true);
+			getPlayCardView().setCardAmount(DevCardType.YEAR_OF_PLENTY, dcl.getYearOfPlenty());
+		}else{
+			getPlayCardView().setCardEnabled(DevCardType.YEAR_OF_PLENTY, false);
+			getPlayCardView().setCardAmount(DevCardType.YEAR_OF_PLENTY, 0);
+		}
+		if(dcl.getMonopoly() > 0){
+			getPlayCardView().setCardEnabled(DevCardType.MONOPOLY, true);
+			getPlayCardView().setCardAmount(DevCardType.MONOPOLY, dcl.getMonopoly());
+		}else{
+			getPlayCardView().setCardEnabled(DevCardType.MONOPOLY, false);
+			getPlayCardView().setCardAmount(DevCardType.MONOPOLY, 0);
+		}
+		if(dcl.getSoldier() > 0 ){
+			getPlayCardView().setCardEnabled(DevCardType.SOLDIER, true);
+			getPlayCardView().setCardAmount(DevCardType.SOLDIER, dcl.getSoldier());
+		}else{
+			getPlayCardView().setCardEnabled(DevCardType.SOLDIER, false);
+			getPlayCardView().setCardAmount(DevCardType.SOLDIER, 0);
+		}
+		if(dcl.getRoadBuilding() > 0){
+			getPlayCardView().setCardEnabled(DevCardType.ROAD_BUILD, true);
+			getPlayCardView().setCardAmount(DevCardType.ROAD_BUILD, dcl.getRoadBuilding());
+		}else{
+			getPlayCardView().setCardEnabled(DevCardType.ROAD_BUILD, false);
+			getPlayCardView().setCardAmount(DevCardType.ROAD_BUILD, 0);
+		}
+		if(dcl.getMonument() > 0){
+			getPlayCardView().setCardEnabled(DevCardType.MONUMENT,  true);
+			getPlayCardView().setCardAmount(DevCardType.MONUMENT,  dcl.getMonument());
+		}else{
+			getPlayCardView().setCardEnabled(DevCardType.MONUMENT,  false);
+			getPlayCardView().setCardAmount(DevCardType.MONUMENT,  0);
+		}
+		
+//		getPlayCardView().setCardEnabled(DevCardType.YEAR_OF_PLENTY, true);
+//		getPlayCardView().setCardEnabled(DevCardType.MONOPOLY, true);
+//		getPlayCardView().setCardEnabled(DevCardType.SOLDIER, true);
+//		getPlayCardView().setCardEnabled(DevCardType.ROAD_BUILD, true);
+//		getPlayCardView().setCardEnabled(DevCardType.MONUMENT, true);
+//		
+				
 	}
 
 

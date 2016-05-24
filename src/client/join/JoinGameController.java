@@ -170,8 +170,8 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 		
 		RealProxy rp = RealProxy.getSingleton();
 		String lower = color.toString().toLowerCase();
-		System.out.println(gameChosen);
-		System.out.println(lower); 
+//		System.out.println(gameChosen);
+//		System.out.println(lower); 
 		String result = rp.gameJoin(gameChosen, lower); 
 		//System.out.println("RESULT JOIN="+result); 
 		if(result != null){

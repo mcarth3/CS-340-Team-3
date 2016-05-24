@@ -106,19 +106,13 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 			labelFont = labelFont.deriveFont(labelFont.getStyle(), PANEL_TEXT_SIZE);
 			for (GameInfo game : games)
 			{
-				System.out.println(""); 
-				Integer playerSize = 0; 
 				for (int j = 0; j < game.getPlayers().size(); j++) {
 					if (j < game.getPlayers().size()) {
 						//players = players + game.getPlayers().get(j).getName() + ", ";
-						System.out.println(game.getPlayers().get(j).getName()); 
-						if(game.getPlayers().get(j).getName().length() < 1){
-							System.out.println("no name"); 
-						}
-						else{
+						//System.out.println(game.getPlayers().get(j).getName()); 
+						if(game.getPlayers().get(j).getName().length() > 0){
 							playerNames.add(game.getPlayers().get(j).getName()); 
 						}
-						
 					}
 				}
 				
