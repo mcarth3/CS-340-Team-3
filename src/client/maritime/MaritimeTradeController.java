@@ -1,8 +1,8 @@
 package client.maritime;
 
 import client.GameManager.GameManager;
-import model.Facade;
-import model.Player;
+import model.*;
+import model.bank.ResourceList;
 import shared.definitions.*;
 import client.base.*;
 
@@ -72,7 +72,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		System.out.println("amountGiving: " + amountGiving);
 		System.out.println("The Giving: " + theGiving.toString());
 		System.out.println("The Getting: " + theGetting.toString());
-
+		getTradeOverlay().reset();
 	}
 
 	@Override
@@ -85,7 +85,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 	@Override
 	public void setGetResource(ResourceType resource) {
-		amountGetting = 1;						//TODO: this needs to be modified to implement ports' ratios
+		amountGetting = 1;
 		getTradeOverlay().selectGetOption(resource, amountGetting);
 		getTradeOverlay().setTradeEnabled(true);
 		getTradeOverlay().setCancelEnabled(true);
@@ -95,7 +95,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 	@Override
 	public void setGiveResource(ResourceType resource) {
-		amountGiving = 4;						//TODO: this needs to be modified to implement ports' ratios
+		amountGiving = checkPossibleAmount(resource);						//TODO: this needs to be modified to implement ports' ratios
 		getTradeOverlay().selectGiveOption(resource, amountGiving);
 		theGiving = resource;
 		getResources = getsWithoutGive();
@@ -107,12 +107,14 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	public void unsetGetValue() {
 		getTradeOverlay().showGetOptions(getResources);
 		getTradeOverlay().setStateMessage("Choose what to get!");
+		getTradeOverlay().setTradeEnabled(false);
 	}
 
 	@Override
 	public void unsetGiveValue() {
 		getTradeOverlay().showGiveOptions(giveResources);
 		getTradeOverlay().setStateMessage("Choose what to give!");
+		getTradeOverlay().setTradeEnabled(false);
 	}
 
 	public ResourceType[] getsWithoutGive()
@@ -141,7 +143,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 	public void update(){
 
-theFacade = Facade.getSingleton();
+		theFacade = Facade.getSingleton();
 		if(GameManager.getSingleton() != null) {
 			thePlayer = GameManager.getSingleton().getthisplayer();
 			if (thePlayer.canOfferBankTrade())        //TODO: this needs to be changed for ports
@@ -160,6 +162,86 @@ theFacade = Facade.getSingleton();
 			}
 		}
 
+	}
+
+	/**
+	 * checks if thisPlayer can offer any maritimeTrade at all. If they have the amount needed for a port they've built on,
+	 * or have 4 of any, this should be true.
+	 * @return
+     */
+	public boolean canOfferMaritimeTrade()
+	{
+
+
+		return false;
+	}
+
+	/**
+	 * checks if thisPlayer can offer any maritimeTrade at all. If they have the amount needed for a port they've built on,
+	 * or have 4 of any, the ResourceType of the necessary type will be added.
+	 * @return
+     */
+	public ResourceType[] playerResourcesOverPorts()
+	{
+		ResourceList resources = thePlayer.getResources();
+		ArrayList<ResourceType> resourceList = new ArrayList<ResourceType>();
+		if(resources.getBrick() > 3)
+		{
+			resourceList.add(ResourceType.BRICK);
+		}
+		if(resources.getWood() > 3)
+		{
+			resourceList.add(ResourceType.WOOD);
+		}
+		if(resources.getOre() > 3)
+		{
+			resourceList.add(ResourceType.ORE);
+		}
+		if(resources.getSheep() > 3)
+		{
+			resourceList.add(ResourceType.SHEEP);
+		}
+		if(resources.getWheat() > 3)
+		{
+			resourceList.add(ResourceType.WHEAT);
+		}
+
+		ResourceType[] simpleArray = new ResourceType[ resourceList.size() ];
+		resourceList.toArray( simpleArray );
+		return simpleArray;
+
+
+	}
+
+	/**
+	 * checks the possible lowest amount a resourceType can be traded for. Default is 0, but if thisPlayer
+	 * has cities or settlements next to a port, it may be 2 or 3.
+	 * @param type
+	 * @return
+     */
+	public int checkPossibleAmount(ResourceType type)
+	{
+		boolean threeToOne = false;
+		ArrayList<City> allCities = GameManager.getSingleton().getModel().getMap().getcities();
+		ArrayList<Settlement> allSettlements = GameManager.getSingleton().getModel().getMap().getsettlements();
+		ArrayList<Port> allPorts = GameManager.getSingleton().getModel().getMap().getPorts();
+
+		for(int i= 0; i < allCities.size(); i++)
+		{
+			//if(allCities.get(i).)
+		}
+
+		for(int i= 0; i < allSettlements.size(); i++)
+		{
+			//if(allCities.get(i).)
+		}
+
+
+		if(threeToOne)
+		{
+			return 3;
+		}
+		return 4;
 	}
 
 

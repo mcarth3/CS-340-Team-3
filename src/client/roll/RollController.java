@@ -61,28 +61,23 @@ public class RollController extends Controller implements IRollController {
 	
 	@Override
 	public void rollDice() {
-
+		getRollView().setMessage("3 seconds...");
 		//System.out.println("in the rollDice function!");
 		StateEnum theState = State.getCurrentState();
-		/*if(theState == StateEnum.PLAY)
-		{*/
-			//System.out.println("State is play!");
-			Player thePlayer = GameManager.getSingleton().getthisplayer();
-			int pid = thePlayer.getPlayerID();
-			if(theGame.canRoll(pid)) {
-			int currentRoll = theFacade.roll(thePlayer.getPlayerIndex());
-				System.out.println("Current roll: " + currentRoll);
-			resultView.setRollValue(currentRoll);
-				setResultView(resultView);
-				resultView.showModal();
-				//System.out.println("I set resultView!");
 
-
-			/*}*/
+		Player thePlayer = GameManager.getSingleton().getthisplayer();
+		int pid = thePlayer.getPlayerID();
+		if(theGame.canRoll(pid)) {
+		int currentRoll = theFacade.roll(thePlayer.getPlayerIndex());
+		//System.out.println("Current roll: " + currentRoll);
+		resultView.setRollValue(currentRoll);
+		setResultView(resultView);
+		resultView.showModal();
+			//getResultView().showModal()
 		}
 
 
-		getResultView().showModal();
+
 
 
 	}
@@ -118,17 +113,19 @@ private int counter;
 			if (theGame.getTurnTracker().getStatus().equals("Rolling")) {
 				//System.out.println("Rolling!!");
 				//if(GameManager.getSingleton().getthisplayer().getPlayerID() == theGame.getTurnTracker().getCurrentPlayer()) {
-				System.out.println(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer());
-				System.out.println(GameManager.getSingleton().getthisplayer().getPlayerIndex());
+				//System.out.println(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer());
+				//System.out.println(GameManager.getSingleton().getthisplayer().getPlayerIndex());
 
 				if(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
 
 					//System.out.println("It's the player!");
 					//UNCOMMENT BELOW:
-					setTimer();
-					getRollView().showModal();
-					counter = 3;
-					/**
+					if(!getRollView().isModalShowing()) {
+						setTimer();
+						getRollView().showModal();
+						counter = 3;
+
+					}/**
 					 * REMOVE BELOW STATEMENT
 
 					int pid = GameManager.getSingleton().getthisplayer().getPlayerID();
@@ -146,7 +143,7 @@ private int counter;
 			public void run() {
 
 				getRollView().setMessage("3 seconds...");
-				System.out.println("Rolling in 3...");
+				//System.out.println("Rolling in 3...");
 			}
 		}, 1000);
 
@@ -156,7 +153,7 @@ private int counter;
 			public void run() {
 
 				getRollView().setMessage("2 seconds...");
-				System.out.println("Rolling in 2...");
+				//System.out.println("Rolling in 2...");
 			}
 		}, 2000);
 
@@ -165,14 +162,14 @@ private int counter;
 			public void run() {
 
 				getRollView().setMessage("1 seconds...");
-				System.out.println("Rolling in 1...");
+				//System.out.println("Rolling in 1...");
 			}
 		}, 3000);
 
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-				System.out.println("calling rollDice()!!!!");
+				//System.out.println("calling rollDice()!!!!");
 				getRollView().closeModal();
 				rollDice();
 

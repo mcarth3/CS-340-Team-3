@@ -31,12 +31,13 @@ public class Dice extends AbstractModelPartition {
     Random rand = new Random();
 
     int  n = rand.nextInt(6) + 1;
-
+    //System.out.println("n result: "+ n);
 
     int  n2 = rand.nextInt(6) + 1;
+    //System.out.println("n2 result: "+ n2);
 
     diceRoll = n + n2;
-    return n;
+    return diceRoll;
   }
   public boolean canRoll(int playerID)
   { 
