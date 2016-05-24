@@ -112,23 +112,26 @@ public class LoginController extends Controller implements ILoginController {
 		if(loginCanDo(username, password)){
 			result = rp.userLogin(username, password);
 			PlayerLoginInfo pl = new PlayerLoginInfo();
-			System.out.println(result);
-			pl = ModelParser.parse3(result); 
-			GameManager gm = GameManager.getSingleton();
-			System.out.println(pl.playerID);
-			gm.setplayerbyidtemp(pl.playerID);
-			gm.setplayernametemp(pl.name);
+			
+			if(result != null){
+				pl = ModelParser.parse3(result); 
+				GameManager gm = GameManager.getSingleton();
+				System.out.println(pl.playerID);
+				gm.setplayerbyidtemp(pl.playerID);
+				gm.setplayernametemp(pl.name);
+				
+				state.setCurrentState(StateEnum.JOIN);
+				getLoginView().closeModal();
+				loginAction.execute();
+			}else{
+				getLoginView().closeModal();
+				JOptionPane.showMessageDialog(null, "User info not found");
+				getLoginView().showModal();
+			}
 		}else{
-			 JOptionPane.showMessageDialog(null, "Input is invalid");
-		}
-		
-		if(result != null){
-			// If log in succeeded
-			state.setCurrentState(StateEnum.JOIN);
 			getLoginView().closeModal();
-			loginAction.execute();
-		}else{
-			System.out.println("Login didn't work"); 
+			JOptionPane.showMessageDialog(null, "Input is invalid");
+			getLoginView().showModal();
 		}
 	}
 	public boolean loginCanDo(String username, String password){
@@ -167,19 +170,24 @@ public class LoginController extends Controller implements ILoginController {
 		String result = null;
 		if(registerCanDo(username, password, passwordRepeat)){
 			result = rp.userRegister(username, password);
+			if(result != null)
+			{
+				rp.userLogin(username, password);
+				// If register succeeded
+				getLoginView().closeModal();
+				loginAction.execute();
+				
+			}else{
+				getLoginView().closeModal();
+				JOptionPane.showMessageDialog(null, "Register didn't work");
+				getLoginView().showModal();
+			}
 		}else{
-			JOptionPane.showMessageDialog(null, "Input is invalid");
-		}
-		if(result != null)
-		{
-			rp.userLogin(username, password);
-			// If register succeeded
 			getLoginView().closeModal();
-			loginAction.execute();
-			
-		}else{
-			System.out.println("Register didn't work"); 
+			JOptionPane.showMessageDialog(null, "Input is invalid");
+			getLoginView().showModal();
 		}
+		
 		
 	}
 	public boolean registerCanDo(String username, String password, String passwordRepeat){

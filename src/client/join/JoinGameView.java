@@ -2,6 +2,7 @@ package client.join;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -101,23 +102,51 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 		// This is the looped layout
 		if (games != null && games.length > 0)
 		{
+			ArrayList<String> playerNames = new ArrayList<>(); 
 			labelFont = labelFont.deriveFont(labelFont.getStyle(), PANEL_TEXT_SIZE);
 			for (GameInfo game : games)
 			{
+				System.out.println(""); 
+				Integer playerSize = 0; 
+				for (int j = 0; j < game.getPlayers().size(); j++) {
+					if (j < game.getPlayers().size()) {
+						//players = players + game.getPlayers().get(j).getName() + ", ";
+						System.out.println(game.getPlayers().get(j).getName()); 
+						if(game.getPlayers().get(j).getName().length() < 1){
+							System.out.println("no name"); 
+						}
+						else{
+							playerNames.add(game.getPlayers().get(j).getName()); 
+						}
+						
+					}
+				}
+				
+				
 				JLabel tmp1 = new JLabel(String.valueOf(game.getId()));
 				tmp1.setFont(labelFont);
 				gamePanel.add(tmp1);
 				JLabel tmp2 = new JLabel(game.getTitle());
 				tmp2.setFont(labelFont);
 				gamePanel.add(tmp2);
-				String players = String.valueOf(game.getPlayers().size()) + "/4 : ";
-				for (int j = 0; j < game.getPlayers().size(); j++) {
-					if (j < game.getPlayers().size() - 1) {
-						players = players + game.getPlayers().get(j).getName() + ", ";
+//				String players = String.valueOf(game.getPlayers().size()) + "/4 : ";
+//				for (int j = 0; j < game.getPlayers().size(); j++) {
+//					if (j < game.getPlayers().size() - 1) {
+//						players = players + game.getPlayers().get(j).getName() + ", ";
+//					} else {
+//						players = players + game.getPlayers().get(j).getName();
+//					}
+//				}
+//				JLabel tmp3 = new JLabel(players);
+				String players = String.valueOf(playerNames.size()) + "/4 : ";
+				for (int j = 0; j < playerNames.size(); j++) {
+					if (j < playerNames.size() - 1) {
+						players = players + playerNames.get(j) + ", ";
 					} else {
-						players = players + game.getPlayers().get(j).getName();
+						players = players + playerNames.get(j);
 					}
 				}
+				
 				JLabel tmp3 = new JLabel(players);
 				tmp3.setFont(labelFont);
 				gamePanel.add(tmp3);
@@ -127,7 +156,7 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 				{
 					joinButton = new JButton("Re-Join");
 				}
-				else if (game.getPlayers().size() >= 4)
+				else if (playerNames.size() >= 4)
 				{
 					joinButton = new JButton("Full");
 					joinButton.setEnabled(false);
@@ -139,6 +168,7 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 				joinButton.setActionCommand("" + game.getId());
 				joinButton.addActionListener(actionListener);
 				gamePanel.add(joinButton);
+				playerNames.clear();
 			}
 		}
 
