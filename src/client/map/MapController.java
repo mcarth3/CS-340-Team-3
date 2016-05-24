@@ -72,22 +72,19 @@ public class MapController extends Controller implements IMapController {
 
 	@Override
 	public boolean canPlaceRoad(EdgeLocation edgeLoc) {
-		return Facade.getSingleton()
-				.canBuildRoad(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(), edgeLoc);
+		return Facade.getSingleton().canBuildRoad(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(), edgeLoc);
 
 	}
 
 	@Override
 	public boolean canPlaceSettlement(VertexLocation vertLoc) {
-		return Facade.getSingleton()
-				.canBuildSettlement(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(), vertLoc);
+		return Facade.getSingleton().canBuildSettlement(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(), vertLoc);
 
 	}
 
 	@Override
 	public boolean canPlaceCity(VertexLocation vertLoc) {
-		return Facade.getSingleton()
-				.canBuildCity(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(), vertLoc);
+		return Facade.getSingleton().canBuildCity(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(), vertLoc);
 
 	}
 
@@ -114,12 +111,9 @@ public class MapController extends Controller implements IMapController {
 		getView().placeRoad(edgeLoc, CatanColor.toColor(GameManager.getSingleton().getthisplayer().getColor()));
 		if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Playing")) {
 			System.out.println("placed road");
-			RealProxy.getSingleton().buildRoad(GameManager.getSingleton().getthisplayer().getPlayerIndex(), edgeLoc,
-					false);
-		} else if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound")
-				|| GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound")) {
-			RealProxy.getSingleton().buildRoad(GameManager.getSingleton().getthisplayer().getPlayerIndex(), edgeLoc,
-					true);
+			RealProxy.getSingleton().buildRoad(GameManager.getSingleton().getthisplayer().getPlayerIndex(), edgeLoc, false);
+		} else if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound") || GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound")) {
+			RealProxy.getSingleton().buildRoad(GameManager.getSingleton().getthisplayer().getPlayerIndex(), edgeLoc, true);
 		}
 	}
 
@@ -128,12 +122,9 @@ public class MapController extends Controller implements IMapController {
 
 		getView().placeSettlement(vertLoc, CatanColor.toColor(GameManager.getSingleton().getthisplayer().getColor()));
 		if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Playing")) {
-			RealProxy.getSingleton().buildSettlement(GameManager.getSingleton().getthisplayer().getPlayerIndex(),
-					vertLoc, false);
-		} else if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound")
-				|| GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound")) {
-			RealProxy.getSingleton().buildSettlement(GameManager.getSingleton().getthisplayer().getPlayerIndex(),
-					vertLoc, true);
+			RealProxy.getSingleton().buildSettlement(GameManager.getSingleton().getthisplayer().getPlayerIndex(), vertLoc, false);
+		} else if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound") || GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound")) {
+			RealProxy.getSingleton().buildSettlement(GameManager.getSingleton().getthisplayer().getPlayerIndex(), vertLoc, true);
 		}
 	}
 
@@ -209,8 +200,7 @@ public class MapController extends Controller implements IMapController {
 	@Override
 	public void startMove(PieceType pieceType, boolean isFree, boolean allowDisconnected) {
 		if (!robView.isModalShowing()) {
-			getView().startDrop(pieceType, CatanColor.toColor(GameManager.getSingleton().getthisplayer().getColor()),
-					true);
+			getView().startDrop(pieceType, CatanColor.toColor(GameManager.getSingleton().getthisplayer().getColor()), true);
 		}
 	}
 
@@ -235,8 +225,7 @@ public class MapController extends Controller implements IMapController {
 		if (this.getRobView().isModalShowing()) {
 			this.getRobView().closeModal();
 		}
-		RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex,
-				victim.getPlayerIndex(), roblocation);
+		RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, victim.getPlayerIndex(), roblocation);
 	}
 
 	@Override
@@ -285,8 +274,7 @@ public class MapController extends Controller implements IMapController {
 		for (int a = 0; a < ports.size(); a++) {
 			// System.out.println(ports.get(a));
 			HexLocation hexLoc = ports.get(a).getLocation();
-			getView().addPort(new EdgeLocation(hexLoc, ports.get(a).getDirection()),
-					getPortType(ports.get(a).getResource()));
+			getView().addPort(new EdgeLocation(hexLoc, ports.get(a).getDirection()), getPortType(ports.get(a).getResource()));
 		}
 
 		for (int a = 0; a < set.size(); a++) {
@@ -319,10 +307,8 @@ public class MapController extends Controller implements IMapController {
 
 		getView().placeRobber(map.getRobber().getHl());
 
-		if ((game.getTurnTracker().getStatus().equals("Robbing"))
-				&& (GameManager.getSingleton().getrobbingready() == true)) {
-			if (game.getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer()
-					.getPlayerIndex()) {
+		if ((game.getTurnTracker().getStatus().equals("Robbing")) && (GameManager.getSingleton().getrobbingready() == true)) {
+			if (game.getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
 				GameManager.getSingleton().setrobbingready(false);
 				startMove(PieceType.ROBBER, true, false);
 			}
@@ -332,10 +318,8 @@ public class MapController extends Controller implements IMapController {
 			}
 		}
 
-		if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound"))
-				|| (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound"))) {
-			if (GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel()
-					.getTurnTracker().getCurrentPlayer()) {
+		if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound")) || (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound"))) {
+			if (GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer()) {
 
 				startMove(PieceType.ROAD, true, false);
 				startMove(PieceType.SETTLEMENT, true, false);
