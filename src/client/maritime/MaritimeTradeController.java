@@ -5,8 +5,12 @@ import model.*;
 import model.bank.ResourceList;
 import shared.definitions.*;
 import client.base.*;
+import shared.locations.HexLocation;
+import shared.locations.VertexDirection;
+import shared.locations.VertexLocation;
 
 import java.util.ArrayList;
+import java.util.TreeSet;
 
 
 /**
@@ -65,13 +69,13 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 			thePlayer.depleteResource(theGiving);
 		}
 		thePlayer.addResource(theGetting, amountGetting);*/
-		System.out.println("Making Trade!");
+		//System.out.println("Making Trade!");
 		getTradeOverlay().closeModal();
-		theFacade.meritimeTrade(pid, amountGiving, theGiving.toString().toLowerCase(), theGetting.toString().toLowerCase());		//TODO: this needs to be modified to implement ports' ratios
-		System.out.println("pid: " + pid);
-		System.out.println("amountGiving: " + amountGiving);
-		System.out.println("The Giving: " + theGiving.toString());
-		System.out.println("The Getting: " + theGetting.toString());
+		theFacade.meritimeTrade(pid, amountGiving, theGiving.toString().toLowerCase(), theGetting.toString().toLowerCase());
+		//System.out.println("pid: " + pid);
+		//System.out.println("amountGiving: " + amountGiving);
+		//System.out.println("The Giving: " + theGiving.toString());
+		//System.out.println("The Getting: " + theGetting.toString());
 		getTradeOverlay().reset();
 	}
 
@@ -146,13 +150,15 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		theFacade = Facade.getSingleton();
 		if(GameManager.getSingleton() != null) {
 			thePlayer = GameManager.getSingleton().getthisplayer();
-			if (thePlayer.canOfferBankTrade())        //TODO: this needs to be changed for ports
+			//if (thePlayer.canOfferBankTrade())        //TODO: this needs to be changed for ports
+			if (canOfferMaritimeTrade())
 			{
 
 				pid = GameManager.getSingleton().getthisplayer().getPlayerIndex();
 				//theFacade.getGame().canMaritimeTrade(pid);
 				thePlayer = GameManager.getSingleton().getthisplayer();
-				giveResources = thePlayer.resourcesOverThree();                //TODO: this needs to be changed to implement port ratios.
+				//giveResources = thePlayer.resourcesOverThree();                //TODO: this needs to be changed to implement port ratios.
+				giveResources = playerResourcesOverPorts();
 				getTradeView().enableMaritimeTrade(true);
 				getTradeOverlay().setCancelEnabled(true);
 				getTradeOverlay().setTradeEnabled(false);
@@ -171,9 +177,14 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
      */
 	public boolean canOfferMaritimeTrade()
 	{
-
-
-		return false;
+		if(playerResourcesOverPorts().length > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	/**
@@ -185,29 +196,33 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	{
 		ResourceList resources = thePlayer.getResources();
 		ArrayList<ResourceType> resourceList = new ArrayList<ResourceType>();
-		if(resources.getBrick() > 3)
+		if(resources.getBrick() >= checkPossibleAmount(ResourceType.BRICK))
 		{
 			resourceList.add(ResourceType.BRICK);
 		}
-		if(resources.getWood() > 3)
+		if(resources.getWood() >= checkPossibleAmount(ResourceType.WOOD))
 		{
 			resourceList.add(ResourceType.WOOD);
 		}
-		if(resources.getOre() > 3)
+		if(resources.getOre() >= checkPossibleAmount(ResourceType.ORE))
 		{
 			resourceList.add(ResourceType.ORE);
 		}
-		if(resources.getSheep() > 3)
+		if(resources.getSheep() >= checkPossibleAmount(ResourceType.SHEEP))
 		{
 			resourceList.add(ResourceType.SHEEP);
 		}
-		if(resources.getWheat() > 3)
+		if(resources.getWheat() >= checkPossibleAmount(ResourceType.WHEAT))
 		{
 			resourceList.add(ResourceType.WHEAT);
 		}
 
 		ResourceType[] simpleArray = new ResourceType[ resourceList.size() ];
 		resourceList.toArray( simpleArray );
+		if(simpleArray == null)
+		{
+			simpleArray = new ResourceType[0];
+		}
 		return simpleArray;
 
 
@@ -222,29 +237,141 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	public int checkPossibleAmount(ResourceType type)
 	{
 		boolean threeToOne = false;
+		boolean twoToOne = false;
 		ArrayList<City> allCities = GameManager.getSingleton().getModel().getMap().getcities();
 		ArrayList<Settlement> allSettlements = GameManager.getSingleton().getModel().getMap().getsettlements();
 		ArrayList<Port> allPorts = GameManager.getSingleton().getModel().getMap().getPorts();
+		//TreeSet<ResourceType> theFoundTypes= new TreeSet<>();
 
-		for(int i= 0; i < allCities.size(); i++)
+		/*for(int i = 0; i < allSettlements.size(); i++)
 		{
-			//if(allCities.get(i).)
+			if(allSettlements.get(i).getOwner() == thePlayer.getPlayerIndex())
+			{
+				System.out.println("Settlement normal location: " + allSettlements.get(i).getVertextLocation().getNormalizedLocation());
+			}
+		}
+		for(int j = 0; j < allPorts.size(); j++) {
+			ArrayList<VertexLocation> portVertices = allPorts.get(j).getEdgeLocation().getVertices();
+
+			for (int v = 0; v < portVertices.size(); v++) {
+				System.out.println("Port " + j + " (type: " +
+						allPorts.get(j).getResource() + ") normal location: " + portVertices.get(v).getNormalizedLocation());
+
+			}
+		}*/
+
+
+
+
+
+
+		for(int j = 0; j < allPorts.size(); j++) {
+		ArrayList<VertexLocation> portVertices = allPorts.get(j).getEdgeLocation().getVertices();
+			//System.out.println("Checking matches for port of type " + allPorts.get(j).getResource());
+			boolean found = false;
+			for(int v = 0; v < portVertices.size(); v++) {
+
+
+				for (int i = 0; i < allCities.size(); i++) {
+					if(portVertices.get(v).getNormalizedLocation().equals(allCities.get(i).getVertextLocation().getNormalizedLocation()))
+					{
+						/*if(null == allPorts.get(j).getResource())
+						{
+							System.out.println("Null resource port matches player city!");
+						}*/
+						if(allCities.get(i).getOwner() == thePlayer.getPlayerIndex())
+						{
+							found = true;
+						}
+					}
+				}
+
+				for (int i = 0; i < allSettlements.size(); i++) {
+
+
+					if( portVertices.get(v).getDir() == VertexDirection.NW && portVertices.get(v).getHexLoc().getX() == -2 &&
+							portVertices.get(v).getHexLoc().getY() == 0	)
+					{
+						//System.out.println("X = " + portVertices.get(v).getHexLoc().getX() + ", Y = " + portVertices.get(v).getHexLoc().getY());
+						//System.out.println("\nSettlement normal location: " + allSettlements.get(i).getVertextLocation().getNormalizedLocation());
+						//System.out.println("Port location: " + portVertices.get(v).getNormalizedLocation());
+						//if(portVertices.get())
+
+					}
+					//if(portVertices.get(v).getNormalizedLocation().equals(allSettlements.get(i).getVertextLocation().getNormalizedLocation()))
+					if(portVertices.get(v).getDir() == allSettlements.get(i).getVertextLocation().getDir()
+							&& portVertices.get(v).getHexLoc().getX() == allSettlements.get(i).getVertextLocation().getHexLoc().getX() &&
+							portVertices.get(v).getHexLoc().getY() == allSettlements.get(i).getVertextLocation().getHexLoc().getY())
+					{
+						//System.out.println("You're passing the location check now!\n***********");
+						if(null == allPorts.get(j).getResource())
+						{
+							//System.out.println("Null resource port matches player settlement!");
+						}
+						if(allSettlements.get(i).getOwner() == thePlayer.getPlayerIndex())
+						{
+							found = true;
+						}
+					}
+				}
+
+
+			}
+			if(found) {
+				//System.out.println("Port Resource Type: " + allPorts.get(j).getResource());
+				if (allPorts.get(j).getResource() == null) {
+					threeToOne = true;
+					//System.out.println("Three-to-one port owned!");
+				} else if (type == stringToRecType(allPorts.get(j).getResource())) {
+					twoToOne = true; //could just return 2 if this is too slow.
+					//System.out.println("Two-to-one port owned!");
+				}
+			}
 		}
 
-		for(int i= 0; i < allSettlements.size(); i++)
+		if(twoToOne)
 		{
-			//if(allCities.get(i).)
+			return 2;
 		}
-
-
-		if(threeToOne)
+		else if(threeToOne)
 		{
 			return 3;
 		}
-		return 4;
+		else
+		{
+			return 4;
+		}
 	}
 
 
+
+	public ResourceType stringToRecType(String s)
+	{
+		String low = s.toLowerCase();
+		if(low.equals("wood"))
+		{
+			return ResourceType.WOOD;
+		}
+		if(low.equals("brick"))
+		{
+			return ResourceType.BRICK;
+		}
+		if(low.equals("ore"))
+		{
+			return ResourceType.ORE;
+		}
+		if(low.equals("sheep"))
+		{
+			return ResourceType.SHEEP;
+		}
+		else if(low.equals("wheat"))
+		{
+			return ResourceType.WHEAT;
+		}
+
+		System.out.println("\n\n\nInvalid resource Type in MaritimeTradeController, stringToRecType()!!!\n\n\n");
+		return ResourceType.BRICK;
+	}
 
 }
 

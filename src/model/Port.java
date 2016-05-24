@@ -3,6 +3,7 @@ package model;
 import poller.modeljsonparser.AbstractModelPartition;
 import shared.definitions.PortType;
 import shared.locations.EdgeDirection;
+import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexDirection;
 /**Represents a Port on the port, which contains a specific ratio on a specified location on the board. 
@@ -76,5 +77,11 @@ public class Port extends AbstractModelPartition {
 
     public void setOwner(int playerID) {
         this.owner = playerID;
+    }
+
+    public EdgeLocation getEdgeLocation()
+    {
+        EdgeLocation theEdge = new EdgeLocation(location, direction);
+        return theEdge;
     }
 }
