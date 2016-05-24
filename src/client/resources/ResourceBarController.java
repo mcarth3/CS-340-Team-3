@@ -184,6 +184,7 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 		setResources();
 		setBuildingPieces();
 		updateButtons();
+
 	}
 
 	private void updateButtons() {

@@ -160,37 +160,38 @@ public class DiscardController extends Controller implements IDiscardController 
 		System.out.println("discard controller update");
 		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
 		int cards = GameManager.getSingleton().getthisplayer().getResources().getSize();
-		if ((status.equals("Discarding") || (status.equals("Robbing")))
-				&& !(GameManager.getSingleton().getdiscardedcheck())) {
-			GameManager.getSingleton().setdiscardedcheck(true);
-			System.out.println("cards" + cards);
-			if (cards > 7) {
-				maxDiscardNum = calculateDiscardNum();
-				System.out.println("max discard" + maxDiscardNum);
-				if (maxDiscardNum == 0) {
+		if ((status.equals("Discarding") || (status.equals("Robbing")))) {
+			if ((GameManager.getSingleton().getdiscardedcheck() == false)) {
+				GameManager.getSingleton().setdiscardedcheck(true);
+				System.out.println("cards" + cards);
+				if (cards > 7) {
+					maxDiscardNum = calculateDiscardNum();
+					System.out.println("max discard" + maxDiscardNum);
+					if (maxDiscardNum == 0) {
+					} else {
+						this.getDiscardView().showModal();
+					}
+					updateView();
+
 				} else {
-					this.getDiscardView().showModal();
+					System.out.print("<7 resources");
+					ArrayList<Integer> discardCardarray = new ArrayList<Integer>();
+					discardCardarray.add(0);
+					discardCardarray.add(0);
+					discardCardarray.add(0);
+					discardCardarray.add(0);
+					discardCardarray.add(0);
+					GameManager.getSingleton().setrobbingready(true);
+					RealProxy.getSingleton().discardCards(GameManager.getSingleton().getthisplayer().playerIndex,
+							discardCardarray);
+
 				}
-				updateView();
-
-			} else {
-				System.out.print("<7 resources");
-				ArrayList<Integer> discardCardarray = new ArrayList<Integer>();
-				discardCardarray.add(0);
-				discardCardarray.add(0);
-				discardCardarray.add(0);
-				discardCardarray.add(0);
-				discardCardarray.add(0);
-				GameManager.getSingleton().setrobbingready(true);
-				RealProxy.getSingleton().discardCards(GameManager.getSingleton().getthisplayer().playerIndex,
-						discardCardarray);
-
 			}
 		} else {
 			GameManager.getSingleton().setdiscardedcheck(false);
-			// if (this.getDiscardView().isModalShowing()){
-			// this.getDiscardView().closeModal();
-			// }
+			if (this.getDiscardView().isModalShowing()) {
+				this.getDiscardView().closeModal();
+			}
 		}
 	}
 

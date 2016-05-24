@@ -241,11 +241,7 @@ public class MapController extends Controller implements IMapController {
 
 	@Override
 	public void update() {
-		System.out.print(GameManager.getSingleton().getModel().getPlayers().get(0).getColor());
-
-		// if we need to get our player's turn -
-		// if(model.getTurnTracker().getCurrentPlayer() ==
-		// manager.getthisplayer().getPlayerIndex()) {
+		System.out.print("Player Color" + GameManager.getSingleton().getModel().getPlayers().get(0).getColor());
 		GameManager gm = GameManager.getSingleton();
 
 		Game game = gm.getModel();
@@ -297,8 +293,7 @@ public class MapController extends Controller implements IMapController {
 
 			CatanColor color = CatanColor.BLUE;
 			try {
-				color = CatanColor.toColor(
-						GameManager.getSingleton().getModel().findPlayerbyindex(set.get(a).getOwner()).getColor());
+				color = CatanColor.toColor(game.findPlayerbyindex(set.get(a).getOwner()).getColor());
 			} catch (ObjectNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -310,8 +305,7 @@ public class MapController extends Controller implements IMapController {
 
 			CatanColor color = CatanColor.BLUE;
 			try {
-				color = CatanColor.toColor(
-						GameManager.getSingleton().getModel().findPlayerbyindex(cities.get(a).getOwner()).getColor());
+				color = CatanColor.toColor(game.findPlayerbyindex(cities.get(a).getOwner()).getColor());
 			} catch (ObjectNotFoundException e) {
 				e.printStackTrace();
 			}
@@ -325,13 +319,27 @@ public class MapController extends Controller implements IMapController {
 
 		getView().placeRobber(map.getRobber().getHl());
 
-		if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing"))
+		if ((game.getTurnTracker().getStatus().equals("Robbing"))
 				&& (GameManager.getSingleton().getrobbingready() == true)) {
-			if (GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton()
-					.getthisplayer().getPlayerIndex()) {
+			if (game.getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer()
+					.getPlayerIndex()) {
 				GameManager.getSingleton().setrobbingready(false);
-				// System.out.println("startmove");
 				startMove(PieceType.ROBBER, true, false);
+			}
+		} else {
+			if (this.getRobView().isModalShowing()) {
+				this.getRobView().closeModal();
+			}
+		}
+
+		if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound"))
+				|| (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound"))) {
+			if (GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel()
+					.getTurnTracker().getCurrentPlayer()) {
+
+				startMove(PieceType.ROAD, true, false);
+				startMove(PieceType.SETTLEMENT, true, false);
+
 			}
 		}
 
