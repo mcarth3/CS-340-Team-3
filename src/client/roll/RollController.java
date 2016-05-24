@@ -170,7 +170,9 @@ private int counter;
 			@Override
 			public void run() {
 				//System.out.println("calling rollDice()!!!!");
-				getRollView().closeModal();
+				if (getRollView().isModalShowing()){
+					getRollView().closeModal();
+				}
 				rollDice();
 
 			}
