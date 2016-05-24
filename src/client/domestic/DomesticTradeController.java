@@ -113,26 +113,27 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 
 		listOfResources = new ResourceList();
 		//****************Reset everything^^^
-
-		ArrayList<Player> thePlayers = theFacade.getGame().getPlayers();
-		ArrayList<PlayerInfo> playersWithoutCurrent = new ArrayList<>();
-		for(int i = 0; i < thePlayers.size(); i++ )
-		{
-			if(thePlayers.get(i).getPlayerID() != thePlayer.getPlayerID()) {
-				if(!playersWithoutCurrent.contains(thePlayers.get(i).toPlayerInfo())) {
-					playersWithoutCurrent.add(thePlayers.get(i).toPlayerInfo());
+		if(theTraders == null) {
+			ArrayList<Player> thePlayers = theFacade.getGame().getPlayers();
+			ArrayList<PlayerInfo> playersWithoutCurrent = new ArrayList<>();
+			for (int i = 0; i < thePlayers.size(); i++) {
+				if (thePlayers.get(i).getPlayerID() != thePlayer.getPlayerID()) {
+					if (!playersWithoutCurrent.contains(thePlayers.get(i).toPlayerInfo())) {
+						playersWithoutCurrent.add(thePlayers.get(i).toPlayerInfo());
+					}
 				}
 			}
+			System.out.println("playersWithoutCurrent: " + playersWithoutCurrent.toString());
+			PlayerInfo[] arrayNoCurrentPlayer = new PlayerInfo[playersWithoutCurrent.size()];
+
+			playersWithoutCurrent.toArray(arrayNoCurrentPlayer);
+			theTraders = arrayNoCurrentPlayer;
+
+
+			getTradeOverlay().setPlayers(theTraders);
 		}
-		System.out.println("playersWithoutCurrent: " + playersWithoutCurrent.toString());
-		PlayerInfo[] arrayNoCurrentPlayer = new PlayerInfo[playersWithoutCurrent.size()];
-
-		playersWithoutCurrent.toArray( arrayNoCurrentPlayer );
-		theTraders = arrayNoCurrentPlayer;
-
-
 		getTradeOverlay().setResourceSelectionEnabled(true);
-		getTradeOverlay().setPlayers(theTraders);
+
 		getTradeOverlay().setPlayerSelectionEnabled(true);
 		checkResourceChanges();
 	}
@@ -160,6 +161,12 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 		System.out.println("The recommended trade: " + listOfResources.toString());
 		theFacade.tradePlayer(thePlayer.getPlayerIndex(), listOfResources, desiredTraderID);
 		listOfResources = new ResourceList();
+		setValueOfResourceZero(ResourceType.BRICK);
+		setValueOfResourceZero(ResourceType.WOOD);
+		setValueOfResourceZero(ResourceType.WHEAT);
+		setValueOfResourceZero(ResourceType.SHEEP);
+		setValueOfResourceZero(ResourceType.ORE);
+
 		getTradeOverlay().closeModal();
 		getWaitOverlay().showModal();
 	}
@@ -202,7 +209,11 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 
 	@Override
 	public void cancelTrade() {
-
+		setValueOfResourceZero(ResourceType.BRICK);
+		setValueOfResourceZero(ResourceType.WOOD);
+		setValueOfResourceZero(ResourceType.WHEAT);
+		setValueOfResourceZero(ResourceType.SHEEP);
+		setValueOfResourceZero(ResourceType.ORE);
 		getTradeOverlay().closeModal();
 	}
 

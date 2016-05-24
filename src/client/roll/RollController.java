@@ -61,28 +61,23 @@ public class RollController extends Controller implements IRollController {
 	
 	@Override
 	public void rollDice() {
-
+		getRollView().setMessage("3 seconds...");
 		//System.out.println("in the rollDice function!");
 		StateEnum theState = State.getCurrentState();
-		/*if(theState == StateEnum.PLAY)
-		{*/
-			//System.out.println("State is play!");
-			Player thePlayer = GameManager.getSingleton().getthisplayer();
-			int pid = thePlayer.getPlayerID();
-			if(theGame.canRoll(pid)) {
-			int currentRoll = theFacade.roll(thePlayer.getPlayerIndex());
-				System.out.println("Current roll: " + currentRoll);
-			resultView.setRollValue(currentRoll);
-				setResultView(resultView);
-				resultView.showModal();
-				//System.out.println("I set resultView!");
 
-
-			/*}*/
+		Player thePlayer = GameManager.getSingleton().getthisplayer();
+		int pid = thePlayer.getPlayerID();
+		if(theGame.canRoll(pid)) {
+		int currentRoll = theFacade.roll(thePlayer.getPlayerIndex());
+		System.out.println("Current roll: " + currentRoll);
+		resultView.setRollValue(currentRoll);
+		setResultView(resultView);
+		resultView.showModal();
+			//getResultView().showModal()
 		}
 
 
-		getResultView().showModal();
+
 
 
 	}
@@ -125,10 +120,12 @@ private int counter;
 
 					//System.out.println("It's the player!");
 					//UNCOMMENT BELOW:
-					setTimer();
-					getRollView().showModal();
-					counter = 3;
-					/**
+					if(!getRollView().isModalShowing()) {
+						setTimer();
+						getRollView().showModal();
+						counter = 3;
+
+					}/**
 					 * REMOVE BELOW STATEMENT
 
 					int pid = GameManager.getSingleton().getthisplayer().getPlayerID();
