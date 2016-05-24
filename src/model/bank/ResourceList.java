@@ -14,11 +14,7 @@ public class ResourceList extends AbstractModelPartition {
     int sheep;
     int wheat;
     int ore;
-	private int numOfOre;
-	private int numOfWood;
-	private int numOfBrick = 0;
-	private int numOfSheep = 0;
-	private int numOfWheat = 0;
+
 
 
 
@@ -114,12 +110,36 @@ public class ResourceList extends AbstractModelPartition {
     public int getSize()
     {
         
-		int total = numOfBrick + numOfOre + numOfSheep + numOfWheat + numOfWood;
+		int total =0;
+		if (brick >= 0){
+			total+=brick;
+		}else{
+			brick =0;
+		}
+		if (ore >= 0){
+			total+=ore;
+		}else{
+			ore =0;
+		}
+		if (sheep >= 0){
+			total+=sheep;
+		}else{
+			sheep =0;
+		}
+		if (wheat >= 0){
+			total+=wheat;
+		}else{
+			wheat =0;
+		}
+		if (wood >= 0){
+			total+=wood;
+		}else{
+			wood =0;
+		}
+			
         return total;
     }
 
-	public int getTotal() {
-		return getBrick()+getOre()+getSheep()+getWheat()+getWood();
-	}
+
 
 }

@@ -47,22 +47,15 @@ public class DiscardController extends Controller implements IDiscardController 
 	
 	
 	private int calculateDiscardNum() {
-		int n = 0;
 		
 		if (GameManager.getSingleton().getModel() == null) return 0;
 		
 		ArrayList<Player> players = GameManager.getSingleton().getModel().getPlayers();
 		Player currentPlayer = players.get(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer());
-		int halfcards = currentPlayer.getResources().getTotal()/2;
-		
-		if (halfcards > 7) {
-			n = halfcards;
-		} else {
-			n = 0;
-		}
-		System.out.println("max discard num= " +n);
+		int halfcards = currentPlayer.getResources().getSize()/2;
+		System.out.println("max discard num= " +halfcards);
 	
-		return n;
+		return halfcards;
 	}
 
 
@@ -78,20 +71,21 @@ public class DiscardController extends Controller implements IDiscardController 
 
 	@Override
 	public void increaseAmount(ResourceType resource) {
+		System.out.println("updating");
 		//update();
-		System.out.println("sheep= " + discardList.getSheep());
-		switch(resource) {
-			case BRICK:
-				discardList.setBrick(discardList.getBrick() + 1);
-			case ORE:
-				discardList.setOre(discardList.getOre() + 1);
-			case SHEEP:
-				discardList.setSheep(discardList.getSheep() + 1);
-			case WOOD:
-				discardList.setWood(discardList.getWood() + 1);
-			case WHEAT:
-				discardList.setWheat(discardList.getWheat() + 1);
-			}
+	//	System.out.println("sheep= " + discardList.getSheep());
+		if (resource == ResourceType.BRICK){
+			discardList.setBrick(discardList.getBrick() + 1);
+		}else if (resource == ResourceType.ORE){
+			discardList.setOre(discardList.getOre() + 1);
+		}else if (resource == ResourceType.SHEEP){
+			discardList.setSheep(discardList.getSheep() + 1);
+		}else if (resource == ResourceType.WOOD){
+			discardList.setWood(discardList.getWood() + 1);
+		}else if (resource == ResourceType.WHEAT){
+			discardList.setWheat(discardList.getWheat() + 1);
+		}
+
 	
 		updateView();
 			
@@ -100,16 +94,15 @@ public class DiscardController extends Controller implements IDiscardController 
 	@Override
 	public void decreaseAmount(ResourceType resource) {
 		//System.out.println("decreased amount to discard");
-		switch(resource) {
-		case BRICK:
+		if (resource == ResourceType.BRICK){
 			discardList.setBrick(discardList.getBrick() - 1);
-		case ORE:
+		}else if (resource == ResourceType.ORE){
 			discardList.setOre(discardList.getOre() - 1);
-		case SHEEP:
+		}else if (resource == ResourceType.SHEEP){
 			discardList.setSheep(discardList.getSheep() - 1);
-		case WOOD:
+		}else if (resource == ResourceType.WOOD){
 			discardList.setWood(discardList.getWood() - 1);
-		case WHEAT:
+		}else if (resource == ResourceType.WHEAT){
 			discardList.setWheat(discardList.getWheat() - 1);
 		}
 
@@ -119,15 +112,18 @@ public class DiscardController extends Controller implements IDiscardController 
 	@Override
 	public void discard() {
 		System.out.println("discard command sent");
-		//String message ="";
+		String message ="";
 		ArrayList<Integer> discardCardarray = new ArrayList<Integer>();
 		discardCardarray.add(discardList.getBrick());
 		discardCardarray.add(discardList.getOre());
 		discardCardarray.add(discardList.getSheep());
 		discardCardarray.add(discardList.getWheat());
 		discardCardarray.add(discardList.getWood());
-		//message = RealProxy.getSingleton().discardCards((Integer)GameManager.getSingleton().getthisplayer().getPlayerIndex(), discardCardarray);
-		
+		if (this.getDiscardView().isModalShowing()){
+			this.getDiscardView().closeModal();
+		}
+		message = RealProxy.getSingleton().discardCards((Integer)GameManager.getSingleton().getthisplayer().getPlayerIndex(), discardCardarray);
+		GameManager.getSingleton().setrobbingready(true);
 //		"discardedCards"  in this order. THIS MIGHT CHANGE LATER
 //	    "brick": 1,
 //	    "ore": 2,
@@ -140,38 +136,36 @@ public class DiscardController extends Controller implements IDiscardController 
 	public void update() {
 		System.out.println("discard controller update");
 		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
-		int cards = GameManager.getSingleton().getthisplayer().getResources().getTotal();
-
-		if(status.equals("Discarding")) {
+		int cards = GameManager.getSingleton().getthisplayer().getResources().getSize();
+		if((status.equals("Discarding") ||(status.equals("Robbing")))&& !(GameManager.getSingleton().getdiscardedcheck())) {
+			GameManager.getSingleton().setdiscardedcheck(true);
+			System.out.println("cards"+cards);
 			if(cards > 7){
-				//maxDiscardNum = calculateDiscardNum();
-				System.out.println("able to lose half");
-				//System.out.println("max discard"+maxDiscardNum);
-				//if(maxDiscardNum == 0) {
-				//	this.getWaitView().showModal();
-				//} else {
-				//	this.getDiscardView().showModal();
-				//}updateView();{
-				//}
-				ArrayList<Integer> discardCardarray = new ArrayList<Integer>();
-				discardCardarray.add(0);
-				discardCardarray.add(0);
-				discardCardarray.add(0);
-				discardCardarray.add(0);
-				discardCardarray.add(0);
-				RealProxy.getSingleton().discardCards(GameManager.getSingleton().getthisplayer().playerIndex, discardCardarray);
+				maxDiscardNum = calculateDiscardNum();
+				System.out.println("max discard"+maxDiscardNum);
+				if(maxDiscardNum == 0) {
+				} else {
+					this.getDiscardView().showModal();
+				}
+				updateView();
 			
 			}else{
-				System.out.print("no discard");
+				System.out.print("<7 resources");
 				ArrayList<Integer> discardCardarray = new ArrayList<Integer>();
 				discardCardarray.add(0);
 				discardCardarray.add(0);
 				discardCardarray.add(0);
 				discardCardarray.add(0);
 				discardCardarray.add(0);
+				GameManager.getSingleton().setrobbingready(true);
 				RealProxy.getSingleton().discardCards(GameManager.getSingleton().getthisplayer().playerIndex, discardCardarray);
 			
 			}
+		}else{
+			GameManager.getSingleton().setdiscardedcheck(false);
+			//if (this.getDiscardView().isModalShowing()){
+			//	this.getDiscardView().closeModal();
+			//}
 		}
 	}
 	
@@ -179,11 +173,11 @@ public class DiscardController extends Controller implements IDiscardController 
 	private int checkifcorrect() {
 		int n = -1;
 		
-		if (discardList.getTotal() < maxDiscardNum) {
+		if (discardList.getSize() < maxDiscardNum) {
 			n = -1;
-		} else if (discardList.getTotal() == maxDiscardNum) {
+		} else if (discardList.getSize() == maxDiscardNum) {
 			n = 0;
-		} else if (discardList.getTotal() > maxDiscardNum) {
+		} else if (discardList.getSize() > maxDiscardNum) {
 			n = 1;
 		}
 		
@@ -193,8 +187,14 @@ public class DiscardController extends Controller implements IDiscardController 
 	
 	private void updateView() {
 		ResourceList currentHand = GameManager.getSingleton().getthisplayer().getResources();
-		getDiscardView().setStateMessage("Discarding: " + discardList.getTotal() + "/" + maxDiscardNum);
-		System.out.println("Discarding: " + discardList.getTotal() + "/" + maxDiscardNum);
+		getDiscardView().setStateMessage("Discarding: " + discardList.getSize() + "/" + maxDiscardNum);
+		System.out.println("Discarding: " + discardList.getSize() + "/" + maxDiscardNum);
+		System.out.println("sheep: " + discardList.getSheep());
+		System.out.println("brick: " + discardList.getBrick());
+		System.out.println("wood: " + discardList.getWood());
+		System.out.println("ore: " + discardList.getOre());
+		System.out.println("wheat: " + discardList.getWheat());
+		
 		
 		getDiscardView().setResourceMaxAmount(ResourceType.BRICK, currentHand.getBrick());
 		getDiscardView().setResourceMaxAmount(ResourceType.ORE, currentHand.getOre());
@@ -214,11 +214,14 @@ public class DiscardController extends Controller implements IDiscardController 
 		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WOOD, (currentHand.getWood() > 0 && discardList.getWood() < currentHand.getWood()), (discardList.getWood() > 0));
 		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WHEAT, (currentHand.getWheat() > 0 && discardList.getWheat() < currentHand.getWheat()), (discardList.getWheat() > 0));
 		
-		switch(checkifcorrect()) {
-			case -1: getDiscardView().setDiscardButtonEnabled(false);
-			case 0: getDiscardView().setDiscardButtonEnabled(true);
-			case 1: getDiscardView().setDiscardButtonEnabled(false);
+		if (checkifcorrect() == -1){
+			 getDiscardView().setDiscardButtonEnabled(false);
+		}else if (checkifcorrect() == 0){
+			 getDiscardView().setDiscardButtonEnabled(true);
+		}else if (checkifcorrect() == 1){
+			 getDiscardView().setDiscardButtonEnabled(false);
 		}
+
 	}
 }
 

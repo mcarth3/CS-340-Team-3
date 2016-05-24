@@ -197,6 +197,7 @@ public class MapController extends Controller implements IMapController {
 	}
 
 	public void placeRobber(HexLocation hexLoc) {
+
 		System.out.println("placeRobber");
 		
 
@@ -261,8 +262,9 @@ public class MapController extends Controller implements IMapController {
 	}
 	
 	public void startMove(PieceType pieceType, boolean isFree, boolean allowDisconnected) {	
-		
-		getView().startDrop(pieceType, CatanColor.toColor(GameManager.getSingleton().getthisplayer().getColor()), true);
+		if(!robView.isModalShowing()){
+			getView().startDrop(pieceType, CatanColor.toColor(GameManager.getSingleton().getthisplayer().getColor()), true);
+		}
 	}
 	
 	public void cancelMove() {
@@ -279,6 +281,9 @@ public class MapController extends Controller implements IMapController {
 	}
 	
 	public void robPlayer(RobPlayerInfo victim) {	
+		if (this.getRobView().isModalShowing()){
+			this.getRobView().closeModal();
+		}
 		RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, victim.getPlayerIndex(), roblocation);
 		}
 	public void update() {   
@@ -362,18 +367,15 @@ public class MapController extends Controller implements IMapController {
 
 		getView().placeRobber(map.getRobber().getHl());
         
-		boolean Robbingbool = false;
-        if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")) && (Robbingbool == false)){
+
+        if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")) && (GameManager.getSingleton().getrobbingready() == true)){
     		if(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
-    			Robbingbool = true; //do once
+    			GameManager.getSingleton().setrobbingready(false);
  //   			System.out.println("startmove");
     			startMove(PieceType.ROBBER, true, false);
     		}
         }
-        if (!GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Robbing")){
-//        	System.out.println("resetting robbingbool");
-        	Robbingbool = false;	
-        }
+
     }
 	
     public HexType getHexType(String str){

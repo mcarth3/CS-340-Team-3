@@ -25,6 +25,8 @@ public class GameManager extends Observable {
 	public int playerIdTemp;
 	public String nameTemp; 
 	public CatanColor colorTemp;
+	private boolean discardedcheck = false;
+	private boolean robbingready = false;
 	
 
 	public GameManager() {
@@ -55,6 +57,19 @@ public class GameManager extends Observable {
 	public Game[] getAllGames() {
 		return null;
 
+	}
+	
+	public void setdiscardedcheck(boolean newval){
+		discardedcheck = newval;
+	}
+	public Boolean getdiscardedcheck(){
+		return discardedcheck;
+	}
+	public void setrobbingready(boolean newval){
+		robbingready = newval;
+	}
+	public Boolean getrobbingready(){
+		return robbingready;
 	}
 	/**
 	 * replaces the current model from the poller, and updates all observers that theres a new model
