@@ -44,5 +44,11 @@ public class Dice extends AbstractModelPartition {
     return false;
   }
 
+  public int getDiceRoll() {
+    return diceRoll;
+  }
 
+  public void setDiceRoll(int diceRoll) {
+    this.diceRoll = diceRoll;
+  }
 }

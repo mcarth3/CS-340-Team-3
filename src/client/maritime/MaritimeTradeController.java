@@ -273,7 +273,10 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 
 				for (int i = 0; i < allCities.size(); i++) {
-					if(portVertices.get(v).getNormalizedLocation().equals(allCities.get(i).getVertextLocation().getNormalizedLocation()))
+					//if(portVertices.get(v).getNormalizedLocation().equals(allCities.get(i).getVertextLocation().getNormalizedLocation()))
+					if(portVertices.get(v).getDir() == allCities.get(i).getVertextLocation().getDir()
+							&& portVertices.get(v).getHexLoc().getX() == allCities.get(i).getVertextLocation().getHexLoc().getX() &&
+							portVertices.get(v).getHexLoc().getY() == allCities.get(i).getVertextLocation().getHexLoc().getY())
 					{
 						/*if(null == allPorts.get(j).getResource())
 						{

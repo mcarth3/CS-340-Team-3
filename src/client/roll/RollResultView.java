@@ -6,6 +6,7 @@ import java.net.MalformedURLException;
 
 import javax.swing.*;
 
+import client.GameManager.GameManager;
 import client.base.*;
 import client.utils.ImageUtils;
 
@@ -81,7 +82,13 @@ public class RollResultView extends OverlayView implements IRollResultView {
 		public void actionPerformed(ActionEvent e) {
 			
 			if (e.getSource() == okayButton) {
-				
+
+				/**
+				 * I added the below line for the RollResultView, calling on the Facade
+				 */
+				GameManager.getSingleton().getModelfacade().rollThisInt(GameManager.getSingleton().getthisplayer().getPlayerIndex(),
+						GameManager.getSingleton().getModel().getGameDice().getDiceRoll());
+
 				closeModal();
 			}
 		}	

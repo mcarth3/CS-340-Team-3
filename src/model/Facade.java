@@ -553,6 +553,25 @@ public class Facade extends AbstractModelPartition {
 		return true;
 	}
 
+
+	/**
+	 * Tells the facade to send the proxy a roll command with a specific number
+	 */
+	public void rollThisInt(int pid, int roll)
+	{
+		if (theGame != null) {
+			if (canRoll(pid)) {
+				int number = roll;
+
+				if (number != -1) {
+					proxy.rollNumber(pid, number);
+				} else {
+					System.out.println("not a rolling phase");
+				}
+			}
+		}
+	}
+
 	/**
 	 * rolls the dice for a number 1-12 EDITED BY JESSE R. TO RETURN AN INT
 	 * 

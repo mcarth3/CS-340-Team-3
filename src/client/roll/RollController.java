@@ -23,6 +23,7 @@ public class RollController extends Controller implements IRollController {
 	public static RollController SINGLETON = null;
 	private State state;
 
+	private boolean shownResult;
 	private Facade theFacade;
 	private Game theGame;
 	private String input;
@@ -42,7 +43,7 @@ public class RollController extends Controller implements IRollController {
 		//state = State.PLAY;
 		//SINGLETON = new RollController(view, resultView);
 		//Singleton^^^^^^^^^^
-
+		shownResult = false;
 
 
 		setResultView(resultView);
@@ -61,6 +62,7 @@ public class RollController extends Controller implements IRollController {
 	
 	@Override
 	public void rollDice() {
+		shownResult = true;
 		getRollView().setMessage("3 seconds...");
 		//System.out.println("in the rollDice function!");
 		StateEnum theState = State.getCurrentState();
@@ -68,8 +70,13 @@ public class RollController extends Controller implements IRollController {
 		Player thePlayer = GameManager.getSingleton().getthisplayer();
 		int pid = thePlayer.getPlayerID();
 		if(theGame.canRoll(pid)) {
-		int currentRoll = theFacade.roll(thePlayer.getPlayerIndex());
-		//System.out.println("Current roll: " + currentRoll);
+		int currentRoll = GameManager.getSingleton().getModel().rollGameDice();
+
+		//COPIED TO THE ROLLRESULTVIEW
+		//			theFacade.rollThisInt(thePlayer.getPlayerIndex(), currentRoll);
+
+
+			//System.out.println("Current roll: " + currentRoll);
 		resultView.setRollValue(currentRoll);
 		setResultView(resultView);
 		resultView.showModal();
@@ -124,7 +131,7 @@ private int counter;
 						setTimer();
 						getRollView().showModal();
 						counter = 3;
-
+						shownResult = false;
 					}/**
 					 * REMOVE BELOW STATEMENT
 
@@ -141,9 +148,10 @@ private int counter;
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
-
-				getRollView().setMessage("3 seconds...");
-				//System.out.println("Rolling in 3...");
+				if(!shownResult) {
+					getRollView().setMessage("3 seconds...");
+					//System.out.println("Rolling in 3...");
+				}
 			}
 		}, 1000);
 
@@ -151,18 +159,22 @@ private int counter;
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
+				if(!shownResult) {
+					getRollView().setMessage("2 seconds...");
+					//System.out.println("Rolling in 2...");
+				}
 
-				getRollView().setMessage("2 seconds...");
-				//System.out.println("Rolling in 2...");
 			}
 		}, 2000);
 
 		timer.schedule(new TimerTask() {
 			@Override
 			public void run() {
+				if(!shownResult) {
+					getRollView().setMessage("1 seconds...");
+					//System.out.println("Rolling in 1...");
+				}
 
-				getRollView().setMessage("1 seconds...");
-				//System.out.println("Rolling in 1...");
 			}
 		}, 3000);
 
@@ -173,7 +185,9 @@ private int counter;
 				if (getRollView().isModalShowing()){
 					getRollView().closeModal();
 				}
-				rollDice();
+				if(!shownResult) {
+					rollDice();
+				}
 
 			}
 		}, 4000);
