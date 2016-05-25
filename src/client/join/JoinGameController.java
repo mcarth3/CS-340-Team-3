@@ -1,5 +1,6 @@
 package client.join;
 
+import model.Player;
 import shared.definitions.CatanColor;
 import client.GameManager.GameManager;
 import client.base.*;
@@ -10,6 +11,7 @@ import poller.ServerPoller;
 import poller.modeljsonparser.ModelParser;
 import proxy.RealProxy;
 
+import java.util.ArrayList;
 
 
 /**
@@ -145,8 +147,91 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	public void startJoinGame(GameInfo game) {
 
 		gameChosen = game.getId();
-		getSelectColorView().showModal();
+
+
+
+//***********************************************************ADDED BELOW FOR COLORS:
+		GameManager gm = GameManager.getSingleton();
+		//gm.setplayercolortemp(color);
+
+
+		try {
+			ServerPoller.getSingleton();
+		} catch (InvalidMockProxyException e) {
+			e.printStackTrace();
+		}
+
+		RealProxy rp = RealProxy.getSingleton();
+		String result = rp.gameJoin(gameChosen, CatanColor.BLUE.name());
+
+		if (GameManager.getSingleton() != null) {
+			if (GameManager.getSingleton().getModel() != null) {
+				if (GameManager.getSingleton().getModel().getPlayers() != null) {
+					ArrayList<Player> allPlayers = GameManager.getSingleton().getModel().getPlayers();
+
+					for (int i = 0; i < allPlayers.size(); i++) {
+						if (allPlayers.get(i).getPlayerIndex() != GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
+							CatanColor thisPlayersColor = setStringColorToSharedColor(allPlayers.get(i).getColor());
+							getSelectColorView().setColorEnabled(thisPlayersColor, false);
+						}
+					}
+				}
+			}
+
+		}
+		//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ADDED ABOVE FOR COLORS^^^
+				getSelectColorView().showModal();
+
+
 	}
+
+	public CatanColor setStringColorToSharedColor(String stringColor)
+	{
+		String low = stringColor.toLowerCase();
+		if(low.equals("blue"))
+		{
+			return CatanColor.BLUE;
+		}
+		if(low.equals("brown"))
+		{
+			return CatanColor.BROWN;
+		}
+		if(low.equals("green"))
+		{
+			return CatanColor.GREEN;
+		}
+		if(low.equals("orange"))
+		{
+			return CatanColor.ORANGE;
+		}
+		if(low.equals("puce"))
+		{
+			return CatanColor.PUCE;
+		}
+		if(low.equals("purple"))
+		{
+			return CatanColor.PURPLE;
+		}
+		if(low.equals("red"))
+		{
+			return CatanColor.RED;
+		}
+		if(low.equals("white"))
+		{
+			return CatanColor.WHITE;
+		}
+		if(low.equals("yellow"))
+		{
+			return CatanColor.YELLOW;
+		}
+		else
+		{
+			System.out.println("\n\nWrong color in JoinGameController's setStringToColor()!!\n\n");
+			return  CatanColor.BLUE;
+		}
+
+	}
+
 
 	@Override
 	public void cancelJoinGame() {
