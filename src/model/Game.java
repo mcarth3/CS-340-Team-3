@@ -437,4 +437,12 @@ public class Game extends AbstractModelPartition {
     public void setTradeO(TradeOffer tradeO) {
         this.tradeOffer = tradeO;
     }
+
+    public Dice getGameDice() {
+        return gameDice;
+    }
+
+    public void setGameDice(Dice gameDice) {
+        this.gameDice = gameDice;
+    }
 }
