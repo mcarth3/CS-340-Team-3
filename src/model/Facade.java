@@ -207,12 +207,9 @@ public class Facade extends AbstractModelPartition {
 	public boolean canBuildRoad(int playerId, EdgeLocation edge) {
 		if (theGame == null)// game isnt null
 			return false;
-		if (theGame.getTurnTracker().getStatus().equals("FirstRound") || theGame.getTurnTracker().getStatus().equals("Second Round")) {
+		if (theGame.getTurnTracker().getStatus().equals("FirstRound") || theGame.getTurnTracker().getStatus().equals("SecondRound")) {
 			for (int i = 0; i < theGame.getMap().getRoads().size(); i++) {
-				if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().equals(edge.getNormalizedLocation())) // if
-																																	// space
-																																	// is
-																																	// taken
+				if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().equals(edge.getNormalizedLocation())) // taken
 					return false;
 			}
 			for (VertexLocation vertex : edge.getVertices()) {
@@ -553,12 +550,10 @@ public class Facade extends AbstractModelPartition {
 		return true;
 	}
 
-
 	/**
 	 * Tells the facade to send the proxy a roll command with a specific number
 	 */
-	public void rollThisInt(int pid, int roll)
-	{
+	public void rollThisInt(int pid, int roll) {
 		if (theGame != null) {
 			if (canRoll(pid)) {
 				int number = roll;

@@ -118,6 +118,8 @@ public class MapController extends Controller implements IMapController {
 			RealProxy.getSingleton().buildRoad(GameManager.getSingleton().getthisplayer().getPlayerIndex(), edgeLoc, false);
 		} else if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound") || GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound")) {
 			RealProxy.getSingleton().buildRoad(GameManager.getSingleton().getthisplayer().getPlayerIndex(), edgeLoc, true);
+			firstturnsettlements = true;
+			secondturnsettlements = true;
 		}
 	}
 
@@ -129,6 +131,7 @@ public class MapController extends Controller implements IMapController {
 			RealProxy.getSingleton().buildSettlement(GameManager.getSingleton().getthisplayer().getPlayerIndex(), vertLoc, false);
 		} else if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound") || GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound")) {
 			RealProxy.getSingleton().buildSettlement(GameManager.getSingleton().getthisplayer().getPlayerIndex(), vertLoc, true);
+			RealProxy.getSingleton().finishTurn(GameManager.getSingleton().getthisplayer().getPlayerIndex());
 		}
 	}
 
@@ -322,32 +325,29 @@ public class MapController extends Controller implements IMapController {
 			}
 		}
 
-		if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound"))) {
-			if (GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer()) {
+		if (GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer()) {
+			if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound"))) {
 				if (firstturnsettlements) {
 					startMove(PieceType.SETTLEMENT, true, false);
 					firstturnsettlements = false;
 				}
 				if (firstturnroads) {
 					startMove(PieceType.ROAD, true, false);
-					firstturnsettlements = true;
 					firstturnroads = false;
 				}
-
 			}
-		}
-		if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound"))) {
-			if (GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer()) {
+
+			if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound"))) {
+
 				if (secondturnsettlements) {
 					startMove(PieceType.SETTLEMENT, true, false);
 					secondturnsettlements = false;
 				}
 				if (secondturnroads) {
+					secondturnsettlements = false;
 					startMove(PieceType.ROAD, true, false);
-					secondturnsettlements = true;
 					secondturnroads = false;
 				}
-
 			}
 		}
 
