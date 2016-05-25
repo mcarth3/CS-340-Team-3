@@ -17,7 +17,6 @@ import model.Player;
 import model.Port;
 import model.Road;
 import model.Settlement;
-import model.bank.DevCardList;
 import proxy.RealProxy;
 import shared.definitions.CatanColor;
 import shared.definitions.HexType;
@@ -34,6 +33,10 @@ public class MapController extends Controller implements IMapController {
 
 	private IRobView robView;
 	private HexLocation roblocation;
+	private boolean firstturnroads = true;
+	private boolean firstturnsettlements = false;
+	private boolean secondturnroads = true;
+	private boolean secondturnsettlements = false;
 
 	public MapController(IMapView view, IRobView robView) {
 
@@ -319,11 +322,31 @@ public class MapController extends Controller implements IMapController {
 			}
 		}
 
-		if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound")) || (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound"))) {
+		if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound"))) {
 			if (GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer()) {
+				if (firstturnsettlements) {
+					startMove(PieceType.SETTLEMENT, true, false);
+					firstturnsettlements = false;
+				}
+				if (firstturnroads) {
+					startMove(PieceType.ROAD, true, false);
+					firstturnsettlements = true;
+					firstturnroads = false;
+				}
 
-				startMove(PieceType.ROAD, true, false);
-				startMove(PieceType.SETTLEMENT, true, false);
+			}
+		}
+		if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound"))) {
+			if (GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer()) {
+				if (secondturnsettlements) {
+					startMove(PieceType.SETTLEMENT, true, false);
+					secondturnsettlements = false;
+				}
+				if (secondturnroads) {
+					startMove(PieceType.ROAD, true, false);
+					secondturnsettlements = true;
+					secondturnroads = false;
+				}
 
 			}
 		}
