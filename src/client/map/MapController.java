@@ -172,15 +172,15 @@ public class MapController extends Controller implements IMapController {
 						player.setPlayerIndex(owners.get(vertex.getOwner()).getPlayerIndex());
 						String hexresource = Facade.getSingleton().whichresourceisthishex(hexLoc);
 						System.out.println("THIS HEX CONTAINS" + hexresource);
-						if (hexresource.equals("Wood")) {
+						if (hexresource.equals("wood")) {
 							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWood());
-						} else if (hexresource.equals("Brick")) {
+						} else if (hexresource.equals("brick")) {
 							player.setNumCards(owners.get(vertex.getOwner()).getResources().getBrick());
-						} else if (hexresource.equals("Sheep")) {
+						} else if (hexresource.equals("sheep")) {
 							player.setNumCards(owners.get(vertex.getOwner()).getResources().getSheep());
-						} else if (hexresource.equals("Wheat")) {
+						} else if (hexresource.equals("wheat")) {
 							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWheat());
-						} else if (hexresource.equals("Ore")) {
+						} else if (hexresource.equals("ore")) {
 							player.setNumCards(owners.get(vertex.getOwner()).getResources().getOre());
 						} else {
 							player.setNumCards(0);
@@ -204,15 +204,15 @@ public class MapController extends Controller implements IMapController {
 						player.setPlayerIndex(owners.get(vertex.getOwner()).getPlayerIndex());
 						String hexresource = Facade.getSingleton().whichresourceisthishex(hexLoc);
 						System.out.println("THIS HEX CONTAINS" + hexresource);
-						if (hexresource.equals("Wood")) {
+						if (hexresource.equals("wood")) {
 							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWood());
-						} else if (hexresource.equals("Brick")) {
+						} else if (hexresource.equals("brick")) {
 							player.setNumCards(owners.get(vertex.getOwner()).getResources().getBrick());
-						} else if (hexresource.equals("Sheep")) {
+						} else if (hexresource.equals("sheep")) {
 							player.setNumCards(owners.get(vertex.getOwner()).getResources().getSheep());
-						} else if (hexresource.equals("Wheat")) {
+						} else if (hexresource.equals("wheat")) {
 							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWheat());
-						} else if (hexresource.equals("Ore")) {
+						} else if (hexresource.equals("ore")) {
 							player.setNumCards(owners.get(vertex.getOwner()).getResources().getOre());
 						} else {
 							player.setNumCards(0);
