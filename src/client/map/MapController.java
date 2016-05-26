@@ -236,6 +236,7 @@ public class MapController extends Controller implements IMapController {
 	@Override
 	public void startMove(PieceType pieceType, boolean isFree, boolean allowDisconnected) {
 		if (!robView.isModalShowing()) {
+			System.out.println(pieceType + "!!!");
 			getView().startDrop(pieceType, CatanColor.toColor(GameManager.getSingleton().getthisplayer().getColor()), true);
 		}
 	}
@@ -253,7 +254,7 @@ public class MapController extends Controller implements IMapController {
 
 	@Override
 	public void playRoadBuildingCard() {
-
+		startMove(PieceType.ROAD, true, false);
 	}
 
 	@Override
