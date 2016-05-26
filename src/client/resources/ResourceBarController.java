@@ -146,6 +146,62 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 		}
 	}
 
+
+	/**
+	 * Checks if the player who's playing right now has the resources to play a devCard.
+	 * @return
+     */
+	public boolean canDoBuyDevCard() {
+		int currentplayer = GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer();
+		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
+		Player playerinventory = GameManager.getSingleton().getModel().getPlayers().get(currentplayer);
+		int thisplayerindex = GameManager.getSingleton().getthisplayer().getPlayerIndex();
+
+		if (playerinventory.getResources().getOre() < 1)
+		{
+			return false;
+		}
+		else if (playerinventory.getResources().getWheat() < 1)
+		{
+			return false;
+		}
+		else if (playerinventory.getResources().getSheep() < 1)
+		{
+			return false;
+		}
+		else if (!(currentplayer == thisplayerindex) && !(status.equals("Playing"))) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+
+
+	/**
+	 * Checks if the player who's playing right now has devCard to play.
+	 * @return
+	 */
+	public boolean canDoPlayDevCard() {
+		int currentplayer = GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer();
+		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
+		Player playerinventory = GameManager.getSingleton().getModel().getPlayers().get(currentplayer);
+		int thisplayerindex = GameManager.getSingleton().getthisplayer().getPlayerIndex();
+
+		if (playerinventory.getOldDevCards().getSize() < 1)
+		{
+			return false;
+		}
+		else if (!(currentplayer == thisplayerindex) && !(status.equals("Playing"))) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+
+
+
 	/**
 	 * spends resources and gains card
 	 * 
@@ -154,7 +210,10 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 	 */
 	@Override
 	public void buyCard() {
-		executeElementAction(ResourceBarElement.BUY_CARD);
+		if(canDoBuyDevCard())
+		{
+			executeElementAction(ResourceBarElement.BUY_CARD);
+		}
 	}
 
 	/**
@@ -166,7 +225,10 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 	 */
 	@Override
 	public void playCard() {
-		executeElementAction(ResourceBarElement.PLAY_CARD);
+		if(canDoPlayDevCard())
+		{
+			executeElementAction(ResourceBarElement.PLAY_CARD);
+		}
 	}
 
 	private void executeElementAction(ResourceBarElement element) {
@@ -201,11 +263,28 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 			getView().setElementEnabled(ResourceBarElement.ROAD, false);
 		}
 
-		// if (canDoBuyDevCard()) {
-		// getView().setElementEnabled(ResourceBarElement.BUY_CARD, true);
-		// } else {
-		// getView().setElementEnabled(ResourceBarElement.BUY_CARD, true);
-		// }
+
+		//buy card:
+		if (canDoBuyDevCard())
+		{
+			getView().setElementEnabled(ResourceBarElement.BUY_CARD, true);
+		}
+		else
+		{
+			getView().setElementEnabled(ResourceBarElement.BUY_CARD, false);
+		}
+
+		//play card:
+		if (canDoPlayDevCard())
+		{
+			getView().setElementEnabled(ResourceBarElement.PLAY_CARD, true);
+		}
+		else
+		{
+			getView().setElementEnabled(ResourceBarElement.PLAY_CARD, false);
+		}
+
+
 
 		if (abletobuildcity()) {
 			getView().setElementEnabled(ResourceBarElement.CITY, true);
