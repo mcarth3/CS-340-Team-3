@@ -347,9 +347,9 @@ public class Player extends AbstractModelPartition {
      */
     public boolean canBuyDevcard() {
         if (resources.getOre() < 1 || resources.getWheat() < 1 || resources.getSheep() < 1) {
-            return true;
-        } else {
             return false;
+        } else {
+            return true;
         }
     }
 

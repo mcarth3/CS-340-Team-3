@@ -67,8 +67,9 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void buyCard() {
+		System.out.println("Buying a card!");
 		try {
-			theFacade.buyDevCard(thePlayer.getPlayerID());
+			theFacade.buyDevCard(thePlayer.getPlayerIndex());
 		} catch (InsufficientResourcesException e) {
 			e.printStackTrace();
 		}

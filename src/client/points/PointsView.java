@@ -46,8 +46,13 @@ public class PointsView extends ComponentView implements IPointsView
 	{
 		if(0 <= points && points <= MAX_POINTS)
 		{
+			/*if(this.points > -1) {
+				this.remove(this.points);    /**Added by Jesse R to remove painting on top of elements*/
+			//}
+			this.removeAll();
 			this.points = points;
 			this.repaint();
+			this.revalidate();		/**Added by Jesse R to remove painting on top of elements*/
 		}
 		else
 		{
