@@ -5,196 +5,11 @@
     <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/ComponentView.class" afterPath="$PROJECT_DIR$/bin/client/base/ComponentView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/Controller.class" afterPath="$PROJECT_DIR$/bin/client/base/Controller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IAction.class" afterPath="$PROJECT_DIR$/bin/client/base/IAction.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IController.class" afterPath="$PROJECT_DIR$/bin/client/base/IController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IOverlayView.class" afterPath="$PROJECT_DIR$/bin/client/base/IOverlayView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/IView.class" afterPath="$PROJECT_DIR$/bin/client/base/IView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView$1.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView$2.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView$OverlayInfo.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView$OverlayInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/OverlayView.class" afterPath="$PROJECT_DIR$/bin/client/base/OverlayView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/base/PanelView.class" afterPath="$PROJECT_DIR$/bin/client/base/PanelView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/CatanPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/catan/CatanPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/CatanPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/CatanPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/GameStatePanel$1.class" afterPath="$PROJECT_DIR$/bin/client/catan/GameStatePanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/GameStatePanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/GameStatePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/LeftPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/LeftPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/MidPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/MidPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$2.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$3.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$4.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel$5.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/RightPanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/RightPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/TitlePanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/TitlePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/catan/TradePanel.class" afterPath="$PROJECT_DIR$/bin/client/catan/TradePanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/ChatController.class" afterPath="$PROJECT_DIR$/bin/client/communication/ChatController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/ChatView$EventListener.class" afterPath="$PROJECT_DIR$/bin/client/communication/ChatView$EventListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/ChatView.class" afterPath="$PROJECT_DIR$/bin/client/communication/ChatView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/GameHistoryController.class" afterPath="$PROJECT_DIR$/bin/client/communication/GameHistoryController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/GameHistoryView$1.class" afterPath="$PROJECT_DIR$/bin/client/communication/GameHistoryView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/GameHistoryView.class" afterPath="$PROJECT_DIR$/bin/client/communication/GameHistoryView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IChatController.class" afterPath="$PROJECT_DIR$/bin/client/communication/IChatController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IChatView.class" afterPath="$PROJECT_DIR$/bin/client/communication/IChatView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IGameHistoryController.class" afterPath="$PROJECT_DIR$/bin/client/communication/IGameHistoryController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/IGameHistoryView.class" afterPath="$PROJECT_DIR$/bin/client/communication/IGameHistoryView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/LogComponent.class" afterPath="$PROJECT_DIR$/bin/client/communication/LogComponent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/LogEntry.class" afterPath="$PROJECT_DIR$/bin/client/communication/LogEntry.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/communication/PlaceholderTextField.class" afterPath="$PROJECT_DIR$/bin/client/communication/PlaceholderTextField.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/custom/cwt/RoundedButton.class" afterPath="$PROJECT_DIR$/bin/client/custom/cwt/RoundedButton.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/data/GameInfo.class" afterPath="$PROJECT_DIR$/bin/client/data/GameInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/data/PlayerInfo.class" afterPath="$PROJECT_DIR$/bin/client/data/PlayerInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/data/RobPlayerInfo.class" afterPath="$PROJECT_DIR$/bin/client/data/RobPlayerInfo.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanelListener.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ButtonGroupPanelListener.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/BuyDevCardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevCardController.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevCardController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$2.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser.class" afterPath="$PROJECT_DIR$/bin/client/devcards/DevelopmentCardChooser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IButtonGroup.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IButtonGroup.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IBuyDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IBuyDevCardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IDevCardController.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IDevCardController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/IPlayDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/IPlayDevCardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$1.class" afterPath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$2.class" afterPath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView.class" afterPath="$PROJECT_DIR$/bin/client/devcards/PlayDevCardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/devcards/ResourceCardChooser.class" afterPath="$PROJECT_DIR$/bin/client/devcards/ResourceCardChooser.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardController.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView$1.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource$1.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView$Resource.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/DiscardView.class" afterPath="$PROJECT_DIR$/bin/client/discard/DiscardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/IDiscardController.class" afterPath="$PROJECT_DIR$/bin/client/discard/IDiscardController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/discard/IDiscardView.class" afterPath="$PROJECT_DIR$/bin/client/discard/IDiscardView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay$1.class" afterPath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/AcceptTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeController.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$1.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$2.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$3.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$4.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$5.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$6.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$7.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$8.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$9.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay$9.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView$1.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView.class" afterPath="$PROJECT_DIR$/bin/client/domestic/DomesticTradeView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IAcceptTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IAcceptTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeController.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeView.class" afterPath="$PROJECT_DIR$/bin/client/domestic/IDomesticTradeView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IJoinGameController.class" afterPath="$PROJECT_DIR$/bin/client/join/IJoinGameController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IJoinGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/IJoinGameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/INewGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/INewGameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingController.class" afterPath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingView.class" afterPath="$PROJECT_DIR$/bin/client/join/IPlayerWaitingView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/ISelectColorView.class" afterPath="$PROJECT_DIR$/bin/client/join/ISelectColorView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/JoinGameController.class" afterPath="$PROJECT_DIR$/bin/client/join/JoinGameController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/JoinGameView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/JoinGameView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/JoinGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/JoinGameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/NewGameView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/NewGameView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/NewGameView.class" afterPath="$PROJECT_DIR$/bin/client/join/NewGameView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/PlayerWaitingController.class" afterPath="$PROJECT_DIR$/bin/client/join/PlayerWaitingController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView.class" afterPath="$PROJECT_DIR$/bin/client/join/PlayerWaitingView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/SelectColorView$1.class" afterPath="$PROJECT_DIR$/bin/client/join/SelectColorView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/join/SelectColorView.class" afterPath="$PROJECT_DIR$/bin/client/join/SelectColorView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/ILoginController.class" afterPath="$PROJECT_DIR$/bin/client/login/ILoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/ILoginView.class" afterPath="$PROJECT_DIR$/bin/client/login/ILoginView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginController.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$1.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$2.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$3.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$4.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$RegisterPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel$1.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$SignInPanel.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView$TextFieldValidator.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView$TextFieldValidator.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/login/LoginView.class" afterPath="$PROJECT_DIR$/bin/client/login/LoginView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/main/Catan.class" afterPath="$PROJECT_DIR$/bin/client/main/Catan.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/IMapController.class" afterPath="$PROJECT_DIR$/bin/client/map/IMapController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/IMapView.class" afterPath="$PROJECT_DIR$/bin/client/map/IMapView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/IRobView.class" afterPath="$PROJECT_DIR$/bin/client/map/IRobView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapComponent$1.class" afterPath="$PROJECT_DIR$/bin/client/map/MapComponent$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapComponent$2.class" afterPath="$PROJECT_DIR$/bin/client/map/MapComponent$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapComponent.class" afterPath="$PROJECT_DIR$/bin/client/map/MapComponent.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapView$1.class" afterPath="$PROJECT_DIR$/bin/client/map/MapView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapView$MapOverlay$1.class" afterPath="$PROJECT_DIR$/bin/client/map/MapView$MapOverlay$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapView$MapOverlay.class" afterPath="$PROJECT_DIR$/bin/client/map/MapView$MapOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/MapView.class" afterPath="$PROJECT_DIR$/bin/client/map/MapView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/RobView$1.class" afterPath="$PROJECT_DIR$/bin/client/map/RobView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/map/RobView.class" afterPath="$PROJECT_DIR$/bin/client/map/RobView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeController.class" afterPath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeView.class" afterPath="$PROJECT_DIR$/bin/client/maritime/IMaritimeTradeView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeController.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$1.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$2.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$3.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeOverlay.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView$1.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView.class" afterPath="$PROJECT_DIR$/bin/client/maritime/MaritimeTradeView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/IMessageView.class" afterPath="$PROJECT_DIR$/bin/client/misc/IMessageView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/IWaitView.class" afterPath="$PROJECT_DIR$/bin/client/misc/IWaitView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/MessageView$1.class" afterPath="$PROJECT_DIR$/bin/client/misc/MessageView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/MessageView.class" afterPath="$PROJECT_DIR$/bin/client/misc/MessageView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/misc/WaitView.class" afterPath="$PROJECT_DIR$/bin/client/misc/WaitView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/GameFinishedView$1.class" afterPath="$PROJECT_DIR$/bin/client/points/GameFinishedView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/GameFinishedView.class" afterPath="$PROJECT_DIR$/bin/client/points/GameFinishedView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/IGameFinishedView.class" afterPath="$PROJECT_DIR$/bin/client/points/IGameFinishedView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/IPointsController.class" afterPath="$PROJECT_DIR$/bin/client/points/IPointsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/IPointsView.class" afterPath="$PROJECT_DIR$/bin/client/points/IPointsView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/PointsController.class" afterPath="$PROJECT_DIR$/bin/client/points/PointsController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/points/PointsView.class" afterPath="$PROJECT_DIR$/bin/client/points/PointsView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/IResourceBarController.class" afterPath="$PROJECT_DIR$/bin/client/resources/IResourceBarController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/IResourceBarView.class" afterPath="$PROJECT_DIR$/bin/client/resources/IResourceBarView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarController.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarElement.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarElement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$1.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$2.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$3.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$ResourceElement.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView$ResourceElement.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/resources/ResourceBarView.class" afterPath="$PROJECT_DIR$/bin/client/resources/ResourceBarView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/IRollController.class" afterPath="$PROJECT_DIR$/bin/client/roll/IRollController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/IRollResultView.class" afterPath="$PROJECT_DIR$/bin/client/roll/IRollResultView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/IRollView.class" afterPath="$PROJECT_DIR$/bin/client/roll/IRollView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollController.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollResultView$1.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollResultView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollResultView.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollResultView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollView$1.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/roll/RollView.class" afterPath="$PROJECT_DIR$/bin/client/roll/RollView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerController.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerView.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/ITurnTrackerView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerController.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView$1.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView.class" afterPath="$PROJECT_DIR$/bin/client/turntracker/TurnTrackerView.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/utils/FontUtils.class" afterPath="$PROJECT_DIR$/bin/client/utils/FontUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/client/utils/ImageUtils.class" afterPath="$PROJECT_DIR$/bin/client/utils/ImageUtils.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/poller/PollException.class" afterPath="$PROJECT_DIR$/bin/poller/PollException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/poller/ServerPoller$ServerPollerTask.class" afterPath="$PROJECT_DIR$/bin/poller/ServerPoller$ServerPollerTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/poller/ServerPoller.class" afterPath="$PROJECT_DIR$/bin/poller/ServerPoller.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/CatanColor.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/CatanColor.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/DevCardType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/DevCardType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/HexType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/HexType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/PieceType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/PieceType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/PortType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/PortType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/definitions/ResourceType.class" afterPath="$PROJECT_DIR$/bin/shared/definitions/ResourceType.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/EdgeDirection.class" afterPath="$PROJECT_DIR$/bin/shared/locations/EdgeDirection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/EdgeLocation.class" afterPath="$PROJECT_DIR$/bin/shared/locations/EdgeLocation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/HexLocation.class" afterPath="$PROJECT_DIR$/bin/shared/locations/HexLocation.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/VertexDirection.class" afterPath="$PROJECT_DIR$/bin/shared/locations/VertexDirection.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/shared/locations/VertexLocation.class" afterPath="$PROJECT_DIR$/bin/shared/locations/VertexLocation.class" />
+    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="added server package, and add inside that Handlers.java, ICommand.java, and ServerFacade.java">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server/Handlers.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server/ICommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server/ServerFacade.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" afterPath="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -216,30 +31,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MaritimeTradeController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/client/maritime/MaritimeTradeController.java">
+      <file leaf-file-name="ServerFacade.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/server/ServerFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#1041#1042#0" expanded="false" />
-                <element signature="e#1067#1068#0" expanded="false" />
-                <element signature="e#1135#1136#0" expanded="false" />
-                <element signature="e#1174#1175#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.098265894">
+              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DomesticTradeController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java">
+      <file leaf-file-name="ICommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/ICommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.46596858">
-              <caret line="163" column="51" selection-start-line="163" selection-start-column="51" selection-end-line="163" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Handlers.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/server/Handlers.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IBuyDevCardView.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/client/devcards/IBuyDevCardView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -249,7 +76,53 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="388" column="0" selection-start-line="388" selection-start-column="0" selection-end-line="388" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#2378#2379#0" expanded="false" />
+                <element signature="e#2404#2405#0" expanded="false" />
+                <element signature="e#5409#5410#0" expanded="false" />
+                <element signature="e#5456#5457#0" expanded="false" />
+                <element signature="e#5482#5483#0" expanded="false" />
+                <element signature="e#5508#5509#0" expanded="false" />
+                <element signature="e#5543#5544#0" expanded="false" />
+                <element signature="e#5573#5574#0" expanded="false" />
+                <element signature="e#5626#5627#0" expanded="false" />
+                <element signature="e#5669#5670#0" expanded="false" />
+                <element signature="e#5732#5733#0" expanded="false" />
+                <element signature="e#5791#5792#0" expanded="false" />
+                <element signature="e#6675#6676#0" expanded="false" />
+                <element signature="e#6717#6718#0" expanded="false" />
+                <element signature="e#8008#8009#0" expanded="false" />
+                <element signature="e#8049#8050#0" expanded="false" />
+                <element signature="e#8668#8669#0" expanded="false" />
+                <element signature="e#8748#8749#0" expanded="false" />
+                <element signature="e#11369#11370#0" expanded="false" />
+                <element signature="e#11417#11418#0" expanded="false" />
+                <element signature="e#11990#11991#0" expanded="false" />
+                <element signature="e#12024#12025#0" expanded="false" />
+                <element signature="e#12065#12066#0" expanded="false" />
+                <element signature="e#12102#12103#0" expanded="false" />
+                <element signature="e#12146#12147#0" expanded="false" />
+                <element signature="e#12176#12177#0" expanded="false" />
+                <element signature="e#12233#12234#0" expanded="false" />
+                <element signature="e#12271#12272#0" expanded="false" />
+                <element signature="e#12305#12306#0" expanded="false" />
+                <element signature="e#12333#12334#0" expanded="false" />
+                <element signature="e#12363#12364#0" expanded="false" />
+                <element signature="e#12386#12387#0" expanded="false" />
+                <element signature="e#12436#12437#0" expanded="false" />
+                <element signature="e#12472#12473#0" expanded="false" />
+                <element signature="e#12691#12692#0" expanded="false" />
+                <element signature="e#12739#12740#0" expanded="false" />
+                <element signature="e#13020#13021#0" expanded="false" />
+                <element signature="e#13053#13054#0" expanded="false" />
+                <element signature="e#13101#13102#0" expanded="false" />
+                <element signature="e#13141#13142#0" expanded="false" />
+                <element signature="e#13174#13175#0" expanded="false" />
+                <element signature="e#13205#13206#0" expanded="false" />
+                <element signature="e#13251#13252#0" expanded="false" />
+                <element signature="e#13291#13292#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -259,7 +132,9 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -334,6 +209,8 @@
         <option value="$USER_HOME$/AppData/Local/Temp/Temp1_student_02_09_15.zip/java/src/client/map/MapController.java" />
         <option value="$PROJECT_DIR$/src/client/map/MapController.java" />
         <option value="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
+        <option value="$PROJECT_DIR$/src/server/ServerFacade.java" />
+        <option value="$PROJECT_DIR$/src/server/ICommand.java" />
       </list>
     </option>
   </component>
@@ -375,6 +252,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -421,29 +301,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="poller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Catan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NEWEST_Cloned_Repository" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="poller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="modeljsonparser" />
+              <option name="myItemId" value="server" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -462,58 +320,11 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Catan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NEWEST_Cloned_Repository" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="roll" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Catan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NEWEST_Cloned_Repository" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="client" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -536,123 +347,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Jesse\IdeaProjects\CS-340-Team-3" />
     </key>
-  </component>
-  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
-    <UpdatedFiles>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Updated from server" />
-        <option name="myStatusName" value="Changed on server" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="CHANGED_ON_SERVER" />
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Updated" />
-          <option name="myStatusName" value="Changed" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/domestic/DomesticTradeController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/maritime/MaritimeTradeController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/client/roll/RollController.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/locations/EdgeLocation.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/bin/shared/locations/VertexLocation.class</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/client/map/MapController.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/shared/locations/EdgeLocation.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/shared/locations/VertexLocation.java</PATH>
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Created" />
-          <option name="myStatusName" value="Created" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="CREATED" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Deleted" />
-          <option name="myStatusName" value="Deleted" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="true" />
-          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
-        </FILE-GROUP>
-        <FILE-GROUP>
-          <option name="myUpdateName" value="Restored" />
-          <option name="myStatusName" value="Will be restored" />
-          <option name="mySupportsDeletion" value="false" />
-          <option name="myCanBeAbsent" value="false" />
-          <option name="myId" value="RESTORED" />
-        </FILE-GROUP>
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Modified" />
-        <option name="myStatusName" value="Modified" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MODIFIED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Skipped" />
-        <option name="myStatusName" value="Skipped" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SKIPPED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with conflicts" />
-        <option name="myStatusName" value="Will be merged with conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_CONFLICTS" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with tree conflicts" />
-        <option name="myStatusName" value="Merged with tree conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged with property conflicts" />
-        <option name="myStatusName" value="Will be merged with property conflicts" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Merged" />
-        <option name="myStatusName" value="Will be merged" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="MERGED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Not in repository" />
-        <option name="myStatusName" value="Not in repository" />
-        <option name="mySupportsDeletion" value="true" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="UNKNOWN" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally added" />
-        <option name="myStatusName" value="Locally added" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_ADDED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Locally removed" />
-        <option name="myStatusName" value="Locally removed" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="LOCALLY_REMOVED" />
-      </FILE-GROUP>
-      <FILE-GROUP>
-        <option name="myUpdateName" value="Switched" />
-        <option name="myStatusName" value="Switched" />
-        <option name="mySupportsDeletion" value="false" />
-        <option name="myCanBeAbsent" value="false" />
-        <option name="myId" value="SWITCHED" />
-      </FILE-GROUP>
-    </UpdatedFiles>
   </component>
   <component name="RunManager" selected="Application.Catan">
     <configuration default="false" name="PlayerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -1301,16 +995,15 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24549918" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1767594" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3878887" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08346972" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23731588" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34042552" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1318,13 +1011,14 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21135646" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23731588" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32492113" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21135646" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1363,7 +1057,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commented out MaritimeTrade update()" />
     <MESSAGE value="commented out DomesticTrade update()" />
     <MESSAGE value="commented out RollController update()" />
     <MESSAGE value="groundwork for DevCardController in playRoadBuildCard()" />
@@ -1388,7 +1081,8 @@
     <MESSAGE value="domesticTrade is KIND OF working. Sending the request will freeze the sender up until you open it again with our ant-client (and the other player has accepted or rejected), but it might help for now." />
     <MESSAGE value="MaritimeTradeController core feature is working (4-1 ratio for bank). Nothing to do with docks trading is working, though." />
     <MESSAGE value="Updated MapController to have methods for setUp. These are not filled yet and we can't setup the game." />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated MapController to have methods for setUp. These are not filled yet and we can't setup the game." />
+    <MESSAGE value="added server package, and add inside that Handlers.java, ICommand.java, and ServerFacade.java" />
+    <option name="LAST_COMMIT_MESSAGE" value="added server package, and add inside that Handlers.java, ICommand.java, and ServerFacade.java" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1401,38 +1095,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/client/discard/IDiscardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2881356">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/devcards/IDevCardController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/maritime/IMaritimeTradeOverlay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="86" column="9" selection-start-line="86" selection-start-column="9" selection-end-line="86" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/base/IOverlayView.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1457976">
           <caret line="5" column="17" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/client/devcards/IBuyDevCardView.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
         </state>
       </provider>
     </entry>
@@ -1482,7 +1148,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="51" column="53" selection-start-line="51" selection-start-column="53" selection-end-line="51" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1504,10 +1169,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.41450778">
           <caret line="104" column="54" selection-start-line="104" selection-start-column="54" selection-end-line="104" selection-end-column="54" />
-          <folding>
-            <element signature="e#1641#1642#0" expanded="false" />
-            <element signature="e#1675#1676#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1583,7 +1245,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.03269231">
           <caret line="9" column="8" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1620,7 +1281,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.40767387">
           <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1635,32 +1295,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="464" column="29" selection-start-line="464" selection-start-column="29" selection-end-line="464" selection-end-column="29" />
-          <folding>
-            <element signature="e#1691#1692#0" expanded="false" />
-            <element signature="e#1721#1722#0" expanded="false" />
-            <element signature="e#1755#1756#0" expanded="false" />
-            <element signature="e#1791#1792#0" expanded="false" />
-            <element signature="e#6004#6005#0" expanded="false" />
-            <element signature="e#6031#6032#0" expanded="false" />
-            <element signature="e#6070#6071#0" expanded="false" />
-            <element signature="e#6097#6098#0" expanded="false" />
-            <element signature="e#16371#16372#0" expanded="false" />
-            <element signature="e#16408#16409#0" expanded="false" />
-            <element signature="e#20610#20611#0" expanded="false" />
-            <element signature="e#20644#20645#0" expanded="false" />
-            <element signature="e#20710#20711#0" expanded="false" />
-            <element signature="e#20744#20745#0" expanded="false" />
-            <element signature="e#20861#20862#0" expanded="false" />
-            <element signature="e#20929#20930#0" expanded="false" />
-            <element signature="e#20959#20960#0" expanded="false" />
-            <element signature="e#20991#20992#0" expanded="false" />
-            <element signature="e#21442#21443#0" expanded="false" />
-            <element signature="e#21493#21494#0" expanded="false" />
-            <element signature="e#21693#21694#0" expanded="false" />
-            <element signature="e#21726#21727#0" expanded="false" />
-            <element signature="e#21776#21777#0" expanded="false" />
-            <element signature="e#21818#21819#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1724,32 +1358,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="193" column="5" selection-start-line="193" selection-start-column="5" selection-end-line="193" selection-end-column="5" />
-          <folding>
-            <element signature="e#831#832#0" expanded="false" />
-            <marker date="1464024991600" expanded="true" signature="424:472" placeholder="/**...*/" />
-            <marker date="1464024991600" expanded="true" signature="633:703" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="733:776" placeholder="{...}" />
-            <marker date="1464024991600" expanded="false" signature="809:814" placeholder=" { " />
-            <marker date="1464024991600" expanded="false" signature="829:832" placeholder=" }" />
-            <marker date="1464024991600" expanded="false" signature="875:880" placeholder=" { " />
-            <marker date="1464024991600" expanded="true" signature="941:3802" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="948:3799" placeholder="//..." />
-            <marker date="1464024991600" expanded="true" signature="3826:3920" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="4041:4175" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="4236:4258" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="4313:4335" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="4388:4410" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="4457:4515" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="4570:4634" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="4683:4741" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="4788:4859" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="4949:5016" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="5045:5052" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="5086:5094" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="5133:5141" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="5189:5197" placeholder="{...}" />
-            <marker date="1464024991600" expanded="true" signature="5220:8785" placeholder="{...}" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1764,13 +1372,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="74" column="0" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1041#1042#0" expanded="false" />
-            <element signature="e#1067#1068#0" expanded="false" />
-            <element signature="e#1135#1136#0" expanded="false" />
-            <element signature="e#1174#1175#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1778,7 +1380,53 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="388" column="0" selection-start-line="388" selection-start-column="0" selection-end-line="388" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2378#2379#0" expanded="false" />
+            <element signature="e#2404#2405#0" expanded="false" />
+            <element signature="e#5409#5410#0" expanded="false" />
+            <element signature="e#5456#5457#0" expanded="false" />
+            <element signature="e#5482#5483#0" expanded="false" />
+            <element signature="e#5508#5509#0" expanded="false" />
+            <element signature="e#5543#5544#0" expanded="false" />
+            <element signature="e#5573#5574#0" expanded="false" />
+            <element signature="e#5626#5627#0" expanded="false" />
+            <element signature="e#5669#5670#0" expanded="false" />
+            <element signature="e#5732#5733#0" expanded="false" />
+            <element signature="e#5791#5792#0" expanded="false" />
+            <element signature="e#6675#6676#0" expanded="false" />
+            <element signature="e#6717#6718#0" expanded="false" />
+            <element signature="e#8008#8009#0" expanded="false" />
+            <element signature="e#8049#8050#0" expanded="false" />
+            <element signature="e#8668#8669#0" expanded="false" />
+            <element signature="e#8748#8749#0" expanded="false" />
+            <element signature="e#11369#11370#0" expanded="false" />
+            <element signature="e#11417#11418#0" expanded="false" />
+            <element signature="e#11990#11991#0" expanded="false" />
+            <element signature="e#12024#12025#0" expanded="false" />
+            <element signature="e#12065#12066#0" expanded="false" />
+            <element signature="e#12102#12103#0" expanded="false" />
+            <element signature="e#12146#12147#0" expanded="false" />
+            <element signature="e#12176#12177#0" expanded="false" />
+            <element signature="e#12233#12234#0" expanded="false" />
+            <element signature="e#12271#12272#0" expanded="false" />
+            <element signature="e#12305#12306#0" expanded="false" />
+            <element signature="e#12333#12334#0" expanded="false" />
+            <element signature="e#12363#12364#0" expanded="false" />
+            <element signature="e#12386#12387#0" expanded="false" />
+            <element signature="e#12436#12437#0" expanded="false" />
+            <element signature="e#12472#12473#0" expanded="false" />
+            <element signature="e#12691#12692#0" expanded="false" />
+            <element signature="e#12739#12740#0" expanded="false" />
+            <element signature="e#13020#13021#0" expanded="false" />
+            <element signature="e#13053#13054#0" expanded="false" />
+            <element signature="e#13101#13102#0" expanded="false" />
+            <element signature="e#13141#13142#0" expanded="false" />
+            <element signature="e#13174#13175#0" expanded="false" />
+            <element signature="e#13205#13206#0" expanded="false" />
+            <element signature="e#13251#13252#0" expanded="false" />
+            <element signature="e#13291#13292#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1786,7 +1434,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.35519126">
           <caret line="10" column="21" selection-start-line="10" selection-start-column="21" selection-end-line="10" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1794,7 +1441,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4180328">
           <caret line="75" column="23" selection-start-line="75" selection-start-column="23" selection-end-line="75" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1802,7 +1448,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34124628">
           <caret line="29" column="20" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1810,7 +1455,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.09289618">
           <caret line="2" column="22" selection-start-line="2" selection-start-column="22" selection-end-line="2" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1818,7 +1462,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46448088">
           <caret line="20" column="43" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1826,17 +1469,51 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.46596858">
+        <state vertical-scroll-proportion="0.0">
           <caret line="163" column="51" selection-start-line="163" selection-start-column="51" selection-end-line="163" selection-end-column="51" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/client/devcards/IBuyDevCardView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/ICommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/Handlers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/ServerFacade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.098265894">
+          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
