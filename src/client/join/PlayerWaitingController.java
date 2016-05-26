@@ -50,9 +50,9 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 		if (gottenplayers == 4) {
 			if (getView().isModalShowing()) {
 				getView().closeModal();
-				GameManager.getSingleton().setbegin(true);
 			}
-		} else if (currentplayers != (gottenplayers)) {
+			GameManager.getSingleton().setbegin(true);
+		} else {
 			// System.out.println("WAITING");
 			getView().showModal();
 			currentplayers = gottenplayers;
