@@ -325,7 +325,11 @@ public class MapController extends Controller implements IMapController {
 			}
 		}
 
-		if (GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer()) {
+		beginfirstturn();
+	}
+
+	public void beginfirstturn() {
+		if (GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() && GameManager.getSingleton().getbegin()) {
 			if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound"))) {
 				if (firstturnsettlements) {
 					startMove(PieceType.SETTLEMENT, true, false);
@@ -350,7 +354,6 @@ public class MapController extends Controller implements IMapController {
 				}
 			}
 		}
-
 	}
 
 	public HexType getHexType(String str) {

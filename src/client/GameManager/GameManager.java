@@ -22,6 +22,7 @@ public class GameManager extends Observable {
 	public CatanColor colorTemp;
 	private boolean discardedcheck = false;
 	private boolean robbingready = false;
+	private boolean begin = false;
 
 	public GameManager() {
 		modelfacade = Facade.getSingleton();
@@ -181,5 +182,15 @@ public class GameManager extends Observable {
 
 	public void createdefaultgame() {
 		// modelfacade.SetGame(ModelParser.parse2(MockProxy.getSingleton().gameModel(1)));
+	}
+
+	public boolean getbegin() {
+		return begin;
+
+	}
+
+	public void setbegin(boolean b) {
+		begin = b;
+
 	}
 }

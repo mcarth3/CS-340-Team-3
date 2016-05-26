@@ -43,7 +43,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 		if (model != null) {
 			if (model.canFinishTurn(manager.getthisplayer().getPlayerID())) {
 				String returnJSON = proxy.finishTurn(manager.getthisplayer().getPlayerIndex());
-				System.out.print("TT: YOU FINISHED YOUR TURN");
+				System.out.print("TT: TURN ENDED===================================================");
 			}
 		}
 
