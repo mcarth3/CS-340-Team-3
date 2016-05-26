@@ -830,4 +830,13 @@ public class Facade extends AbstractModelPartition {
 		return waterHexes;
 	}
 
+	public String whichresourceisthishex(HexLocation hexLoc) {
+		for (Hex hex : theGame.getMap().getHexes()) {
+			HexLocation resourceHexLoc = hex.getLocation();
+			if (hexLoc.equals(resourceHexLoc))
+				return hex.getResource();
+		}
+		return "";
+	}
+
 }

@@ -56,7 +56,7 @@ public class DiscardController extends Controller implements IDiscardController 
 			return 0;
 
 		ArrayList<Player> players = GameManager.getSingleton().getModel().getPlayers();
-		Player currentPlayer = players.get(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer());
+		Player currentPlayer = GameManager.getSingleton().getthisplayer();
 		int halfcards = currentPlayer.getResources().getSize() / 2;
 		System.out.println("DISCARD:max discard num= " + halfcards);
 
@@ -64,6 +64,7 @@ public class DiscardController extends Controller implements IDiscardController 
 	}
 
 	public IDiscardView getDiscardView() {
+		maxDiscardNum = calculateDiscardNum();
 		// System.out.println("Discard: get discardview");
 		return (IDiscardView) super.getView();
 	}
@@ -81,7 +82,8 @@ public class DiscardController extends Controller implements IDiscardController 
 	 */
 	@Override
 	public void increaseAmount(ResourceType resource) {
-		System.out.println("DISCARD:updating");
+		maxDiscardNum = calculateDiscardNum();
+		// System.out.println("DISCARD:updating");
 		// update();
 		// System.out.println("sheep= " + discardList.getSheep());
 		if (resource == ResourceType.BRICK) {
@@ -108,6 +110,7 @@ public class DiscardController extends Controller implements IDiscardController 
 	 */
 	@Override
 	public void decreaseAmount(ResourceType resource) {
+		maxDiscardNum = calculateDiscardNum();
 		// System.out.println("decreased amount to discard");
 		if (resource == ResourceType.BRICK) {
 			discardList.setBrick(discardList.getBrick() - 1);
@@ -161,18 +164,16 @@ public class DiscardController extends Controller implements IDiscardController 
 		int cards = GameManager.getSingleton().getthisplayer().getResources().getSize();
 
 		if ((status.equals("Discarding") || (status.equals("Robbing")))) {
-			System.out.print("DISCARD:status is discarding or robbing");
+			// System.out.print("DISCARD:status is discarding or robbing");
 			if ((GameManager.getSingleton().getdiscardedcheck() == false)) {
-				System.out.print("DISCARD:discarded check = false");
+				// System.out.print("DISCARD:discarded check = false");
 				GameManager.getSingleton().setdiscardedcheck(true);
-				System.out.println("DISCARD:cards" + cards);
+				// System.out.println("DISCARD:cards" + cards);
 				if (cards > 7) {
 					maxDiscardNum = calculateDiscardNum();
-					System.out.println("DISCARD:max discard" + maxDiscardNum);
-					if (maxDiscardNum > 0) {
-						discardList = new ResourceList();
-						this.getDiscardView().showModal();
-					}
+					discardList = new ResourceList();
+					this.getDiscardView().showModal();
+
 					updateView();
 
 				} else {
@@ -230,6 +231,7 @@ public class DiscardController extends Controller implements IDiscardController 
 
 	private void updateView() {
 		ResourceList currentHand = GameManager.getSingleton().getthisplayer().getResources();
+		maxDiscardNum = calculateDiscardNum();
 		getDiscardView().setStateMessage("Discarding: " + discardList.getSize() + "/" + maxDiscardNum);
 
 		getDiscardView().setResourceMaxAmount(ResourceType.BRICK, currentHand.getBrick());

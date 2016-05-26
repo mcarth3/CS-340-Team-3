@@ -170,7 +170,22 @@ public class MapController extends Controller implements IMapController {
 						player.setName(owners.get(vertex.getOwner()).getName());
 						player.setColor(owners.get(vertex.getOwner()).getColor());
 						player.setPlayerIndex(owners.get(vertex.getOwner()).getPlayerIndex());
-						player.setNumCards(0);
+						String hexresource = Facade.getSingleton().whichresourceisthishex(hexLoc);
+						System.out.println("THIS HEX CONTAINS" + hexresource);
+						if (hexresource.equals("Wood")) {
+							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWood());
+						} else if (hexresource.equals("Brick")) {
+							player.setNumCards(owners.get(vertex.getOwner()).getResources().getBrick());
+						} else if (hexresource.equals("Sheep")) {
+							player.setNumCards(owners.get(vertex.getOwner()).getResources().getSheep());
+						} else if (hexresource.equals("Wheat")) {
+							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWheat());
+						} else if (hexresource.equals("Ore")) {
+							player.setNumCards(owners.get(vertex.getOwner()).getResources().getOre());
+						} else {
+							player.setNumCards(0);
+						}
+
 						robbable.add(player);
 					}
 				}
@@ -187,7 +202,21 @@ public class MapController extends Controller implements IMapController {
 						player.setName(owners.get(vertex.getOwner()).getName());
 						player.setColor(owners.get(vertex.getOwner()).getColor());
 						player.setPlayerIndex(owners.get(vertex.getOwner()).getPlayerIndex());
-						player.setNumCards(0);
+						String hexresource = Facade.getSingleton().whichresourceisthishex(hexLoc);
+						System.out.println("THIS HEX CONTAINS" + hexresource);
+						if (hexresource.equals("Wood")) {
+							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWood());
+						} else if (hexresource.equals("Brick")) {
+							player.setNumCards(owners.get(vertex.getOwner()).getResources().getBrick());
+						} else if (hexresource.equals("Sheep")) {
+							player.setNumCards(owners.get(vertex.getOwner()).getResources().getSheep());
+						} else if (hexresource.equals("Wheat")) {
+							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWheat());
+						} else if (hexresource.equals("Ore")) {
+							player.setNumCards(owners.get(vertex.getOwner()).getResources().getOre());
+						} else {
+							player.setNumCards(0);
+						}
 						robbable.add(player);
 					}
 				}
