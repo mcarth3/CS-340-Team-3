@@ -37,11 +37,11 @@ public class MapController extends Controller implements IMapController {
 	private boolean firstturnsettlements = false;
 	private boolean secondturnroads = true;
 	private boolean secondturnsettlements = false;
-
+	private boolean usingSoldier;
 	public MapController(IMapView view, IRobView robView) {
 
 		super(view);
-
+		usingSoldier = false;
 		setRobView(robView);
 
 	}
@@ -250,6 +250,8 @@ public class MapController extends Controller implements IMapController {
 	public void playSoldierCard() {
 		// setRobView(robView);
 		startMove(PieceType.ROBBER, true, false);
+		usingSoldier = true;
+
 	}
 
 	@Override
@@ -263,7 +265,14 @@ public class MapController extends Controller implements IMapController {
 		if (this.getRobView().isModalShowing()) {
 			this.getRobView().closeModal();
 		}
-		RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, victim.getPlayerIndex(), roblocation);
+		if(usingSoldier)
+		{
+			RealProxy.getSingleton().Soldier(GameManager.getSingleton().getthisplayer().playerIndex, victim.getPlayerIndex(), roblocation);
+			usingSoldier = false;
+		}
+		else {
+			RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, victim.getPlayerIndex(), roblocation);
+		}
 	}
 
 	@Override
@@ -278,7 +287,7 @@ public class MapController extends Controller implements IMapController {
 	public void update() {
 		System.out.print("Player Color" + GameManager.getSingleton().getModel().getPlayers().get(0).getColor());
 		GameManager gm = GameManager.getSingleton();
-
+		usingSoldier = false;
 		Game game = gm.getModel();
 		Map map = game.getmap();
 		Hex[] hexs = map.getHexes();
