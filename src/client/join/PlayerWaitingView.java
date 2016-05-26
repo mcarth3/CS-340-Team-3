@@ -140,7 +140,7 @@ public class PlayerWaitingView extends OverlayView implements IPlayerWaitingView
 			addAiButton.setEnabled(false);
 		} else {
 			labelText = ("Waiting for Players: Need " + (neededplayers) + " more");
-			addAiButton.setEnabled(true);
+			addAiButton.setEnabled(false);
 		}
 
 		label.setText(labelText);

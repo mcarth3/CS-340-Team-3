@@ -10,6 +10,7 @@ import proxy.RealProxy;
  * Implementation for the player waiting controller
  */
 public class PlayerWaitingController extends Controller implements IPlayerWaitingController {
+	private int currentplayers = 1;
 
 	public PlayerWaitingController(IPlayerWaitingView view) {
 
@@ -38,27 +39,26 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 
 	@Override
 	public void update() {
-		// System.out.println("WAITING");
-		Game tempmodel = ModelParser.parse2(RealProxy.getSingleton().gameModel(-1));
-		// System.out.println("---------" + tempmodel.getPlayers() +
-		// "--------------");
-		getView().setPlayers(tempmodel.getPlayers());
-		boolean fullobby = true;
+		Game tempmodel = GameManager.getSingleton().getModel();
+		int gottenplayers = 0;
 		for (int i = 0; i < tempmodel.getPlayers().size(); i++) {
-			if (tempmodel.getPlayers().get(i) == null) {
-				fullobby = false;
+			if (tempmodel.getPlayers().get(i) != null) {
+				gottenplayers++;
 			}
 		}
-		if (fullobby) {
+
+		if (gottenplayers == 4) {
 			if (getView().isModalShowing()) {
 				getView().closeModal();
 				GameManager.getSingleton().setbegin(true);
-				GameManager.getSingleton().update(ModelParser.parse2(RealProxy.getSingleton().gameModel(-1)));
 			}
-		} else {
-			System.out.println("WAITING");
+		} else if (currentplayers != (gottenplayers)) {
+			// System.out.println("WAITING");
 			getView().showModal();
+			currentplayers = gottenplayers;
+			getView().setPlayers(tempmodel.getPlayers());
 		}
+
 	}
 
 }

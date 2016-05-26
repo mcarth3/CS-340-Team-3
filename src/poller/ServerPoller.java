@@ -72,6 +72,8 @@ public class ServerPoller {
 		try {
 			if (modelversion == -1) {
 				modeljson = RealProxy.getSingleton().gameModel();
+			} else if (modelversion == 0 && (!GameManager.getSingleton().getbegin())) {
+				modeljson = RealProxy.getSingleton().gameModel(1);
 			} else {
 				modeljson = RealProxy.getSingleton().gameModel(modelversion);
 			}
@@ -132,6 +134,9 @@ public class ServerPoller {
 				Game model = poll();
 				if (model != null) {
 					if (model.getversion() != modelversion) {
+						manager.update(model);
+						modelversion = model.getversion();
+					} else if (modelversion == 0 && (!GameManager.getSingleton().getbegin())) {
 						manager.update(model);
 						modelversion = model.getversion();
 					}
