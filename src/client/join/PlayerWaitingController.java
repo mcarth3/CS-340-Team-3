@@ -25,7 +25,25 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 
 	@Override
 	public void start() {
-		update();
+		Game tempmodel = GameManager.getSingleton().getModel();
+		int gottenplayers = 0;
+		for (int i = 0; i < tempmodel.getPlayers().size(); i++) {
+			if (tempmodel.getPlayers().get(i) != null) {
+				gottenplayers++;
+			}
+		}
+
+		if (gottenplayers == 4) {
+			if (getView().isModalShowing()) {
+				getView().closeModal();
+			}
+			GameManager.getSingleton().setbegin(true);
+		} else {
+			// System.out.println("WAITING");
+			getView().showModal();
+			currentplayers = gottenplayers;
+			getView().setPlayers(tempmodel.getPlayers());
+		}
 	}
 
 	@Override
@@ -52,7 +70,7 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 				getView().closeModal();
 			}
 			GameManager.getSingleton().setbegin(true);
-		} else {
+		} else if (currentplayers != (gottenplayers)) {
 			// System.out.println("WAITING");
 			getView().showModal();
 			currentplayers = gottenplayers;
