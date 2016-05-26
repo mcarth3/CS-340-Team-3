@@ -123,14 +123,8 @@ public class DevCardController extends Controller implements IDevCardController 
 
 			}
 		}
-		
+
 		DevCardList dcl = thePlayer.oldDevCards;
-		System.out.println("DEV CARD LIST");
-		System.out.println(dcl.getYearOfPlenty());
-		System.out.println(dcl.getMonopoly());
-		System.out.println(dcl.getSoldier());
-		System.out.println(dcl.getRoadBuilding());
-		System.out.println(dcl.getMonument()); 
 		if(dcl.getYearOfPlenty() > 0 ){
 			getPlayCardView().setCardEnabled(DevCardType.YEAR_OF_PLENTY, true);
 			getPlayCardView().setCardAmount(DevCardType.YEAR_OF_PLENTY, dcl.getYearOfPlenty());
@@ -166,14 +160,6 @@ public class DevCardController extends Controller implements IDevCardController 
 			getPlayCardView().setCardEnabled(DevCardType.MONUMENT,  false);
 			getPlayCardView().setCardAmount(DevCardType.MONUMENT,  0);
 		}
-		
-//		getPlayCardView().setCardEnabled(DevCardType.YEAR_OF_PLENTY, true);
-//		getPlayCardView().setCardEnabled(DevCardType.MONOPOLY, true);
-//		getPlayCardView().setCardEnabled(DevCardType.SOLDIER, true);
-//		getPlayCardView().setCardEnabled(DevCardType.ROAD_BUILD, true);
-//		getPlayCardView().setCardEnabled(DevCardType.MONUMENT, true);
-//		
-				
 	}
 
 

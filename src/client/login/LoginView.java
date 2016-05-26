@@ -257,15 +257,10 @@ public class LoginView extends OverlayView implements ILoginView
         {
             btnSignIn.addActionListener(new ActionListener()
             {
-
                 @Override
                 public void actionPerformed(ActionEvent e)
-                {
-                	//System.out.println("it tried to login"); 
+                { 
                     getController().signIn();
-//                	LoginController lc = LoginController.SINGLETON;
-//                	lc.signIn();
-//                	
                 }
 
             });

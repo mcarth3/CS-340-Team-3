@@ -155,38 +155,11 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	public void startJoinGame(GameInfo game) {
 
 		gameChosen = game.getId();
-
-		// ***********************************************************ADDED
-		// BELOW FOR COLORS:
-		GameManager gm = GameManager.getSingleton();
-		// gm.setplayercolortemp(color);
-
-		try {
-			ServerPoller.getSingleton();
-		} catch (InvalidMockProxyException e) {
-			e.printStackTrace();
+		for(int i=0; i<game.getPlayers().size(); i++){
+			if(GameManager.getSingleton().getTempId() != game.getPlayers().get(i).getId()){
+				getSelectColorView().setColorEnabled(setStringColorToSharedColor(game.getPlayers().get(i).getColor()), false);
+			} 
 		}
-
-		RealProxy rp = RealProxy.getSingleton();
-		String result = rp.gameJoin(gameChosen, CatanColor.BLUE.name());
-
-		if (GameManager.getSingleton() != null) {
-			if (GameManager.getSingleton().getModel() != null) {
-				if (GameManager.getSingleton().getModel().getPlayers() != null) {
-					ArrayList<Player> allPlayers = GameManager.getSingleton().getModel().getPlayers();
-
-					for (int i = 0; i < allPlayers.size(); i++) {
-						if (allPlayers.get(i).getPlayerIndex() != GameManager.getSingleton().getthisplayer().getPlayerIndex()) {
-							CatanColor thisPlayersColor = setStringColorToSharedColor(allPlayers.get(i).getColor());
-							getSelectColorView().setColorEnabled(thisPlayersColor, false);
-						}
-					}
-				}
-			}
-
-		}
-		// ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ADDED ABOVE FOR
-		// COLORS^^^
 		getSelectColorView().showModal();
 
 	}
@@ -263,6 +236,8 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 	@Override
 	public void update() {
+//		getSelectColorView();
+		
 	}
 
 }

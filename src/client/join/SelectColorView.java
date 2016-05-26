@@ -2,10 +2,15 @@ package client.join;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 import shared.definitions.*;
+import client.GameManager.GameManager;
 import client.base.*;
+import model.Game;
+import model.Player;
 
 /**
  * Implementation for the select color view, which lets the user select the

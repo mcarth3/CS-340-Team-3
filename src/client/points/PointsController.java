@@ -51,6 +51,18 @@ public class PointsController extends Controller implements IPointsController {
 		//</temp>
 	}
 	public void update(){
+		Game game = GameManager.getSingleton().getModel(); 
+		if(game.getWinner() != -1){
+			String name = game.getPlayers().get(game.getPlayerIndex(game.getWinner())).getName(); 
+			if(GameManager.getSingleton().playerIdTemp == game.getWinner()){
+				getFinishedView().setWinner(name, true);
+				getFinishedView().showModal();
+			}else{
+				getFinishedView().setWinner(name, false);
+				getFinishedView().showModal();
+			}
+		}
+		
 		Player player = GameManager.getSingleton().getthisplayer();
 		getPointsView().setPoints(player.getVictoryPoints());		
 	}

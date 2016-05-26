@@ -152,6 +152,10 @@ public class GameManager extends Observable {
 	public void setplayerbyidtemp(int playerid) {
 		this.playerIdTemp = playerid;
 	}
+	
+	public Integer getTempId(){
+		return playerIdTemp; 
+	}
 
 	public void setplayernametemp(String name) {
 		this.nameTemp = name;

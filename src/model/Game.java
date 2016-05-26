@@ -94,7 +94,9 @@ public class Game extends AbstractModelPartition {
         players.add(newPlayer);
 
     }
-
+    public Integer getWinner(){
+    	return winner;
+    }
 
     public Player findPlayer(String username) throws ObjectNotFoundException {
         for(int i=0; i < players.size(); i++)
