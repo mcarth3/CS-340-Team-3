@@ -258,10 +258,19 @@ public class MapController extends Controller implements IMapController {
 
 	@Override
 	public void robPlayer(RobPlayerInfo victim) {
+		// System.out.print("ROBBING PLAYER");
 		if (this.getRobView().isModalShowing()) {
 			this.getRobView().closeModal();
 		}
 		RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, victim.getPlayerIndex(), roblocation);
+	}
+
+	@Override
+	public void robPlayer() {
+		if (this.getRobView().isModalShowing()) {
+			this.getRobView().closeModal();
+		}
+		RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, GameManager.getSingleton().getthisplayer().playerIndex, roblocation);
 	}
 
 	@Override
