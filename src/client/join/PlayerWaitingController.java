@@ -10,7 +10,7 @@ import proxy.RealProxy;
  * Implementation for the player waiting controller
  */
 public class PlayerWaitingController extends Controller implements IPlayerWaitingController {
-	private int currentplayers = 0;
+	private int currentplayers = 1;
 
 	public PlayerWaitingController(IPlayerWaitingView view) {
 
