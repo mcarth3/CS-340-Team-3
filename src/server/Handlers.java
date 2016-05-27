@@ -53,7 +53,92 @@ public class Handlers {
 		return null;
 
 	}
-
+//--------------------- Nate's Start ---------------------------
+	/**
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      userLogin jsonobject
+	 * @post user is logged in 
+	 */
+	private HttpHandler userLogin = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+	/**
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      userRegister jsonobject
+	 * @post user is registered
+	 */
+	private HttpHandler userRegister = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+	/**
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      gamesList jsonobject
+	 * @post returns a list of games
+	 */
+	private HttpHandler gamesList = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+	/**
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      gamesCreate jsonobject
+	 * @post new game is created, add to model 
+	 */
+	private HttpHandler gamesCreate = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+	/**
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      gamesJoin jsonobject
+	 * @post user is added to a game 
+	 */
+	private HttpHandler gamesJoin = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+	/**
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      gameModel jsonobject
+	 * @post the model is returned
+	 */
+	private HttpHandler gameModel = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+	/**
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      movesSendChat jsonobject
+	 * @post message is added to the game 
+	 */
+	private HttpHandler movesSendChat = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+//--------------------- Nate's End ---------------------------
 	/**
 	 * Checks if rolling the dice can occur and calls the rollNumber command
 	 * object

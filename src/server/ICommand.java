@@ -14,7 +14,5 @@ public interface ICommand {
 	 * @pre: request from HTTP decoded and ServerModel initialized
 	 * @post: server model has been changed by a controller.
 	 */
-	void execute();
-
 	void execute(Object data);
 }

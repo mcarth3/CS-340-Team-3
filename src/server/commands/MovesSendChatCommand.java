@@ -7,8 +7,9 @@ public class MovesSendChatCommand implements ICommand {
      * @pre: ServerModel is initialized and HTTP request is decoded
      * @post: a message is added to the model
      */
-    @Override
-    public void execute() {
-
-    }
+	@Override
+	public void execute(Object data) {
+		// TODO Auto-generated method stub
+		
+	}
 }
