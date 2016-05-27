@@ -18,6 +18,9 @@ public class Handlers {
 	private void return_object(HttpExchange http_exchange, XStream x_Stream, Object object) throws IOException {
 	}
 
+	public void return_failed(HttpExchange http_exchange) throws IOException {
+	}
+
 	private Object read_request(HttpExchange http_exchange, XStream x_Stream) throws IOException {
 		return null;
 	}

@@ -3,7 +3,6 @@ package server;
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
-import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
 
 public class Server {
@@ -44,9 +43,6 @@ public class Server {
 
 	private Server(int portNum) {
 		Server.portNum = portNum;
-	}
-
-	public void return_failed(HttpExchange http_exchange) throws IOException {
 	}
 
 	public static void decode(String[] args) {
