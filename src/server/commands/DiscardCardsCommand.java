@@ -9,7 +9,7 @@ public class DiscardCardsCommand implements ICommand {
     /**
      *
      * @pre: ServerModel is initialized and HTTP request is decoded
-     * @post: list of resources is traded between two players
+     * @post: list of cards is taken away from player
      */
     @Override
     public void execute() {
