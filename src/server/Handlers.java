@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
+import com.thoughtworks.xstream.XStream;
 
 /**
  * Created by Jesse on 5/26/2016. This class might contain 25 methods. However,
@@ -13,6 +14,17 @@ import com.sun.net.httpserver.HttpHandler;
  * execute() on them.
  */
 public class Handlers {
+
+	private void return_object(HttpExchange http_exchange, XStream x_Stream, Object object) throws IOException {
+	}
+
+	private Object read_request(HttpExchange http_exchange, XStream x_Stream) throws IOException {
+		return null;
+	}
+
+	public static void deserialize(String[] args) {
+
+	}
 
 	private HttpHandler rollNumber = new HttpHandler() {
 		@Override

@@ -5,7 +5,6 @@ import java.net.InetSocketAddress;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpServer;
-import com.thoughtworks.xstream.XStream;
 
 public class Server {
 	private static int portNum = 8081;
@@ -47,21 +46,10 @@ public class Server {
 		Server.portNum = portNum;
 	}
 
-	private void return_object(HttpExchange http_exchange, XStream x_Stream, Object object) throws IOException {
-	}
-
-	private Object read_request(HttpExchange http_exchange, XStream x_Stream) throws IOException {
-		return null;
-	}
-
 	public void return_failed(HttpExchange http_exchange) throws IOException {
 	}
 
 	public static void decode(String[] args) {
-
-	}
-
-	public static void deserialize(String[] args) {
 
 	}
 
