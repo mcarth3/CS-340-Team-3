@@ -83,17 +83,21 @@ public class ClientCommunicator {
 	                	}
 	                }
 	                br.close();
-	                //System.out.println(sb.toString()); 
 	                
-	        		
+	        		String result = ""; 
 	                if(new_cookie != null)
 	                {
 	                	//sb.append(cookie);
-	                	return sb.toString()+new_cookie;
+	                	result = sb.toString()+new_cookie;
 	                }else{
-	                	return sb.toString();
+	                	result = sb.toString();
 	                }
+	                System.out.println("=================== START ============================");
+	                System.out.println(command); 
+	                System.out.println(result); 
+	                System.out.println("==================== END ===========================");
 	                
+	                return result; 
 	        }
 
 	    } catch (MalformedURLException ex) {
