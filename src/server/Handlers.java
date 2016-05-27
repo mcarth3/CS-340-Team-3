@@ -14,11 +14,39 @@ import com.sun.net.httpserver.HttpHandler;
  */
 public class Handlers {
 
-	private HttpHandler validate_user_handler = new HttpHandler() {
+	private HttpHandler rollNumber = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
 		}
 	};
-	// temp atm, have a version for each of the right commands
-
+	private HttpHandler robPlayer = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+	private HttpHandler finishTurn = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+	private HttpHandler buyDevCard = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+	private HttpHandler Year_of_Plenty = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+	private HttpHandler Road_Building = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
+	private HttpHandler Soldier = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+		}
+	};
 }
