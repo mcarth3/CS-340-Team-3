@@ -8,7 +8,8 @@ public class UserRegisterCommand implements ICommand {
     * @post: adds a new player to the list of players
     */
 	@Override
-	public void execute(Object data) {
+	public Object execute(Object data) {
+		return data; 
 		// TODO Auto-generated method stub
 		
 	}

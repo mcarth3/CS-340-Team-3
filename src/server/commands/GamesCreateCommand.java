@@ -8,7 +8,8 @@ public class GamesCreateCommand implements ICommand {
     * @post: creates a new game and adds it to the model
     */
 	@Override
-	public void execute(Object data) {
+	public Object execute(Object data) {
+		return data; 
 		// TODO Auto-generated method stub
 		
 	}

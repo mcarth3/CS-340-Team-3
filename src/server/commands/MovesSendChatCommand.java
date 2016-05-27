@@ -8,7 +8,8 @@ public class MovesSendChatCommand implements ICommand {
      * @post: a message is added to the model
      */
 	@Override
-	public void execute(Object data) {
+	public Object execute(Object data) {
+		return data; 
 		// TODO Auto-generated method stub
 		
 	}

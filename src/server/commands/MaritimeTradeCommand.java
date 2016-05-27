@@ -1,5 +1,6 @@
 package server.commands;
 
+import model.Game;
 import server.ICommand;
 
 /**
@@ -12,13 +13,8 @@ public class MaritimeTradeCommand implements ICommand {
 	 * @post: player gains requested amount of resources and bank trades them
 	 */
 	@Override
-	public void execute() {
-
-	}
-
-	@Override
-	public void execute(Object data) {
+	public Game execute(Object data) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 }

@@ -8,7 +8,8 @@ public class UserLoginCommand implements ICommand {
     * @post: checks to see if a person in registered and returns a success
     */
 	@Override
-	public void execute(Object data) {
+	public Object execute(Object data) {
+		return data; 
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,5 +1,6 @@
 package server.commands;
 
+import model.Game;
 import server.ICommand;
 
 /**
@@ -12,13 +13,8 @@ public class DiscardCardsCommand implements ICommand {
 	 * @post: list of cards is taken away from player
 	 */
 	@Override
-	public void execute() {
-
-	}
-
-	@Override
-	public void execute(Object data) {
+	public Game execute(Object data) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 }

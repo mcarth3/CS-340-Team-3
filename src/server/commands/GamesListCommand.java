@@ -8,7 +8,8 @@ public class GamesListCommand implements ICommand {
     * @post: grabs a list of games and returns it
     */
 	@Override
-	public void execute(Object data) {
+	public Object execute(Object data) {
+		return data; 
 		// TODO Auto-generated method stub
 		
 	}

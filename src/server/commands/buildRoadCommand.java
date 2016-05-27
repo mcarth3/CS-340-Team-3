@@ -1,11 +1,12 @@
 package server.commands;
 
+import model.Game;
 import server.ICommand;
 
 /**
  * Created by Jesse on 5/26/2016.
  */
-public class buildRoadCommand implements ICommand {
+public class BuildRoadCommand implements ICommand {
 
 	/**
 	 *
@@ -13,13 +14,8 @@ public class buildRoadCommand implements ICommand {
 	 * @post: player gains a road and loses particular resources
 	 */
 	@Override
-	public void execute() {
-
-	}
-
-	@Override
-	public void execute(Object data) {
+	public Game execute(Object data) {
 		// TODO Auto-generated method stub
-
+		return null;
 	}
 }
