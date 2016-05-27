@@ -31,8 +31,7 @@ public class Server {
 		// http_server.createContext("/validate_user", validate_user_handler);
 		// //worked when handlers were in this file
 		// http_server.createContext("/get_projects", get_project_handler);
-		// http_server.createContext("/get_sample_image",
-		// get_sample_image_handler);
+		// http_server.createContext("/get_sample_image", get_sample_image_handler);
 		// http_server.createContext("/download_batch", download_batch_handler);
 		// http_server.createContext("/submit_batch", submit_batch_handler);
 		// http_server.createContext("/get_fields", get_fields_handler);
