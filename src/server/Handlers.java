@@ -14,57 +14,11 @@ import com.sun.net.httpserver.HttpHandler;
  */
 public class Handlers {
 
-	private HttpHandler validate_user_handler = new HttpHandler() {// temp atm,
-																	// replace
-																	// all of
-																	// these
-																	// with the
-																	// right
-																	// commands
+	private HttpHandler validate_user_handler = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
 		}
 	};
+	// temp atm, have a version for each of the right commands
 
-	private HttpHandler get_project_handler = new HttpHandler() {
-		@Override
-		public void handle(HttpExchange http_exchange) throws IOException {
-		}
-	};
-
-	private HttpHandler get_sample_image_handler = new HttpHandler() {
-		@Override
-		public void handle(HttpExchange http_exchange) throws IOException {
-		}
-	};
-
-	private HttpHandler download_batch_handler = new HttpHandler() {
-		@Override
-		public void handle(HttpExchange http_exchange) throws IOException {
-		}
-	};
-
-	private HttpHandler submit_batch_handler = new HttpHandler() {
-		@Override
-		public void handle(HttpExchange http_exchange) throws IOException {
-		}
-	};
-
-	private HttpHandler get_fields_handler = new HttpHandler() {
-		@Override
-		public void handle(HttpExchange http_exchange) throws IOException {
-		}
-	};
-
-	private HttpHandler search_handler = new HttpHandler() {
-		@Override
-		public void handle(HttpExchange http_exchange) throws IOException {
-		}
-	};
-
-	private HttpHandler download_file_handler = new HttpHandler() {
-		@Override
-		public void handle(HttpExchange http_exchange) throws IOException {
-		}
-	};
 }
