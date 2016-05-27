@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
-import com.thoughtworks.xstream.XStream;
 
 /**
  * Created by Jesse on 5/26/2016. This class might contain 25 methods. However,
@@ -15,20 +14,43 @@ import com.thoughtworks.xstream.XStream;
  */
 public class Handlers {
 
-	private void return_object(HttpExchange http_exchange, XStream x_Stream, Object object) throws IOException {
-	}
-
-	public void return_failed(HttpExchange http_exchange) throws IOException {
-	}
-
-	private Object read_request(HttpExchange http_exchange, XStream x_Stream) throws IOException {
-		return null;
-	}
+	/*
+	 * private void return_object(HttpExchange http_exchange, XStream x_Stream,
+	 * Object object) throws IOException {
+	 * http_exchange.sendResponseHeaders(200, 0); OutputStream output_stream =
+	 * http_exchange.getResponseBody(); x_Stream.toXML(object, output_stream);
+	 * output_stream.close(); http_exchange.close();
+	 * Database.end_transaction(true); }
+	 * 
+	 * 
+	 * 
+	 * private Object read_request(HttpExchange http_exchange, XStream x_Stream)
+	 * throws IOException { InputStreamReader stream_reader = new
+	 * InputStreamReader(http_exchange.getRequestBody(), "utf-8");
+	 * BufferedReader buffered_reader = new BufferedReader(stream_reader);
+	 * String this_line; String XMLuser = ""; while ((this_line =
+	 * buffered_reader.readLine()) != null) { XMLuser += this_line; } return
+	 * x_Stream.fromXML(XMLuser); }
+	 * 
+	 * 
+	 * 
+	 * public void return_failed(HttpExchange http_exchange) throws IOException
+	 * { http_exchange.sendResponseHeaders(400, 0); http_exchange.close(); if
+	 * (Database.connection != null) { Database.end_transaction(false); } }
+	 */
 
 	public static void deserialize(String[] args) {
 
 	}
 
+	/**
+	 * Checks if rolling the dice can occur and called the rollNumber command
+	 * object
+	 * 
+	 * @pre the data sent with the command is in the valid format for a
+	 *      rollNumber jsonobject
+	 * @post rollNumber Command is sent
+	 */
 	private HttpHandler rollNumber = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
