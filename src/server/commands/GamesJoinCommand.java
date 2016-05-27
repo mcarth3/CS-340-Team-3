@@ -8,7 +8,8 @@ public class GamesJoinCommand implements ICommand {
     * @post: adds a user to the selected game, a model is returned
     */
 	@Override
-	public void execute(Object data) {
+	public Object execute(Object data) {
+		return data;
 		// TODO Auto-generated method stub
 		
 	}
