@@ -2,13 +2,7 @@ package server.commands;
 
 import server.ICommand;
 
-public class soldierCardCommand implements ICommand {
-
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-
-	}
+public class SoldierCardCommand implements ICommand {
 
 	/**
 	 * soldier card is played for player

@@ -2,13 +2,7 @@ package server.commands;
 
 import server.ICommand;
 
-public class buyDevCardCommand implements ICommand {
-
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-
-	}
+public class BuyDevCardCommand implements ICommand {
 
 	/**
 	 * dev card is bought for the player

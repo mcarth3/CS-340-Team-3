@@ -2,13 +2,7 @@ package server.commands;
 
 import server.ICommand;
 
-public class roadBuildingCardCommand implements ICommand {
-
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-
-	}
+public class RoadBuildingCardCommand implements ICommand {
 
 	/**
 	 * road building card is played for player

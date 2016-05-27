@@ -2,13 +2,7 @@ package server.commands;
 
 import server.ICommand;
 
-public class robPlayerCommand implements ICommand {
-
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-
-	}
+public class RobPlayerCommand implements ICommand {
 
 	/**
 	 * robbing actions are done

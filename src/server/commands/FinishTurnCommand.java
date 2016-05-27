@@ -2,13 +2,7 @@ package server.commands;
 
 import server.ICommand;
 
-public class finishTurnCommand implements ICommand {
-
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-
-	}
+public class FinishTurnCommand implements ICommand {
 
 	/**
 	 * turn is changed to the next player, state is set to rolling
