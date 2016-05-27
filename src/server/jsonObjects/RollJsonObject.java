@@ -1,5 +1,5 @@
 package server.jsonObjects;
 
-public class robJsonObject {
+public class RollJsonObject {
 
 }
