@@ -38,15 +38,28 @@ public class Handlers {
 	 * { http_exchange.sendResponseHeaders(400, 0); http_exchange.close(); if
 	 * (Database.connection != null) { Database.end_transaction(false); } }
 	 */
-
-	public static void deserialize(String[] args) {
+	/**
+	 * Deserializes the data sent with the httprequest
+	 * 
+	 * @param jsondata
+	 *            the data given with the command to the server
+	 * @param givenclass
+	 *            the class to deserialize the data into
+	 * @pre givenclass is a valid jsonobject and jsondata is in the valid format
+	 *      for the givenclass
+	 * @post the specified jsonobject is returned from the parsed data
+	 */
+	public static <T> T deserialize(String jsondata, Class<T> givenclass) {
+		return null;
 
 	}
 
 	/**
-	 * Checks if rolling the dice can occur and called the rollNumber command
+	 * Checks if rolling the dice can occur and calls the rollNumber command
 	 * object
 	 * 
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
 	 * @pre the data sent with the command is in the valid format for a
 	 *      rollNumber jsonobject
 	 * @post rollNumber Command is sent
@@ -56,31 +69,91 @@ public class Handlers {
 		public void handle(HttpExchange http_exchange) throws IOException {
 		}
 	};
+	/**
+	 * Checks if robbing a player can occur and calls the robPlayer command
+	 * object
+	 * 
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      robPlayer jsonobject
+	 * @post robPlayer Command is sent
+	 */
 	private HttpHandler robPlayer = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
 		}
 	};
+	/**
+	 * Checks if finishing the turn can occur and calls the finishTurn command
+	 * object
+	 * 
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      finishTurn jsonobject
+	 * @post finishTurn Command is sent
+	 */
 	private HttpHandler finishTurn = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
 		}
 	};
+	/**
+	 * Checks if a dev card can be bought and calls the buyDevCard command
+	 * object
+	 * 
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      buyDevCard jsonobject
+	 * @post buyDevCard Command is sent
+	 */
 	private HttpHandler buyDevCard = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
 		}
 	};
+	/**
+	 * Checks if playing a year of plenty card can occur and calls the
+	 * Year_of_Plenty command object
+	 * 
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      Year_of_Plenty jsonobject
+	 * @post Year_of_Plenty Command is sent
+	 */
 	private HttpHandler Year_of_Plenty = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
 		}
 	};
+	/**
+	 * Checks if playing a road building card can occur and calls the
+	 * Road_Building command object
+	 * 
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a
+	 *      Road_Building jsonobject
+	 * @post Road_Building Command is sent
+	 */
 	private HttpHandler Road_Building = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
 		}
 	};
+	/**
+	 * Checks if playing a soldier card can occur and calls the Soldier command
+	 * object
+	 * 
+	 * @param http_exchange
+	 *            the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a Soldier
+	 *      jsonobject
+	 * @post Soldier Command is sent
+	 */
 	private HttpHandler Soldier = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
