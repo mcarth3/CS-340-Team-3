@@ -13,7 +13,8 @@ public class SoldierCardCommand implements ICommand {
 	 * @post: soldier card is removed and its effects are added to the model
 	 */
 	@Override
-	public void execute(Object data) {
+	public Object execute(Object data) {
+		return data;
 		// TODO Auto-generated method stub
 
 	}

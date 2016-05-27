@@ -10,12 +10,14 @@ public class RoadBuildingCardCommand implements ICommand {
 	 * @param data
 	 *            the roadBuildingJsonObject containing this method's needed
 	 *            info
+	 * @return
 	 * @pre: ServerModel is initialized and HTTP request is decoded
 	 * @post: road building card is removed and its effects are added to the
 	 *        model
 	 */
 	@Override
-	public void execute(Object data) {
+	public Object execute(Object data) {
+		return data;
 		// TODO Auto-generated method stub
 
 	}

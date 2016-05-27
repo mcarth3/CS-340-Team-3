@@ -2,13 +2,7 @@ package server.commands;
 
 import server.ICommand;
 
-public class yearOfPlentyCommand implements ICommand {
-
-	@Override
-	public void execute() {
-		// TODO Auto-generated method stub
-
-	}
+public class YearOfPlentyCommand implements ICommand {
 
 	/**
 	 * year of plenty card is played for player
@@ -20,7 +14,8 @@ public class yearOfPlentyCommand implements ICommand {
 	 *        model
 	 */
 	@Override
-	public void execute(Object data) {
+	public Object execute(Object data) {
+		return data;
 		// TODO Auto-generated method stub
 
 	}

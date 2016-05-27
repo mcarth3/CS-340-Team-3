@@ -14,7 +14,8 @@ public class RobPlayerCommand implements ICommand {
 	 */
 
 	@Override
-	public void execute(Object data) {
+	public Object execute(Object data) {
+		return data;
 		// TODO Auto-generated method stub
 
 	}

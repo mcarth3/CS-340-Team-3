@@ -13,7 +13,8 @@ public class FinishTurnCommand implements ICommand {
 	 * @post: turn is changed to the next player, state is set to rolling
 	 */
 	@Override
-	public void execute(Object data) {
+	public Object execute(Object data) {
+		return data;
 		// TODO Auto-generated method stub
 
 	}
