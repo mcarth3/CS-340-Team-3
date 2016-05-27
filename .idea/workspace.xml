@@ -5,9 +5,17 @@
     <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="">
+    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="added my (Jesse's) commands with pre and post for execute, and added comments to ServerFacade and Handlers.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server/commands/acceptTradeCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server/commands/buildCityCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server/commands/buildRoadCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server/commands/buildSettlementCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server/commands/monopolyCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server/commands/monumentCommand.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/server/commands/offerTradeCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/commands/DiscardCardsCommand.java" afterPath="$PROJECT_DIR$/src/server/commands/DiscardCardsCommand.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/Handlers.java" afterPath="$PROJECT_DIR$/src/server/Handlers.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/ServerFacade.java" afterPath="$PROJECT_DIR$/src/server/ServerFacade.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,8 +40,8 @@
       <file leaf-file-name="ICommand.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/ICommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6069364">
-              <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.919708">
+              <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -60,7 +68,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/shared/definitions/DevCardType.java" />
         <option value="$PROJECT_DIR$/src/model/DevelopmentCard.java" />
         <option value="$PROJECT_DIR$/src/model/ObjectNotFoundException.java" />
         <option value="$PROJECT_DIR$/src/model/FacadeCanDoMethodsTest.groovy" />
@@ -100,7 +107,6 @@
         <option value="$USER_HOME$/AppData/Local/Temp/Temp1_student_02_09_15.zip/java/src/client/map/MapController.java" />
         <option value="$PROJECT_DIR$/src/client/map/MapController.java" />
         <option value="$PROJECT_DIR$/src/client/domestic/DomesticTradeController.java" />
-        <option value="$PROJECT_DIR$/src/server/ServerFacade.java" />
         <option value="$PROJECT_DIR$/src/server/ICommand.java" />
         <option value="$PROJECT_DIR$/src/server/commands/MonumentCommand.java" />
         <option value="$PROJECT_DIR$/src/server/commands/MonopolyCommand.java" />
@@ -111,6 +117,8 @@
         <option value="$PROJECT_DIR$/src/server/commands/BuildCityCommand.java" />
         <option value="$PROJECT_DIR$/src/server/commands/AcceptTradeCommand.java" />
         <option value="$PROJECT_DIR$/src/server/commands/OfferTradeCommand.java" />
+        <option value="$PROJECT_DIR$/src/server/ServerFacade.java" />
+        <option value="$PROJECT_DIR$/src/server/Handlers.java" />
       </list>
     </option>
   </component>
@@ -202,28 +210,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Catan" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="NEWEST_Cloned_Repository" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="server" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="commands" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -583,12 +569,6 @@
       <option name="number" value="Default" />
       <updated>1462503308666</updated>
     </task>
-    <task id="LOCAL-00003" summary="PlayerTest will test if the Player class can accurately assess its own resources (e.g. when one checks if it has a number of Lumber resources)">
-      <created>1462916383743</created>
-      <option name="number" value="00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1462916383743</updated>
-    </task>
     <task id="LOCAL-00004" summary="Added Facade (for Controller interaction with model) with multiple Can-Do's. Also added jUnit package so all can create jUnit tests&#10;on classes.">
       <created>1462917461516</created>
       <option name="number" value="00004" />
@@ -877,7 +857,13 @@
       <option name="project" value="LOCAL" />
       <updated>1464308678984</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="added my (Jesse's) commands with pre and post for execute">
+      <created>1464308893877</created>
+      <option name="number" value="00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1464308893877</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -917,18 +903,18 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24549918" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3878887" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.7299509" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.08346972" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34042552" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17776097" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -979,8 +965,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="commented out RollController update()" />
-    <MESSAGE value="groundwork for DevCardController in playRoadBuildCard()" />
     <MESSAGE value="changed Controllers to only check things if the GameManager isn't null, but still commented out update()" />
     <MESSAGE value="8084 to 8081 port" />
     <MESSAGE value="modified updates to Roll, Domestic, and Maritime Controllers. Put in some printlns to track errors" />
@@ -1004,7 +988,9 @@
     <MESSAGE value="Updated MapController to have methods for setUp. These are not filled yet and we can't setup the game." />
     <MESSAGE value="added server package, and add inside that Handlers.java, ICommand.java, and ServerFacade.java" />
     <MESSAGE value="added execute() to ICommand, and added commands package" />
-    <option name="LAST_COMMIT_MESSAGE" value="added execute() to ICommand, and added commands package" />
+    <MESSAGE value="added my (Jesse's) commands with pre and post for execute" />
+    <MESSAGE value="added my (Jesse's) commands with pre and post for execute, and added comments to ServerFacade and Handlers." />
+    <option name="LAST_COMMIT_MESSAGE" value="added my (Jesse's) commands with pre and post for execute, and added comments to ServerFacade and Handlers." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1345,22 +1331,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/Handlers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/ServerFacade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/join/IJoinGameController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.34393063">
@@ -1441,10 +1411,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/ServerFacade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19653179">
+          <caret line="4" column="120" selection-start-line="4" selection-start-column="120" selection-end-line="4" selection-end-column="120" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/Handlers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.19653179">
+          <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/server/ICommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6069364">
-          <caret line="15" column="4" selection-start-line="15" selection-start-column="4" selection-end-line="15" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.919708">
+          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
           <folding />
         </state>
       </provider>
