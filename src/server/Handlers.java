@@ -8,7 +8,6 @@ import java.io.OutputStream;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
-import poller.modeljsonparser.ClassToJSON;
 import poller.modeljsonparser.ModelParser;
 import server.commands.UserLoginCommand;
 import server.input.UserLoginInput;
@@ -70,7 +69,7 @@ public class Handlers {
 	 * @post the specified jsonobject is returned as a string in JSON format
 	 */
 	public static String serialize(Object givenobject) {
-		return ClassToJSON.converttojsonstring(givenobject);
+		return ModelParser.toJson(givenobject);
 
 	}
 

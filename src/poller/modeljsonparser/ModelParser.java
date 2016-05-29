@@ -43,4 +43,9 @@ public class ModelParser {
 		return returnedobject;
 	}
 
+	public static String toJson(Object givenclass) {
+		Gson gson = new Gson();
+		return gson.toJson(givenclass);
+	}
+
 }
