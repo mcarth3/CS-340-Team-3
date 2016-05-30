@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 import model.Game;
 import server.input.UserLoginInput;
+import shared.locations.HexLocation;
 
 /**
  * Created by Jesse on 5/26/2016. This Facade will be called upon by the commands and will be the only class to modify the model on the Server's side.
@@ -56,6 +57,11 @@ public class ServerFacade {
 	public Game rolldice(Integer index, Integer number) {
 		model.getTurnTracker().setStatus("Playing");
 		//give resources to players
+		return model;
+	}
+
+	public Object robplayer(Integer getindex, Integer getvictimindex, HexLocation getlocation) {
+		//rob player
 		return model;
 	}
 

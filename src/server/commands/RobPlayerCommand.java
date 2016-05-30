@@ -1,8 +1,11 @@
 package server.commands;
 
 import server.ICommand;
+import server.ServerFacade;
+import server.jsonObjects.RobJsonObject;
 
 public class RobPlayerCommand implements ICommand {
+	private RobJsonObject robobject;
 
 	/**
 	 * robbing actions are done
@@ -15,8 +18,8 @@ public class RobPlayerCommand implements ICommand {
 
 	@Override
 	public Object execute(Object data) {
-		return data;
-		// TODO Auto-generated method stub
+		robobject = (RobJsonObject) data;
+		return ServerFacade.getSingleton().robplayer(robobject.getindex(), robobject.getvictimindex(), robobject.getlocation());
 
 	}
 }

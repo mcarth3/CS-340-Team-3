@@ -34,6 +34,7 @@ public class Server {
 		server.createContext("/game/model", gameModel);
 		server.createContext("/moves/sendChat", movesSendChat);
 		server.createContext("/moves/rollNumber", rollNumber);
+		server.createContext("/moves/robPlayer", robPlayer);
 
 		System.out.println("Server is starting");
 
@@ -49,6 +50,7 @@ public class Server {
 	private HttpHandler gameModel = handlers.getGameModelHandler();
 	private HttpHandler movesSendChat = handlers.getMovesSendChatHandler();
 	private HttpHandler rollNumber = handlers.rollNumberHandler();
+	private HttpHandler robPlayer = handlers.robPlayerHandler();
 
 	public static void decode(String[] args) {
 
