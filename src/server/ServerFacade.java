@@ -24,10 +24,6 @@ public class ServerFacade {
 		return singleton;
 	}
 
-	public Game getModel() {
-		return this.model;
-	}
-
 	public ServerFacade() {
 		String data;
 
@@ -55,6 +51,10 @@ public class ServerFacade {
 		// TODO: Maybe make UserLoginOutput to return?
 
 		return input;
+	}
+
+	public Game rolldice() {
+		return model;
 	}
 
 }
