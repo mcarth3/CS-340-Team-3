@@ -1,23 +1,25 @@
 package server.commands;
 
 import server.ICommand;
+import server.ServerFacade;
+import server.jsonObjects.RollJsonObject;
 
 public class RollNumberCommand implements ICommand {
+	private RollJsonObject rollingobject;
 
 	/**
 	 * dice roll actions are done
 	 *
-	 * @param data
-	 *            the rollJsonObject containing this method's needed info
+	 * @param data the rollJsonObject containing this method's needed info
 	 * @pre: ServerModel is initialized and HTTP request is decoded
-	 * @post: players recieve resources if they're on the number that was
-	 *        rolled, status is changed to playing
+	 * @post: players recieve resources if they're on the number that was rolled, status is changed to playing
 	 */
 
 	@Override
 	public Object execute(Object data) {
-		return data;
-		// TODO Auto-generated method stub
+		rollingobject = (RollJsonObject) data;
+		// calls serverfacade.rolldice();
+		return ServerFacade.getSingleton().getModel();
 
 	}
 }

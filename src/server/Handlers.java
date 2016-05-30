@@ -9,15 +9,15 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import poller.modeljsonparser.ModelParser;
+import server.commands.RollNumberCommand;
 import server.commands.UserLoginCommand;
 import server.input.UserLoginInput;
+import server.jsonObjects.RollJsonObject;
 
 /**
- * Created by Jesse on 5/26/2016. This class might contain 25 methods. However,
- * we could modify it to make it 25 different Handlers that implement a
- * particular interface called Handler. Regardless of the design, this will be
- * called upon from the Server API and will create its own commands and call
- * execute() on them.
+ * Created by Jesse on 5/26/2016. This class might contain 25 methods. However, we could modify it to make it 25 different
+ * Handlers that implement a particular interface called Handler. Regardless of the design, this will be
+ * called upon from the Server API and will create its own commands and call execute() on them.
  */
 public class Handlers {
 
@@ -48,12 +48,9 @@ public class Handlers {
 	/**
 	 * Deserializes the data sent with the httprequest
 	 * 
-	 * @param jsondata
-	 *            the data given with the command to the server
-	 * @param givenclass
-	 *            the class to deserialize the data into
-	 * @pre givenclass is a valid jsonobject and jsondata is in the valid format
-	 *      for the givenclass
+	 * @param jsondata the data given with the command to the server
+	 * @param givenclass the class to deserialize the data into
+	 * @pre givenclass is a valid jsonobject and jsondata is in the valid format for the givenclass
 	 * @post the specified jsonobject is returned from the parsed data
 	 */
 	public static <T> Object deserialize(String jsondata, Class<T> givenclass) {
@@ -63,8 +60,7 @@ public class Handlers {
 	/**
 	 * Serializes the data sent with the httprequest
 	 * 
-	 * @param givenclass
-	 *            the class to serialize the data from
+	 * @param givenclass the class to serialize the data from
 	 * @pre givenclass is a valid jsonobject
 	 * @post the specified jsonobject is returned as a string in JSON format
 	 */
@@ -75,10 +71,8 @@ public class Handlers {
 
 	// --------------------- Nate's Start ---------------------------
 	/**
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      userLogin jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a userLogin jsonobject
 	 * @post user is logged in
 	 */
 	private HttpHandler userLogin = new HttpHandler() {
@@ -127,10 +121,8 @@ public class Handlers {
 	}
 
 	/**
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      userRegister jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a userRegister jsonobject
 	 * @post user is registered
 	 */
 	private HttpHandler userRegister = new HttpHandler() {
@@ -152,10 +144,8 @@ public class Handlers {
 	}
 
 	/**
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      gamesList jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a gamesList jsonobject
 	 * @post returns a list of games
 	 */
 	private HttpHandler gamesList = new HttpHandler() {
@@ -177,10 +167,8 @@ public class Handlers {
 	}
 
 	/**
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      gamesCreate jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a gamesCreate jsonobject
 	 * @post new game is created, add to model
 	 */
 	private HttpHandler gamesCreate = new HttpHandler() {
@@ -202,10 +190,8 @@ public class Handlers {
 	}
 
 	/**
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      gamesJoin jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a gamesJoin jsonobject
 	 * @post user is added to a game
 	 */
 	private HttpHandler gamesJoin = new HttpHandler() {
@@ -227,10 +213,8 @@ public class Handlers {
 	}
 
 	/**
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      gameModel jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a gameModel jsonobject
 	 * @post the model is returned
 	 */
 	private HttpHandler gameModel = new HttpHandler() {
@@ -252,10 +236,8 @@ public class Handlers {
 	}
 
 	/**
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      movesSendChat jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a  movesSendChat jsonobject
 	 * @post message is added to the game
 	 */
 	private HttpHandler movesSendChat = new HttpHandler() {
@@ -278,28 +260,36 @@ public class Handlers {
 
 	// --------------------- Nate's End ---------------------------
 	/**
-	 * Checks if rolling the dice can occur and calls the rollNumber command
-	 * object
+	 * Checks if rolling the dice can occur and calls the rollNumber command object
 	 * 
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      rollNumber jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a rollNumber jsonobject
 	 * @post rollNumber Command is sent
 	 */
 	private HttpHandler rollNumber = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
+			RollJsonObject rollingobject = (RollJsonObject) deserialize("", RollJsonObject.class);// need to get the http body
+			RollNumberCommand rollcommand = new RollNumberCommand();
+
+			String response = serialize(rollcommand.execute(rollingobject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
 		}
 	};
+
+	public HttpHandler rollNumberHandler() {
+		return movesSendChat;
+	}
+
 	/**
-	 * Checks if robbing a player can occur and calls the robPlayer command
-	 * object
+	 * Checks if robbing a player can occur and calls the robPlayer command object
 	 * 
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      robPlayer jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a robPlayer jsonobject
 	 * @post robPlayer Command is sent
 	 */
 	private HttpHandler robPlayer = new HttpHandler() {
@@ -308,13 +298,10 @@ public class Handlers {
 		}
 	};
 	/**
-	 * Checks if finishing the turn can occur and calls the finishTurn command
-	 * object
+	 * Checks if finishing the turn can occur and calls the finishTurn command object
 	 * 
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      finishTurn jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a finishTurn jsonobject
 	 * @post finishTurn Command is sent
 	 */
 	private HttpHandler finishTurn = new HttpHandler() {
@@ -323,13 +310,10 @@ public class Handlers {
 		}
 	};
 	/**
-	 * Checks if a dev card can be bought and calls the buyDevCard command
-	 * object
+	 * Checks if a dev card can be bought and calls the buyDevCard command object
 	 * 
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      buyDevCard jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a buyDevCard jsonobject
 	 * @post buyDevCard Command is sent
 	 */
 	private HttpHandler buyDevCard = new HttpHandler() {
@@ -338,13 +322,10 @@ public class Handlers {
 		}
 	};
 	/**
-	 * Checks if playing a year of plenty card can occur and calls the
-	 * Year_of_Plenty command object
+	 * Checks if playing a year of plenty card can occur and calls the Year_of_Plenty command object
 	 * 
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      Year_of_Plenty jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a Year_of_Plenty jsonobject
 	 * @post Year_of_Plenty Command is sent
 	 */
 	private HttpHandler Year_of_Plenty = new HttpHandler() {
@@ -356,10 +337,8 @@ public class Handlers {
 	 * Checks if playing a road building card can occur and calls the
 	 * Road_Building command object
 	 * 
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a
-	 *      Road_Building jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a Road_Building jsonobject
 	 * @post Road_Building Command is sent
 	 */
 	private HttpHandler Road_Building = new HttpHandler() {
@@ -368,13 +347,10 @@ public class Handlers {
 		}
 	};
 	/**
-	 * Checks if playing a soldier card can occur and calls the Soldier command
-	 * object
+	 * Checks if playing a soldier card can occur and calls the Soldier command object
 	 * 
-	 * @param http_exchange
-	 *            the rest of the data given with the command to the server
-	 * @pre the data sent with the command is in the valid format for a Soldier
-	 *      jsonobject
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a Soldier jsonobject
 	 * @post Soldier Command is sent
 	 */
 	private HttpHandler Soldier = new HttpHandler() {
