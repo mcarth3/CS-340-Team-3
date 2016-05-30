@@ -33,6 +33,7 @@ public class Server {
 		server.createContext("/games/join", gamesJoin);
 		server.createContext("/game/model", gameModel);
 		server.createContext("/moves/sendChat", movesSendChat);
+		server.createContext("/moves/rollNumber", rollNumber);
 
 		System.out.println("Server is starting");
 
@@ -47,6 +48,7 @@ public class Server {
 	private HttpHandler gamesJoin = handlers.getGamesJoinHandler();
 	private HttpHandler gameModel = handlers.getGameModelHandler();
 	private HttpHandler movesSendChat = handlers.getMovesSendChatHandler();
+	private HttpHandler rollNumber = handlers.rollNumberHandler();
 
 	public static void decode(String[] args) {
 
