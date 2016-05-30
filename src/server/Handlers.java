@@ -9,9 +9,11 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import poller.modeljsonparser.ModelParser;
+import server.commands.RobPlayerCommand;
 import server.commands.RollNumberCommand;
 import server.commands.UserLoginCommand;
 import server.input.UserLoginInput;
+import server.jsonObjects.RobJsonObject;
 import server.jsonObjects.RollJsonObject;
 
 /**
@@ -282,7 +284,7 @@ public class Handlers {
 	};
 
 	public HttpHandler rollNumberHandler() {
-		return movesSendChat;
+		return rollNumber;
 	}
 
 	/**
@@ -295,8 +297,22 @@ public class Handlers {
 	private HttpHandler robPlayer = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
+			RobJsonObject robobject = (RobJsonObject) deserialize("", RobJsonObject.class);// need to get the http body
+			RobPlayerCommand robcommand = new RobPlayerCommand();
+
+			String response = serialize(robcommand.execute(robobject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
 		}
 	};
+
+	public HttpHandler robPlayerHandler() {
+		return robPlayer;
+	}
+
 	/**
 	 * Checks if finishing the turn can occur and calls the finishTurn command object
 	 * 
