@@ -1,14 +1,11 @@
 package client.join;
 
-import java.util.ArrayList;
-
 import client.GameManager.GameManager;
 import client.base.Controller;
 import client.base.IAction;
 import client.data.GameInfo;
 import client.data.PlayerInfo;
 import client.misc.IMessageView;
-import model.Player;
 import poller.InvalidMockProxyException;
 import poller.ServerPoller;
 import poller.modeljsonparser.ModelParser;
@@ -155,10 +152,10 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	public void startJoinGame(GameInfo game) {
 
 		gameChosen = game.getId();
-		for(int i=0; i<game.getPlayers().size(); i++){
-			if(GameManager.getSingleton().getTempId() != game.getPlayers().get(i).getId()){
+		for (int i = 0; i < game.getPlayers().size(); i++) {
+			if (GameManager.getSingleton().getTempId() != game.getPlayers().get(i).getId()) {
 				getSelectColorView().setColorEnabled(setStringColorToSharedColor(game.getPlayers().get(i).getColor()), false);
-			} 
+			}
 		}
 		getSelectColorView().showModal();
 
@@ -229,6 +226,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 			getJoinGameView().closeModal();
 			GameManager.getSingleton().update(ModelParser.parse2(RealProxy.getSingleton().gameModel(-1)));
 			joinAction.execute();
+
 		} else {
 			System.out.println("Couldn't join a game");
 		}
@@ -236,8 +234,8 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 	@Override
 	public void update() {
-//		getSelectColorView();
-		
+		// getSelectColorView();
+
 	}
 
 }

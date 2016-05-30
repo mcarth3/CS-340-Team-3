@@ -13,7 +13,7 @@ import server.input.UserLoginInput;
 
 public class ModelParser {
 	public static Game parse2(String jsonstring) {
-		System.out.println(jsonstring);
+		// System.out.println(jsonstring);
 		Gson gson = new Gson();
 		Game game = gson.fromJson(jsonstring, Game.class);
 		return game;
