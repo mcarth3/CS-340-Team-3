@@ -11,4 +11,12 @@ public class RollJsonObject {
 		number = newnumber;
 	}
 
+	public Integer getindex() {
+		return playerIndex;
+	}
+
+	public Integer getnumber() {
+		return number;
+	}
+
 }

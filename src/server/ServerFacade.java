@@ -53,7 +53,9 @@ public class ServerFacade {
 		return input;
 	}
 
-	public Game rolldice() {
+	public Game rolldice(Integer index, Integer number) {
+		model.getTurnTracker().setStatus("Playing");
+		//give resources to players
 		return model;
 	}
 

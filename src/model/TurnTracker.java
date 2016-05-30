@@ -6,103 +6,108 @@ import poller.modeljsonparser.AbstractModelPartition;
  * @author Jesse McArthur
  */
 public class TurnTracker extends AbstractModelPartition {
-    String status;
+	String status;
 	int currentTurn;
-    int longestRoad = -1;
-    int largestArmy = -1;
-    int playerIndex;
-    //must be at least 3 to claim largest army, therefore if player army >  currLA they earn largest army and currLA = player army size
+	int longestRoad = -1;
+	int largestArmy = -1;
+	int playerIndex;
+	//must be at least 3 to claim largest army, therefore if player army >  currLA they earn largest army and currLA = player army size
 
-    public TurnTracker() {
-    	currentTurn = 0;
-        status = "default";
-    }
+	public TurnTracker() {
+		currentTurn = 0;
+		status = "default";
+	}
 
-    public TurnTracker(int currentP, String stat,int newlongestroad, int newlargestarmy) {
-    	currentTurn = currentP;
-        status = stat;
-        System.out.println("TurnTracker Status: " + status);
-        longestRoad = newlongestroad;
-        largestArmy = newlargestarmy;
-    }
-    public TurnTracker(int currentP, String stat) {
-    	currentTurn = currentP;
-        status = stat;
-        System.out.println("TurnTracker Status: " + status);
-    }
+	public TurnTracker(int currentP, String stat, int newlongestroad, int newlargestarmy) {
+		currentTurn = currentP;
+		status = stat;
+		System.out.println("TurnTracker Status: " + status);
+		longestRoad = newlongestroad;
+		largestArmy = newlargestarmy;
+	}
 
-    /**
-     * Gets the id of the current player
-     */
-    public int getCurrentPlayer() {
-        return currentTurn;
-    }
+	public TurnTracker(int currentP, String stat) {
+		currentTurn = currentP;
+		status = stat;
+		System.out.println("TurnTracker Status: " + status);
+	}
 
-    /**
-     * Sets the id of the current player
-     */
-    public void setCurrentPlayer(int pid) {
-    	currentTurn = pid;
-    }
+	/**
+	 * Gets the id of the current player
+	 */
+	public int getCurrentPlayer() {
+		return currentTurn;
+	}
 
-    /**
-     * Updates status of the current player.
-     * If the player is in the last part of their turn, when called, this method moves on to the next player
-     * and resets the status to zero.
-     */
-    public void updateStatus(String givenStatus) {
-        status = givenStatus;
-        System.out.println("TurnTracker Status: " + status);
-    }
+	/**
+	 * Sets the id of the current player
+	 */
+	public void setCurrentPlayer(int pid) {
+		currentTurn = pid;
+	}
 
-    /**
-     * returns the current status of the current players game
-     * 0 = ROLL
-     * 1 = TRADE
-     * 2 = BUILD
-     * 3 = FINISH
-     */
-    public String getStatus() {
-        return status;
-    }
+	/**
+	 * Updates status of the current player.
+	 * If the player is in the last part of their turn, when called, this method moves on to the next player
+	 * and resets the status to zero.
+	 */
+	public void updateStatus(String givenStatus) {
+		status = givenStatus;
+		System.out.println("TurnTracker Status: " + status);
+	}
 
-    public int getLongestRoad() {
-        return longestRoad;
-    }
+	/**
+	 * returns the current status of the current players game
+	 * 0 = ROLL
+	 * 1 = TRADE
+	 * 2 = BUILD
+	 * 3 = FINISH
+	 */
+	public String getStatus() {
+		return status;
+	}
 
-    public void setLongestRoad(int road) {
-        longestRoad = road;
-    }
+	public int getLongestRoad() {
+		return longestRoad;
+	}
 
-    public int getLargestArmy() {
-        return largestArmy;
-    }
+	public void setLongestRoad(int road) {
+		longestRoad = road;
+	}
 
-    public void setLargestArmy(int army) {
-        largestArmy = army;
-    }
+	public int getLargestArmy() {
+		return largestArmy;
+	}
 
-    /**
-     * @param pid - player id of player wishing to try for largest army
-     *            might return bool in future, not a necessity at the moment though
-     */
-    public void calcLargestArmy(int pid) {
-    }
+	public void setLargestArmy(int army) {
+		largestArmy = army;
+	}
 
-    /**
-     * @param pid = player id of player wishing to try for longest road
-     *            again might return bool in future, not a necessity at the moment
-     */
-    public void calcLongestRoad(int pid) {
-    }
+	/**
+	 * @param pid - player id of player wishing to try for largest army
+	 *            might return bool in future, not a necessity at the moment though
+	 */
+	public void calcLargestArmy(int pid) {
+	}
 
-    public int getPlayerIndex() {
-        
+	/**
+	 * @param pid = player id of player wishing to try for longest road
+	 *            again might return bool in future, not a necessity at the moment
+	 */
+	public void calcLongestRoad(int pid) {
+	}
+
+	public int getPlayerIndex() {
+
 		return playerIndex;
-    }
+	}
 
-    public void setPlayerIndex(int playerIndex) {
-        this.playerIndex = playerIndex;
-    }
+	public void setPlayerIndex(int playerIndex) {
+		this.playerIndex = playerIndex;
+	}
+
+	public void setStatus(String newstatus) {
+		status = newstatus;
+	}
 
 }

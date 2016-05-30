@@ -18,7 +18,7 @@ public class RollNumberCommand implements ICommand {
 	@Override
 	public Object execute(Object data) {
 		rollingobject = (RollJsonObject) data;
-		return ServerFacade.getSingleton().rolldice();
+		return ServerFacade.getSingleton().rolldice(rollingobject.getindex(), rollingobject.getnumber());
 
 	}
 }
