@@ -5,15 +5,10 @@
     <option name="CUSTOM_SCOPE_NAME" value="Current File" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="Monument and Monopoly calls on the server will now reach the ServerFacade with the right data (though the methods there are not fully implemented yet).">
+    <list default="true" id="905dc71c-3590-4b3b-a70e-1d08f1597213" name="Default" comment="calls to server on Jesse's functions (apart from Monument and Monopoly) have implemented handlers that will execute their correct commands (command executions still need completion on their implementation).">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/Handlers.java" afterPath="$PROJECT_DIR$/src/server/Handlers.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/Server.java" afterPath="$PROJECT_DIR$/src/server/Server.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/ServerFacade.java" afterPath="$PROJECT_DIR$/src/server/ServerFacade.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/commands/MonopolyCommand.java" afterPath="$PROJECT_DIR$/src/server/commands/MonopolyCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/commands/MonumentCommand.java" afterPath="$PROJECT_DIR$/src/server/commands/MonumentCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/jsonObjects/MonopolyJsonObject.java" afterPath="$PROJECT_DIR$/src/server/jsonObjects/MonopolyJsonObject.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/server/jsonObjects/MonumentJsonObject.java" afterPath="$PROJECT_DIR$/src/server/jsonObjects/MonumentJsonObject.java" />
     </list>
     <ignored path="Catan.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,22 +43,51 @@
       <file leaf-file-name="Server.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/Server.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+            <state vertical-scroll-proportion="-13.222222">
+              <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
               <folding>
+                <element signature="e#357#358#0" expanded="true" />
                 <element signature="e#370#371#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Handlers.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Handlers.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/server/Handlers.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="451" column="4" selection-start-line="451" selection-start-column="4" selection-end-line="451" selection-end-column="4" />
+            <state vertical-scroll-proportion="0.7004405">
+              <caret line="655" column="0" selection-start-line="655" selection-start-column="0" selection-end-line="655" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#34768#35393#0" expanded="true" />
+                <element signature="e#35392#35393#0" expanded="true" />
+                <element signature="e#35435#35436#0" expanded="true" />
+                <element signature="e#35458#35459#0" expanded="true" />
+                <element signature="e#35546#36225#0" expanded="true" />
+                <element signature="e#36224#36225#0" expanded="true" />
+                <element signature="e#36273#36274#0" expanded="true" />
+                <element signature="e#36302#36303#0" expanded="true" />
+                <element signature="e#36378#37003#0" expanded="true" />
+                <element signature="e#37002#37003#0" expanded="true" />
+                <element signature="e#37045#37046#0" expanded="true" />
+                <element signature="e#37068#37069#0" expanded="true" />
+                <element signature="e#37146#37766#0" expanded="true" />
+                <element signature="e#37765#37766#0" expanded="true" />
+                <element signature="e#37809#37810#0" expanded="true" />
+                <element signature="e#37833#37834#0" expanded="true" />
+                <element signature="e#37914#38525#0" expanded="true" />
+                <element signature="e#38524#38525#0" expanded="true" />
+                <element signature="e#38569#38570#0" expanded="true" />
+                <element signature="e#38594#38595#0" expanded="true" />
+                <element signature="e#38679#39300#0" expanded="true" />
+                <element signature="e#39299#39300#0" expanded="true" />
+                <element signature="e#39346#39347#0" expanded="true" />
+                <element signature="e#39373#39374#0" expanded="true" />
+                <element signature="e#39456#40072#0" expanded="true" />
+                <element signature="e#40071#40072#0" expanded="true" />
+                <element signature="e#40117#40118#0" expanded="true" />
+                <element signature="e#40143#40144#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -79,41 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MonopolyJsonObject.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/jsonObjects/MonopolyJsonObject.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MonopolyCommand.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/server/commands/MonopolyCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.962963">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MonumentCommand.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/server/commands/MonumentCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3131313">
-              <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RollNumberCommand.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/server/commands/RollNumberCommand.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="21" column="0" selection-start-line="19" selection-start-column="8" selection-end-line="21" selection-end-column="0" />
+              <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
               <folding />
             </state>
           </provider>
@@ -185,12 +179,12 @@
         <option value="$PROJECT_DIR$/src/server/commands/DiscardCardsCommand.java" />
         <option value="$PROJECT_DIR$/src/server/commands/MaritimeTradeCommand.java" />
         <option value="$PROJECT_DIR$/src/server/jsonObjects/MonopolyJsonObject.java" />
-        <option value="$PROJECT_DIR$/src/server/Handlers.java" />
         <option value="$PROJECT_DIR$/src/server/jsonObjects/MonumentJsonObject.java" />
-        <option value="$PROJECT_DIR$/src/server/Server.java" />
         <option value="$PROJECT_DIR$/src/server/commands/MonumentCommand.java" />
         <option value="$PROJECT_DIR$/src/server/ServerFacade.java" />
         <option value="$PROJECT_DIR$/src/server/commands/MonopolyCommand.java" />
+        <option value="$PROJECT_DIR$/src/server/Handlers.java" />
+        <option value="$PROJECT_DIR$/src/server/Server.java" />
       </list>
     </option>
   </component>
@@ -280,6 +274,50 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Catan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Repository 2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jsonObjects" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Catan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Repository 2" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="commands" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -740,12 +778,6 @@
       <option name="number" value="Default" />
       <updated>1462503308666</updated>
     </task>
-    <task id="LOCAL-00005" summary="Restructured DevelopmentCard, ResourceCard, and Player to use definitions shared with rest of program and modified Game to find Players">
-      <created>1462923261893</created>
-      <option name="number" value="00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1462923261893</updated>
-    </task>
     <task id="LOCAL-00006" summary="Player can find its own settlements and Game can find its players; Facade can tell if a player can build a city given a username and VertexLocation.">
       <created>1462929926981</created>
       <option name="number" value="00006" />
@@ -1034,7 +1066,13 @@
       <option name="project" value="LOCAL" />
       <updated>1464309152465</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="Monument and Monopoly calls on the server will now reach the ServerFacade with the right data (though the methods there are not fully implemented yet).">
+      <created>1464718280501</created>
+      <option name="number" value="00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1464718280531</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1074,11 +1112,11 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24549918" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30605564" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16693944" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1136,7 +1174,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="modified DevCard Controller" />
     <MESSAGE value="refined RollController timer to create several TimerTasks. Added println's to TurnTracker for error tracking." />
     <MESSAGE value="Fixed bugs in MaritimeTradeController and DomesticTradeController." />
     <MESSAGE value="adding more functionality to DevCardController" />
@@ -1161,7 +1198,8 @@
     <MESSAGE value="capitalized commands" />
     <MESSAGE value="capitalized commands and return null objects in them" />
     <MESSAGE value="Monument and Monopoly calls on the server will now reach the ServerFacade with the right data (though the methods there are not fully implemented yet)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Monument and Monopoly calls on the server will now reach the ServerFacade with the right data (though the methods there are not fully implemented yet)." />
+    <MESSAGE value="calls to server on Jesse's functions (apart from Monument and Monopoly) have implemented handlers that will execute their correct commands (command executions still need completion on their implementation)." />
+    <option name="LAST_COMMIT_MESSAGE" value="calls to server on Jesse's functions (apart from Monument and Monopoly) have implemented handlers that will execute their correct commands (command executions still need completion on their implementation)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1437,14 +1475,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/jsonObjects/BuildRoadJsonObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.06390978">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/server/commands/BuildRoadCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5432331">
@@ -1493,55 +1523,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/jsonObjects/RollJsonObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/jsonObjects/MonopolyJsonObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/commands/RollNumberCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="21" column="0" selection-start-line="19" selection-start-column="8" selection-end-line="21" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/server/ServerFacade.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-1.962963">
           <caret line="42" column="4" selection-start-line="42" selection-start-column="4" selection-end-line="42" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/Server.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-          <folding>
-            <element signature="e#370#371#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/server/Handlers.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="451" column="4" selection-start-line="451" selection-start-column="4" selection-end-line="451" selection-end-column="4" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1555,9 +1541,90 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/server/commands/MonumentCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3131313">
+        <state vertical-scroll-proportion="0.41414142">
           <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/jsonObjects/MonopolyJsonObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.30050504">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/jsonObjects/RollJsonObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/commands/RollNumberCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="19" column="46" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/jsonObjects/BuildRoadJsonObject.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.08585858">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/Server.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.222222">
+          <caret line="88" column="0" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding>
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#370#371#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/server/Handlers.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7004405">
+          <caret line="655" column="0" selection-start-line="655" selection-start-column="0" selection-end-line="655" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#34768#35393#0" expanded="true" />
+            <element signature="e#35392#35393#0" expanded="true" />
+            <element signature="e#35435#35436#0" expanded="true" />
+            <element signature="e#35458#35459#0" expanded="true" />
+            <element signature="e#35546#36225#0" expanded="true" />
+            <element signature="e#36224#36225#0" expanded="true" />
+            <element signature="e#36273#36274#0" expanded="true" />
+            <element signature="e#36302#36303#0" expanded="true" />
+            <element signature="e#36378#37003#0" expanded="true" />
+            <element signature="e#37002#37003#0" expanded="true" />
+            <element signature="e#37045#37046#0" expanded="true" />
+            <element signature="e#37068#37069#0" expanded="true" />
+            <element signature="e#37146#37766#0" expanded="true" />
+            <element signature="e#37765#37766#0" expanded="true" />
+            <element signature="e#37809#37810#0" expanded="true" />
+            <element signature="e#37833#37834#0" expanded="true" />
+            <element signature="e#37914#38525#0" expanded="true" />
+            <element signature="e#38524#38525#0" expanded="true" />
+            <element signature="e#38569#38570#0" expanded="true" />
+            <element signature="e#38594#38595#0" expanded="true" />
+            <element signature="e#38679#39300#0" expanded="true" />
+            <element signature="e#39299#39300#0" expanded="true" />
+            <element signature="e#39346#39347#0" expanded="true" />
+            <element signature="e#39373#39374#0" expanded="true" />
+            <element signature="e#39456#40072#0" expanded="true" />
+            <element signature="e#40071#40072#0" expanded="true" />
+            <element signature="e#40117#40118#0" expanded="true" />
+            <element signature="e#40143#40144#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
