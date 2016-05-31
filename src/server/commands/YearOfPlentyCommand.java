@@ -1,8 +1,11 @@
 package server.commands;
 
 import server.ICommand;
+import server.ServerFacade;
+import server.jsonObjects.YOPJsonObject;
 
 public class YearOfPlentyCommand implements ICommand {
+	private YOPJsonObject yopobject;
 
 	/**
 	 * year of plenty card is played for player
@@ -15,8 +18,8 @@ public class YearOfPlentyCommand implements ICommand {
 	 */
 	@Override
 	public Object execute(Object data) {
-		return data;
-		// TODO Auto-generated method stub
+		yopobject = (YOPJsonObject) data;
+		return ServerFacade.getSingleton().playYOPcard(yopobject.getindex(), yopobject.getresource1(), yopobject.getresource2());
 
 	}
 }

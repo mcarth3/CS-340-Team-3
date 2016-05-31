@@ -1,8 +1,11 @@
 package server.commands;
 
 import server.ICommand;
+import server.ServerFacade;
+import server.jsonObjects.RoadBuildingJsonObject;
 
 public class RoadBuildingCardCommand implements ICommand {
+	private RoadBuildingJsonObject roadbuildingobject;
 
 	/**
 	 * road building card is played for player
@@ -17,8 +20,8 @@ public class RoadBuildingCardCommand implements ICommand {
 	 */
 	@Override
 	public Object execute(Object data) {
-		return data;
-		// TODO Auto-generated method stub
+		roadbuildingobject = (RoadBuildingJsonObject) data;
+		return ServerFacade.getSingleton().playroadbuildingcard(roadbuildingobject.getindex(), roadbuildingobject.getspot1(), roadbuildingobject.getspot1());
 
 	}
 }

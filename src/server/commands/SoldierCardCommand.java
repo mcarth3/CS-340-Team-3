@@ -1,8 +1,11 @@
 package server.commands;
 
 import server.ICommand;
+import server.ServerFacade;
+import server.jsonObjects.SoldierJsonObject;
 
 public class SoldierCardCommand implements ICommand {
+	private SoldierJsonObject soldiercardobject;
 
 	/**
 	 * soldier card is played for player
@@ -14,8 +17,8 @@ public class SoldierCardCommand implements ICommand {
 	 */
 	@Override
 	public Object execute(Object data) {
-		return data;
-		// TODO Auto-generated method stub
+		soldiercardobject = (SoldierJsonObject) data;
+		return ServerFacade.getSingleton().playsoldercard(soldiercardobject.getindex(), soldiercardobject.getvictimindex(), soldiercardobject.getlocation());
 
 	}
 }

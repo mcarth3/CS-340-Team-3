@@ -1,8 +1,11 @@
 package server.commands;
 
 import server.ICommand;
+import server.ServerFacade;
+import server.jsonObjects.DevCardJsonObject;
 
 public class BuyDevCardCommand implements ICommand {
+	private DevCardJsonObject devcardobject;
 
 	/**
 	 * dev card is bought for the player
@@ -14,8 +17,7 @@ public class BuyDevCardCommand implements ICommand {
 	 */
 	@Override
 	public Object execute(Object data) {
-		return data;
-		// TODO Auto-generated method stub
-
+		devcardobject = (DevCardJsonObject) data;
+		return ServerFacade.getSingleton().buydevcard(devcardobject.getindex());
 	}
 }
