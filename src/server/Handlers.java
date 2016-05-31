@@ -9,12 +9,22 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import poller.modeljsonparser.ModelParser;
+import server.commands.BuyDevCardCommand;
+import server.commands.FinishTurnCommand;
+import server.commands.RoadBuildingCardCommand;
 import server.commands.RobPlayerCommand;
 import server.commands.RollNumberCommand;
+import server.commands.SoldierCardCommand;
 import server.commands.UserLoginCommand;
+import server.commands.YearOfPlentyCommand;
 import server.input.UserLoginInput;
+import server.jsonObjects.DevCardJsonObject;
+import server.jsonObjects.FinishJsonObject;
+import server.jsonObjects.RoadBuildingJsonObject;
 import server.jsonObjects.RobJsonObject;
 import server.jsonObjects.RollJsonObject;
+import server.jsonObjects.SoldierJsonObject;
+import server.jsonObjects.YOPJsonObject;
 
 /**
  * Created by Jesse on 5/26/2016. This class might contain 25 methods. However, we could modify it to make it 25 different
@@ -273,7 +283,7 @@ public class Handlers {
 	private HttpHandler rollNumber = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-			RollJsonObject rollingobject = (RollJsonObject) deserialize(http_exchange, RollJsonObject.class);// need to get the http body
+			RollJsonObject rollingobject = (RollJsonObject) deserialize(http_exchange, RollJsonObject.class);
 			RollNumberCommand rollcommand = new RollNumberCommand();
 
 			String response = serialize(rollcommand.execute(rollingobject));
@@ -299,7 +309,7 @@ public class Handlers {
 	private HttpHandler robPlayer = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-			RobJsonObject robobject = (RobJsonObject) deserialize(http_exchange, RobJsonObject.class);// need to get the http body
+			RobJsonObject robobject = (RobJsonObject) deserialize(http_exchange, RobJsonObject.class);
 			RobPlayerCommand robcommand = new RobPlayerCommand();
 
 			String response = serialize(robcommand.execute(robobject));
@@ -325,8 +335,22 @@ public class Handlers {
 	private HttpHandler finishTurn = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
+			FinishJsonObject finishTurnobject = (FinishJsonObject) deserialize(http_exchange, FinishJsonObject.class);
+			FinishTurnCommand finishTurncommand = new FinishTurnCommand();
+
+			String response = serialize(finishTurncommand.execute(finishTurnobject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
 		}
 	};
+
+	public HttpHandler finishTurnHandler() {
+		return finishTurn;
+	}
+
 	/**
 	 * Checks if a dev card can be bought and calls the buyDevCard command object
 	 * 
@@ -337,8 +361,22 @@ public class Handlers {
 	private HttpHandler buyDevCard = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
+			DevCardJsonObject devcardobject = (DevCardJsonObject) deserialize(http_exchange, DevCardJsonObject.class);
+			BuyDevCardCommand buydevcardcommand = new BuyDevCardCommand();
+
+			String response = serialize(buydevcardcommand.execute(devcardobject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
 		}
 	};
+
+	public HttpHandler buyDevCardHandler() {
+		return buyDevCard;
+	}
+
 	/**
 	 * Checks if playing a year of plenty card can occur and calls the Year_of_Plenty command object
 	 * 
@@ -349,8 +387,22 @@ public class Handlers {
 	private HttpHandler Year_of_Plenty = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
+			YOPJsonObject yopobject = (YOPJsonObject) deserialize(http_exchange, YOPJsonObject.class);
+			YearOfPlentyCommand yearofplentycommand = new YearOfPlentyCommand();
+
+			String response = serialize(yearofplentycommand.execute(yopobject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
 		}
 	};
+
+	public HttpHandler Year_of_PlentyHandler() {
+		return Year_of_Plenty;
+	}
+
 	/**
 	 * Checks if playing a road building card can occur and calls the
 	 * Road_Building command object
@@ -362,8 +414,22 @@ public class Handlers {
 	private HttpHandler Road_Building = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
+			RoadBuildingJsonObject roadbuildingobject = (RoadBuildingJsonObject) deserialize(http_exchange, RoadBuildingJsonObject.class);
+			RoadBuildingCardCommand roadbuildingcommand = new RoadBuildingCardCommand();
+
+			String response = serialize(roadbuildingcommand.execute(roadbuildingobject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
 		}
 	};
+
+	public HttpHandler Road_BuildingHandler() {
+		return Road_Building;
+	}
+
 	/**
 	 * Checks if playing a soldier card can occur and calls the Soldier command object
 	 * 
@@ -374,6 +440,19 @@ public class Handlers {
 	private HttpHandler Soldier = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
+			SoldierJsonObject soldierobject = (SoldierJsonObject) deserialize(http_exchange, SoldierJsonObject.class);
+			SoldierCardCommand soldiercardcommand = new SoldierCardCommand();
+
+			String response = serialize(soldiercardcommand.execute(soldierobject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
 		}
 	};
+
+	public HttpHandler SoldierHandler() {
+		return Soldier;
+	}
 }

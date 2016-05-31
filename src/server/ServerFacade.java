@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import model.Game;
 import server.input.UserLoginInput;
+import shared.definitions.ResourceType;
+import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 
 /**
@@ -60,9 +62,34 @@ public class ServerFacade {
 		return model;
 	}
 
-	public Object robplayer(Integer getindex, Integer getvictimindex, HexLocation getlocation) {
+	public Object robplayer(Integer index, Integer victimindex, HexLocation location) {
 		//rob player
 		return model;
 	}
 
+	public Object finishturn(Integer index) {
+		model.getTurnTracker().setStatus("Rolling");
+		model.getTurnTracker().setPlayerIndex(index);
+		return model;
+	}
+
+	public Object buydevcard(Integer index) {
+		//buy dev card
+		return model;
+	}
+
+	public Object playYOPcard(Integer playerIndex, ResourceType resource1, ResourceType resource2) {
+		//play year of plenty card
+		return model;
+	}
+
+	public Object playroadbuildingcard(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
+		//play road building card
+		return model;
+	}
+
+	public Object playsoldercard(Integer index, Integer victimindex, HexLocation location) {
+		//rob player and remove card
+		return model;
+	}
 }

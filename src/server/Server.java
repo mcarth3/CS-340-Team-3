@@ -35,6 +35,11 @@ public class Server {
 		server.createContext("/moves/sendChat", movesSendChat);
 		server.createContext("/moves/rollNumber", rollNumber);
 		server.createContext("/moves/robPlayer", robPlayer);
+		server.createContext("/moves/finishTurn", finishTurn);
+		server.createContext("/moves/buyDevCard", buyDevCard);
+		server.createContext("/moves/Soldier", Soldier);
+		server.createContext("/moves/Year_of_Plenty", Year_of_Plenty);
+		server.createContext("/moves/Road_Building", Road_Building);
 
 		System.out.println("Server is starting");
 
@@ -51,6 +56,11 @@ public class Server {
 	private HttpHandler movesSendChat = handlers.getMovesSendChatHandler();
 	private HttpHandler rollNumber = handlers.rollNumberHandler();
 	private HttpHandler robPlayer = handlers.robPlayerHandler();
+	private HttpHandler finishTurn = handlers.finishTurnHandler();
+	private HttpHandler buyDevCard = handlers.buyDevCardHandler();
+	private HttpHandler Soldier = handlers.SoldierHandler();
+	private HttpHandler Year_of_Plenty = handlers.Year_of_PlentyHandler();
+	private HttpHandler Road_Building = handlers.Road_BuildingHandler();
 
 	public static void decode(String[] args) {
 
