@@ -9,22 +9,9 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import poller.modeljsonparser.ModelParser;
-import server.commands.BuyDevCardCommand;
-import server.commands.FinishTurnCommand;
-import server.commands.RoadBuildingCardCommand;
-import server.commands.RobPlayerCommand;
-import server.commands.RollNumberCommand;
-import server.commands.SoldierCardCommand;
-import server.commands.UserLoginCommand;
-import server.commands.YearOfPlentyCommand;
+import server.commands.*;
 import server.input.UserLoginInput;
-import server.jsonObjects.DevCardJsonObject;
-import server.jsonObjects.FinishJsonObject;
-import server.jsonObjects.RoadBuildingJsonObject;
-import server.jsonObjects.RobJsonObject;
-import server.jsonObjects.RollJsonObject;
-import server.jsonObjects.SoldierJsonObject;
-import server.jsonObjects.YOPJsonObject;
+import server.jsonObjects.*;
 
 /**
  * Created by Jesse on 5/26/2016. This class might contain 25 methods. However, we could modify it to make it 25 different
@@ -455,4 +442,58 @@ public class Handlers {
 	public HttpHandler SoldierHandler() {
 		return Soldier;
 	}
+
+	// --------------------- Mike's End ---------------------------
+	/**
+	 * Checks if Monopoly can occur and calls the Monopoly command object
+	 *
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a Monopoly jsonobject
+	 * @post Monopoly Command is sent
+	 */
+	private HttpHandler Monopoly = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+			MonopolyJsonObject monopolyObject = (MonopolyJsonObject) deserialize(http_exchange, MonopolyJsonObject.class);
+			MonopolyCommand monopolyCommand = new MonopolyCommand();
+
+			String response = serialize(monopolyCommand.execute(monopolyObject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+	};
+
+	public HttpHandler MonopolyHandler() {
+		return Monopoly;
+	}
+
+	/**
+	 * Checks if Monument can occur and calls the Monument command object
+	 *
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a Monument jsonobject
+	 * @post Monopoly Command is sent
+	 */
+	private HttpHandler Monument = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+			MonumentJsonObject monumentObject = (MonumentJsonObject) deserialize(http_exchange, MonumentJsonObject.class);
+			MonumentCommand monumentCommand = new MonumentCommand();
+
+			String response = serialize(monumentCommand.execute(monumentObject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+	};
+
+	public HttpHandler MonumentHandler() {
+		return Monument;
+	}
+
 }

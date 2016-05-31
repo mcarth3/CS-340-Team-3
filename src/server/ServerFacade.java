@@ -92,4 +92,36 @@ public class ServerFacade {
 		//rob player and remove card
 		return model;
 	}
+
+
+
+/**
+ * Jesse's methods:
+ */
+
+	/**
+	 * play monopoly, gather resources, remove card, add VP, update log.
+	 * @param type
+	 * @param resource
+	 * @param playerIndex
+     * @return
+     */
+    public Object playMonopoly(String type, String resource, Integer playerIndex) {
+
+	return model;
+}
+
+	/**
+	 * //play monument, remove card, add VP, update log
+	 * @param type
+	 * @param playerIndex
+     * @return
+     */
+	public Object playMonument(String type, Integer playerIndex) {
+
+		return model;
+}
+
+
+
 }

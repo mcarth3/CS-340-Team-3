@@ -41,6 +41,10 @@ public class Server {
 		server.createContext("/moves/Year_of_Plenty", Year_of_Plenty);
 		server.createContext("/moves/Road_Building", Road_Building);
 
+		server.createContext("/moves/Monopoly", Monopoly);
+		server.createContext("/moves/Monument", Monument);
+
+
 		System.out.println("Server is starting");
 
 		server.start();
@@ -61,6 +65,10 @@ public class Server {
 	private HttpHandler Soldier = handlers.SoldierHandler();
 	private HttpHandler Year_of_Plenty = handlers.Year_of_PlentyHandler();
 	private HttpHandler Road_Building = handlers.Road_BuildingHandler();
+
+	private HttpHandler Monopoly = handlers.MonopolyHandler();
+	private HttpHandler Monument = handlers.MonumentHandler();
+
 
 	public static void decode(String[] args) {
 
