@@ -55,8 +55,31 @@ public class Handlers {
 	 * @pre givenclass is a valid jsonobject and jsondata is in the valid format for the givenclass
 	 * @post the specified jsonobject is returned from the parsed data
 	 */
-	public static <T> Object deserialize(String jsondata, Class<T> givenclass) {
-		return ModelParser.parse(jsondata, givenclass);
+	public static <T> Object deserialize(HttpExchange http_exchange, Class<T> givenclass) {
+		BufferedReader br = new BufferedReader(new InputStreamReader(http_exchange.getRequestBody()));
+		StringBuilder sb = new StringBuilder();
+		String line;
+		boolean first = true;
+		try {
+			while ((line = br.readLine()) != null) {
+				if (first) {
+					sb.append(line);
+					first = false;
+				} else {
+					sb.append("\n" + line);
+				}
+			}
+
+			br.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		// this is what we get from the server
+		System.out.println(sb.toString());
+
+		String json = sb.toString();
+
+		return ModelParser.parse(json, givenclass);
 	}
 
 	/**
@@ -81,28 +104,7 @@ public class Handlers {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
 
-			// System.out.println("userLogin Handler is getting called");
-
-			BufferedReader br = new BufferedReader(new InputStreamReader(http_exchange.getRequestBody()));
-			StringBuilder sb = new StringBuilder();
-			String line;
-			boolean first = true;
-			while ((line = br.readLine()) != null) {
-				if (first) {
-					sb.append(line);
-					first = false;
-				} else {
-					sb.append("\n" + line);
-				}
-			}
-			br.close();
-
-			// this is what we get from the server
-			System.out.println(sb.toString());
-
-			String json = sb.toString();
-			ModelParser modelparser = new ModelParser();
-			UserLoginInput uli = modelparser.parseLogin(json);
+			UserLoginInput uli = (UserLoginInput) deserialize(http_exchange, UserLoginInput.class);
 			ICommand c = new UserLoginCommand();
 
 			// TODO: Maybe make UserLoginOutput?
@@ -271,7 +273,7 @@ public class Handlers {
 	private HttpHandler rollNumber = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-			RollJsonObject rollingobject = (RollJsonObject) deserialize("", RollJsonObject.class);// need to get the http body
+			RollJsonObject rollingobject = (RollJsonObject) deserialize(http_exchange, RollJsonObject.class);// need to get the http body
 			RollNumberCommand rollcommand = new RollNumberCommand();
 
 			String response = serialize(rollcommand.execute(rollingobject));
@@ -297,7 +299,7 @@ public class Handlers {
 	private HttpHandler robPlayer = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-			RobJsonObject robobject = (RobJsonObject) deserialize("", RobJsonObject.class);// need to get the http body
+			RobJsonObject robobject = (RobJsonObject) deserialize(http_exchange, RobJsonObject.class);// need to get the http body
 			RobPlayerCommand robcommand = new RobPlayerCommand();
 
 			String response = serialize(robcommand.execute(robobject));
