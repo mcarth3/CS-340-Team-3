@@ -11,6 +11,7 @@ import server.input.UserLoginInput;
 import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
+import shared.locations.VertexLocation;
 
 /**
  * Created by Jesse on 5/26/2016. This Facade will be called upon by the commands and will be the only class to modify the model on the Server's side.
@@ -122,6 +123,42 @@ public class ServerFacade {
 		return model;
 }
 
+	/**
+	 * build road, remove resources, update map and log? (IF FREE)
+	 * @param type
+	 * @param playerIndex
+	 * @param roadLocation
+	 * @param free
+     * @return
+     */
+	public Object buildRoad(String type, Integer playerIndex, EdgeLocation roadLocation, boolean free) {
 
+		return model;
+	}
+
+	/**
+	 * build settlement, remove resources, update map and log? (IF FREE). Add VP.
+	 * @param type
+	 * @param playerIndex
+	 * @param settlementLocation
+	 * @param free
+     * @return
+     */
+	public Object buildSettlement(String type, Integer playerIndex, VertexLocation settlementLocation, boolean free) {
+
+		return model;
+	}
+
+	/**
+	 * build city, remove resources, update map and log? (IF FREE). Add VP.
+	 * @param type
+	 * @param playerIndex
+	 * @param cityLocation
+     * @return
+     */
+	public Object buildCity(String type, Integer playerIndex, VertexLocation cityLocation) {
+
+		return model;
+	}
 
 }
