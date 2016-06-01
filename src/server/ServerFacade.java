@@ -84,12 +84,13 @@ public class ServerFacade {
 	}
 
 	public Object playroadbuildingcard(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
-		//play road building card
+		//play build road and remove card
 		return model;
 	}
 
 	public Object playsoldercard(Integer index, Integer victimindex, HexLocation location) {
-		//rob player and remove card
+		robplayer(index, victimindex, location);
+		// remove card
 		return model;
 	}
 }
