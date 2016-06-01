@@ -388,6 +388,44 @@ public class Game extends AbstractModelPartition {
 		return turnTracker;
 	}
 
+	/**
+	 * adds the amount of the resources in a resource list to the specified player. Takes player index.
+	 * If a number is negative, this function always takes away from that specific resource.
+	 * If the number for a type is positive, this function always adds to it.
+	 * @param theList
+	 * @param playerIndex
+     */
+	public void changePlayerResources(ResourceList theList, int playerIndex)
+	{
+		Player thisPlayer = null;
+		try {
+			thisPlayer = findPlayerbyindex(playerIndex);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+		if(thisPlayer != null) {
+			ResourceType theType = ResourceType.BRICK;
+			thisPlayer.addResource(theType, theList.getResourceType(theType));
+
+			theType = ResourceType.WOOD;
+			thisPlayer.addResource(theType, theList.getResourceType(theType));
+
+			theType = ResourceType.WHEAT;
+			thisPlayer.addResource(theType, theList.getResourceType(theType));
+
+			theType = ResourceType.SHEEP;
+			thisPlayer.addResource(theType, theList.getResourceType(theType));
+
+			theType = ResourceType.ORE;
+			thisPlayer.addResource(theType, theList.getResourceType(theType));
+		}
+		else
+		{
+			System.out.println("Player is null in changePlayerResources() in Game.java!! Error!!");
+		}
+
+	}
+
 	public void setTt(TurnTracker tt) {
 		this.turnTracker = tt;
 	}

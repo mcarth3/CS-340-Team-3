@@ -7,6 +7,8 @@ import java.io.FileReader;
 import java.util.Scanner;
 
 import model.Game;
+import model.ObjectNotFoundException;
+import model.Player;
 import model.bank.ResourceList;
 import server.input.UserLoginInput;
 import shared.definitions.ResourceType;
@@ -212,6 +214,11 @@ public class ServerFacade {
      */
 	public Object discardCards(String type, Integer playerIndex, ResourceList discardedCards) {
 
+		model.changePlayerResources(discardedCards, playerIndex);
+
+		//TODO: update the log? How would I check if this is the last person to discard?
 		return model;
 	}
+
+
 }
