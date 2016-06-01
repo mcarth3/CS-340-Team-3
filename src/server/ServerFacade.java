@@ -7,10 +7,14 @@ import java.io.FileReader;
 import java.util.Scanner;
 
 import model.Game;
+import model.ObjectNotFoundException;
+import model.Player;
+import model.bank.ResourceList;
 import server.input.UserLoginInput;
 import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
+import shared.locations.VertexLocation;
 
 /**
  * Created by Jesse on 5/26/2016. This Facade will be called upon by the commands and will be the only class to modify the model on the Server's side.
@@ -93,4 +97,174 @@ public class ServerFacade {
 		// remove card
 		return model;
 	}
+
+
+
+/**
+ * Jesse's methods:
+ */
+
+	/**
+	 * play monopoly, gather resources, remove card, add VP, update log.
+	 * @param type
+	 * @param resource
+	 * @param playerIndex
+     * @return
+     */
+    public Object playMonopoly(String type, String resource, Integer playerIndex) {
+
+	return model;
+}
+	//"Name" used Monopoly and stole all the Resource
+
+	/**
+	 * //play monument, remove card, add VP, update log
+	 * @param type
+	 * @param playerIndex
+     * @return
+     */
+	public Object playMonument(String type, Integer playerIndex) {
+
+		return model;
+}
+	//"Name" built a monument and gained a Victory Point
+
+	/**
+	 * build road, remove resources, update map and log? (IF FREE)
+	 * @param type
+	 * @param playerIndex
+	 * @param roadLocation
+	 * @param free
+     * @return
+     */
+	public Object buildRoad(String type, Integer playerIndex, EdgeLocation roadLocation, boolean free) {
+
+		return model;
+	}
+	//"Name" built a road
+
+	/**
+	 * build settlement, remove resources, update map and log? (IF FREE). Add VP.
+	 * @param type
+	 * @param playerIndex
+	 * @param settlementLocation
+	 * @param free
+     * @return
+     */
+	public Object buildSettlement(String type, Integer playerIndex, VertexLocation settlementLocation, boolean free) {
+
+		return model;
+	}
+//"Name" built a settlement
+
+	/**
+	 * build city, remove resources, update map and log? (IF FREE). Add VP.
+	 * @param type
+	 * @param playerIndex
+	 * @param cityLocation
+     * @return
+     */
+	public Object buildCity(String type, Integer playerIndex, VertexLocation cityLocation) {
+
+		return model;
+	}
+	//"Name" built a city
+
+	/**
+	 * send trade request with this particular offer to a particular player
+	 * @param type
+	 * @param playerIndex
+	 * @param offer
+	 * @param reciever
+     * @return
+     */
+	public Object offerTrade(String type, Integer playerIndex, ResourceList offer, Integer reciever) {
+
+		return model;
+	}
+	//ONLY: Nothing!!
+
+	/**
+	 * accept the trade request, coming from acceptor, gotta send to playerIndex and trade resources for both. Notify log.
+	 * @param type
+	 * @param playerIndex
+	 * @param willAccept
+     * @return
+     */
+	public Object acceptTrade(String type, Integer playerIndex, boolean willAccept) {
+
+		return model;
+	}
+//ONLY: "The trade was accepted" OR "the trade was not accepted"
+
+	/**
+	 * Trades the specified resource with the specified ratio. Tells the bank, updates the log.
+	 * @param type
+	 * @param playerIndex
+	 * @param ratio
+	 * @param inputResource
+	 * @param outputResource
+     * @return
+     */
+	public Object maritimeTrade(String type, Integer playerIndex, Integer ratio, String inputResource, String outputResource) {
+
+		try {
+			model.findPlayerbyindex(playerIndex).addResource(stringTypeToResourceType(inputResource), -1 * ratio);
+
+			//still gotta add to playerIndex, and take away and add to Bank
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+		return model;
+	}
+//Nothing
+
+	/**
+	 * will discard the Cards from specified player (??notify log??)
+	 * @param type
+	 * @param playerIndex
+	 * @param discardedCards
+     * @return
+     */
+	public Object discardCards(String type, Integer playerIndex, ResourceList discardedCards) {
+
+		model.changePlayerResources(discardedCards, playerIndex);
+
+		//TODO: How would I check if this is the last person to discard?
+		return model;
+	}
+//NOTHING
+
+
+
+	public ResourceType stringTypeToResourceType(String theType)
+	{
+		String low = theType.toLowerCase();
+		if(low.equals("wood"))
+		{
+			return ResourceType.WOOD;
+		}
+		else if(low.equals("wheat"))
+		{
+			return ResourceType.WHEAT;
+		}
+		else if(low.equals("brick"))
+		{
+			return ResourceType.BRICK;
+		}
+		else if(low.equals("ore"))
+		{
+			return ResourceType.ORE;
+		}
+		else if(low.equals("sheep"))
+		{
+			return ResourceType.SHEEP;
+		}
+		else
+		{
+			System.out.println("Error in stringTypeToResourceType() of ServerFacade!");
+			return null;
+		}
+	}
+
 }

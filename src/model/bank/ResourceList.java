@@ -6,6 +6,7 @@ package model.bank;
 import javax.annotation.Resource;
 
 import poller.modeljsonparser.AbstractModelPartition;
+import shared.definitions.ResourceType;
 
 public class ResourceList extends AbstractModelPartition {
 
@@ -140,6 +141,69 @@ public class ResourceList extends AbstractModelPartition {
         return total;
     }
 
+    public int getResourceType(ResourceType type)
+    {
+        if(type == ResourceType.WHEAT)
+        {
+            return getWheat();
+        }
+        if(type == ResourceType.WOOD)
+        {
+            return getWood();
+        }
+        if(type == ResourceType.BRICK)
+        {
+            return getBrick();
+        }
+        if(type == ResourceType.SHEEP)
+        {
+            return getSheep();
+        }
+        if(type == ResourceType.ORE)
+        {
+            return getOre();
+        }
+        else
+        {
+            System.out.println("Error! getResourceType in ResourceList is broken!!");
+            return -1;
+        }
 
+
+
+    }
+
+
+    public void changeResourceTypeWithAmount(ResourceType type, int amount)
+    {
+        if(type == ResourceType.WHEAT)
+        {
+            setWheat(getWheat() + amount);
+        }
+        if(type == ResourceType.WOOD)
+        {
+            setWood(getWood() + amount);
+        }
+        if(type == ResourceType.BRICK)
+        {
+            setBrick(getBrick() + amount);
+        }
+        if(type == ResourceType.SHEEP)
+        {
+            setSheep(getSheep() + amount);
+        }
+        if(type == ResourceType.ORE)
+        {
+            setOre(getOre() + amount);
+        }
+        else
+        {
+            System.out.println("Error! getResourceType in ResourceList is broken!!");
+
+        }
+
+
+
+    }
 
 }

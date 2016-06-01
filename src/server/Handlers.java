@@ -9,22 +9,9 @@ import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import poller.modeljsonparser.ModelParser;
-import server.commands.BuyDevCardCommand;
-import server.commands.FinishTurnCommand;
-import server.commands.RoadBuildingCardCommand;
-import server.commands.RobPlayerCommand;
-import server.commands.RollNumberCommand;
-import server.commands.SoldierCardCommand;
-import server.commands.UserLoginCommand;
-import server.commands.YearOfPlentyCommand;
+import server.commands.*;
 import server.input.UserLoginInput;
-import server.jsonObjects.DevCardJsonObject;
-import server.jsonObjects.FinishJsonObject;
-import server.jsonObjects.RoadBuildingJsonObject;
-import server.jsonObjects.RobJsonObject;
-import server.jsonObjects.RollJsonObject;
-import server.jsonObjects.SoldierJsonObject;
-import server.jsonObjects.YOPJsonObject;
+import server.jsonObjects.*;
 
 /**
  * Created by Jesse on 5/26/2016. This class might contain 25 methods. However, we could modify it to make it 25 different
@@ -455,4 +442,217 @@ public class Handlers {
 	public HttpHandler SoldierHandler() {
 		return Soldier;
 	}
+
+	// --------------------- Mike's End ---------------------------
+	/**
+	 * Checks if Monopoly can occur and calls the Monopoly command object
+	 *
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a Monopoly jsonobject
+	 * @post Monopoly Command is sent
+	 */
+	private HttpHandler Monopoly = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+			MonopolyJsonObject monopolyObject = (MonopolyJsonObject) deserialize(http_exchange, MonopolyJsonObject.class);
+			MonopolyCommand monopolyCommand = new MonopolyCommand();
+
+			String response = serialize(monopolyCommand.execute(monopolyObject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+	};
+
+	public HttpHandler MonopolyHandler() {
+		return Monopoly;
+	}
+
+	/**
+	 * Checks if Monument can occur and calls the Monument command object
+	 *
+	 * @param http_exchange the rest of the data given with the command to the server
+	 * @pre the data sent with the command is in the valid format for a Monument jsonobject
+	 * @post Monopoly Command is sent
+	 */
+	private HttpHandler Monument = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+			MonumentJsonObject monumentObject = (MonumentJsonObject) deserialize(http_exchange, MonumentJsonObject.class);
+			MonumentCommand monumentCommand = new MonumentCommand();
+
+			String response = serialize(monumentCommand.execute(monumentObject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+	};
+
+	public HttpHandler MonumentHandler() {
+		return Monument;
+	}
+
+	/**
+	 * executes BuildRoadCommand
+	 */
+	private HttpHandler BuildRoad = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+			BuildRoadJsonObject buildRoadJsonObject = (BuildRoadJsonObject) deserialize(http_exchange, BuildRoadJsonObject.class);
+			BuildRoadCommand buildRoadCommand = new BuildRoadCommand();
+
+			String response = serialize(buildRoadCommand.execute(buildRoadJsonObject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+	};
+
+	public HttpHandler BuildRoadHandler() {
+		return BuildRoad;
+	}
+
+	/**
+	 * executes BuildSettlementCommand
+	 */
+	private HttpHandler BuildSettlement = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+			BuildSettlementJsonObject buildSettlementJsonObject = (BuildSettlementJsonObject) deserialize(http_exchange, BuildSettlementJsonObject.class);
+			BuildSettlementCommand buildSettlementCommand = new BuildSettlementCommand();
+
+			String response = serialize(buildSettlementCommand.execute(buildSettlementJsonObject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+	};
+
+	public HttpHandler BuildSettlementHandler() {
+		return BuildSettlement;
+	}
+
+	/**
+	 * executes BuildCityCommand
+	 */
+	private HttpHandler BuildCity = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+			BuildCityJsonObject buildCityJsonObject = (BuildCityJsonObject) deserialize(http_exchange, BuildCityJsonObject.class);
+			BuildCityCommand buildCityCommand = new BuildCityCommand();
+
+			String response = serialize(buildCityCommand.execute(buildCityJsonObject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+	};
+
+	public HttpHandler BuildCityHandler() {
+		return BuildCity;
+	}
+
+	/**
+	 * executes OfferTradeCommand
+	 */
+	private HttpHandler OfferTrade = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+			OfferTradeJsonObject offerTradeJsonObject = (OfferTradeJsonObject) deserialize(http_exchange, OfferTradeJsonObject.class);
+			OfferTradeCommand newCommand = new OfferTradeCommand();
+
+			String response = serialize(newCommand.execute(offerTradeJsonObject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+	};
+
+	public HttpHandler OfferTradeHandler() {
+		return OfferTrade;
+	}
+
+
+	/**
+	 * executes AcceptTradeCommand
+	 */
+	private HttpHandler AcceptTrade = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+			AcceptTradeJsonObject newJSONObject = (AcceptTradeJsonObject) deserialize(http_exchange, AcceptTradeJsonObject.class);
+			AcceptTradeCommand newCommand = new AcceptTradeCommand();
+
+			String response = serialize(newCommand.execute(newJSONObject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+	};
+
+	public HttpHandler AcceptTradeHandler() {
+		return AcceptTrade;
+	}
+
+
+	/**
+	 * executes MaritimeTradeCommand
+	 */
+	private HttpHandler MaritimeTrade = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+			MaritimeTradeJsonObject newJSONObject = (MaritimeTradeJsonObject) deserialize(http_exchange, MaritimeTradeJsonObject.class);
+			MaritimeTradeCommand newCommand = new MaritimeTradeCommand();
+
+			String response = serialize(newCommand.execute(newJSONObject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+	};
+
+	public HttpHandler MaritimeTradeHandler() {
+		return MaritimeTrade;
+	}
+
+
+	/**
+	 * executes DiscardCardsCommand
+	 */
+	private HttpHandler DiscardCards = new HttpHandler() {
+		@Override
+		public void handle(HttpExchange http_exchange) throws IOException {
+			DiscardCardsJsonObject newJSONObject = (DiscardCardsJsonObject) deserialize(http_exchange, DiscardCardsJsonObject.class);
+			DiscardCardsCommand newCommand = new DiscardCardsCommand();
+
+			String response = serialize(newCommand.execute(newJSONObject));
+
+			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			OutputStream os = http_exchange.getResponseBody();
+			os.write(response.getBytes());
+			os.close();
+		}
+	};
+
+	public HttpHandler DiscardCardsHandler() {
+		return DiscardCards;
+	}
+
+
+
 }
