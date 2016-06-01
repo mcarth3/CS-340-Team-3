@@ -10,7 +10,6 @@ import com.sun.net.httpserver.HttpHandler;
 
 import poller.modeljsonparser.ModelParser;
 import server.commands.*;
-import server.input.UserLoginInput;
 import server.jsonObjects.*;
 
 /**
@@ -72,7 +71,7 @@ public class Handlers {
 			e.printStackTrace();
 		}
 		// this is what we get from the server
-		System.out.println(sb.toString());
+		//System.out.println(sb.toString());
 
 		String json = sb.toString();
 
@@ -100,16 +99,12 @@ public class Handlers {
 	private HttpHandler userLogin = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-
-			UserLoginInput uli = (UserLoginInput) deserialize(http_exchange, UserLoginInput.class);
+			
+			UserLoginJsonObject uljo = (UserLoginJsonObject) deserialize(http_exchange, UserLoginJsonObject.class);
 			ICommand c = new UserLoginCommand();
-
-			// TODO: Maybe make UserLoginOutput?
-			Object output = c.execute(uli);
-
-			// Serialize output back to sting
-
-			String response = "Successcatan.user=%7B%22name%22%3A%22Sam%22%2C%22password%22%3A%22sam%22%2C%22playerID%22%3A0%7D;Path=/;";
+			Object output = c.execute(uljo);
+			String response = output.toString();
+			//String response = "Successcatan.user=%7B%22name%22%3A%22Sam%22%2C%22password%22%3A%22sam%22%2C%22playerID%22%3A0%7D;Path=/;";
 			http_exchange.sendResponseHeaders(200, response.length());
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
@@ -129,7 +124,13 @@ public class Handlers {
 	private HttpHandler userRegister = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
+			
+			UserRegisterJsonObject urjo = (UserRegisterJsonObject) deserialize(http_exchange, UserRegisterJsonObject.class);
+			ICommand c = new UserLoginCommand();
 
+			// TODO: Maybe make UserLoginOutput?
+			Object output = c.execute(urjo);
+			
 			// System.out.println("registerUser Handler is getting called");
 
 			String response = "Successcatan.user=%7B%22authentication%22%3A%221224085268%22%2C%22name%22%3A%22Wayne%22%2C%22password%22%3A%22johnwayne%22%2C%22playerID%22%3A13%7D;Path=/;";
@@ -152,9 +153,11 @@ public class Handlers {
 	private HttpHandler gamesList = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-
-			// System.out.println("gamesList Handler is getting called");
-
+			ICommand c = new GamesListCommand();
+			
+			//Doesn't need any input
+			Object output = c.execute(null);
+			
 			String response = "[{\"title\":\"Default Game\",\"id\":0,\"players\":[{\"color\":\"orange\",\"name\":\"Sam\",\"id\":0},{\"color\":\"blue\",\"name\":\"Brooke\",\"id\":1},{\"color\":\"red\",\"name\":\"Pete\",\"id\":10},{\"color\":\"green\",\"name\":\"Mark\",\"id\":11}]},{\"title\":\"AI Game\",\"id\":1,\"players\":[{\"color\":\"orange\",\"name\":\"Pete\",\"id\":10},{\"color\":\"blue\",\"name\":\"Ken\",\"id\":-2},{\"color\":\"yellow\",\"name\":\"Scott\",\"id\":-3},{\"color\":\"green\",\"name\":\"Squall\",\"id\":-4}]},{\"title\":\"Empty Game\",\"id\":2,\"players\":[{\"color\":\"orange\",\"name\":\"Sam\",\"id\":0},{\"color\":\"blue\",\"name\":\"Brooke\",\"id\":1},{\"color\":\"red\",\"name\":\"Pete\",\"id\":10},{\"color\":\"green\",\"name\":\"Mark\",\"id\":11}]},{\"title\":\"Dev Game\",\"id\":3,\"players\":[{\"color\":\"purple\",\"name\":\"Sam\",\"id\":0},{\"color\":\"puce\",\"name\":\"Hannah\",\"id\":-2},{\"color\":\"white\",\"name\":\"Steve\",\"id\":-3},{\"color\":\"yellow\",\"name\":\"Quinn\",\"id\":-4}]},{\"title\":\"Buy Dev Card\",\"id\":4,\"players\":[{\"color\":\"green\",\"name\":\"Sam\",\"id\":0},{\"color\":\"orange\",\"name\":\"Scott\",\"id\":-2},{\"color\":\"yellow\",\"name\":\"Quinn\",\"id\":-3},{\"color\":\"blue\",\"name\":\"Steve\",\"id\":-4}]},{\"title\":\"Winning game\",\"id\":5,\"players\":[{\"color\":\"purple\",\"name\":\"Sam\",\"id\":0},{\"color\":\"puce\",\"name\":\"Ken\",\"id\":-2},{\"color\":\"white\",\"name\":\"Hannah\",\"id\":-3},{\"color\":\"yellow\",\"name\":\"Miguel\",\"id\":-4}]},{\"title\":\"New John Wayne Game\",\"id\":6,\"players\":[{\"color\":\"purple\",\"name\":\"John\",\"id\":12},{\"color\":\"white\",\"name\":\"Ken\",\"id\":-2},{\"color\":\"puce\",\"name\":\"Squall\",\"id\":-3},{\"color\":\"yellow\",\"name\":\"Steve\",\"id\":-4}]}]";
 			http_exchange.sendResponseHeaders(200, response.length());
 			OutputStream os = http_exchange.getResponseBody();
@@ -175,8 +178,10 @@ public class Handlers {
 	private HttpHandler gamesCreate = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-
-			// System.out.println("gamesCreate Handler is getting called");
+			GamesCreateJsonObject gcjo = (GamesCreateJsonObject) deserialize(http_exchange, GamesCreateJsonObject.class); 
+			ICommand c = new GamesCreateCommand(); 
+			
+			Object output = c.execute(gcjo);
 
 			String response = "{\"title\":\"New Game Title\",\"id\":7,\"players\":[{},{},{},{}]}";
 			http_exchange.sendResponseHeaders(200, response.length());
@@ -198,7 +203,10 @@ public class Handlers {
 	private HttpHandler gamesJoin = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-
+			//GamesJoinJsonObject gjjo = (GamesJoinJsonObject) deserialize(http_exchange, GamesJoinJsonObject.class); 
+			//ICommand c = new GamesJoinCommand();
+			
+			//Object output = c.execute(gjjo); 
 			// System.out.println("gamesJoin Handler is getting called");
 
 			String response = "Successcatan.game=0;Path=/;";
@@ -221,9 +229,9 @@ public class Handlers {
 	private HttpHandler gameModel = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-
-			// System.out.println("gameModel Handler is getting called");
-
+			ICommand c = new GameModelCommand(); 
+			String output = serialize(c.execute(null));
+			//String response = output; 
 			String response = "{\"deck\":{\"yearOfPlenty\":2,\"monopoly\":2,\"soldier\":14,\"roadBuilding\":2,\"monument\":5},\"map\":{\"hexes\":[{\"location\":{\"x\":0,\"y\":-2}},{\"resource\":\"brick\",\"location\":{\"x\":1,\"y\":-2},\"number\":4},{\"resource\":\"wood\",\"location\":{\"x\":2,\"y\":-2},\"number\":11},{\"resource\":\"brick\",\"location\":{\"x\":-1,\"y\":-1},\"number\":8},{\"resource\":\"wood\",\"location\":{\"x\":0,\"y\":-1},\"number\":3},{\"resource\":\"ore\",\"location\":{\"x\":1,\"y\":-1},\"number\":9},{\"resource\":\"sheep\",\"location\":{\"x\":2,\"y\":-1},\"number\":12},{\"resource\":\"ore\",\"location\":{\"x\":-2,\"y\":0},\"number\":5},{\"resource\":\"sheep\",\"location\":{\"x\":-1,\"y\":0},\"number\":10},{\"resource\":\"wheat\",\"location\":{\"x\":0,\"y\":0},\"number\":11},{\"resource\":\"brick\",\"location\":{\"x\":1,\"y\":0},\"number\":5},{\"resource\":\"wheat\",\"location\":{\"x\":2,\"y\":0},\"number\":6},{\"resource\":\"wheat\",\"location\":{\"x\":-2,\"y\":1},\"number\":2},{\"resource\":\"sheep\",\"location\":{\"x\":-1,\"y\":1},\"number\":9},{\"resource\":\"wood\",\"location\":{\"x\":0,\"y\":1},\"number\":4},{\"resource\":\"sheep\",\"location\":{\"x\":1,\"y\":1},\"number\":10},{\"resource\":\"wood\",\"location\":{\"x\":-2,\"y\":2},\"number\":6},{\"resource\":\"ore\",\"location\":{\"x\":-1,\"y\":2},\"number\":3},{\"resource\":\"wheat\",\"location\":{\"x\":0,\"y\":2},\"number\":8}],\"roads\":[{\"owner\":1,\"location\":{\"direction\":\"S\",\"x\":-1,\"y\":-1}},{\"owner\":3,\"location\":{\"direction\":\"SW\",\"x\":-1,\"y\":1}},{\"owner\":3,\"location\":{\"direction\":\"SW\",\"x\":2,\"y\":-2}},{\"owner\":2,\"location\":{\"direction\":\"S\",\"x\":1,\"y\":-1}},{\"owner\":0,\"location\":{\"direction\":\"S\",\"x\":0,\"y\":1}},{\"owner\":2,\"location\":{\"direction\":\"S\",\"x\":0,\"y\":0}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":-2,\"y\":1}},{\"owner\":0,\"location\":{\"direction\":\"SW\",\"x\":2,\"y\":0}}],\"cities\":[],\"settlements\":[{\"owner\":3,\"location\":{\"direction\":\"SW\",\"x\":-1,\"y\":1}},{\"owner\":3,\"location\":{\"direction\":\"SE\",\"x\":1,\"y\":-2}},{\"owner\":2,\"location\":{\"direction\":\"SW\",\"x\":0,\"y\":0}},{\"owner\":2,\"location\":{\"direction\":\"SW\",\"x\":1,\"y\":-1}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":-2,\"y\":1}},{\"owner\":0,\"location\":{\"direction\":\"SE\",\"x\":0,\"y\":1}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":-1,\"y\":-1}},{\"owner\":0,\"location\":{\"direction\":\"SW\",\"x\":2,\"y\":0}}],\"radius\":3,\"ports\":[{\"ratio\":3,\"direction\":\"NW\",\"location\":{\"x\":2,\"y\":1}},{\"ratio\":2,\"resource\":\"ore\",\"direction\":\"S\",\"location\":{\"x\":1,\"y\":-3}},{\"ratio\":2,\"resource\":\"brick\",\"direction\":\"NE\",\"location\":{\"x\":-2,\"y\":3}},{\"ratio\":2,\"resource\":\"wheat\",\"direction\":\"S\",\"location\":{\"x\":-1,\"y\":-2}},{\"ratio\":2,\"resource\":\"wood\",\"direction\":\"NE\",\"location\":{\"x\":-3,\"y\":2}},{\"ratio\":3,\"direction\":\"SW\",\"location\":{\"x\":3,\"y\":-3}},{\"ratio\":2,\"resource\":\"sheep\",\"direction\":\"NW\",\"location\":{\"x\":3,\"y\":-1}},{\"ratio\":3,\"direction\":\"N\",\"location\":{\"x\":0,\"y\":3}},{\"ratio\":3,\"direction\":\"SE\",\"location\":{\"x\":-3,\"y\":0}}],\"robber\":{\"x\":0,\"y\":-2}},\"players\":[{\"resources\":{\"brick\":0,\"wood\":1,\"sheep\":1,\"wheat\":1,\"ore\":0},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":13,\"cities\":4,\"settlements\":3,\"soldiers\":0,\"victoryPoints\":2,\"monuments\":0,\"playedDevCard\":false,\"discarded\":false,\"playerID\":0,\"playerIndex\":0,\"name\":\"Sam\",\"color\":\"brown\"},{\"resources\":{\"brick\":1,\"wood\":0,\"sheep\":1,\"wheat\":0,\"ore\":1},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":13,\"cities\":4,\"settlements\":3,\"soldiers\":0,\"victoryPoints\":2,\"monuments\":0,\"playedDevCard\":false,\"discarded\":false,\"playerID\":1,\"playerIndex\":1,\"name\":\"Brooke\",\"color\":\"blue\"},{\"resources\":{\"brick\":0,\"wood\":1,\"sheep\":1,\"wheat\":1,\"ore\":0},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":13,\"cities\":4,\"settlements\":3,\"soldiers\":0,\"victoryPoints\":2,\"monuments\":0,\"playedDevCard\":false,\"discarded\":false,\"playerID\":10,\"playerIndex\":2,\"name\":\"Pete\",\"color\":\"red\"},{\"resources\":{\"brick\":0,\"wood\":1,\"sheep\":1,\"wheat\":0,\"ore\":1},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":13,\"cities\":4,\"settlements\":3,\"soldiers\":0,\"victoryPoints\":2,\"monuments\":0,\"playedDevCard\":false,\"discarded\":false,\"playerID\":11,\"playerIndex\":3,\"name\":\"Mark\",\"color\":\"green\"}],\"log\":{\"lines\":[{\"source\":\"Sam\",\"message\":\"Sam built a road\"},{\"source\":\"Sam\",\"message\":\"Sam built a settlement\"},{\"source\":\"Sam\",\"message\":\"Sam\u0027s turn just ended\"},{\"source\":\"Brooke\",\"message\":\"Brooke built a road\"},{\"source\":\"Brooke\",\"message\":\"Brooke built a settlement\"},{\"source\":\"Brooke\",\"message\":\"Brooke\u0027s turn just ended\"},{\"source\":\"Pete\",\"message\":\"Pete built a road\"},{\"source\":\"Pete\",\"message\":\"Pete built a settlement\"},{\"source\":\"Pete\",\"message\":\"Pete\u0027s turn just ended\"},{\"source\":\"Mark\",\"message\":\"Mark built a road\"},{\"source\":\"Mark\",\"message\":\"Mark built a settlement\"},{\"source\":\"Mark\",\"message\":\"Mark\u0027s turn just ended\"},{\"source\":\"Mark\",\"message\":\"Mark built a road\"},{\"source\":\"Mark\",\"message\":\"Mark built a settlement\"},{\"source\":\"Mark\",\"message\":\"Mark\u0027s turn just ended\"},{\"source\":\"Pete\",\"message\":\"Pete built a road\"},{\"source\":\"Pete\",\"message\":\"Pete built a settlement\"},{\"source\":\"Pete\",\"message\":\"Pete\u0027s turn just ended\"},{\"source\":\"Brooke\",\"message\":\"Brooke built a road\"},{\"source\":\"Brooke\",\"message\":\"Brooke built a settlement\"},{\"source\":\"Brooke\",\"message\":\"Brooke\u0027s turn just ended\"},{\"source\":\"Sam\",\"message\":\"Sam built a road\"},{\"source\":\"Sam\",\"message\":\"Sam built a settlement\"},{\"source\":\"Sam\",\"message\":\"Sam\u0027s turn just ended\"}]},\"chat\":{\"lines\":[]},\"bank\":{\"brick\":23,\"wood\":21,\"sheep\":20,\"wheat\":22,\"ore\":22},\"turnTracker\":{\"status\":\"Rolling\",\"currentTurn\":0,\"longestRoad\":-1,\"largestArmy\":-1},\"winner\":-1,\"version\":0}";
 			http_exchange.sendResponseHeaders(200, response.length());
 			OutputStream os = http_exchange.getResponseBody();
@@ -244,8 +252,10 @@ public class Handlers {
 	private HttpHandler movesSendChat = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-
-			// System.out.println("movesSendChat Handler is getting called");
+			MovesSendChatJsonObject mscjo = (MovesSendChatJsonObject) deserialize(http_exchange, MovesSendChatJsonObject.class);
+			ICommand c = new MovesSendChatCommand();
+			String output = serialize(c.execute(mscjo));
+			
 
 			String response = "{\"deck\":{\"yearOfPlenty\":2,\"monopoly\":2,\"soldier\":13,\"roadBuilding\":2,\"monument\":3},\"map\":{\"hexes\":[{\"location\":{\"x\":0,\"y\":-2}},{\"resource\":\"brick\",\"location\":{\"x\":1,\"y\":-2},\"number\":4},{\"resource\":\"wood\",\"location\":{\"x\":2,\"y\":-2},\"number\":11},{\"resource\":\"brick\",\"location\":{\"x\":-1,\"y\":-1},\"number\":8},{\"resource\":\"wood\",\"location\":{\"x\":0,\"y\":-1},\"number\":3},{\"resource\":\"ore\",\"location\":{\"x\":1,\"y\":-1},\"number\":9},{\"resource\":\"sheep\",\"location\":{\"x\":2,\"y\":-1},\"number\":12},{\"resource\":\"ore\",\"location\":{\"x\":-2,\"y\":0},\"number\":5},{\"resource\":\"sheep\",\"location\":{\"x\":-1,\"y\":0},\"number\":10},{\"resource\":\"wheat\",\"location\":{\"x\":0,\"y\":0},\"number\":11},{\"resource\":\"brick\",\"location\":{\"x\":1,\"y\":0},\"number\":5},{\"resource\":\"wheat\",\"location\":{\"x\":2,\"y\":0},\"number\":6},{\"resource\":\"wheat\",\"location\":{\"x\":-2,\"y\":1},\"number\":2},{\"resource\":\"sheep\",\"location\":{\"x\":-1,\"y\":1},\"number\":9},{\"resource\":\"wood\",\"location\":{\"x\":0,\"y\":1},\"number\":4},{\"resource\":\"sheep\",\"location\":{\"x\":1,\"y\":1},\"number\":10},{\"resource\":\"wood\",\"location\":{\"x\":-2,\"y\":2},\"number\":6},{\"resource\":\"ore\",\"location\":{\"x\":-1,\"y\":2},\"number\":3},{\"resource\":\"wheat\",\"location\":{\"x\":0,\"y\":2},\"number\":8}],\"roads\":[{\"owner\":1,\"location\":{\"direction\":\"S\",\"x\":-1,\"y\":-1}},{\"owner\":0,\"location\":{\"direction\":\"SW\",\"x\":2,\"y\":-1}},{\"owner\":3,\"location\":{\"direction\":\"NW\",\"x\":-2,\"y\":0}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":0,\"y\":-2}},{\"owner\":1,\"location\":{\"direction\":\"S\",\"x\":1,\"y\":0}},{\"owner\":3,\"location\":{\"direction\":\"SE\",\"x\":-1,\"y\":1}},{\"owner\":3,\"location\":{\"direction\":\"SW\",\"x\":0,\"y\":0}},{\"owner\":0,\"location\":{\"direction\":\"SE\",\"x\":-2,\"y\":0}},{\"owner\":1,\"location\":{\"direction\":\"SE\",\"x\":1,\"y\":0}},{\"owner\":2,\"location\":{\"direction\":\"SE\",\"x\":-1,\"y\":0}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":-1,\"y\":-1}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":2,\"y\":0}},{\"owner\":1,\"location\":{\"direction\":\"S\",\"x\":0,\"y\":-2}},{\"owner\":1,\"location\":{\"direction\":\"NW\",\"x\":-1,\"y\":-1}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":1,\"y\":0}},{\"owner\":2,\"location\":{\"direction\":\"NE\",\"x\":0,\"y\":-2}},{\"owner\":1,\"location\":{\"direction\":\"SE\",\"x\":-1,\"y\":-1}},{\"owner\":1,\"location\":{\"direction\":\"N\",\"x\":-2,\"y\":0}}],\"cities\":[{\"owner\":0,\"location\":{\"direction\":\"SE\",\"x\":-2,\"y\":0}}],\"settlements\":[{\"owner\":3,\"location\":{\"direction\":\"W\",\"x\":-2,\"y\":0}},{\"owner\":2,\"location\":{\"direction\":\"SE\",\"x\":-1,\"y\":0}},{\"owner\":3,\"location\":{\"direction\":\"SE\",\"x\":-1,\"y\":1}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":1,\"y\":0}},{\"owner\":2,\"location\":{\"direction\":\"NE\",\"x\":0,\"y\":-2}},{\"owner\":0,\"location\":{\"direction\":\"SW\",\"x\":2,\"y\":-1}},{\"owner\":1,\"location\":{\"direction\":\"NW\",\"x\":-1,\"y\":-1}}],\"radius\":3,\"ports\":[{\"ratio\":3,\"direction\":\"NW\",\"location\":{\"x\":2,\"y\":1}},{\"ratio\":2,\"resource\":\"ore\",\"direction\":\"S\",\"location\":{\"x\":1,\"y\":-3}},{\"ratio\":2,\"resource\":\"brick\",\"direction\":\"NE\",\"location\":{\"x\":-2,\"y\":3}},{\"ratio\":2,\"resource\":\"wheat\",\"direction\":\"S\",\"location\":{\"x\":-1,\"y\":-2}},{\"ratio\":2,\"resource\":\"wood\",\"direction\":\"NE\",\"location\":{\"x\":-3,\"y\":2}},{\"ratio\":3,\"direction\":\"SW\",\"location\":{\"x\":3,\"y\":-3}},{\"ratio\":2,\"resource\":\"sheep\",\"direction\":\"NW\",\"location\":{\"x\":3,\"y\":-1}},{\"ratio\":3,\"direction\":\"N\",\"location\":{\"x\":0,\"y\":3}},{\"ratio\":3,\"direction\":\"SE\",\"location\":{\"x\":-3,\"y\":0}}],\"robber\":{\"x\":1,\"y\":-1}},\"players\":[{\"resources\":{\"brick\":0,\"wood\":0,\"sheep\":0,\"wheat\":6,\"ore\":1},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":1,\"roadBuilding\":0,\"monument\":1},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":13,\"cities\":3,\"settlements\":4,\"soldiers\":0,\"victoryPoints\":4,\"monuments\":0,\"playedDevCard\":false,\"discarded\":true,\"playerID\":0,\"playerIndex\":0,\"name\":\"Sam\",\"color\":\"brown\"},{\"resources\":{\"brick\":0,\"wood\":0,\"sheep\":3,\"wheat\":0,\"ore\":1},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":4,\"cities\":4,\"settlements\":3,\"soldiers\":0,\"victoryPoints\":4,\"monuments\":0,\"playedDevCard\":false,\"discarded\":true,\"playerID\":-2,\"playerIndex\":1,\"name\":\"Scott\",\"color\":\"orange\"},{\"resources\":{\"brick\":0,\"wood\":0,\"sheep\":3,\"wheat\":1,\"ore\":0},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":13,\"cities\":4,\"settlements\":3,\"soldiers\":0,\"victoryPoints\":2,\"monuments\":0,\"playedDevCard\":false,\"discarded\":false,\"playerID\":-3,\"playerIndex\":2,\"name\":\"Quinn\",\"color\":\"yellow\"},{\"resources\":{\"brick\":0,\"wood\":3,\"sheep\":0,\"wheat\":0,\"ore\":3},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":12,\"cities\":4,\"settlements\":3,\"soldiers\":0,\"victoryPoints\":2,\"monuments\":0,\"playedDevCard\":false,\"discarded\":false,\"playerID\":-4,\"playerIndex\":3,\"name\":\"Steve\",\"color\":\"blue\"}],\"log\":{\"lines\":[{\"source\":\"Quinn\",\"message\":\"Quinn rolled a 8.\"},{\"source\":\"Quinn\",\"message\":\"Quinn\u0027s turn just ended\"},{\"source\":\"Steve\",\"message\":\"Steve rolled a 6.\"},{\"source\":\"Steve\",\"message\":\"Steve\u0027s turn just ended\"},{\"source\":\"Sam\",\"message\":\"Sam rolled a 11.\"},{\"source\":\"Sam\",\"message\":\"Sam\u0027s turn just ended\"},{\"source\":\"Scott\",\"message\":\"Scott rolled a 10.\"},{\"source\":\"Scott\",\"message\":\"Scott\u0027s turn just ended\"},{\"source\":\"Quinn\",\"message\":\"Quinn rolled a 3.\"},{\"source\":\"Quinn\",\"message\":\"Quinn\u0027s turn just ended\"},{\"source\":\"Steve\",\"message\":\"Steve rolled a 3.\"},{\"source\":\"Steve\",\"message\":\"Steve\u0027s turn just ended\"},{\"source\":\"Sam\",\"message\":\"Sam rolled a 4.\"},{\"source\":\"Sam\",\"message\":\"Sam\u0027s turn just ended\"},{\"source\":\"Scott\",\"message\":\"Scott rolled a 10.\"},{\"source\":\"Scott\",\"message\":\"Scott\u0027s turn just ended\"},{\"source\":\"Quinn\",\"message\":\"Quinn rolled a 7.\"},{\"source\":\"Quinn\",\"message\":\"Quinn\u0027s turn just ended\"},{\"source\":\"Steve\",\"message\":\"Steve rolled a 3.\"},{\"source\":\"Steve\",\"message\":\"Steve\u0027s turn just ended\"},{\"source\":\"Sam\",\"message\":\"Sam rolled a 8.\"},{\"source\":\"Sam\",\"message\":\"Sam\u0027s turn just ended\"},{\"source\":\"Scott\",\"message\":\"Scott rolled a 3.\"},{\"source\":\"Scott\",\"message\":\"Scott\u0027s turn just ended\"},{\"source\":\"Quinn\",\"message\":\"Quinn rolled a 4.\"},{\"source\":\"Quinn\",\"message\":\"Quinn\u0027s turn just ended\"},{\"source\":\"Steve\",\"message\":\"Steve rolled a 2.\"},{\"source\":\"Steve\",\"message\":\"Steve\u0027s turn just ended\"},{\"source\":\"Sam\",\"message\":\"Sam rolled a 7.\"},{\"source\":\"Sam\",\"message\":\"Sam moved the robber and robbed Sam.\"}]},\"chat\":{\"lines\":[{\"source\":\"Sam\",\"message\":\"This is a message\"}]},\"bank\":{\"brick\":24,\"wood\":21,\"sheep\":18,\"wheat\":17,\"ore\":19},\"turnTracker\":{\"status\":\"Playing\",\"currentTurn\":0,\"longestRoad\":1,\"largestArmy\":-1},\"winner\":-1,\"version\":238}";
 			http_exchange.sendResponseHeaders(200, response.length());

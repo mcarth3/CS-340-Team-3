@@ -1,5 +1,7 @@
 package server.commands;
 import server.ICommand;
+import server.ServerFacade;
+import server.jsonObjects.GamesCreateJsonObject;
 
 public class GamesCreateCommand implements ICommand {
 	/**
@@ -9,8 +11,9 @@ public class GamesCreateCommand implements ICommand {
     */
 	@Override
 	public Object execute(Object data) {
-		return data; 
-		// TODO Auto-generated method stub
-		
+		GamesCreateJsonObject gcjo = (GamesCreateJsonObject) data; 
+		ServerFacade sf = new ServerFacade(); 
+		Object result = sf.GamesCreate(gcjo.getName(), gcjo.isRandomNumbers(), gcjo.isRandomPorts(), gcjo.isRandomTiles()); 
+		return result;
 	}
 }

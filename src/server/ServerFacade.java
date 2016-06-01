@@ -4,13 +4,13 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
-
 import model.Game;
 import model.ObjectNotFoundException;
 import model.Player;
 import model.bank.ResourceList;
-import server.input.UserLoginInput;
+import server.jsonObjects.*;
 import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
@@ -49,15 +49,55 @@ public class ServerFacade {
 
 	}
 
-	public Object UserLogin(Object input) {
-		// TODO: This is where the magic happens
-		UserLoginInput uli = (UserLoginInput) input;
-		System.out.println(uli.getUsername());
-		System.out.println(uli.getPassword());
-
-		// TODO: Maybe make UserLoginOutput to return?
-
-		return input;
+	public Object UserLogin(String username, String password) {
+		
+		//TODO: get playerID 
+		String userInfo = "{\"name\":\""+username+"\",\"password\":\""+password+"\",\"playerID\":0}"; 
+		String result = null;
+		try {
+			result = java.net.URLEncoder.encode(userInfo, "UTF-8"); 
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		result = "Successcatan.user="+result+";Path=/;"; 
+		//System.out.println(result);
+		
+		return result; 
+	}
+	public Object UserRegister(String username, String password) {
+		
+		//TODO: get playerID and figure out authentication
+		String userInfo = "{\"authentication\":\"1224085268\",\"name\":\""+username+"\",\"password\":\""+password+"\",\"playerID\":13}"; 
+		String result = null;
+		try {
+			result = java.net.URLEncoder.encode(userInfo, "UTF-8"); 
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
+		result = "Successcatan.user="+result+";Path=/;"; 
+		//System.out.println(result);
+		
+		return result; 
+	}
+	public Object GamesList(){
+		//System.out.println("game list in server facade"); 
+		return null;
+	}
+	public Object GamesCreate(String name, boolean numbers, boolean ports, boolean tiles){
+		//System.out.println("game create in server facade");
+		return null; 
+	}
+	public Object GamesJoin(Integer id, String color){
+		//System.out.println("game join in server facade"); 
+		return null;
+	}
+	public Object GameModel(){
+		// Probably have to do something about the version?
+		return model;
+	}
+	public Object MovesSendChat(Integer id, String content){
+		//System.out.println("moves send chat in server facade"); 
+		return model; 
 	}
 
 	public Game rolldice(Integer index, Integer number) {

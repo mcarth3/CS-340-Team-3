@@ -1,6 +1,7 @@
 package server.commands;
 import server.ICommand;
 import server.ServerFacade;
+import server.jsonObjects.UserLoginJsonObject;
 
 public class UserLoginCommand implements ICommand {
 	/**
@@ -10,8 +11,9 @@ public class UserLoginCommand implements ICommand {
     */
 	@Override
 	public Object execute(Object data) { 
+		UserLoginJsonObject uljo = (UserLoginJsonObject) data;
 		ServerFacade sf = new ServerFacade(); 
-		Object result = sf.UserLogin(data); 
-		return result; 
+		Object result = sf.UserLogin(uljo.getUsername(), uljo.getPassword()); 
+		return result;		
 	}
 }

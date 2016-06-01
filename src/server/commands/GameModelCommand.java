@@ -1,6 +1,7 @@
 package server.commands;
 
 import server.ICommand;
+import server.ServerFacade;
 
 public class GameModelCommand implements ICommand {
 	/**
@@ -10,8 +11,8 @@ public class GameModelCommand implements ICommand {
     */
 	@Override
 	public Object execute(Object data) {
-		return data; 
-		// TODO Auto-generated method stub
-		
+		ServerFacade sf = new ServerFacade(); 
+		Object result = sf.GameModel();  
+		return result;
 	}
 }

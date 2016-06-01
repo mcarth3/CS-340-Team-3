@@ -215,7 +215,7 @@ public class LoginController extends Controller implements ILoginController {
 			result = false;
 		}
 		
-		return result; 
+		return true; 
 	}
 	public void update(){
 	}

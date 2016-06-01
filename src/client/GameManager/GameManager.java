@@ -131,6 +131,7 @@ public class GameManager extends Observable {
 	}
 
 	private void updateLocalPlayer() {
+		System.out.println("this is the last thing that gets called before it breaks?"); 
 		ArrayList<Player> players = modelfacade.gettheGame().getPlayers();
 		for (int i = 0; i < players.size(); i++) {
 			if (players.get(i) != null) {

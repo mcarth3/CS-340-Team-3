@@ -1,5 +1,8 @@
 package server.commands;
 import server.ICommand;
+import server.ServerFacade;
+import server.jsonObjects.GamesJoinJsonObject;
+import server.jsonObjects.UserLoginJsonObject;
 
 public class GamesJoinCommand implements ICommand {
 	/**
@@ -9,8 +12,9 @@ public class GamesJoinCommand implements ICommand {
     */
 	@Override
 	public Object execute(Object data) {
-		return data;
-		// TODO Auto-generated method stub
-		
+		GamesJoinJsonObject gjjo = (GamesJoinJsonObject) data;
+		ServerFacade sf = new ServerFacade(); 
+		Object result = sf.GamesJoin(gjjo.getId(), gjjo.getColor()); 
+		return result;	
 	}
 }

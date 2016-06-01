@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import client.data.GameInfo;
 import client.login.PlayerLoginInfo;
 import model.Game;
-import server.input.UserLoginInput;
 
 /**
  * @author Mike Towne
@@ -30,13 +29,7 @@ public class ModelParser {
 		GameInfo[] login = gson.fromJson(jsonstring, GameInfo[].class);
 		return login;
 	}
-
-	public static UserLoginInput parseLogin(String jsonstring) {
-		Gson gson = new Gson();
-		UserLoginInput uli = gson.fromJson(jsonstring, UserLoginInput.class);
-		return uli;
-	}
-
+	
 	public static <T> Object parse(String jsondata, Class<T> givenclass) {
 		Gson gson = new Gson();
 		Object returnedobject = gson.fromJson(jsondata, givenclass);
