@@ -114,6 +114,7 @@ public class ServerFacade {
 
 	return model;
 }
+	//"Name" used Monopoly and stole all the Resource
 
 	/**
 	 * //play monument, remove card, add VP, update log
@@ -125,6 +126,7 @@ public class ServerFacade {
 
 		return model;
 }
+	//"Name" built a monument and gained a Victory Point
 
 	/**
 	 * build road, remove resources, update map and log? (IF FREE)
@@ -138,6 +140,7 @@ public class ServerFacade {
 
 		return model;
 	}
+	//"Name" built a road
 
 	/**
 	 * build settlement, remove resources, update map and log? (IF FREE). Add VP.
@@ -151,6 +154,7 @@ public class ServerFacade {
 
 		return model;
 	}
+//"Name" built a settlement
 
 	/**
 	 * build city, remove resources, update map and log? (IF FREE). Add VP.
@@ -163,6 +167,7 @@ public class ServerFacade {
 
 		return model;
 	}
+	//"Name" built a city
 
 	/**
 	 * send trade request with this particular offer to a particular player
@@ -176,7 +181,7 @@ public class ServerFacade {
 
 		return model;
 	}
-
+	//ONLY: Nothing!!
 
 	/**
 	 * accept the trade request, coming from acceptor, gotta send to playerIndex and trade resources for both. Notify log.
@@ -189,6 +194,7 @@ public class ServerFacade {
 
 		return model;
 	}
+//ONLY: "The trade was accepted" OR "the trade was not accepted"
 
 	/**
 	 * Trades the specified resource with the specified ratio. Tells the bank, updates the log.
@@ -201,9 +207,16 @@ public class ServerFacade {
      */
 	public Object maritimeTrade(String type, Integer playerIndex, Integer ratio, String inputResource, String outputResource) {
 
+		try {
+			model.findPlayerbyindex(playerIndex).addResource(stringTypeToResourceType(inputResource), -1 * ratio);
+
+			//still gotta add to playerIndex, and take away and add to Bank
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
 		return model;
 	}
-
+//Nothing
 
 	/**
 	 * will discard the Cards from specified player (??notify log??)
@@ -216,9 +229,41 @@ public class ServerFacade {
 
 		model.changePlayerResources(discardedCards, playerIndex);
 
-		//TODO: update the log? How would I check if this is the last person to discard?
+		//TODO: How would I check if this is the last person to discard?
 		return model;
 	}
+//NOTHING
 
+
+
+	public ResourceType stringTypeToResourceType(String theType)
+	{
+		String low = theType.toLowerCase();
+		if(low.equals("wood"))
+		{
+			return ResourceType.WOOD;
+		}
+		else if(low.equals("wheat"))
+		{
+			return ResourceType.WHEAT;
+		}
+		else if(low.equals("brick"))
+		{
+			return ResourceType.BRICK;
+		}
+		else if(low.equals("ore"))
+		{
+			return ResourceType.ORE;
+		}
+		else if(low.equals("sheep"))
+		{
+			return ResourceType.SHEEP;
+		}
+		else
+		{
+			System.out.println("Error in stringTypeToResourceType() of ServerFacade!");
+			return null;
+		}
+	}
 
 }

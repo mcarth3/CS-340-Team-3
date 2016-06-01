@@ -173,4 +173,37 @@ public class ResourceList extends AbstractModelPartition {
 
     }
 
+
+    public void changeResourceTypeWithAmount(ResourceType type, int amount)
+    {
+        if(type == ResourceType.WHEAT)
+        {
+            setWheat(getWheat() + amount);
+        }
+        if(type == ResourceType.WOOD)
+        {
+            setWood(getWood() + amount);
+        }
+        if(type == ResourceType.BRICK)
+        {
+            setBrick(getBrick() + amount);
+        }
+        if(type == ResourceType.SHEEP)
+        {
+            setSheep(getSheep() + amount);
+        }
+        if(type == ResourceType.ORE)
+        {
+            setOre(getOre() + amount);
+        }
+        else
+        {
+            System.out.println("Error! getResourceType in ResourceList is broken!!");
+
+        }
+
+
+
+    }
+
 }
