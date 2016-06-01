@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.util.Scanner;
 
 import model.Game;
+import model.bank.ResourceList;
 import server.input.UserLoginInput;
 import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
@@ -161,4 +162,56 @@ public class ServerFacade {
 		return model;
 	}
 
+	/**
+	 * send trade request with this particular offer to a particular player
+	 * @param type
+	 * @param playerIndex
+	 * @param offer
+	 * @param reciever
+     * @return
+     */
+	public Object offerTrade(String type, Integer playerIndex, ResourceList offer, Integer reciever) {
+
+		return model;
+	}
+
+
+	/**
+	 * accept the trade request, coming from acceptor, gotta send to playerIndex and trade resources for both. Notify log.
+	 * @param type
+	 * @param playerIndex
+	 * @param willAccept
+     * @return
+     */
+	public Object acceptTrade(String type, Integer playerIndex, boolean willAccept) {
+
+		return model;
+	}
+
+	/**
+	 * Trades the specified resource with the specified ratio. Tells the bank, updates the log.
+	 * @param type
+	 * @param playerIndex
+	 * @param ratio
+	 * @param inputResource
+	 * @param outputResource
+     * @return
+     */
+	public Object maritimeTrade(String type, Integer playerIndex, Integer ratio, String inputResource, String outputResource) {
+
+		return model;
+	}
+
+
+	/**
+	 * will discard the Cards from specified player (??notify log??)
+	 * @param type
+	 * @param playerIndex
+	 * @param discardedCards
+     * @return
+     */
+	public Object discardCards(String type, Integer playerIndex, ResourceList discardedCards) {
+
+		return model;
+	}
 }
