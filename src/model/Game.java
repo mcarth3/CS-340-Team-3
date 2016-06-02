@@ -489,6 +489,14 @@ public class Game extends AbstractModelPartition {
 		this.gameDice = gameDice;
 	}
 
+	public MessageList getLog() {
+		return log;
+	}
+
+	public void setLog(MessageList log) {
+		this.log = log;
+	}
+
 	public void updatemodelnumber() {
 		version++;
 	}

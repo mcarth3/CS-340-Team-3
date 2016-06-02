@@ -8,10 +8,12 @@ import java.io.UnsupportedEncodingException;
 import java.util.Scanner;
 import java.util.Vector;
 
+import model.FailureToAddException;
 import model.Game;
 import model.ObjectNotFoundException;
 import model.Player;
 import model.bank.ResourceList;
+import model.clientModel.MessageLine;
 import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
@@ -266,6 +268,35 @@ public class ServerFacade {
 	 * @return
 	 */
 	public Object buildRoad(String type, Integer playerIndex, EdgeLocation roadLocation, boolean free) {
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(playerIndex);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		if(thePlayer != null)
+		{
+
+			thePlayer.addResource(ResourceType.BRICK, -1);
+			thePlayer.addResource(ResourceType.WOOD, -1);
+
+			ResourceList bank = model.getBank();
+			bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
+			bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
+
+			try {
+				model.getMap().addRoad(roadLocation.getX(), roadLocation.getY(),
+						roadLocation.getDir(), playerIndex);
+				MessageLine newLine = new MessageLine(thePlayer.getName() + "built a road.", thePlayer.getName());
+				model.getLog().getLines().add(newLine);
+
+			} catch (FailureToAddException e) {
+				e.printStackTrace();
+			}
+
+		}
+
 
 		updatemodelnumber();
 		return model;
@@ -301,8 +332,15 @@ public class ServerFacade {
 			bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
 			bank.changeResourceTypeWithAmount(ResourceType.SHEEP, 1);
 
+			try {
+				model.getMap().addSettlement(settlementLocation.x, settlementLocation.y, settlementLocation.getDir(), playerIndex);
+				MessageLine newLine = new MessageLine(thePlayer.getName() + "built a settlement.", thePlayer.getName());
+				model.getLog().getLines().add(newLine);
 
-			//model.buildSettle, update map? add to log.
+			} catch (FailureToAddException e) {
+				e.printStackTrace();
+			}
+
 		}
 
 		updatemodelnumber();
@@ -318,6 +356,35 @@ public class ServerFacade {
 	 * @return
 	 */
 	public Object buildCity(String type, Integer playerIndex, VertexLocation cityLocation) {
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(playerIndex);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		if(thePlayer != null)
+		{
+
+			thePlayer.addResource(ResourceType.WHEAT, -2);
+			thePlayer.addResource(ResourceType.ORE, -3);
+
+			ResourceList bank = model.getBank();
+			bank.changeResourceTypeWithAmount(ResourceType.WHEAT, 2);
+			bank.changeResourceTypeWithAmount(ResourceType.ORE, 3);
+
+			try {
+				model.getMap().addCity(cityLocation.x, cityLocation.y, cityLocation.getDir(), playerIndex);
+				MessageLine newLine = new MessageLine(thePlayer.getName() + "built a city.", thePlayer.getName());
+				model.getLog().getLines().add(newLine);
+
+			} catch (FailureToAddException e) {
+				e.printStackTrace();
+			}
+
+		}
+
+
 
 		updatemodelnumber();
 		return model;
