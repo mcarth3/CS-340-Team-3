@@ -465,6 +465,14 @@ public class Game extends AbstractModelPartition {
 		return 0;
 	}
 
+	public ResourceList getBank() {
+		return bank;
+	}
+
+	public void setBank(ResourceList bank) {
+		this.bank = bank;
+	}
+
 	public TradeOffer getTradeO() {
 		return tradeOffer;
 	}
