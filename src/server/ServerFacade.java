@@ -10,6 +10,7 @@ import java.util.Vector;
 
 import model.Game;
 import model.ObjectNotFoundException;
+import model.Player;
 import model.bank.ResourceList;
 import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
@@ -238,6 +239,7 @@ public class ServerFacade {
 	 */
 	public Object playMonopoly(String type, String resource, Integer playerIndex) {
 
+		updatemodelnumber();
 		return model;
 	}
 	//"Name" used Monopoly and stole all the Resource
@@ -250,6 +252,7 @@ public class ServerFacade {
 	 */
 	public Object playMonument(String type, Integer playerIndex) {
 
+		updatemodelnumber();
 		return model;
 	}
 	//"Name" built a monument and gained a Victory Point
@@ -264,6 +267,7 @@ public class ServerFacade {
 	 */
 	public Object buildRoad(String type, Integer playerIndex, EdgeLocation roadLocation, boolean free) {
 
+		updatemodelnumber();
 		return model;
 	}
 	//"Name" built a road
@@ -277,7 +281,31 @@ public class ServerFacade {
 	 * @return
 	 */
 	public Object buildSettlement(String type, Integer playerIndex, VertexLocation settlementLocation, boolean free) {
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(playerIndex);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
 
+		if(thePlayer != null)
+		{
+			thePlayer.addResource(ResourceType.BRICK, -1);
+			thePlayer.addResource(ResourceType.SHEEP, -1);
+			thePlayer.addResource(ResourceType.WOOD, -1);
+			thePlayer.addResource(ResourceType.WHEAT, -1);
+
+			ResourceList bank = model.getBank();
+			bank.changeResourceTypeWithAmount(ResourceType.WHEAT, 1);
+			bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
+			bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
+			bank.changeResourceTypeWithAmount(ResourceType.SHEEP, 1);
+
+
+			//model.buildSettle, update map? add to log.
+		}
+
+		updatemodelnumber();
 		return model;
 	}
 //"Name" built a settlement
@@ -291,6 +319,7 @@ public class ServerFacade {
 	 */
 	public Object buildCity(String type, Integer playerIndex, VertexLocation cityLocation) {
 
+		updatemodelnumber();
 		return model;
 	}
 	//"Name" built a city
@@ -305,6 +334,7 @@ public class ServerFacade {
 	 */
 	public Object offerTrade(String type, Integer playerIndex, ResourceList offer, Integer reciever) {
 
+		updatemodelnumber();
 		return model;
 	}
 	//ONLY: Nothing!!
@@ -318,6 +348,7 @@ public class ServerFacade {
 	 */
 	public Object acceptTrade(String type, Integer playerIndex, boolean willAccept) {
 
+		updatemodelnumber();
 		return model;
 	}
 //ONLY: "The trade was accepted" OR "the trade was not accepted"
@@ -335,11 +366,17 @@ public class ServerFacade {
 
 		try {
 			model.findPlayerbyindex(playerIndex).addResource(stringTypeToResourceType(inputResource), -1 * ratio);
+			model.findPlayerbyindex(playerIndex).addResource(stringTypeToResourceType(outputResource), 1);
+			ResourceList bank = model.getBank();
+			bank.changeResourceTypeWithAmount(stringTypeToResourceType(inputResource), ratio);
+			bank.changeResourceTypeWithAmount(stringTypeToResourceType(outputResource), -1);
 
-			//still gotta add to playerIndex, and take away and add to Bank
+
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
 		}
+
+		updatemodelnumber();
 		return model;
 	}
 //Nothing
@@ -356,6 +393,7 @@ public class ServerFacade {
 		model.changePlayerResources(discardedCards, playerIndex);
 
 		//TODO: How would I check if this is the last person to discard?
+		updatemodelnumber();
 		return model;
 	}
 //NOTHING
