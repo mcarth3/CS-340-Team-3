@@ -166,14 +166,15 @@ public class RealProxy implements IServer {
 
 	@Override
 	public String gameListAI() {
-		// TODO Auto-generated method stub
-		return null;
+		JsonObject obj = new JsonObject();
+		return cc.send(obj, "/game/listAI", UserCookie, GameCookie);
 	}
 
 	@Override
 	public String gameAddAI(String AIType) {
-		// TODO Auto-generated method stub
-		return null;
+		JsonObject obj = new JsonObject();
+		obj.addProperty("AIType", AIType);
+		return cc.send(obj, "/game/addAI", UserCookie, GameCookie);
 	}
 
 	@Override

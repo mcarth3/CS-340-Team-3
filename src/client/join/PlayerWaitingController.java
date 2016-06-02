@@ -25,6 +25,11 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 
 	@Override
 	public void start() {
+		String airesponse = RealProxy.getSingleton().gameListAI();
+		String[] aiList = (String[]) ModelParser.parse(airesponse, String[].class);
+		getView().setPlayers(GameManager.getSingleton().getModel().getPlayers());
+		getView().setAIChoices(aiList);
+
 		int gottenplayers = 0;
 		for (int i = 0; i < GameManager.getSingleton().getModel().getPlayers().size(); i++) {
 			if (GameManager.getSingleton().getModel().getPlayers().get(i) != null) {
@@ -45,10 +50,15 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 	@Override
 	public void addAI() {
 
-		// TEMPORARY
+		String aitype = null;
+		String response = null;
+
+		aitype = getView().getSelectedAI();
+		response = RealProxy.getSingleton().gameAddAI(aitype);
+
+		getView().setPlayers(GameManager.getSingleton().getModel().getPlayers());
 		getView().closeModal();
-		GameManager.getSingleton().setbegin(true);
-		GameManager.getSingleton().update(ModelParser.parse2(RealProxy.getSingleton().gameModel(-1)));
+		getView().showModal();
 	}
 
 	@Override

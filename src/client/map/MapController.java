@@ -232,8 +232,24 @@ public class MapController extends Controller implements IMapController {
 
 		GameManager.getSingleton().getModel().getMap().relocateRober(hexLoc);
 		getView().placeRobber(hexLoc);
-		getRobView().setPlayers(robbableArray);
-		getRobView().showModal();
+
+		if (robbableArray.length == 1) {
+			if (robbableArray[0].getPlayerIndex() == GameManager.getSingleton().getthisplayer().playerIndex) {
+				RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, -1, roblocation);
+				if (usingSoldier) {
+					usingSoldier = false;
+				}
+				if (this.getRobView().isModalShowing()) {
+					this.getRobView().closeModal();
+				}
+			} else {
+				getRobView().setPlayers(robbableArray);
+				getRobView().showModal();
+			}
+		} else {
+			getRobView().setPlayers(robbableArray);
+			getRobView().showModal();
+		}
 
 	}
 
@@ -269,11 +285,13 @@ public class MapController extends Controller implements IMapController {
 		if (this.getRobView().isModalShowing()) {
 			this.getRobView().closeModal();
 		}
-		if (usingSoldier) {
-			RealProxy.getSingleton().Soldier(GameManager.getSingleton().getthisplayer().playerIndex, victim.getPlayerIndex(), roblocation);
-			usingSoldier = false;
+		if (victim.getPlayerIndex() == GameManager.getSingleton().getthisplayer().playerIndex) {
+			RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, -1, roblocation);
 		} else {
 			RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, victim.getPlayerIndex(), roblocation);
+		}
+		if (usingSoldier) {
+			usingSoldier = false;
 		}
 	}
 
@@ -282,7 +300,7 @@ public class MapController extends Controller implements IMapController {
 		if (this.getRobView().isModalShowing()) {
 			this.getRobView().closeModal();
 		}
-		RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, GameManager.getSingleton().getthisplayer().playerIndex, roblocation);
+		RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, -1, roblocation);
 	}
 
 	@Override
