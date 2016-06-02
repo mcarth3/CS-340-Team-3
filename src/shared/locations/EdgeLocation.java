@@ -7,93 +7,83 @@ import model.Game;
 /**
  * Represents the location of an edge on a hex map
  */
-public class EdgeLocation
-{
+public class EdgeLocation {
 
 	private EdgeDirection direction;
 	private int x;
 	private int y;
-	
-	public EdgeLocation(HexLocation hexLoc, EdgeDirection direction)
-	{
+
+	public EdgeLocation(HexLocation hexLoc, EdgeDirection direction) {
 		setHexLoc(hexLoc);
 		setDir(direction);
 	}
-	
-	public Integer getX(){
+
+	public Integer getX() {
 		return x;
 	}
-	public Integer getY(){
-		return y; 
+
+	public Integer getY() {
+		return y;
 	}
-	public HexLocation getHexLoc()
-	{
-		HexLocation hexLoc = new HexLocation(x,y);
+
+	public HexLocation getHexLoc() {
+		HexLocation hexLoc = new HexLocation(x, y);
 		return hexLoc;
 	}
-	
-	private void setHexLoc(HexLocation hexLoc)
-	{
-		if(hexLoc == null)
-		{
+
+	private void setHexLoc(HexLocation hexLoc) {
+		if (hexLoc == null) {
 			throw new IllegalArgumentException("hexLoc cannot be null");
 		}
 		this.x = hexLoc.getX();
 		this.y = hexLoc.getY();
 	}
-	
-	public EdgeDirection getDir()
-	{
+
+	public EdgeDirection getDir() {
 		return direction;
 	}
-	
-	private void setDir(EdgeDirection direction)
-	{
+
+	private void setDir(EdgeDirection direction) {
 		this.direction = direction;
 	}
-	
+
 	@Override
-	public String toString()
-	{
-		HexLocation hexLoc = new HexLocation(x,y);
+	public String toString() {
+		HexLocation hexLoc = new HexLocation(x, y);
 		return "EdgeLocation [hexLoc=" + hexLoc + ", direction=" + direction + "]";
 	}
-	
+
 	@Override
-	public int hashCode()
-	{
-		HexLocation hexLoc = new HexLocation(x,y);
+	public int hashCode() {
+		HexLocation hexLoc = new HexLocation(x, y);
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((direction == null) ? 0 : direction.hashCode());
 		result = prime * result + ((hexLoc == null) ? 0 : hexLoc.hashCode());
 		return result;
 	}
-	
+
 	@Override
-	public boolean equals(Object obj)
-	{
-		HexLocation hexLoc = new HexLocation(x,y);
-		if(this == obj)
+	public boolean equals(Object obj) {
+		HexLocation hexLoc = new HexLocation(x, y);
+		if (this == obj)
 			return true;
-		if(obj == null)
+		if (obj == null)
 			return false;
-		if(getClass() != obj.getClass())
+		if (getClass() != obj.getClass())
 			return false;
-		EdgeLocation other = (EdgeLocation)obj;
-		if(direction != other.direction)
+		EdgeLocation other = (EdgeLocation) obj;
+		if (direction != other.direction)
 			return false;
-		HexLocation hexLoc2 = new HexLocation(other.x,other.x);
-		if(hexLoc == null)
-		{
-			if(hexLoc2 != null)
+		HexLocation hexLoc2 = new HexLocation(other.x, other.x);
+		if (hexLoc == null) {
+			if (hexLoc2 != null)
 				return false;
-		}
-		else if(!hexLoc.equals(hexLoc2))
+		} else if (!hexLoc.equals(hexLoc2))
 			return false;
 		return true;
 	}
-	
+
 	/**
 	 * Returns a canonical (i.e., unique) value for this edge location. Since
 	 * each edge has two different locations on a map, this method converts a
@@ -102,25 +92,23 @@ public class EdgeLocation
 	 * 
 	 * @return Normalized hex location
 	 */
-	public EdgeLocation getNormalizedLocation()
-	{
-		HexLocation hexLoc = new HexLocation(x,y);
+	public EdgeLocation getNormalizedLocation() {
+		HexLocation hexLoc = new HexLocation(x, y);
 		// Return an EdgeLocation that has direction NW, N, or NE
-		
-		switch (direction)
-		{
-			case NW:
-			case N:
-			case NE:
-				return this;
-			case SW:
-			case S:
-			case SE:
-				return new EdgeLocation(hexLoc.getNeighborLoc(direction),
-										direction.getOppositeDirection());
-			default:
-				assert false;
-				return null;
+
+		switch (direction) {
+		case NW:
+		case N:
+		case NE:
+			return this;
+		case SW:
+		case S:
+		case SE:
+			return new EdgeLocation(hexLoc.getNeighborLoc(direction),
+					direction.getOppositeDirection());
+		default:
+			assert false;
+			return null;
 		}
 	}
 
@@ -128,47 +116,35 @@ public class EdgeLocation
 		ArrayList<EdgeLocation> edges = new ArrayList<EdgeLocation>();
 		EdgeLocation normalized = this.getNormalizedLocation();
 		switch (normalized.getDir()) {
-			case NW:
-				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
-				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.SW).getNormalizedLocation());
-				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
-										   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
-										   EdgeDirection.NE));
-				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
-						   				   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
-						   				   EdgeDirection.S).getNormalizedLocation());
-				break;
-			case N:
-				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NW));
-				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NE));
-				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
-						   				   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
-						   				   EdgeDirection.SW).getNormalizedLocation());
-				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
-						   				   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
-						   				   EdgeDirection.SE).getNormalizedLocation());
-				break;
-			case NE:
-				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
-				edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.SE).getNormalizedLocation());
-				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
-						   				   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
-						   				   EdgeDirection.NW));
-				edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(),
-						   				   normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()),
-						   				   EdgeDirection.S).getNormalizedLocation());
-				break;
-			default:
+		case NW:
+			edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
+			edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.SW).getNormalizedLocation());
+			edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(), normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()), EdgeDirection.NE));
+			edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(), normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()), EdgeDirection.S).getNormalizedLocation());
+			break;
+		case N:
+			edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NW));
+			edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.NE));
+			edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(), normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()), EdgeDirection.SW).getNormalizedLocation());
+			edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(), normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()), EdgeDirection.SE).getNormalizedLocation());
+			break;
+		case NE:
+			edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.N));
+			edges.add(new EdgeLocation(normalized.getHexLoc(), EdgeDirection.SE).getNormalizedLocation());
+			edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(), normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()), EdgeDirection.NW));
+			edges.add(new EdgeLocation(new HexLocation(normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getX(), normalized.getHexLoc().getNeighborLoc(normalized.getDir()).getY()), EdgeDirection.S).getNormalizedLocation());
+			break;
+		default:
 		}
-		//System.out.print("playerindex = "+playerIndex);
-		for (int i=0; i < theGame.getMap().getRoads().size(); i++) { 
-			for (int j=0; j < edges.size(); j++) {
-				if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().toString().equals(edges.get(j).getNormalizedLocation().toString())) {
+
+		for (int i = 0; i < theGame.getMap().getRoads().size(); i++) { //for all the roads
+			for (int j = 0; j < edges.size(); j++) { //and for all of these connected edges
+				if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().toString().equals(edges.get(j).getNormalizedLocation().toString())) {//the the roads match ownership
 					if (theGame.getMap().getRoads().get(i).getOwner() == playerIndex) {
-				//		System.out.println("return true ");
+						//		System.out.println("return true ");
 						return true;
 					}
-				}		
+				}
 			}
 		}
 		//return new RoadCollection(roads);
@@ -176,25 +152,24 @@ public class EdgeLocation
 		return false;
 	}
 
-	public  ArrayList<VertexLocation> getVertices() {
+	public ArrayList<VertexLocation> getVertices() {
 		ArrayList<VertexLocation> vertices = new ArrayList<VertexLocation>();
 		EdgeLocation normalized = this.getNormalizedLocation();
 		switch (normalized.getDir()) {
-			case NW:
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.W).getNormalizedLocation());
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NW));
-				break;
-			case N:
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NW).getNormalizedLocation());
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NE));
-				break;
-			case NE:
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.E).getNormalizedLocation());
-				vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NE));
-				break;
-			default:
+		case NW:
+			vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.W).getNormalizedLocation());
+			vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NW));
+			break;
+		case N:
+			vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NW).getNormalizedLocation());
+			vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NE));
+			break;
+		case NE:
+			vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.E).getNormalizedLocation());
+			vertices.add(new VertexLocation(normalized.getHexLoc(), VertexDirection.NE));
+			break;
+		default:
 		}
 		return vertices;
 	}
 }
-

@@ -207,40 +207,39 @@ public class Facade extends AbstractModelPartition {
 	public boolean canBuildRoad(int playerId, EdgeLocation edge) {
 		if (theGame == null)// game isnt null
 			return false;
+		//first/second round logic
 		if (theGame.getTurnTracker().getStatus().equals("FirstRound") || theGame.getTurnTracker().getStatus().equals("SecondRound")) {
-			//for (int i = 0; i < theGame.getMap().getRoads().size(); i++) {
-			//	if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().equals(edge.getNormalizedLocation())) // taken
-			//		return false;
-			//}
-			//for (VertexLocation vertex : edge.getVertices()) {
-			//	if (vertex.isAvailable(theGame, GameManager.getSingleton().getthisplayer().getPlayerIndex()))
-			//		return true;
-			//}
-			//return false;
-			// System.out.println("Playing");
 			if (edge != null) {
-				//System.out.println("edge!= null");
 				System.out.println("edge location " + edge.getNormalizedLocation());
 				for (int i = 0; i < theGame.getMap().getRoads().size(); i++) {
-					// System.out.println("map location " +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
 					if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().toString().equals(edge.getNormalizedLocation().toString())) { // if space is taken
-						//System.out.println("map road location = " +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
-						//System.out.println("overlapping");
 						return false;
 					}
 				}
-				return waterboundarytest(edge);
+				VertexLocation location1 = edge.getVertices().get(0);
+				VertexLocation location2 = edge.getVertices().get(1);
+				//if any edges are touching another player's settlement, reject. this is because if you put a road right next to one, you'll be too close to place a settlement
+				for (int i = 0; i < theGame.getMap().getsettlements().size(); i++) {
+					if (theGame.getMap().getsettlements().get(i).getOwner() != theGame.getTurnTracker().getCurrentPlayer()) {
+						if (theGame.getMap().getsettlements().get(i).getVertextLocation().getNormalizedLocation().toString().equals(location1.getNormalizedLocation().toString())) {
+							return false;
+						}
+						if (theGame.getMap().getsettlements().get(i).getVertextLocation().getNormalizedLocation().toString().equals(location2.getNormalizedLocation().toString())) {
+							return false;
+						}
+					}
+				}
+
+				return waterboundarytest(edge);//if the road in map bounds (for default map size)
 			}
 
-		} else {
+		} else {//playing state logic
 			// System.out.println("Playing");
 			if (edge != null) {
 				// System.out.println("edge!= null");
-				// System.out.println("edge location "
-				// +edge.getNormalizedLocation());
+				// System.out.println("edge location " +edge.getNormalizedLocation());
 				for (int i = 0; i < theGame.getMap().getRoads().size(); i++) {
-					// System.out.println("map location "
-					// +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
+					// System.out.println("map location " +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
 					if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().toString().equals(edge.getNormalizedLocation().toString())) { // if space is taken
 						//System.out.println("map road location = " +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
 						//System.out.println("overlapping");
@@ -368,10 +367,12 @@ public class Facade extends AbstractModelPartition {
 	 * @return boolean whether or not the player can build a settlement
 	 */
 	public boolean canBuildSettlement(int playerIndex, VertexLocation location) {
-		if (gettheGame() == null)
+		if (gettheGame() == null) {
 			return false;
-		if (gettheGame().getTurnTracker().getCurrentPlayer() != playerIndex)
+		}
+		if (gettheGame().getTurnTracker().getCurrentPlayer() != playerIndex) {
 			return false;
+		}
 		for (int i = 0; i < theGame.getMap().getsettlements().size(); i++) {
 			if (theGame.getMap().getsettlements().get(i).getVertextLocation().getNormalizedLocation().toString().equals(location.getNormalizedLocation().toString())) { // taken
 				return false;
