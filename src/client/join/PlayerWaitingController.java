@@ -37,6 +37,7 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 				getView().closeModal();
 			}
 		} else {
+			getView().setPlayers(GameManager.getSingleton().getModel().getPlayers());
 			getView().showModal();
 		}
 	}
@@ -66,7 +67,7 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 				getView().closeModal();
 			}
 			GameManager.getSingleton().setbegin(true);
-		} else {
+		} else if (currentplayers != gottenplayers) {
 			//	System.out.println("WAITING");
 			if (getView().isModalShowing()) {
 				getView().closeModal();

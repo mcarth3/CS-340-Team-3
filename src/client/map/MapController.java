@@ -38,6 +38,7 @@ public class MapController extends Controller implements IMapController {
 	private boolean secondturnroads = true;
 	private boolean secondturnsettlements = false;
 	private boolean usingSoldier;
+
 	public MapController(IMapView view, IRobView robView) {
 
 		super(view);
@@ -76,6 +77,7 @@ public class MapController extends Controller implements IMapController {
 
 	@Override
 	public boolean canPlaceRoad(EdgeLocation edgeLoc) {
+		//System.out.println("CAN PLACE ROAD? " + Facade.getSingleton().canBuildRoad(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(), edgeLoc));
 		return Facade.getSingleton().canBuildRoad(GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer(), edgeLoc);
 
 	}
@@ -116,9 +118,11 @@ public class MapController extends Controller implements IMapController {
 		if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("Playing")) {
 			System.out.println("placed road");
 			RealProxy.getSingleton().buildRoad(GameManager.getSingleton().getthisplayer().getPlayerIndex(), edgeLoc, false);
-		} else if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound") || GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound")) {
+		} else if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound")) {
 			RealProxy.getSingleton().buildRoad(GameManager.getSingleton().getthisplayer().getPlayerIndex(), edgeLoc, true);
 			firstturnsettlements = true;
+		} else if (GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound")) {
+			RealProxy.getSingleton().buildRoad(GameManager.getSingleton().getthisplayer().getPlayerIndex(), edgeLoc, true);
 			secondturnsettlements = true;
 		}
 	}
@@ -265,12 +269,10 @@ public class MapController extends Controller implements IMapController {
 		if (this.getRobView().isModalShowing()) {
 			this.getRobView().closeModal();
 		}
-		if(usingSoldier)
-		{
+		if (usingSoldier) {
 			RealProxy.getSingleton().Soldier(GameManager.getSingleton().getthisplayer().playerIndex, victim.getPlayerIndex(), roblocation);
 			usingSoldier = false;
-		}
-		else {
+		} else {
 			RealProxy.getSingleton().robPlayer(GameManager.getSingleton().getthisplayer().playerIndex, victim.getPlayerIndex(), roblocation);
 		}
 	}
@@ -377,30 +379,32 @@ public class MapController extends Controller implements IMapController {
 	}
 
 	public void beginfirstturn() {
-		if (GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() && GameManager.getSingleton().getbegin()) {
-			if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound"))) {
+		if ((GameManager.getSingleton().getthisplayer().getPlayerIndex() == GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer()) && GameManager.getSingleton().getbegin()) {
+			if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound"))) {
+
+				if (secondturnsettlements) {
+					System.out.println("SECONDTURN SETTLEMENT");
+					startMove(PieceType.SETTLEMENT, true, false);
+					secondturnsettlements = false;
+				}
+				if (secondturnroads) {
+					System.out.println("SECONDTURN ROAD");
+					startMove(PieceType.ROAD, true, false);
+					secondturnroads = false;
+				}
+			} else if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("FirstRound"))) {
 				if (firstturnsettlements) {
+					System.out.println("FIRSTTURN SETTLEMENT");
 					startMove(PieceType.SETTLEMENT, true, false);
 					firstturnsettlements = false;
 				}
 				if (firstturnroads) {
+					System.out.println("FIRSTTURN ROAD");
 					startMove(PieceType.ROAD, true, false);
 					firstturnroads = false;
 				}
 			}
 
-			if ((GameManager.getSingleton().getModel().getTurnTracker().getStatus().equals("SecondRound"))) {
-
-				if (secondturnsettlements) {
-					startMove(PieceType.SETTLEMENT, true, false);
-					secondturnsettlements = false;
-				}
-				if (secondturnroads) {
-					secondturnsettlements = false;
-					startMove(PieceType.ROAD, true, false);
-					secondturnroads = false;
-				}
-			}
 		}
 	}
 
