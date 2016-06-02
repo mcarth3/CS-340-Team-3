@@ -18,6 +18,7 @@ public class ServerPoller {
 	private int modelversion;
 	private static GameManager manager;
 	boolean didaction;
+	private int previousplayers = 0;
 
 	/**
 	 * creates a new ServerPoller which uses the given MockProxy
@@ -33,21 +34,15 @@ public class ServerPoller {
 		timer = new Timer();
 		timer.schedule(pollingTask, 0, PollingInterval);
 		Random rand = new Random();
-		modelversion = 0;
+		modelversion = 1;
 		didaction = false;
 
 		manager = GameManager.getSingleton();
 	}
 
-	private void doOnce() {
-		if (!didaction) {
-			if (RealProxy.getSingleton().gameModel(modelversion) != null) {
-				if (RealProxy.getSingleton().gameModel(modelversion).equals("\"true\"")) {
-					modelversion = 1;
-				}
-				didaction = true;
-			}
-		}
+	private String doOnce() {
+		didaction = true;
+		return RealProxy.getSingleton().gameModel();
 	}
 
 	/**
@@ -68,33 +63,43 @@ public class ServerPoller {
 
 		Game model = null;
 		String modeljson = "";
-		doOnce();
-		try {
-			if (modelversion == -1) {
-				modeljson = RealProxy.getSingleton().gameModel();
-			} else if (modelversion == 0 && (!GameManager.getSingleton().getbegin())) {
-				modeljson = RealProxy.getSingleton().gameModel(1);
-			} else {
-				modeljson = RealProxy.getSingleton().gameModel(modelversion);
+		if (!didaction) {
+			modeljson = doOnce();
+		} else {
+			try {
+				if (modelversion == -1) {
+					modeljson = RealProxy.getSingleton().gameModel();
+				} else if (modelversion == 0 && (!GameManager.getSingleton().getbegin())) {
+					modeljson = RealProxy.getSingleton().gameModel();
+				} else {
+					modeljson = RealProxy.getSingleton().gameModel(modelversion);
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				throw new PollException("Could not communicate with server");
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-			throw new PollException("Could not communicate with server");
 		}
 
 		// System.out.println(modeljson);
 
-		if (modeljson == null) {
+		if (modeljson == null)
+
+		{
 			System.out.println("modeljson is null-returning no changes");
-		} else if (modeljson.equals("\"true\"")) {
+		} else if (modeljson.equals("\"true\""))
+
+		{
 			System.out.println("no changes to model number, thus no new model");
 			return GameManager.getSingleton().getModel();
-		} else {
+		} else
+
+		{
 
 			System.out.println("NEW MODEL");
 			model = ModelParser.parse2(modeljson);
 		}
 		return model;
+
 	}
 
 	/**
@@ -133,12 +138,24 @@ public class ServerPoller {
 			try {
 				Game model = poll();
 				if (model != null) {
-					if (model.getversion() != modelversion) {
+					if (model.getversion() != modelversion) {//if theres a change in the model number
 						manager.update(model);
 						modelversion = model.getversion();
-					} else if (modelversion == 0 && (!GameManager.getSingleton().getbegin())) {
-						manager.update(model);
-						modelversion = model.getversion();
+					} else if (modelversion == 0 && (!GameManager.getSingleton().getbegin())) {//IF THE SERVER ADDS A PLAYER BUT DOESNT UPDATE THE MODEL NUMBER FOR SOME REASON
+						System.out.println("compare");
+						int gottenplayers = 0;
+						for (int i = 0; i < model.getPlayers().size(); i++) {
+							if (model.getPlayers().get(i) != null) {
+								gottenplayers++;
+							}
+						}
+
+						if (gottenplayers != previousplayers) {
+							System.out.println("UPDATE!");
+							manager.update(model);
+							modelversion = model.getversion();
+							previousplayers = gottenplayers;
+						}
 					}
 				}
 			} catch (PollException e) {

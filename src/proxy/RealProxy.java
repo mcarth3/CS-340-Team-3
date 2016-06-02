@@ -1,34 +1,25 @@
 package proxy;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import javax.annotation.Resource;
-import com.google.gson.JsonObject;
 
+import com.google.gson.JsonObject;
 
 import model.Game;
 import model.Player;
 import shared.definitions.ResourceType;
-import shared.locations.EdgeDirection;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
 
-public class RealProxy implements IServer{
-	
+public class RealProxy implements IServer {
+
 	private static RealProxy singleton = null;
-	private ClientCommunicator cc = new ClientCommunicator(); 
+	private ClientCommunicator cc = new ClientCommunicator();
 	public String UserCookie = null;
 	public String GameCookie = null;
 	// %7B%22authentication%22%3A%222680927%22%2C%22name%22%3A%22SAM%22%2C%22password%22%3A%22sam%22%2C%22playerID%22%3A12%7D
-	
+
 	public RealProxy(Game game) {
 		// TODO Auto-generated constructor stub
 	}
@@ -41,16 +32,16 @@ public class RealProxy implements IServer{
 	public String userLogin(String username, String password) {
 		//// Implement this one 
 		JsonObject obj = new JsonObject();
-        obj.addProperty("username", username);
-        obj.addProperty("password", password);
+		obj.addProperty("username", username);
+		obj.addProperty("password", password);
 		String cook = cc.send(obj, "/user/login", UserCookie, GameCookie);
-		 
-		if(cook != null ){
-			String answer = cook.substring(0, 7);  
-			cook = cook.replaceAll("Successcatan.user=", ""); 
+
+		if (cook != null) {
+			String answer = cook.substring(0, 7);
+			cook = cook.replaceAll("Successcatan.user=", "");
 			cook = cook.replaceAll(";Path=/;", "");
 			//System.out.println(cook); 
-			UserCookie = cook; 
+			UserCookie = cook;
 			String result = null;
 			try {
 				result = java.net.URLDecoder.decode(cook, "UTF-8");
@@ -60,19 +51,19 @@ public class RealProxy implements IServer{
 			}
 			System.out.println(result);
 			return result;
-		}else{
+		} else {
 			return null;
 		}
-		  
+
 	}
 
 	@Override
 	public String userRegister(String username, String password) {
 		// TODO Auto-generated method stub
 		JsonObject obj = new JsonObject();
-        obj.addProperty("username", username);
-        obj.addProperty("password", password);
-		return cc.send(obj, "/user/register", UserCookie, GameCookie); 
+		obj.addProperty("username", username);
+		obj.addProperty("password", password);
+		return cc.send(obj, "/user/register", UserCookie, GameCookie);
 	}
 
 	@Override
@@ -80,41 +71,41 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		JsonObject obj = new JsonObject();
 		String result = cc.send(obj, "/games/list", UserCookie, GameCookie);
-		
-		return result; 
+
+		return result;
 	}
 
 	@Override
 	public String gamesCreate(String name, boolean randomTiles, boolean randomNumbers, boolean randomPorts) {
 		// TODO Auto-generated method stub
 		JsonObject obj = new JsonObject();
-        obj.addProperty("randomTiles", randomTiles);
-        obj.addProperty("randomNumbers", randomNumbers);
-        obj.addProperty("randomPorts", randomPorts);
-        obj.addProperty("name", name);
+		obj.addProperty("randomTiles", randomTiles);
+		obj.addProperty("randomNumbers", randomNumbers);
+		obj.addProperty("randomPorts", randomPorts);
+		obj.addProperty("name", name);
 		String result = cc.send(obj, "/games/create", UserCookie, GameCookie);
-		
-		return result; 
+
+		return result;
 	}
 
 	@Override
 	public String gameJoin(Integer gameID, String color) {
 		JsonObject obj = new JsonObject();
 		obj.addProperty("id", gameID);
-        obj.addProperty("color", color );
-        
-        //System.out.println("User Cookie i am sending in:");
-        //System.out.println(UserCookie);
-        
-        String cook = cc.send(obj, "/games/join", UserCookie, GameCookie); 
-        //System.out.println("game cookie being set to "+cook);
-		if(cook != null ){
-			String answer = cook.substring(0, 7);  
-			cook = cook.replaceAll("Successcatan.game=", ""); 
+		obj.addProperty("color", color);
+
+		//System.out.println("User Cookie i am sending in:");
+		//System.out.println(UserCookie);
+
+		String cook = cc.send(obj, "/games/join", UserCookie, GameCookie);
+		//System.out.println("game cookie being set to "+cook);
+		if (cook != null) {
+			String answer = cook.substring(0, 7);
+			cook = cook.replaceAll("Successcatan.game=", "");
 			cook = cook.replaceAll(";Path=/;", "");
-			
+
 			GameCookie = cook;
-			 
+
 //			String result = null;
 //			try {
 //				result = java.net.URLDecoder.decode(cook, "UTF-8");
@@ -124,7 +115,7 @@ public class RealProxy implements IServer{
 //			}
 			//System.out.println(result);
 			return answer;
-		}else{
+		} else {
 			return null;
 		}
 	}
@@ -147,11 +138,12 @@ public class RealProxy implements IServer{
 		//System.out.println("obj sent "+obj);
 		//System.out.println("user cookie " +UserCookie);
 		//System.out.println("game cookie " +GameCookie);
-		return cc.send(obj, "/game/model?version="+versionNumber, UserCookie, GameCookie); 
+		return cc.send(obj, "/game/model?version=" + versionNumber, UserCookie, GameCookie);
 	}
+
 	public String gameModel() {
 		JsonObject obj = new JsonObject();
-		return cc.send(obj, "/game/model?version=", UserCookie, GameCookie); 
+		return cc.send(obj, "/game/model?version=" + (-1), UserCookie, GameCookie);
 	}
 
 	@Override
@@ -194,9 +186,9 @@ public class RealProxy implements IServer{
 	public String sendChat(Integer playerIndex, String content) {
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "sendChat");
-        obj.addProperty("playerIndex", playerIndex);
-        obj.addProperty("content", content);
+		obj.addProperty("type", "sendChat");
+		obj.addProperty("playerIndex", playerIndex);
+		obj.addProperty("content", content);
 		String result = cc.send(obj, "/moves/sendChat", UserCookie, GameCookie);
 		//System.out.println(result); 
 		return result;
@@ -207,9 +199,9 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "acceptTrade");
-        obj.addProperty("playerIndex", playerIndex);
-        obj.addProperty("willAccept", willAccept);
+		obj.addProperty("type", "acceptTrade");
+		obj.addProperty("playerIndex", playerIndex);
+		obj.addProperty("willAccept", willAccept);
 		String result = cc.send(obj, "/moves/acceptTrade", UserCookie, GameCookie);
 		//System.out.println(result); 
 		return result;
@@ -226,16 +218,16 @@ public class RealProxy implements IServer{
 //			    "wheat": 0,
 //			    "wood": 1
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "discardCards");
-        obj.addProperty("playerIndex", playerIndex);
-        JsonObject obj2 = new JsonObject();
-        obj2.addProperty("brick", discardedCards.get(0).toString());
-        obj2.addProperty("ore", discardedCards.get(1).toString());
-        obj2.addProperty("sheep", discardedCards.get(2).toString());
-        obj2.addProperty("wheat", discardedCards.get(3).toString());
-        obj2.addProperty("wood", discardedCards.get(4).toString());
-        obj.add("discardedCards", obj2);
-        
+		obj.addProperty("type", "discardCards");
+		obj.addProperty("playerIndex", playerIndex);
+		JsonObject obj2 = new JsonObject();
+		obj2.addProperty("brick", discardedCards.get(0).toString());
+		obj2.addProperty("ore", discardedCards.get(1).toString());
+		obj2.addProperty("sheep", discardedCards.get(2).toString());
+		obj2.addProperty("wheat", discardedCards.get(3).toString());
+		obj2.addProperty("wood", discardedCards.get(4).toString());
+		obj.add("discardedCards", obj2);
+
 		String result = cc.send(obj, "/moves/discardCards", UserCookie, GameCookie);
 		//System.out.println(result); 
 		return result;
@@ -246,9 +238,9 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "rollNumber");
-        obj.addProperty("playerIndex", playerIndex);
-        obj.addProperty("number", number);
+		obj.addProperty("type", "rollNumber");
+		obj.addProperty("playerIndex", playerIndex);
+		obj.addProperty("number", number);
 		String result = cc.send(obj, "/moves/rollNumber", UserCookie, GameCookie);
 		//System.out.println(result); 
 		return result;
@@ -257,18 +249,18 @@ public class RealProxy implements IServer{
 	@Override
 	public String buildRoad(Integer playerIndex, EdgeLocation roadLocation, Boolean free) {
 		// TODO Auto-generated method stub
-		
+
 		//// Implement this one		
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "buildRoad");
-        obj.addProperty("playerIndex", playerIndex);
-        JsonObject obj2 = new JsonObject();
-        obj2.addProperty("x", roadLocation.getHexLoc().getX());
-        obj2.addProperty("y", roadLocation.getHexLoc().getY());
-        obj2.addProperty("direction", roadLocation.getDir().name());
-        obj.add("roadLocation", obj2);
-        obj.addProperty("free", free);
-        System.out.println("sending "+obj);
+		obj.addProperty("type", "buildRoad");
+		obj.addProperty("playerIndex", playerIndex);
+		JsonObject obj2 = new JsonObject();
+		obj2.addProperty("x", roadLocation.getHexLoc().getX());
+		obj2.addProperty("y", roadLocation.getHexLoc().getY());
+		obj2.addProperty("direction", roadLocation.getDir().name());
+		obj.add("roadLocation", obj2);
+		obj.addProperty("free", free);
+		System.out.println("sending " + obj);
 		String result = cc.send(obj, "/moves/buildRoad", UserCookie, GameCookie);
 		//System.out.println(result); 
 		return result;
@@ -279,14 +271,14 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "buildSettlement");
-        obj.addProperty("playerIndex", playerIndex);
-        JsonObject obj2 = new JsonObject();
-        obj2.addProperty("x", vertexLocation.getHexLoc().getX());
-        obj2.addProperty("y", vertexLocation.getHexLoc().getY());
-        obj2.addProperty("direction", vertexLocation.getDir().name());
-        obj.add("vertexLocation", obj2);
-        obj.addProperty("free", free);
+		obj.addProperty("type", "buildSettlement");
+		obj.addProperty("playerIndex", playerIndex);
+		JsonObject obj2 = new JsonObject();
+		obj2.addProperty("x", vertexLocation.getHexLoc().getX());
+		obj2.addProperty("y", vertexLocation.getHexLoc().getY());
+		obj2.addProperty("direction", vertexLocation.getDir().name());
+		obj.add("vertexLocation", obj2);
+		obj.addProperty("free", free);
 		String result = cc.send(obj, "/moves/buildSettlement", UserCookie, GameCookie);
 		//System.out.println(result);
 		return result;
@@ -297,13 +289,13 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "buildCity");
-        obj.addProperty("playerIndex", playerIndex);
-        JsonObject obj2 = new JsonObject();
-        obj2.addProperty("x", vertexLocation.getHexLoc().getX());
-        obj2.addProperty("y", vertexLocation.getHexLoc().getY());
-        obj2.addProperty("direction", vertexLocation.getDir().name());
-        obj.add("vertexLocation", obj2);
+		obj.addProperty("type", "buildCity");
+		obj.addProperty("playerIndex", playerIndex);
+		JsonObject obj2 = new JsonObject();
+		obj2.addProperty("x", vertexLocation.getHexLoc().getX());
+		obj2.addProperty("y", vertexLocation.getHexLoc().getY());
+		obj2.addProperty("direction", vertexLocation.getDir().name());
+		obj.add("vertexLocation", obj2);
 		String result = cc.send(obj, "/moves/buildCity", UserCookie, GameCookie);
 		//System.out.println(result);
 		return result;
@@ -314,18 +306,18 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "offerTrade");
-        obj.addProperty("playerIndex", playerIndex);
-        JsonObject obj2 = new JsonObject();
-        obj2.addProperty("brick", offer.get(0).toString());
-        obj2.addProperty("ore", offer.get(1).toString());
-        obj2.addProperty("sheep", offer.get(2).toString());
-        obj2.addProperty("wheat", offer.get(3).toString());
-        obj2.addProperty("wood", offer.get(4).toString());
-        obj.add("offer", obj2);
-        obj.addProperty("receiver", receiver);
-        String result = cc.send(obj, "/moves/offerTrade", UserCookie, GameCookie);
-		
+		obj.addProperty("type", "offerTrade");
+		obj.addProperty("playerIndex", playerIndex);
+		JsonObject obj2 = new JsonObject();
+		obj2.addProperty("brick", offer.get(0).toString());
+		obj2.addProperty("ore", offer.get(1).toString());
+		obj2.addProperty("sheep", offer.get(2).toString());
+		obj2.addProperty("wheat", offer.get(3).toString());
+		obj2.addProperty("wood", offer.get(4).toString());
+		obj.add("offer", obj2);
+		obj.addProperty("receiver", receiver);
+		String result = cc.send(obj, "/moves/offerTrade", UserCookie, GameCookie);
+
 		return result;
 	}
 
@@ -334,13 +326,13 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "maritimeTrade");
-        obj.addProperty("playerIndex", playerIndex);
-        obj.addProperty("ratio", ratio);
-        obj.addProperty("inputResource", inputResource);
-        obj.addProperty("outputResource", outputResource);
+		obj.addProperty("type", "maritimeTrade");
+		obj.addProperty("playerIndex", playerIndex);
+		obj.addProperty("ratio", ratio);
+		obj.addProperty("inputResource", inputResource);
+		obj.addProperty("outputResource", outputResource);
 		String result = cc.send(obj, "/moves/maritimeTrade", UserCookie, GameCookie);
-		
+
 		return result;
 	}
 
@@ -349,13 +341,13 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "robPlayer");
-        obj.addProperty("playerIndex", playerIndex);
-        obj.addProperty("victimIndex", victimIndex);
-        JsonObject obj2 = new JsonObject();
-        obj2.addProperty("x", location.getX());
-        obj2.addProperty("y", location.getY());
-        obj.add("location", obj2); 
+		obj.addProperty("type", "robPlayer");
+		obj.addProperty("playerIndex", playerIndex);
+		obj.addProperty("victimIndex", victimIndex);
+		JsonObject obj2 = new JsonObject();
+		obj2.addProperty("x", location.getX());
+		obj2.addProperty("y", location.getY());
+		obj.add("location", obj2);
 		String result = cc.send(obj, "/moves/robPlayer", UserCookie, GameCookie);
 		//System.out.println(result); 
 		return result;
@@ -366,8 +358,8 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "finishTurn");
-        obj.addProperty("playerIndex", playerIndex); 
+		obj.addProperty("type", "finishTurn");
+		obj.addProperty("playerIndex", playerIndex);
 		String result = cc.send(obj, "/moves/finishTurn", UserCookie, GameCookie);
 		//System.out.println(result);
 		return result;
@@ -378,8 +370,8 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "buyDevCard");
-        obj.addProperty("playerIndex", playerIndex); 
+		obj.addProperty("type", "buyDevCard");
+		obj.addProperty("playerIndex", playerIndex);
 		String result = cc.send(obj, "/moves/buyDevCard", UserCookie, GameCookie);
 		//System.out.println(result);
 		return result;
@@ -390,13 +382,13 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "Soldier");
-        obj.addProperty("playerIndex", playerIndex);
-        obj.addProperty("victimIndex", victimIndex);
-        JsonObject obj2 = new JsonObject();
-        obj2.addProperty("x", location.getX());
-        obj2.addProperty("y", location.getY());
-        obj.add("location",obj2); 
+		obj.addProperty("type", "Soldier");
+		obj.addProperty("playerIndex", playerIndex);
+		obj.addProperty("victimIndex", victimIndex);
+		JsonObject obj2 = new JsonObject();
+		obj2.addProperty("x", location.getX());
+		obj2.addProperty("y", location.getY());
+		obj.add("location", obj2);
 		String result = cc.send(obj, "/moves/Soldier", UserCookie, GameCookie);
 		//System.out.println(result);
 		return result;
@@ -407,39 +399,31 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "Year_of_Plenty");
-        obj.addProperty("playerIndex", playerIndex);
-        obj.addProperty("resource1", getLower(resource1)); // MAKE SURE THESE ARE RIGHT 
-        obj.addProperty("resource2", getLower(resource2)); // MAKE SURE THESE ARE RIGHT 
+		obj.addProperty("type", "Year_of_Plenty");
+		obj.addProperty("playerIndex", playerIndex);
+		obj.addProperty("resource1", getLower(resource1)); // MAKE SURE THESE ARE RIGHT 
+		obj.addProperty("resource2", getLower(resource2)); // MAKE SURE THESE ARE RIGHT 
 		String result = cc.send(obj, "/moves/Year_of_Plenty", UserCookie, GameCookie);
 		//System.out.println(result); 
 		return result;
 	}
-	public String getLower(ResourceType r){
-		String result = ""; 
+
+	public String getLower(ResourceType r) {
+		String result = "";
 		//WOOD, BRICK, SHEEP, WHEAT, ORE
-		if(r == ResourceType.ORE)
-		{ 
-			result = "ore"; 
+		if (r == ResourceType.ORE) {
+			result = "ore";
+		} else if (r == ResourceType.BRICK) {
+			result = "brick";
+		} else if (r == ResourceType.SHEEP) {
+			result = "sheep";
+		} else if (r == ResourceType.WHEAT) {
+			result = "wheat";
+		} else if (r == ResourceType.WOOD) {
+			result = "wood";
 		}
-		else if(r == ResourceType.BRICK)
-		{
-			result = "brick"; 
-		}
-		else if(r == ResourceType.SHEEP)
-		{
-			result = "sheep"; 
-		}
-		else if(r == ResourceType.WHEAT)
-		{
-			result = "wheat"; 
-		}
-		else if(r == ResourceType.WOOD)
-		{
-			result = "wood"; 
-		}
-		
-		return result; 
+
+		return result;
 	}
 
 	@Override
@@ -447,32 +431,31 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "Road_Building");
-        obj.addProperty("playerIndex", playerIndex);
-        JsonObject obj2 = new JsonObject();
-        obj2.addProperty("x", spot1.getHexLoc().getX());
-        obj2.addProperty("y", spot1.getHexLoc().getY());
-        obj2.addProperty("direction", spot1.getDir().name());
-        JsonObject obj3 = new JsonObject();
-        obj3.addProperty("x", spot2.getHexLoc().getX());
-        obj3.addProperty("y", spot2.getHexLoc().getY());
-        obj3.addProperty("direction", spot2.getDir().name());
-        obj.add("spot1", obj2);
-        obj.add("spot2", obj3);
+		obj.addProperty("type", "Road_Building");
+		obj.addProperty("playerIndex", playerIndex);
+		JsonObject obj2 = new JsonObject();
+		obj2.addProperty("x", spot1.getHexLoc().getX());
+		obj2.addProperty("y", spot1.getHexLoc().getY());
+		obj2.addProperty("direction", spot1.getDir().name());
+		JsonObject obj3 = new JsonObject();
+		obj3.addProperty("x", spot2.getHexLoc().getX());
+		obj3.addProperty("y", spot2.getHexLoc().getY());
+		obj3.addProperty("direction", spot2.getDir().name());
+		obj.add("spot1", obj2);
+		obj.add("spot2", obj3);
 		String result = cc.send(obj, "/moves/Road_Building", UserCookie, GameCookie);
-		 
+
 		return result;
 	}
-	
 
 	@Override
 	public String Monopoly(String resource, Integer playerIndex) {
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "Monopoly");
-        obj.addProperty("resource", resource);
-        obj.addProperty("playerIndex", playerIndex);
+		obj.addProperty("type", "Monopoly");
+		obj.addProperty("resource", resource);
+		obj.addProperty("playerIndex", playerIndex);
 		String result = cc.send(obj, "/moves/Monopoly", UserCookie, GameCookie);
 		//System.out.println(result); 
 		return result;
@@ -483,15 +466,15 @@ public class RealProxy implements IServer{
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();
-        obj.addProperty("type", "Monument");
-        obj.addProperty("playerIndex", playerIndex);
+		obj.addProperty("type", "Monument");
+		obj.addProperty("playerIndex", playerIndex);
 		String result = cc.send(obj, "/moves/Monument", UserCookie, GameCookie);
 		//System.out.println(result);
 		return result;
 	}
 
 	public static RealProxy getSingleton() {
-		if(singleton == null) {
+		if (singleton == null) {
 			singleton = new RealProxy();
 		}
 		return singleton;
