@@ -150,14 +150,15 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		theFacade = Facade.getSingleton();
 		if(GameManager.getSingleton() != null) {
 			thePlayer = GameManager.getSingleton().getthisplayer();
-			//if (thePlayer.canOfferBankTrade())        //TODO: this needs to be changed for ports
-			if (canOfferMaritimeTrade())
+			//if (thePlayer.canOfferBankTrade())
+			if (canOfferMaritimeTrade()
+					&& GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex())
 			{
 
 				pid = GameManager.getSingleton().getthisplayer().getPlayerIndex();
 				//theFacade.getGame().canMaritimeTrade(pid);
 				thePlayer = GameManager.getSingleton().getthisplayer();
-				//giveResources = thePlayer.resourcesOverThree();                //TODO: this needs to be changed to implement port ratios.
+				//giveResources = thePlayer.resourcesOverThree();
 				giveResources = playerResourcesOverPorts();
 				getTradeView().enableMaritimeTrade(true);
 				getTradeOverlay().setCancelEnabled(true);

@@ -500,4 +500,12 @@ public class Game extends AbstractModelPartition {
 	public void updatemodelnumber() {
 		version++;
 	}
+
+	public DevCardList getDeck() {
+		return deck;
+	}
+
+	public void setDeck(DevCardList deck) {
+		this.deck = deck;
+	}
 }

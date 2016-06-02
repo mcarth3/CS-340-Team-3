@@ -277,6 +277,40 @@ public class ServerFacade {
 	 * @return
 	 */
 	public Object playMonopoly(String type, String resource, Integer playerIndex) {
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(playerIndex);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		if(thePlayer != null)
+		{
+
+			thePlayer.getOldDevCards().setMonopoly(thePlayer.getOldDevCards().getMonopoly() -1);
+
+			ArrayList<Player> allPlayers = model.getPlayers();
+			int totalResource = 0;
+			for(int i =0; i < allPlayers.size(); i++)
+			{
+				if(allPlayers.get(i).getPlayerIndex() != playerIndex)
+				{
+					//acquire all player's resources!!
+					totalResource += allPlayers.get(i).getResources().getResourceType(stringTypeToResourceType(resource));
+					allPlayers.get(i).getResources().changeResourceTypeWithAmount(stringTypeToResourceType(resource), 0);
+				}
+			}
+			thePlayer.addResource(stringTypeToResourceType(resource), totalResource);
+			model.getDeck().setMonopoly(model.getDeck().getMonopoly() + 1);
+
+
+			MessageLine newLine = new MessageLine(thePlayer.getName() + "monopolized all the "+ resource+ ".",
+					thePlayer.getName());
+			model.getLog().getLines().add(newLine);
+
+
+		}
+
 
 		updatemodelnumber();
 		return model;
@@ -290,6 +324,30 @@ public class ServerFacade {
 	 * @return
 	 */
 	public Object playMonument(String type, Integer playerIndex) {
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(playerIndex);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		if(thePlayer != null)
+		{
+
+			thePlayer.getOldDevCards().setMonument(thePlayer.getOldDevCards().getMonument() -1);
+
+			thePlayer.setVictoryPoints(thePlayer.getVictoryPoints() + 1);
+
+			model.getDeck().setMonument(model.getDeck().getMonument() + 1);
+
+
+			MessageLine newLine = new MessageLine(thePlayer.getName() + "built a monument, and gained a Victory Point.",
+					thePlayer.getName());
+			model.getLog().getLines().add(newLine);
+
+
+		}
+
 
 		updatemodelnumber();
 		return model;
@@ -342,45 +400,54 @@ public class ServerFacade {
 
 	/**
 	 * build settlement, remove resources, update map and log? (IF FREE). Add VP.
+	 * @pre Settlement can be built by player (they have enough resources and an open spot) if
+	 * the boolean is free and this method is called.
+	 * @post the model will have a new settlement owned by the named player, and there
+	 * will be a new message in the log to show that the settlement was built. The player's resources will be
+	 * decremented and the bank's resources accordingly incremented
 	 * @param type
 	 * @param playerIndex
 	 * @param settlementLocation
 	 * @param free
-	 * @return
+	 * @return a model with the new settlement and a new message
 	 */
 	public Object buildSettlement(String type, Integer playerIndex, VertexLocation settlementLocation, boolean free) {
-		Player thePlayer = null;
-		try {
-			thePlayer = model.findPlayerbyindex(playerIndex);
-		} catch (ObjectNotFoundException e) {
-			e.printStackTrace();
-		}
-
-		if(thePlayer != null)
-		{
-			thePlayer.addResource(ResourceType.BRICK, -1);
-			thePlayer.addResource(ResourceType.SHEEP, -1);
-			thePlayer.addResource(ResourceType.WOOD, -1);
-			thePlayer.addResource(ResourceType.WHEAT, -1);
-
-			ResourceList bank = model.getBank();
-			bank.changeResourceTypeWithAmount(ResourceType.WHEAT, 1);
-			bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
-			bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
-			bank.changeResourceTypeWithAmount(ResourceType.SHEEP, 1);
-
+		if(free) {
+			Player thePlayer = null;
 			try {
-				model.getMap().addSettlement(settlementLocation.x, settlementLocation.y, settlementLocation.getDir(), playerIndex);
-				MessageLine newLine = new MessageLine(thePlayer.getName() + "built a settlement.", thePlayer.getName());
-				model.getLog().getLines().add(newLine);
-
-			} catch (FailureToAddException e) {
+				thePlayer = model.findPlayerbyindex(playerIndex);
+			} catch (ObjectNotFoundException e) {
 				e.printStackTrace();
 			}
 
-		}
+			if (thePlayer != null) {
+				//decrement player and increase bank resources
+				thePlayer.addResource(ResourceType.BRICK, -1);
+				thePlayer.addResource(ResourceType.SHEEP, -1);
+				thePlayer.addResource(ResourceType.WOOD, -1);
+				thePlayer.addResource(ResourceType.WHEAT, -1);
 
-		updatemodelnumber();
+				ResourceList bank = model.getBank();
+				bank.changeResourceTypeWithAmount(ResourceType.WHEAT, 1);
+				bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
+				bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
+				bank.changeResourceTypeWithAmount(ResourceType.SHEEP, 1);
+
+				try {
+					//add settlement to map and add message to log
+					model.getMap().addSettlement(settlementLocation.x, settlementLocation.y, settlementLocation.getDir(), playerIndex);
+					MessageLine newLine = new MessageLine(thePlayer.getName() + "built a settlement.", thePlayer.getName());
+					model.getLog().getLines().add(newLine);
+
+				} catch (FailureToAddException e) {
+					e.printStackTrace();
+				}
+
+			}
+
+			updatemodelnumber();
+			return model;
+		}
 		return model;
 	}
 //"Name" built a settlement
@@ -495,7 +562,7 @@ public class ServerFacade {
 	public Object discardCards(String type, Integer playerIndex, ResourceList discardedCards) {
 
 		model.changePlayerResources(discardedCards, playerIndex);
-
+		model.getTurnTracker().setStatus("Robbing");
 		//TODO: How would I check if this is the last person to discard?
 		updatemodelnumber();
 		return model;
