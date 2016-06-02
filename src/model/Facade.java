@@ -208,15 +208,30 @@ public class Facade extends AbstractModelPartition {
 		if (theGame == null)// game isnt null
 			return false;
 		if (theGame.getTurnTracker().getStatus().equals("FirstRound") || theGame.getTurnTracker().getStatus().equals("SecondRound")) {
-			for (int i = 0; i < theGame.getMap().getRoads().size(); i++) {
-				if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().equals(edge.getNormalizedLocation())) // taken
-					return false;
+			//for (int i = 0; i < theGame.getMap().getRoads().size(); i++) {
+			//	if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().equals(edge.getNormalizedLocation())) // taken
+			//		return false;
+			//}
+			//for (VertexLocation vertex : edge.getVertices()) {
+			//	if (vertex.isAvailable(theGame, GameManager.getSingleton().getthisplayer().getPlayerIndex()))
+			//		return true;
+			//}
+			//return false;
+			// System.out.println("Playing");
+			if (edge != null) {
+				//System.out.println("edge!= null");
+				System.out.println("edge location " + edge.getNormalizedLocation());
+				for (int i = 0; i < theGame.getMap().getRoads().size(); i++) {
+					// System.out.println("map location " +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
+					if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().toString().equals(edge.getNormalizedLocation().toString())) { // if space is taken
+						//System.out.println("map road location = " +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
+						//System.out.println("overlapping");
+						return false;
+					}
+				}
+				return waterboundarytest(edge);
 			}
-			for (VertexLocation vertex : edge.getVertices()) {
-				if (vertex.isAvailable(theGame, GameManager.getSingleton().getthisplayer().getPlayerIndex()))
-					return true;
-			}
-			return false;
+
 		} else {
 			// System.out.println("Playing");
 			if (edge != null) {
@@ -226,30 +241,88 @@ public class Facade extends AbstractModelPartition {
 				for (int i = 0; i < theGame.getMap().getRoads().size(); i++) {
 					// System.out.println("map location "
 					// +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
-					if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().toString().equals(edge.getNormalizedLocation().toString())) { // if
-																																								// space
-																																								// is
-																																								// taken
-						// System.out.println("map road location = "
-						// +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
-						// System.out.println("overlapping");
+					if (theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation().toString().equals(edge.getNormalizedLocation().toString())) { // if space is taken
+						//System.out.println("map road location = " +theGame.getMap().getRoads().get(i).getLocation().getNormalizedLocation());
+						//System.out.println("overlapping");
 						return false;
 					}
 				}
-				if (!edge.hadconnectingroad(theGame, GameManager.getSingleton().getthisplayer().getPlayerIndex())) { // if
-																														// you
-																														// dont
-																														// have
-																														// a
-																														// connecting
-																														// road
+				if (!edge.hadconnectingroad(theGame, GameManager.getSingleton().getthisplayer().getPlayerIndex())) { // if you dont have a connecting road
 					// System.out.println("no connecting road-so false");
 					return false;
 				}
 			}
 		}
-
+		if (!waterboundarytest(edge)) {
+			return false;
+		}
 		return theGame.canBuildRoad(playerId);
+	}
+
+	private boolean waterboundarytest(EdgeLocation edge) {
+		System.out.println("edge location " + edge.getNormalizedLocation());
+		if (edge.getNormalizedLocation().getX() < -3 || edge.getNormalizedLocation().getX() > 3) {
+			return false;
+		}
+		if (edge.getNormalizedLocation().getX() == -3) {
+			if (edge.getNormalizedLocation().getY() > 3 || edge.getNormalizedLocation().getY() < 1) {
+				return false;
+			}
+			if (edge.getNormalizedLocation().getDir().toString() != "NE") {
+				return false;
+			}
+		}
+
+		if (edge.getNormalizedLocation().getX() == -2) {
+			if (edge.getNormalizedLocation().getY() > 3 || edge.getNormalizedLocation().getY() < 0) {
+				return false;
+			}
+			if (edge.getNormalizedLocation().getY() == 3 && ((edge.getNormalizedLocation().getDir().toString() != "N") && (edge.getNormalizedLocation().getDir().toString() != "NE"))) {
+				return false;
+			}
+		}
+		if (edge.getNormalizedLocation().getX() == -1) {
+			if (edge.getNormalizedLocation().getY() > 3 || edge.getNormalizedLocation().getY() < -1) {
+				return false;
+			}
+			if (edge.getNormalizedLocation().getY() == 3 && ((edge.getNormalizedLocation().getDir().toString() != "N") && (edge.getNormalizedLocation().getDir().toString() != "NE"))) {
+				return false;
+			}
+		}
+		if (edge.getNormalizedLocation().getX() == 0) {
+			if (edge.getNormalizedLocation().getY() > 3 || edge.getNormalizedLocation().getY() < -2) {
+				return false;
+			}
+			if (edge.getNormalizedLocation().getY() == 3 && ((edge.getNormalizedLocation().getDir().toString() != "N"))) {
+				return false;
+			}
+		}
+		if (edge.getNormalizedLocation().getX() == 1) {
+			if (edge.getNormalizedLocation().getY() > 2 || edge.getNormalizedLocation().getY() < -2) {
+				return false;
+			}
+			if (edge.getNormalizedLocation().getY() == 2 && ((edge.getNormalizedLocation().getDir().toString() != "N") && (edge.getNormalizedLocation().getDir().toString() != "NW"))) {
+				return false;
+			}
+		}
+		if (edge.getNormalizedLocation().getX() == 2) {
+			if (edge.getNormalizedLocation().getY() > 1 || edge.getNormalizedLocation().getY() < -2) {
+				return false;
+			}
+			if (edge.getNormalizedLocation().getY() == 1 && ((edge.getNormalizedLocation().getDir().toString() != "N") && (edge.getNormalizedLocation().getDir().toString() != "NW"))) {
+				return false;
+			}
+		}
+		if (edge.getNormalizedLocation().getX() == 3) {
+			if (edge.getNormalizedLocation().getY() > 0 || edge.getNormalizedLocation().getY() < -2) {
+				return false;
+			}
+			if (edge.getNormalizedLocation().getDir().toString() != "NW") {
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	public boolean isHexHasResource(HexLocation hexLoc) {

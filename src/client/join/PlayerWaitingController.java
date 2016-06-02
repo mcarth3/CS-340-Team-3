@@ -49,12 +49,10 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 
 	@Override
 	public void addAI() {
-
 		String aitype = null;
-		String response = null;
 
 		aitype = getView().getSelectedAI();
-		response = RealProxy.getSingleton().gameAddAI(aitype);
+		RealProxy.getSingleton().gameAddAI(aitype);
 
 		getView().setPlayers(GameManager.getSingleton().getModel().getPlayers());
 		getView().closeModal();
