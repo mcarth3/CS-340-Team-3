@@ -88,7 +88,7 @@ public class ClientCommunicator {
 				}
 				System.out.println("=================== START ============================");
 				System.out.println(command);
-				//  System.out.println(result); 
+				System.out.println(result);
 				System.out.println("==================== END ===========================");
 
 				return result;
