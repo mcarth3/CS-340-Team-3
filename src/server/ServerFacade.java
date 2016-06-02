@@ -119,23 +119,29 @@ public class ServerFacade {
 	}
 
 	public Object GamesJoin(Integer id, String color) {
-		Game[] games = all.getGames();
-		model = games[id];
-		ArrayList<Player> players = model.getPlayers(); 
-		boolean foundInGame = false;
+		
 		String response = "The player could not be added to the specified game.";
-		for(int i=0; i<players.size(); i++){
-			if(players.get(i).getName().equals(currentUsername)){
-				players.get(i).setColor(color);
-				foundInGame = true;
+		Game[] games = all.getGames();
+		if(games.length > id){
+			model = games[id];
+			ArrayList<Player> players = model.getPlayers(); 
+			boolean foundInGame = false;
+			for(int i=0; i<players.size(); i++){
+				if(players.get(i).getName().equals(currentUsername)){
+					players.get(i).setColor(color);
+					foundInGame = true;
+				}
 			}
-		}
-		 
-		if(!foundInGame){
-			//add player to game
-		}
-		// how would this ever fail?
-		response = "Successcatan.game=" + id + ";Path=/;";
+			if(!foundInGame){
+				Player newPlayer = new Player();
+				//might need more info here
+				newPlayer.setName(currentUsername);
+				newPlayer.setColor(color);
+				players.add(newPlayer);
+				model.setPlayers(players);
+			}
+			response = "Successcatan.game=" + id + ";Path=/;";
+		} 
 		return response;
 	}
 

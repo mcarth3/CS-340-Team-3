@@ -209,7 +209,6 @@ public class Handlers {
 		public void handle(HttpExchange http_exchange) throws IOException {
 			GamesJoinJsonObject gjjo = (GamesJoinJsonObject) deserialize(http_exchange, GamesJoinJsonObject.class); 
 			ICommand c = new GamesJoinCommand();
-			
 			String response = (String) c.execute(gjjo); 
 			//String response = "Successcatan.game=0;Path=/;";
 			if(response.substring(0, 7).equals("Success")){
