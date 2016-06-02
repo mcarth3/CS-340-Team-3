@@ -5,15 +5,19 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
-
 import model.FailureToAddException;
+import client.data.GameInfo;
+import model.AllInfo;
 import model.Game;
 import model.ObjectNotFoundException;
 import model.Player;
+import model.UserInfo;
 import model.bank.ResourceList;
 import model.clientModel.MessageLine;
+import poller.modeljsonparser.ModelParser;
 import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
@@ -26,6 +30,8 @@ public class ServerFacade {
 
 	private static ServerFacade singleton = null;
 	private Game model = null;
+	private AllInfo all = null; 
+	private String currentUsername; 
 
 	public static ServerFacade getSingleton() {
 		if (singleton == null) {
@@ -37,10 +43,13 @@ public class ServerFacade {
 	public ServerFacade() {
 		String data;
 
+		File fileEverything = new File("alltestgames.json"); 
+		
 		File file = new File("testmodel.json");
 		FileReader fileReader = null;
 		try {
-			fileReader = new FileReader(file);
+			//fileReader = new FileReader(file);
+			fileReader = new FileReader(fileEverything);
 		} catch (FileNotFoundException e) {
 			System.out.println("FAILED TO IMPORT MODEL");
 			e.printStackTrace();
@@ -49,7 +58,8 @@ public class ServerFacade {
 		Scanner scanner = new Scanner(bufferedReader);
 		data = scanner.useDelimiter("\\Z").next();
 		scanner.close();
-
+		
+		all = ModelParser.parse5(data);
 	}
 
 	public void updatemodelnumber() {
@@ -58,17 +68,26 @@ public class ServerFacade {
 
 	public Object UserLogin(String username, String password) {
 
-		//TODO: get playerID 
-		String userInfo = "{\"name\":\"" + username + "\",\"password\":\"" + password + "\",\"playerID\":0}";
-		String result = null;
-		try {
-			result = java.net.URLEncoder.encode(userInfo, "UTF-8");
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
+		UserInfo[] users = all.getUsers();
+		boolean found = false;
+		Integer id = 0; 
+		for(UserInfo u : users){
+			if(username.equals(u.getUsername()) && password.equals(u.getPassword())){
+				found = true;
+				id = u.getPlayerID();
+			}
 		}
-		result = "Successcatan.user=" + result + ";Path=/;";
-		//System.out.println(result);
-
+		String result = "Failed to login - bad username or password.";
+		if(found){
+			currentUsername = username; 
+			String userInfo = "{\"name\":\"" + username + "\",\"password\":\"" + password + "\",\"playerID\":" + id + "}";
+			try {
+				result = java.net.URLEncoder.encode(userInfo, "UTF-8");
+			} catch (UnsupportedEncodingException e) {
+				e.printStackTrace();
+			}
+			result = "Successcatan.user=" + result + ";Path=/;";
+		}
 		return result;
 	}
 
@@ -90,7 +109,8 @@ public class ServerFacade {
 
 	public Object GamesList() {
 		//System.out.println("game list in server facade"); 
-		return null;
+		GameInfo[] list = all.getGameList();
+		return list;
 	}
 
 	public Object GamesCreate(String name, boolean numbers, boolean ports, boolean tiles) {
@@ -99,8 +119,24 @@ public class ServerFacade {
 	}
 
 	public Object GamesJoin(Integer id, String color) {
-		//System.out.println("game join in server facade"); 
-		return null;
+		Game[] games = all.getGames();
+		model = games[id];
+		ArrayList<Player> players = model.getPlayers(); 
+		boolean foundInGame = false;
+		String response = "The player could not be added to the specified game.";
+		for(int i=0; i<players.size(); i++){
+			if(players.get(i).getName().equals(currentUsername)){
+				players.get(i).setColor(color);
+				foundInGame = true;
+			}
+		}
+		 
+		if(!foundInGame){
+			//add player to game
+		}
+		// how would this ever fail?
+		response = "Successcatan.game=" + id + ";Path=/;";
+		return response;
 	}
 
 	public Object GameModel() {
@@ -110,6 +146,7 @@ public class ServerFacade {
 
 	public Object MovesSendChat(Integer id, String content) {
 		//System.out.println("moves send chat in server facade"); 
+		
 		return model;
 	}
 

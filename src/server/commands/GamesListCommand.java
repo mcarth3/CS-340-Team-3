@@ -10,8 +10,7 @@ public class GamesListCommand implements ICommand {
     */
 	@Override
 	public Object execute(Object data) {
-		ServerFacade sf = new ServerFacade(); 
-		Object result = sf.GamesList();  
-		return result;
+		ServerFacade sf = ServerFacade.getSingleton(); 
+		return sf.GamesList();  
 	}
 }

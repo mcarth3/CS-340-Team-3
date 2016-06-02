@@ -12,8 +12,7 @@ public class GamesCreateCommand implements ICommand {
 	@Override
 	public Object execute(Object data) {
 		GamesCreateJsonObject gcjo = (GamesCreateJsonObject) data; 
-		ServerFacade sf = new ServerFacade(); 
-		Object result = sf.GamesCreate(gcjo.getName(), gcjo.isRandomNumbers(), gcjo.isRandomPorts(), gcjo.isRandomTiles()); 
-		return result;
+		ServerFacade sf = ServerFacade.getSingleton(); 
+		return sf.GamesCreate(gcjo.getName(), gcjo.isRandomNumbers(), gcjo.isRandomPorts(), gcjo.isRandomTiles()); 
 	}
 }

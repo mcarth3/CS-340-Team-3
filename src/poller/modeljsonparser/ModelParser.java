@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 
 import client.data.GameInfo;
 import client.login.PlayerLoginInfo;
+import model.AllInfo;
 import model.Game;
 
 /**
@@ -28,6 +29,11 @@ public class ModelParser {
 		Gson gson = new Gson();
 		GameInfo[] login = gson.fromJson(jsonstring, GameInfo[].class);
 		return login;
+	}
+	public static AllInfo parse5(String jsonstring) {
+		Gson gson = new Gson();
+		AllInfo all = gson.fromJson(jsonstring, AllInfo.class);
+		return all;
 	}
 	
 	public static <T> Object parse(String jsondata, Class<T> givenclass) {

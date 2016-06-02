@@ -13,8 +13,7 @@ public class MovesSendChatCommand implements ICommand {
 	@Override
 	public Object execute(Object data) {
 		MovesSendChatJsonObject mscjo = (MovesSendChatJsonObject) data;
-		ServerFacade sf = new ServerFacade(); 
-		Object result = sf.MovesSendChat(mscjo.getPlayerIndex(), mscjo.getContent());  
-		return result;			
+		ServerFacade sf = ServerFacade.getSingleton();
+		return sf.MovesSendChat(mscjo.getPlayerIndex(), mscjo.getContent());  	
 	}
 }

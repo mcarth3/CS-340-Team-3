@@ -13,8 +13,7 @@ public class GamesJoinCommand implements ICommand {
 	@Override
 	public Object execute(Object data) {
 		GamesJoinJsonObject gjjo = (GamesJoinJsonObject) data;
-		ServerFacade sf = new ServerFacade(); 
-		Object result = sf.GamesJoin(gjjo.getId(), gjjo.getColor()); 
-		return result;	
+		ServerFacade sf = ServerFacade.getSingleton();
+		return sf.GamesJoin(gjjo.getId(), gjjo.getColor()); 
 	}
 }

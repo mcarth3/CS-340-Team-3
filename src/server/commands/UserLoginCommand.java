@@ -12,8 +12,7 @@ public class UserLoginCommand implements ICommand {
 	@Override
 	public Object execute(Object data) { 
 		UserLoginJsonObject uljo = (UserLoginJsonObject) data;
-		ServerFacade sf = new ServerFacade(); 
-		Object result = sf.UserLogin(uljo.getUsername(), uljo.getPassword()); 
-		return result;		
+		ServerFacade sf = ServerFacade.getSingleton(); 
+		return sf.UserLogin(uljo.getUsername(), uljo.getPassword()); 
 	}
 }

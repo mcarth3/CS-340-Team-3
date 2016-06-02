@@ -12,8 +12,7 @@ public class UserRegisterCommand implements ICommand {
 	@Override
 	public Object execute(Object data) {
 		UserRegisterJsonObject urjo = (UserRegisterJsonObject) data;
-		ServerFacade sf = new ServerFacade(); 
-		Object result = sf.UserRegister(urjo.getUsername(), urjo.getPassword()); 
-		return result;
+		ServerFacade sf = ServerFacade.getSingleton();
+		return sf.UserRegister(urjo.getUsername(), urjo.getPassword()); 
 	}
 }

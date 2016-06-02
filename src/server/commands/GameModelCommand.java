@@ -11,8 +11,7 @@ public class GameModelCommand implements ICommand {
     */
 	@Override
 	public Object execute(Object data) {
-		ServerFacade sf = new ServerFacade(); 
-		Object result = sf.GameModel();  
-		return result;
+		ServerFacade sf = ServerFacade.getSingleton(); 
+		return sf.GameModel();  
 	}
 }
