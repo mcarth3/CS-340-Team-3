@@ -49,6 +49,10 @@ public class ServerFacade {
 
 	}
 
+	public void updatemodelnumber() {
+		model.updatemodelnumber();
+	}
+
 	public Object UserLogin(String username, String password) {
 
 		//TODO: get playerID 
@@ -136,6 +140,7 @@ public class ServerFacade {
 
 		//TODO: update log
 
+		updatemodelnumber();
 		return model;
 	}
 
@@ -150,6 +155,7 @@ public class ServerFacade {
 		//	rob from victim
 		//TODO: update log
 
+		updatemodelnumber();
 		return model;
 	}
 
@@ -175,6 +181,7 @@ public class ServerFacade {
 
 		//TODO: update log
 
+		updatemodelnumber();
 		return model;
 	}
 
@@ -184,6 +191,7 @@ public class ServerFacade {
 		//remove from bank and add to current player
 
 		//TODO: update log
+		updatemodelnumber();
 		return model;
 	}
 
@@ -193,6 +201,7 @@ public class ServerFacade {
 		//remove year of plenty card from player
 
 		//TODO: update log
+		updatemodelnumber();
 		return model;
 	}
 
@@ -201,6 +210,7 @@ public class ServerFacade {
 		//remove road building card from player
 
 		//TODO: update log
+		updatemodelnumber();
 		return model;
 	}
 
@@ -211,6 +221,7 @@ public class ServerFacade {
 		//change status?
 
 		//TODO: update log
+		updatemodelnumber();
 		return model;
 	}
 

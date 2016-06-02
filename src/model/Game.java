@@ -394,16 +394,15 @@ public class Game extends AbstractModelPartition {
 	 * If the number for a type is positive, this function always adds to it.
 	 * @param theList
 	 * @param playerIndex
-     */
-	public void changePlayerResources(ResourceList theList, int playerIndex)
-	{
+	 */
+	public void changePlayerResources(ResourceList theList, int playerIndex) {
 		Player thisPlayer = null;
 		try {
 			thisPlayer = findPlayerbyindex(playerIndex);
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
 		}
-		if(thisPlayer != null) {
+		if (thisPlayer != null) {
 			ResourceType theType = ResourceType.BRICK;
 			thisPlayer.addResource(theType, theList.getResourceType(theType));
 
@@ -418,9 +417,7 @@ public class Game extends AbstractModelPartition {
 
 			theType = ResourceType.ORE;
 			thisPlayer.addResource(theType, theList.getResourceType(theType));
-		}
-		else
-		{
+		} else {
 			System.out.println("Player is null in changePlayerResources() in Game.java!! Error!!");
 		}
 
@@ -482,5 +479,9 @@ public class Game extends AbstractModelPartition {
 
 	public void setGameDice(Dice gameDice) {
 		this.gameDice = gameDice;
+	}
+
+	public void updatemodelnumber() {
+		version++;
 	}
 }
