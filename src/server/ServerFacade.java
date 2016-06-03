@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
+
+import model.*;
 import client.data.GameInfo;
 import model.AllInfo;
 import model.FailureToAddException;
@@ -497,6 +499,9 @@ public class ServerFacade {
 	 */
 	public Object offerTrade(String type, Integer playerIndex, ResourceList offer, Integer reciever) {
 
+		TradeOffer newTrade = new TradeOffer(playerIndex, reciever, offer);
+		model.setTradeO(newTrade);
+
 		updatemodelnumber();
 		return model;
 	}
@@ -510,6 +515,53 @@ public class ServerFacade {
 	 * @return
 	 */
 	public Object acceptTrade(String type, Integer playerIndex, boolean willAccept) {
+
+
+		try {
+			Player theOfferPlayer = model.findPlayerbyindex(model.getTradeO().getSender()); //this is the reason for the try/catch
+			Player theRecieverPlayer = model.findPlayerbyindex(playerIndex);
+			if(willAccept) {
+
+
+
+				ResourceList theList = model.getTradeO().getOffer();
+				ResourceType theType = ResourceType.BRICK;
+
+				theOfferPlayer.addResource(theType, -theList.getResourceType(theType));
+				theRecieverPlayer.addResource(theType, theList.getResourceType(theType));
+
+				theType = ResourceType.ORE;
+				theOfferPlayer.addResource(theType, -theList.getResourceType(theType));
+				theRecieverPlayer.addResource(theType, theList.getResourceType(theType));
+
+				theType = ResourceType.SHEEP;
+				theOfferPlayer.addResource(theType, -theList.getResourceType(theType));
+				theRecieverPlayer.addResource(theType, theList.getResourceType(theType));
+
+				theType = ResourceType.WHEAT;
+				theOfferPlayer.addResource(theType, -theList.getResourceType(theType));
+				theRecieverPlayer.addResource(theType, theList.getResourceType(theType));
+
+				theType = ResourceType.WOOD;
+				theOfferPlayer.addResource(theType, -theList.getResourceType(theType));
+				theRecieverPlayer.addResource(theType, theList.getResourceType(theType));
+
+				//EMPTY TRADEO
+				MessageLine newLine = new MessageLine(theRecieverPlayer.getName() + " accepted the trade.", theOfferPlayer.getName());
+				model.getLog().getLines().add(newLine);
+
+			}
+			else
+			{
+				MessageLine newLine = new MessageLine(theRecieverPlayer.getName() + " rejected the trade.", theOfferPlayer.getName());
+				model.getLog().getLines().add(newLine);
+			}
+			model.setTradeO(null); //TODO: CHeck if this'll actually work
+
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
 
 		updatemodelnumber();
 		return model;
