@@ -96,7 +96,7 @@ public class ServerPoller {
 		{
 
 			System.out.println("NEW MODEL");
-			model = ModelParser.parse2(modeljson);
+			model = (Game) ModelParser.parse(modeljson, Game.class);
 		}
 		return model;
 

@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import client.GameManager.GameManager;
 import client.base.Controller;
-import model.Game;
 import model.Player;
 import model.TurnTracker;
 import proxy.RealProxy;
@@ -19,7 +18,6 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 	public TurnTrackerController(ITurnTrackerView view) {
 		super(view);
 		System.out.println("TT:manager got initiated");
-		manager = GameManager.getSingleton();
 		// manager.createdefaultgame();
 		// initFromModel();
 	}
@@ -38,11 +36,10 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 	 */
 	@Override
 	public void endTurn() {
-		Game model = manager.getModel();
 		RealProxy proxy = RealProxy.getSingleton();
 		if (model != null) {
-			if (model.canFinishTurn(manager.getthisplayer().getPlayerID())) {
-				String returnJSON = proxy.finishTurn(manager.getthisplayer().getPlayerIndex());
+			if (model.canFinishTurn(thisplayer.getPlayerID())) {
+				String returnJSON = proxy.finishTurn(thisplayer.getPlayerIndex());
 				System.out.print("TT: TURN ENDED===================================================");
 			}
 		}
@@ -58,29 +55,27 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 	 */
 	private void initFromModel() {
 
-		// System.out.println(manager.getthisplayer().getColor());
+		// System.out.println(thisplayer.getColor());
 		// if (getView() != null){
 		// getView().setLocalPlayerColor(CatanColor.RED);
 		// }
-		GameManager gm = GameManager.getSingleton();
+		getView().setLocalPlayerColor(GameManager.getSingleton().colorTemp);
 
-		getView().setLocalPlayerColor(gm.colorTemp);
-
-		TurnTracker turnTracker = manager.getModel().getTurnTracker();
-		ArrayList<Player> players = manager.getModel().getPlayers();
+		TurnTracker turnTracker = model.getTurnTracker();
+		ArrayList<Player> players = model.getPlayers();
 		for (int i = 0; i < players.size(); i++) {
 			boolean largestArmy = false;
 			boolean longestRoad = false;
 			boolean highLight = false;
 			int playerIndex = -2;
-			Player currentplayer = players.get(i);
-			if (currentplayer != null) {
-				playerIndex = currentplayer.getPlayerIndex();
+			Player thisplayer = players.get(i);
+			if (thisplayer != null) {
+				playerIndex = thisplayer.getPlayerIndex();
 				// System.out.println(getView().toString());
-				if ((currentplayer != null)) {
-					getView().initializePlayer(playerIndex, currentplayer.getName(), CatanColor.toColor(currentplayer.getColor()));
+				if ((thisplayer != null)) {
+					getView().initializePlayer(playerIndex, thisplayer.getName(), CatanColor.toColor(thisplayer.getColor()));
 				}
-				if (turnTracker.getCurrentPlayer() == playerIndex) {
+				if (currentplayer == playerIndex) {
 					highLight = true;
 				}
 				if (turnTracker.getLargestArmy() == playerIndex) {
@@ -89,7 +84,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 				if (turnTracker.getLongestRoad() == playerIndex) {
 					longestRoad = true;
 				}
-				getView().updatePlayer(playerIndex, currentplayer.getVictoryPoints(), highLight, largestArmy, longestRoad);
+				getView().updatePlayer(playerIndex, thisplayer.getVictoryPoints(), highLight, largestArmy, longestRoad);
 			}
 		}
 
@@ -98,37 +93,36 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 	@Override
 	public void update() {
 		System.out.println("TT:updating turn tracker");
-		System.out.println("TT:status " + GameManager.getSingleton().getModel().getTurnTracker().getStatus());
-		System.out.println("TT:your resources " + GameManager.getSingleton().getthisplayer().getResources());
+		System.out.println("TT:status " + state);
+		System.out.println("TT:your resources " + thisplayer.getResources());
 		initFromModel();
-		Game model = manager.getModel();
 		boolean enableButton = false;
 		String message = "Waiting for Other Players";
-		if (model.getTurnTracker().getCurrentPlayer() == manager.getthisplayer().getPlayerIndex()) {
+		if (currentplayer == thisplayer.getPlayerIndex()) {
 			System.out.println("TT:it's your turn");
-			if (model.getTurnTracker().getStatus().equals("Discarding")) {
+			if (state.equals("Discarding")) {
 				message = "Discarding";
-			} else if (model.getTurnTracker().getStatus().equals("FirstRound")) {
+			} else if (state.equals("FirstRound")) {
 				message = "First Round";
-			} else if (model.getTurnTracker().getStatus().equals("Robbing")) {
+			} else if (state.equals("Robbing")) {
 				message = "Robbing";
-			} else if (model.getTurnTracker().getStatus().equals("Rolling")) {
+			} else if (state.equals("Rolling")) {
 				message = "Rolling";
-			} else if (model.getTurnTracker().getStatus().equals("SecondRound")) {
+			} else if (state.equals("SecondRound")) {
 				message = "Second Round";
-			} else if (model.getTurnTracker().getStatus().equals("Playing")) {
+			} else if (state.equals("Playing")) {
 				message = "playing, but Model == null";
 				if (model != null) {
 					message = "playing, but cant finish turn";
-					if (model.canFinishTurn(manager.getthisplayer().getPlayerID())) {
+					if (model.canFinishTurn(thisplayer.getPlayerID())) {
 						message = "End Turn";
 						enableButton = true;
 					}
 				}
 			}
 		} else {
-			System.out.println("TT:it's player " + model.getTurnTracker().getCurrentPlayer() + "'s turn");
-			// RealProxy.getSingleton().finishTurn(model.getTurnTracker().getCurrentPlayer());
+			System.out.println("TT:it's player " + currentplayer + "'s turn");
+			// RealProxy.getSingleton().finishTurn(currentplayer);
 		}
 		this.getView().updateGameState(message, enableButton);
 		System.out.println("TT:trade offer = " + model.getTradeO());

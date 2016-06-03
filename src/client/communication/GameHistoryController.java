@@ -1,16 +1,13 @@
 package client.communication;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import client.GameManager.GameManager;
-import client.base.*;
-import model.Game;
+import client.base.Controller;
 import model.ObjectNotFoundException;
-import model.Player;
 import model.clientModel.MessageLine;
 import model.clientModel.MessageList;
-import shared.definitions.*;
-
+import shared.definitions.CatanColor;
 
 /**
  * Game history controller implementation
@@ -18,22 +15,22 @@ import shared.definitions.*;
 public class GameHistoryController extends Controller implements IGameHistoryController {
 
 	public GameHistoryController(IGameHistoryView view) {
-		
+
 		super(view);
-		
+
 		initFromModel();
 	}
-	
+
 	@Override
 	public IGameHistoryView getView() {
-		
-		return (IGameHistoryView)super.getView();
+
+		return (IGameHistoryView) super.getView();
 	}
-	
+
 	private void initFromModel() {
-		
+
 		//<temp>
-		
+
 //		List<LogEntry> entries = new ArrayList<LogEntry>();
 //		entries.add(new LogEntry(CatanColor.BROWN, "This is a brown message"));
 //		entries.add(new LogEntry(CatanColor.ORANGE, "This is an orange message ss x y z w.  This is an orange message.  This is an orange message.  This is an orange message."));
@@ -45,17 +42,16 @@ public class GameHistoryController extends Controller implements IGameHistoryCon
 //		entries.add(new LogEntry(CatanColor.ORANGE, "This is an orange message ss x y z w.  This is an orange message.  This is an orange message.  This is an orange message."));
 //		
 //		getView().setEntries(entries);
-	
+
 		//</temp>
 	}
-	
-	public void update(){
-		GameManager gm = GameManager.getSingleton();
+
+	@Override
+	public void update() {
 		List<LogEntry> ent = new ArrayList<LogEntry>();
-		Game game = gm.getModel();
 		// game history
-		MessageList ml = game.log;
-		for (MessageLine m : ml.lines){
+		MessageList ml = model.log;
+		for (MessageLine m : ml.lines) {
 			//System.out.println(m.message);
 			//System.out.println(m.source);
 			LogEntry le = new LogEntry(getPlayerColor(m.source), m.message);
@@ -63,12 +59,11 @@ public class GameHistoryController extends Controller implements IGameHistoryCon
 		}
 		getView().setEntries(ent);
 	}
-	public CatanColor getPlayerColor(String name){
+
+	public CatanColor getPlayerColor(String name) {
 		CatanColor cc = CatanColor.WHITE;
-		GameManager gm = GameManager.getSingleton();
-		Game game = gm.getModel();
 		try {
-			cc = CatanColor.toColor(game.findPlayer(name).color);
+			cc = CatanColor.toColor(model.findPlayer(name).color);
 		} catch (ObjectNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -76,4 +71,3 @@ public class GameHistoryController extends Controller implements IGameHistoryCon
 		return cc;
 	}
 }
-

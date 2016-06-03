@@ -1,17 +1,16 @@
 package client.maritime;
 
-import client.GameManager.GameManager;
-import model.*;
+import java.util.ArrayList;
+
+import client.base.Controller;
+import model.City;
+import model.Facade;
+import model.Port;
+import model.Settlement;
 import model.bank.ResourceList;
-import shared.definitions.*;
-import client.base.*;
-import shared.locations.HexLocation;
+import shared.definitions.ResourceType;
 import shared.locations.VertexDirection;
 import shared.locations.VertexLocation;
-
-import java.util.ArrayList;
-import java.util.TreeSet;
-
 
 /**
  * Implementation for the maritime trade controller
@@ -21,7 +20,6 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	private IMaritimeTradeOverlay tradeOverlay;
 	private int pid;
 	private Facade theFacade;
-	private Player thePlayer;
 	private ResourceType[] getResources;
 	private ResourceType[] giveResources;
 	private ResourceType theGiving;
@@ -29,22 +27,20 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	private int amountGiving;
 	private int amountGetting;
 
-	
 	public MaritimeTradeController(IMaritimeTradeView tradeView, IMaritimeTradeOverlay tradeOverlay) {
-		
+
 		super(tradeView);
 
-
-		//pid = GameManager.getSingleton().getthisplayer().getPlayerID();
+		//pid = thisplayer.getPlayerID();
 
 		setTradeOverlay(tradeOverlay);
 	}
-	
+
 	public IMaritimeTradeView getTradeView() {
-		
-		return (IMaritimeTradeView)super.getView();
+
+		return (IMaritimeTradeView) super.getView();
 	}
-	
+
 	public IMaritimeTradeOverlay getTradeOverlay() {
 		return tradeOverlay;
 	}
@@ -55,8 +51,6 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 	@Override
 	public void startTrade() {
-
-
 
 		getTradeOverlay().showGiveOptions(giveResources);
 		getTradeOverlay().showModal();
@@ -121,8 +115,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		getTradeOverlay().setTradeEnabled(false);
 	}
 
-	public ResourceType[] getsWithoutGive()
-	{
+	public ResourceType[] getsWithoutGive() {
 		ResourceType[] basicResources = new ResourceType[5];
 		basicResources[0] = ResourceType.BRICK;
 		basicResources[1] = ResourceType.WOOD;
@@ -130,34 +123,30 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		basicResources[3] = ResourceType.ORE;
 		basicResources[4] = ResourceType.SHEEP;
 
-
 		ArrayList<ResourceType> theResourcesList = new ArrayList<>();
-		for(int i = 0; i < basicResources.length; i++ )
-		{
-			if(basicResources[i] != theGiving) {
+		for (int i = 0; i < basicResources.length; i++) {
+			if (basicResources[i] != theGiving) {
 				theResourcesList.add(basicResources[i]);
 			}
 		}
 
-		ResourceType[] simpleArray = new ResourceType[ theResourcesList.size() ];
-		theResourcesList.toArray( simpleArray );
+		ResourceType[] simpleArray = new ResourceType[theResourcesList.size()];
+		theResourcesList.toArray(simpleArray);
 		return simpleArray;
 
 	}
 
-	public void update(){
+	@Override
+	public void update() {
 
 		theFacade = Facade.getSingleton();
-		if(GameManager.getSingleton() != null) {
-			thePlayer = GameManager.getSingleton().getthisplayer();
+		if (manager != null) {
 			//if (thePlayer.canOfferBankTrade())
 			if (canOfferMaritimeTrade()
-					&& GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer() == GameManager.getSingleton().getthisplayer().getPlayerIndex())
-			{
+					&& currentplayer == thisplayer.getPlayerIndex()) {
 
-				pid = GameManager.getSingleton().getthisplayer().getPlayerIndex();
+				pid = thisplayer.getPlayerIndex();
 				//theFacade.getGame().canMaritimeTrade(pid);
-				thePlayer = GameManager.getSingleton().getthisplayer();
 				//giveResources = thePlayer.resourcesOverThree();
 				giveResources = playerResourcesOverPorts();
 				getTradeView().enableMaritimeTrade(true);
@@ -175,15 +164,11 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	 * checks if thisPlayer can offer any maritimeTrade at all. If they have the amount needed for a port they've built on,
 	 * or have 4 of any, this should be true.
 	 * @return
-     */
-	public boolean canOfferMaritimeTrade()
-	{
-		if(playerResourcesOverPorts().length > 0)
-		{
+	 */
+	public boolean canOfferMaritimeTrade() {
+		if ((playerResourcesOverPorts().length > 0) && (currentplayer == thisplayer.getPlayerIndex()) && state.equals("Playing")) {
 			return true;
-		}
-		else
-		{
+		} else {
 			return false;
 		}
 	}
@@ -192,40 +177,32 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	 * checks if thisPlayer can offer any maritimeTrade at all. If they have the amount needed for a port they've built on,
 	 * or have 4 of any, the ResourceType of the necessary type will be added.
 	 * @return
-     */
-	public ResourceType[] playerResourcesOverPorts()
-	{
-		ResourceList resources = thePlayer.getResources();
+	 */
+	public ResourceType[] playerResourcesOverPorts() {
+		ResourceList resources = thisplayer.getResources();
 		ArrayList<ResourceType> resourceList = new ArrayList<ResourceType>();
-		if(resources.getBrick() >= checkPossibleAmount(ResourceType.BRICK))
-		{
+		if (resources.getBrick() >= checkPossibleAmount(ResourceType.BRICK)) {
 			resourceList.add(ResourceType.BRICK);
 		}
-		if(resources.getWood() >= checkPossibleAmount(ResourceType.WOOD))
-		{
+		if (resources.getWood() >= checkPossibleAmount(ResourceType.WOOD)) {
 			resourceList.add(ResourceType.WOOD);
 		}
-		if(resources.getOre() >= checkPossibleAmount(ResourceType.ORE))
-		{
+		if (resources.getOre() >= checkPossibleAmount(ResourceType.ORE)) {
 			resourceList.add(ResourceType.ORE);
 		}
-		if(resources.getSheep() >= checkPossibleAmount(ResourceType.SHEEP))
-		{
+		if (resources.getSheep() >= checkPossibleAmount(ResourceType.SHEEP)) {
 			resourceList.add(ResourceType.SHEEP);
 		}
-		if(resources.getWheat() >= checkPossibleAmount(ResourceType.WHEAT))
-		{
+		if (resources.getWheat() >= checkPossibleAmount(ResourceType.WHEAT)) {
 			resourceList.add(ResourceType.WHEAT);
 		}
 
-		ResourceType[] simpleArray = new ResourceType[ resourceList.size() ];
-		resourceList.toArray( simpleArray );
-		if(simpleArray == null)
-		{
+		ResourceType[] simpleArray = new ResourceType[resourceList.size()];
+		resourceList.toArray(simpleArray);
+		if (simpleArray == null) {
 			simpleArray = new ResourceType[0];
 		}
 		return simpleArray;
-
 
 	}
 
@@ -234,14 +211,13 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	 * has cities or settlements next to a port, it may be 2 or 3.
 	 * @param type
 	 * @return
-     */
-	public int checkPossibleAmount(ResourceType type)
-	{
+	 */
+	public int checkPossibleAmount(ResourceType type) {
 		boolean threeToOne = false;
 		boolean twoToOne = false;
-		ArrayList<City> allCities = GameManager.getSingleton().getModel().getMap().getcities();
-		ArrayList<Settlement> allSettlements = GameManager.getSingleton().getModel().getMap().getsettlements();
-		ArrayList<Port> allPorts = GameManager.getSingleton().getModel().getMap().getPorts();
+		ArrayList<City> allCities = model.getMap().getcities();
+		ArrayList<Settlement> allSettlements = model.getMap().getsettlements();
+		ArrayList<Port> allPorts = model.getMap().getPorts();
 		//TreeSet<ResourceType> theFoundTypes= new TreeSet<>();
 
 		/*for(int i = 0; i < allSettlements.size(); i++)
@@ -253,38 +229,30 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		}
 		for(int j = 0; j < allPorts.size(); j++) {
 			ArrayList<VertexLocation> portVertices = allPorts.get(j).getEdgeLocation().getVertices();
-
+		
 			for (int v = 0; v < portVertices.size(); v++) {
 				System.out.println("Port " + j + " (type: " +
 						allPorts.get(j).getResource() + ") normal location: " + portVertices.get(v).getNormalizedLocation());
-
+		
 			}
 		}*/
 
-
-
-
-
-
-		for(int j = 0; j < allPorts.size(); j++) {
-		ArrayList<VertexLocation> portVertices = allPorts.get(j).getEdgeLocation().getVertices();
+		for (int j = 0; j < allPorts.size(); j++) {
+			ArrayList<VertexLocation> portVertices = allPorts.get(j).getEdgeLocation().getVertices();
 			//System.out.println("Checking matches for port of type " + allPorts.get(j).getResource());
 			boolean found = false;
-			for(int v = 0; v < portVertices.size(); v++) {
-
+			for (int v = 0; v < portVertices.size(); v++) {
 
 				for (int i = 0; i < allCities.size(); i++) {
 					//if(portVertices.get(v).getNormalizedLocation().equals(allCities.get(i).getVertextLocation().getNormalizedLocation()))
-					if(portVertices.get(v).getDir() == allCities.get(i).getVertextLocation().getDir()
+					if (portVertices.get(v).getDir() == allCities.get(i).getVertextLocation().getDir()
 							&& portVertices.get(v).getHexLoc().getX() == allCities.get(i).getVertextLocation().getHexLoc().getX() &&
-							portVertices.get(v).getHexLoc().getY() == allCities.get(i).getVertextLocation().getHexLoc().getY())
-					{
+							portVertices.get(v).getHexLoc().getY() == allCities.get(i).getVertextLocation().getHexLoc().getY()) {
 						/*if(null == allPorts.get(j).getResource())
 						{
 							System.out.println("Null resource port matches player city!");
 						}*/
-						if(allCities.get(i).getOwner() == thePlayer.getPlayerIndex())
-						{
+						if (allCities.get(i).getOwner() == thisplayer.getPlayerIndex()) {
 							found = true;
 						}
 					}
@@ -292,10 +260,8 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 				for (int i = 0; i < allSettlements.size(); i++) {
 
-
-					if( portVertices.get(v).getDir() == VertexDirection.NW && portVertices.get(v).getHexLoc().getX() == -2 &&
-							portVertices.get(v).getHexLoc().getY() == 0	)
-					{
+					if (portVertices.get(v).getDir() == VertexDirection.NW && portVertices.get(v).getHexLoc().getX() == -2 &&
+							portVertices.get(v).getHexLoc().getY() == 0) {
 						//System.out.println("X = " + portVertices.get(v).getHexLoc().getX() + ", Y = " + portVertices.get(v).getHexLoc().getY());
 						//System.out.println("\nSettlement normal location: " + allSettlements.get(i).getVertextLocation().getNormalizedLocation());
 						//System.out.println("Port location: " + portVertices.get(v).getNormalizedLocation());
@@ -303,25 +269,21 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 					}
 					//if(portVertices.get(v).getNormalizedLocation().equals(allSettlements.get(i).getVertextLocation().getNormalizedLocation()))
-					if(portVertices.get(v).getDir() == allSettlements.get(i).getVertextLocation().getDir()
+					if (portVertices.get(v).getDir() == allSettlements.get(i).getVertextLocation().getDir()
 							&& portVertices.get(v).getHexLoc().getX() == allSettlements.get(i).getVertextLocation().getHexLoc().getX() &&
-							portVertices.get(v).getHexLoc().getY() == allSettlements.get(i).getVertextLocation().getHexLoc().getY())
-					{
+							portVertices.get(v).getHexLoc().getY() == allSettlements.get(i).getVertextLocation().getHexLoc().getY()) {
 						//System.out.println("You're passing the location check now!\n***********");
-						if(null == allPorts.get(j).getResource())
-						{
+						if (null == allPorts.get(j).getResource()) {
 							//System.out.println("Null resource port matches player settlement!");
 						}
-						if(allSettlements.get(i).getOwner() == thePlayer.getPlayerIndex())
-						{
+						if (allSettlements.get(i).getOwner() == thisplayer.getPlayerIndex()) {
 							found = true;
 						}
 					}
 				}
 
-
 			}
-			if(found) {
+			if (found) {
 				//System.out.println("Port Resource Type: " + allPorts.get(j).getResource());
 				if (allPorts.get(j).getResource() == null) {
 					threeToOne = true;
@@ -333,43 +295,29 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 			}
 		}
 
-		if(twoToOne)
-		{
+		if (twoToOne) {
 			return 2;
-		}
-		else if(threeToOne)
-		{
+		} else if (threeToOne) {
 			return 3;
-		}
-		else
-		{
+		} else {
 			return 4;
 		}
 	}
 
-
-
-	public ResourceType stringToRecType(String s)
-	{
+	public ResourceType stringToRecType(String s) {
 		String low = s.toLowerCase();
-		if(low.equals("wood"))
-		{
+		if (low.equals("wood")) {
 			return ResourceType.WOOD;
 		}
-		if(low.equals("brick"))
-		{
+		if (low.equals("brick")) {
 			return ResourceType.BRICK;
 		}
-		if(low.equals("ore"))
-		{
+		if (low.equals("ore")) {
 			return ResourceType.ORE;
 		}
-		if(low.equals("sheep"))
-		{
+		if (low.equals("sheep")) {
 			return ResourceType.SHEEP;
-		}
-		else if(low.equals("wheat"))
-		{
+		} else if (low.equals("wheat")) {
 			return ResourceType.WHEAT;
 		}
 
@@ -378,4 +326,3 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	}
 
 }
-

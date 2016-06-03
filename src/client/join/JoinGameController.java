@@ -6,6 +6,7 @@ import client.base.IAction;
 import client.data.GameInfo;
 import client.data.PlayerInfo;
 import client.misc.IMessageView;
+import model.Game;
 import poller.InvalidMockProxyException;
 import poller.ServerPoller;
 import poller.modeljsonparser.ModelParser;
@@ -109,13 +110,12 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 		String result = rp.gamesList();
 		// System.out.println(result);
 
-		GameInfo[] games = ModelParser.parse4(result);
+		GameInfo[] games = (GameInfo[]) ModelParser.parse(result, GameInfo[].class);
 
 		PlayerInfo pi = new PlayerInfo();
-		GameManager gm = GameManager.getSingleton();
 
-		pi.setName(gm.nameTemp);
-		pi.setId(gm.playerIdTemp);
+		pi.setName(manager.nameTemp);
+		pi.setId(manager.playerIdTemp);
 		getJoinGameView().setGames(games, pi);
 		getJoinGameView().showModal();
 	}
@@ -153,8 +153,10 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 		gameChosen = game.getId();
 		for (int i = 0; i < game.getPlayers().size(); i++) {
-			if (GameManager.getSingleton().getTempId() != game.getPlayers().get(i).getId()) {
-				getSelectColorView().setColorEnabled(setStringColorToSharedColor(game.getPlayers().get(i).getColor()), false);
+			if (manager.getTempId() != game.getPlayers().get(i).getId()) {
+				if (!game.getPlayers().get(i).getName().equals("")) {
+					getSelectColorView().setColorEnabled(setStringColorToSharedColor(game.getPlayers().get(i).getColor()), false);
+				}
 			}
 		}
 		getSelectColorView().showModal();
@@ -205,7 +207,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	@Override
 	public void joinGame(CatanColor color) {
 
-		GameManager gm = GameManager.getSingleton();
+		GameManager gm = manager;
 		gm.setplayercolortemp(color);
 
 		try {
@@ -224,7 +226,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 			// If join succeeded
 			getSelectColorView().closeModal();
 			getJoinGameView().closeModal();
-			GameManager.getSingleton().update(ModelParser.parse2(RealProxy.getSingleton().gameModel(-1)));
+			manager.update((Game) ModelParser.parse(RealProxy.getSingleton().gameModel(-1), Game.class));
 			joinAction.execute();
 
 		} else {

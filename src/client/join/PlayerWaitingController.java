@@ -1,8 +1,6 @@
 package client.join;
 
-import client.GameManager.GameManager;
 import client.base.Controller;
-import model.Game;
 import poller.modeljsonparser.ModelParser;
 import proxy.RealProxy;
 
@@ -27,12 +25,12 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 	public void start() {
 		String airesponse = RealProxy.getSingleton().gameListAI();
 		String[] aiList = (String[]) ModelParser.parse(airesponse, String[].class);
-		getView().setPlayers(GameManager.getSingleton().getModel().getPlayers());
+		getView().setPlayers(model.getPlayers());
 		getView().setAIChoices(aiList);
 
 		int gottenplayers = 0;
-		for (int i = 0; i < GameManager.getSingleton().getModel().getPlayers().size(); i++) {
-			if (GameManager.getSingleton().getModel().getPlayers().get(i) != null) {
+		for (int i = 0; i < model.getPlayers().size(); i++) {
+			if (model.getPlayers().get(i) != null) {
 				gottenplayers++;
 			}
 		}
@@ -42,7 +40,7 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 				getView().closeModal();
 			}
 		} else {
-			getView().setPlayers(GameManager.getSingleton().getModel().getPlayers());
+			getView().setPlayers(model.getPlayers());
 			getView().showModal();
 		}
 	}
@@ -54,7 +52,7 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 		aitype = getView().getSelectedAI();
 		RealProxy.getSingleton().gameAddAI(aitype);
 
-		getView().setPlayers(GameManager.getSingleton().getModel().getPlayers());
+		getView().setPlayers(model.getPlayers());
 		getView().closeModal();
 		getView().showModal();
 	}
@@ -62,10 +60,9 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 	@Override
 	public void update() {
 		//System.out.println("ADDING NEXT PLAYER");
-		Game tempmodel = GameManager.getSingleton().getModel();
 		int gottenplayers = 0;
-		for (int i = 0; i < tempmodel.getPlayers().size(); i++) {
-			if (tempmodel.getPlayers().get(i) != null) {
+		for (int i = 0; i < model.getPlayers().size(); i++) {
+			if (model.getPlayers().get(i) != null) {
 				gottenplayers++;
 			}
 		}
@@ -74,14 +71,14 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 			if (getView().isModalShowing()) {
 				getView().closeModal();
 			}
-			GameManager.getSingleton().setbegin(true);
+			manager.setbegin(true);
 		} else if (currentplayers != gottenplayers) {
 			//	System.out.println("WAITING");
 			if (getView().isModalShowing()) {
 				getView().closeModal();
 			}
 
-			getView().setPlayers(tempmodel.getPlayers());
+			getView().setPlayers(model.getPlayers());
 			getView().showModal();
 			currentplayers = gottenplayers;
 		}

@@ -3,7 +3,6 @@ package client.resources;
 import java.util.HashMap;
 import java.util.Map;
 
-import client.GameManager.GameManager;
 import client.base.Controller;
 import client.base.IAction;
 import model.Player;
@@ -89,16 +88,14 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 	}
 
 	public boolean abletobuildroad() {
-		int currentplayer = GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer();
-		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
-		Player playerinventory = GameManager.getSingleton().getModel().getPlayers().get(currentplayer);
-		int thisplayerindex = GameManager.getSingleton().getthisplayer().getPlayerIndex();
+		Player playerinventory = model.getPlayers().get(currentplayer);
+		int thisplayerindex = thisplayer.getPlayerIndex();
 
 		if (playerinventory.getResources().getWood() < 1) {
 			return false;
 		} else if (playerinventory.getResources().getBrick() < 1) {
 			return false;
-		} else if (!(currentplayer == thisplayerindex) && !(status.equals("Playing"))
+		} else if (!(currentplayer == thisplayerindex) && !(state.equals("Playing"))
 				&& !((playerinventory.getRoads() <= 15))) {
 			return false;
 		} else {
@@ -107,10 +104,8 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 	}
 
 	public boolean abletobuildsettlement() {
-		int currentplayer = GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer();
-		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
-		Player playerinventory = GameManager.getSingleton().getModel().getPlayers().get(currentplayer);
-		int thisplayerindex = GameManager.getSingleton().getthisplayer().getPlayerIndex();
+		Player playerinventory = model.getPlayers().get(currentplayer);
+		int thisplayerindex = thisplayer.getPlayerIndex();
 
 		if (playerinventory.getResources().getWood() < 1) {
 			return false;
@@ -120,7 +115,7 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 			return false;
 		} else if (playerinventory.getResources().getWheat() < 1) {
 			return false;
-		} else if (!(currentplayer == thisplayerindex) && !(status.equals("Playing"))
+		} else if (!(currentplayer == thisplayerindex) && !(state.equals("Playing"))
 				&& !((playerinventory.getSettlements() <= 5))) {
 			return false;
 		} else {
@@ -129,16 +124,14 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 	}
 
 	public boolean abletobuildcity() {
-		int currentplayer = GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer();
-		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
-		Player playerinventory = GameManager.getSingleton().getModel().getPlayers().get(currentplayer);
-		int thisplayerindex = GameManager.getSingleton().getthisplayer().getPlayerIndex();
+		Player playerinventory = model.getPlayers().get(currentplayer);
+		int thisplayerindex = thisplayer.getPlayerIndex();
 
 		if (playerinventory.getResources().getOre() < 3) {
 			return false;
 		} else if (playerinventory.getResources().getWheat() < 2) {
 			return false;
-		} else if (!(currentplayer == thisplayerindex) && !(status.equals("Playing"))
+		} else if (!(currentplayer == thisplayerindex) && !(state.equals("Playing"))
 				&& !((playerinventory.getCities() <= 4))) {
 			return false;
 		} else {
@@ -146,61 +139,43 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 		}
 	}
 
-
 	/**
 	 * Checks if the player who's playing right now has the resources to play a devCard.
 	 * @return
-     */
+	 */
 	public boolean canDoBuyDevCard() {
-		int currentplayer = GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer();
-		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
-		Player playerinventory = GameManager.getSingleton().getModel().getPlayers().get(currentplayer);
-		int thisplayerindex = GameManager.getSingleton().getthisplayer().getPlayerIndex();
+		Player playerinventory = model.getPlayers().get(currentplayer);
+		int thisplayerindex = thisplayer.getPlayerIndex();
 
-		if (playerinventory.getResources().getOre() < 1)
-		{
+		if (playerinventory.getResources().getOre() < 1) {
 			return false;
-		}
-		else if (playerinventory.getResources().getWheat() < 1)
-		{
+		} else if (playerinventory.getResources().getWheat() < 1) {
 			return false;
-		}
-		else if (playerinventory.getResources().getSheep() < 1)
-		{
+		} else if (playerinventory.getResources().getSheep() < 1) {
 			return false;
-		}
-		else if (!(currentplayer == thisplayerindex) && !(status.equals("Playing"))) {
+		} else if (!(currentplayer == thisplayerindex) && !(state.equals("Playing"))) {
 			return false;
 		} else {
 			return true;
 		}
 	}
-
-
 
 	/**
 	 * Checks if the player who's playing right now has devCard to play.
 	 * @return
 	 */
 	public boolean canDoPlayDevCard() {
-		int currentplayer = GameManager.getSingleton().getModel().getTurnTracker().getCurrentPlayer();
-		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
-		Player playerinventory = GameManager.getSingleton().getModel().getPlayers().get(currentplayer);
-		int thisplayerindex = GameManager.getSingleton().getthisplayer().getPlayerIndex();
+		Player playerinventory = model.getPlayers().get(currentplayer);
+		int thisplayerindex = thisplayer.getPlayerIndex();
 
-		if (playerinventory.getOldDevCards().getSize() < 1)
-		{
+		if (playerinventory.getOldDevCards().getSize() < 1) {
 			return false;
-		}
-		else if (!(currentplayer == thisplayerindex) && !(status.equals("Playing"))) {
+		} else if (!(currentplayer == thisplayerindex) && !(state.equals("Playing"))) {
 			return false;
 		} else {
 			return true;
 		}
 	}
-
-
-
 
 	/**
 	 * spends resources and gains card
@@ -210,8 +185,7 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 	 */
 	@Override
 	public void buyCard() {
-		if(canDoBuyDevCard())
-		{
+		if (canDoBuyDevCard()) {
 			executeElementAction(ResourceBarElement.BUY_CARD);
 		}
 	}
@@ -225,8 +199,7 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 	 */
 	@Override
 	public void playCard() {
-		if(canDoPlayDevCard())
-		{
+		if (canDoPlayDevCard()) {
 			executeElementAction(ResourceBarElement.PLAY_CARD);
 		}
 	}
@@ -263,28 +236,19 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 			getView().setElementEnabled(ResourceBarElement.ROAD, false);
 		}
 
-
 		//buy card:
-		if (canDoBuyDevCard())
-		{
+		if (canDoBuyDevCard()) {
 			getView().setElementEnabled(ResourceBarElement.BUY_CARD, true);
-		}
-		else
-		{
+		} else {
 			getView().setElementEnabled(ResourceBarElement.BUY_CARD, false);
 		}
 
 		//play card:
-		if (canDoPlayDevCard())
-		{
+		if (canDoPlayDevCard()) {
 			getView().setElementEnabled(ResourceBarElement.PLAY_CARD, true);
-		}
-		else
-		{
+		} else {
 			getView().setElementEnabled(ResourceBarElement.PLAY_CARD, false);
 		}
-
-
 
 		if (abletobuildcity()) {
 			getView().setElementEnabled(ResourceBarElement.CITY, true);
@@ -295,10 +259,9 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 	}
 
 	private void setBuildingPieces() {
-		Player playerinventory = GameManager.getSingleton().getthisplayer();
-		getView().setElementAmount(ResourceBarElement.CITY, playerinventory.getCities());
-		getView().setElementAmount(ResourceBarElement.ROAD, playerinventory.getRoads());
-		getView().setElementAmount(ResourceBarElement.SETTLEMENT, playerinventory.getSettlements());
+		getView().setElementAmount(ResourceBarElement.CITY, thisplayer.getCities());
+		getView().setElementAmount(ResourceBarElement.ROAD, thisplayer.getRoads());
+		getView().setElementAmount(ResourceBarElement.SETTLEMENT, thisplayer.getSettlements());
 	}
 
 	/**
@@ -308,15 +271,14 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 	 * @post resources are set
 	 */
 	private void setResources() {
-		Player playerinventory = GameManager.getSingleton().getthisplayer();
-		getView().setElementAmount(ResourceBarElement.ROAD, playerinventory.getRoads());
-		getView().setElementAmount(ResourceBarElement.CITY, playerinventory.getCities());
-		getView().setElementAmount(ResourceBarElement.SETTLEMENT, playerinventory.getSettlements());
-		getView().setElementAmount(ResourceBarElement.BRICK, playerinventory.getResources().getBrick());
-		getView().setElementAmount(ResourceBarElement.WHEAT, playerinventory.getResources().getWheat());
-		getView().setElementAmount(ResourceBarElement.WOOD, playerinventory.getResources().getWood());
-		getView().setElementAmount(ResourceBarElement.ORE, playerinventory.getResources().getOre());
-		getView().setElementAmount(ResourceBarElement.SHEEP, playerinventory.getResources().getSheep());
+		getView().setElementAmount(ResourceBarElement.ROAD, thisplayer.getRoads());
+		getView().setElementAmount(ResourceBarElement.CITY, thisplayer.getCities());
+		getView().setElementAmount(ResourceBarElement.SETTLEMENT, thisplayer.getSettlements());
+		getView().setElementAmount(ResourceBarElement.BRICK, thisplayer.getResources().getBrick());
+		getView().setElementAmount(ResourceBarElement.WHEAT, thisplayer.getResources().getWheat());
+		getView().setElementAmount(ResourceBarElement.WOOD, thisplayer.getResources().getWood());
+		getView().setElementAmount(ResourceBarElement.ORE, thisplayer.getResources().getOre());
+		getView().setElementAmount(ResourceBarElement.SHEEP, thisplayer.getResources().getSheep());
 
 	}
 

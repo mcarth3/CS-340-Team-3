@@ -2,7 +2,6 @@ package client.discard;
 
 import java.util.ArrayList;
 
-import client.GameManager.GameManager;
 import client.base.Controller;
 import client.misc.IMessageView;
 import client.misc.IWaitView;
@@ -52,12 +51,11 @@ public class DiscardController extends Controller implements IDiscardController 
 	 */
 	private int calculateDiscardNum() {
 
-		if (GameManager.getSingleton().getModel() == null)
+		if (model == null)
 			return 0;
 
-		ArrayList<Player> players = GameManager.getSingleton().getModel().getPlayers();
-		Player currentPlayer = GameManager.getSingleton().getthisplayer();
-		int halfcards = currentPlayer.getResources().getSize() / 2;
+		ArrayList<Player> players = model.getPlayers();
+		int halfcards = thisplayer.getResources().getSize() / 2;
 		System.out.println("DISCARD:max discard num= " + halfcards);
 
 		return halfcards;
@@ -147,8 +145,8 @@ public class DiscardController extends Controller implements IDiscardController 
 		if (this.getDiscardView().isModalShowing()) {
 			this.getDiscardView().closeModal();
 		}
-		message = RealProxy.getSingleton().discardCards(GameManager.getSingleton().getthisplayer().getPlayerIndex(), discardCardarray);
-		GameManager.getSingleton().setrobbingready(true);
+		message = RealProxy.getSingleton().discardCards(thisplayer.getPlayerIndex(), discardCardarray);
+		manager.setrobbingready(true);
 		// "discardedCards" in this order. THIS MIGHT CHANGE LATER
 		// "brick": 1,
 		// "ore": 2,
@@ -160,14 +158,13 @@ public class DiscardController extends Controller implements IDiscardController 
 	@Override
 	public void update() {
 		System.out.println("DISCARD:discard controller update");
-		String status = GameManager.getSingleton().getModel().getTurnTracker().getStatus();
-		int cards = GameManager.getSingleton().getthisplayer().getResources().getSize();
+		int cards = thisplayer.getResources().getSize();
 
-		if ((status.equals("Discarding") || (status.equals("Robbing")))) {
+		if ((state.equals("Discarding") || (state.equals("Robbing")))) {
 			// System.out.print("DISCARD:status is discarding or robbing");
-			if ((GameManager.getSingleton().getdiscardedcheck() == false)) {
+			if ((manager.getdiscardedcheck() == false)) {
 				// System.out.print("DISCARD:discarded check = false");
-				GameManager.getSingleton().setdiscardedcheck(true);
+				manager.setdiscardedcheck(true);
 				// System.out.println("DISCARD:cards" + cards);
 				if (cards > 7) {
 					maxDiscardNum = calculateDiscardNum();
@@ -184,15 +181,15 @@ public class DiscardController extends Controller implements IDiscardController 
 					discardCardarray.add(0);
 					discardCardarray.add(0);
 					discardCardarray.add(0);
-					GameManager.getSingleton().setrobbingready(true);
-					RealProxy.getSingleton().discardCards(GameManager.getSingleton().getthisplayer().playerIndex, discardCardarray);
+					manager.setrobbingready(true);
+					RealProxy.getSingleton().discardCards(thisplayer.playerIndex, discardCardarray);
 
 				}
 			}
 		} else
 
 		{
-			GameManager.getSingleton().setdiscardedcheck(false);
+			manager.setdiscardedcheck(false);
 			if (this.getDiscardView().isModalShowing()) {
 				this.getDiscardView().closeModal();
 			}
@@ -230,7 +227,7 @@ public class DiscardController extends Controller implements IDiscardController 
 	 */
 
 	private void updateView() {
-		ResourceList currentHand = GameManager.getSingleton().getthisplayer().getResources();
+		ResourceList currentHand = thisplayer.getResources();
 		maxDiscardNum = calculateDiscardNum();
 		getDiscardView().setStateMessage("Discarding: " + discardList.getSize() + "/" + maxDiscardNum);
 

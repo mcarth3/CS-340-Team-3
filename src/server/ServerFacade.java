@@ -8,9 +8,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
-import model.FailureToAddException;
+
 import client.data.GameInfo;
 import model.AllInfo;
+import model.FailureToAddException;
 import model.Game;
 import model.ObjectNotFoundException;
 import model.Player;
@@ -30,8 +31,8 @@ public class ServerFacade {
 
 	private static ServerFacade singleton = null;
 	private Game model = null;
-	private AllInfo all = null; 
-	private String currentUsername; 
+	private AllInfo all = null;
+	private String currentUsername;
 
 	public static ServerFacade getSingleton() {
 		if (singleton == null) {
@@ -43,8 +44,8 @@ public class ServerFacade {
 	public ServerFacade() {
 		String data;
 
-		File fileEverything = new File("alltestgames.json"); 
-		
+		File fileEverything = new File("alltestgames.json");
+
 		File file = new File("testmodel.json");
 		FileReader fileReader = null;
 		try {
@@ -58,8 +59,8 @@ public class ServerFacade {
 		Scanner scanner = new Scanner(bufferedReader);
 		data = scanner.useDelimiter("\\Z").next();
 		scanner.close();
-		
-		all = ModelParser.parse5(data);
+
+		all = (AllInfo) ModelParser.parse(data, AllInfo.class);
 	}
 
 	public void updatemodelnumber() {
@@ -70,16 +71,16 @@ public class ServerFacade {
 
 		UserInfo[] users = all.getUsers();
 		boolean found = false;
-		Integer id = 0; 
-		for(UserInfo u : users){
-			if(username.equals(u.getUsername()) && password.equals(u.getPassword())){
+		Integer id = 0;
+		for (UserInfo u : users) {
+			if (username.equals(u.getUsername()) && password.equals(u.getPassword())) {
 				found = true;
 				id = u.getPlayerID();
 			}
 		}
 		String result = "Failed to login - bad username or password.";
-		if(found){
-			currentUsername = username; 
+		if (found) {
+			currentUsername = username;
 			String userInfo = "{\"name\":\"" + username + "\",\"password\":\"" + password + "\",\"playerID\":" + id + "}";
 			try {
 				result = java.net.URLEncoder.encode(userInfo, "UTF-8");
@@ -119,20 +120,20 @@ public class ServerFacade {
 	}
 
 	public Object GamesJoin(Integer id, String color) {
-		
+
 		String response = "The player could not be added to the specified game.";
 		Game[] games = all.getGames();
-		if(games.length > id){
+		if (games.length > id) {
 			model = games[id];
-			ArrayList<Player> players = model.getPlayers(); 
+			ArrayList<Player> players = model.getPlayers();
 			boolean foundInGame = false;
-			for(int i=0; i<players.size(); i++){
-				if(players.get(i).getName().equals(currentUsername)){
+			for (int i = 0; i < players.size(); i++) {
+				if (players.get(i).getName().equals(currentUsername)) {
 					players.get(i).setColor(color);
 					foundInGame = true;
 				}
 			}
-			if(!foundInGame){
+			if (!foundInGame) {
 				Player newPlayer = new Player();
 				//might need more info here
 				newPlayer.setName(currentUsername);
@@ -141,7 +142,7 @@ public class ServerFacade {
 				model.setPlayers(players);
 			}
 			response = "Successcatan.game=" + id + ";Path=/;";
-		} 
+		}
 		return response;
 	}
 
@@ -152,7 +153,7 @@ public class ServerFacade {
 
 	public Object MovesSendChat(Integer id, String content) {
 		//System.out.println("moves send chat in server facade"); 
-		
+
 		return model;
 	}
 
@@ -290,17 +291,14 @@ public class ServerFacade {
 			e.printStackTrace();
 		}
 
-		if(thePlayer != null)
-		{
+		if (thePlayer != null) {
 
-			thePlayer.getOldDevCards().setMonopoly(thePlayer.getOldDevCards().getMonopoly() -1);
+			thePlayer.getOldDevCards().setMonopoly(thePlayer.getOldDevCards().getMonopoly() - 1);
 
 			ArrayList<Player> allPlayers = model.getPlayers();
 			int totalResource = 0;
-			for(int i =0; i < allPlayers.size(); i++)
-			{
-				if(allPlayers.get(i).getPlayerIndex() != playerIndex)
-				{
+			for (int i = 0; i < allPlayers.size(); i++) {
+				if (allPlayers.get(i).getPlayerIndex() != playerIndex) {
 					//acquire all player's resources!!
 					totalResource += allPlayers.get(i).getResources().getResourceType(stringTypeToResourceType(resource));
 					allPlayers.get(i).getResources().changeResourceTypeWithAmount(stringTypeToResourceType(resource), 0);
@@ -309,14 +307,11 @@ public class ServerFacade {
 			thePlayer.addResource(stringTypeToResourceType(resource), totalResource);
 			model.getDeck().setMonopoly(model.getDeck().getMonopoly() + 1);
 
-
-			MessageLine newLine = new MessageLine(thePlayer.getName() + "monopolized all the "+ resource+ ".",
+			MessageLine newLine = new MessageLine(thePlayer.getName() + "monopolized all the " + resource + ".",
 					thePlayer.getName());
 			model.getLog().getLines().add(newLine);
 
-
 		}
-
 
 		updatemodelnumber();
 		return model;
@@ -337,23 +332,19 @@ public class ServerFacade {
 			e.printStackTrace();
 		}
 
-		if(thePlayer != null)
-		{
+		if (thePlayer != null) {
 
-			thePlayer.getOldDevCards().setMonument(thePlayer.getOldDevCards().getMonument() -1);
+			thePlayer.getOldDevCards().setMonument(thePlayer.getOldDevCards().getMonument() - 1);
 
 			thePlayer.setVictoryPoints(thePlayer.getVictoryPoints() + 1);
 
 			model.getDeck().setMonument(model.getDeck().getMonument() + 1);
 
-
 			MessageLine newLine = new MessageLine(thePlayer.getName() + "built a monument, and gained a Victory Point.",
 					thePlayer.getName());
 			model.getLog().getLines().add(newLine);
 
-
 		}
-
 
 		updatemodelnumber();
 		return model;
@@ -376,8 +367,7 @@ public class ServerFacade {
 			e.printStackTrace();
 		}
 
-		if(thePlayer != null)
-		{
+		if (thePlayer != null) {
 
 			thePlayer.addResource(ResourceType.BRICK, -1);
 			thePlayer.addResource(ResourceType.WOOD, -1);
@@ -398,7 +388,6 @@ public class ServerFacade {
 
 		}
 
-
 		updatemodelnumber();
 		return model;
 	}
@@ -418,7 +407,7 @@ public class ServerFacade {
 	 * @return a model with the new settlement and a new message
 	 */
 	public Object buildSettlement(String type, Integer playerIndex, VertexLocation settlementLocation, boolean free) {
-		if(free) {
+		if (free) {
 			Player thePlayer = null;
 			try {
 				thePlayer = model.findPlayerbyindex(playerIndex);
@@ -473,8 +462,7 @@ public class ServerFacade {
 			e.printStackTrace();
 		}
 
-		if(thePlayer != null)
-		{
+		if (thePlayer != null) {
 
 			thePlayer.addResource(ResourceType.WHEAT, -2);
 			thePlayer.addResource(ResourceType.ORE, -3);
@@ -493,8 +481,6 @@ public class ServerFacade {
 			}
 
 		}
-
-
 
 		updatemodelnumber();
 		return model;
@@ -547,7 +533,6 @@ public class ServerFacade {
 			ResourceList bank = model.getBank();
 			bank.changeResourceTypeWithAmount(stringTypeToResourceType(inputResource), ratio);
 			bank.changeResourceTypeWithAmount(stringTypeToResourceType(outputResource), -1);
-
 
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
