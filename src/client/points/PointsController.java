@@ -61,6 +61,7 @@ public class PointsController extends Controller implements IPointsController {
 		}
 
 		getPointsView().setPoints(thisplayer.getVictoryPoints());
+
 	}
 
 }

@@ -8,7 +8,6 @@ import model.Game;
 import model.ObjectNotFoundException;
 import model.Player;
 import shared.definitions.CatanColor;
-import states.State;
 
 public class GameManager extends Observable {
 
@@ -34,29 +33,6 @@ public class GameManager extends Observable {
 
 	public void setfacade(Facade newmodelfacade) {
 		modelfacade = newmodelfacade;
-	}
-
-	/**
-	 * gets game by id
-	 * 
-	 * @param id-
-	 *            the game id
-	 * @pre id is not null
-	 * @post game with appropriate id is returned, null if not found
-	 */
-	public Game getGameById(Integer id) {
-		return null;
-	}
-
-	/**
-	 * gets every game
-	 * 
-	 * @pre none
-	 * @post all the games are returned
-	 */
-	public Game[] getAllGames() {
-		return null;
-
 	}
 
 	public void setdiscardedcheck(boolean newval) {
@@ -90,31 +66,6 @@ public class GameManager extends Observable {
 		return game;
 	}
 
-	public Game createGame(Game gameToCreate) {
-		return gameToCreate;
-
-	}
-
-	public boolean removeGame(Integer id) {
-		return false;
-
-	}
-
-	private void addTestGames() {
-	}
-
-	/**
-	 * updates the game state to all the observers
-	 */
-	public void updatestate(State currentstate) {
-	}
-
-	/**
-	 * registers observers
-	 */
-	public void register() {
-	}
-
 	/**
 	 * Updates the game. This also notifies all observers of the ModelFacade.
 	 * 
@@ -131,7 +82,7 @@ public class GameManager extends Observable {
 	}
 
 	private void updateLocalPlayer() {
-		System.out.println("this is the last thing that gets called before it breaks?"); 
+		System.out.println("this is the last thing that gets called before it breaks?");
 		ArrayList<Player> players = modelfacade.gettheGame().getPlayers();
 		for (int i = 0; i < players.size(); i++) {
 			if (players.get(i) != null) {
@@ -153,9 +104,9 @@ public class GameManager extends Observable {
 	public void setplayerbyidtemp(int playerid) {
 		this.playerIdTemp = playerid;
 	}
-	
-	public Integer getTempId(){
-		return playerIdTemp; 
+
+	public Integer getTempId() {
+		return playerIdTemp;
 	}
 
 	public void setplayernametemp(String name) {
