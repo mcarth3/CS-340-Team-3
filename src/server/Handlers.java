@@ -475,6 +475,17 @@ public class Handlers {
 			String response = serialize(monopolyCommand.execute(monopolyObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			if(monopolyObject != null) {
+				if (monopolyObject.getResource() == null || monopolyObject.getPlayerIndex() == null) {
+					http_exchange.sendResponseHeaders(400, response.length());
+
+				}
+			}
+			else
+			{
+				http_exchange.sendResponseHeaders(400, response.length());
+			}
+
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
@@ -501,6 +512,18 @@ public class Handlers {
 			String response = serialize(monumentCommand.execute(monumentObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			if(monumentObject != null) {
+				if (monumentObject.toString() == null || monumentObject.getPlayerIndex() == null) {
+					http_exchange.sendResponseHeaders(400, response.length());
+
+				}
+			}
+			else
+			{
+				http_exchange.sendResponseHeaders(400, response.length());
+			}
+
+
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
@@ -523,6 +546,18 @@ public class Handlers {
 			String response = serialize(buildRoadCommand.execute(buildRoadJsonObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			if(buildRoadJsonObject != null) {
+				if (buildRoadJsonObject.getRoadLocation() == null || buildRoadJsonObject.getPlayerIndex() == null) {
+					http_exchange.sendResponseHeaders(400, response.length());
+
+				}
+			}
+			else
+			{
+				http_exchange.sendResponseHeaders(400, response.length());
+			}
+
+
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
@@ -545,6 +580,17 @@ public class Handlers {
 			String response = serialize(buildSettlementCommand.execute(buildSettlementJsonObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			if(buildSettlementJsonObject != null) {
+				if (buildSettlementJsonObject.getVertexLocation() == null || buildSettlementJsonObject.getPlayerIndex() == null) {
+					http_exchange.sendResponseHeaders(400, response.length());
+
+				}
+			}
+			else
+			{
+				http_exchange.sendResponseHeaders(400, response.length());
+			}
+
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
@@ -567,6 +613,18 @@ public class Handlers {
 			String response = serialize(buildCityCommand.execute(buildCityJsonObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			if(buildCityJsonObject != null) {
+				if (buildCityJsonObject.getVertexLocation() == null || buildCityJsonObject.getPlayerIndex() == null) {
+					http_exchange.sendResponseHeaders(400, response.length());
+
+				}
+			}
+			else
+			{
+				http_exchange.sendResponseHeaders(400, response.length());
+			}
+
+
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
@@ -589,6 +647,18 @@ public class Handlers {
 			String response = serialize(newCommand.execute(offerTradeJsonObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			if(offerTradeJsonObject != null) {
+				if (offerTradeJsonObject.getOffer() == null || offerTradeJsonObject.getPlayerIndex() == null) {
+					http_exchange.sendResponseHeaders(400, response.length());
+
+				}
+			}
+			else
+			{
+				http_exchange.sendResponseHeaders(400, response.length());
+			}
+
+
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
@@ -612,6 +682,17 @@ public class Handlers {
 			String response = serialize(newCommand.execute(newJSONObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			if(newJSONObject != null) {
+				if (newJSONObject.getType() == null || newJSONObject.getPlayerIndex() == null) {
+					http_exchange.sendResponseHeaders(400, response.length());
+
+				}
+			}
+			else
+			{
+				http_exchange.sendResponseHeaders(400, response.length());
+			}
+
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
@@ -635,6 +716,17 @@ public class Handlers {
 			String response = serialize(newCommand.execute(newJSONObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			if(newJSONObject != null) {
+				if (newJSONObject.getOutputResource() == null || newJSONObject.getPlayerIndex() == null) {
+					http_exchange.sendResponseHeaders(400, response.length());
+
+				}
+			}
+			else
+			{
+				http_exchange.sendResponseHeaders(400, response.length());
+			}
+
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
@@ -658,6 +750,17 @@ public class Handlers {
 			String response = serialize(newCommand.execute(newJSONObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
+			if(newJSONObject != null) {
+				if (newJSONObject.getDiscardedCards() == null || newJSONObject.getPlayerIndex() == null) {
+					http_exchange.sendResponseHeaders(400, response.length());
+
+				}
+			}
+			else
+			{
+				http_exchange.sendResponseHeaders(400, response.length());
+			}
+
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
 			os.close();

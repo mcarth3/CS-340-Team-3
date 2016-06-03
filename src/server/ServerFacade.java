@@ -371,12 +371,14 @@ public class ServerFacade {
 
 		if (thePlayer != null) {
 
-			thePlayer.addResource(ResourceType.BRICK, -1);
-			thePlayer.addResource(ResourceType.WOOD, -1);
+			if(!free) {
+				thePlayer.addResource(ResourceType.BRICK, -1);
+				thePlayer.addResource(ResourceType.WOOD, -1);
 
-			ResourceList bank = model.getBank();
-			bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
-			bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
+				ResourceList bank = model.getBank();
+				bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
+				bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
+			}
 
 			try {
 				model.getMap().addRoad(roadLocation.getX(), roadLocation.getY(),
@@ -409,7 +411,7 @@ public class ServerFacade {
 	 * @return a model with the new settlement and a new message
 	 */
 	public Object buildSettlement(String type, Integer playerIndex, VertexLocation settlementLocation, boolean free) {
-		if (free) {
+
 			Player thePlayer = null;
 			try {
 				thePlayer = model.findPlayerbyindex(playerIndex);
@@ -418,17 +420,19 @@ public class ServerFacade {
 			}
 
 			if (thePlayer != null) {
-				//decrement player and increase bank resources
-				thePlayer.addResource(ResourceType.BRICK, -1);
-				thePlayer.addResource(ResourceType.SHEEP, -1);
-				thePlayer.addResource(ResourceType.WOOD, -1);
-				thePlayer.addResource(ResourceType.WHEAT, -1);
+				if(!free) {
+					thePlayer.addResource(ResourceType.BRICK, -1);
+					thePlayer.addResource(ResourceType.SHEEP, -1);
+					thePlayer.addResource(ResourceType.WOOD, -1);
+					thePlayer.addResource(ResourceType.WHEAT, -1);
 
-				ResourceList bank = model.getBank();
-				bank.changeResourceTypeWithAmount(ResourceType.WHEAT, 1);
-				bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
-				bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
-				bank.changeResourceTypeWithAmount(ResourceType.SHEEP, 1);
+					ResourceList bank = model.getBank();
+					bank.changeResourceTypeWithAmount(ResourceType.WHEAT, 1);
+					bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
+					bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
+					bank.changeResourceTypeWithAmount(ResourceType.SHEEP, 1);
+				}
+
 
 				try {
 					//add settlement to map and add message to log
@@ -444,8 +448,7 @@ public class ServerFacade {
 
 			updatemodelnumber();
 			return model;
-		}
-		return model;
+
 	}
 //"Name" built a settlement
 

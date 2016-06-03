@@ -36,11 +36,15 @@ public class MapController extends Controller implements IMapController {
 	private boolean secondturnroads = true;
 	private boolean secondturnsettlements = false;
 	private boolean usingSoldier;
+	private boolean usingRoadBuilding;
+	private ArrayList<EdgeLocation> twoRoadsLocations;
 
 	public MapController(IMapView view, IRobView robView) {
 
 		super(view);
 		usingSoldier = false;
+		usingRoadBuilding = false;
+		twoRoadsLocations = new ArrayList<EdgeLocation>();
 		setRobView(robView);
 
 	}
@@ -114,8 +118,23 @@ public class MapController extends Controller implements IMapController {
 
 		getView().placeRoad(edgeLoc, CatanColor.toColor(thisplayer.getColor()));
 		if (state.equals("Playing")) {
-			System.out.println("placed road");
-			RealProxy.getSingleton().buildRoad(thisplayer.getPlayerIndex(), edgeLoc, false);
+			if(usingRoadBuilding)
+			{
+				twoRoadsLocations.add(edgeLoc);
+				if(twoRoadsLocations.size() == 2)
+				{
+					RealProxy.getSingleton().Road_Building(thisplayer.getPlayerIndex(), twoRoadsLocations.get(0), twoRoadsLocations.get(1));
+					twoRoadsLocations = new ArrayList<EdgeLocation>();
+					usingRoadBuilding = false;
+				}
+				else{
+					startMove(PieceType.ROAD, true, false);
+				}
+			}
+			else {
+				System.out.println("placed road");
+				RealProxy.getSingleton().buildRoad(thisplayer.getPlayerIndex(), edgeLoc, false);
+			}
 		} else if (state.equals("FirstRound")) {
 			RealProxy.getSingleton().buildRoad(thisplayer.getPlayerIndex(), edgeLoc, true);
 			firstturnsettlements = true;
@@ -233,9 +252,12 @@ public class MapController extends Controller implements IMapController {
 
 		if (robbableArray.length == 1) {
 			if (robbableArray[0].getPlayerIndex() == thisplayer.playerIndex) {
-				RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, -1, roblocation);
 				if (usingSoldier) {
 					usingSoldier = false;
+					RealProxy.getSingleton().Soldier(thisplayer.playerIndex, -1, roblocation);
+				}
+				else {
+					RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, -1, roblocation);
 				}
 				if (this.getRobView().isModalShowing()) {
 					this.getRobView().closeModal();
@@ -274,7 +296,10 @@ public class MapController extends Controller implements IMapController {
 
 	@Override
 	public void playRoadBuildingCard() {
-		startMove(PieceType.ROAD, true, false);
+		if(!usingRoadBuilding) {
+			usingRoadBuilding = true;
+			startMove(PieceType.ROAD, true, false);
+		}
 	}
 
 	@Override
