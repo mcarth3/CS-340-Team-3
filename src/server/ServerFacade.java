@@ -9,15 +9,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Vector;
 
-
-import model.*;
 import client.data.GameInfo;
 import model.AllInfo;
 import model.FailureToAddException;
 import model.Game;
 import model.ObjectNotFoundException;
 import model.Player;
+import model.TradeOffer;
 import model.UserInfo;
+import model.bank.DevCardList;
 import model.bank.ResourceList;
 import model.clientModel.MessageLine;
 import poller.modeljsonparser.ModelParser;
@@ -183,6 +183,7 @@ public class ServerFacade {
 
 		//	give those hexes resources to the players owning buildings on the hex
 		for (model.Hex hex : hexeswithnumber) {
+
 			//get hex buildings
 			//give owner 1 or 2 resources
 		}
@@ -203,32 +204,61 @@ public class ServerFacade {
 		//else
 		//	rob from victim
 		//TODO: update log
-
+		model.getTurnTracker().setStatus("Playing");
 		updatemodelnumber();
 		return model;
 	}
 
 	public Object finishturn(Integer index) {
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(index);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		if (model.getTurnTracker().getStatus().equals("FirstRound")) {
 			if (index == 3) {
 				model.getTurnTracker().setStatus("SecondRound");
 			} else {
-				model.getTurnTracker().setPlayerIndex(index++);
+				//		model.getTurnTracker().setCurrentTurn(index + 1);
 			}
 		} else if (model.getTurnTracker().getStatus().equals("SecondRound")) {
 			if (index == 0) {
 				model.getTurnTracker().setStatus("Rolling");
 			} else {
-				model.getTurnTracker().setPlayerIndex(index--);
+				//	model.getTurnTracker().setCurrentTurn(index - 1);
 			}
 		} else {
 			model.getTurnTracker().setStatus("Rolling");
-			model.getTurnTracker().setPlayerIndex(index++);
+			//	model.getTurnTracker().setCurrentTurn(index + 1);
 		}
 
-		//TODO: transfer dev cards from new to old
+		//add new devcards to old devcard list
+		DevCardList newList = thePlayer.getNewDevCards();
+		DevCardList oldList = thePlayer.getOldDevCards();
+		if (newList.getMonopoly() > 0) {
+			oldList.setMonopoly(oldList.getMonopoly() + newList.getMonopoly());
+		}
+		if (newList.getMonument() > 0) {
+			oldList.setMonument(oldList.getMonument() + newList.getMonument());
+		}
+		if (newList.getRoadBuilding() > 0) {
+			oldList.setRoadBuilding(oldList.getRoadBuilding() + newList.getRoadBuilding());
+		}
+		if (newList.getSoldier() > 0) {
+			oldList.setSoldier(oldList.getSoldier() + newList.getSoldier());
+		}
+		if (newList.getYearOfPlenty() > 0) {
+			oldList.setYearOfPlenty(oldList.getYearOfPlenty() + newList.getYearOfPlenty());
+		}
 
-		//TODO: update log
+		thePlayer.setNewDevCards(new DevCardList(0, 0, 0, 0, 0));
+		thePlayer.setOldDevCards(oldList);
+
+		MessageLine newLine = new MessageLine(thePlayer.getName() + "'s turn just ended",
+				thePlayer.getName());
+		model.getLog().getLines().add(newLine);
 
 		updatemodelnumber();
 		return model;
@@ -371,7 +401,7 @@ public class ServerFacade {
 
 		if (thePlayer != null) {
 
-			if(!free) {
+			if (!free) {
 				thePlayer.addResource(ResourceType.BRICK, -1);
 				thePlayer.addResource(ResourceType.WOOD, -1);
 
@@ -412,42 +442,41 @@ public class ServerFacade {
 	 */
 	public Object buildSettlement(String type, Integer playerIndex, VertexLocation settlementLocation, boolean free) {
 
-			Player thePlayer = null;
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(playerIndex);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		if (thePlayer != null) {
+			if (!free) {
+				thePlayer.addResource(ResourceType.BRICK, -1);
+				thePlayer.addResource(ResourceType.SHEEP, -1);
+				thePlayer.addResource(ResourceType.WOOD, -1);
+				thePlayer.addResource(ResourceType.WHEAT, -1);
+
+				ResourceList bank = model.getBank();
+				bank.changeResourceTypeWithAmount(ResourceType.WHEAT, 1);
+				bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
+				bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
+				bank.changeResourceTypeWithAmount(ResourceType.SHEEP, 1);
+			}
+
 			try {
-				thePlayer = model.findPlayerbyindex(playerIndex);
-			} catch (ObjectNotFoundException e) {
+				//add settlement to map and add message to log
+				model.getMap().addSettlement(settlementLocation.x, settlementLocation.y, settlementLocation.getDir(), playerIndex);
+				MessageLine newLine = new MessageLine(thePlayer.getName() + "built a settlement.", thePlayer.getName());
+				model.getLog().getLines().add(newLine);
+
+			} catch (FailureToAddException e) {
 				e.printStackTrace();
 			}
 
-			if (thePlayer != null) {
-				if(!free) {
-					thePlayer.addResource(ResourceType.BRICK, -1);
-					thePlayer.addResource(ResourceType.SHEEP, -1);
-					thePlayer.addResource(ResourceType.WOOD, -1);
-					thePlayer.addResource(ResourceType.WHEAT, -1);
+		}
 
-					ResourceList bank = model.getBank();
-					bank.changeResourceTypeWithAmount(ResourceType.WHEAT, 1);
-					bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
-					bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
-					bank.changeResourceTypeWithAmount(ResourceType.SHEEP, 1);
-				}
-
-
-				try {
-					//add settlement to map and add message to log
-					model.getMap().addSettlement(settlementLocation.x, settlementLocation.y, settlementLocation.getDir(), playerIndex);
-					MessageLine newLine = new MessageLine(thePlayer.getName() + "built a settlement.", thePlayer.getName());
-					model.getLog().getLines().add(newLine);
-
-				} catch (FailureToAddException e) {
-					e.printStackTrace();
-				}
-
-			}
-
-			updatemodelnumber();
-			return model;
+		updatemodelnumber();
+		return model;
 
 	}
 //"Name" built a settlement
@@ -519,13 +548,10 @@ public class ServerFacade {
 	 */
 	public Object acceptTrade(String type, Integer playerIndex, boolean willAccept) {
 
-
 		try {
 			Player theOfferPlayer = model.findPlayerbyindex(model.getTradeO().getSender()); //this is the reason for the try/catch
 			Player theRecieverPlayer = model.findPlayerbyindex(playerIndex);
-			if(willAccept) {
-
-
+			if (willAccept) {
 
 				ResourceList theList = model.getTradeO().getOffer();
 				ResourceType theType = ResourceType.BRICK;
@@ -553,9 +579,7 @@ public class ServerFacade {
 				MessageLine newLine = new MessageLine(theRecieverPlayer.getName() + " accepted the trade.", theOfferPlayer.getName());
 				model.getLog().getLines().add(newLine);
 
-			}
-			else
-			{
+			} else {
 				MessageLine newLine = new MessageLine(theRecieverPlayer.getName() + " rejected the trade.", theOfferPlayer.getName());
 				model.getLog().getLines().add(newLine);
 			}
@@ -564,7 +588,6 @@ public class ServerFacade {
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
 		}
-
 
 		updatemodelnumber();
 		return model;

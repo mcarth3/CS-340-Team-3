@@ -10,7 +10,6 @@ public class TurnTracker extends AbstractModelPartition {
 	int currentTurn;
 	int longestRoad = -1;
 	int largestArmy = -1;
-	int playerIndex;
 	//must be at least 3 to claim largest army, therefore if player army >  currLA they earn largest army and currLA = player army size
 
 	public TurnTracker() {
@@ -97,13 +96,13 @@ public class TurnTracker extends AbstractModelPartition {
 	public void calcLongestRoad(int pid) {
 	}
 
-	public int getPlayerIndex() {
+	public int getCurrentTurn() {
 
-		return playerIndex;
+		return currentTurn;
 	}
 
-	public void setPlayerIndex(int playerIndex) {
-		this.playerIndex = playerIndex;
+	public void setCurrentTurn(int playerIndex) {
+		this.currentTurn = playerIndex;
 	}
 
 	public void setStatus(String newstatus) {
