@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 import java.util.Vector;
 
@@ -271,6 +272,7 @@ public class ServerFacade {
 			}
 		}
 		for (City currentbuilding : cities) {
+			//	System.out.println(currentbuilding.getVertextLocation());
 			ArrayList<HexLocation> hexLocs = currentbuilding.getVertextLocation().getAdjacentHexes();
 			for (HexLocation hexloc : hexLocs) {
 				for (Hex rolledHex : hexeswithnumber) {
@@ -278,44 +280,40 @@ public class ServerFacade {
 						ResourceList resources = model.getPlayers().get(currentbuilding.getOwner()).getResources();
 						ResourceList bank = model.getBank();
 
-						try {
-							System.out.println("giving " + model.getPlayers().get(currentbuilding.getOwner()).getName() + " 2 " + rolledHex.getResource());
-							switch (rolledHex.getResource()) {
-							case "BRICK":
-								if (bank.getBrick() > 0) {
-									resources.setBrick(resources.getBrick() + 2);
-									bank.setBrick(bank.getBrick() - 2);
-								}
-								break;
-							case "ORE":
-								if (bank.getOre() > 0) {
-									resources.setOre(resources.getOre() + 2);
-									bank.setOre(bank.getOre() - 2);
-
-								}
-								break;
-							case "SHEEP":
-								if (bank.getSheep() > 0) {
-									resources.setSheep(resources.getSheep() + 2);
-									bank.setSheep(bank.getSheep() - 2);
-
-								}
-								break;
-							case "WHEAT":
-								if (bank.getWheat() > 0) {
-									resources.setWheat(resources.getWheat() + 2);
-									bank.setWheat(bank.getWheat() - 2);
-								}
-								break;
-							case "WOOD":
-								if (bank.getWood() > 0) {
-									resources.setWood(resources.getWood() + 2);
-									bank.setWood(bank.getWood() - 2);
-								}
-								break;
+						System.out.println("giving " + model.getPlayers().get(currentbuilding.getOwner()).getName() + " 1 " + rolledHex.getResource());
+						switch (rolledHex.getResource()) {
+						case "brick":
+							if (bank.getBrick() > 0) {
+								resources.setBrick(resources.getBrick() + 2);
+								bank.setBrick(bank.getBrick() - 2);
 							}
-						} catch (Exception e) {
-							System.out.println("Num Cards Out Of Range");
+							break;
+						case "ore":
+							if (bank.getOre() > 0) {
+								resources.setOre(resources.getOre() + 2);
+								bank.setOre(bank.getOre() - 2);
+
+							}
+							break;
+						case "sheep":
+							if (bank.getSheep() > 0) {
+								resources.setSheep(resources.getSheep() + 2);
+								bank.setSheep(bank.getSheep() - 2);
+
+							}
+							break;
+						case "wheat":
+							if (bank.getWheat() > 0) {
+								resources.setWheat(resources.getWheat() + 2);
+								bank.setWheat(bank.getWheat() - 2);
+							}
+							break;
+						case "wood":
+							if (bank.getWood() > 0) {
+								resources.setWood(resources.getWood() + 2);
+								bank.setWood(bank.getWood() - 2);
+							}
+							break;
 						}
 
 					}
@@ -326,22 +324,80 @@ public class ServerFacade {
 
 	public Object robplayer(Integer index, Integer victimindex, HexLocation location) {
 		Player thePlayer = null;
+		Player victim = null;
 		try {
 			thePlayer = model.findPlayerbyindex(index);
+			victim = model.findPlayerbyindex(victimindex);
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
 		}
 
 		//set robber location
+		model.getMap().setRobber(location);
 
 		//set status to playing
-
-		//if victim index = player index or victim index is out of range
-		//	(update log only that no one was robbed)
-		//else
-		//	rob from victim
-		//TODO: update log
 		model.getTurnTracker().setStatus("Playing");
+
+		MessageLine newLine;
+
+		if ((victimindex == index) || (victimindex == -1)) {
+			//update log only
+			newLine = new MessageLine(thePlayer.getName() + " moved the robber and robbed " + "nobody",
+					thePlayer.getName());
+		} else {
+			ResourceList playerList = model.getPlayers().get(index).getResources();
+			ResourceList victimList = model.getPlayers().get(victimindex).getResources();
+
+			//creates an arraylist of the only available stealable resources
+			ArrayList<ResourceType> typelist = new ArrayList<ResourceType>();
+			if (victimList.getBrick() > 0) {
+				typelist.add(ResourceType.BRICK);
+			}
+			if (victimList.getOre() > 0) {
+				typelist.add(ResourceType.ORE);
+			}
+			if (victimList.getWheat() > 0) {
+				typelist.add(ResourceType.WHEAT);
+			}
+			if (victimList.getSheep() > 0) {
+				typelist.add(ResourceType.SHEEP);
+			}
+			if (victimList.getWood() > 0) {
+				typelist.add(ResourceType.WOOD);
+			}
+
+			Random rand = new Random();
+			ResourceType randomtype = typelist.get(rand.nextInt(((typelist.size() - 1) - 0) + 1) + 0);
+			//randomly select a type to steal
+			switch (randomtype) {
+			case BRICK:
+				playerList.setBrick(playerList.getBrick() + 1);
+				victimList.setBrick(victimList.getBrick() - 1);
+				break;
+			case ORE:
+				playerList.setOre(playerList.getOre() + 1);
+				victimList.setOre(victimList.getOre() - 1);
+				break;
+			case SHEEP:
+				playerList.setSheep(playerList.getSheep() + 1);
+				victimList.setSheep(victimList.getSheep() - 1);
+				break;
+			case WHEAT:
+				playerList.setWheat(playerList.getWheat() + 1);
+				victimList.setWheat(victimList.getWheat() - 1);
+				break;
+			case WOOD:
+				playerList.setWood(playerList.getWood() + 1);
+				victimList.setWood(victimList.getWood() - 1);
+				break;
+			}
+
+			//update log
+			newLine = new MessageLine(thePlayer.getName() + " moved the robber and robbed " + victim.getName(),
+					thePlayer.getName());
+		}
+		model.getLog().getLines().add(newLine);
+
 		updatemodelnumber();
 		return model;
 	}
