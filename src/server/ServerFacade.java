@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -11,10 +12,13 @@ import java.util.Vector;
 
 import client.data.GameInfo;
 import model.AllInfo;
+import model.City;
 import model.FailureToAddException;
 import model.Game;
+import model.Hex;
 import model.ObjectNotFoundException;
 import model.Player;
+import model.Settlement;
 import model.TradeOffer;
 import model.UserInfo;
 import model.bank.DevCardList;
@@ -45,7 +49,12 @@ public class ServerFacade {
 
 	public ServerFacade() {
 		String data;
-
+		try {
+			System.out.println(new File(".").getCanonicalPath());
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		File fileEverything = new File("alltestgames.json");
 
 		File file = new File("testmodel.json");
@@ -160,6 +169,13 @@ public class ServerFacade {
 	}
 
 	public Game rolldice(Integer index, Integer number) {
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(index);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		//set state
 		if (number == 7) {
 			if (model.getPlayers().get(index).getResources().getSize() > 7) {
@@ -182,19 +198,140 @@ public class ServerFacade {
 		}
 
 		//	give those hexes resources to the players owning buildings on the hex
-		for (model.Hex hex : hexeswithnumber) {
-
-			//get hex buildings
-			//give owner 1 or 2 resources
+		Vector<Settlement> settlements = new Vector<Settlement>();
+		Vector<City> cities = new Vector<City>();
+		for (Settlement vo : model.getMap().getsettlements()) {
+			settlements.add(vo);
 		}
+		for (City vo : model.getMap().getcities()) {
+			cities.add(vo);
+		}
+		giveResources(hexeswithnumber, settlements, cities);
 
-		//TODO: update log
+		//update log
+		MessageLine newLine = new MessageLine(thePlayer.getName() + " rolled a " + number,
+				thePlayer.getName());
+		model.getLog().getLines().add(newLine);
 
 		updatemodelnumber();
 		return model;
 	}
 
+	private void giveResources(Vector<model.Hex> hexeswithnumber, Vector<Settlement> settlements, Vector<City> cities) {
+		for (Settlement currentbuilding : settlements) {
+			//	System.out.println(currentbuilding.getVertextLocation());
+			ArrayList<HexLocation> hexLocs = currentbuilding.getVertextLocation().getAdjacentHexes();
+			for (HexLocation hexloc : hexLocs) {
+				for (Hex rolledHex : hexeswithnumber) {
+					if (hexloc.equals(rolledHex.getLocation())) {
+						ResourceList resources = model.getPlayers().get(currentbuilding.getOwner()).getResources();
+						ResourceList bank = model.getBank();
+						try {
+							System.out.println("giving " + model.getPlayers().get(currentbuilding.getOwner()).getName() + " 1 " + rolledHex.getResource());
+							switch (rolledHex.getResource()) {
+							case "brick":
+								if (bank.getBrick() > 0) {
+									resources.setBrick(resources.getBrick() + 1);
+									bank.setBrick(bank.getBrick() - 1);
+								}
+								break;
+							case "ore":
+								if (bank.getOre() > 0) {
+									resources.setOre(resources.getOre() + 1);
+									bank.setOre(bank.getOre() - 1);
+
+								}
+								break;
+							case "sheep":
+								if (bank.getSheep() > 0) {
+									resources.setSheep(resources.getSheep() + 1);
+									bank.setSheep(bank.getSheep() - 1);
+
+								}
+								break;
+							case "wheat":
+								if (bank.getWheat() > 0) {
+									resources.setWheat(resources.getWheat() + 1);
+									bank.setWheat(bank.getWheat() - 1);
+								}
+								break;
+							case "wood":
+								if (bank.getWood() > 0) {
+									resources.setWood(resources.getWood() + 1);
+									bank.setWood(bank.getWood() - 1);
+								}
+								break;
+							}
+						} catch (Exception e) {
+							System.out.println("Num Cards Out Of Range");
+						}
+
+					}
+				}
+			}
+		}
+		for (City currentbuilding : cities) {
+			ArrayList<HexLocation> hexLocs = currentbuilding.getVertextLocation().getAdjacentHexes();
+			for (HexLocation hexloc : hexLocs) {
+				for (Hex rolledHex : hexeswithnumber) {
+					if (hexloc.equals(rolledHex.getLocation())) {
+						ResourceList resources = model.getPlayers().get(currentbuilding.getOwner()).getResources();
+						ResourceList bank = model.getBank();
+
+						try {
+							System.out.println("giving " + model.getPlayers().get(currentbuilding.getOwner()).getName() + " 2 " + rolledHex.getResource());
+							switch (rolledHex.getResource()) {
+							case "BRICK":
+								if (bank.getBrick() > 0) {
+									resources.setBrick(resources.getBrick() + 2);
+									bank.setBrick(bank.getBrick() - 2);
+								}
+								break;
+							case "ORE":
+								if (bank.getOre() > 0) {
+									resources.setOre(resources.getOre() + 2);
+									bank.setOre(bank.getOre() - 2);
+
+								}
+								break;
+							case "SHEEP":
+								if (bank.getSheep() > 0) {
+									resources.setSheep(resources.getSheep() + 2);
+									bank.setSheep(bank.getSheep() - 2);
+
+								}
+								break;
+							case "WHEAT":
+								if (bank.getWheat() > 0) {
+									resources.setWheat(resources.getWheat() + 2);
+									bank.setWheat(bank.getWheat() - 2);
+								}
+								break;
+							case "WOOD":
+								if (bank.getWood() > 0) {
+									resources.setWood(resources.getWood() + 2);
+									bank.setWood(bank.getWood() - 2);
+								}
+								break;
+							}
+						} catch (Exception e) {
+							System.out.println("Num Cards Out Of Range");
+						}
+
+					}
+				}
+			}
+		}
+	}
+
 	public Object robplayer(Integer index, Integer victimindex, HexLocation location) {
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(index);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		//set robber location
 
 		//set status to playing
@@ -231,7 +368,11 @@ public class ServerFacade {
 			}
 		} else {
 			model.getTurnTracker().setStatus("Rolling");
-			//	model.getTurnTracker().setCurrentTurn(index + 1);
+			if (index == 3) {
+				//		model.getTurnTracker().setCurrentTurn(0);
+			} else {
+				//		model.getTurnTracker().setCurrentTurn(index + 1);
+			}
 		}
 
 		//add new devcards to old devcard list
