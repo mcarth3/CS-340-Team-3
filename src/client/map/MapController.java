@@ -118,20 +118,16 @@ public class MapController extends Controller implements IMapController {
 
 		getView().placeRoad(edgeLoc, CatanColor.toColor(thisplayer.getColor()));
 		if (state.equals("Playing")) {
-			if(usingRoadBuilding)
-			{
+			if (usingRoadBuilding) {
 				twoRoadsLocations.add(edgeLoc);
-				if(twoRoadsLocations.size() == 2)
-				{
+				if (twoRoadsLocations.size() == 2) {
 					RealProxy.getSingleton().Road_Building(thisplayer.getPlayerIndex(), twoRoadsLocations.get(0), twoRoadsLocations.get(1));
 					twoRoadsLocations = new ArrayList<EdgeLocation>();
 					usingRoadBuilding = false;
-				}
-				else{
+				} else {
 					startMove(PieceType.ROAD, true, false);
 				}
-			}
-			else {
+			} else {
 				System.out.println("placed road");
 				RealProxy.getSingleton().buildRoad(thisplayer.getPlayerIndex(), edgeLoc, false);
 			}
@@ -191,21 +187,13 @@ public class MapController extends Controller implements IMapController {
 						player.setName(owners.get(vertex.getOwner()).getName());
 						player.setColor(owners.get(vertex.getOwner()).getColor());
 						player.setPlayerIndex(owners.get(vertex.getOwner()).getPlayerIndex());
-						String hexresource = Facade.getSingleton().whichresourceisthishex(hexLoc);
-						System.out.println("THIS HEX CONTAINS" + hexresource);
-						if (hexresource.equals("wood")) {
-							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWood());
-						} else if (hexresource.equals("brick")) {
-							player.setNumCards(owners.get(vertex.getOwner()).getResources().getBrick());
-						} else if (hexresource.equals("sheep")) {
-							player.setNumCards(owners.get(vertex.getOwner()).getResources().getSheep());
-						} else if (hexresource.equals("wheat")) {
-							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWheat());
-						} else if (hexresource.equals("ore")) {
-							player.setNumCards(owners.get(vertex.getOwner()).getResources().getOre());
-						} else {
-							player.setNumCards(0);
-						}
+						int numofresources = 0;
+						numofresources += owners.get(vertex.getOwner()).getResources().getBrick();
+						numofresources += owners.get(vertex.getOwner()).getResources().getOre();
+						numofresources += owners.get(vertex.getOwner()).getResources().getWheat();
+						numofresources += owners.get(vertex.getOwner()).getResources().getSheep();
+						numofresources += owners.get(vertex.getOwner()).getResources().getWood();
+						player.setNumCards(numofresources);
 
 						robbable.add(player);
 					}
@@ -223,21 +211,17 @@ public class MapController extends Controller implements IMapController {
 						player.setName(owners.get(vertex.getOwner()).getName());
 						player.setColor(owners.get(vertex.getOwner()).getColor());
 						player.setPlayerIndex(owners.get(vertex.getOwner()).getPlayerIndex());
-						String hexresource = Facade.getSingleton().whichresourceisthishex(hexLoc);
-						System.out.println("THIS HEX CONTAINS" + hexresource);
-						if (hexresource.equals("wood")) {
-							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWood());
-						} else if (hexresource.equals("brick")) {
-							player.setNumCards(owners.get(vertex.getOwner()).getResources().getBrick());
-						} else if (hexresource.equals("sheep")) {
-							player.setNumCards(owners.get(vertex.getOwner()).getResources().getSheep());
-						} else if (hexresource.equals("wheat")) {
-							player.setNumCards(owners.get(vertex.getOwner()).getResources().getWheat());
-						} else if (hexresource.equals("ore")) {
-							player.setNumCards(owners.get(vertex.getOwner()).getResources().getOre());
-						} else {
-							player.setNumCards(0);
-						}
+
+						// sets nummber of stealable resources
+
+						int numofresources = 0;
+						numofresources += owners.get(vertex.getOwner()).getResources().getBrick();
+						numofresources += owners.get(vertex.getOwner()).getResources().getOre();
+						numofresources += owners.get(vertex.getOwner()).getResources().getWheat();
+						numofresources += owners.get(vertex.getOwner()).getResources().getSheep();
+						numofresources += owners.get(vertex.getOwner()).getResources().getWood();
+						player.setNumCards(numofresources);
+
 						robbable.add(player);
 					}
 				}
@@ -255,8 +239,7 @@ public class MapController extends Controller implements IMapController {
 				if (usingSoldier) {
 					usingSoldier = false;
 					RealProxy.getSingleton().Soldier(thisplayer.playerIndex, -1, roblocation);
-				}
-				else {
+				} else {
 					RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, -1, roblocation);
 				}
 				if (this.getRobView().isModalShowing()) {
@@ -296,7 +279,7 @@ public class MapController extends Controller implements IMapController {
 
 	@Override
 	public void playRoadBuildingCard() {
-		if(!usingRoadBuilding) {
+		if (!usingRoadBuilding) {
 			usingRoadBuilding = true;
 			startMove(PieceType.ROAD, true, false);
 		}
