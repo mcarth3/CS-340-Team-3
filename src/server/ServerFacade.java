@@ -26,6 +26,7 @@ import model.bank.DevCardList;
 import model.bank.ResourceList;
 import model.clientModel.MessageLine;
 import poller.modeljsonparser.ModelParser;
+import shared.definitions.DevCardType;
 import shared.definitions.ResourceType;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
@@ -333,7 +334,7 @@ public class ServerFacade {
 		}
 
 		//set robber location
-		model.getMap().setRobber(location);
+		model.getMap().getRobber().setHl(location);
 
 		//set status to playing
 		model.getTurnTracker().setStatus("Playing");
@@ -462,11 +463,73 @@ public class ServerFacade {
 	}
 
 	public Object buydevcard(Integer index) {
-		//decrement resources of current player
-		//randomly select which card from bank's stock
-		//remove from bank and add to current player
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(index);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
 
-		//TODO: update log
+		//moves resources from player back into back
+		model.getPlayers().get(index).getResources().setOre(model.getPlayers().get(index).getResources().getOre() - 1);
+		model.getPlayers().get(index).getResources().setWheat(model.getPlayers().get(index).getResources().getWheat() - 1);
+		model.getPlayers().get(index).getResources().setSheep(model.getPlayers().get(index).getResources().getSheep() - 1);
+		model.getBank().setOre(model.getBank().getOre() + 1);
+		model.getBank().setWheat(model.getBank().getWheat() + 1);
+		model.getBank().setSheep(model.getBank().getSheep() + 1);
+
+		//randomly select dev card type from bank's stock
+		int totaldevcards = model.getDeck().getMonopoly() + model.getDeck().getMonument() + model.getDeck().getSoldier() + model.getDeck().getRoadBuilding() + model.getDeck().getYearOfPlenty();
+
+		ArrayList<DevCardType> devcardlist = new ArrayList<DevCardType>();
+		for (int i = 0; i < model.getDeck().getMonopoly(); i++) {
+			devcardlist.add(DevCardType.MONOPOLY);
+		}
+		for (int i = 0; i < model.getDeck().getMonument(); i++) {
+			devcardlist.add(DevCardType.MONUMENT);
+		}
+		for (int i = 0; i < model.getDeck().getSoldier(); i++) {
+			devcardlist.add(DevCardType.SOLDIER);
+		}
+		for (int i = 0; i < model.getDeck().getRoadBuilding(); i++) {
+			devcardlist.add(DevCardType.ROAD_BUILD);
+		}
+		for (int i = 0; i < model.getDeck().getYearOfPlenty(); i++) {
+			devcardlist.add(DevCardType.YEAR_OF_PLENTY);
+		}
+
+		Random rand = new Random();
+		DevCardType card = devcardlist.get(rand.nextInt((((totaldevcards - 1) - 0) + 1) + 0));
+
+		//remove from bank and add to current player
+		switch (card) {
+		case MONOPOLY:
+			model.getDeck().setMonopoly(model.getDeck().getMonopoly() - 1);
+			model.getPlayers().get(index).getNewDevCards().setMonopoly(model.getPlayers().get(index).getNewDevCards().getMonopoly() + 1);
+			break;
+		case MONUMENT:
+			model.getDeck().setMonument(model.getDeck().getMonument() - 1);
+			model.getPlayers().get(index).getOldDevCards().setMonument(model.getPlayers().get(index).getOldDevCards().getMonument() + 1);
+			break;
+		case SOLDIER:
+			model.getDeck().setSoldier(model.getDeck().getSoldier() - 1);
+			model.getPlayers().get(index).getNewDevCards().setSoldier(model.getPlayers().get(index).getNewDevCards().getSoldier() + 1);
+			break;
+		case ROAD_BUILD:
+			model.getDeck().setRoadBuilding(model.getDeck().getRoadBuilding() - 1);
+			model.getPlayers().get(index).getNewDevCards().setRoadBuilding(model.getPlayers().get(index).getNewDevCards().getRoadBuilding() + 1);
+			break;
+		case YEAR_OF_PLENTY:
+			model.getDeck().setYearOfPlenty(model.getDeck().getYearOfPlenty() - 1);
+			model.getPlayers().get(index).getNewDevCards().setYearOfPlenty(model.getPlayers().get(index).getNewDevCards().getYearOfPlenty() + 1);
+			break;
+
+		}
+
+		MessageLine newLine = new MessageLine(thePlayer.getName() + " bought a Development Card",
+				thePlayer.getName());
+		model.getLog().getLines().add(newLine);
+
 		updatemodelnumber();
 		return model;
 	}

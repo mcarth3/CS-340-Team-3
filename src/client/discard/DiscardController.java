@@ -56,7 +56,7 @@ public class DiscardController extends Controller implements IDiscardController 
 
 		ArrayList<Player> players = model.getPlayers();
 		int halfcards = thisplayer.getResources().getSize() / 2;
-		System.out.println("DISCARD:max discard num= " + halfcards);
+		//	System.out.println("DISCARD:max discard num= " + halfcards);
 
 		return halfcards;
 	}
@@ -157,11 +157,11 @@ public class DiscardController extends Controller implements IDiscardController 
 
 	@Override
 	public void update() {
-		System.out.println("DISCARD:discard controller update");
+		//	System.out.println("DISCARD:discard controller update");
 		int cards = thisplayer.getResources().getSize();
 
 		if ((state.equals("Discarding") || (state.equals("Robbing")))) {
-			// System.out.print("DISCARD:status is discarding or robbing");
+			System.out.print("DISCARD:status is discarding or robbing");
 			if ((manager.getdiscardedcheck() == false)) {
 				// System.out.print("DISCARD:discarded check = false");
 				manager.setdiscardedcheck(true);
@@ -174,7 +174,7 @@ public class DiscardController extends Controller implements IDiscardController 
 					updateView();
 
 				} else {
-					System.out.print("DISCARD:<7 resources, so doing a blank discard");
+					//System.out.print("DISCARD:<7 resources, so doing a blank discard");
 					ArrayList<Integer> discardCardarray = new ArrayList<Integer>();
 					discardCardarray.add(0);
 					discardCardarray.add(0);
