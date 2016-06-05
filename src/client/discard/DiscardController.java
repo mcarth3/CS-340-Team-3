@@ -212,8 +212,6 @@ public class DiscardController extends Controller implements IDiscardController 
 			n = -1;
 		} else if (discardList.getSize() == maxDiscardNum) {
 			n = 0;
-		} else if (discardList.getSize() > maxDiscardNum) {
-			n = 1;
 		}
 
 		return n;
@@ -243,18 +241,21 @@ public class DiscardController extends Controller implements IDiscardController 
 		getDiscardView().setResourceDiscardAmount(ResourceType.WOOD, discardList.getWood());
 		getDiscardView().setResourceDiscardAmount(ResourceType.WHEAT, discardList.getWheat());
 
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.BRICK, (currentHand.getBrick() > 0 && discardList.getBrick() < currentHand.getBrick()), (discardList.getBrick() > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.ORE, (currentHand.getOre() > 0 && discardList.getOre() < currentHand.getOre()), (discardList.getOre() > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.SHEEP, (currentHand.getSheep() > 0 && discardList.getSheep() < currentHand.getSheep()), (discardList.getSheep() > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WOOD, (currentHand.getWood() > 0 && discardList.getWood() < currentHand.getWood()), (discardList.getWood() > 0));
-		getDiscardView().setResourceAmountChangeEnabled(ResourceType.WHEAT, (currentHand.getWheat() > 0 && discardList.getWheat() < currentHand.getWheat()), (discardList.getWheat() > 0));
-
 		if (checkifcorrect() == -1) {
 			getDiscardView().setDiscardButtonEnabled(false);
+			getDiscardView().setResourceAmountChangeEnabled(ResourceType.BRICK, (currentHand.getBrick() > 0 && discardList.getBrick() < currentHand.getBrick()), (discardList.getBrick() > 0));
+			getDiscardView().setResourceAmountChangeEnabled(ResourceType.ORE, (currentHand.getOre() > 0 && discardList.getOre() < currentHand.getOre()), (discardList.getOre() > 0));
+			getDiscardView().setResourceAmountChangeEnabled(ResourceType.SHEEP, (currentHand.getSheep() > 0 && discardList.getSheep() < currentHand.getSheep()), (discardList.getSheep() > 0));
+			getDiscardView().setResourceAmountChangeEnabled(ResourceType.WOOD, (currentHand.getWood() > 0 && discardList.getWood() < currentHand.getWood()), (discardList.getWood() > 0));
+			getDiscardView().setResourceAmountChangeEnabled(ResourceType.WHEAT, (currentHand.getWheat() > 0 && discardList.getWheat() < currentHand.getWheat()), (discardList.getWheat() > 0));
+
 		} else if (checkifcorrect() == 0) {
 			getDiscardView().setDiscardButtonEnabled(true);
-		} else if (checkifcorrect() == 1) {
-			getDiscardView().setDiscardButtonEnabled(false);
+			getDiscardView().setResourceAmountChangeEnabled(ResourceType.BRICK, false, (discardList.getBrick() > 0));
+			getDiscardView().setResourceAmountChangeEnabled(ResourceType.ORE, false, (discardList.getOre() > 0));
+			getDiscardView().setResourceAmountChangeEnabled(ResourceType.SHEEP, false, (discardList.getSheep() > 0));
+			getDiscardView().setResourceAmountChangeEnabled(ResourceType.WOOD, false, (discardList.getWood() > 0));
+			getDiscardView().setResourceAmountChangeEnabled(ResourceType.WHEAT, false, (discardList.getWheat() > 0));
 		}
 
 	}
