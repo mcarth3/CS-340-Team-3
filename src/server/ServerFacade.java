@@ -13,7 +13,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.Vector;
 
 import client.data.GameInfo;
 import model.AllInfo;
@@ -174,6 +173,8 @@ public class ServerFacade {
 		return model;
 	}
 
+	//Mike's methods
+
 	public Game rolldice(Integer index, Integer number) {
 		Player thePlayer = null;
 		try {
@@ -193,10 +194,10 @@ public class ServerFacade {
 			model.getTurnTracker().setStatus("Playing");
 		}
 
-		//give players resources
+		//------give players resources------
 
 		//	find hexes that match this number
-		Vector<model.Hex> hexeswithnumber = new Vector<model.Hex>();
+		ArrayList<model.Hex> hexeswithnumber = new ArrayList<model.Hex>();
 		for (model.Hex hex : model.getMap().getHexes()) {
 			if (hex.number == number) {
 				hexeswithnumber.add(hex);
@@ -204,15 +205,7 @@ public class ServerFacade {
 		}
 
 		//	give those hexes resources to the players owning buildings on the hex
-		Vector<Settlement> settlements = new Vector<Settlement>();
-		Vector<City> cities = new Vector<City>();
-		for (Settlement vo : model.getMap().getsettlements()) {
-			settlements.add(vo);
-		}
-		for (City vo : model.getMap().getcities()) {
-			cities.add(vo);
-		}
-		giveResources(hexeswithnumber, settlements, cities);
+		giveResources(hexeswithnumber, model.getMap().getsettlements(), model.getMap().getcities());
 
 		//update log
 		MessageLine newLine = new MessageLine(thePlayer.getName() + " rolled a " + number,
@@ -223,104 +216,30 @@ public class ServerFacade {
 		return model;
 	}
 
-	private void giveResources(Vector<model.Hex> hexeswithnumber, Vector<Settlement> settlements, Vector<City> cities) {
-		for (Settlement currentbuilding : settlements) {
-			//	System.out.println(currentbuilding.getVertextLocation());
+	private void giveResources(ArrayList<model.Hex> hexeswithnumber, ArrayList<Settlement> arrayList, ArrayList<City> arrayList2) {
+		for (Settlement currentbuilding : arrayList) {
 			ArrayList<HexLocation> hexLocs = currentbuilding.getVertextLocation().getAdjacentHexes();
 			for (HexLocation hexloc : hexLocs) {
 				for (Hex rolledHex : hexeswithnumber) {
 					if (hexloc.equals(rolledHex.getLocation())) {
 						ResourceList resources = model.getPlayers().get(currentbuilding.getOwner()).getResources();
 						ResourceList bank = model.getBank();
-						try {
-							System.out.println("giving " + model.getPlayers().get(currentbuilding.getOwner()).getName() + " 1 " + rolledHex.getResource());
-							switch (rolledHex.getResource()) {
-							case "brick":
-								if (bank.getBrick() > 0) {
-									resources.setBrick(resources.getBrick() + 1);
-									bank.setBrick(bank.getBrick() - 1);
-								}
-								break;
-							case "ore":
-								if (bank.getOre() > 0) {
-									resources.setOre(resources.getOre() + 1);
-									bank.setOre(bank.getOre() - 1);
-
-								}
-								break;
-							case "sheep":
-								if (bank.getSheep() > 0) {
-									resources.setSheep(resources.getSheep() + 1);
-									bank.setSheep(bank.getSheep() - 1);
-
-								}
-								break;
-							case "wheat":
-								if (bank.getWheat() > 0) {
-									resources.setWheat(resources.getWheat() + 1);
-									bank.setWheat(bank.getWheat() - 1);
-								}
-								break;
-							case "wood":
-								if (bank.getWood() > 0) {
-									resources.setWood(resources.getWood() + 1);
-									bank.setWood(bank.getWood() - 1);
-								}
-								break;
-							}
-						} catch (Exception e) {
-							System.out.println("Num Cards Out Of Range");
-						}
+						System.out.println("giving " + model.getPlayers().get(currentbuilding.getOwner()).getName() + " 1 " + rolledHex.getResource());
+						getresourcefrombank(rolledHex.getResourceAsType(), currentbuilding.getOwner(), 1);
 
 					}
 				}
 			}
 		}
-		for (City currentbuilding : cities) {
-			//	System.out.println(currentbuilding.getVertextLocation());
+		for (City currentbuilding : arrayList2) {
 			ArrayList<HexLocation> hexLocs = currentbuilding.getVertextLocation().getAdjacentHexes();
 			for (HexLocation hexloc : hexLocs) {
 				for (Hex rolledHex : hexeswithnumber) {
 					if (hexloc.equals(rolledHex.getLocation())) {
 						ResourceList resources = model.getPlayers().get(currentbuilding.getOwner()).getResources();
 						ResourceList bank = model.getBank();
-
 						System.out.println("giving " + model.getPlayers().get(currentbuilding.getOwner()).getName() + " 1 " + rolledHex.getResource());
-						switch (rolledHex.getResource()) {
-						case "brick":
-							if (bank.getBrick() > 0) {
-								resources.setBrick(resources.getBrick() + 2);
-								bank.setBrick(bank.getBrick() - 2);
-							}
-							break;
-						case "ore":
-							if (bank.getOre() > 0) {
-								resources.setOre(resources.getOre() + 2);
-								bank.setOre(bank.getOre() - 2);
-
-							}
-							break;
-						case "sheep":
-							if (bank.getSheep() > 0) {
-								resources.setSheep(resources.getSheep() + 2);
-								bank.setSheep(bank.getSheep() - 2);
-
-							}
-							break;
-						case "wheat":
-							if (bank.getWheat() > 0) {
-								resources.setWheat(resources.getWheat() + 2);
-								bank.setWheat(bank.getWheat() - 2);
-							}
-							break;
-						case "wood":
-							if (bank.getWood() > 0) {
-								resources.setWood(resources.getWood() + 2);
-								bank.setWood(bank.getWood() - 2);
-							}
-							break;
-						}
-
+						getresourcefrombank(rolledHex.getResourceAsType(), currentbuilding.getOwner(), 2);
 					}
 				}
 			}
@@ -350,61 +269,67 @@ public class ServerFacade {
 			newLine = new MessageLine(thePlayer.getName() + " moved the robber and robbed " + "nobody",
 					thePlayer.getName());
 		} else {
-			ResourceList playerList = model.getPlayers().get(index).getResources();
-			ResourceList victimList = model.getPlayers().get(victimindex).getResources();
-
-			//creates an arraylist of the only available stealable resources
-			ArrayList<ResourceType> typelist = new ArrayList<ResourceType>();
-			if (victimList.getBrick() > 0) {
-				typelist.add(ResourceType.BRICK);
-			}
-			if (victimList.getOre() > 0) {
-				typelist.add(ResourceType.ORE);
-			}
-			if (victimList.getWheat() > 0) {
-				typelist.add(ResourceType.WHEAT);
-			}
-			if (victimList.getSheep() > 0) {
-				typelist.add(ResourceType.SHEEP);
-			}
-			if (victimList.getWood() > 0) {
-				typelist.add(ResourceType.WOOD);
-			}
-
-			Random rand = new Random();
-			ResourceType randomtype = typelist.get(rand.nextInt(((typelist.size() - 1) - 0) + 1) + 0);
-			//randomly select a type to steal
-			switch (randomtype) {
-			case BRICK:
-				playerList.setBrick(playerList.getBrick() + 1);
-				victimList.setBrick(victimList.getBrick() - 1);
-				break;
-			case ORE:
-				playerList.setOre(playerList.getOre() + 1);
-				victimList.setOre(victimList.getOre() - 1);
-				break;
-			case SHEEP:
-				playerList.setSheep(playerList.getSheep() + 1);
-				victimList.setSheep(victimList.getSheep() - 1);
-				break;
-			case WHEAT:
-				playerList.setWheat(playerList.getWheat() + 1);
-				victimList.setWheat(victimList.getWheat() - 1);
-				break;
-			case WOOD:
-				playerList.setWood(playerList.getWood() + 1);
-				victimList.setWood(victimList.getWood() - 1);
-				break;
-			}
+			stealfromplayer(index, victimindex);
 
 			//update log
 			newLine = new MessageLine(thePlayer.getName() + " moved the robber and robbed " + victim.getName(),
 					thePlayer.getName());
 		}
+
 		model.getLog().getLines().add(newLine);
 
 		updatemodelnumber();
 		return model;
+	}
+
+	private void stealfromplayer(int index, int victimindex) {
+		ResourceList playerList = model.getPlayers().get(index).getResources();
+		ResourceList victimList = model.getPlayers().get(victimindex).getResources();
+
+		//creates an arraylist of the only available stealable resources
+		ArrayList<ResourceType> typelist = new ArrayList<ResourceType>();
+		if (victimList.getBrick() > 0) {
+			typelist.add(ResourceType.BRICK);
+		}
+		if (victimList.getOre() > 0) {
+			typelist.add(ResourceType.ORE);
+		}
+		if (victimList.getWheat() > 0) {
+			typelist.add(ResourceType.WHEAT);
+		}
+		if (victimList.getSheep() > 0) {
+			typelist.add(ResourceType.SHEEP);
+		}
+		if (victimList.getWood() > 0) {
+			typelist.add(ResourceType.WOOD);
+		}
+
+		Random rand = new Random();
+		ResourceType randomtype = typelist.get(rand.nextInt(((typelist.size() - 1) - 0) + 1) + 0);
+		//randomly select a type to steal
+		switch (randomtype) {
+		case BRICK:
+			playerList.setBrick(playerList.getBrick() + 1);
+			victimList.setBrick(victimList.getBrick() - 1);
+			break;
+		case ORE:
+			playerList.setOre(playerList.getOre() + 1);
+			victimList.setOre(victimList.getOre() - 1);
+			break;
+		case SHEEP:
+			playerList.setSheep(playerList.getSheep() + 1);
+			victimList.setSheep(victimList.getSheep() - 1);
+			break;
+		case WHEAT:
+			playerList.setWheat(playerList.getWheat() + 1);
+			victimList.setWheat(victimList.getWheat() - 1);
+			break;
+		case WOOD:
+			playerList.setWood(playerList.getWood() + 1);
+			victimList.setWood(victimList.getWood() - 1);
+			break;
+		}
+
 	}
 
 	public Object finishturn(Integer index) {
@@ -416,28 +341,20 @@ public class ServerFacade {
 		}
 		model.getPlayers().get(index).setPlayedDevCard(false);
 
-		if (model.getTurnTracker().getStatus().equals("FirstRound")) {
-			if (index == 3) {
-				model.getTurnTracker().setStatus("SecondRound");
-			} else {
-				//		model.getTurnTracker().setCurrentTurn(index + 1);
-			}
-		} else if (model.getTurnTracker().getStatus().equals("SecondRound")) {
-			if (index == 0) {
-				model.getTurnTracker().setStatus("Rolling");
-			} else {
-				//	model.getTurnTracker().setCurrentTurn(index - 1);
-			}
-		} else {
-			model.getTurnTracker().setStatus("Rolling");
-			if (index == 3) {
-				//		model.getTurnTracker().setCurrentTurn(0);
-			} else {
-				//		model.getTurnTracker().setCurrentTurn(index + 1);
-			}
-		}
+		changestatusafterfinish(index);
 
 		//add new devcards to old devcard list
+		addnewdevcardstoold(thePlayer);
+
+		MessageLine newLine = new MessageLine(thePlayer.getName() + "'s turn just ended",
+				thePlayer.getName());
+		model.getLog().getLines().add(newLine);
+
+		updatemodelnumber();
+		return model;
+	}
+
+	private void addnewdevcardstoold(Player thePlayer) {
 		DevCardList newList = thePlayer.getNewDevCards();
 		DevCardList oldList = thePlayer.getOldDevCards();
 		if (newList.getMonopoly() > 0) {
@@ -458,13 +375,29 @@ public class ServerFacade {
 
 		thePlayer.setNewDevCards(new DevCardList(0, 0, 0, 0, 0));
 		thePlayer.setOldDevCards(oldList);
+	}
 
-		MessageLine newLine = new MessageLine(thePlayer.getName() + "'s turn just ended",
-				thePlayer.getName());
-		model.getLog().getLines().add(newLine);
-
-		updatemodelnumber();
-		return model;
+	private void changestatusafterfinish(int index) {
+		if (model.getTurnTracker().getStatus().equals("FirstRound")) {
+			if (index == 3) {
+				model.getTurnTracker().setStatus("SecondRound");
+			} else {
+				//		model.getTurnTracker().setCurrentTurn(index + 1);
+			}
+		} else if (model.getTurnTracker().getStatus().equals("SecondRound")) {
+			if (index == 0) {
+				model.getTurnTracker().setStatus("Rolling");
+			} else {
+				//	model.getTurnTracker().setCurrentTurn(index - 1);
+			}
+		} else {
+			model.getTurnTracker().setStatus("Rolling");
+			if (index == 3) {
+				//		model.getTurnTracker().setCurrentTurn(0);
+			} else {
+				//		model.getTurnTracker().setCurrentTurn(index + 1);
+			}
+		}
 	}
 
 	public Object buydevcard(Integer index) {
@@ -483,6 +416,17 @@ public class ServerFacade {
 		model.getBank().setWheat(model.getBank().getWheat() + 1);
 		model.getBank().setSheep(model.getBank().getSheep() + 1);
 
+		takedevcardfrombank(index);
+
+		MessageLine newLine = new MessageLine(thePlayer.getName() + " bought a Development Card",
+				thePlayer.getName());
+		model.getLog().getLines().add(newLine);
+
+		updatemodelnumber();
+		return model;
+	}
+
+	private void takedevcardfrombank(int index) {
 		//randomly select dev card type from bank's stock
 		int totaldevcards = model.getDeck().getMonopoly() + model.getDeck().getMonument() + model.getDeck().getSoldier() + model.getDeck().getRoadBuilding() + model.getDeck().getYearOfPlenty();
 
@@ -530,101 +474,71 @@ public class ServerFacade {
 			break;
 
 		}
-
-		MessageLine newLine = new MessageLine(thePlayer.getName() + " bought a Development Card",
-				thePlayer.getName());
-		model.getLog().getLines().add(newLine);
-
-		updatemodelnumber();
-		return model;
 	}
 
 	public Object playYOPcard(Integer playerIndex, ResourceType resource1, ResourceType resource2) {
-		//player gets first resource from bank
-		//--------------------------------CHECK SERVER OR CLIENT SIDE?---------------------------------
-		switch (resource1) {
-		case BRICK:
-			if (model.getBank().getBrick() > 0) {
-				model.getPlayers().get(playerIndex).getResources().setBrick(model.getPlayers().get(playerIndex).getResources().getBrick() + 1);
-				model.getBank().setBrick(model.getBank().getBrick() - 1);
-			}
-			break;
-		case ORE:
-			if (model.getBank().getOre() > 0) {
-				model.getPlayers().get(playerIndex).getResources().setOre(model.getPlayers().get(playerIndex).getResources().getOre() + 1);
-				model.getBank().setOre(model.getBank().getOre() - 1);
-
-			}
-			break;
-		case SHEEP:
-			if (model.getBank().getSheep() > 0) {
-				model.getPlayers().get(playerIndex).getResources().setSheep(model.getPlayers().get(playerIndex).getResources().getSheep() + 1);
-				model.getBank().setSheep(model.getBank().getSheep() - 1);
-
-			}
-			break;
-		case WHEAT:
-			if (model.getBank().getWheat() > 0) {
-				model.getPlayers().get(playerIndex).getResources().setWheat(model.getPlayers().get(playerIndex).getResources().getWheat() + 1);
-				model.getBank().setWheat(model.getBank().getWheat() - 1);
-			}
-			break;
-		case WOOD:
-			if (model.getBank().getWood() > 0) {
-				model.getPlayers().get(playerIndex).getResources().setWood(model.getPlayers().get(playerIndex).getResources().getWood() + 1);
-				model.getBank().setWood(model.getBank().getWood() - 1);
-			}
-			break;
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(playerIndex);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
 		}
+
+		//player gets first resource from bank
+		getresourcefrombank(resource1, playerIndex, 1);
 
 		//player gets second resource from bank
-		switch (resource2) {
-		case BRICK:
-			if (model.getBank().getBrick() > 0) {
-				model.getPlayers().get(playerIndex).getResources().setBrick(model.getPlayers().get(playerIndex).getResources().getBrick() + 1);
-				model.getBank().setBrick(model.getBank().getBrick() - 1);
-			}
-			break;
-		case ORE:
-			if (model.getBank().getOre() > 0) {
-				model.getPlayers().get(playerIndex).getResources().setOre(model.getPlayers().get(playerIndex).getResources().getOre() + 1);
-				model.getBank().setOre(model.getBank().getOre() - 1);
-
-			}
-			break;
-		case SHEEP:
-			if (model.getBank().getSheep() > 0) {
-				model.getPlayers().get(playerIndex).getResources().setSheep(model.getPlayers().get(playerIndex).getResources().getSheep() + 1);
-				model.getBank().setSheep(model.getBank().getSheep() - 1);
-
-			}
-			break;
-		case WHEAT:
-			if (model.getBank().getWheat() > 0) {
-				model.getPlayers().get(playerIndex).getResources().setWheat(model.getPlayers().get(playerIndex).getResources().getWheat() + 1);
-				model.getBank().setWheat(model.getBank().getWheat() - 1);
-			}
-			break;
-		case WOOD:
-			if (model.getBank().getWood() > 0) {
-				model.getPlayers().get(playerIndex).getResources().setWood(model.getPlayers().get(playerIndex).getResources().getWood() + 1);
-				model.getBank().setWood(model.getBank().getWood() - 1);
-			}
-			break;
-		}
+		getresourcefrombank(resource2, playerIndex, 1);
 
 		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
 
 		//remove year of plenty card from player
 		model.getPlayers().get(playerIndex).getOldDevCards().setYearOfPlenty(model.getPlayers().get(playerIndex).getOldDevCards().getYearOfPlenty() - 1);
 
-		//----------------------------------TODO: update log?---------------------------------------------
+		//update log
+		MessageLine newLine = new MessageLine(thePlayer.getName() + " used Year of Plenty and got a " + resource1 + " and a " + resource2,
+				thePlayer.getName());
+		model.getLog().getLines().add(newLine);
+
 		updatemodelnumber();
 		return model;
 
 	}
 
+	private void getresourcefrombank(ResourceType resource, int playerIndex, int amount) {
+		switch (resource) {
+		case BRICK:
+			model.getPlayers().get(playerIndex).getResources().setBrick(model.getPlayers().get(playerIndex).getResources().getBrick() + amount);
+			model.getBank().setBrick(model.getBank().getBrick() - amount);
+			break;
+		case ORE:
+			model.getPlayers().get(playerIndex).getResources().setOre(model.getPlayers().get(playerIndex).getResources().getOre() + amount);
+			model.getBank().setOre(model.getBank().getOre() - amount);
+			break;
+		case SHEEP:
+			model.getPlayers().get(playerIndex).getResources().setSheep(model.getPlayers().get(playerIndex).getResources().getSheep() + amount);
+			model.getBank().setSheep(model.getBank().getSheep() - amount);
+			break;
+		case WHEAT:
+			model.getPlayers().get(playerIndex).getResources().setWheat(model.getPlayers().get(playerIndex).getResources().getWheat() + amount);
+			model.getBank().setWheat(model.getBank().getWheat() - amount);
+			break;
+		case WOOD:
+			model.getPlayers().get(playerIndex).getResources().setWood(model.getPlayers().get(playerIndex).getResources().getWood() + amount);
+			model.getBank().setWood(model.getBank().getWood() - amount);
+			break;
+		}
+
+	}
+
 	public Object playroadbuildingcard(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(playerIndex);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		//-----------------------TODO: this.buildroad()?------------------------
 
 		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
@@ -632,12 +546,22 @@ public class ServerFacade {
 		//remove road building card from player
 		model.getPlayers().get(playerIndex).getOldDevCards().setRoadBuilding(model.getPlayers().get(playerIndex).getOldDevCards().getRoadBuilding() - 1);
 
-		//-----------------------------TODO: update log?------------------------
+		//------------------------TODO:update log with correct message-----------------
+		MessageLine newLine = new MessageLine(thePlayer.getName() + " used Road Building",
+				thePlayer.getName());
+		model.getLog().getLines().add(newLine);
 		updatemodelnumber();
 		return model;
 	}
 
 	public Object playsoldercard(Integer index, Integer victimindex, HexLocation location) {
+		Player thePlayer = null;
+		try {
+			thePlayer = model.findPlayerbyindex(index);
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
+
 		//add soldier to army, determine who has largest army
 		model.getPlayers().get(index).setSoldiers(model.getPlayers().get(index).getSoldiers() + 1);
 		model.getPlayers().get(index).setPlayedDevCard(true);
@@ -650,7 +574,10 @@ public class ServerFacade {
 		//remove soldier card from player
 		model.getPlayers().get(index).getOldDevCards().setSoldier(model.getPlayers().get(index).getOldDevCards().getSoldier() - 1);
 
-		//---------------------------TODO: update log?--------------------------------
+		//------------------------TODO:update log with correct message-----------------
+		MessageLine newLine = new MessageLine(thePlayer.getName() + " used Soldier",
+				thePlayer.getName());
+		model.getLog().getLines().add(newLine);
 		updatemodelnumber();
 		return model;
 	}
@@ -1017,17 +944,14 @@ public class ServerFacade {
 	 * Essentially makes all positive numbers negative and vice versa in a ResourceList.
 	 * @param theOriginal
 	 * @return
-     */
-	public ResourceList negatizeResourceList(ResourceList theOriginal)
-	{
+	 */
+	public ResourceList negatizeResourceList(ResourceList theOriginal) {
 		ResourceList theNew = new ResourceList();
 		theNew.setWheat(-1 * theOriginal.getWheat());
 		theNew.setOre(-1 * theOriginal.getOre());
 		theNew.setWood(-1 * theOriginal.getWood());
 		theNew.setBrick(-1 * theOriginal.getBrick());
 		theNew.setSheep(-1 * theOriginal.getSheep());
-
-
 
 		return theNew;
 	}
