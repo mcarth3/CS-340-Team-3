@@ -7,6 +7,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.Vector;
@@ -410,6 +414,7 @@ public class ServerFacade {
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
 		}
+		model.getPlayers().get(index).setPlayedDevCard(false);
 
 		if (model.getTurnTracker().getStatus().equals("FirstRound")) {
 			if (index == 3) {
@@ -470,7 +475,7 @@ public class ServerFacade {
 			e.printStackTrace();
 		}
 
-		//moves resources from player back into back
+		//moves resources from player back into bank
 		model.getPlayers().get(index).getResources().setOre(model.getPlayers().get(index).getResources().getOre() - 1);
 		model.getPlayers().get(index).getResources().setWheat(model.getPlayers().get(index).getResources().getWheat() - 1);
 		model.getPlayers().get(index).getResources().setSheep(model.getPlayers().get(index).getResources().getSheep() - 1);
@@ -536,32 +541,136 @@ public class ServerFacade {
 
 	public Object playYOPcard(Integer playerIndex, ResourceType resource1, ResourceType resource2) {
 		//player gets first resource from bank
-		//player gets second resource from bank
-		//remove year of plenty card from player
+		//--------------------------------CHECK SERVER OR CLIENT SIDE?---------------------------------
+		switch (resource1) {
+		case BRICK:
+			if (model.getBank().getBrick() > 0) {
+				model.getPlayers().get(playerIndex).getResources().setBrick(model.getPlayers().get(playerIndex).getResources().getBrick() + 1);
+				model.getBank().setBrick(model.getBank().getBrick() - 1);
+			}
+			break;
+		case ORE:
+			if (model.getBank().getOre() > 0) {
+				model.getPlayers().get(playerIndex).getResources().setOre(model.getPlayers().get(playerIndex).getResources().getOre() + 1);
+				model.getBank().setOre(model.getBank().getOre() - 1);
 
-		//TODO: update log
+			}
+			break;
+		case SHEEP:
+			if (model.getBank().getSheep() > 0) {
+				model.getPlayers().get(playerIndex).getResources().setSheep(model.getPlayers().get(playerIndex).getResources().getSheep() + 1);
+				model.getBank().setSheep(model.getBank().getSheep() - 1);
+
+			}
+			break;
+		case WHEAT:
+			if (model.getBank().getWheat() > 0) {
+				model.getPlayers().get(playerIndex).getResources().setWheat(model.getPlayers().get(playerIndex).getResources().getWheat() + 1);
+				model.getBank().setWheat(model.getBank().getWheat() - 1);
+			}
+			break;
+		case WOOD:
+			if (model.getBank().getWood() > 0) {
+				model.getPlayers().get(playerIndex).getResources().setWood(model.getPlayers().get(playerIndex).getResources().getWood() + 1);
+				model.getBank().setWood(model.getBank().getWood() - 1);
+			}
+			break;
+		}
+
+		//player gets second resource from bank
+		switch (resource2) {
+		case BRICK:
+			if (model.getBank().getBrick() > 0) {
+				model.getPlayers().get(playerIndex).getResources().setBrick(model.getPlayers().get(playerIndex).getResources().getBrick() + 1);
+				model.getBank().setBrick(model.getBank().getBrick() - 1);
+			}
+			break;
+		case ORE:
+			if (model.getBank().getOre() > 0) {
+				model.getPlayers().get(playerIndex).getResources().setOre(model.getPlayers().get(playerIndex).getResources().getOre() + 1);
+				model.getBank().setOre(model.getBank().getOre() - 1);
+
+			}
+			break;
+		case SHEEP:
+			if (model.getBank().getSheep() > 0) {
+				model.getPlayers().get(playerIndex).getResources().setSheep(model.getPlayers().get(playerIndex).getResources().getSheep() + 1);
+				model.getBank().setSheep(model.getBank().getSheep() - 1);
+
+			}
+			break;
+		case WHEAT:
+			if (model.getBank().getWheat() > 0) {
+				model.getPlayers().get(playerIndex).getResources().setWheat(model.getPlayers().get(playerIndex).getResources().getWheat() + 1);
+				model.getBank().setWheat(model.getBank().getWheat() - 1);
+			}
+			break;
+		case WOOD:
+			if (model.getBank().getWood() > 0) {
+				model.getPlayers().get(playerIndex).getResources().setWood(model.getPlayers().get(playerIndex).getResources().getWood() + 1);
+				model.getBank().setWood(model.getBank().getWood() - 1);
+			}
+			break;
+		}
+
+		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
+
+		//remove year of plenty card from player
+		model.getPlayers().get(playerIndex).getOldDevCards().setYearOfPlenty(model.getPlayers().get(playerIndex).getOldDevCards().getYearOfPlenty() - 1);
+
+		//----------------------------------TODO: update log?---------------------------------------------
 		updatemodelnumber();
 		return model;
+
 	}
 
 	public Object playroadbuildingcard(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
-		//this.buildroad()
-		//remove road building card from player
+		//-----------------------TODO: this.buildroad()?------------------------
 
-		//TODO: update log
+		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
+
+		//remove road building card from player
+		model.getPlayers().get(playerIndex).getOldDevCards().setRoadBuilding(model.getPlayers().get(playerIndex).getOldDevCards().getRoadBuilding() - 1);
+
+		//-----------------------------TODO: update log?------------------------
 		updatemodelnumber();
 		return model;
 	}
 
 	public Object playsoldercard(Integer index, Integer victimindex, HexLocation location) {
-		robplayer(index, victimindex, location);
-		//remove soldier card from player
 		//add soldier to army, determine who has largest army
-		//change status?
+		model.getPlayers().get(index).setSoldiers(model.getPlayers().get(index).getSoldiers() + 1);
+		model.getPlayers().get(index).setPlayedDevCard(true);
 
-		//TODO: update log
+		setbiggestarmy();
+
+		//--------------TODO: change status? or have the rob view pop up?------------------
+		model.getTurnTracker().setStatus("Robbing");
+
+		//remove soldier card from player
+		model.getPlayers().get(index).getOldDevCards().setSoldier(model.getPlayers().get(index).getOldDevCards().getSoldier() - 1);
+
+		//---------------------------TODO: update log?--------------------------------
 		updatemodelnumber();
 		return model;
+	}
+
+	private void setbiggestarmy() {
+		Map<Integer, Integer> soldiersmap = new HashMap<Integer, Integer>();
+		for (int i = 0; i < 4; i++) {
+			soldiersmap.put(i, model.getPlayers().get(i).getSoldiers());
+			//-------------------TODO: remove VP from prev owner-----------------------
+		}
+		int mostsoldiers = Collections.max(soldiersmap.values());
+		for (Entry<Integer, Integer> entry : soldiersmap.entrySet()) {
+			if (entry.getValue().equals(soldiersmap)) {
+				if (model.getPlayers().get(mostsoldiers).getSoldiers() > 2) {
+					model.getTurnTracker().setLargestArmy(mostsoldiers);
+					model.getPlayers().get(mostsoldiers).setVictoryPoints(model.getPlayers().get(mostsoldiers).getVictoryPoints() + 2);
+				}
+
+			}
+		}
 	}
 
 	/**
@@ -582,6 +691,7 @@ public class ServerFacade {
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
 		}
+		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
 
 		if (thePlayer != null) {
 
@@ -623,6 +733,8 @@ public class ServerFacade {
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
 		}
+
+		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
 
 		if (thePlayer != null) {
 
