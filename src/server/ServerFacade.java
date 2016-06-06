@@ -164,6 +164,9 @@ public class ServerFacade {
 
 	public Object GameModel() {
 		// Probably have to do something about the version?
+		//if version number given is not equal to version number we have, send model
+		//if numbers are same, send true
+		
 		return model;
 	}
 

@@ -22,6 +22,7 @@ public class Server {
 		try {
 			server = HttpServer.create(new InetSocketAddress(port), MAX_WAITING_CONNECTIONS);
 		} catch (IOException e) {
+			System.out.println("Server FAILED"); 
 			return;
 		}
 
@@ -54,7 +55,7 @@ public class Server {
 
 
 
-		System.out.println("Server is starting");
+		System.out.println("Server is running");
 
 		server.start();
 	}
