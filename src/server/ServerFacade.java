@@ -1001,7 +1001,9 @@ public class ServerFacade {
 	 * @return
 	 */
 	public Object discardCards(String type, Integer playerIndex, ResourceList discardedCards) {
+		model.getBank().merge(model.getBank(), discardedCards);
 
+		discardedCards = negatizeResourceList(discardedCards);
 		model.changePlayerResources(discardedCards, playerIndex);
 		model.getTurnTracker().setStatus("Robbing");
 		//TODO: How would I check if this is the last person to discard?
@@ -1009,6 +1011,26 @@ public class ServerFacade {
 		return model;
 	}
 //NOTHING
+
+	/**
+	 * multiplies all values of a resourceList by -1 and returns said list.
+	 * Essentially makes all positive numbers negative and vice versa in a ResourceList.
+	 * @param theOriginal
+	 * @return
+     */
+	public ResourceList negatizeResourceList(ResourceList theOriginal)
+	{
+		ResourceList theNew = new ResourceList();
+		theNew.setWheat(-1 * theOriginal.getWheat());
+		theNew.setOre(-1 * theOriginal.getOre());
+		theNew.setWood(-1 * theOriginal.getWood());
+		theNew.setBrick(-1 * theOriginal.getBrick());
+		theNew.setSheep(-1 * theOriginal.getSheep());
+
+
+
+		return theNew;
+	}
 
 	public ResourceType stringTypeToResourceType(String theType) {
 		String low = theType.toLowerCase();
