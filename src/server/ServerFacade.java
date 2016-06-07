@@ -166,7 +166,7 @@ public class ServerFacade {
 		// Probably have to do something about the version?
 		//if version number given is not equal to version number we have, send model
 		//if numbers are same, send true
-		
+
 		return model;
 	}
 
@@ -265,16 +265,15 @@ public class ServerFacade {
 		//set status to playing
 		model.getTurnTracker().setStatus("Playing");
 
-		MessageLine newLine;
+		if (!((victimindex == index) || (victimindex == -1))) {
+			stealfromplayer(index, victimindex);
+		}
 
+		MessageLine newLine;
 		if ((victimindex == index) || (victimindex == -1)) {
-			//update log only
 			newLine = new MessageLine(thePlayer.getName() + " moved the robber and robbed " + "nobody",
 					thePlayer.getName());
 		} else {
-			stealfromplayer(index, victimindex);
-
-			//update log
 			newLine = new MessageLine(thePlayer.getName() + " moved the robber and robbed " + victim.getName(),
 					thePlayer.getName());
 		}
@@ -542,7 +541,8 @@ public class ServerFacade {
 			e.printStackTrace();
 		}
 
-		//-----------------------TODO: this.buildroad()?------------------------
+		buildRoad("buildRoad", playerIndex, spot1, true);
+		buildRoad("buildRoad", playerIndex, spot2, true);
 
 		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
 
@@ -550,20 +550,27 @@ public class ServerFacade {
 		model.getPlayers().get(playerIndex).getOldDevCards().setRoadBuilding(model.getPlayers().get(playerIndex).getOldDevCards().getRoadBuilding() - 1);
 
 		//------------------------TODO:update log with correct message-----------------
-		MessageLine newLine = new MessageLine(thePlayer.getName() + " used Road Building",
-				thePlayer.getName());
-		model.getLog().getLines().add(newLine);
+		//MessageLine newLine = new MessageLine(thePlayer.getName() + " built a road",
+		//		thePlayer.getName());
+		//model.getLog().getLines().add(newLine);
 		updatemodelnumber();
 		return model;
 	}
 
 	public Object playsoldercard(Integer index, Integer victimindex, HexLocation location) {
 		Player thePlayer = null;
+		Player victim = null;
 		try {
 			thePlayer = model.findPlayerbyindex(index);
+			victim = model.findPlayerbyindex(victimindex);
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
 		}
+		MessageLine newLine = new MessageLine(thePlayer.getName() + " used a soldier",
+				thePlayer.getName());
+		model.getLog().getLines().add(newLine);
+
+		robplayer(index, victimindex, location);
 
 		//add soldier to army, determine who has largest army
 		model.getPlayers().get(index).setSoldiers(model.getPlayers().get(index).getSoldiers() + 1);
@@ -571,16 +578,9 @@ public class ServerFacade {
 
 		setbiggestarmy();
 
-		//--------------TODO: change status? or have the rob view pop up?------------------
-		model.getTurnTracker().setStatus("Robbing");
-
 		//remove soldier card from player
 		model.getPlayers().get(index).getOldDevCards().setSoldier(model.getPlayers().get(index).getOldDevCards().getSoldier() - 1);
 
-		//------------------------TODO:update log with correct message-----------------
-		MessageLine newLine = new MessageLine(thePlayer.getName() + " used Soldier",
-				thePlayer.getName());
-		model.getLog().getLines().add(newLine);
 		updatemodelnumber();
 		return model;
 	}
@@ -589,7 +589,9 @@ public class ServerFacade {
 		Map<Integer, Integer> soldiersmap = new HashMap<Integer, Integer>();
 		for (int i = 0; i < 4; i++) {
 			soldiersmap.put(i, model.getPlayers().get(i).getSoldiers());
-			//-------------------TODO: remove VP from prev owner-----------------------
+		}
+		if (model.getTurnTracker().getLargestArmy() >= 0) {
+			model.getPlayers().get(model.getTurnTracker().getLargestArmy()).setVictoryPoints(model.getPlayers().get(model.getTurnTracker().getLargestArmy()).getVictoryPoints() - 2);
 		}
 		int mostsoldiers = Collections.max(soldiersmap.values());
 		for (Entry<Integer, Integer> entry : soldiersmap.entrySet()) {
