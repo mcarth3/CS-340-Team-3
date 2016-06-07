@@ -4,6 +4,8 @@ import server.ICommand;
 import server.ServerFacade;
 
 public class GameModelCommand implements ICommand {
+	private Integer input; 
+	// maybe get version number 
 	/**
     *
     * @pre: ServerModel is initialized and HTTP request is decoded
@@ -11,7 +13,8 @@ public class GameModelCommand implements ICommand {
     */
 	@Override
 	public Object execute(Object data) {
+		input = (Integer) data;
 		ServerFacade sf = ServerFacade.getSingleton(); 
-		return sf.GameModel();  
+		return sf.GameModel(input);  
 	}
 }

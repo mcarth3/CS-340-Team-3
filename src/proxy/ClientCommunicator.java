@@ -61,6 +61,8 @@ public class ClientCommunicator {
 
 			String new_cookie = c.getHeaderField("Set-Cookie");
 			int status = c.getResponseCode();
+//			System.out.println("response headers");
+//			System.out.println(c.getHeaderField("cookie"));
 
 			switch (status) {
 			case 201:

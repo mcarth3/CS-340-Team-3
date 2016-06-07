@@ -4,6 +4,7 @@ import server.ServerFacade;
 import server.jsonObjects.UserRegisterJsonObject;
 
 public class UserRegisterCommand implements ICommand {
+	private UserRegisterJsonObject input;
 	/**
     *
     * @pre: ServerModel is initialized and HTTP request is decoded
@@ -12,6 +13,7 @@ public class UserRegisterCommand implements ICommand {
 	@Override
 	public Object execute(Object data) {
 		UserRegisterJsonObject urjo = (UserRegisterJsonObject) data;
+		input = urjo;
 		ServerFacade sf = ServerFacade.getSingleton();
 		return sf.UserRegister(urjo.getUsername(), urjo.getPassword()); 
 	}

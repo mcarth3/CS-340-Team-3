@@ -3,6 +3,7 @@ import server.ICommand;
 import server.ServerFacade;
 
 public class GamesListCommand implements ICommand {
+	// no data needed
 	/**
     *
     * @pre: ServerModel is initialized and HTTP request is decoded

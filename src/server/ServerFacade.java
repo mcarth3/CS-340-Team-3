@@ -28,6 +28,7 @@ import model.UserInfo;
 import model.bank.DevCardList;
 import model.bank.ResourceList;
 import model.clientModel.MessageLine;
+import model.clientModel.MessageList;
 import poller.modeljsonparser.ModelParser;
 import shared.definitions.DevCardType;
 import shared.definitions.ResourceType;
@@ -85,6 +86,9 @@ public class ServerFacade {
 
 	public Object UserLogin(String username, String password) {
 
+		System.out.println(username);
+		System.out.println(password);
+		
 		UserInfo[] users = all.getUsers();
 		boolean found = false;
 		Integer id = 0;
@@ -162,17 +166,31 @@ public class ServerFacade {
 		return response;
 	}
 
-	public Object GameModel() {
+	public Object GameModel(Integer v) {
 		// Probably have to do something about the version?
 		//if version number given is not equal to version number we have, send model
 		//if numbers are same, send true
-
-		return model;
+		if(v == model.version){
+			// or return true;
+			return "true";
+		}else{
+			return model;
+		}
 	}
 
 	public Object MovesSendChat(Integer id, String content) {
 		//System.out.println("moves send chat in server facade"); 
-
+		MessageList list = model.chat;
+		Integer index = model.getPlayerIndex(id);
+		if(index>4 || index<0){
+			return null; 
+		}
+		Player player = model.getPlayers().get(index); 
+		MessageLine message = new MessageLine(content, player.name);		
+		list.lines.add(message);
+		model.chat = list;
+		
+		updatemodelnumber();
 		return model;
 	}
 
