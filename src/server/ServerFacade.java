@@ -154,7 +154,10 @@ public class ServerFacade {
 				}
 			}
 			if (!foundInGame) {
+				// {"id":0,"playerIndex":-1,"name":"Sam","color":"orange"}
 				Player newPlayer = new Player();
+				//PlayerInfo
+				
 				//might need more info here
 				newPlayer.setName(currentUsername);
 				newPlayer.setColor(color);

@@ -19,12 +19,11 @@ public class GameInfo
 	private String title;
 	private List<PlayerInfo> players;
 	
-	public GameInfo()
+	public GameInfo(int i, String t, List<PlayerInfo> l)
 	{
-		setId(-1);
-		setTitle("");
-		players = new ArrayList<PlayerInfo>();
-		
+		id = i; 
+		title = t;
+		players = l;
 	}
 	
 	public int getId()

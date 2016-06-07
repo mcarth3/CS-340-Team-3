@@ -19,15 +19,16 @@ public class PlayerInfo
 	
 	private int id;
 	private int playerIndex;
-	private String name;
+	private String name = null; 
 	private String color;
 	
-	public PlayerInfo()
+	public PlayerInfo(){}
+	
+	public PlayerInfo(int i, String n, String c)
 	{
-		setId(-1);
-		setPlayerIndex(-1);
-		setName("");
-		setColor("white");
+		id = i;
+		name = n;
+		color = c;
 	}
 	
 	public int getId()
