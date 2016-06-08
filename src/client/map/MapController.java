@@ -396,8 +396,9 @@ public class MapController extends Controller implements IMapController {
 				this.getRobView().closeModal();
 			}
 		}
-
-		beginfirstturn();
+		if (thisplayer != null) {
+			beginfirstturn();
+		}
 	}
 
 	public void beginfirstturn() {

@@ -6,6 +6,8 @@ import java.util.Observer;
 import client.GameManager.GameManager;
 import model.Game;
 import model.Player;
+import poller.modeljsonparser.ModelParser;
+import proxy.RealProxy;
 
 /**
  * Base class for controllers
@@ -56,6 +58,9 @@ public abstract class Controller implements IController, Observer {
 				state = model.getTurnTracker().getStatus();
 				currentplayer = model.getTurnTracker().getCurrentPlayer();
 			}
+		} else {
+			manager.update((Game) ModelParser.parse(RealProxy.getSingleton().gameModel(-1), Game.class));
+
 		}
 		update();
 	}

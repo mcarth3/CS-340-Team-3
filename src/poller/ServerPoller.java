@@ -1,6 +1,5 @@
 package poller;
 
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -33,7 +32,7 @@ public class ServerPoller {
 		pollingTask = new ServerPollerTask();
 		timer = new Timer();
 		timer.schedule(pollingTask, 0, PollingInterval);
-		Random rand = new Random();
+		//Random rand = new Random();
 		modelversion = 1;
 		didaction = false;
 

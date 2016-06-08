@@ -249,7 +249,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	public void update() {
 		System.out.println("Domestic Trade update()!");
 
-		if (manager != null && State.getInstance() != null) {
+		if (manager != null && State.getInstance() != null && thisplayer != null) {
 			//System.out.println("DMU: No nulls!");
 
 			thePlayer = thisplayer;

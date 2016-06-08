@@ -9,7 +9,6 @@ import model.Port;
 import model.Settlement;
 import model.bank.ResourceList;
 import shared.definitions.ResourceType;
-import shared.locations.VertexDirection;
 import shared.locations.VertexLocation;
 
 /**
@@ -140,7 +139,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 	public void update() {
 
 		theFacade = Facade.getSingleton();
-		if (manager != null) {
+		if (manager != null && thisplayer != null) {
 			//if (thePlayer.canOfferBankTrade())
 			if (canOfferMaritimeTrade()
 					&& currentplayer == thisplayer.getPlayerIndex()) {
@@ -220,9 +219,6 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		ArrayList<Port> allPorts = model.getMap().getPorts();
 		//TreeSet<ResourceType> theFoundTypes= new TreeSet<>();
 
-
-
-
 		/*for(int i = 0; i < allSettlements.size(); i++)
 		{
 			if(allSettlements.get(i).getOwner() == thePlayer.getPlayerIndex())
@@ -250,10 +246,9 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 					if (allCities.get(i).getOwner() == thisplayer.getPlayerIndex()) {
 						String portNormalString = portVertices.get(v).getNormalizedLocation().toString();
 						//System.out.println("PortNormal: " + portNormalString);
-						String cityNormalString =  allCities.get(i).getVertextLocation().getNormalizedLocation().toString();
+						String cityNormalString = allCities.get(i).getVertextLocation().getNormalizedLocation().toString();
 						//System.out.println("SettlementNormal: ");
-						if(portNormalString.equals(cityNormalString))
-						{
+						if (portNormalString.equals(cityNormalString)) {
 							found = true;
 						}
 						//if(portVertices.get(v).getNormalizedLocation().equals(allCities.get(i).getVertextLocation().getNormalizedLocation()))
@@ -270,10 +265,9 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 
 						String portNormalString = portVertices.get(v).getNormalizedLocation().toString();
 						//System.out.println("PortNormal: " + portNormalString);
-						String settlementNormalString =  allSettlements.get(i).getVertextLocation().getNormalizedLocation().toString();
+						String settlementNormalString = allSettlements.get(i).getVertextLocation().getNormalizedLocation().toString();
 						//System.out.println("SettlementNormal: ");
-						if(portNormalString.equals(settlementNormalString))
-						{
+						if (portNormalString.equals(settlementNormalString)) {
 							found = true;
 						}
 					}
