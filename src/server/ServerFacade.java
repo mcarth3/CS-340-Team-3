@@ -7,24 +7,21 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 //import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Random;
 import java.util.Scanner;
-import java.util.TreeMap;
 
-import client.GameManager.GameManager;
 import client.data.GameInfo;
 import client.data.PlayerInfo;
 import model.AllInfo;
 import model.City;
 import model.FailureToAddException;
 import model.Game;
-import model.Map; 
 import model.Hex;
+import model.Map;
 import model.ObjectNotFoundException;
 import model.Player;
 import model.Settlement;
@@ -104,10 +101,10 @@ public class ServerFacade {
 		String result = "Failed to login - bad username or password.";
 		if (found) {
 			currentUsername = username;
-			
+
 			curPlayerInfo.setId(id);
 			curPlayerInfo.setName(username);
-			
+
 			String userInfo = "{\"name\":\"" + username + "\",\"password\":\"" + password + "\",\"playerID\":" + id + "}";
 			try {
 				result = java.net.URLEncoder.encode(userInfo, "UTF-8");
@@ -129,28 +126,28 @@ public class ServerFacade {
 			}
 		}
 		String result = "Failed to register user";
-		if(!found){
+		if (!found) {
 			boolean newNum = true;
-			while(newNum){
+			while (newNum) {
 				newNum = false;
-				id ++; 
+				id++;
 				for (UserInfo u : users) {
 					if (u.getPlayerID() == id) {
 						newNum = true;
 					}
 				}
-			}			
-		    int rando = (int) (100 + (Math.random() * (899)));
-			String userInfo = "{\"authentication\":\"1224085"+rando+"\",\"name\":\"" + username + "\",\"password\":\"" + password + "\",\"playerID\":"+id+"}";
+			}
+			int rando = (int) (100 + (Math.random() * (899)));
+			String userInfo = "{\"authentication\":\"1224085" + rando + "\",\"name\":\"" + username + "\",\"password\":\"" + password + "\",\"playerID\":" + id + "}";
 			UserInfo newUser = new UserInfo(username, password, id);
-			UserInfo[] temp = new UserInfo[users.length+1];
-			for(int i = 0; i<users.length; i++){
-				temp[i] = users[i]; 
+			UserInfo[] temp = new UserInfo[users.length + 1];
+			for (int i = 0; i < users.length; i++) {
+				temp[i] = users[i];
 			}
 			temp[users.length] = newUser;
-		    all.setUsers(temp);
-		    // add user to players
-		    try {
+			all.setUsers(temp);
+			// add user to players
+			try {
 				result = java.net.URLEncoder.encode(userInfo, "UTF-8");
 				result = "Successcatan.user=" + result + ";Path=/;";
 			} catch (UnsupportedEncodingException e) {
@@ -166,13 +163,13 @@ public class ServerFacade {
 		return list;
 	}
 
-	public Object GamesCreate(String name, boolean numbers, boolean ports, boolean tiles) {		
-		GameInfo[] games = all.getGameList(); 
-		Integer id = 0; 
+	public Object GamesCreate(String name, boolean numbers, boolean ports, boolean tiles) {
+		GameInfo[] games = all.getGameList();
+		Integer id = 0;
 		boolean newNum = true;
-		while(newNum){
+		while (newNum) {
 			newNum = false;
-			id ++; 
+			id++;
 			for (GameInfo g : games) {
 				if (g.getId() == id) {
 					newNum = true;
@@ -180,183 +177,182 @@ public class ServerFacade {
 			}
 		}
 		// adding to GameInfo list
-		ArrayList<PlayerInfo> list = new ArrayList<PlayerInfo>(); 
+		ArrayList<PlayerInfo> list = new ArrayList<PlayerInfo>();
 		GameInfo newGame = new GameInfo(id, name, list);
-		GameInfo[] temp = new GameInfo[games.length+1];
-		for(int i = 0; i<games.length; i++){
-			temp[i] = games[i]; 
+		GameInfo[] temp = new GameInfo[games.length + 1];
+		for (int i = 0; i < games.length; i++) {
+			temp[i] = games[i];
 		}
 		temp[games.length] = newGame;
-	    all.setGameList(temp);
-	    
+		all.setGameList(temp);
+
 		// adding to game list
-	    ArrayList<Player> players = new ArrayList<Player>(); 
-	    DevCardList newdeck = new DevCardList();
-	    
-	    newdeck.setMonopoly(2);
-	    newdeck.setMonument(5);
-	    newdeck.setRoadBuilding(2);
-	    newdeck.setSoldier(14);
-	    newdeck.setYearOfPlenty(2);
-	    MessageList newlog = new MessageList(); 
-	    MessageList newchat = new MessageList();
-	    ResourceList newbank = new ResourceList();
-	    
-	    // this isn't build with randomness yet
-	    Map newmap = new Map();
-	    Hex[] hexes = new Hex[19];
-	    Hex h0 = new Hex();
+		ArrayList<Player> players = new ArrayList<Player>();
+		DevCardList newdeck = new DevCardList();
+
+		newdeck.setMonopoly(2);
+		newdeck.setMonument(5);
+		newdeck.setRoadBuilding(2);
+		newdeck.setSoldier(14);
+		newdeck.setYearOfPlenty(2);
+		MessageList newlog = new MessageList();
+		MessageList newchat = new MessageList();
+		ResourceList newbank = new ResourceList();
+
+		// this isn't build with randomness yet
+		Map newmap = new Map();
+		Hex[] hexes = new Hex[19];
+		Hex h0 = new Hex();
 //	    {"location":{"x":0,"y":-2}},
-	    h0.setLocation(new HexLocation(0, -2)); 
-	    hexes[0] = h0;
-	    
+		h0.setLocation(new HexLocation(0, -2));
+		hexes[0] = h0;
+
 //		{"resource":"brick","location":{"x":1,"y":-2},"number":4},
-	    Hex h1 = new Hex();
-	    h1.setLocation(new HexLocation(1, -2));
-	    h1.setResource("brick");
-	    h1.setNumber(4);
-	    hexes[1] = h1;
+		Hex h1 = new Hex();
+		h1.setLocation(new HexLocation(1, -2));
+		h1.setResource("brick");
+		h1.setNumber(4);
+		hexes[1] = h1;
 
 //		{"resource":"wood","location":{"x":2,"y":-2},"number":11},
-	    Hex h2 = new Hex();
-	    h2.setLocation(new HexLocation(2, -2));
-	    h2.setResource("wood");
-	    h2.setNumber(11);
-	    hexes[2] = h2;
-	    
+		Hex h2 = new Hex();
+		h2.setLocation(new HexLocation(2, -2));
+		h2.setResource("wood");
+		h2.setNumber(11);
+		hexes[2] = h2;
+
 //		{"resource":"brick","location":{"x":-1,"y":-1},"number":8},
-	    Hex h3 = new Hex();
-	    h3.setLocation(new HexLocation(-1, -1));
-	    h3.setResource("brick");
-	    h3.setNumber(8);
-	    hexes[3] = h3;
-	    
+		Hex h3 = new Hex();
+		h3.setLocation(new HexLocation(-1, -1));
+		h3.setResource("brick");
+		h3.setNumber(8);
+		hexes[3] = h3;
+
 //		{"resource":"wood","location":{"x":0,"y":-1},"number":3},
-	    Hex h4 = new Hex();
-	    h4.setLocation(new HexLocation(0, -1));
-	    h4.setResource("wood");
-	    h4.setNumber(3);
-	    hexes[4] = h4;
-	    
+		Hex h4 = new Hex();
+		h4.setLocation(new HexLocation(0, -1));
+		h4.setResource("wood");
+		h4.setNumber(3);
+		hexes[4] = h4;
+
 //		{"resource":"ore","location":{"x":1,"y":-1},"number":9},
-	    Hex h5 = new Hex();
-	    h5.setLocation(new HexLocation(1, -1));
-	    h5.setResource("ore");
-	    h5.setNumber(9);
-	    hexes[5] = h5;
-	    
+		Hex h5 = new Hex();
+		h5.setLocation(new HexLocation(1, -1));
+		h5.setResource("ore");
+		h5.setNumber(9);
+		hexes[5] = h5;
+
 //		{"resource":"sheep","location":{"x":2,"y":-1},"number":12},
-	    Hex h6 = new Hex();
-	    h6.setLocation(new HexLocation(2, -1));
-	    h6.setResource("sheep");
-	    h6.setNumber(12);
-	    hexes[6] = h6;
-	    
+		Hex h6 = new Hex();
+		h6.setLocation(new HexLocation(2, -1));
+		h6.setResource("sheep");
+		h6.setNumber(12);
+		hexes[6] = h6;
+
 //		{"resource":" ore","location":{"x":-2,"y":0},"number":5},
-	    Hex h7 = new Hex();
-	    h7.setLocation(new HexLocation(-2, 0));
-	    h7.setResource("ore");
-	    h7.setNumber(5);
-	    hexes[7] = h7;
-	    
+		Hex h7 = new Hex();
+		h7.setLocation(new HexLocation(-2, 0));
+		h7.setResource("ore");
+		h7.setNumber(5);
+		hexes[7] = h7;
+
 //		{"resource":"sheep","location":{"x":-1,"y":0},"number":10},
-	    Hex h8 = new Hex();
-	    h8.setLocation(new HexLocation(-1, 0));
-	    h8.setResource("sheep");
-	    h8.setNumber(10);
-	    hexes[8] = h8;
-	    
+		Hex h8 = new Hex();
+		h8.setLocation(new HexLocation(-1, 0));
+		h8.setResource("sheep");
+		h8.setNumber(10);
+		hexes[8] = h8;
+
 //		{"resource":"wheat","location":{"x":0,"y":0},"number":11},
-	    Hex h9 = new Hex();
-	    h9.setLocation(new HexLocation(0, 0));
-	    h9.setResource("wheat");
-	    h9.setNumber(11);
-	    hexes[9] = h9;
-	    
+		Hex h9 = new Hex();
+		h9.setLocation(new HexLocation(0, 0));
+		h9.setResource("wheat");
+		h9.setNumber(11);
+		hexes[9] = h9;
+
 //		{"resource":"brick","location":{"x":1,"y":0},"number":5},
-	    Hex h10 = new Hex();
-	    h10.setLocation(new HexLocation(1, 0));
-	    h10.setResource("brick");
-	    h10.setNumber(5);
-	    hexes[10] = h10;
-	    
+		Hex h10 = new Hex();
+		h10.setLocation(new HexLocation(1, 0));
+		h10.setResource("brick");
+		h10.setNumber(5);
+		hexes[10] = h10;
+
 //		{"resource":"wheat","location":{"x":2,"y":0},"number":6},
-	    Hex h11 = new Hex();
-	    h11.setLocation(new HexLocation(2, 0));
-	    h11.setResource("wheat");
-	    h11.setNumber(6);
-	    hexes[11] = h11;
-	    
+		Hex h11 = new Hex();
+		h11.setLocation(new HexLocation(2, 0));
+		h11.setResource("wheat");
+		h11.setNumber(6);
+		hexes[11] = h11;
+
 //		{"resource":"wheat","location":{"x":-2,"y":1},"number":2},
-	    Hex h12 = new Hex();
-	    h12.setLocation(new HexLocation(-2, 1));
-	    h12.setResource("wheat");
-	    h12.setNumber(2);
-	    hexes[12] = h12;
-	    
+		Hex h12 = new Hex();
+		h12.setLocation(new HexLocation(-2, 1));
+		h12.setResource("wheat");
+		h12.setNumber(2);
+		hexes[12] = h12;
+
 //		{"resource":"sheep","location":{"x":-1,"y":1},"number":9},
-	    Hex h13 = new Hex();
-	    h13.setLocation(new HexLocation(-1, 1));
-	    h13.setResource("sheep");
-	    h13.setNumber(9);
-	    hexes[13] = h13;
-	    
+		Hex h13 = new Hex();
+		h13.setLocation(new HexLocation(-1, 1));
+		h13.setResource("sheep");
+		h13.setNumber(9);
+		hexes[13] = h13;
+
 //		{"resource":"wood","location":{"x":0,"y":1},"number":4},
-	    Hex h14 = new Hex();
-	    h14.setLocation(new HexLocation(0, 1));
-	    h14.setResource("wood");
-	    h14.setNumber(4);
-	    hexes[14] = h14;
-	    
+		Hex h14 = new Hex();
+		h14.setLocation(new HexLocation(0, 1));
+		h14.setResource("wood");
+		h14.setNumber(4);
+		hexes[14] = h14;
+
 //		{"resource":"sheep","location":{"x":1,"y":1},"number":10},
-	    Hex h15 = new Hex();
-	    h15.setLocation(new HexLocation(1, 1));
-	    h15.setResource("sheep");
-	    h15.setNumber(10);
-	    hexes[15] = h15;
-	    
+		Hex h15 = new Hex();
+		h15.setLocation(new HexLocation(1, 1));
+		h15.setResource("sheep");
+		h15.setNumber(10);
+		hexes[15] = h15;
+
 //		{"resource":"wood","location":{"x":-2,"y":2},"number":6},
-	    Hex h16 = new Hex();
-	    h16.setLocation(new HexLocation(-2, 2));
-	    h16.setResource("wood");
-	    h16.setNumber(6);
-	    hexes[16] = h16;
-	    
+		Hex h16 = new Hex();
+		h16.setLocation(new HexLocation(-2, 2));
+		h16.setResource("wood");
+		h16.setNumber(6);
+		hexes[16] = h16;
+
 //		{"resource":"ore","location":{"x":-1,"y":2},"number":3},
-	    Hex h17 = new Hex();
-	    h17.setLocation(new HexLocation(-1, 2));
-	    h17.setResource("ore");
-	    h17.setNumber(3);
-	    hexes[17] = h17;
-	    
+		Hex h17 = new Hex();
+		h17.setLocation(new HexLocation(-1, 2));
+		h17.setResource("ore");
+		h17.setNumber(3);
+		hexes[17] = h17;
+
 //		{"resource":"wheat","location":{"x":0,"y":2},"number":8}
-	    Hex h18 = new Hex();
-	    h18.setLocation(new HexLocation(0, 2));
-	    h18.setResource("wheat");
-	    h18.setNumber(8);
-	    hexes[18] = h18;
-	    
-	    newmap.setHexes(hexes);
-	    
-	    TurnTracker newturnTracker = new TurnTracker();
-	    newturnTracker.setStatus("FirstRound");
-	    newturnTracker.setCurrentTurn(0);
-	    newturnTracker.setLongestRoad(-1);
-	    newturnTracker.setLargestArmy(-1);
-	    
-	    Game game = new Game(newdeck, players, newlog, newchat, newbank, newmap, newturnTracker, -1, 0); 
-	     
-	    Game[] gameslist = all.getGames(); 
-		Game[] gamestemp = new Game[gameslist.length+1];
-		for(int i = 0; i<gameslist.length; i++){
-			gamestemp[i] = gameslist[i]; 
+		Hex h18 = new Hex();
+		h18.setLocation(new HexLocation(0, 2));
+		h18.setResource("wheat");
+		h18.setNumber(8);
+		hexes[18] = h18;
+
+		newmap.setHexes(hexes);
+
+		TurnTracker newturnTracker = new TurnTracker();
+		newturnTracker.setStatus("FirstRound");
+		newturnTracker.setCurrentTurn(0);
+		newturnTracker.setLongestRoad(-1);
+		newturnTracker.setLargestArmy(-1);
+
+		Game game = new Game(newdeck, players, newlog, newchat, newbank, newmap, newturnTracker, -1, 0);
+
+		Game[] gameslist = all.getGames();
+		Game[] gamestemp = new Game[gameslist.length + 1];
+		for (int i = 0; i < gameslist.length; i++) {
+			gamestemp[i] = gameslist[i];
 		}
 		gamestemp[gameslist.length] = game;
-	    all.setGames(gamestemp);
-	    
-	    
+		all.setGames(gamestemp);
+
 		// creating return result		
-	    String result = "{\"title\":\""+name+"\",\"id\":"+id+",\"players\":[{},{},{},{}]}";
+		String result = "{\"title\":\"" + name + "\",\"id\":" + id + ",\"players\":[{},{},{},{}]}";
 		// "{\"title\":\"New Game Title\",\"id\":7,\"players\":[{},{},{},{}]}";
 		return result;
 	}
@@ -375,7 +371,7 @@ public class ServerFacade {
 					foundInGame = true;
 				}
 			}
-			
+
 			if (!foundInGame) {
 				Player newPlayer = new Player();
 				newPlayer.setResources(new ResourceList());
@@ -396,9 +392,9 @@ public class ServerFacade {
 	}
 
 	public Object GameModel(Integer v) {
-		if(v == model.version){
+		if (v == model.version) {
 			return "true";
-		}else{
+		} else {
 			return model;
 		}
 	}
@@ -406,11 +402,11 @@ public class ServerFacade {
 	public Object MovesSendChat(Integer id, String content) {
 		MessageList list = model.chat;
 		Integer index = model.getPlayerIndex(id);
-		if(index>4 || index<0){
-			return null; 
+		if (index > 4 || index < 0) {
+			return null;
 		}
-		Player player = model.getPlayers().get(index); 
-		MessageLine message = new MessageLine(content, player.name);		
+		Player player = model.getPlayers().get(index);
+		MessageLine message = new MessageLine(content, player.name);
 		list.lines.add(message);
 		model.chat = list;
 		updatemodelnumber();
@@ -625,20 +621,20 @@ public class ServerFacade {
 			if (index == 3) {
 				model.getTurnTracker().setStatus("SecondRound");
 			} else {
-						//model.getTurnTracker().setCurrentTurn(index + 1); //TODO: comment for skipping turns
+				model.getTurnTracker().setCurrentTurn(index + 1); //TODO: comment for skipping turns
 			}
 		} else if (model.getTurnTracker().getStatus().equals("SecondRound")) {
 			if (index == 0) {
 				model.getTurnTracker().setStatus("Rolling");
 			} else {
-					///model.getTurnTracker().setCurrentTurn(index - 1);//TODO: comment for skipping turns
+				model.getTurnTracker().setCurrentTurn(index - 1);//TODO: comment for skipping turns
 			}
 		} else {
 			model.getTurnTracker().setStatus("Rolling");
 			if (index == 3) {
-						//model.getTurnTracker().setCurrentTurn(0);//TODO: comment for skipping turns
+				model.getTurnTracker().setCurrentTurn(0);//TODO: comment for skipping turns
 			} else {
-						//model.getTurnTracker().setCurrentTurn(index + 1);//TODO: comment for skipping turns
+				model.getTurnTracker().setCurrentTurn(index + 1);//TODO: comment for skipping turns
 			}
 		}
 	}
@@ -1180,11 +1176,9 @@ public class ServerFacade {
 
 		discardedCards = negatizeResourceList(discardedCards);
 		model.changePlayerResources(discardedCards, playerIndex);
-		if(model.getCurrentPlayer().getPlayerIndex() == playerIndex) {
+		if (model.getCurrentPlayer().getPlayerIndex() == playerIndex) {
 			model.getTurnTracker().setStatus("Robbing");
-		}
-		else
-		{
+		} else {
 			model.getTurnTracker().setStatus("Waiting");
 		}
 

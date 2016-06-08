@@ -158,7 +158,12 @@ public class DiscardController extends Controller implements IDiscardController 
 	@Override
 	public void update() {
 		//	System.out.println("DISCARD:discard controller update");
-		int cards = thisplayer.getResources().getSize();
+		int cards = 0;
+		if (thisplayer != null) {
+			if (thisplayer.getResources() != null) {
+				cards = thisplayer.getResources().getSize();
+			}
+		}
 
 		if ((state.equals("Discarding") || (state.equals("Robbing")))) {
 			System.out.print("DISCARD:status is discarding or robbing");
