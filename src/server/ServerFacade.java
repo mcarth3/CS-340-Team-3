@@ -425,11 +425,7 @@ public class ServerFacade {
 
 		//set state
 		if (number == 7) {
-			if (model.getPlayers().get(index).getResources().getSize() > 7) {
-				model.getTurnTracker().setStatus("Discarding");
-			} else {
-				model.getTurnTracker().setStatus("Robbing");
-			}
+			model.getTurnTracker().setStatus("Discarding");
 		} else {
 			model.getTurnTracker().setStatus("Playing");
 		}
