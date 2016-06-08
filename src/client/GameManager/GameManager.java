@@ -76,7 +76,7 @@ public class GameManager extends Observable {
 	 *            the CatanModel
 	 */
 	public void update(Game model) {
-		System.out.println("thread " + Thread.currentThread().getId() + "- GAMEMANAGERUPDATE");
+//		System.out.println("thread " + Thread.currentThread().getId() + "- GAMEMANAGERUPDATE");
 		modelfacade.SetGame(model);
 		updateLocalPlayer();
 		setChanged();
@@ -84,12 +84,12 @@ public class GameManager extends Observable {
 	}
 
 	private void updateLocalPlayer() {
-		System.out.println("thread " + Thread.currentThread().getId() + "- this is the last thing that gets called before it breaks?");
+		//	System.out.println("thread " + Thread.currentThread().getId() + "- this is the last thing that gets called before it breaks?");
 		//System.out.println("PLAYERS " + modelfacade.gettheGame().getPlayers());
 		ArrayList<Player> players = modelfacade.gettheGame().getPlayers();
 		for (int i = 0; i < players.size(); i++) {
 			if (players.get(i) != null) {
-				System.out.println("thread " + Thread.currentThread().getId() + "- player " + i + " is not null");
+				//System.out.println("thread " + Thread.currentThread().getId() + "- player " + i + " is not null");
 				System.out.println("thread " + Thread.currentThread().getId() + "- player i id = " + players.get(i).getPlayerID());
 				System.out.println("thread " + Thread.currentThread().getId() + "- player i name = " + players.get(i).getName());
 				System.out.println("thread " + Thread.currentThread().getId() + "- playerIdTemp = " + playerIdTemp);
@@ -102,7 +102,7 @@ public class GameManager extends Observable {
 	}
 
 	public void setthisplayer(Player player2) {
-		System.out.println("thread " + Thread.currentThread().getId() + "- LOCAL PLAYER SET: " + player2);
+		System.out.println("thread " + Thread.currentThread().getId() + "- LOCAL PLAYER SET: " + player2.getName());
 		this.player = player2;
 	}
 

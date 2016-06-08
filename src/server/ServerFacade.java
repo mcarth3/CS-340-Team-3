@@ -427,7 +427,7 @@ public class ServerFacade {
 
 		//set state
 		if (number == 7) {
-			model.getTurnTracker().setStatus("Discarding");
+			model.getTurnTracker().setStatus("Playing");
 		} else {
 			model.getTurnTracker().setStatus("Playing");
 		}
