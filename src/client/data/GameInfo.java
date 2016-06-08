@@ -17,7 +17,7 @@ public class GameInfo
 {
 	private int id;
 	private String title;
-	private List<PlayerInfo> players;
+	private ArrayList<PlayerInfo> players;
 	
 	public GameInfo(int i, String t, ArrayList<PlayerInfo> l)
 	{
