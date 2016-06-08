@@ -30,21 +30,21 @@ public class ClientCommunicator {
 			c = (HttpURLConnection) u.openConnection();
 			c.setRequestMethod("POST");
 
-			//System.out.println(command);
+			//System.out.println("thread " + Thread.currentThread().getId() + "- "+command);
 
 			if (u_cookie != null) {
 				if (g_cookie != null) {
-					//System.out.println(command); 
-					//System.out.println("catan.game="+g_cookie);
-					//System.out.println("catan.user="+u_cookie);
+					//System.out.println("thread " + Thread.currentThread().getId() + "- "+command); 
+					//System.out.println("thread " + Thread.currentThread().getId() + "- catan.game="+g_cookie);
+					//System.out.println("thread " + Thread.currentThread().getId() + "- catan.user="+u_cookie);
 
 					c.setRequestProperty("Cookie", "catan.user=" + u_cookie + "; catan.game=" + g_cookie);
 				} else {
-					//System.out.println("catan.user="+u_cookie); 
+					//System.out.println("thread " + Thread.currentThread().getId() + "- catan.user="+u_cookie); 
 					c.setRequestProperty("Cookie", "catan.user=" + u_cookie);
 				}
 			} else {
-				//System.out.println("NO COOKIE FOR YOU");
+				//System.out.println("thread " + Thread.currentThread().getId() + "- NO COOKIE FOR YOU");
 			}
 
 			c.setDoOutput(true);
@@ -61,8 +61,8 @@ public class ClientCommunicator {
 
 			String new_cookie = c.getHeaderField("Set-Cookie");
 			int status = c.getResponseCode();
-//			System.out.println("response headers");
-//			System.out.println(c.getHeaderField("cookie"));
+//			System.out.println("thread " + Thread.currentThread().getId() + "- response headers");
+//			System.out.println("thread " + Thread.currentThread().getId() + "- "+c.getHeaderField("cookie"));
 
 			switch (status) {
 			case 201:
@@ -88,26 +88,26 @@ public class ClientCommunicator {
 				} else {
 					result = sb.toString();
 				}
-				System.out.println("=================== START ============================");
-				System.out.println(command);
-				System.out.println(result);
-				System.out.println("==================== END ===========================");
+				System.out.println("thread " + Thread.currentThread().getId() + "- =================== START ============================");
+				System.out.println("thread " + Thread.currentThread().getId() + "- " + command);
+				System.out.println("thread " + Thread.currentThread().getId() + "- " + result);
+				System.out.println("thread " + Thread.currentThread().getId() + "- ==================== END ===========================");
 
 				return result;
 			}
 
 		} catch (MalformedURLException ex) {
-			System.out.println("MalformedURLException ex");
+			System.out.println("thread " + Thread.currentThread().getId() + "- MalformedURLException ex");
 			//Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
 		} catch (IOException ex) {
-			System.out.println("IOLException ex");
+			System.out.println("thread " + Thread.currentThread().getId() + "- IOLException ex");
 			//Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
 		} finally {
 			if (c != null) {
 				try {
 					c.disconnect();
 				} catch (Exception ex) {
-					System.out.println("Exception ex");
+					System.out.println("thread " + Thread.currentThread().getId() + "- Exception ex");
 					//Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, ex);
 				}
 			}
