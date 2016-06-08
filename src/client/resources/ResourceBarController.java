@@ -216,10 +216,11 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 	@Override
 	public void update() {
 		System.out.println("updating resourcebarcontroller");
-		setResources();
-		setBuildingPieces();
-		updateButtons();
-
+		if (thisplayer != null) {
+			setResources();
+			setBuildingPieces();
+			updateButtons();
+		}
 	}
 
 	private void updateButtons() {

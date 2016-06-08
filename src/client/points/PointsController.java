@@ -59,9 +59,9 @@ public class PointsController extends Controller implements IPointsController {
 				getFinishedView().showModal();
 			}
 		}
-
-		getPointsView().setPoints(thisplayer.getVictoryPoints());
-
+		if (thisplayer != null) {
+			getPointsView().setPoints(thisplayer.getVictoryPoints());
+		}
 	}
 
 }

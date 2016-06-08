@@ -50,6 +50,8 @@ public class ServerFacade {
 	private String currentUsername;
 	private PlayerInfo curPlayerInfo = new PlayerInfo();
 
+	private boolean[] playerswhodiscarded = new boolean[4];
+
 	public static ServerFacade getSingleton() {
 		if (singleton == null) {
 			singleton = new ServerFacade();
@@ -617,20 +619,20 @@ public class ServerFacade {
 			if (index == 3) {
 				model.getTurnTracker().setStatus("SecondRound");
 			} else {
-				model.getTurnTracker().setCurrentTurn(index + 1); //TODO: comment for skipping turns
+				//model.getTurnTracker().setCurrentTurn(index + 1); //TODO: comment for skipping turns
 			}
 		} else if (model.getTurnTracker().getStatus().equals("SecondRound")) {
 			if (index == 0) {
 				model.getTurnTracker().setStatus("Rolling");
 			} else {
-				model.getTurnTracker().setCurrentTurn(index - 1);//TODO: comment for skipping turns
+				//	model.getTurnTracker().setCurrentTurn(index - 1);//TODO: comment for skipping turns
 			}
 		} else {
 			model.getTurnTracker().setStatus("Rolling");
 			if (index == 3) {
-				model.getTurnTracker().setCurrentTurn(0);//TODO: comment for skipping turns
+				//	model.getTurnTracker().setCurrentTurn(0);//TODO: comment for skipping turns
 			} else {
-				model.getTurnTracker().setCurrentTurn(index + 1);//TODO: comment for skipping turns
+				//	model.getTurnTracker().setCurrentTurn(index + 1);//TODO: comment for skipping turns
 			}
 		}
 	}
@@ -1172,10 +1174,24 @@ public class ServerFacade {
 
 		discardedCards = negatizeResourceList(discardedCards);
 		model.changePlayerResources(discardedCards, playerIndex);
-		if (model.getCurrentPlayer().getPlayerIndex() == playerIndex) {
+		//if (model.getCurrentPlayer().getPlayerIndex() == playerIndex) {
+		//	model.getTurnTracker().setStatus("Robbing");
+		//} else {
+		//	model.getTurnTracker().setStatus("Waiting");
+		//}
+
+		boolean allplayersdicarded = true;
+		playerswhodiscarded[playerIndex] = true;
+		System.out.println("PLAYER " + playerIndex + " has discarded, waiting on the others");
+		for (boolean singleplayerdiscarded : playerswhodiscarded) {
+			if (!singleplayerdiscarded) {
+				allplayersdicarded = false;
+			}
+		}
+		if (allplayersdicarded == true) {
+			playerswhodiscarded = new boolean[4];
+			System.out.println("all players have discarded");
 			model.getTurnTracker().setStatus("Robbing");
-		} else {
-			model.getTurnTracker().setStatus("Waiting");
 		}
 
 		updatemodelnumber();

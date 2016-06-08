@@ -6,7 +6,6 @@ import client.base.Controller;
 import client.misc.IMessageView;
 import client.misc.IWaitView;
 import client.misc.MessageView;
-import model.Player;
 import model.bank.ResourceList;
 import proxy.RealProxy;
 import shared.definitions.ResourceType;
@@ -51,12 +50,16 @@ public class DiscardController extends Controller implements IDiscardController 
 	 */
 	private int calculateDiscardNum() {
 
-		if (model == null)
+		if (model == null) {
 			return 0;
-
-		ArrayList<Player> players = model.getPlayers();
+		}
+		if (thisplayer == null) {
+			return 0;
+		}
+		if (thisplayer.getResources() == null) {
+			return 0;
+		}
 		int halfcards = thisplayer.getResources().getSize() / 2;
-		//	System.out.println("DISCARD:max discard num= " + halfcards);
 
 		return halfcards;
 	}
