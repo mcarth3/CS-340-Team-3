@@ -1,27 +1,30 @@
 package client.join;
 
-import java.awt.*;
-import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
-import client.GameManager.GameManager;
-import client.base.*;
-import client.data.*;
-import client.login.PlayerLoginInfo;
-import model.Game;
-import poller.modeljsonparser.ModelParser;
-import proxy.RealProxy;
-import shared.definitions.CatanColor;
+import client.base.OverlayView;
+import client.data.GameInfo;
+import client.data.PlayerInfo;
 
 /**
  * Implementation for the join game view, which lets the user select a game to
  * join
  */
 @SuppressWarnings("serial")
-public class JoinGameView extends OverlayView implements IJoinGameView
-{
+public class JoinGameView extends OverlayView implements IJoinGameView {
 
 	private final int LABEL_TEXT_SIZE = 40;
 	private final int PANEL_TEXT_SIZE = 14;
@@ -45,21 +48,18 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 
 	private GameInfo[] games;
 	private PlayerInfo localPlayer;
-	
-	public Integer gameChosen; 
 
-	public JoinGameView()
-	{
+	public Integer gameChosen;
+
+	public JoinGameView() {
 		this.initialize();
 	}
-	
-	private void initialize()
-	{
+
+	private void initialize() {
 		this.initializeView();
 	}
 
-	private void initializeView()
-	{
+	private void initializeView() {
 		this.setOpaque(true);
 		this.setLayout(new BorderLayout());
 		this.setBorder(BorderFactory.createLineBorder(Color.black, BORDER_WIDTH));
@@ -79,7 +79,6 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 		labelPanel.add(subLabel);
 		this.add(labelPanel, BorderLayout.NORTH);
 
-
 		// This is the header layout
 		gamePanel = new JPanel();
 		gamePanel.setLayout(new GridLayout(0, 4));
@@ -97,26 +96,22 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 		gamePanel.add(name);
 		gamePanel.add(currentPlayer);
 		gamePanel.add(join);
-		 
 
 		// This is the looped layout
-		if (games != null && games.length > 0)
-		{
-			ArrayList<String> playerNames = new ArrayList<>(); 
+		if (games != null && games.length > 0) {
+			ArrayList<String> playerNames = new ArrayList<>();
 			labelFont = labelFont.deriveFont(labelFont.getStyle(), PANEL_TEXT_SIZE);
-			for (GameInfo game : games)
-			{
+			for (GameInfo game : games) {
 				for (int j = 0; j < game.getPlayers().size(); j++) {
 					if (j < game.getPlayers().size()) {
 						//players = players + game.getPlayers().get(j).getName() + ", ";
 						//System.out.println(game.getPlayers().get(j).getName()); 
-						if(game.getPlayers().get(j).getName() != null){
-							playerNames.add(game.getPlayers().get(j).getName()); 
+						if (game.getPlayers().get(j).getName() != null) {
+							playerNames.add(game.getPlayers().get(j).getName());
 						}
 					}
 				}
-				
-				
+
 				JLabel tmp1 = new JLabel(String.valueOf(game.getId()));
 				tmp1.setFont(labelFont);
 				gamePanel.add(tmp1);
@@ -140,29 +135,27 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 						players = players + playerNames.get(j);
 					}
 				}
-				
+
 				JLabel tmp3 = new JLabel(players);
 				tmp3.setFont(labelFont);
 				gamePanel.add(tmp3);
 				JButton joinButton;
-				
+
 				boolean found = false;
-				for(PlayerInfo p: game.getPlayers()){	
-					if(p.getName().equals(localPlayer.getName())){
-						found = true;
+				for (PlayerInfo p : game.getPlayers()) {
+					//System.out.println("LOCAL PLAYER: " + p.getName());
+					if (p.getName() != null) {
+						if (p.getName().equals(localPlayer.getName())) {
+							found = true;
+						}
 					}
 				}
-				if (found)
-				{
+				if (found) {
 					joinButton = new JButton("Re-Join");
-				}
-				else if (playerNames.size() >= 4)
-				{
+				} else if (playerNames.size() >= 4) {
 					joinButton = new JButton("Full");
 					joinButton.setEnabled(false);
-				}
-				else
-				{
+				} else {
 					joinButton = new JButton("Join");
 				}
 				joinButton.setActionCommand("" + game.getId());
@@ -188,67 +181,53 @@ public class JoinGameView extends OverlayView implements IJoinGameView
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
 		buttonPanel.add(createButton);
-		buttonPanel.add(tempJoinButton);		
+		buttonPanel.add(tempJoinButton);
 		this.add(buttonPanel, BorderLayout.SOUTH);
 	}
 
 	@Override
-	public IJoinGameController getController()
-	{
+	public IJoinGameController getController() {
 		return (IJoinGameController) super.getController();
 	}
 
 	@Override
-	public void setGames(GameInfo[] games, PlayerInfo localPlayer)
-	{
+	public void setGames(GameInfo[] games, PlayerInfo localPlayer) {
 		//System.out.println("Set Games got called"); 
-		
+
 		this.games = games;
 		this.localPlayer = localPlayer;
 		this.removeAll();
 		this.initialize();
 	}
-	public Integer getGameChosen(){
-		return gameChosen; 
+
+	public Integer getGameChosen() {
+		return gameChosen;
 	}
-	
-	private ActionListener actionListener = new ActionListener()
-	{
+
+	private ActionListener actionListener = new ActionListener() {
 		@Override
-		public void actionPerformed(ActionEvent e)
-		{
-			if (e.getSource() == createButton)
-			{
+		public void actionPerformed(ActionEvent e) {
+			if (e.getSource() == createButton) {
 				getController().startCreateNewGame();
-			}
-			else if (e.getSource() == tempJoinButton)
-			{
+			} else if (e.getSource() == tempJoinButton) {
 				getController().startJoinGame(null);
-			}
-			else
-			{
-				try
-				{
+			} else {
+				try {
 					//System.out.println(e.getActionCommand());
 					int gameId = Integer.parseInt(e.getActionCommand());
 					//gameChosen = gameId; 
 					GameInfo game = null;
-					for (GameInfo g : games)
-					{
-						if (g.getId() == gameId)
-						{
+					for (GameInfo g : games) {
+						if (g.getId() == gameId) {
 							game = g;
 							break;
 						}
 					}
 					getController().startJoinGame(game);
-				}
-				catch (NumberFormatException ex)
-				{
+				} catch (NumberFormatException ex) {
 					ex.printStackTrace();
 				}
 			}
 		}
 	};
 }
-
