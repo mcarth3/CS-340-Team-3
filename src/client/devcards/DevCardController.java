@@ -1,5 +1,6 @@
 package client.devcards;
 
+import client.GameManager.GameManager;
 import client.base.Controller;
 import client.base.IAction;
 import model.Facade;
@@ -102,7 +103,33 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void playYearOfPlentyCard(ResourceType resource1, ResourceType resource2) {
-		theFacade.playYearOfPlenty(thisplayer.getPlayerID(), resource1, resource2);
+		System.out.println("Resource 1: "+ resource1);
+		System.out.println("Resource 2: "+ resource2);
+
+		if(resource1 == resource2)
+		{
+			if(GameManager.getSingleton().getModel().getBank().getResourceType(resource1) < 2)
+			{
+				System.out.println("play year of plenty card failed - preconditions not met");
+
+			}
+		}
+		else
+		{
+			int resourceOneForBank = GameManager.getSingleton().getModel().getBank().getResourceType(resource1);
+			int resourceTwoForBank = GameManager.getSingleton().getModel().getBank().getResourceType(resource2);
+			if(resourceOneForBank < 1
+					|| resourceTwoForBank < 1)
+			{
+				System.out.println("play year of plenty card failed - preconditions not met");
+
+			}
+			else
+			{
+				theFacade.playYearOfPlenty(thisplayer.getPlayerID(), resource1, resource2);
+			}
+		}
+
 	}
 
 	@Override

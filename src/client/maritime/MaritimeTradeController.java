@@ -220,6 +220,9 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 		ArrayList<Port> allPorts = model.getMap().getPorts();
 		//TreeSet<ResourceType> theFoundTypes= new TreeSet<>();
 
+
+
+
 		/*for(int i = 0; i < allSettlements.size(); i++)
 		{
 			if(allSettlements.get(i).getOwner() == thePlayer.getPlayerIndex())
@@ -244,39 +247,33 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 			for (int v = 0; v < portVertices.size(); v++) {
 
 				for (int i = 0; i < allCities.size(); i++) {
-					//if(portVertices.get(v).getNormalizedLocation().equals(allCities.get(i).getVertextLocation().getNormalizedLocation()))
-					if (portVertices.get(v).getDir() == allCities.get(i).getVertextLocation().getDir()
-							&& portVertices.get(v).getHexLoc().getX() == allCities.get(i).getVertextLocation().getHexLoc().getX() &&
-							portVertices.get(v).getHexLoc().getY() == allCities.get(i).getVertextLocation().getHexLoc().getY()) {
-						/*if(null == allPorts.get(j).getResource())
+					if (allCities.get(i).getOwner() == thisplayer.getPlayerIndex()) {
+						String portNormalString = portVertices.get(v).getNormalizedLocation().toString();
+						//System.out.println("PortNormal: " + portNormalString);
+						String cityNormalString =  allCities.get(i).getVertextLocation().getNormalizedLocation().toString();
+						//System.out.println("SettlementNormal: ");
+						if(portNormalString.equals(cityNormalString))
 						{
-							System.out.println("Null resource port matches player city!");
-						}*/
-						if (allCities.get(i).getOwner() == thisplayer.getPlayerIndex()) {
 							found = true;
+						}
+						//if(portVertices.get(v).getNormalizedLocation().equals(allCities.get(i).getVertextLocation().getNormalizedLocation()))
+						if (portVertices.get(v).getDir() == allCities.get(i).getVertextLocation().getDir()
+								&& portVertices.get(v).getHexLoc().getX() == allCities.get(i).getVertextLocation().getHexLoc().getX() &&
+								portVertices.get(v).getHexLoc().getY() == allCities.get(i).getVertextLocation().getHexLoc().getY()) {
+
 						}
 					}
 				}
 
 				for (int i = 0; i < allSettlements.size(); i++) {
+					if (allSettlements.get(i).getOwner() == thisplayer.getPlayerIndex()) {
 
-					if (portVertices.get(v).getDir() == VertexDirection.NW && portVertices.get(v).getHexLoc().getX() == -2 &&
-							portVertices.get(v).getHexLoc().getY() == 0) {
-						//System.out.println("X = " + portVertices.get(v).getHexLoc().getX() + ", Y = " + portVertices.get(v).getHexLoc().getY());
-						//System.out.println("\nSettlement normal location: " + allSettlements.get(i).getVertextLocation().getNormalizedLocation());
-						//System.out.println("Port location: " + portVertices.get(v).getNormalizedLocation());
-						//if(portVertices.get())
-
-					}
-					//if(portVertices.get(v).getNormalizedLocation().equals(allSettlements.get(i).getVertextLocation().getNormalizedLocation()))
-					if (portVertices.get(v).getDir() == allSettlements.get(i).getVertextLocation().getDir()
-							&& portVertices.get(v).getHexLoc().getX() == allSettlements.get(i).getVertextLocation().getHexLoc().getX() &&
-							portVertices.get(v).getHexLoc().getY() == allSettlements.get(i).getVertextLocation().getHexLoc().getY()) {
-						//System.out.println("You're passing the location check now!\n***********");
-						if (null == allPorts.get(j).getResource()) {
-							//System.out.println("Null resource port matches player settlement!");
-						}
-						if (allSettlements.get(i).getOwner() == thisplayer.getPlayerIndex()) {
+						String portNormalString = portVertices.get(v).getNormalizedLocation().toString();
+						//System.out.println("PortNormal: " + portNormalString);
+						String settlementNormalString =  allSettlements.get(i).getVertextLocation().getNormalizedLocation().toString();
+						//System.out.println("SettlementNormal: ");
+						if(portNormalString.equals(settlementNormalString))
+						{
 							found = true;
 						}
 					}
