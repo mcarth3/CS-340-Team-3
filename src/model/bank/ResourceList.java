@@ -157,18 +157,18 @@ public class ResourceList extends AbstractModelPartition {
 	}
 
 	public void changeResourceTypeWithAmount(ResourceType type, int amount) {
-		if (type.toString().equals(ResourceType.WHEAT.toString())) {
+		if (type == ResourceType.WHEAT) {
 			setWheat(getWheat() + amount);
-		} else if (type.toString().equals(ResourceType.WOOD.toString())) {
+		} else if (type == ResourceType.WOOD) {
 			setWood(getWood() + amount);
-		} else if (type.toString().equals(ResourceType.BRICK.toString())) {
+		} else if (type == ResourceType.BRICK) {
 			setBrick(getBrick() + amount);
-		} else if (type.toString().equals(ResourceType.SHEEP.toString())) {
+		} else if (type == ResourceType.SHEEP) {
 			setSheep(getSheep() + amount);
-		} else if (type.toString().equals(ResourceType.ORE.toString())) {
+		} else if (type == ResourceType.ORE) {
 			setOre(getOre() + amount);
 		} else {
-			System.out.println("Error! changeResourceTypewithAmount in ResourceList is broken by " + type + "-" + type.toString() + "-" + ResourceType.BRICK + "-" + ResourceType.BRICK.toString());
+			System.out.println("Error! changeResourceTypewithAmount in ResourceList is broken by " + type);
 
 		}
 
