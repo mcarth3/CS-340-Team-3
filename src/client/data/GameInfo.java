@@ -19,7 +19,7 @@ public class GameInfo
 	private String title;
 	private List<PlayerInfo> players;
 	
-	public GameInfo(int i, String t, List<PlayerInfo> l)
+	public GameInfo(int i, String t, ArrayList<PlayerInfo> l)
 	{
 		id = i; 
 		title = t;

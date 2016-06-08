@@ -50,6 +50,7 @@ public class ServerFacade {
 	private Game model = null;
 	private AllInfo all = null;
 	private String currentUsername;
+	private PlayerInfo curPlayerInfo = new PlayerInfo();
 
 	public static ServerFacade getSingleton() {
 		if (singleton == null) {
@@ -90,10 +91,6 @@ public class ServerFacade {
 	}
 
 	public Object UserLogin(String username, String password) {
-
-		System.out.println(username);
-		System.out.println(password);
-		
 		UserInfo[] users = all.getUsers();
 		boolean found = false;
 		Integer id = 0;
@@ -106,6 +103,10 @@ public class ServerFacade {
 		String result = "Failed to login - bad username or password.";
 		if (found) {
 			currentUsername = username;
+			
+			curPlayerInfo.setId(id);
+			curPlayerInfo.setName(username);
+			
 			String userInfo = "{\"name\":\"" + username + "\",\"password\":\"" + password + "\",\"playerID\":" + id + "}";
 			try {
 				result = java.net.URLEncoder.encode(userInfo, "UTF-8");
@@ -118,8 +119,6 @@ public class ServerFacade {
 	}
 
 	public Object UserRegister(String username, String password) {
-
-		//TODO: get playerID and figure out authentication
 		UserInfo[] users = all.getUsers();
 		boolean found = false;
 		Integer id = 0;
@@ -149,6 +148,7 @@ public class ServerFacade {
 			}
 			temp[users.length] = newUser;
 		    all.setUsers(temp);
+		    // add user to players
 		    try {
 				result = java.net.URLEncoder.encode(userInfo, "UTF-8");
 				result = "Successcatan.user=" + result + ";Path=/;";
@@ -161,14 +161,11 @@ public class ServerFacade {
 	}
 
 	public Object GamesList() {
-		//System.out.println("game list in server facade"); 
 		GameInfo[] list = all.getGameList();
 		return list;
 	}
 
-	public Object GamesCreate(String name, boolean numbers, boolean ports, boolean tiles) {
-		//System.out.println("game create in server facade");
-		
+	public Object GamesCreate(String name, boolean numbers, boolean ports, boolean tiles) {		
 		GameInfo[] games = all.getGameList(); 
 		Integer id = 0; 
 		boolean newNum = true;
@@ -194,6 +191,7 @@ public class ServerFacade {
 		// adding to game list
 	    ArrayList<Player> players = new ArrayList<Player>(); 
 	    DevCardList newdeck = new DevCardList();
+	    
 	    newdeck.setMonopoly(2);
 	    newdeck.setMonument(5);
 	    newdeck.setRoadBuilding(2);
@@ -202,6 +200,8 @@ public class ServerFacade {
 	    MessageList newlog = new MessageList(); 
 	    MessageList newchat = new MessageList();
 	    ResourceList newbank = new ResourceList();
+	    
+	    // this isn't build with randomness yet
 	    Map newmap = new Map();
 	    Hex[] hexes = new Hex[19];
 	    Hex h0 = new Hex();
@@ -343,7 +343,6 @@ public class ServerFacade {
 	    newturnTracker.setLongestRoad(-1);
 	    newturnTracker.setLargestArmy(-1);
 	    
-	    
 	    Game game = new Game(newdeck, players, newlog, newchat, newbank, newmap, newturnTracker, -1, 0); 
 	     
 	    Game[] gameslist = all.getGames(); 
@@ -376,33 +375,15 @@ public class ServerFacade {
 				}
 			}
 			
-//			public ResourceList resources;
-//		    public DevCardList newDevCards;
-//		    public DevCardList oldDevCards;
-//		    public int cities;//how many cities the player has left to play
-//		    public int roads;//how many roads the player has left to play
-//		    public int settlements;//how many settlements the player has left to play
-//		    public int soldiers;
-//		    public int victoryPoints;
-//		    public int monuments;
-//		    public boolean playedDevCard;
-//		    public boolean discarded;
-//		    public int playerID;
-//		    public int playerIndex;
-//		    public String color;
-//		    public String name;	
-			
-			
-			
 			if (!foundInGame) {
-				// {"id":0,"playerIndex":-1,"name":"Sam","color":"orange"}
 				Player newPlayer = new Player();
-				//Player p = new Player(color, currentUsername, int ID, 4, 15, 5, 0,0, DevCardList newNewDevCardList, DevCardList newOldDevCardList, boolean newPlayedDevCard, ResourceList newResourcesAmounts, boolean newDiscarded, int newVictoryPointAmount, int newplayerIndex); 
-		    
-				//PlayerInfo
-				//model;
-				
-				//might need more info here
+				newPlayer.setResources(new ResourceList());
+				newPlayer.setNewDevCards(new DevCardList());
+				newPlayer.setOldDevCards(new DevCardList());
+				newPlayer.setPlayerID(curPlayerInfo.getId());
+				newPlayer.setRoads(15);
+				newPlayer.setCities(4);
+				newPlayer.setSettlements(5);
 				newPlayer.setName(currentUsername);
 				newPlayer.setColor(color);
 				players.add(newPlayer);
@@ -414,11 +395,7 @@ public class ServerFacade {
 	}
 
 	public Object GameModel(Integer v) {
-		// Probably have to do something about the version?
-		//if version number given is not equal to version number we have, send model
-		//if numbers are same, send true
 		if(v == model.version){
-			// or return true;
 			return "true";
 		}else{
 			return model;
@@ -426,7 +403,6 @@ public class ServerFacade {
 	}
 
 	public Object MovesSendChat(Integer id, String content) {
-		//System.out.println("moves send chat in server facade"); 
 		MessageList list = model.chat;
 		Integer index = model.getPlayerIndex(id);
 		if(index>4 || index<0){
@@ -436,7 +412,6 @@ public class ServerFacade {
 		MessageLine message = new MessageLine(content, player.name);		
 		list.lines.add(message);
 		model.chat = list;
-		
 		updatemodelnumber();
 		return model;
 	}
