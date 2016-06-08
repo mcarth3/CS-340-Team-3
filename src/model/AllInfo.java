@@ -6,7 +6,7 @@ public class AllInfo {
 
 	private UserInfo[] users;
 	private Game[] games;
-	private GameInfo[] gameList;
+	public GameInfo[] gameList;
 	
 	
 	public AllInfo(UserInfo[] u, Game[] g, GameInfo[] l){
@@ -17,6 +17,9 @@ public class AllInfo {
 	
 	public GameInfo[] getGameList(){
 		return gameList; 
+	}
+	public void setGameList(GameInfo[] gl){
+		gameList = gl;
 	}
 	public UserInfo[] getUsers() {
 		return users;

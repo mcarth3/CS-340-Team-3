@@ -136,18 +136,19 @@ public class Handlers {
 	 */
 	private HttpHandler userRegister = new HttpHandler() {
 		@Override
-		public void handle(HttpExchange http_exchange) throws IOException {
-			
+		public void handle(HttpExchange http_exchange) throws IOException {			
 			UserRegisterJsonObject urjo = (UserRegisterJsonObject) deserialize(http_exchange, UserRegisterJsonObject.class);
 			ICommand c = new UserRegisterCommand();
-
-			// TODO: Maybe make UserLoginOutput?
-			Object output = c.execute(urjo);
-			
-			// System.out.println("registerUser Handler is getting called");
-
-			String response = "Successcatan.user=%7B%22authentication%22%3A%221224085268%22%2C%22name%22%3A%22Wayne%22%2C%22password%22%3A%22johnwayne%22%2C%22playerID%22%3A13%7D;Path=/;";
-			http_exchange.sendResponseHeaders(200, response.length());
+			String response = (String) c.execute(urjo);
+			if(response.substring(0, 7).equals("Success")){
+				String temp = response.replace("Successcatan.user=","");
+				temp = temp.replace(";Path=/;","");
+				userCookie = temp;
+				http_exchange.sendResponseHeaders(200, response.length());
+			}else{
+				http_exchange.sendResponseHeaders(400, response.length());
+			}
+			//String response = "Successcatan.user=%7B%22authentication%22%3A%221224085268%22%2C%22name%22%3A%22Wayne%22%2C%22password%22%3A%22johnwayne%22%2C%22playerID%22%3A13%7D;Path=/;";
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
