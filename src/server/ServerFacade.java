@@ -714,6 +714,7 @@ public class ServerFacade {
 	}
 
 	public Object playYOPcard(Integer playerIndex, ResourceType resource1, ResourceType resource2) {
+		System.out.println("player " + playerIndex + " playing year of plenty card for " + resource1 + " and " + resource2);
 		Player thePlayer = null;
 		try {
 			thePlayer = model.findPlayerbyindex(playerIndex);
@@ -743,6 +744,8 @@ public class ServerFacade {
 	}
 
 	private void getresourcefrombank(ResourceType resource, int playerIndex, int amount) {
+		//System.out.println("getting " + amount + " " + resource + " to player " + playerIndex);
+
 		switch (resource) {
 		case BRICK:
 			model.getPlayers().get(playerIndex).getResources().setBrick(model.getPlayers().get(playerIndex).getResources().getBrick() + amount);

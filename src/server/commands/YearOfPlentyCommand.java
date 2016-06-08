@@ -19,6 +19,7 @@ public class YearOfPlentyCommand implements ICommand {
 	@Override
 	public Object execute(Object data) {
 		yopobject = (YOPJsonObject) data;
+
 		return ServerFacade.getSingleton().playYOPcard(yopobject.getindex(), yopobject.getresource1(), yopobject.getresource2());
 
 	}

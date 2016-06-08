@@ -9,6 +9,7 @@ public class YOPJsonObject {
 	ResourceType resource2;
 
 	public YOPJsonObject(String newtype, int newplayerIndex, ResourceType newresource1, ResourceType newresource2) {
+
 		type = newtype;
 		playerIndex = newplayerIndex;
 		resource1 = newresource1;

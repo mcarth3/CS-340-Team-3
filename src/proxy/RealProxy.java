@@ -402,8 +402,9 @@ public class RealProxy implements IServer {
 		JsonObject obj = new JsonObject();
 		obj.addProperty("type", "Year_of_Plenty");
 		obj.addProperty("playerIndex", playerIndex);
-		obj.addProperty("resource1", getLower(resource1)); // MAKE SURE THESE ARE RIGHT 
-		obj.addProperty("resource2", getLower(resource2)); // MAKE SURE THESE ARE RIGHT 
+		//System.out.println("YEAR OF PLENTY " + resource1);
+		obj.addProperty("resource1", resource1.toString()); // MAKE SURE THESE ARE RIGHT 
+		obj.addProperty("resource2", resource2.toString()); // MAKE SURE THESE ARE RIGHT 
 		String result = cc.send(obj, "/moves/Year_of_Plenty", UserCookie, GameCookie);
 		//System.out.println(result); 
 		return result;
