@@ -16,6 +16,7 @@ import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeMap;
 
+import client.GameManager.GameManager;
 import client.data.GameInfo;
 import client.data.PlayerInfo;
 import model.AllInfo;
@@ -649,20 +650,20 @@ public class ServerFacade {
 			if (index == 3) {
 				model.getTurnTracker().setStatus("SecondRound");
 			} else {
-				//		model.getTurnTracker().setCurrentTurn(index + 1);
+						//model.getTurnTracker().setCurrentTurn(index + 1); //TODO: comment for skipping turns
 			}
 		} else if (model.getTurnTracker().getStatus().equals("SecondRound")) {
 			if (index == 0) {
 				model.getTurnTracker().setStatus("Rolling");
 			} else {
-				//	model.getTurnTracker().setCurrentTurn(index - 1);
+					///model.getTurnTracker().setCurrentTurn(index - 1);//TODO: comment for skipping turns
 			}
 		} else {
 			model.getTurnTracker().setStatus("Rolling");
 			if (index == 3) {
-				//		model.getTurnTracker().setCurrentTurn(0);
+						//model.getTurnTracker().setCurrentTurn(0);//TODO: comment for skipping turns
 			} else {
-				//		model.getTurnTracker().setCurrentTurn(index + 1);
+						//model.getTurnTracker().setCurrentTurn(index + 1);//TODO: comment for skipping turns
 			}
 		}
 	}
@@ -899,14 +900,15 @@ public class ServerFacade {
 			for (int i = 0; i < allPlayers.size(); i++) {
 				if (allPlayers.get(i).getPlayerIndex() != playerIndex) {
 					//acquire all player's resources!!
-					totalResource += allPlayers.get(i).getResources().getResourceType(stringTypeToResourceType(resource));
-					allPlayers.get(i).getResources().changeResourceTypeWithAmount(stringTypeToResourceType(resource), 0);
+					int thisPlayersResource = allPlayers.get(i).getResources().getResourceType(stringTypeToResourceType(resource));
+					totalResource += thisPlayersResource;
+					allPlayers.get(i).getResources().changeResourceTypeWithAmount(stringTypeToResourceType(resource), -1 * thisPlayersResource);
 				}
 			}
 			thePlayer.addResource(stringTypeToResourceType(resource), totalResource);
 			model.getDeck().setMonopoly(model.getDeck().getMonopoly() + 1);
 
-			MessageLine newLine = new MessageLine(thePlayer.getName() + "monopolized all the " + resource + ".",
+			MessageLine newLine = new MessageLine(thePlayer.getName() + " stole all the " + resource + ".",
 					thePlayer.getName());
 			model.getLog().getLines().add(newLine);
 
@@ -941,7 +943,7 @@ public class ServerFacade {
 
 			model.getDeck().setMonument(model.getDeck().getMonument() + 1);
 
-			MessageLine newLine = new MessageLine(thePlayer.getName() + "built a monument, and gained a Victory Point.",
+			MessageLine newLine = new MessageLine(thePlayer.getName() + " built a monument, and gained a Victory Point.",
 					thePlayer.getName());
 			model.getLog().getLines().add(newLine);
 
@@ -973,7 +975,8 @@ public class ServerFacade {
 			if (!free) {
 				thePlayer.addResource(ResourceType.BRICK, -1);
 				thePlayer.addResource(ResourceType.WOOD, -1);
-
+				//thePlayer.getOldDevCards().setMonopoly(1); //TODO: remove me!
+				//thePlayer.getOldDevCards().setYearOfPlenty(1);
 				ResourceList bank = model.getBank();
 				bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
 				bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
@@ -982,7 +985,7 @@ public class ServerFacade {
 			try {
 				model.getMap().addRoad(roadLocation.getX(), roadLocation.getY(),
 						roadLocation.getDir(), playerIndex);
-				MessageLine newLine = new MessageLine(thePlayer.getName() + "built a road.", thePlayer.getName());
+				MessageLine newLine = new MessageLine(thePlayer.getName() + " built a road.", thePlayer.getName());
 				model.getLog().getLines().add(newLine);
 
 			} catch (FailureToAddException e) {
@@ -1035,7 +1038,7 @@ public class ServerFacade {
 			try {
 				//add settlement to map and add message to log
 				model.getMap().addSettlement(settlementLocation.x, settlementLocation.y, settlementLocation.getDir(), playerIndex);
-				MessageLine newLine = new MessageLine(thePlayer.getName() + "built a settlement.", thePlayer.getName());
+				MessageLine newLine = new MessageLine(thePlayer.getName() + " built a settlement.", thePlayer.getName());
 				model.getLog().getLines().add(newLine);
 
 			} catch (FailureToAddException e) {
@@ -1076,7 +1079,7 @@ public class ServerFacade {
 
 			try {
 				model.getMap().addCity(cityLocation.x, cityLocation.y, cityLocation.getDir(), playerIndex);
-				MessageLine newLine = new MessageLine(thePlayer.getName() + "built a city.", thePlayer.getName());
+				MessageLine newLine = new MessageLine(thePlayer.getName() + " built a city.", thePlayer.getName());
 				model.getLog().getLines().add(newLine);
 
 			} catch (FailureToAddException e) {
@@ -1202,8 +1205,14 @@ public class ServerFacade {
 
 		discardedCards = negatizeResourceList(discardedCards);
 		model.changePlayerResources(discardedCards, playerIndex);
-		model.getTurnTracker().setStatus("Robbing");
-		//TODO: How would I check if this is the last person to discard?
+		if(model.getCurrentPlayer().getPlayerIndex() == playerIndex) {
+			model.getTurnTracker().setStatus("Robbing");
+		}
+		else
+		{
+			model.getTurnTracker().setStatus("Waiting");
+		}
+
 		updatemodelnumber();
 		return model;
 	}

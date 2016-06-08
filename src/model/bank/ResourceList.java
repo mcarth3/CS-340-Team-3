@@ -165,7 +165,7 @@ public class ResourceList extends AbstractModelPartition {
         }
         else
         {
-            System.out.println("Error! getResourceType in ResourceList is broken!!");
+            System.out.println("Error! getResourceType in ResourceList is broken by " + type );
             return -1;
         }
 
@@ -198,7 +198,7 @@ public class ResourceList extends AbstractModelPartition {
         }
         else
         {
-            System.out.println("Error! getResourceType in ResourceList is broken!!");
+            System.out.println("Error! changeResourceTypewithAmount in ResourceList is broken by " + type);
 
         }
 
