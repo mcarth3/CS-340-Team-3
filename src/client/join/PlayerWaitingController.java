@@ -25,7 +25,11 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 	public void start() {
 		String airesponse = RealProxy.getSingleton().gameListAI();
 		String[] aiList = (String[]) ModelParser.parse(airesponse, String[].class);
-		System.out.println("AI LIST " + aiList[0]);
+
+		if (aiList == null) {
+			aiList = new String[1];
+			aiList[0] = "LARGEST_ARMY";
+		}
 		getView().setPlayers(model.getPlayers());
 		getView().setAIChoices(aiList);
 
