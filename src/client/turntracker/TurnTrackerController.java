@@ -122,6 +122,9 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 					}
 				}
 			} else {
+				if (state.equals("Discarding")) {
+					message = "Discarding";
+				}
 				System.out.println("TT:it's player " + currentplayer + "'s turn");
 				// RealProxy.getSingleton().finishTurn(currentplayer);
 			}

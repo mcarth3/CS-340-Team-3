@@ -108,7 +108,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 		RealProxy rp = RealProxy.getSingleton();
 		String result = rp.gamesList();
-		// System.out.println(result);
+		// System.out.println("thread " + Thread.currentThread().getId() + "- "+result);
 
 		GameInfo[] games = (GameInfo[]) ModelParser.parse(result, GameInfo[].class);
 
@@ -192,7 +192,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 		if (low.equals("yellow")) {
 			return CatanColor.YELLOW;
 		} else {
-			System.out.println("\n\nWrong color in JoinGameController's setStringToColor()!!\n\n");
+			System.out.println("thread " + Thread.currentThread().getId() + "- \n\nWrong color in JoinGameController's setStringToColor()!!\n\n");
 			return CatanColor.BLUE;
 		}
 
@@ -218,10 +218,10 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 		RealProxy rp = RealProxy.getSingleton();
 		String lower = color.toString().toLowerCase();
-		// System.out.println(gameChosen);
-		// System.out.println(lower);
+		// System.out.println("thread " + Thread.currentThread().getId() + "- "+gameChosen);
+		// System.out.println("thread " + Thread.currentThread().getId() + "- "+lower);
 		String result = rp.gameJoin(gameChosen, lower);
-		// System.out.println("RESULT JOIN="+result);
+		// System.out.println("thread " + Thread.currentThread().getId() + "- RESULT JOIN="+result);
 		if (result != null) {
 			// If join succeeded
 			getSelectColorView().closeModal();
@@ -230,7 +230,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 			joinAction.execute();
 
 		} else {
-			System.out.println("Couldn't join a game");
+			System.out.println("thread " + Thread.currentThread().getId() + "- Couldn't join a game");
 		}
 	}
 

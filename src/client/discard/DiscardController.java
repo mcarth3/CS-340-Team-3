@@ -182,7 +182,7 @@ public class DiscardController extends Controller implements IDiscardController 
 					updateView();
 
 				} else {
-					//System.out.print("DISCARD:<7 resources, so doing a blank discard");
+					System.out.print("DISCARD:<7 resources, so doing a blank discard");
 					ArrayList<Integer> discardCardarray = new ArrayList<Integer>();
 					discardCardarray.add(0);
 					discardCardarray.add(0);

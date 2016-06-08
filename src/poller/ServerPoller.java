@@ -79,22 +79,22 @@ public class ServerPoller {
 			}
 		}
 
-		// System.out.println(modeljson);
+		// System.out.println("thread " + Thread.currentThread().getId() + "- "+modeljson);
 
 		if (modeljson == null)
 
 		{
-			System.out.println("modeljson is null-returning no changes");
+			System.out.println("thread " + Thread.currentThread().getId() + "- modeljson is null-returning no changes");
 		} else if (modeljson.equals("\"true\""))
 
 		{
-			System.out.println("no changes to model number, thus no new model");
+			System.out.println("thread " + Thread.currentThread().getId() + "- no changes to model number, thus no new model");
 			return GameManager.getSingleton().getModel();
 		} else
 
 		{
 
-			System.out.println("NEW MODEL");
+			System.out.println("thread " + Thread.currentThread().getId() + "- NEW MODEL");
 			model = (Game) ModelParser.parse(modeljson, Game.class);
 		}
 		return model;
@@ -141,7 +141,7 @@ public class ServerPoller {
 						manager.update(model);
 						modelversion = model.getversion();
 					} else if (modelversion == 0 && (!GameManager.getSingleton().getbegin())) {//IF THE SERVER ADDS A PLAYER BUT DOESNT UPDATE THE MODEL NUMBER FOR SOME REASON
-						System.out.println("compare");
+						System.out.println("thread " + Thread.currentThread().getId() + "- compare");
 						int gottenplayers = 0;
 						for (int i = 0; i < model.getPlayers().size(); i++) {
 							if (model.getPlayers().get(i) != null) {
@@ -150,7 +150,7 @@ public class ServerPoller {
 						}
 
 						if (gottenplayers != previousplayers) {
-							System.out.println("UPDATE!");
+							System.out.println("thread " + Thread.currentThread().getId() + "- UPDATE!");
 							manager.update(model);
 							modelversion = model.getversion();
 							previousplayers = gottenplayers;
