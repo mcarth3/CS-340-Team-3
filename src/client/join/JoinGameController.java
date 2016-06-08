@@ -210,12 +210,6 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 		GameManager gm = manager;
 		gm.setplayercolortemp(color);
 
-		try {
-			ServerPoller.getSingleton();
-		} catch (InvalidMockProxyException e) {
-			e.printStackTrace();
-		}
-
 		RealProxy rp = RealProxy.getSingleton();
 		String lower = color.toString().toLowerCase();
 		// System.out.println("thread " + Thread.currentThread().getId() + "- "+gameChosen);
@@ -231,6 +225,11 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 		} else {
 			System.out.println("thread " + Thread.currentThread().getId() + "- Couldn't join a game");
+		}
+		try {
+			ServerPoller.getSingleton();
+		} catch (InvalidMockProxyException e) {
+			e.printStackTrace();
 		}
 	}
 
