@@ -79,7 +79,7 @@ public class MapController extends Controller implements IMapController {
 
 	@Override
 	public boolean canPlaceRoad(EdgeLocation edgeLoc) {
-		//System.out.println("CAN PLACE ROAD? " + Facade.getSingleton().canBuildRoad(currentplayer, edgeLoc));
+		//System.out.println("thread " + Thread.currentThread().getId() + "- CAN PLACE ROAD? " + Facade.getSingleton().canBuildRoad(currentplayer, edgeLoc));
 		return Facade.getSingleton().canBuildRoad(currentplayer, edgeLoc);
 
 	}
@@ -99,7 +99,7 @@ public class MapController extends Controller implements IMapController {
 	@Override
 	public boolean canPlaceRobber(HexLocation hexLoc) {
 		roblocation = hexLoc;
-		// System.out.println("canPlaceRobber");
+		// System.out.println("thread " + Thread.currentThread().getId() + "- canPlaceRobber");
 		if (hexLoc.getX() == model.getMap().getRobber().getHl().getX()) {
 			if (hexLoc.getY() == model.getMap().getRobber().getHl().getY()) {
 				return false;
@@ -128,7 +128,7 @@ public class MapController extends Controller implements IMapController {
 					startMove(PieceType.ROAD, true, false);
 				}
 			} else {
-				System.out.println("placed road");
+				System.out.println("thread " + Thread.currentThread().getId() + "- placed road");
 				RealProxy.getSingleton().buildRoad(thisplayer.getPlayerIndex(), edgeLoc, false);
 			}
 		} else if (state.equals("FirstRound")) {
@@ -162,7 +162,7 @@ public class MapController extends Controller implements IMapController {
 	@Override
 	public void placeRobber(HexLocation hexLoc) {
 
-		System.out.println("placeRobber");
+		System.out.println("thread " + Thread.currentThread().getId() + "- placeRobber");
 
 		Vector<Settlement> settlements = new Vector<Settlement>();
 		Vector<City> cities = new Vector<City>();
@@ -291,11 +291,23 @@ public class MapController extends Controller implements IMapController {
 		if (this.getRobView().isModalShowing()) {
 			this.getRobView().closeModal();
 		}
+
 		if (victim.getPlayerIndex() == thisplayer.playerIndex) {
-			RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, -1, roblocation);
+			if (usingSoldier) {
+				usingSoldier = false;
+				RealProxy.getSingleton().Soldier(thisplayer.playerIndex, -1, roblocation);
+			} else {
+				RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, -1, roblocation);
+			}
 		} else {
-			RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, victim.getPlayerIndex(), roblocation);
+			if (usingSoldier) {
+				usingSoldier = false;
+				RealProxy.getSingleton().Soldier(thisplayer.playerIndex, victim.getPlayerIndex(), roblocation);
+			} else {
+				RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, victim.getPlayerIndex(), roblocation);
+			}
 		}
+
 		if (usingSoldier) {
 			usingSoldier = false;
 		}
@@ -306,7 +318,13 @@ public class MapController extends Controller implements IMapController {
 		if (this.getRobView().isModalShowing()) {
 			this.getRobView().closeModal();
 		}
-		RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, -1, roblocation);
+
+		if (usingSoldier) {
+			usingSoldier = false;
+			RealProxy.getSingleton().Soldier(thisplayer.playerIndex, -1, roblocation);
+		} else {
+			RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, -1, roblocation);
+		}
 	}
 
 	@Override
@@ -406,23 +424,23 @@ public class MapController extends Controller implements IMapController {
 			if ((state.equals("SecondRound"))) {
 
 				if (secondturnsettlements) {
-					System.out.println("SECONDTURN SETTLEMENT");
+					System.out.println("thread " + Thread.currentThread().getId() + "- SECONDTURN SETTLEMENT");
 					startMove(PieceType.SETTLEMENT, true, false);
 					secondturnsettlements = false;
 				}
 				if (secondturnroads) {
-					System.out.println("SECONDTURN ROAD");
+					System.out.println("thread " + Thread.currentThread().getId() + "- SECONDTURN ROAD");
 					startMove(PieceType.ROAD, true, false);
 					secondturnroads = false;
 				}
 			} else if ((state.equals("FirstRound"))) {
 				if (firstturnsettlements) {
-					System.out.println("FIRSTTURN SETTLEMENT");
+					System.out.println("thread " + Thread.currentThread().getId() + "- FIRSTTURN SETTLEMENT");
 					startMove(PieceType.SETTLEMENT, true, false);
 					firstturnsettlements = false;
 				}
 				if (firstturnroads) {
-					System.out.println("FIRSTTURN ROAD");
+					System.out.println("thread " + Thread.currentThread().getId() + "- FIRSTTURN ROAD");
 					startMove(PieceType.ROAD, true, false);
 					firstturnroads = false;
 				}

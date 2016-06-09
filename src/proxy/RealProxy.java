@@ -380,6 +380,7 @@ public class RealProxy implements IServer {
 
 	@Override
 	public String Soldier(Integer playerIndex, Integer victimIndex, HexLocation location) {
+		System.out.println("SOLDIER CARD SENT");
 		// TODO Auto-generated method stub
 		//// Implement this one
 		JsonObject obj = new JsonObject();

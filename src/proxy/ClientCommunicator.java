@@ -90,7 +90,7 @@ public class ClientCommunicator {
 				}
 				System.out.println("thread " + Thread.currentThread().getId() + "- =================== START ============================");
 				System.out.println("thread " + Thread.currentThread().getId() + "- " + command);
-				System.out.println("thread " + Thread.currentThread().getId() + "- " + result);
+				//System.out.println("thread " + Thread.currentThread().getId() + "- " + result);
 				System.out.println("thread " + Thread.currentThread().getId() + "- ==================== END ===========================");
 
 				return result;

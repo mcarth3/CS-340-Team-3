@@ -796,6 +796,7 @@ public class ServerFacade {
 	}
 
 	public Object playsoldercard(Integer index, Integer victimindex, HexLocation location) {
+		//System.out.println("PLAYING SOLDIER CARD");
 		Player thePlayer = null;
 		Player victim = null;
 		try {
@@ -816,9 +817,10 @@ public class ServerFacade {
 
 		setbiggestarmy();
 
+		System.out.println("SOLDIER BEFORE: " + model.getPlayers().get(index).getOldDevCards().getSoldier());
 		//remove soldier card from player
 		model.getPlayers().get(index).getOldDevCards().setSoldier(model.getPlayers().get(index).getOldDevCards().getSoldier() - 1);
-
+		System.out.println("SOLDIER AFTER: " + model.getPlayers().get(index).getOldDevCards().getSoldier());
 		updatemodelnumber();
 		return model;
 	}
