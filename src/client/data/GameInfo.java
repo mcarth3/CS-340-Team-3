@@ -26,6 +26,12 @@ public class GameInfo
 		players = l;
 	}
 	
+	public GameInfo(Integer id2, String name, ArrayList<PlayerInfo> list) {
+		id = id2; 
+		title = name;
+		players = list;
+	}
+
 	public int getId()
 	{
 		return id;
@@ -51,9 +57,9 @@ public class GameInfo
 		players.add(newPlayer);
 	}
 	
-	public List<PlayerInfo> getPlayers()
+	public ArrayList<PlayerInfo> getPlayers()
 	{
-		return Collections.unmodifiableList(players);
+		return players;
 	}
 }
 

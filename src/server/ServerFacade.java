@@ -375,6 +375,24 @@ public class ServerFacade {
 			}
 
 			if (!foundInGame) {
+				//need to add to GameInfo
+				//GameInfo[] gamesinfo = all.getGameList();
+				//for(GameInfo g : gamesinfo){
+				//for(int a=0; a<gamesinfo.length; a++){
+			//		if(g.getId() == id){
+		//				System.out.println("ADD THE NEW PLAYER TO THIS GAME");
+						//PlayerInfo pi = new PlayerInfo(curPlayerInfo.getId(), curPlayerInfo.getName(), color);
+						//g.getPlayers().add(pi);
+						//ArrayList<PlayerInfo> temp = gamesinfo[a].getPlayers();
+						//temp.add(pi); 
+						//System.out.println("game id: "+a); 
+						//System.out.println(gamesinfo[a].getPlayers().size());
+						//gamesinfo[a].addPlayer(pi);
+						
+	//				}
+//				}
+				//all.setGameList(gamesinfo);
+				
 				Player newPlayer = new Player();
 				newPlayer.setResources(new ResourceList());
 				newPlayer.setNewDevCards(new DevCardList());
@@ -385,6 +403,7 @@ public class ServerFacade {
 				newPlayer.setSettlements(5);
 				newPlayer.setName(currentUsername);
 				newPlayer.setColor(color);
+				newPlayer.setPlayerIndex(players.size());
 				players.add(newPlayer);
 				model.setPlayers(players);
 			}

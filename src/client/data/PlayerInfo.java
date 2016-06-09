@@ -24,7 +24,7 @@ public class PlayerInfo
 	
 	public PlayerInfo(){}
 	
-	public PlayerInfo(int i, String n, String c)
+	public PlayerInfo(Integer i, String n, String c)
 	{
 		id = i;
 		name = n;
