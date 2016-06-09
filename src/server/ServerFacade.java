@@ -191,7 +191,6 @@ public class ServerFacade {
 		// adding to game list
 		ArrayList<Player> players = new ArrayList<Player>();
 		DevCardList newdeck = new DevCardList();
-
 		newdeck.setMonopoly(2);
 		newdeck.setMonument(5);
 		newdeck.setRoadBuilding(2);
