@@ -376,7 +376,6 @@ public class ServerFacade {
 
 			if (!foundInGame) {
 				GameInfo[] gamesinfo = all.getGameList();
-				
 				for(GameInfo g : gamesinfo){
 
 					if(g.getId() == id){
@@ -385,7 +384,7 @@ public class ServerFacade {
 					}
 				}
 				all.setGameList(gamesinfo);
-				
+
 				Player newPlayer = new Player();
 				newPlayer.setResources(new ResourceList());
 				newPlayer.setNewDevCards(new DevCardList());
@@ -427,7 +426,7 @@ public class ServerFacade {
 		return model;
 	}
 
-	//Mike's methods
+//Mike's methods
 
 	public Game rolldice(Integer index, Integer number) {
 		Player thePlayer = null;
@@ -784,6 +783,7 @@ public class ServerFacade {
 	}
 
 	public Object playroadbuildingcard(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
+		//System.out.print("placing road building card");
 		Player thePlayer = null;
 		try {
 			thePlayer = model.findPlayerbyindex(playerIndex);
@@ -793,7 +793,7 @@ public class ServerFacade {
 
 		buildRoad("buildRoad", playerIndex, spot1, true);
 		buildRoad("buildRoad", playerIndex, spot2, true);
-
+		//System.out.print("built both roads");
 		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
 
 		//remove road building card from player

@@ -20,8 +20,9 @@ public class RoadBuildingCardCommand implements ICommand {
 	 */
 	@Override
 	public Object execute(Object data) {
+		System.out.println("roadbuildingcommand " + ((RoadBuildingJsonObject) data).getspot1());
 		roadbuildingobject = (RoadBuildingJsonObject) data;
-		return ServerFacade.getSingleton().playroadbuildingcard(roadbuildingobject.getindex(), roadbuildingobject.getspot1(), roadbuildingobject.getspot1());
+		return ServerFacade.getSingleton().playroadbuildingcard(roadbuildingobject.getindex(), roadbuildingobject.getspot1(), roadbuildingobject.getspot2());
 
 	}
 }
