@@ -379,20 +379,20 @@ public class ServerFacade {
 				//GameInfo[] gamesinfo = all.getGameList();
 				//for(GameInfo g : gamesinfo){
 				//for(int a=0; a<gamesinfo.length; a++){
-			//		if(g.getId() == id){
-		//				System.out.println("ADD THE NEW PLAYER TO THIS GAME");
-						//PlayerInfo pi = new PlayerInfo(curPlayerInfo.getId(), curPlayerInfo.getName(), color);
-						//g.getPlayers().add(pi);
-						//ArrayList<PlayerInfo> temp = gamesinfo[a].getPlayers();
-						//temp.add(pi); 
-						//System.out.println("game id: "+a); 
-						//System.out.println(gamesinfo[a].getPlayers().size());
-						//gamesinfo[a].addPlayer(pi);
-						
-	//				}
+				//		if(g.getId() == id){
+				//				System.out.println("ADD THE NEW PLAYER TO THIS GAME");
+				//PlayerInfo pi = new PlayerInfo(curPlayerInfo.getId(), curPlayerInfo.getName(), color);
+				//g.getPlayers().add(pi);
+				//ArrayList<PlayerInfo> temp = gamesinfo[a].getPlayers();
+				//temp.add(pi); 
+				//System.out.println("game id: "+a); 
+				//System.out.println(gamesinfo[a].getPlayers().size());
+				//gamesinfo[a].addPlayer(pi);
+
+				//				}
 //				}
 				//all.setGameList(gamesinfo);
-				
+
 				Player newPlayer = new Player();
 				newPlayer.setResources(new ResourceList());
 				newPlayer.setNewDevCards(new DevCardList());
@@ -434,7 +434,7 @@ public class ServerFacade {
 		return model;
 	}
 
-	//Mike's methods
+//Mike's methods
 
 	public Game rolldice(Integer index, Integer number) {
 		Player thePlayer = null;
@@ -791,6 +791,7 @@ public class ServerFacade {
 	}
 
 	public Object playroadbuildingcard(Integer playerIndex, EdgeLocation spot1, EdgeLocation spot2) {
+		//System.out.print("placing road building card");
 		Player thePlayer = null;
 		try {
 			thePlayer = model.findPlayerbyindex(playerIndex);
@@ -800,7 +801,7 @@ public class ServerFacade {
 
 		buildRoad("buildRoad", playerIndex, spot1, true);
 		buildRoad("buildRoad", playerIndex, spot2, true);
-
+		//System.out.print("built both roads");
 		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
 
 		//remove road building card from player

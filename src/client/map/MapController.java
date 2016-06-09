@@ -8,6 +8,7 @@ import client.base.Controller;
 import client.data.RobPlayerInfo;
 import model.City;
 import model.Facade;
+import model.FailureToAddException;
 import model.Hex;
 import model.Map;
 import model.ObjectNotFoundException;
@@ -120,6 +121,11 @@ public class MapController extends Controller implements IMapController {
 		if (state.equals("Playing")) {
 			if (usingRoadBuilding) {
 				twoRoadsLocations.add(edgeLoc);
+				try {
+					model.getMap().addRoad(edgeLoc.getX(), edgeLoc.getY(), edgeLoc.getDir(), thisplayer.getPlayerIndex());
+				} catch (FailureToAddException e) {
+					e.printStackTrace();
+				}
 				if (twoRoadsLocations.size() == 2) {
 					RealProxy.getSingleton().Road_Building(thisplayer.getPlayerIndex(), twoRoadsLocations.get(0), twoRoadsLocations.get(1));
 					twoRoadsLocations = new ArrayList<EdgeLocation>();
@@ -128,7 +134,7 @@ public class MapController extends Controller implements IMapController {
 					startMove(PieceType.ROAD, true, false);
 				}
 			} else {
-				System.out.println("thread " + Thread.currentThread().getId() + "- placed road");
+				//System.out.println("thread " + Thread.currentThread().getId() + "- placed road");
 				RealProxy.getSingleton().buildRoad(thisplayer.getPlayerIndex(), edgeLoc, false);
 			}
 		} else if (state.equals("FirstRound")) {
@@ -259,7 +265,7 @@ public class MapController extends Controller implements IMapController {
 	@Override
 	public void startMove(PieceType pieceType, boolean isFree, boolean allowDisconnected) {
 		if (!robView.isModalShowing()) {
-			System.out.println(pieceType + "!!!");
+			//	System.out.println(pieceType + "!!!");
 			getView().startDrop(pieceType, CatanColor.toColor(thisplayer.getColor()), true);
 		}
 	}
