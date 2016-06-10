@@ -244,13 +244,17 @@ public class MapController extends Controller implements IMapController {
 			if (robbableArray[0].getPlayerIndex() == thisplayer.playerIndex) {
 				if (usingSoldier) {
 					usingSoldier = false;
+					if (this.getRobView().isModalShowing()) {
+						this.getRobView().closeModal();
+					}
 					RealProxy.getSingleton().Soldier(thisplayer.playerIndex, -1, roblocation);
 				} else {
+					if (this.getRobView().isModalShowing()) {
+						this.getRobView().closeModal();
+					}
 					RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, -1, roblocation);
 				}
-				if (this.getRobView().isModalShowing()) {
-					this.getRobView().closeModal();
-				}
+
 			} else {
 				getRobView().setPlayers(robbableArray);
 				getRobView().showModal();
@@ -301,15 +305,27 @@ public class MapController extends Controller implements IMapController {
 		if (victim.getPlayerIndex() == thisplayer.playerIndex) {
 			if (usingSoldier) {
 				usingSoldier = false;
+				if (this.getRobView().isModalShowing()) {
+					this.getRobView().closeModal();
+				}
 				RealProxy.getSingleton().Soldier(thisplayer.playerIndex, -1, roblocation);
 			} else {
+				if (this.getRobView().isModalShowing()) {
+					this.getRobView().closeModal();
+				}
 				RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, -1, roblocation);
 			}
 		} else {
 			if (usingSoldier) {
 				usingSoldier = false;
+				if (this.getRobView().isModalShowing()) {
+					this.getRobView().closeModal();
+				}
 				RealProxy.getSingleton().Soldier(thisplayer.playerIndex, victim.getPlayerIndex(), roblocation);
 			} else {
+				if (this.getRobView().isModalShowing()) {
+					this.getRobView().closeModal();
+				}
 				RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, victim.getPlayerIndex(), roblocation);
 			}
 		}
@@ -327,8 +343,14 @@ public class MapController extends Controller implements IMapController {
 
 		if (usingSoldier) {
 			usingSoldier = false;
+			if (this.getRobView().isModalShowing()) {
+				this.getRobView().closeModal();
+			}
 			RealProxy.getSingleton().Soldier(thisplayer.playerIndex, -1, roblocation);
 		} else {
+			if (this.getRobView().isModalShowing()) {
+				this.getRobView().closeModal();
+			}
 			RealProxy.getSingleton().robPlayer(thisplayer.playerIndex, -1, roblocation);
 		}
 	}

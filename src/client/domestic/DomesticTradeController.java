@@ -213,9 +213,9 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 
 	@Override
 	public void acceptTrade(boolean willAccept) {
-
-		theFacade.acceptTrade(pid, willAccept);
 		getAcceptOverlay().closeModal();
+		theFacade.acceptTrade(pid, willAccept);
+
 	}
 
 	/**
