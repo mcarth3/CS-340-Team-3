@@ -132,43 +132,43 @@ public class DevCardController extends Controller implements IDevCardController 
 			if (theFacade.canBuyDevcard(thisplayer.getPlayerID())) {
 
 			}
+				DevCardList dcl = thisplayer.oldDevCards;
+				if (dcl.getYearOfPlenty() > 0 && !thisplayer.isPlayedDevCard()) {
+					getPlayCardView().setCardEnabled(DevCardType.YEAR_OF_PLENTY, true);
+					getPlayCardView().setCardAmount(DevCardType.YEAR_OF_PLENTY, dcl.getYearOfPlenty());
+				} else {
+					getPlayCardView().setCardEnabled(DevCardType.YEAR_OF_PLENTY, false);
+					getPlayCardView().setCardAmount(DevCardType.YEAR_OF_PLENTY, 0);
+				}
+				if (dcl.getMonopoly() > 0 && !thisplayer.isPlayedDevCard()) {
+					getPlayCardView().setCardEnabled(DevCardType.MONOPOLY, true);
+					getPlayCardView().setCardAmount(DevCardType.MONOPOLY, dcl.getMonopoly());
+				} else {
+					getPlayCardView().setCardEnabled(DevCardType.MONOPOLY, false);
+					getPlayCardView().setCardAmount(DevCardType.MONOPOLY, 0);
+				}
+				if (dcl.getSoldier() > 0 && !thisplayer.isPlayedDevCard()) {
+					getPlayCardView().setCardEnabled(DevCardType.SOLDIER, true);
+					getPlayCardView().setCardAmount(DevCardType.SOLDIER, dcl.getSoldier());
+				} else {
+					getPlayCardView().setCardEnabled(DevCardType.SOLDIER, false);
+					getPlayCardView().setCardAmount(DevCardType.SOLDIER, 0);
+				}
+				if (dcl.getRoadBuilding() > 0 && !thisplayer.isPlayedDevCard()) {
+					getPlayCardView().setCardEnabled(DevCardType.ROAD_BUILD, true);
+					getPlayCardView().setCardAmount(DevCardType.ROAD_BUILD, dcl.getRoadBuilding());
+				} else {
+					getPlayCardView().setCardEnabled(DevCardType.ROAD_BUILD, false);
+					getPlayCardView().setCardAmount(DevCardType.ROAD_BUILD, 0);
+				}
+				if ((dcl.getMonument() > 0 || thisplayer.newDevCards.getMonument() > 0 )&& !thisplayer.isPlayedDevCard()) {
+					getPlayCardView().setCardEnabled(DevCardType.MONUMENT, true);
+					getPlayCardView().setCardAmount(DevCardType.MONUMENT, dcl.getMonument() + thisplayer.newDevCards.getMonument());
+				} else {
+					getPlayCardView().setCardEnabled(DevCardType.MONUMENT, false);
+					getPlayCardView().setCardAmount(DevCardType.MONUMENT, 0);
+				}
 
-			DevCardList dcl = thisplayer.oldDevCards;
-			if (dcl.getYearOfPlenty() > 0) {
-				getPlayCardView().setCardEnabled(DevCardType.YEAR_OF_PLENTY, true);
-				getPlayCardView().setCardAmount(DevCardType.YEAR_OF_PLENTY, dcl.getYearOfPlenty());
-			} else {
-				getPlayCardView().setCardEnabled(DevCardType.YEAR_OF_PLENTY, false);
-				getPlayCardView().setCardAmount(DevCardType.YEAR_OF_PLENTY, 0);
-			}
-			if (dcl.getMonopoly() > 0 ) {
-				getPlayCardView().setCardEnabled(DevCardType.MONOPOLY, true);
-				getPlayCardView().setCardAmount(DevCardType.MONOPOLY, dcl.getMonopoly());
-			} else {
-				getPlayCardView().setCardEnabled(DevCardType.MONOPOLY, false);
-				getPlayCardView().setCardAmount(DevCardType.MONOPOLY, 0);
-			}
-			if (dcl.getSoldier() > 0) {
-				getPlayCardView().setCardEnabled(DevCardType.SOLDIER, true);
-				getPlayCardView().setCardAmount(DevCardType.SOLDIER, dcl.getSoldier());
-			} else {
-				getPlayCardView().setCardEnabled(DevCardType.SOLDIER, false);
-				getPlayCardView().setCardAmount(DevCardType.SOLDIER, 0);
-			}
-			if (dcl.getRoadBuilding() > 0) {
-				getPlayCardView().setCardEnabled(DevCardType.ROAD_BUILD, true);
-				getPlayCardView().setCardAmount(DevCardType.ROAD_BUILD, dcl.getRoadBuilding());
-			} else {
-				getPlayCardView().setCardEnabled(DevCardType.ROAD_BUILD, false);
-				getPlayCardView().setCardAmount(DevCardType.ROAD_BUILD, 0);
-			}
-			if (dcl.getMonument() > 0|| thisplayer.newDevCards.getMonument() > 0) {
-				getPlayCardView().setCardEnabled(DevCardType.MONUMENT, true);
-				getPlayCardView().setCardAmount(DevCardType.MONUMENT, dcl.getMonument() + thisplayer.newDevCards.getMonument());
-			} else {
-				getPlayCardView().setCardEnabled(DevCardType.MONUMENT, false);
-				getPlayCardView().setCardAmount(DevCardType.MONUMENT, 0);
-			}
 		}
 	}
 

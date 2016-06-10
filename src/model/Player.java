@@ -802,5 +802,6 @@ public class Player extends AbstractModelPartition {
     {
         return settlements+cities;
     }
+
 }
 
