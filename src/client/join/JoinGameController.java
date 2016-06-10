@@ -7,8 +7,6 @@ import client.data.GameInfo;
 import client.data.PlayerInfo;
 import client.misc.IMessageView;
 import model.Game;
-import poller.InvalidMockProxyException;
-import poller.ServerPoller;
 import poller.modeljsonparser.ModelParser;
 import proxy.RealProxy;
 import shared.definitions.CatanColor;
@@ -226,11 +224,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 		} else {
 			System.out.println("thread " + Thread.currentThread().getId() + "- Couldn't join a game");
 		}
-		try {
-			ServerPoller.getSingleton();
-		} catch (InvalidMockProxyException e) {
-			e.printStackTrace();
-		}
+
 	}
 
 	@Override

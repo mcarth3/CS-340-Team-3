@@ -115,19 +115,29 @@ public class RollController extends Controller implements IRollController {
 
 					//System.out.println("It's the player!");
 					//UNCOMMENT BELOW:
+
 					if (!getRollView().isModalShowing()) {
 						setTimer();
 						getRollView().showModal();
 						counter = 3;
 						shownResult = false;
-					} /**
+					} else {
+						System.out.println("FAILED TO ROLL: getRollView().isModalShowing()");
+					}
+					/**
 						* REMOVE BELOW STATEMENT
 						
 						int pid = thisplayer.getPlayerID();
 						//theFacade.roll(pid);
 						RealProxy.getSingleton().rollNumber(pid, 4);*/
+				} else {
+					System.out.println("FAILED TO ROLL: currentplayer != thisplayer.getPlayerIndex()");
 				}
+			} else {
+				System.out.println("FAILED TO ROLL: state != rolling");
 			}
+		} else {
+			System.out.println("FAILED TO ROLL: turn tracker == null");
 		}
 	}
 

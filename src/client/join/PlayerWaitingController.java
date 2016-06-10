@@ -55,10 +55,11 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 		String aitype = null;
 
 		aitype = getView().getSelectedAI();
+		getView().closeModal();
 		RealProxy.getSingleton().gameAddAI(aitype);
 
 		getView().setPlayers(model.getPlayers());
-		getView().closeModal();
+
 		getView().showModal();
 	}
 
@@ -77,6 +78,7 @@ public class PlayerWaitingController extends Controller implements IPlayerWaitin
 				getView().closeModal();
 			}
 			manager.setbegin(true);
+
 		} else if (currentplayers != gottenplayers) {
 			//	System.out.println("WAITING");
 			if (getView().isModalShowing()) {
