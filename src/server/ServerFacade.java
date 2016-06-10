@@ -375,9 +375,9 @@ public class ServerFacade {
 
 			if (!foundInGame) {
 				GameInfo[] gamesinfo = all.getGameList();
-				for(GameInfo g : gamesinfo){
+				for (GameInfo g : gamesinfo) {
 
-					if(g.getId() == id){
+					if (g.getId() == id) {
 						PlayerInfo pi = new PlayerInfo(curPlayerInfo.getId(), curPlayerInfo.getName(), curPlayerInfo.getColor());
 						g.addPlayer(pi);
 					}
@@ -425,7 +425,7 @@ public class ServerFacade {
 		return model;
 	}
 
-//Mike's methods
+	//Mike's methods
 
 	public Game rolldice(Integer index, Integer number) {
 		Player thePlayer = null;
@@ -437,7 +437,7 @@ public class ServerFacade {
 
 		//set state
 		if (number == 7) {
-			model.getTurnTracker().setStatus("Playing");
+			model.getTurnTracker().setStatus("Discarding");
 		} else {
 			model.getTurnTracker().setStatus("Playing");
 		}
@@ -635,14 +635,14 @@ public class ServerFacade {
 			if (index == 0) {
 				model.getTurnTracker().setStatus("Rolling");
 			} else {
-					//model.getTurnTracker().setCurrentTurn(index - 1);//TODO: comment for skipping turns
+				//model.getTurnTracker().setCurrentTurn(index - 1);//TODO: comment for skipping turns
 			}
 		} else {
 			model.getTurnTracker().setStatus("Rolling");
 			if (index == 3) {
-					//model.getTurnTracker().setCurrentTurn(0);//TODO: comment for skipping turns
+				model.getTurnTracker().setCurrentTurn(0);//TODO: comment for skipping turns
 			} else {
-					//model.getTurnTracker().setCurrentTurn(index + 1);//TODO: comment for skipping turns
+				//model.getTurnTracker().setCurrentTurn(index + 1);//TODO: comment for skipping turns
 			}
 		}
 	}
@@ -790,19 +790,8 @@ public class ServerFacade {
 			e.printStackTrace();
 		}
 
-		try {
-			if(model.findPlayerbyindex(playerIndex).getRoads() > 1)
-            {
-                buildRoad("buildRoad", playerIndex, spot1, true);
-                buildRoad("buildRoad", playerIndex, spot2, true);
-            }
-            else if(model.findPlayerbyindex(playerIndex).getRoads() > 0)
-            {
-                buildRoad("buildRoad", playerIndex, spot1, true);
-            }
-		} catch (ObjectNotFoundException e) {
-			e.printStackTrace();
-		}
+		buildRoad("buildRoad", playerIndex, spot1, true);
+		buildRoad("buildRoad", playerIndex, spot2, true);
 		//System.out.print("built both roads");
 		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
 
@@ -888,8 +877,7 @@ public class ServerFacade {
 		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
 
 		if (thePlayer != null) {
-                thePlayer.getOldDevCards().setMonopoly(thePlayer.getOldDevCards().getMonopoly() - 1);
-
+			thePlayer.getOldDevCards().setMonopoly(thePlayer.getOldDevCards().getMonopoly() - 1);
 
 			ArrayList<Player> allPlayers = model.getPlayers();
 			int totalResource = 0;
@@ -933,14 +921,11 @@ public class ServerFacade {
 
 		if (thePlayer != null) {
 
-            if(thePlayer.getNewDevCards().getMonument() < 1) {
-                thePlayer.getOldDevCards().setMonument(thePlayer.getOldDevCards().getMonument() - 1);
-            }
-            else
-            {
-                thePlayer.getNewDevCards().setMonument(thePlayer.getNewDevCards().getMonument() - 1);
-            }
-
+			if (thePlayer.getNewDevCards().getMonument() < 1) {
+				thePlayer.getOldDevCards().setMonument(thePlayer.getOldDevCards().getMonument() - 1);
+			} else {
+				thePlayer.getNewDevCards().setMonument(thePlayer.getNewDevCards().getMonument() - 1);
+			}
 
 			thePlayer.setVictoryPoints(thePlayer.getVictoryPoints() + 1);
 
