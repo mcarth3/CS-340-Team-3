@@ -6,6 +6,7 @@ import client.base.IAction;
 import client.data.GameInfo;
 import client.data.PlayerInfo;
 import client.misc.IMessageView;
+import model.Facade;
 import model.Game;
 import poller.modeljsonparser.ModelParser;
 import proxy.RealProxy;
@@ -218,7 +219,8 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 			// If join succeeded
 			getSelectColorView().closeModal();
 			getJoinGameView().closeModal();
-			manager.update((Game) ModelParser.parse(RealProxy.getSingleton().gameModel(-1), Game.class));
+			Facade.getSingleton().SetGame((Game) ModelParser.parse(RealProxy.getSingleton().gameModel(-1), Game.class));
+
 			joinAction.execute();
 
 		} else {

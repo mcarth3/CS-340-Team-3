@@ -38,7 +38,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 	public void endTurn() {
 		RealProxy proxy = RealProxy.getSingleton();
 		if (model != null) {
-			if (model.canFinishTurn(thisplayer.getPlayerID())) {
+			if (model.canFinishTurn(thisplayer.getPlayerIndex())) {
 				String returnJSON = proxy.finishTurn(thisplayer.getPlayerIndex());
 				System.out.println("thread " + Thread.currentThread().getId() + "- TT: TURN ENDED===================================================");
 			}
@@ -115,7 +115,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 					message = "playing, but Model == null";
 					if (model != null) {
 						message = "playing, but cant finish turn";
-						if (model.canFinishTurn(thisplayer.getPlayerID())) {
+						if (model.canFinishTurn(thisplayer.getPlayerIndex())) {
 							message = "End Turn";
 							enableButton = true;
 						}

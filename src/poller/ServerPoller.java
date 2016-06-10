@@ -4,6 +4,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import client.GameManager.GameManager;
+import client.join.PlayerWaitingController;
+import model.Facade;
 import model.Game;
 import poller.modeljsonparser.ModelParser;
 import proxy.RealProxy;
@@ -18,6 +20,7 @@ public class ServerPoller {
 	private static GameManager manager;
 	boolean didaction;
 	private int previousplayers = 0;
+	PlayerWaitingController thisPlayerWaitingController;
 
 	/**
 	 * creates a new ServerPoller which uses the given MockProxy
@@ -35,7 +38,7 @@ public class ServerPoller {
 		//Random rand = new Random();
 		modelversion = 1;
 		didaction = false;
-
+		thisPlayerWaitingController = null;
 		manager = GameManager.getSingleton();
 	}
 
@@ -123,6 +126,10 @@ public class ServerPoller {
 		modelversion = newmodelversion;
 	}
 
+	public void setPlayerWaitingController(PlayerWaitingController newPlayerWaitingController) {
+		thisPlayerWaitingController = newPlayerWaitingController;
+	}
+
 	private class ServerPollerTask extends TimerTask {
 		/**
 		 * Calls the ServerPoller.poll() when timer has expired.
@@ -136,11 +143,14 @@ public class ServerPoller {
 		public void run() {
 			try {
 				Game model = poll();
-				if (model != null) {
-					if (model.getversion() != modelversion) {//if theres a change in the model number
+				if ((model != null) && (thisPlayerWaitingController != null)) {
+					//System.out.print("thisPlayerWaitingController !=null and so with model too");
+					if ((model.getversion() != modelversion) && manager.getbegin()) {//if theres a change in the model number
+						System.out.print("REGULAR UPDATE");
 						manager.update(model);
 						modelversion = model.getversion();
-					} else if (modelversion == 0 && (!GameManager.getSingleton().getbegin())) {//IF THE SERVER ADDS A PLAYER BUT DOESNT UPDATE THE MODEL NUMBER FOR SOME REASON
+					} else if ((!manager.getbegin())) {//IF THE SERVER ADDS A PLAYER BUT DOESNT UPDATE THE MODEL NUMBER FOR SOME REASON
+						System.out.print("WAITING UPDATE");
 						System.out.println("thread " + Thread.currentThread().getId() + "- compare");
 						int gottenplayers = 0;
 						for (int i = 0; i < model.getPlayers().size(); i++) {
@@ -150,12 +160,21 @@ public class ServerPoller {
 						}
 
 						if (gottenplayers != previousplayers) {
+							System.out.println("UPDATE WAITING CONTROLLER");
 							System.out.println("thread " + Thread.currentThread().getId() + "- UPDATE!");
-							manager.update(model);
-							modelversion = model.getversion();
+							Facade.getSingleton().SetGame(model);
+							modelversion = -1;
 							previousplayers = gottenplayers;
+							thisPlayerWaitingController.update();
+						} else {
+							System.out.println("gottenplayers == previousplayers");
 						}
+					} else {
+						System.out.println("modelversion == " + modelversion);
+						System.out.println("GameManager.getSingleton().getbegin() == " + GameManager.getSingleton().getbegin());
 					}
+				} else {
+					//System.out.print("OOPS");
 				}
 			} catch (PollException e) {
 				e.printStackTrace();

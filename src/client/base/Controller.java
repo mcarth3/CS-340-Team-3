@@ -4,6 +4,7 @@ import java.util.Observable;
 import java.util.Observer;
 
 import client.GameManager.GameManager;
+import model.Facade;
 import model.Game;
 import model.Player;
 import poller.modeljsonparser.ModelParser;
@@ -59,8 +60,12 @@ public abstract class Controller implements IController, Observer {
 				currentplayer = model.getTurnTracker().getCurrentPlayer();
 			}
 		} else {
-			manager.update((Game) ModelParser.parse(RealProxy.getSingleton().gameModel(-1), Game.class));
-
+			Facade.getSingleton().SetGame((Game) ModelParser.parse(RealProxy.getSingleton().gameModel(-1), Game.class));
+			model = manager.getModel();
+			if (model.getTurnTracker() != null) {
+				state = model.getTurnTracker().getStatus();
+				currentplayer = model.getTurnTracker().getCurrentPlayer();
+			}
 		}
 		update();
 	}

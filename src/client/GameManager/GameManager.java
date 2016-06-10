@@ -7,8 +7,6 @@ import model.Facade;
 import model.Game;
 import model.ObjectNotFoundException;
 import model.Player;
-import poller.InvalidMockProxyException;
-import poller.ServerPoller;
 import shared.definitions.CatanColor;
 
 public class GameManager extends Observable {
@@ -159,10 +157,6 @@ public class GameManager extends Observable {
 
 	public void setbegin(boolean b) {
 		begin = b;
-		try {
-			ServerPoller.getSingleton();
-		} catch (InvalidMockProxyException e) {
-			e.printStackTrace();
-		}
+
 	}
 }

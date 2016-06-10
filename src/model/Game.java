@@ -216,9 +216,13 @@ public class Game extends AbstractModelPartition {
 	 *
 	 * @return boolean whether or not the player can roll the dice
 	 */
-	public boolean canRoll(int pid) {
-		if (turnTracker.getStatus().equals("Rolling") && turnTracker.getCurrentPlayer() == pid)
+	public boolean canRoll(int index) {
+		if (turnTracker.getStatus().equals("Rolling") && turnTracker.getCurrentPlayer() == index) {
 			return true;
+		}
+		System.out.println("status " + turnTracker.getStatus());
+		System.out.println("current player " + turnTracker.getCurrentPlayer());
+		System.out.println("pid " + index);
 		return false;
 	}
 

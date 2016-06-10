@@ -57,12 +57,13 @@ public class RollController extends Controller implements IRollController {
 	public void rollDice() {
 		shownResult = true;
 		getRollView().setMessage("3 seconds...");
-		//System.out.println("in the rollDice function!");
+		System.out.println("in the rollDice function!");
 		StateEnum theState = State.getCurrentState();
 
 		Player thePlayer = thisplayer;
-		int pid = thePlayer.getPlayerID();
-		if (model.canRoll(pid)) {
+		int index = thePlayer.getPlayerIndex();
+		if (model.canRoll(index)) {
+			System.out.println("can roll");
 			int currentRoll = model.rollGameDice();
 
 			//COPIED TO THE ROLLRESULTVIEW
@@ -73,6 +74,8 @@ public class RollController extends Controller implements IRollController {
 			setResultView(resultView);
 			resultView.showModal();
 			//getResultView().showModal()
+		} else {
+			System.out.println("cannot roll");
 		}
 
 	}
@@ -106,17 +109,18 @@ public class RollController extends Controller implements IRollController {
 
 			System.out.println("thread " + Thread.currentThread().getId() + "- Status by RollController update(): " + state);
 			if (state.equals("Rolling")) {
-				//System.out.println("Rolling!!");
+				System.out.println("Rolling!!");
 				//if(thisplayer.getPlayerID() == theGame.getTurnTracker().getCurrentPlayer()) {
 				//System.out.println(currentplayer);
 				//System.out.println(thisplayer.getPlayerIndex());
 
 				if (currentplayer == thisplayer.getPlayerIndex()) {
 
-					//System.out.println("It's the player!");
+					System.out.println("It's the player!");
 					//UNCOMMENT BELOW:
 
 					if (!getRollView().isModalShowing()) {
+						System.out.println("not showin");
 						setTimer();
 						getRollView().showModal();
 						counter = 3;
