@@ -629,20 +629,20 @@ public class ServerFacade {
 			if (index == 3) {
 				model.getTurnTracker().setStatus("SecondRound");
 			} else {
-				//model.getTurnTracker().setCurrentTurn(index + 1); //TODO: comment for skipping turns
+				model.getTurnTracker().setCurrentTurn(index + 1); //TODO: comment for skipping turns
 			}
 		} else if (model.getTurnTracker().getStatus().equals("SecondRound")) {
 			if (index == 0) {
 				model.getTurnTracker().setStatus("Rolling");
 			} else {
-				//model.getTurnTracker().setCurrentTurn(index - 1);//TODO: comment for skipping turns
+				model.getTurnTracker().setCurrentTurn(index - 1);//TODO: comment for skipping turns
 			}
 		} else {
 			model.getTurnTracker().setStatus("Rolling");
 			if (index == 3) {
 				model.getTurnTracker().setCurrentTurn(0);//TODO: comment for skipping turns
 			} else {
-				//model.getTurnTracker().setCurrentTurn(index + 1);//TODO: comment for skipping turns
+				model.getTurnTracker().setCurrentTurn(index + 1);//TODO: comment for skipping turns
 			}
 		}
 	}
