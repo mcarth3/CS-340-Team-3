@@ -413,7 +413,7 @@ public class ServerFacade {
 
 	public Object MovesSendChat(Integer id, String content) {
 		MessageList list = model.chat;
-		Integer index = model.getPlayerIndex(id);
+		Integer index = id;
 		if (index > 4 || index < 0) {
 			return null;
 		}
