@@ -60,7 +60,7 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void buyCard() {
-		System.out.println("Buying a card!");
+		System.out.println("thread " + Thread.currentThread().getId() + "- Buying a card!");
 		try {
 			getBuyCardView().closeModal();
 			theFacade.buyDevCard(thisplayer.getPlayerIndex());
@@ -104,12 +104,12 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void playYearOfPlentyCard(ResourceType resource1, ResourceType resource2) {
-		System.out.println("Resource 1: " + resource1);
-		System.out.println("Resource 2: " + resource2);
+		System.out.println("thread " + Thread.currentThread().getId() + "- Resource 1: " + resource1);
+		System.out.println("thread " + Thread.currentThread().getId() + "- Resource 2: " + resource2);
 
 		if (resource1 == resource2) {
 			if (GameManager.getSingleton().getModel().getBank().getResourceType(resource1) < 2) {
-				System.out.println("play year of plenty card failed - preconditions not met");
+				System.out.println("thread " + Thread.currentThread().getId() + "- play year of plenty card failed - preconditions not met");
 
 			}
 		} else {
@@ -117,7 +117,7 @@ public class DevCardController extends Controller implements IDevCardController 
 			int resourceTwoForBank = GameManager.getSingleton().getModel().getBank().getResourceType(resource2);
 			if (resourceOneForBank < 1
 					|| resourceTwoForBank < 1) {
-				System.out.println("play year of plenty card failed - preconditions not met");
+				System.out.println("thread " + Thread.currentThread().getId() + "- play year of plenty card failed - preconditions not met");
 
 			} else {
 				theFacade.playYearOfPlenty(thisplayer.getPlayerID(), resource1, resource2);

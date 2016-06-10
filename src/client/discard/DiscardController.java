@@ -137,7 +137,7 @@ public class DiscardController extends Controller implements IDiscardController 
 	 */
 	@Override
 	public void discard() {
-		System.out.println("DISCARD:discard command sent");
+		System.out.println("thread " + Thread.currentThread().getId() + "- DISCARD:discard command sent");
 		String message = "";
 		ArrayList<Integer> discardCardarray = new ArrayList<Integer>();
 		discardCardarray.add(discardList.getBrick());
@@ -169,7 +169,7 @@ public class DiscardController extends Controller implements IDiscardController 
 		}
 
 		if ((state.equals("Discarding") || (state.equals("Robbing")))) {
-			System.out.print("DISCARD:status is discarding or robbing");
+			System.out.println("thread " + Thread.currentThread().getId() + "- DISCARD:status is discarding or robbing");
 			if ((manager.getdiscardedcheck() == false)) {
 				// System.out.print("DISCARD:discarded check = false");
 				manager.setdiscardedcheck(true);
@@ -182,7 +182,7 @@ public class DiscardController extends Controller implements IDiscardController 
 					updateView();
 
 				} else {
-					System.out.print("DISCARD:<7 resources, so doing a blank discard");
+					System.out.println("thread " + Thread.currentThread().getId() + "- DISCARD:<7 resources, so doing a blank discard");
 					ArrayList<Integer> discardCardarray = new ArrayList<Integer>();
 					discardCardarray.add(0);
 					discardCardarray.add(0);

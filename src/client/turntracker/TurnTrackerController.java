@@ -17,7 +17,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 
 	public TurnTrackerController(ITurnTrackerView view) {
 		super(view);
-		System.out.println("TT:manager got initiated");
+		System.out.println("thread " + Thread.currentThread().getId() + "- TT:manager got initiated");
 		// manager.createdefaultgame();
 		// initFromModel();
 	}
@@ -40,7 +40,7 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 		if (model != null) {
 			if (model.canFinishTurn(thisplayer.getPlayerID())) {
 				String returnJSON = proxy.finishTurn(thisplayer.getPlayerIndex());
-				System.out.print("TT: TURN ENDED===================================================");
+				System.out.println("thread " + Thread.currentThread().getId() + "- TT: TURN ENDED===================================================");
 			}
 		}
 
@@ -93,14 +93,14 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 	@Override
 	public void update() {
 		if (thisplayer != null) {
-			System.out.println("TT:updating turn tracker");
-			System.out.println("TT:status " + state);
-			System.out.println("TT:your resources " + thisplayer.getResources());
+			System.out.println("thread " + Thread.currentThread().getId() + "- TT:updating turn tracker");
+			System.out.println("thread " + Thread.currentThread().getId() + "- TT:status " + state);
+			System.out.println("thread " + Thread.currentThread().getId() + "- TT:your resources " + thisplayer.getResources());
 			initFromModel();
 			boolean enableButton = false;
 			String message = "Waiting for Other Players";
 			if (currentplayer == thisplayer.getPlayerIndex()) {
-				System.out.println("TT:it's your turn");
+				System.out.println("thread " + Thread.currentThread().getId() + "- TT:it's your turn");
 				if (state.equals("Discarding")) {
 					message = "Discarding";
 				} else if (state.equals("FirstRound")) {
@@ -125,11 +125,11 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 				if (state.equals("Discarding")) {
 					message = "Discarding";
 				}
-				System.out.println("TT:it's player " + currentplayer + "'s turn");
+				System.out.println("thread " + Thread.currentThread().getId() + "- TT:it's player " + currentplayer + "'s turn");
 				// RealProxy.getSingleton().finishTurn(currentplayer);
 			}
 			this.getView().updateGameState(message, enableButton);
-			System.out.println("TT:trade offer = " + model.getTradeO());
+			System.out.println("thread " + Thread.currentThread().getId() + "- TT:trade offer = " + model.getTradeO());
 		}
 	}
 

@@ -104,7 +104,7 @@ public class LoginController extends Controller implements ILoginController {
 			if (result != null) {
 				pl = (PlayerLoginInfo) ModelParser.parse(result, PlayerLoginInfo.class);
 
-				System.out.println("PLAYER LOGGED IN: " + pl.playerID);
+				System.out.println("thread " + Thread.currentThread().getId() + "- PLAYER LOGGED IN: " + pl.playerID);
 				manager.setplayerbyidtemp(pl.playerID);
 				manager.setplayernametemp(pl.name);
 

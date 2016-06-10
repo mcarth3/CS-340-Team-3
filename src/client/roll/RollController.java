@@ -104,7 +104,7 @@ public class RollController extends Controller implements IRollController {
 		//if(theFacade.getGame()/*.getTurnTracker().getStatus()*/!= null) {
 		if (model.getTurnTracker()/*.getStatus()*/ != null) {
 
-			System.out.println("Status by RollController update(): " + state);
+			System.out.println("thread " + Thread.currentThread().getId() + "- Status by RollController update(): " + state);
 			if (state.equals("Rolling")) {
 				//System.out.println("Rolling!!");
 				//if(thisplayer.getPlayerID() == theGame.getTurnTracker().getCurrentPlayer()) {
@@ -122,7 +122,7 @@ public class RollController extends Controller implements IRollController {
 						counter = 3;
 						shownResult = false;
 					} else {
-						System.out.println("FAILED TO ROLL: getRollView().isModalShowing()");
+						System.out.println("thread " + Thread.currentThread().getId() + "- FAILED TO ROLL: getRollView().isModalShowing()");
 					}
 					/**
 						* REMOVE BELOW STATEMENT
@@ -131,13 +131,13 @@ public class RollController extends Controller implements IRollController {
 						//theFacade.roll(pid);
 						RealProxy.getSingleton().rollNumber(pid, 4);*/
 				} else {
-					System.out.println("FAILED TO ROLL: currentplayer != thisplayer.getPlayerIndex()");
+					System.out.println("thread " + Thread.currentThread().getId() + "- FAILED TO ROLL: currentplayer != thisplayer.getPlayerIndex()");
 				}
 			} else {
-				System.out.println("FAILED TO ROLL: state != rolling");
+				System.out.println("thread " + Thread.currentThread().getId() + "- FAILED TO ROLL: state != rolling");
 			}
 		} else {
-			System.out.println("FAILED TO ROLL: turn tracker == null");
+			System.out.println("thread " + Thread.currentThread().getId() + "- FAILED TO ROLL: turn tracker == null");
 		}
 	}
 

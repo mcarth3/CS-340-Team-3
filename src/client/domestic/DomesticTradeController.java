@@ -247,7 +247,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 	 */
 	@Override
 	public void update() {
-		System.out.println("Domestic Trade update()!");
+		System.out.println("thread " + Thread.currentThread().getId() + "- Domestic Trade update()!");
 
 		if (manager != null && State.getInstance() != null && thisplayer != null) {
 			//System.out.println("DMU: No nulls!");
@@ -524,7 +524,7 @@ public class DomesticTradeController extends Controller implements IDomesticTrad
 			return listOfResources.getSheep();
 
 		}
-		System.out.println("ERROR in DomesticTradeController! Invalid type being checked in amountInResourceList()!");
+		System.out.println("thread " + Thread.currentThread().getId() + "- ERROR in DomesticTradeController! Invalid type being checked in amountInResourceList()!");
 		return -1;
 	}
 

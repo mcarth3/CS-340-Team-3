@@ -312,7 +312,7 @@ public class MaritimeTradeController extends Controller implements IMaritimeTrad
 			return ResourceType.WHEAT;
 		}
 
-		System.out.println("\n\n\nInvalid resource Type in MaritimeTradeController, stringToRecType()!!!\n\n\n");
+		System.out.println("thread " + Thread.currentThread().getId() + "- \n\n\nInvalid resource Type in MaritimeTradeController, stringToRecType()!!!\n\n\n");
 		return ResourceType.BRICK;
 	}
 

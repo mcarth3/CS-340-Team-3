@@ -357,7 +357,7 @@ public class MapController extends Controller implements IMapController {
 
 	@Override
 	public void update() {
-		System.out.print("Player Color" + model.getPlayers().get(0).getColor());
+		System.out.println("thread " + Thread.currentThread().getId() + "- Player Color" + model.getPlayers().get(0).getColor());
 		usingSoldier = false;
 		Map map = model.getmap();
 		Hex[] hexs = map.getHexes();
