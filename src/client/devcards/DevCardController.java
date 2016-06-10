@@ -141,7 +141,7 @@ public class DevCardController extends Controller implements IDevCardController 
 				getPlayCardView().setCardEnabled(DevCardType.YEAR_OF_PLENTY, false);
 				getPlayCardView().setCardAmount(DevCardType.YEAR_OF_PLENTY, 0);
 			}
-			if (dcl.getMonopoly() > 0) {
+			if (dcl.getMonopoly() > 0 ) {
 				getPlayCardView().setCardEnabled(DevCardType.MONOPOLY, true);
 				getPlayCardView().setCardAmount(DevCardType.MONOPOLY, dcl.getMonopoly());
 			} else {
@@ -162,9 +162,9 @@ public class DevCardController extends Controller implements IDevCardController 
 				getPlayCardView().setCardEnabled(DevCardType.ROAD_BUILD, false);
 				getPlayCardView().setCardAmount(DevCardType.ROAD_BUILD, 0);
 			}
-			if (dcl.getMonument() > 0) {
+			if (dcl.getMonument() > 0|| thisplayer.newDevCards.getMonument() > 0) {
 				getPlayCardView().setCardEnabled(DevCardType.MONUMENT, true);
-				getPlayCardView().setCardAmount(DevCardType.MONUMENT, dcl.getMonument());
+				getPlayCardView().setCardAmount(DevCardType.MONUMENT, dcl.getMonument() + thisplayer.newDevCards.getMonument());
 			} else {
 				getPlayCardView().setCardEnabled(DevCardType.MONUMENT, false);
 				getPlayCardView().setCardAmount(DevCardType.MONUMENT, 0);

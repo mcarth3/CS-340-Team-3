@@ -635,14 +635,14 @@ public class ServerFacade {
 			if (index == 0) {
 				model.getTurnTracker().setStatus("Rolling");
 			} else {
-				//	model.getTurnTracker().setCurrentTurn(index - 1);//TODO: comment for skipping turns
+					//model.getTurnTracker().setCurrentTurn(index - 1);//TODO: comment for skipping turns
 			}
 		} else {
 			model.getTurnTracker().setStatus("Rolling");
 			if (index == 3) {
-				//	model.getTurnTracker().setCurrentTurn(0);//TODO: comment for skipping turns
+					//model.getTurnTracker().setCurrentTurn(0);//TODO: comment for skipping turns
 			} else {
-				//	model.getTurnTracker().setCurrentTurn(index + 1);//TODO: comment for skipping turns
+					//model.getTurnTracker().setCurrentTurn(index + 1);//TODO: comment for skipping turns
 			}
 		}
 	}
@@ -790,8 +790,19 @@ public class ServerFacade {
 			e.printStackTrace();
 		}
 
-		buildRoad("buildRoad", playerIndex, spot1, true);
-		buildRoad("buildRoad", playerIndex, spot2, true);
+		try {
+			if(model.findPlayerbyindex(playerIndex).getRoads() > 1)
+            {
+                buildRoad("buildRoad", playerIndex, spot1, true);
+                buildRoad("buildRoad", playerIndex, spot2, true);
+            }
+            else if(model.findPlayerbyindex(playerIndex).getRoads() > 0)
+            {
+                buildRoad("buildRoad", playerIndex, spot1, true);
+            }
+		} catch (ObjectNotFoundException e) {
+			e.printStackTrace();
+		}
 		//System.out.print("built both roads");
 		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
 
@@ -877,8 +888,8 @@ public class ServerFacade {
 		model.getPlayers().get(playerIndex).setPlayedDevCard(true);
 
 		if (thePlayer != null) {
+                thePlayer.getOldDevCards().setMonopoly(thePlayer.getOldDevCards().getMonopoly() - 1);
 
-			thePlayer.getOldDevCards().setMonopoly(thePlayer.getOldDevCards().getMonopoly() - 1);
 
 			ArrayList<Player> allPlayers = model.getPlayers();
 			int totalResource = 0;
@@ -922,7 +933,14 @@ public class ServerFacade {
 
 		if (thePlayer != null) {
 
-			thePlayer.getOldDevCards().setMonument(thePlayer.getOldDevCards().getMonument() - 1);
+            if(thePlayer.getNewDevCards().getMonument() < 1) {
+                thePlayer.getOldDevCards().setMonument(thePlayer.getOldDevCards().getMonument() - 1);
+            }
+            else
+            {
+                thePlayer.getNewDevCards().setMonument(thePlayer.getNewDevCards().getMonument() - 1);
+            }
+
 
 			thePlayer.setVictoryPoints(thePlayer.getVictoryPoints() + 1);
 
@@ -960,7 +978,7 @@ public class ServerFacade {
 			if (!free) {
 				thePlayer.addResource(ResourceType.BRICK, -1);
 				thePlayer.addResource(ResourceType.WOOD, -1);
-				//thePlayer.getOldDevCards().setMonopoly(1); //TODO: remove me!
+				//thePlayer.getNewDevCards().setMonument(1); //TODO: remove me!
 				//thePlayer.getOldDevCards().setYearOfPlenty(1);
 				ResourceList bank = model.getBank();
 				bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);

@@ -168,9 +168,9 @@ public class ResourceBarController extends Controller implements IResourceBarCon
 		Player playerinventory = model.getPlayers().get(currentplayer);
 		int thisplayerindex = thisplayer.getPlayerIndex();
 
-		if (playerinventory.getOldDevCards().getSize() < 1) {
+		if (playerinventory.getOldDevCards().getSize() < 1 && playerinventory.getNewDevCards().getMonument() < 1) {
 			return false;
-		} else if (!(currentplayer == thisplayerindex) && !(state.equals("Playing"))) {
+		} else if (!(currentplayer == thisplayerindex) || !(state.equals("Playing"))) {
 			return false;
 		} else {
 			return true;
