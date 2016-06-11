@@ -220,8 +220,15 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 		// System.out.println("thread " + Thread.currentThread().getId() + "- RESULT JOIN="+result);
 		if (result != null) {
 			// If join succeeded
-			getSelectColorView().closeModal();
-			getJoinGameView().closeModal();
+
+			if (getSelectColorView().isModalShowing()) {
+				getSelectColorView().closeModal();
+			}
+
+			if (getJoinGameView().isModalShowing()) {
+				getJoinGameView().closeModal();
+			}
+
 			Facade.getSingleton().SetGame((Game) ModelParser.parse(RealProxy.getSingleton().gameModel(-1), Game.class));
 
 			joinAction.execute();
