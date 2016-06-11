@@ -21,7 +21,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	private ISelectColorView selectColorView;
 	private IMessageView messageView;
 	private IAction joinAction;
-
+	private GameInfo gametemp;
 	public Integer gameChosen;
 
 	/**
@@ -131,6 +131,8 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	public void cancelCreateNewGame() {
 
 		getNewGameView().closeModal();
+		start();
+
 	}
 
 	@Override
@@ -151,16 +153,18 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 	@Override
 	public void startJoinGame(GameInfo game) {
+		gametemp = game;
 
-		gameChosen = game.getId();
-//		for (int i = 0; i < game.getPlayers().size(); i++) {
-//			if (manager.getTempId() != game.getPlayers().get(i).getId()) {
-//				if (!game.getPlayers().get(i).getName().equals("")) {
-//					getSelectColorView().setColorEnabled(setStringColorToSharedColor(game.getPlayers().get(i).getColor()), false);
-//				}
-//			}
-//		}
-
+		for (PlayerInfo playerInfo : game.getPlayers()) {
+			if (!(playerInfo.getId() == manager.playerIdTemp)) {
+				if (playerInfo.getColor() != null) {
+					System.out.println("COLOR FOR ID " + playerInfo.getId() + " = " + playerInfo.getColor());
+					getSelectColorView().setColorEnabled(setStringColorToSharedColor(playerInfo.getColor()), false);
+				} else {
+					System.out.println("PROBLEM WITH ID " + playerInfo.getId());
+				}
+			}
+		}
 		if (getJoinGameView().isModalShowing()) {
 			getJoinGameView().closeModal();
 		}
@@ -205,8 +209,18 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 	@Override
 	public void cancelJoinGame() {
-
+		for (PlayerInfo playerInfo : gametemp.getPlayers()) {
+			if (!(playerInfo.getId() == manager.playerIdTemp)) {
+				if (playerInfo.getColor() != null) {
+					System.out.println("COLOR FOR ID " + playerInfo.getId() + " = " + playerInfo.getColor());
+					getSelectColorView().setColorEnabled(setStringColorToSharedColor(playerInfo.getColor()), true);
+				} else {
+					System.out.println("PROBLEM WITH ID " + playerInfo.getId());
+				}
+			}
+		}
 		getJoinGameView().closeModal();
+		start();
 	}
 
 	@Override
