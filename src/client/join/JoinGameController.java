@@ -121,7 +121,9 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 	@Override
 	public void startCreateNewGame() {
-
+		if (getJoinGameView().isModalShowing()) {
+			getJoinGameView().closeModal();
+		}
 		getNewGameView().showModal();
 	}
 
@@ -158,6 +160,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 //				}
 //			}
 //		}
+
 		if (getJoinGameView().isModalShowing()) {
 			getJoinGameView().closeModal();
 		}
