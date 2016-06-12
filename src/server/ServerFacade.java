@@ -373,7 +373,6 @@ public class ServerFacade {
 		Player victim = null;
 		try {
 			thePlayer = model.findPlayerbyindex(index);
-			victim = model.findPlayerbyindex(victimindex);
 		} catch (ObjectNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -384,16 +383,22 @@ public class ServerFacade {
 		//set status to playing
 		model.getTurnTracker().setStatus("Playing");
 
-		if (!((victimindex == index) || (victimindex == -1))) {
+		if ((victimindex != index) && (victimindex != -1)) {
 			stealfromplayer(index, victimindex);
 		}
 
 		MessageLine newLine;
-		if ((victimindex == index) || (victimindex == -1)) {
-			newLine = new MessageLine(thePlayer.getName() + " moved the robber and robbed " + "nobody",
+
+		if ((victimindex != index) && (victimindex != -1)) {
+			try {
+				victim = model.findPlayerbyindex(victimindex);
+			} catch (ObjectNotFoundException e) {
+				e.printStackTrace();
+			}
+			newLine = new MessageLine(thePlayer.getName() + " moved the robber and robbed " + victim.getName(),
 					thePlayer.getName());
 		} else {
-			newLine = new MessageLine(thePlayer.getName() + " moved the robber and robbed " + victim.getName(),
+			newLine = new MessageLine(thePlayer.getName() + " moved the robber and robbed " + "nobody",
 					thePlayer.getName());
 		}
 
