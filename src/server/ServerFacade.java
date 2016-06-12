@@ -847,6 +847,7 @@ public class ServerFacade {
 	 * @return
 	 */
 	public Object buildRoad(String type, Integer playerIndex, EdgeLocation roadLocation, boolean free) {
+		System.out.println("Placing road: " + type + playerIndex + roadLocation + free);
 		Player thePlayer = null;
 		try {
 			thePlayer = model.findPlayerbyindex(playerIndex);
@@ -857,8 +858,10 @@ public class ServerFacade {
 		if (thePlayer != null) {
 
 			if (!free) {
+				System.out.println("removing brick and wood and road");
 				thePlayer.addResource(ResourceType.BRICK, -1);
 				thePlayer.addResource(ResourceType.WOOD, -1);
+				thePlayer.setRoads(thePlayer.getRoads() - 1);
 				//thePlayer.getOldDevCards().setMonument(1); //TODO: remove me!
 				//thePlayer.getOldDevCards().setYearOfPlenty(1);
 				ResourceList bank = model.getBank();
@@ -943,6 +946,7 @@ public class ServerFacade {
 				thePlayer.addResource(ResourceType.WHEAT, -1);
 
 				ResourceList bank = model.getBank();
+				thePlayer.setSettlements(thePlayer.getSettlements() - 1);
 				bank.changeResourceTypeWithAmount(ResourceType.WHEAT, 1);
 				bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
 				bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
@@ -1013,10 +1017,12 @@ public class ServerFacade {
 			ResourceList bank = model.getBank();
 			bank.changeResourceTypeWithAmount(ResourceType.WHEAT, 2);
 			bank.changeResourceTypeWithAmount(ResourceType.ORE, 3);
+			thePlayer.setCities(thePlayer.getCities() - 1);
 
 			try {
 				thePlayer.setVictoryPoints(thePlayer.getVictoryPoints() + 1);
 				checkwinner();
+
 				model.getMap().addCity(cityLocation.x, cityLocation.y, cityLocation.getDir(), playerIndex);
 				MessageLine newLine = new MessageLine(thePlayer.getName() + " built a city.", thePlayer.getName());
 				model.getLog().getLines().add(newLine);
