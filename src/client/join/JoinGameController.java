@@ -228,11 +228,12 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 		GameManager gm = manager;
 		gm.setplayercolortemp(color);
-
+		gameChosen = gametemp.getId();
 		RealProxy rp = RealProxy.getSingleton();
 		String lower = color.toString().toLowerCase();
-		// System.out.println("thread " + Thread.currentThread().getId() + "- "+gameChosen);
-		// System.out.println("thread " + Thread.currentThread().getId() + "- "+lower);
+
+		//System.out.println("thread " + Thread.currentThread().getId() + "- game chosen " + gameChosen);
+		//System.out.println("thread " + Thread.currentThread().getId() + "- game chosen " + lower);
 		String result = rp.gameJoin(gameChosen, lower);
 		// System.out.println("thread " + Thread.currentThread().getId() + "- RESULT JOIN="+result);
 		if (result != null) {
