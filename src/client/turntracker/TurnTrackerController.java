@@ -103,9 +103,9 @@ public class TurnTrackerController extends Controller implements ITurnTrackerCon
 				System.out.println("thread " + Thread.currentThread().getId() + "- TT:it's your turn");
 				if (state.equals("Discarding")) {
 					message = "Discarding";
-					if (manager.getrobbingready() == true) {
-						message = "Discard Finished, waiting for others";
-					}
+					//	if (manager.getrobbingready() == true) {
+					//		message = "Discard Finished, waiting for others";
+					//	}
 				} else if (state.equals("FirstRound")) {
 					message = "First Round";
 				} else if (state.equals("Robbing")) {
