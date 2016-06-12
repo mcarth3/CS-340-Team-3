@@ -512,4 +512,9 @@ public class Game extends AbstractModelPartition {
 	public void setDeck(DevCardList deck) {
 		this.deck = deck;
 	}
+
+	public void setWinner(int playerIndex) {
+		winner = playerIndex;
+
+	}
 }

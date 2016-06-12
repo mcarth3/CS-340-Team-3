@@ -727,6 +727,7 @@ public class ServerFacade {
 
 			}
 		}
+		checkwinner();
 	}
 
 	/**
@@ -801,6 +802,7 @@ public class ServerFacade {
 			}
 
 			thePlayer.setVictoryPoints(thePlayer.getVictoryPoints() + 1);
+			checkwinner();
 
 			model.getDeck().setMonument(model.getDeck().getMonument() + 1);
 
@@ -898,7 +900,8 @@ public class ServerFacade {
 
 			try {
 				//add settlement to map and add message to log
-				thePlayer.setVictoryPoints(thePlayer.getVictoryPoints()+1);
+				thePlayer.setVictoryPoints(thePlayer.getVictoryPoints() + 1);
+				checkwinner();
 				model.getMap().addSettlement(settlementLocation.x, settlementLocation.y, settlementLocation.getDir(), playerIndex);
 				MessageLine newLine = new MessageLine(thePlayer.getName() + " built a settlement.", thePlayer.getName());
 				model.getLog().getLines().add(newLine);
@@ -940,7 +943,8 @@ public class ServerFacade {
 			bank.changeResourceTypeWithAmount(ResourceType.ORE, 3);
 
 			try {
-				thePlayer.setVictoryPoints(thePlayer.getVictoryPoints()+1);
+				thePlayer.setVictoryPoints(thePlayer.getVictoryPoints() + 1);
+				checkwinner();
 				model.getMap().addCity(cityLocation.x, cityLocation.y, cityLocation.getDir(), playerIndex);
 				MessageLine newLine = new MessageLine(thePlayer.getName() + " built a city.", thePlayer.getName());
 				model.getLog().getLines().add(newLine);
@@ -1127,16 +1131,17 @@ public class ServerFacade {
 			return null;
 		}
 	}
-	public ArrayList<Port> buildPorts(){
-		ArrayList<Port> portlist = new ArrayList<>(); 
-		
+
+	public ArrayList<Port> buildPorts() {
+		ArrayList<Port> portlist = new ArrayList<>();
+
 //     	{"ratio":3,"direction":"NW","location":{"x":2,"y":1}},
 		Port p1 = new Port();
 		p1.setRatio(3);
 		p1.setDirection(EdgeDirection.NW);
 		p1.setLocation(new HexLocation(2, 1));
-		portlist.add(p1); 
-		
+		portlist.add(p1);
+
 //     	{"ratio":2,"resource":"ore","direction":"S","location":{"x":1,"y":-3}},
 		Port p2 = new Port();
 		p2.setRatio(2);
@@ -1144,7 +1149,7 @@ public class ServerFacade {
 		p2.setDirection(EdgeDirection.S);
 		p2.setLocation(new HexLocation(1, -3));
 		portlist.add(p2);
-		
+
 //     	{"ratio":2,"resource":"brick","direction":"NE","location":{"x":-2,"y":3}},
 		Port p3 = new Port();
 		p3.setRatio(2);
@@ -1152,7 +1157,7 @@ public class ServerFacade {
 		p3.setDirection(EdgeDirection.NE);
 		p3.setLocation(new HexLocation(-2, 3));
 		portlist.add(p3);
-		
+
 //     	{"ratio":2,"resource":"wheat","direction":"S","location":{"x":-1,"y":-2}},
 		Port p4 = new Port();
 		p4.setRatio(2);
@@ -1160,7 +1165,7 @@ public class ServerFacade {
 		p4.setDirection(EdgeDirection.S);
 		p4.setLocation(new HexLocation(-1, -2));
 		portlist.add(p4);
-		
+
 //     	{"ratio":2,"resource":"wood","direction":"NE","location":{"x":-3,"y":2}},
 		Port p5 = new Port();
 		p5.setRatio(2);
@@ -1168,14 +1173,14 @@ public class ServerFacade {
 		p5.setDirection(EdgeDirection.NE);
 		p5.setLocation(new HexLocation(-3, 2));
 		portlist.add(p5);
-		
+
 //     	{"ratio":3,"direction":"SW","location":{"x":3,"y":-3}},
 		Port p6 = new Port();
 		p6.setRatio(3);
 		p6.setDirection(EdgeDirection.SW);
 		p6.setLocation(new HexLocation(3, -3));
 		portlist.add(p6);
-		
+
 //     	{"ratio":2,"resource":"sheep","direction":"NW","location":{"x":3,"y":-1}},
 		Port p7 = new Port();
 		p7.setRatio(2);
@@ -1183,24 +1188,25 @@ public class ServerFacade {
 		p7.setDirection(EdgeDirection.NW);
 		p7.setLocation(new HexLocation(3, -1));
 		portlist.add(p7);
-		
+
 //     	{"ratio":3,"direction":"N","location":{"x":0,"y":3}},
 		Port p8 = new Port();
 		p8.setRatio(3);
 		p8.setDirection(EdgeDirection.N);
 		p8.setLocation(new HexLocation(0, 3));
 		portlist.add(p8);
-		
+
 //     	{"ratio":3,"direction":"SE","location":{"x":-3,"y":0}}
 		Port p9 = new Port();
 		p9.setRatio(3);
 		p9.setDirection(EdgeDirection.SE);
 		p9.setLocation(new HexLocation(-3, 0));
 		portlist.add(p9);
-		
+
 		return portlist;
 	}
-	public Hex[] buildHexes(){
+
+	public Hex[] buildHexes() {
 		Hex[] hexes = new Hex[19];
 		Hex h0 = new Hex();
 //	    {"location":{"x":0,"y":-2}},
@@ -1332,7 +1338,15 @@ public class ServerFacade {
 		h18.setResource("wheat");
 		h18.setNumber(8);
 		hexes[18] = h18;
-		
+
 		return hexes;
+	}
+
+	private void checkwinner() {
+		for (Player currentplayer : model.getPlayers()) {
+			if (currentplayer.getVictoryPoints() >= 10) {
+				model.setWinner(currentplayer.getPlayerIndex());
+			}
+		}
 	}
 }
