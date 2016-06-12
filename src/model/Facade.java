@@ -501,9 +501,9 @@ public class Facade extends AbstractModelPartition {
 		return theGame.canUseMonument(pid);
 	}
 
-	public void playMonument(int pid) {
+	public void playMonument(int index) {
 		if (theGame != null)
-			proxy.Monument(pid);
+			proxy.Monument(index);
 	}
 
 	/**
@@ -524,10 +524,10 @@ public class Facade extends AbstractModelPartition {
 	 *
 	 * @return boolean whether or not the player played the year of plenty card
 	 */
-	public void playYearOfPlenty(int pid, ResourceType r1, ResourceType r2) {
+	public void playYearOfPlenty(int index, ResourceType r1, ResourceType r2) {
 		if (theGame != null)
-			if (theGame.canYearOfPlenty(pid))
-				proxy.Year_of_Plenty(pid, r1, r2);
+			if (theGame.canYearOfPlenty(index))
+				proxy.Year_of_Plenty(index, r1, r2);
 	}
 
 	/**
@@ -693,10 +693,10 @@ public class Facade extends AbstractModelPartition {
 	 *
 	 * @return boolean whether or not the player can buy a Developement card
 	 */
-	public boolean canBuyDevcard(int pid) {
+	public boolean canBuyDevcard(int index) {
 		if (theGame == null)
 			return false;
-		return theGame.canBuyDevcard(pid);
+		return theGame.canBuyDevcard(index);
 	}
 
 	/**
@@ -705,10 +705,10 @@ public class Facade extends AbstractModelPartition {
 	 *
 	 * @return boolean whether or not the player bought the dev card
 	 */
-	public void buyDevCard(int pid) throws InsufficientResourcesException {
+	public void buyDevCard(int index) throws InsufficientResourcesException {
 		if (theGame != null) {
-			if (theGame.canBuyDevcard(pid)) {
-				proxy.buyDevCard(pid);
+			if (theGame.canBuyDevcard(index)) {
+				proxy.buyDevCard(index);
 			}
 		}
 	}
@@ -729,10 +729,10 @@ public class Facade extends AbstractModelPartition {
 	 *
 	 * @return boolean whether or not the player played a monopoly
 	 */
-	public void playMonopoly(int pid, String r) {
+	public void playMonopoly(int index, String r) {
 		if (theGame != null) {
-			if (theGame.canMonopoly(pid))
-				proxy.Monopoly(r, pid);
+			if (theGame.canMonopoly(index))
+				proxy.Monopoly(r, index);
 		}
 	}
 

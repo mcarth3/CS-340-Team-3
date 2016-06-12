@@ -50,7 +50,7 @@ public class PointsController extends Controller implements IPointsController {
 	@Override
 	public void update() {
 		if (model.getWinner() != -1) {
-			String name = model.getPlayers().get(model.getPlayerIndex(model.getWinner())).getName();
+			String name = model.getPlayers().get(model.getWinner()).getName();
 			if (manager.playerIdTemp == model.getWinner()) {
 				getFinishedView().setWinner(name, true);
 				getFinishedView().showModal();

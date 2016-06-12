@@ -200,10 +200,10 @@ public class Game extends AbstractModelPartition {
 	 *
 	 * @return boolean whether or not the player can monopoly
 	 */
-	public boolean canMonopoly(int pid) {
-		if (turnTracker.getCurrentPlayer() != pid)
+	public boolean canMonopoly(int index) {
+		if (turnTracker.getCurrentPlayer() != index)
 			return false;
-		return players.get(pid).canMonopoly();
+		return players.get(index).canMonopoly();
 	}
 
 	public boolean canFinishTurn(int pid) {
@@ -216,9 +216,13 @@ public class Game extends AbstractModelPartition {
 	 *
 	 * @return boolean whether or not the player can roll the dice
 	 */
-	public boolean canRoll(int pid) {
-		if (turnTracker.getStatus().equals("Rolling") && turnTracker.getCurrentPlayer() == pid)
+	public boolean canRoll(int index) {
+		if (turnTracker.getStatus().equals("Rolling") && turnTracker.getCurrentPlayer() == index) {
 			return true;
+		}
+		System.out.println("status " + turnTracker.getStatus());
+		System.out.println("current player " + turnTracker.getCurrentPlayer());
+		System.out.println("pid " + index);
 		return false;
 	}
 
@@ -303,10 +307,10 @@ public class Game extends AbstractModelPartition {
 
 	}
 
-	public boolean canBuyDevcard(int pid) {
-		if (turnTracker.getCurrentPlayer() != pid)
+	public boolean canBuyDevcard(int index) {
+		if (turnTracker.getCurrentPlayer() != index)
 			return false;
-		return players.get(pid).canBuyDevcard();
+		return players.get(index).canBuyDevcard();
 	}
 
 	/**
@@ -352,10 +356,10 @@ public class Game extends AbstractModelPartition {
 	 *
 	 * @return boolean whether or not the player can play the Year of Plenty card
 	 */
-	public boolean canYearOfPlenty(int pid) {
-		if (turnTracker.getCurrentPlayer() != pid)
+	public boolean canYearOfPlenty(int index) {
+		if (turnTracker.getCurrentPlayer() != index)
 			return false;
-		return players.get(pid).canYearOfPlenty();
+		return players.get(index).canYearOfPlenty();
 	}
 
 	/**

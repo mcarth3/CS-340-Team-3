@@ -6,6 +6,7 @@ import client.base.IAction;
 import client.data.GameInfo;
 import client.data.PlayerInfo;
 import client.misc.IMessageView;
+import model.Facade;
 import model.Game;
 import poller.modeljsonparser.ModelParser;
 import proxy.RealProxy;
@@ -20,7 +21,7 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	private ISelectColorView selectColorView;
 	private IMessageView messageView;
 	private IAction joinAction;
-
+	private GameInfo gametemp;
 	public Integer gameChosen;
 
 	/**
@@ -120,7 +121,9 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 	@Override
 	public void startCreateNewGame() {
-
+		if (getJoinGameView().isModalShowing()) {
+			getJoinGameView().closeModal();
+		}
 		getNewGameView().showModal();
 	}
 
@@ -128,6 +131,8 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 	public void cancelCreateNewGame() {
 
 		getNewGameView().closeModal();
+		start();
+
 	}
 
 	@Override
@@ -148,15 +153,21 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 	@Override
 	public void startJoinGame(GameInfo game) {
+		gametemp = game;
 
-		gameChosen = game.getId();
-//		for (int i = 0; i < game.getPlayers().size(); i++) {
-//			if (manager.getTempId() != game.getPlayers().get(i).getId()) {
-//				if (!game.getPlayers().get(i).getName().equals("")) {
-//					getSelectColorView().setColorEnabled(setStringColorToSharedColor(game.getPlayers().get(i).getColor()), false);
-//				}
-//			}
-//		}
+		for (PlayerInfo playerInfo : game.getPlayers()) {
+			if (!(playerInfo.getId() == manager.playerIdTemp)) {
+				if (playerInfo.getColor() != null) {
+					System.out.println("COLOR FOR ID " + playerInfo.getId() + " = " + playerInfo.getColor());
+					getSelectColorView().setColorEnabled(setStringColorToSharedColor(playerInfo.getColor()), false);
+				} else {
+					System.out.println("PROBLEM WITH ID " + playerInfo.getId());
+				}
+			}
+		}
+		if (getJoinGameView().isModalShowing()) {
+			getJoinGameView().closeModal();
+		}
 		getSelectColorView().showModal();
 
 	}
@@ -198,8 +209,18 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 
 	@Override
 	public void cancelJoinGame() {
-
+		for (PlayerInfo playerInfo : gametemp.getPlayers()) {
+			if (!(playerInfo.getId() == manager.playerIdTemp)) {
+				if (playerInfo.getColor() != null) {
+					System.out.println("COLOR FOR ID " + playerInfo.getId() + " = " + playerInfo.getColor());
+					getSelectColorView().setColorEnabled(setStringColorToSharedColor(playerInfo.getColor()), true);
+				} else {
+					System.out.println("PROBLEM WITH ID " + playerInfo.getId());
+				}
+			}
+		}
 		getJoinGameView().closeModal();
+		start();
 	}
 
 	@Override
@@ -216,9 +237,17 @@ public class JoinGameController extends Controller implements IJoinGameControlle
 		// System.out.println("thread " + Thread.currentThread().getId() + "- RESULT JOIN="+result);
 		if (result != null) {
 			// If join succeeded
-			getSelectColorView().closeModal();
-			getJoinGameView().closeModal();
-			manager.update((Game) ModelParser.parse(RealProxy.getSingleton().gameModel(-1), Game.class));
+
+			if (getSelectColorView().isModalShowing()) {
+				getSelectColorView().closeModal();
+			}
+
+			if (getJoinGameView().isModalShowing()) {
+				getJoinGameView().closeModal();
+			}
+
+			Facade.getSingleton().SetGame((Game) ModelParser.parse(RealProxy.getSingleton().gameModel(-1), Game.class));
+
 			joinAction.execute();
 
 		} else {

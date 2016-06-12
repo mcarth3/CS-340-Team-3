@@ -84,12 +84,12 @@ public class DevCardController extends Controller implements IDevCardController 
 
 	@Override
 	public void playMonopolyCard(ResourceType resource) {
-		theFacade.playMonopoly(thisplayer.getPlayerID(), resource.name().toLowerCase());
+		theFacade.playMonopoly(thisplayer.getPlayerIndex(), resource.name().toLowerCase());
 	}
 
 	@Override
 	public void playMonumentCard() {
-		theFacade.playMonument(thisplayer.getPlayerID());
+		theFacade.playMonument(thisplayer.getPlayerIndex());
 	}
 
 	@Override
@@ -120,7 +120,7 @@ public class DevCardController extends Controller implements IDevCardController 
 				System.out.println("thread " + Thread.currentThread().getId() + "- play year of plenty card failed - preconditions not met");
 
 			} else {
-				theFacade.playYearOfPlenty(thisplayer.getPlayerID(), resource1, resource2);
+				theFacade.playYearOfPlenty(thisplayer.getPlayerIndex(), resource1, resource2);
 			}
 		}
 
@@ -130,7 +130,7 @@ public class DevCardController extends Controller implements IDevCardController 
 	public void update() {
 		theFacade = Facade.getSingleton();
 		if (theFacade != null && manager != null && thisplayer != null) {
-			if (theFacade.canBuyDevcard(thisplayer.getPlayerID())) {
+			if (theFacade.canBuyDevcard(thisplayer.getPlayerIndex())) {
 
 			}
 			DevCardList dcl = thisplayer.oldDevCards;
