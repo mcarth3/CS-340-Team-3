@@ -241,6 +241,21 @@ public class ServerFacade {
 			boolean foundInGame = false;
 			for (int i = 0; i < players.size(); i++) {
 				if (players.get(i).getName().equals(currentUsername)) {
+					GameInfo[] gamesinfo = all.getGameList();
+					for (GameInfo g : gamesinfo) {
+
+						if (g.getId() == id) {
+							for (PlayerInfo tempinfo : g.getPlayers()) {
+								if (tempinfo.getId() == curPlayerInfo.getId()) {
+									tempinfo.setColor(color);
+									System.out.println("setting " + tempinfo.getName() + " in gamelist as " + tempinfo.getColor());
+								}
+							}
+
+						}
+					}
+					all.setGameList(gamesinfo);
+
 					players.get(i).setColor(color);
 					foundInGame = true;
 				}
@@ -252,7 +267,7 @@ public class ServerFacade {
 
 					if (g.getId() == id) {
 						PlayerInfo pi = new PlayerInfo(curPlayerInfo.getId(), curPlayerInfo.getName(), curPlayerInfo.getColor());
-						//	System.out.println("COLOR2 " + curPlayerInfo.getColor());
+						//System.out.println("COLOR2 " + curPlayerInfo.getColor());
 						g.addPlayer(pi);
 					}
 				}
@@ -920,8 +935,6 @@ public class ServerFacade {
 			e.printStackTrace();
 		}
 
-
-
 		if (thePlayer != null) {
 			if (!free) {
 				thePlayer.addResource(ResourceType.BRICK, -1);
@@ -967,7 +980,6 @@ public class ServerFacade {
 				for (Hex surroundingHexes : hexesAroundSettlement) {
 					getresourcefrombank(surroundingHexes.getResourceAsType(), playerIndex, 1);
 				}
-
 
 			}
 		}
