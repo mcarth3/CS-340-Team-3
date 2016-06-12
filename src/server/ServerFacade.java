@@ -920,6 +920,8 @@ public class ServerFacade {
 			e.printStackTrace();
 		}
 
+
+
 		if (thePlayer != null) {
 			if (!free) {
 				thePlayer.addResource(ResourceType.BRICK, -1);
@@ -946,6 +948,28 @@ public class ServerFacade {
 				e.printStackTrace();
 			}
 
+			String state = model.getTurnTracker().getStatus();
+			if (state.equals("SecondRound")) {
+
+				ArrayList<HexLocation> hexLocs = settlementLocation.getAdjacentHexes();
+
+				ArrayList<model.Hex> hexesAroundSettlement = new ArrayList<model.Hex>();
+
+				for (HexLocation hexloc : hexLocs) {
+
+					for (model.Hex hex : model.getMap().getHexes()) {
+						if (hex.getLocation().equals(hexloc)) {
+							hexesAroundSettlement.add(hex);
+						}
+					}
+				}
+
+				for (Hex surroundingHexes : hexesAroundSettlement) {
+					getresourcefrombank(surroundingHexes.getResourceAsType(), playerIndex, 1);
+				}
+
+
+			}
 		}
 
 		updatemodelnumber();
