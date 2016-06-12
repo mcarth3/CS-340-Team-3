@@ -836,8 +836,8 @@ public class ServerFacade {
 			if (!free) {
 				thePlayer.addResource(ResourceType.BRICK, -1);
 				thePlayer.addResource(ResourceType.WOOD, -1);
-				thePlayer.getOldDevCards().setMonument(1); //TODO: remove me!
-				thePlayer.getOldDevCards().setYearOfPlenty(1);
+				//thePlayer.getOldDevCards().setMonument(1); //TODO: remove me!
+				//thePlayer.getOldDevCards().setYearOfPlenty(1);
 				ResourceList bank = model.getBank();
 				bank.changeResourceTypeWithAmount(ResourceType.BRICK, 1);
 				bank.changeResourceTypeWithAmount(ResourceType.WOOD, 1);
