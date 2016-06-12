@@ -24,6 +24,7 @@ import model.Hex;
 import model.Map;
 import model.ObjectNotFoundException;
 import model.Player;
+import model.Port;
 import model.Settlement;
 import model.TradeOffer;
 import model.TurnTracker;
@@ -35,6 +36,7 @@ import model.clientModel.MessageList;
 import poller.modeljsonparser.ModelParser;
 import shared.definitions.DevCardType;
 import shared.definitions.ResourceType;
+import shared.locations.EdgeDirection;
 import shared.locations.EdgeLocation;
 import shared.locations.HexLocation;
 import shared.locations.VertexLocation;
@@ -202,139 +204,8 @@ public class ServerFacade {
 
 		// this isn't build with randomness yet
 		Map newmap = new Map();
-		Hex[] hexes = new Hex[19];
-		Hex h0 = new Hex();
-//	    {"location":{"x":0,"y":-2}},
-		h0.setLocation(new HexLocation(0, -2));
-		hexes[0] = h0;
-
-//		{"resource":"brick","location":{"x":1,"y":-2},"number":4},
-		Hex h1 = new Hex();
-		h1.setLocation(new HexLocation(1, -2));
-		h1.setResource("brick");
-		h1.setNumber(4);
-		hexes[1] = h1;
-
-//		{"resource":"wood","location":{"x":2,"y":-2},"number":11},
-		Hex h2 = new Hex();
-		h2.setLocation(new HexLocation(2, -2));
-		h2.setResource("wood");
-		h2.setNumber(11);
-		hexes[2] = h2;
-
-//		{"resource":"brick","location":{"x":-1,"y":-1},"number":8},
-		Hex h3 = new Hex();
-		h3.setLocation(new HexLocation(-1, -1));
-		h3.setResource("brick");
-		h3.setNumber(8);
-		hexes[3] = h3;
-
-//		{"resource":"wood","location":{"x":0,"y":-1},"number":3},
-		Hex h4 = new Hex();
-		h4.setLocation(new HexLocation(0, -1));
-		h4.setResource("wood");
-		h4.setNumber(3);
-		hexes[4] = h4;
-
-//		{"resource":"ore","location":{"x":1,"y":-1},"number":9},
-		Hex h5 = new Hex();
-		h5.setLocation(new HexLocation(1, -1));
-		h5.setResource("ore");
-		h5.setNumber(9);
-		hexes[5] = h5;
-
-//		{"resource":"sheep","location":{"x":2,"y":-1},"number":12},
-		Hex h6 = new Hex();
-		h6.setLocation(new HexLocation(2, -1));
-		h6.setResource("sheep");
-		h6.setNumber(12);
-		hexes[6] = h6;
-
-//		{"resource":" ore","location":{"x":-2,"y":0},"number":5},
-		Hex h7 = new Hex();
-		h7.setLocation(new HexLocation(-2, 0));
-		h7.setResource("ore");
-		h7.setNumber(5);
-		hexes[7] = h7;
-
-//		{"resource":"sheep","location":{"x":-1,"y":0},"number":10},
-		Hex h8 = new Hex();
-		h8.setLocation(new HexLocation(-1, 0));
-		h8.setResource("sheep");
-		h8.setNumber(10);
-		hexes[8] = h8;
-
-//		{"resource":"wheat","location":{"x":0,"y":0},"number":11},
-		Hex h9 = new Hex();
-		h9.setLocation(new HexLocation(0, 0));
-		h9.setResource("wheat");
-		h9.setNumber(11);
-		hexes[9] = h9;
-
-//		{"resource":"brick","location":{"x":1,"y":0},"number":5},
-		Hex h10 = new Hex();
-		h10.setLocation(new HexLocation(1, 0));
-		h10.setResource("brick");
-		h10.setNumber(5);
-		hexes[10] = h10;
-
-//		{"resource":"wheat","location":{"x":2,"y":0},"number":6},
-		Hex h11 = new Hex();
-		h11.setLocation(new HexLocation(2, 0));
-		h11.setResource("wheat");
-		h11.setNumber(6);
-		hexes[11] = h11;
-
-//		{"resource":"wheat","location":{"x":-2,"y":1},"number":2},
-		Hex h12 = new Hex();
-		h12.setLocation(new HexLocation(-2, 1));
-		h12.setResource("wheat");
-		h12.setNumber(2);
-		hexes[12] = h12;
-
-//		{"resource":"sheep","location":{"x":-1,"y":1},"number":9},
-		Hex h13 = new Hex();
-		h13.setLocation(new HexLocation(-1, 1));
-		h13.setResource("sheep");
-		h13.setNumber(9);
-		hexes[13] = h13;
-
-//		{"resource":"wood","location":{"x":0,"y":1},"number":4},
-		Hex h14 = new Hex();
-		h14.setLocation(new HexLocation(0, 1));
-		h14.setResource("wood");
-		h14.setNumber(4);
-		hexes[14] = h14;
-
-//		{"resource":"sheep","location":{"x":1,"y":1},"number":10},
-		Hex h15 = new Hex();
-		h15.setLocation(new HexLocation(1, 1));
-		h15.setResource("sheep");
-		h15.setNumber(10);
-		hexes[15] = h15;
-
-//		{"resource":"wood","location":{"x":-2,"y":2},"number":6},
-		Hex h16 = new Hex();
-		h16.setLocation(new HexLocation(-2, 2));
-		h16.setResource("wood");
-		h16.setNumber(6);
-		hexes[16] = h16;
-
-//		{"resource":"ore","location":{"x":-1,"y":2},"number":3},
-		Hex h17 = new Hex();
-		h17.setLocation(new HexLocation(-1, 2));
-		h17.setResource("ore");
-		h17.setNumber(3);
-		hexes[17] = h17;
-
-//		{"resource":"wheat","location":{"x":0,"y":2},"number":8}
-		Hex h18 = new Hex();
-		h18.setLocation(new HexLocation(0, 2));
-		h18.setResource("wheat");
-		h18.setNumber(8);
-		hexes[18] = h18;
-
-		newmap.setHexes(hexes);
+		newmap.setHexes(buildHexes());
+		newmap.setPorts(buildPorts());
 
 		TurnTracker newturnTracker = new TurnTracker();
 		newturnTracker.setStatus("FirstRound");
@@ -1027,6 +898,7 @@ public class ServerFacade {
 
 			try {
 				//add settlement to map and add message to log
+				thePlayer.setVictoryPoints(thePlayer.getVictoryPoints()+1);
 				model.getMap().addSettlement(settlementLocation.x, settlementLocation.y, settlementLocation.getDir(), playerIndex);
 				MessageLine newLine = new MessageLine(thePlayer.getName() + " built a settlement.", thePlayer.getName());
 				model.getLog().getLines().add(newLine);
@@ -1068,6 +940,7 @@ public class ServerFacade {
 			bank.changeResourceTypeWithAmount(ResourceType.ORE, 3);
 
 			try {
+				thePlayer.setVictoryPoints(thePlayer.getVictoryPoints()+1);
 				model.getMap().addCity(cityLocation.x, cityLocation.y, cityLocation.getDir(), playerIndex);
 				MessageLine newLine = new MessageLine(thePlayer.getName() + " built a city.", thePlayer.getName());
 				model.getLog().getLines().add(newLine);
@@ -1254,5 +1127,212 @@ public class ServerFacade {
 			return null;
 		}
 	}
+	public ArrayList<Port> buildPorts(){
+		ArrayList<Port> portlist = new ArrayList<>(); 
+		
+//     	{"ratio":3,"direction":"NW","location":{"x":2,"y":1}},
+		Port p1 = new Port();
+		p1.setRatio(3);
+		p1.setDirection(EdgeDirection.NW);
+		p1.setLocation(new HexLocation(2, 1));
+		portlist.add(p1); 
+		
+//     	{"ratio":2,"resource":"ore","direction":"S","location":{"x":1,"y":-3}},
+		Port p2 = new Port();
+		p2.setRatio(2);
+		p2.setResource("ore");
+		p2.setDirection(EdgeDirection.S);
+		p2.setLocation(new HexLocation(1, -3));
+		portlist.add(p2);
+		
+//     	{"ratio":2,"resource":"brick","direction":"NE","location":{"x":-2,"y":3}},
+		Port p3 = new Port();
+		p3.setRatio(2);
+		p3.setResource("brick");
+		p3.setDirection(EdgeDirection.NE);
+		p3.setLocation(new HexLocation(-2, 3));
+		portlist.add(p3);
+		
+//     	{"ratio":2,"resource":"wheat","direction":"S","location":{"x":-1,"y":-2}},
+		Port p4 = new Port();
+		p4.setRatio(2);
+		p4.setResource("wheat");
+		p4.setDirection(EdgeDirection.S);
+		p4.setLocation(new HexLocation(-1, -2));
+		portlist.add(p4);
+		
+//     	{"ratio":2,"resource":"wood","direction":"NE","location":{"x":-3,"y":2}},
+		Port p5 = new Port();
+		p5.setRatio(2);
+		p5.setResource("wood");
+		p5.setDirection(EdgeDirection.NE);
+		p5.setLocation(new HexLocation(-3, 2));
+		portlist.add(p5);
+		
+//     	{"ratio":3,"direction":"SW","location":{"x":3,"y":-3}},
+		Port p6 = new Port();
+		p6.setRatio(3);
+		p6.setDirection(EdgeDirection.SW);
+		p6.setLocation(new HexLocation(3, -3));
+		portlist.add(p6);
+		
+//     	{"ratio":2,"resource":"sheep","direction":"NW","location":{"x":3,"y":-1}},
+		Port p7 = new Port();
+		p7.setRatio(2);
+		p7.setResource("sheep");
+		p7.setDirection(EdgeDirection.NW);
+		p7.setLocation(new HexLocation(3, -1));
+		portlist.add(p7);
+		
+//     	{"ratio":3,"direction":"N","location":{"x":0,"y":3}},
+		Port p8 = new Port();
+		p8.setRatio(3);
+		p8.setDirection(EdgeDirection.N);
+		p8.setLocation(new HexLocation(0, 3));
+		portlist.add(p8);
+		
+//     	{"ratio":3,"direction":"SE","location":{"x":-3,"y":0}}
+		Port p9 = new Port();
+		p9.setRatio(3);
+		p9.setDirection(EdgeDirection.SE);
+		p9.setLocation(new HexLocation(-3, 0));
+		portlist.add(p9);
+		
+		return portlist;
+	}
+	public Hex[] buildHexes(){
+		Hex[] hexes = new Hex[19];
+		Hex h0 = new Hex();
+//	    {"location":{"x":0,"y":-2}},
+		h0.setLocation(new HexLocation(0, -2));
+		hexes[0] = h0;
 
+//		{"resource":"brick","location":{"x":1,"y":-2},"number":4},
+		Hex h1 = new Hex();
+		h1.setLocation(new HexLocation(1, -2));
+		h1.setResource("brick");
+		h1.setNumber(4);
+		hexes[1] = h1;
+
+//		{"resource":"wood","location":{"x":2,"y":-2},"number":11},
+		Hex h2 = new Hex();
+		h2.setLocation(new HexLocation(2, -2));
+		h2.setResource("wood");
+		h2.setNumber(11);
+		hexes[2] = h2;
+
+//		{"resource":"brick","location":{"x":-1,"y":-1},"number":8},
+		Hex h3 = new Hex();
+		h3.setLocation(new HexLocation(-1, -1));
+		h3.setResource("brick");
+		h3.setNumber(8);
+		hexes[3] = h3;
+
+//		{"resource":"wood","location":{"x":0,"y":-1},"number":3},
+		Hex h4 = new Hex();
+		h4.setLocation(new HexLocation(0, -1));
+		h4.setResource("wood");
+		h4.setNumber(3);
+		hexes[4] = h4;
+
+//		{"resource":"ore","location":{"x":1,"y":-1},"number":9},
+		Hex h5 = new Hex();
+		h5.setLocation(new HexLocation(1, -1));
+		h5.setResource("ore");
+		h5.setNumber(9);
+		hexes[5] = h5;
+
+//		{"resource":"sheep","location":{"x":2,"y":-1},"number":12},
+		Hex h6 = new Hex();
+		h6.setLocation(new HexLocation(2, -1));
+		h6.setResource("sheep");
+		h6.setNumber(12);
+		hexes[6] = h6;
+
+//		{"resource":" ore","location":{"x":-2,"y":0},"number":5},
+		Hex h7 = new Hex();
+		h7.setLocation(new HexLocation(-2, 0));
+		h7.setResource("ore");
+		h7.setNumber(5);
+		hexes[7] = h7;
+
+//		{"resource":"sheep","location":{"x":-1,"y":0},"number":10},
+		Hex h8 = new Hex();
+		h8.setLocation(new HexLocation(-1, 0));
+		h8.setResource("sheep");
+		h8.setNumber(10);
+		hexes[8] = h8;
+
+//		{"resource":"wheat","location":{"x":0,"y":0},"number":11},
+		Hex h9 = new Hex();
+		h9.setLocation(new HexLocation(0, 0));
+		h9.setResource("wheat");
+		h9.setNumber(11);
+		hexes[9] = h9;
+
+//		{"resource":"brick","location":{"x":1,"y":0},"number":5},
+		Hex h10 = new Hex();
+		h10.setLocation(new HexLocation(1, 0));
+		h10.setResource("brick");
+		h10.setNumber(5);
+		hexes[10] = h10;
+
+//		{"resource":"wheat","location":{"x":2,"y":0},"number":6},
+		Hex h11 = new Hex();
+		h11.setLocation(new HexLocation(2, 0));
+		h11.setResource("wheat");
+		h11.setNumber(6);
+		hexes[11] = h11;
+
+//		{"resource":"wheat","location":{"x":-2,"y":1},"number":2},
+		Hex h12 = new Hex();
+		h12.setLocation(new HexLocation(-2, 1));
+		h12.setResource("wheat");
+		h12.setNumber(2);
+		hexes[12] = h12;
+
+//		{"resource":"sheep","location":{"x":-1,"y":1},"number":9},
+		Hex h13 = new Hex();
+		h13.setLocation(new HexLocation(-1, 1));
+		h13.setResource("sheep");
+		h13.setNumber(9);
+		hexes[13] = h13;
+
+//		{"resource":"wood","location":{"x":0,"y":1},"number":4},
+		Hex h14 = new Hex();
+		h14.setLocation(new HexLocation(0, 1));
+		h14.setResource("wood");
+		h14.setNumber(4);
+		hexes[14] = h14;
+
+//		{"resource":"sheep","location":{"x":1,"y":1},"number":10},
+		Hex h15 = new Hex();
+		h15.setLocation(new HexLocation(1, 1));
+		h15.setResource("sheep");
+		h15.setNumber(10);
+		hexes[15] = h15;
+
+//		{"resource":"wood","location":{"x":-2,"y":2},"number":6},
+		Hex h16 = new Hex();
+		h16.setLocation(new HexLocation(-2, 2));
+		h16.setResource("wood");
+		h16.setNumber(6);
+		hexes[16] = h16;
+
+//		{"resource":"ore","location":{"x":-1,"y":2},"number":3},
+		Hex h17 = new Hex();
+		h17.setLocation(new HexLocation(-1, 2));
+		h17.setResource("ore");
+		h17.setNumber(3);
+		hexes[17] = h17;
+
+//		{"resource":"wheat","location":{"x":0,"y":2},"number":8}
+		Hex h18 = new Hex();
+		h18.setLocation(new HexLocation(0, 2));
+		h18.setResource("wheat");
+		h18.setNumber(8);
+		hexes[18] = h18;
+		
+		return hexes;
+	}
 }

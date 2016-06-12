@@ -24,6 +24,8 @@ public class Port extends AbstractModelPartition {
         ratio = rat;
     }
 
+    public Port(){}
+    
     public Port(int x, int y, String resrc, EdgeDirection dir, int rat) {
         location = new HexLocation(x, y);
         resource = resrc;
