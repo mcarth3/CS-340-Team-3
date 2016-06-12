@@ -359,9 +359,10 @@ public class ServerFacade {
 	}
 
 	public Object GamesJoin(Integer id, String color) {
-
+		//System.out.println("COLOR ADDED " + color);
 		String response = "The player could not be added to the specified game.";
 		Game[] games = all.getGames();
+		curPlayerInfo.setColor(color);
 		if (games.length > id) {
 			model = games[id];
 			ArrayList<Player> players = model.getPlayers();
@@ -379,6 +380,7 @@ public class ServerFacade {
 
 					if (g.getId() == id) {
 						PlayerInfo pi = new PlayerInfo(curPlayerInfo.getId(), curPlayerInfo.getName(), curPlayerInfo.getColor());
+						//	System.out.println("COLOR2 " + curPlayerInfo.getColor());
 						g.addPlayer(pi);
 					}
 				}
