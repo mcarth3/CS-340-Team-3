@@ -25,6 +25,7 @@ import model.Map;
 import model.ObjectNotFoundException;
 import model.Player;
 import model.Port;
+import model.Road;
 import model.Settlement;
 import model.TradeOffer;
 import model.TurnTracker;
@@ -850,6 +851,7 @@ public class ServerFacade {
 						roadLocation.getDir(), playerIndex);
 				MessageLine newLine = new MessageLine(thePlayer.getName() + " built a road.", thePlayer.getName());
 				model.getLog().getLines().add(newLine);
+				longestroadcheck(thePlayer);
 
 			} catch (FailureToAddException e) {
 				e.printStackTrace();
@@ -861,6 +863,35 @@ public class ServerFacade {
 		return model;
 	}
 	//"Name" built a road
+
+	private void longestroadcheck(Player thePlayer) {
+		int longestroadowner = model.getTurnTracker().getLongestRoad();
+
+		ArrayList<Road> roads = model.getMap().getRoads();
+		int thisplayerroadsize = 0;
+		for (Road road : roads) {
+			if (road.getOwner() == thePlayer.getPlayerIndex()) {
+				thisplayerroadsize++;
+			}
+		}
+
+		int currentLongest = 0;
+		for (Road road : roads) {
+			if (road.getOwner() == longestroadowner) {
+				currentLongest++;
+			}
+		}
+		if (thisplayerroadsize > currentLongest) {
+			if (longestroadowner != -1) {
+				model.getPlayers().get(longestroadowner).setVictoryPoints(model.getPlayers().get(longestroadowner).getVictoryPoints() - 2);
+			}
+			longestroadowner = thePlayer.getPlayerIndex();
+			model.getPlayers().get(longestroadowner).setVictoryPoints(model.getPlayers().get(longestroadowner).getVictoryPoints() + 2);
+			checkwinner();
+		}
+
+		model.getTurnTracker().setLongestRoad(longestroadowner);
+	}
 
 	/**
 	 * build settlement, remove resources, update map and log? (IF FREE). Add VP.
