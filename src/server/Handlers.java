@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.util.List;
 import java.util.Map;
 
 import com.sun.net.httpserver.HttpExchange;
@@ -226,7 +227,14 @@ public class Handlers {
 			ICommand c = new GamesJoinCommand();
 			String response = (String) c.execute(gjjo); 
 			CommandList.getSingleton().addCommand(c);
-			//http_exchange.getRequestHeaders().get("cookie");  
+			
+//			System.out.println("THIS IS THE HEADER");
+//			System.out.println(http_exchange.getRequestHeaders().get("Cookie"));
+			List<String> cookies = http_exchange.getRequestHeaders().get("Cookie");
+			String cookie = cookies.get(0); 
+			cookie = cookie.replaceAll("catan.user=", "");
+			//cookie = cookie.replaceAll("", "");
+			System.out.println(java.net.URLDecoder.decode(cookie, "UTF-8"));
 			//String response = "Successcatan.game=0;Path=/;";
 			if(response.substring(0, 7).equals("Success")){
 				http_exchange.sendResponseHeaders(200, response.length());
