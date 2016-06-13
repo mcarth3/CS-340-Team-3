@@ -1,6 +1,7 @@
-package persistentstorage.databaseobject;
+package persistentstorage;
 
-import persistentstorage.IDAOFactory;
+import persistentstorage.databaseobject.IGameDao;
+import persistentstorage.databaseobject.IUserDao;
 
 public class RDB_DAO_Factory implements IDAOFactory {
 	/**

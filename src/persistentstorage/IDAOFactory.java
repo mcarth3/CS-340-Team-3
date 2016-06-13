@@ -8,12 +8,12 @@ public interface IDAOFactory {
 	 * @pre none
 	 * @post the gameDAO is returned
 	 */
-	public IUserDao getUserDAO();
+	public abstract IUserDao getUserDAO();
 
 	/**
 	 * @pre none
 	 * @post the gameDAO is returned
 	 */
-	public IGameDao getGameDAO();
+	public abstract IGameDao getGameDAO();
 
 }
