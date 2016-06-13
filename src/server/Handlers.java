@@ -4,15 +4,55 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
-import java.util.List;
-import java.util.Map;
 
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 
 import poller.modeljsonparser.ModelParser;
-import server.commands.*;
-import server.jsonObjects.*;
+import server.commands.AcceptTradeCommand;
+import server.commands.BuildCityCommand;
+import server.commands.BuildRoadCommand;
+import server.commands.BuildSettlementCommand;
+import server.commands.BuyDevCardCommand;
+import server.commands.DiscardCardsCommand;
+import server.commands.FinishTurnCommand;
+import server.commands.GameModelCommand;
+import server.commands.GamesCreateCommand;
+import server.commands.GamesJoinCommand;
+import server.commands.GamesListCommand;
+import server.commands.MaritimeTradeCommand;
+import server.commands.MonopolyCommand;
+import server.commands.MonumentCommand;
+import server.commands.MovesSendChatCommand;
+import server.commands.OfferTradeCommand;
+import server.commands.RoadBuildingCardCommand;
+import server.commands.RobPlayerCommand;
+import server.commands.RollNumberCommand;
+import server.commands.SoldierCardCommand;
+import server.commands.UserLoginCommand;
+import server.commands.UserRegisterCommand;
+import server.commands.YearOfPlentyCommand;
+import server.jsonObjects.AcceptTradeJsonObject;
+import server.jsonObjects.BuildCityJsonObject;
+import server.jsonObjects.BuildRoadJsonObject;
+import server.jsonObjects.BuildSettlementJsonObject;
+import server.jsonObjects.DevCardJsonObject;
+import server.jsonObjects.DiscardCardsJsonObject;
+import server.jsonObjects.FinishJsonObject;
+import server.jsonObjects.GamesCreateJsonObject;
+import server.jsonObjects.GamesJoinJsonObject;
+import server.jsonObjects.MaritimeTradeJsonObject;
+import server.jsonObjects.MonopolyJsonObject;
+import server.jsonObjects.MonumentJsonObject;
+import server.jsonObjects.MovesSendChatJsonObject;
+import server.jsonObjects.OfferTradeJsonObject;
+import server.jsonObjects.RoadBuildingJsonObject;
+import server.jsonObjects.RobJsonObject;
+import server.jsonObjects.RollJsonObject;
+import server.jsonObjects.SoldierJsonObject;
+import server.jsonObjects.UserLoginJsonObject;
+import server.jsonObjects.UserRegisterJsonObject;
+import server.jsonObjects.YOPJsonObject;
 
 /**
  * Created by Jesse on 5/26/2016. This class might contain 25 methods. However, we could modify it to make it 25 different
@@ -20,7 +60,7 @@ import server.jsonObjects.*;
  * called upon from the Server API and will create its own commands and call execute() on them.
  */
 public class Handlers {
-	
+
 	private String userCookie = null;
 	private String gameCookie = null;
 
@@ -107,21 +147,21 @@ public class Handlers {
 	private HttpHandler userLogin = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-			
+
 			UserLoginJsonObject uljo = (UserLoginJsonObject) deserialize(http_exchange, UserLoginJsonObject.class);
 			ICommand c = new UserLoginCommand();
 			String response = (String) c.execute(uljo);
 			CommandList.getSingleton().addCommand(c);
 			//String response = "Successcatan.user=%7B%22name%22%3A%22Sam%22%2C%22password%22%3A%22sam%22%2C%22playerID%22%3A0%7D;Path=/;";
-			if(response.substring(0, 7).equals("Success")){
-				String temp = response.replace("Successcatan.user=","");
-				temp = temp.replace(";Path=/;","");
+			if (response.substring(0, 7).equals("Success")) {
+				String temp = response.replace("Successcatan.user=", "");
+				temp = temp.replace(";Path=/;", "");
 				userCookie = temp;
 				System.out.println(userCookie);
-				
+
 				//http_exchange.getResponseHeaders().set("Set-cookie", userCookie);
 				http_exchange.sendResponseHeaders(200, response.length());
-			}else{
+			} else {
 				http_exchange.sendResponseHeaders(400, response.length());
 			}
 			OutputStream os = http_exchange.getResponseBody();
@@ -141,17 +181,17 @@ public class Handlers {
 	 */
 	private HttpHandler userRegister = new HttpHandler() {
 		@Override
-		public void handle(HttpExchange http_exchange) throws IOException {			
+		public void handle(HttpExchange http_exchange) throws IOException {
 			UserRegisterJsonObject urjo = (UserRegisterJsonObject) deserialize(http_exchange, UserRegisterJsonObject.class);
 			ICommand c = new UserRegisterCommand();
 			String response = (String) c.execute(urjo);
 			CommandList.getSingleton().addCommand(c);
-			if(response.substring(0, 7).equals("Success")){
-				String temp = response.replace("Successcatan.user=","");
-				temp = temp.replace(";Path=/;","");
+			if (response.substring(0, 7).equals("Success")) {
+				String temp = response.replace("Successcatan.user=", "");
+				temp = temp.replace(";Path=/;", "");
 				userCookie = temp;
 				http_exchange.sendResponseHeaders(200, response.length());
-			}else{
+			} else {
 				http_exchange.sendResponseHeaders(400, response.length());
 			}
 			//String response = "Successcatan.user=%7B%22authentication%22%3A%221224085268%22%2C%22name%22%3A%22Wayne%22%2C%22password%22%3A%22johnwayne%22%2C%22playerID%22%3A13%7D;Path=/;";
@@ -174,7 +214,7 @@ public class Handlers {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
 			ICommand c = new GamesListCommand();
-			
+
 			//Doesn't need any input
 			Object output = c.execute(null);
 			CommandList.getSingleton().addCommand(c);
@@ -200,9 +240,9 @@ public class Handlers {
 	private HttpHandler gamesCreate = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-			GamesCreateJsonObject gcjo = (GamesCreateJsonObject) deserialize(http_exchange, GamesCreateJsonObject.class); 
-			ICommand c = new GamesCreateCommand(); 
-			
+			GamesCreateJsonObject gcjo = (GamesCreateJsonObject) deserialize(http_exchange, GamesCreateJsonObject.class);
+			ICommand c = new GamesCreateCommand();
+
 			String response = (String) c.execute(gcjo);
 			CommandList.getSingleton().addCommand(c);
 
@@ -226,24 +266,26 @@ public class Handlers {
 	private HttpHandler gamesJoin = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-			GamesJoinJsonObject gjjo = (GamesJoinJsonObject) deserialize(http_exchange, GamesJoinJsonObject.class); 
+			GamesJoinJsonObject gjjo = (GamesJoinJsonObject) deserialize(http_exchange, GamesJoinJsonObject.class);
 			ICommand c = new GamesJoinCommand();
-			String response = (String) c.execute(gjjo); 
+			String response = (String) c.execute(gjjo);
 			CommandList.getSingleton().addCommand(c);
-			
+
 //			System.out.println("THIS IS THE HEADER");
 //			System.out.println(http_exchange.getRequestHeaders().get("Cookie"));
-			List<String> cookies = http_exchange.getRequestHeaders().get("Cookie");
-			String cookie = cookies.get(0); 
-			cookie = cookie.replaceAll("catan.user=", "");
+			//List<String> cookies = http_exchange.getRequestHeaders().get("Cookie");
+			//String cookie = cookies.get(0);
+			//cookie = cookie.replaceAll("catan.user=", "");
 			//cookie = cookie.replaceAll("", "");
-			System.out.println(java.net.URLDecoder.decode(cookie, "UTF-8"));
+			//System.out.println(java.net.URLDecoder.decode(cookie, "UTF-8"));
 			//String response = "Successcatan.game=0;Path=/;";
-			if(response.substring(0, 7).equals("Success")){
+			if (response.substring(0, 7).equals("Success")) {
+				System.out.println("RESPONSE success = " + response);
 				http_exchange.sendResponseHeaders(200, response.length());
-			}else{
+			} else {
+				System.out.println("RESPONSE fail = " + response);
 				http_exchange.sendResponseHeaders(400, response.length());
-			}	
+			}
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
 			os.close();
@@ -262,9 +304,9 @@ public class Handlers {
 	private HttpHandler gameModel = new HttpHandler() {
 		@Override
 		public void handle(HttpExchange http_exchange) throws IOException {
-			ICommand c = new GameModelCommand(); 
+			ICommand c = new GameModelCommand();
 			String url = http_exchange.getRequestURI().getQuery();
-			url = url.replace("version=","");
+			url = url.replace("version=", "");
 			int version = Integer.parseInt(url);
 			String response = serialize(c.execute(version));
 			CommandList.getSingleton().addCommand(c);
@@ -293,10 +335,10 @@ public class Handlers {
 			ICommand c = new MovesSendChatCommand();
 			String response = serialize(c.execute(mscjo));
 			//String response = "{\"deck\":{\"yearOfPlenty\":2,\"monopoly\":2,\"soldier\":13,\"roadBuilding\":2,\"monument\":3},\"map\":{\"hexes\":[{\"location\":{\"x\":0,\"y\":-2}},{\"resource\":\"brick\",\"location\":{\"x\":1,\"y\":-2},\"number\":4},{\"resource\":\"wood\",\"location\":{\"x\":2,\"y\":-2},\"number\":11},{\"resource\":\"brick\",\"location\":{\"x\":-1,\"y\":-1},\"number\":8},{\"resource\":\"wood\",\"location\":{\"x\":0,\"y\":-1},\"number\":3},{\"resource\":\"ore\",\"location\":{\"x\":1,\"y\":-1},\"number\":9},{\"resource\":\"sheep\",\"location\":{\"x\":2,\"y\":-1},\"number\":12},{\"resource\":\"ore\",\"location\":{\"x\":-2,\"y\":0},\"number\":5},{\"resource\":\"sheep\",\"location\":{\"x\":-1,\"y\":0},\"number\":10},{\"resource\":\"wheat\",\"location\":{\"x\":0,\"y\":0},\"number\":11},{\"resource\":\"brick\",\"location\":{\"x\":1,\"y\":0},\"number\":5},{\"resource\":\"wheat\",\"location\":{\"x\":2,\"y\":0},\"number\":6},{\"resource\":\"wheat\",\"location\":{\"x\":-2,\"y\":1},\"number\":2},{\"resource\":\"sheep\",\"location\":{\"x\":-1,\"y\":1},\"number\":9},{\"resource\":\"wood\",\"location\":{\"x\":0,\"y\":1},\"number\":4},{\"resource\":\"sheep\",\"location\":{\"x\":1,\"y\":1},\"number\":10},{\"resource\":\"wood\",\"location\":{\"x\":-2,\"y\":2},\"number\":6},{\"resource\":\"ore\",\"location\":{\"x\":-1,\"y\":2},\"number\":3},{\"resource\":\"wheat\",\"location\":{\"x\":0,\"y\":2},\"number\":8}],\"roads\":[{\"owner\":1,\"location\":{\"direction\":\"S\",\"x\":-1,\"y\":-1}},{\"owner\":0,\"location\":{\"direction\":\"SW\",\"x\":2,\"y\":-1}},{\"owner\":3,\"location\":{\"direction\":\"NW\",\"x\":-2,\"y\":0}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":0,\"y\":-2}},{\"owner\":1,\"location\":{\"direction\":\"S\",\"x\":1,\"y\":0}},{\"owner\":3,\"location\":{\"direction\":\"SE\",\"x\":-1,\"y\":1}},{\"owner\":3,\"location\":{\"direction\":\"SW\",\"x\":0,\"y\":0}},{\"owner\":0,\"location\":{\"direction\":\"SE\",\"x\":-2,\"y\":0}},{\"owner\":1,\"location\":{\"direction\":\"SE\",\"x\":1,\"y\":0}},{\"owner\":2,\"location\":{\"direction\":\"SE\",\"x\":-1,\"y\":0}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":-1,\"y\":-1}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":2,\"y\":0}},{\"owner\":1,\"location\":{\"direction\":\"S\",\"x\":0,\"y\":-2}},{\"owner\":1,\"location\":{\"direction\":\"NW\",\"x\":-1,\"y\":-1}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":1,\"y\":0}},{\"owner\":2,\"location\":{\"direction\":\"NE\",\"x\":0,\"y\":-2}},{\"owner\":1,\"location\":{\"direction\":\"SE\",\"x\":-1,\"y\":-1}},{\"owner\":1,\"location\":{\"direction\":\"N\",\"x\":-2,\"y\":0}}],\"cities\":[{\"owner\":0,\"location\":{\"direction\":\"SE\",\"x\":-2,\"y\":0}}],\"settlements\":[{\"owner\":3,\"location\":{\"direction\":\"W\",\"x\":-2,\"y\":0}},{\"owner\":2,\"location\":{\"direction\":\"SE\",\"x\":-1,\"y\":0}},{\"owner\":3,\"location\":{\"direction\":\"SE\",\"x\":-1,\"y\":1}},{\"owner\":1,\"location\":{\"direction\":\"SW\",\"x\":1,\"y\":0}},{\"owner\":2,\"location\":{\"direction\":\"NE\",\"x\":0,\"y\":-2}},{\"owner\":0,\"location\":{\"direction\":\"SW\",\"x\":2,\"y\":-1}},{\"owner\":1,\"location\":{\"direction\":\"NW\",\"x\":-1,\"y\":-1}}],\"radius\":3,\"ports\":[{\"ratio\":3,\"direction\":\"NW\",\"location\":{\"x\":2,\"y\":1}},{\"ratio\":2,\"resource\":\"ore\",\"direction\":\"S\",\"location\":{\"x\":1,\"y\":-3}},{\"ratio\":2,\"resource\":\"brick\",\"direction\":\"NE\",\"location\":{\"x\":-2,\"y\":3}},{\"ratio\":2,\"resource\":\"wheat\",\"direction\":\"S\",\"location\":{\"x\":-1,\"y\":-2}},{\"ratio\":2,\"resource\":\"wood\",\"direction\":\"NE\",\"location\":{\"x\":-3,\"y\":2}},{\"ratio\":3,\"direction\":\"SW\",\"location\":{\"x\":3,\"y\":-3}},{\"ratio\":2,\"resource\":\"sheep\",\"direction\":\"NW\",\"location\":{\"x\":3,\"y\":-1}},{\"ratio\":3,\"direction\":\"N\",\"location\":{\"x\":0,\"y\":3}},{\"ratio\":3,\"direction\":\"SE\",\"location\":{\"x\":-3,\"y\":0}}],\"robber\":{\"x\":1,\"y\":-1}},\"players\":[{\"resources\":{\"brick\":0,\"wood\":0,\"sheep\":0,\"wheat\":6,\"ore\":1},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":1,\"roadBuilding\":0,\"monument\":1},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":13,\"cities\":3,\"settlements\":4,\"soldiers\":0,\"victoryPoints\":4,\"monuments\":0,\"playedDevCard\":false,\"discarded\":true,\"playerID\":0,\"playerIndex\":0,\"name\":\"Sam\",\"color\":\"brown\"},{\"resources\":{\"brick\":0,\"wood\":0,\"sheep\":3,\"wheat\":0,\"ore\":1},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":4,\"cities\":4,\"settlements\":3,\"soldiers\":0,\"victoryPoints\":4,\"monuments\":0,\"playedDevCard\":false,\"discarded\":true,\"playerID\":-2,\"playerIndex\":1,\"name\":\"Scott\",\"color\":\"orange\"},{\"resources\":{\"brick\":0,\"wood\":0,\"sheep\":3,\"wheat\":1,\"ore\":0},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":13,\"cities\":4,\"settlements\":3,\"soldiers\":0,\"victoryPoints\":2,\"monuments\":0,\"playedDevCard\":false,\"discarded\":false,\"playerID\":-3,\"playerIndex\":2,\"name\":\"Quinn\",\"color\":\"yellow\"},{\"resources\":{\"brick\":0,\"wood\":3,\"sheep\":0,\"wheat\":0,\"ore\":3},\"oldDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"newDevCards\":{\"yearOfPlenty\":0,\"monopoly\":0,\"soldier\":0,\"roadBuilding\":0,\"monument\":0},\"roads\":12,\"cities\":4,\"settlements\":3,\"soldiers\":0,\"victoryPoints\":2,\"monuments\":0,\"playedDevCard\":false,\"discarded\":false,\"playerID\":-4,\"playerIndex\":3,\"name\":\"Steve\",\"color\":\"blue\"}],\"log\":{\"lines\":[{\"source\":\"Quinn\",\"message\":\"Quinn rolled a 8.\"},{\"source\":\"Quinn\",\"message\":\"Quinn\u0027s turn just ended\"},{\"source\":\"Steve\",\"message\":\"Steve rolled a 6.\"},{\"source\":\"Steve\",\"message\":\"Steve\u0027s turn just ended\"},{\"source\":\"Sam\",\"message\":\"Sam rolled a 11.\"},{\"source\":\"Sam\",\"message\":\"Sam\u0027s turn just ended\"},{\"source\":\"Scott\",\"message\":\"Scott rolled a 10.\"},{\"source\":\"Scott\",\"message\":\"Scott\u0027s turn just ended\"},{\"source\":\"Quinn\",\"message\":\"Quinn rolled a 3.\"},{\"source\":\"Quinn\",\"message\":\"Quinn\u0027s turn just ended\"},{\"source\":\"Steve\",\"message\":\"Steve rolled a 3.\"},{\"source\":\"Steve\",\"message\":\"Steve\u0027s turn just ended\"},{\"source\":\"Sam\",\"message\":\"Sam rolled a 4.\"},{\"source\":\"Sam\",\"message\":\"Sam\u0027s turn just ended\"},{\"source\":\"Scott\",\"message\":\"Scott rolled a 10.\"},{\"source\":\"Scott\",\"message\":\"Scott\u0027s turn just ended\"},{\"source\":\"Quinn\",\"message\":\"Quinn rolled a 7.\"},{\"source\":\"Quinn\",\"message\":\"Quinn\u0027s turn just ended\"},{\"source\":\"Steve\",\"message\":\"Steve rolled a 3.\"},{\"source\":\"Steve\",\"message\":\"Steve\u0027s turn just ended\"},{\"source\":\"Sam\",\"message\":\"Sam rolled a 8.\"},{\"source\":\"Sam\",\"message\":\"Sam\u0027s turn just ended\"},{\"source\":\"Scott\",\"message\":\"Scott rolled a 3.\"},{\"source\":\"Scott\",\"message\":\"Scott\u0027s turn just ended\"},{\"source\":\"Quinn\",\"message\":\"Quinn rolled a 4.\"},{\"source\":\"Quinn\",\"message\":\"Quinn\u0027s turn just ended\"},{\"source\":\"Steve\",\"message\":\"Steve rolled a 2.\"},{\"source\":\"Steve\",\"message\":\"Steve\u0027s turn just ended\"},{\"source\":\"Sam\",\"message\":\"Sam rolled a 7.\"},{\"source\":\"Sam\",\"message\":\"Sam moved the robber and robbed Sam.\"}]},\"chat\":{\"lines\":[{\"source\":\"Sam\",\"message\":\"This is a message\"}]},\"bank\":{\"brick\":24,\"wood\":21,\"sheep\":18,\"wheat\":17,\"ore\":19},\"turnTracker\":{\"status\":\"Playing\",\"currentTurn\":0,\"longestRoad\":1,\"largestArmy\":-1},\"winner\":-1,\"version\":238}";
-			if(response.length() < 5){
+			if (response.length() < 5) {
 				response = "Invalid command";
 				http_exchange.sendResponseHeaders(400, response.length());
-			}else{
+			} else {
 				http_exchange.sendResponseHeaders(200, response.length());
 			}
 			OutputStream os = http_exchange.getResponseBody();
@@ -510,14 +552,12 @@ public class Handlers {
 			String response = serialize(monopolyCommand.execute(monopolyObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
-			if(monopolyObject != null) {
+			if (monopolyObject != null) {
 				if (monopolyObject.getResource() == null || monopolyObject.getPlayerIndex() == null) {
 					http_exchange.sendResponseHeaders(400, response.length());
 
 				}
-			}
-			else
-			{
+			} else {
 				http_exchange.sendResponseHeaders(400, response.length());
 			}
 
@@ -547,17 +587,14 @@ public class Handlers {
 			String response = serialize(monumentCommand.execute(monumentObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
-			if(monumentObject != null) {
+			if (monumentObject != null) {
 				if (monumentObject.toString() == null || monumentObject.getPlayerIndex() == null) {
 					http_exchange.sendResponseHeaders(400, response.length());
 
 				}
-			}
-			else
-			{
+			} else {
 				http_exchange.sendResponseHeaders(400, response.length());
 			}
-
 
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
@@ -581,17 +618,14 @@ public class Handlers {
 			String response = serialize(buildRoadCommand.execute(buildRoadJsonObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
-			if(buildRoadJsonObject != null) {
+			if (buildRoadJsonObject != null) {
 				if (buildRoadJsonObject.getRoadLocation() == null || buildRoadJsonObject.getPlayerIndex() == null) {
 					http_exchange.sendResponseHeaders(400, response.length());
 
 				}
-			}
-			else
-			{
+			} else {
 				http_exchange.sendResponseHeaders(400, response.length());
 			}
-
 
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
@@ -615,14 +649,12 @@ public class Handlers {
 			String response = serialize(buildSettlementCommand.execute(buildSettlementJsonObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
-			if(buildSettlementJsonObject != null) {
+			if (buildSettlementJsonObject != null) {
 				if (buildSettlementJsonObject.getVertexLocation() == null || buildSettlementJsonObject.getPlayerIndex() == null) {
 					http_exchange.sendResponseHeaders(400, response.length());
 
 				}
-			}
-			else
-			{
+			} else {
 				http_exchange.sendResponseHeaders(400, response.length());
 			}
 
@@ -648,17 +680,14 @@ public class Handlers {
 			String response = serialize(buildCityCommand.execute(buildCityJsonObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
-			if(buildCityJsonObject != null) {
+			if (buildCityJsonObject != null) {
 				if (buildCityJsonObject.getVertexLocation() == null || buildCityJsonObject.getPlayerIndex() == null) {
 					http_exchange.sendResponseHeaders(400, response.length());
 
 				}
-			}
-			else
-			{
+			} else {
 				http_exchange.sendResponseHeaders(400, response.length());
 			}
-
 
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
@@ -682,17 +711,14 @@ public class Handlers {
 			String response = serialize(newCommand.execute(offerTradeJsonObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
-			if(offerTradeJsonObject != null) {
+			if (offerTradeJsonObject != null) {
 				if (offerTradeJsonObject.getOffer() == null || offerTradeJsonObject.getPlayerIndex() == null) {
 					http_exchange.sendResponseHeaders(400, response.length());
 
 				}
-			}
-			else
-			{
+			} else {
 				http_exchange.sendResponseHeaders(400, response.length());
 			}
-
 
 			OutputStream os = http_exchange.getResponseBody();
 			os.write(response.getBytes());
@@ -703,7 +729,6 @@ public class Handlers {
 	public HttpHandler OfferTradeHandler() {
 		return OfferTrade;
 	}
-
 
 	/**
 	 * executes AcceptTradeCommand
@@ -717,14 +742,12 @@ public class Handlers {
 			String response = serialize(newCommand.execute(newJSONObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
-			if(newJSONObject != null) {
+			if (newJSONObject != null) {
 				if (newJSONObject.getType() == null || newJSONObject.getPlayerIndex() == null) {
 					http_exchange.sendResponseHeaders(400, response.length());
 
 				}
-			}
-			else
-			{
+			} else {
 				http_exchange.sendResponseHeaders(400, response.length());
 			}
 
@@ -738,7 +761,6 @@ public class Handlers {
 		return AcceptTrade;
 	}
 
-
 	/**
 	 * executes MaritimeTradeCommand
 	 */
@@ -751,14 +773,12 @@ public class Handlers {
 			String response = serialize(newCommand.execute(newJSONObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
-			if(newJSONObject != null) {
+			if (newJSONObject != null) {
 				if (newJSONObject.getOutputResource() == null || newJSONObject.getPlayerIndex() == null) {
 					http_exchange.sendResponseHeaders(400, response.length());
 
 				}
-			}
-			else
-			{
+			} else {
 				http_exchange.sendResponseHeaders(400, response.length());
 			}
 
@@ -772,7 +792,6 @@ public class Handlers {
 		return MaritimeTrade;
 	}
 
-
 	/**
 	 * executes DiscardCardsCommand
 	 */
@@ -785,14 +804,12 @@ public class Handlers {
 			String response = serialize(newCommand.execute(newJSONObject));
 
 			http_exchange.sendResponseHeaders(200, response.length());// this assumes the input is correct. you should check to see if there was valid input
-			if(newJSONObject != null) {
+			if (newJSONObject != null) {
 				if (newJSONObject.getDiscardedCards() == null || newJSONObject.getPlayerIndex() == null) {
 					http_exchange.sendResponseHeaders(400, response.length());
 
 				}
-			}
-			else
-			{
+			} else {
 				http_exchange.sendResponseHeaders(400, response.length());
 			}
 
@@ -805,7 +822,5 @@ public class Handlers {
 	public HttpHandler DiscardCardsHandler() {
 		return DiscardCards;
 	}
-
-
 
 }

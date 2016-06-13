@@ -236,17 +236,21 @@ public class ServerFacade {
 		Game[] games = all.getGames();
 		curPlayerInfo.setColor(color);
 		if (games.length > id) {
+			//System.out.println("games.length > id");
 			model = games[id];
 			ArrayList<Player> players = model.getPlayers();
 			boolean foundInGame = false;
 			for (int i = 0; i < players.size(); i++) {
 				if (players.get(i).getName().equals(currentUsername)) {
+					//	System.out.println("players.get(i).getName().equals(currentUsername)");
 					GameInfo[] gamesinfo = all.getGameList();
 					for (GameInfo g : gamesinfo) {
 
 						if (g.getId() == id) {
+							//		System.out.println("g.getId() == id");
 							for (PlayerInfo tempinfo : g.getPlayers()) {
 								if (tempinfo.getId() == curPlayerInfo.getId()) {
+									//			System.out.println("tempinfo.getId() == curPlayerInfo.getId()");
 									tempinfo.setColor(color);
 									System.out.println("setting " + tempinfo.getName() + " in gamelist as " + tempinfo.getColor());
 								}
@@ -262,10 +266,12 @@ public class ServerFacade {
 			}
 
 			if (!foundInGame) {
+				System.out.println("!found");
 				GameInfo[] gamesinfo = all.getGameList();
 				for (GameInfo g : gamesinfo) {
 
 					if (g.getId() == id) {
+						System.out.println("g.getId() == id");
 						PlayerInfo pi = new PlayerInfo(curPlayerInfo.getId(), curPlayerInfo.getName(), curPlayerInfo.getColor());
 						//System.out.println("COLOR2 " + curPlayerInfo.getColor());
 						g.addPlayer(pi);
@@ -287,6 +293,7 @@ public class ServerFacade {
 				players.add(newPlayer);
 				model.setPlayers(players);
 			}
+//			System.out.print("Successcatan.game=" + id + ";Path=/;");
 			response = "Successcatan.game=" + id + ";Path=/;";
 		}
 		return response;
