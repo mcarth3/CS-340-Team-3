@@ -17,7 +17,7 @@ public class MessageLine extends AbstractModelPartition {
     	message = newmessage;
     	source = newsource;
     }
-    /**
+    /*
     GETTERS & SETTERS:
      */
     public String getMessage() {

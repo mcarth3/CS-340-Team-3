@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Jesse on 6/12/2016.
  */
-public class RDBGameDAO implements IGameDAO {
+public class RDBGameDAO implements IGameDao {
     @Override
     public CommandList getCommands(Integer gameID) {
         return null;

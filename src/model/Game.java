@@ -324,7 +324,7 @@ public class Game extends AbstractModelPartition {
 	/**
 	 * Robs a player of one resource card
 	 *
-	 * @return boolean whether or not the player chose to rob
+	 * return boolean whether or not the player chose to rob
 	 */
 	public void rob(int pid, ResourceType rt) throws IllegalMoveException, InsufficientResourcesException {
 		int cp = turnTracker.getCurrentPlayer();

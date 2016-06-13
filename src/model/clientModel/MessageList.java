@@ -17,7 +17,7 @@ public class MessageList extends AbstractModelPartition {
     	lines = newlines;
     }
 
-    /**
+    /*
      * GETTERS & SETTERS
      */
     public ArrayList<MessageLine> getLines() {

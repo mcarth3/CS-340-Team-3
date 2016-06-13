@@ -28,7 +28,7 @@ public class DevelopmentCard extends AbstractModelPartition {
     }
 
 
-    /**
+    /*
      * GETTERS & SETTERS:
      */
 

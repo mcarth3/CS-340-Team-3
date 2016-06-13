@@ -351,7 +351,7 @@ public class Facade extends AbstractModelPartition {
 	 * 
 	 * @param b
 	 *
-	 * @return boolean whether or not the player built the road (perhaps
+	 * return boolean whether or not the player built the road (perhaps
 	 *         placeholder return values for all of the do methods)
 	 */
 	public void placeRoad(int pid, EdgeLocation el, boolean free, boolean b) {
@@ -403,7 +403,7 @@ public class Facade extends AbstractModelPartition {
 	/**
 	 * Places a Settlement at a given location on the map
 	 *
-	 * @return boolean whether or not the player placed a settlement
+	 * return boolean whether or not the player placed a settlement
 	 */
 	public void placeSettlement(int pid, VertexLocation vl, boolean free) throws IllegalBuildException {
 		if (theGame != null) {
@@ -456,7 +456,7 @@ public class Facade extends AbstractModelPartition {
 	/**
 	 * Places a City at a given location on the map
 	 *
-	 * @return boolean whether or not the player placed the city
+	 * return boolean whether or not the player placed the city
 	 */
 	public void placeCity(int pid, VertexLocation vl) throws IllegalBuildException {
 		if (theGame != null) {
@@ -480,7 +480,7 @@ public class Facade extends AbstractModelPartition {
 	/**
 	 * plays the road build card
 	 *
-	 * @return boolean
+	 * return boolean
 	 */
 	public void playRoadBuilding(int pid, EdgeLocation el1, EdgeLocation el2) {
 		if (theGame != null) {
@@ -522,7 +522,7 @@ public class Facade extends AbstractModelPartition {
 	/**
 	 * plays the year of plenty card for a given player
 	 *
-	 * @return boolean whether or not the player played the year of plenty card
+	 * return boolean whether or not the player played the year of plenty card
 	 */
 	public void playYearOfPlenty(int index, ResourceType r1, ResourceType r2) {
 		if (theGame != null)
@@ -544,7 +544,7 @@ public class Facade extends AbstractModelPartition {
 	/**
 	 * Places a Soldier and grants the effects he brings
 	 *
-	 * @return boolean whether or not the player played the soldier card
+	 * return boolean whether or not the player played the soldier card
 	 */
 	public void playSoldier(int pid, int vid, HexLocation hl) throws IllegalMoveException {
 		if (theGame != null) {
@@ -578,7 +578,7 @@ public class Facade extends AbstractModelPartition {
 	/**
 	 * Robs a player of one resource card
 	 *
-	 * @return boolean whether or not the player chose to rob
+	 * return boolean whether or not the player chose to rob
 	 */
 	public void rob(int pid, int vid, HexLocation hl) {
 		if (pid == -1)
@@ -604,7 +604,7 @@ public class Facade extends AbstractModelPartition {
 	/**
 	 * completes a transaction of resources with the bank
 	 *
-	 * @return boolean whether or not the player traded with the bank
+	 * return boolean whether or not the player traded with the bank
 	 */
 	public void meritimeTrade(int playerId, int ratio, String in, String out) {
 		if (proxy != null)
@@ -703,7 +703,7 @@ public class Facade extends AbstractModelPartition {
 	 * Buys a developement card and increases the amount for the purchasing
 	 * player
 	 *
-	 * @return boolean whether or not the player bought the dev card
+	 * return boolean whether or not the player bought the dev card
 	 */
 	public void buyDevCard(int index) throws InsufficientResourcesException {
 		if (theGame != null) {
@@ -727,7 +727,7 @@ public class Facade extends AbstractModelPartition {
 	/**
 	 * uses Monopoly
 	 *
-	 * @return boolean whether or not the player played a monopoly
+	 * return boolean whether or not the player played a monopoly
 	 */
 	public void playMonopoly(int index, String r) {
 		if (theGame != null) {
@@ -754,7 +754,7 @@ public class Facade extends AbstractModelPartition {
 	/**
 	 * enacts the trade offer of the specified player
 	 *
-	 * @return boolean whether or not the player traded with another player
+	 * return boolean whether or not the player traded with another player
 	 */
 	public void tradePlayer(int pid, ResourceList rl, int rid) {
 		try {
@@ -795,7 +795,7 @@ public class Facade extends AbstractModelPartition {
 	/**
 	 * accepts the trade offer of another player
 	 *
-	 * @return boolean whether or not the player accepted a trade offer
+	 * return boolean whether or not the player accepted a trade offer
 	 */
 	public void acceptTrade(int pid, boolean acceptance) {
 		if (theGame != null) {

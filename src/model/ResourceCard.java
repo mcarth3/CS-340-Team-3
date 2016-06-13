@@ -28,7 +28,7 @@ public class ResourceCard extends AbstractModelPartition {
     }
 
 
-    /**********************************************
+    /*
      * Setters & Getters:
      */
     public ResourceType getType() {

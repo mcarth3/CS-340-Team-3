@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * interface implemented by FlatFileGameDAO and RDBGameDAO
  * includes functions getCommands, clearCommands, storeGame,  getGameByID, getListOfGames
  */
-public interface IGameDAO {
+public interface IGameDao {
 
     /**
      *

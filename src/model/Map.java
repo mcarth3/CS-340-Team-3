@@ -162,10 +162,10 @@ public class Map extends AbstractModelPartition {
 	/**
 	 * adds a road to the maps list of roads
 	 *
-	 * @param x         - horizontal location of hex
-	 * @param y         - diagonal location of hex
-	 * @param direction - direction from hex that road is located
-	 * @param      - index of owner
+	 * param x         - horizontal location of hex
+	 * param y         - diagonal location of hex
+	 * param direction - direction from hex that road is located
+	 * param      - index of owner
 	 */
 	public void addRoad(int x, int y, EdgeDirection direction, int pid) throws FailureToAddException {
 		HexLocation hexLocation = new HexLocation(x, y);
@@ -206,10 +206,10 @@ public class Map extends AbstractModelPartition {
 	/**
 	 * adds a settlement to the maps list of settlements
 	 *
-	 * @param x         - horizontal location of hex
-	 * @param y         - diagonal location of hex
-	 * @param direction - direction from hex that settlement is located
-	 * @param      - index of owner
+	 * param x         - horizontal location of hex
+	 * param y         - diagonal location of hex
+	 * param direction - direction from hex that settlement is located
+	 * param      - index of owner
 	 */
 	public void addSettlement(int x, int y, VertexDirection direction, int pid) throws FailureToAddException {
 		HexLocation hex = new HexLocation(x, y);
@@ -251,10 +251,10 @@ public class Map extends AbstractModelPartition {
 	/**
 	 * adds a city to the maps list of cities
 	 *
-	 * @param x         - horizontal location of hex
-	 * @param y         - diagonal location of hex
-	 * @param direction - direction from hex that city is located
-	 * @param      - index of owner
+	 * param x         - horizontal location of hex
+	 * param y         - diagonal location of hex
+	 * param direction - direction from hex that city is located
+	 * param      - index of owner
 	 */
 	public void addCity(int x, int y, VertexDirection direction, int pid) throws FailureToAddException {
 		HexLocation hex = new HexLocation(x, y);
@@ -324,8 +324,9 @@ public class Map extends AbstractModelPartition {
 	/**
 	 * moves robber to a new hex location
 	 *
-	 * @param  - horizontal location of hex robber is to be moved to
-	 * @param  - diagonal location of hex robber is to be moved to
+	 *@param targetHex
+	 * param  - horizontal location of hex robber is to be moved to
+	 * param  - diagonal location of hex robber is to be moved to
 	 */
 
 	public void relocateRober(HexLocation targetHex) {

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 /**
  * Created by Jesse on 6/12/2016.
  */
-public class FlatFileGameDAO implements IGameDAO {
+public class FlatFileGameDAO implements IGameDao {
 
     @Override
     public CommandList getCommands(Integer gameID) {

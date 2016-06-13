@@ -11,8 +11,10 @@ public abstract class VertexObject extends AbstractModelPartition {
 //	  VertexLocation vertexLocation;
 
 	/**
-	   *@param VertexObject - an object to compareTo
-	   *@return if the location is being used already
+	   *@param newowner
+	   *@param newvertexlocation 
+	   * VertexObject - an object to compareTo
+	   * return if the location is being used already
 	   */
 
 	public VertexObject(int newowner, VertexLocation newvertexlocation) {

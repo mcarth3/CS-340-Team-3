@@ -51,7 +51,9 @@ public class Handlers {
 	/**
 	 * Deserializes the data sent with the httprequest
 	 * 
-	 * @param jsondata the data given with the command to the server
+	 * @param http_exchange
+	 * @param givenclass
+	 * jsondata the data given with the command to the server
 	 * @param givenclass the class to deserialize the data into
 	 * @pre givenclass is a valid jsonobject and jsondata is in the valid format for the givenclass
 	 * @post the specified jsonobject is returned from the parsed data
@@ -86,7 +88,8 @@ public class Handlers {
 	/**
 	 * Serializes the data sent with the httprequest
 	 * 
-	 * @param givenclass the class to serialize the data from
+	 * @param givenobject 
+	 * givenclass the class to serialize the data from
 	 * @pre givenclass is a valid jsonobject
 	 * @post the specified jsonobject is returned as a string in JSON format
 	 */

@@ -106,7 +106,7 @@ public class Player extends AbstractModelPartition {
 	 * @pre: called on by the functions checking for a person's development card (e.g. monopoly, yearOfPlenty, victoryPoint, or roadBuilding())
 	 * @post: returns the number of cards of that type in the Person's developmentCards arrayList
 	 * * @param type
-	 * @return
+	 * 
 	 */
 	//  public int returnDevCardValue(DevCardType searchType)
 	//  {
@@ -238,7 +238,7 @@ public class Player extends AbstractModelPartition {
 	/**
 	 * uses Monopoly
 	 *
-	 * @return boolean whether or not the player played a monopoly
+	 * return boolean whether or not the player played a monopoly
 	 */
 	public void playMonopoly() {
 		oldDevCards.setMonopoly(oldDevCards.getMonopoly() - 1);
@@ -258,7 +258,7 @@ public class Player extends AbstractModelPartition {
 	/**
 	 * plays the road build card
 	 *
-	 * @return boolean
+	 * return boolean
 	 */
 	public void playRoadBuilding() {
 		oldDevCards.setRoadBuilding(oldDevCards.getRoadBuilding() - 1);
@@ -267,7 +267,7 @@ public class Player extends AbstractModelPartition {
 	/**
 	 * plays a monument card
 	 *
-	 * @return boolean whether or not the player placed a monument
+	 * return boolean whether or not the player placed a monument
 	 */
 	public void placeMonument() {
 		monuments--;
@@ -277,7 +277,7 @@ public class Player extends AbstractModelPartition {
 	/**
 	 * plays the year of plenty card for a given player
 	 *
-	 * @return boolean whether or not the player played the year of plenty card
+	 * return boolean whether or not the player played the year of plenty card
 	 */
 	public void playYearOfPlenty() {
 		oldDevCards.setYearOfPlenty(oldDevCards.getYearOfPlenty() - 1);
@@ -286,7 +286,7 @@ public class Player extends AbstractModelPartition {
 	/**
 	 * Places a Soldier and grants the effects he brings
 	 *
-	 * @return boolean whether or not the player played the soldier card
+	 * return boolean whether or not the player played the soldier card
 	 */
 	public void placeSoldier() {
 		soldiers--;
@@ -308,7 +308,7 @@ public class Player extends AbstractModelPartition {
 	/**
 	 * Robs a player of one resource card
 	 *
-	 * @return boolean whether or not the player chose to rob
+	 * return boolean whether or not the player chose to rob
 	 */
 	public void rob(ResourceType resourceRecieved) {
 		switch (resourceRecieved) {

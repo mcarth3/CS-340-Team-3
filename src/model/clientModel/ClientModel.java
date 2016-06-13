@@ -48,7 +48,7 @@ public class ClientModel extends AbstractModelPartition {
         winner = 0;
     }
 
-    /**
+    /*
      * GETTERS & SETTERS
      */
 

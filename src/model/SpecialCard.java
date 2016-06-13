@@ -24,7 +24,7 @@ public class SpecialCard extends AbstractModelPartition {
     }
 
 
-    /**
+    /*
      * GETTERS & SETTERS
      */
     public String getType() {
