@@ -1,6 +1,6 @@
 package persistentstorage;
 
-import persistentstorage.databaseobject.IGameDao;
+import persistentstorage.databaseobject.IGameDAO;
 import persistentstorage.databaseobject.IUserDao;
 
 public interface IDAOFactory {
@@ -14,6 +14,6 @@ public interface IDAOFactory {
 	 * @pre none
 	 * @post the gameDAO is returned
 	 */
-	public abstract IGameDao getGameDAO();
+	public abstract IGameDAO getGameDAO();
 
 }

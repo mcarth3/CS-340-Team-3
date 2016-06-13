@@ -1,6 +1,6 @@
 package persistentstorage;
 
-import persistentstorage.databaseobject.IGameDao;
+import persistentstorage.databaseobject.IGameDAO;
 import persistentstorage.databaseobject.IUserDao;
 
 public class RDB_DAO_Factory implements IDAOFactory {
@@ -18,7 +18,7 @@ public class RDB_DAO_Factory implements IDAOFactory {
 	 * @post the gameDAO is returned
 	 */
 	@Override
-	public IGameDao getGameDAO() {
+	public IGameDAO getGameDAO() {
 		return null;
 	}
 
