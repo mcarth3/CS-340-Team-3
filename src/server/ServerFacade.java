@@ -905,12 +905,16 @@ public class ServerFacade {
 			}
 		}
 		if (thisplayerroadsize > currentLongest) {
-			if (longestroadowner != -1) {
-				model.getPlayers().get(longestroadowner).setVictoryPoints(model.getPlayers().get(longestroadowner).getVictoryPoints() - 2);
+
+			if (thisplayerroadsize > 4) {
+				if (longestroadowner != -1) {
+					model.getPlayers().get(longestroadowner).setVictoryPoints(model.getPlayers().get(longestroadowner).getVictoryPoints() - 2);
+
+				}
+				longestroadowner = thePlayer.getPlayerIndex();
+				model.getPlayers().get(longestroadowner).setVictoryPoints(model.getPlayers().get(longestroadowner).getVictoryPoints() + 2);
+				checkwinner();
 			}
-			longestroadowner = thePlayer.getPlayerIndex();
-			model.getPlayers().get(longestroadowner).setVictoryPoints(model.getPlayers().get(longestroadowner).getVictoryPoints() + 2);
-			checkwinner();
 		}
 
 		model.getTurnTracker().setLongestRoad(longestroadowner);
